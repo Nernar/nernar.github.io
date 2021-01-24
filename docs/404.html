@@ -12,7 +12,11 @@
    <meta http-equiv="refresh" content="1;URL=https://nernar.github.io">
   </noscript>
   <script type="text/javascript">
-   if (isIE + "" != "undefined" && isIE() < 9) {
+   function isIE() {
+    var agent = navigator.userAgent.toLowerCase();
+    return (agent.indexOf("msie") != -1) ? parseInt(agent.split("msie")[1]) : false;
+   }
+   if (isIE() && isIE() < 9) {
     var element = document.createElement("a");
     element.href = "https://nernar.github.io";
     document.body.appendChild(element);
