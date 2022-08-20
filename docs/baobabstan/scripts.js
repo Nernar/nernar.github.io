@@ -89,7 +89,7 @@ var special = `[\[ \\\^\$\.\|\?\*\+\(\),:;=&#"'!/]`;
 
 function change(id) {
 	var msg = document.getElementById("baobab"),
-		upd = document.getElementById("russia");
+		upd = document.getElementById("russian");
 	
 	switch(id) {
 		case 0:
