@@ -1,0 +1,21 @@
+name: Review pull request
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-deploy:
+    name: Review deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install --save-exact
+      - name: Test build website
+        run: npm run build
