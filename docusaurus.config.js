@@ -85,8 +85,7 @@ module.exports = {
           },
           {
             position: 'left',
-            type: 'doc',
-            docId: 'changelog',
+            to: 'changelog',
             label: 'Changelog'
           },
           {
@@ -122,7 +121,7 @@ module.exports = {
               },
               {
                 label: 'Contributing',
-                to: 'https://github.com/nernar/nernar.github.io/README.md#contribution'
+                to: 'https://github.com/nernar/nernar.github.io/blob/master/README.md#contribution'
               }
             ]
           },
