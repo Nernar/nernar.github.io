@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[3913],{6127:e=>{e.exports=JSON.parse('{"title":"Entities","slug":"/category/entities","permalink":"/docs/category/entities","navigation":{"previous":{"title":"index","permalink":"/docs/ui/"},"next":{"title":"index","permalink":"/docs/entities/"}}}')}}]);

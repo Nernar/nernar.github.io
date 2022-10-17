@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[8196],{892:e=>{e.exports=JSON.parse('{"title":"Player","slug":"/category/player","permalink":"/docs/category/player","navigation":{"previous":{"title":"index","permalink":"/docs/saves/"},"next":{"title":"index","permalink":"/docs/player/"}}}')}}]);
