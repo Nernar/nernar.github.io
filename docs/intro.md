@@ -1,1 +1,1 @@
-# Non-localized intro
+# Intro
