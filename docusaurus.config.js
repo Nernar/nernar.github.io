@@ -1,6 +1,6 @@
 // @ts-check
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
+const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -12,7 +12,7 @@ module.exports = {
   baseUrl,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon/favicon.ico',
 
   organizationName: 'nernar',
   projectName: 'nernar.github.io',
@@ -44,26 +44,6 @@ module.exports = {
     ]
   ],
 
-  // plugins: [[
-    // 'docusaurus-plugin-typedoc',
-    // Unstable declarations, it reserved just to change purposes
-    // /** @type {import('docusaurus-plugin-typedoc/dist/types').PluginOptions} */
-    // ({
-      // entryPoints: ['declarations/core-engine/headers/core-engine.d.ts'],
-      // tsconfig: 'declarations/api-tsconfig.json',
-      // out: '../src/pages/api',
-      // sidebar: {
-        // categoryLabel: "API",
-        // position: 2,
-        // autoConfiguration: true
-      // },
-      // frontmatter: {
-        // pagination_prev: null,
-        // pagination_next: null
-      // }
-    // })
-  // ]],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -77,11 +57,10 @@ module.exports = {
         defaultMode: "dark"
       },
       navbar: {
-        title: 'Inner Core Docs',
         hideOnScroll: true,
         logo: {
           alt: '',
-          src: 'img/logo.svg'
+          src: 'images/horizon.svg'
         },
         items: [
           {
@@ -89,19 +68,40 @@ module.exports = {
             to: 'docs/',
             label: 'Docs'
           },
-          // {
-            // position: 'left',
-            // to: 'api/',
-            // label: 'API'
-          // },
           {
-            type: 'localeDropdown',
-            position: 'right'
+            position: 'left',
+            to: 'api/',
+            label: 'API'
           },
           {
-            href: 'https://github.com/nernar/nernar.github.io',
+            position: 'left',
+            to: 'examples/',
+            label: 'Examples'
+          },
+          {
+            position: 'left',
+            to: 'libraries/',
+            label: 'Libraries'
+          },
+          {
+            position: 'left',
+            type: 'doc',
+            docId: 'changelog',
+            label: 'Changelog'
+          },
+          {
+            position: 'left',
+            to: 'faq/',
+            label: 'FAQ'
+          },
+          {
+            position: 'right',
+            type: 'localeDropdown'
+          },
+          {
             position: 'right',
             className: 'header-github-link',
+            href: 'https://github.com/nernar/nernar.github.io',
             'aria-label': 'GitHub repository'
           }
         ]
@@ -112,7 +112,6 @@ module.exports = {
         }
       },
       footer: {
-        style: 'dark',
         links: [
           {
             title: 'Docs',
@@ -120,6 +119,10 @@ module.exports = {
               {
                 label: 'Getting Started',
                 to: '/docs/intro'
+              },
+              {
+                label: 'Contributing',
+                to: 'https://github.com/nernar/nernar.github.io/README.md#contribution'
               }
             ]
           },
@@ -129,6 +132,14 @@ module.exports = {
               {
                 label: 'Telegram',
                 href: 'https://t.me/ntInsideChat'
+              },
+              {
+                label: 'VK',
+                href: 'https://vk.com/nernar'
+              },
+              {
+                label: 'Contact with us',
+                href: 'mailto:nernar@gmail.com'
               }
             ]
           },
@@ -137,12 +148,12 @@ module.exports = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/nernar/nernar.github.io',
+                href: 'https://github.com/nernar'
               }
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with Docusaurus.`
+        copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
