@@ -1,0 +1,70 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Getting Started": {
+    "message": "Начало работы",
+    "description": "The label for category Getting Started in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Basics": {
+    "message": "Основы",
+    "description": "The label for category Basics in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Events": {
+    "message": "События",
+    "description": "The label for category Events in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Items": {
+    "message": "Предметы",
+    "description": "The label for category Items in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Blocks": {
+    "message": "Блоки",
+    "description": "The label for category Blocks in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Environment": {
+    "message": "Окружение",
+    "description": "The label for category Environment in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Generation": {
+    "message": "Генерация",
+    "description": "The label for category Generation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Saves": {
+    "message": "Сохранения",
+    "description": "The label for category Saves in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Player": {
+    "message": "Игрок",
+    "description": "The label for category Player in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.UIs": {
+    "message": "Интерфейсы",
+    "description": "The label for category UIs in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Entities": {
+    "message": "Существа",
+    "description": "The label for category Entities in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Tile Entities": {
+    "message": "Тайлы",
+    "description": "The label for category Tile Entities in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Renders": {
+    "message": "Отрисовка",
+    "description": "The label for category Renders in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Dimensions": {
+    "message": "Измерения",
+    "description": "The label for category Dimensions in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Structures": {
+    "message": "Структуры",
+    "description": "The label for category Structures in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Publishing": {
+    "message": "Публикация",
+    "description": "The label for category Publishing in sidebar tutorialSidebar"
+  }
+}

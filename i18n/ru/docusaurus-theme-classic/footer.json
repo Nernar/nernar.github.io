@@ -1,0 +1,42 @@
+{
+  "link.title.Docs": {
+    "message": "Документация",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "Сообщество",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "Кроме того",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Getting Started": {
+    "message": "Начало работы",
+    "description": "The label of footer link with label=Getting Started linking to /docs/intro"
+  },
+  "link.item.label.Contributing": {
+    "message": "Внесение вклада",
+    "description": "The label of footer link with label=Contributing linking to https://github.com/nernar/nernar.github.io/blob/master/README.md#contribution"
+  },
+  "link.item.label.Telegram": {
+    "message": "Telegram",
+    "description": "The label of footer link with label=Telegram linking to https://t.me/ntInsideChat"
+  },
+  "link.item.label.VK": {
+    "message": "ВКонтакте",
+    "description": "The label of footer link with label=VK linking to https://vk.com/nernar"
+  },
+  "link.item.label.Contact with us": {
+    "message": "Напишите нам",
+    "description": "The label of footer link with label=Contact with us linking to mailto:nernar@gmail.com"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/nernar"
+  },
+  "copyright": {
+    "message": "Copyright © 2022 Nernar. Собрано не без ❤ и Docusaurus.",
+    "description": "The footer copyright"
+  }
+}

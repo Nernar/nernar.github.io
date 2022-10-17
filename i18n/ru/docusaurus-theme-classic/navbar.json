@@ -1,0 +1,26 @@
+{
+  "item.label.Docs": {
+    "message": "Документация",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.API": {
+    "message": "API",
+    "description": "Navbar item with label API"
+  },
+  "item.label.Examples": {
+    "message": "Примеры",
+    "description": "Navbar item with label Examples"
+  },
+  "item.label.Libraries": {
+    "message": "Библиотеки",
+    "description": "Navbar item with label Libraries"
+  },
+  "item.label.Changelog": {
+    "message": "Ченджлог",
+    "description": "Navbar item with label Changelog"
+  },
+  "item.label.FAQ": {
+    "message": "ЧаВО",
+    "description": "Navbar item with label FAQ"
+  }
+}
