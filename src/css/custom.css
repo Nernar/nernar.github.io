@@ -31,14 +31,25 @@
 }
 
 /* Simplifications to keep interface clean */
-.navbar__logo {
-  margin-right: 0.25rem;
-}
 .navbar__toggle {
   margin-right: 1rem;
 }
 .navbar-sidebar__brand {
   box-shadow: none;
+}
+.navbar__logo {
+  margin-right: 0.75rem;
+}
+@media (min-width: 997px) {
+  .sidebarLogo_node_modules-\@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-styles-module img {
+    padding-right: 0.25rem;
+  }
+  .navbar__brand > b.navbar__title.text--truncate {
+    display: none;
+  }
+  .navbar__brand > .navbar__logo {
+    margin-right: 0.25rem;
+  }
 }
 button.clean-btn.navbar-sidebar__back {
   background: none;

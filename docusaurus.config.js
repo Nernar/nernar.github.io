@@ -76,9 +76,10 @@ module.exports = {
 				}
 			],
 			colorMode: {
-				defaultMode: "dark"
+				defaultMode: 'dark'
 			},
 			navbar: {
+				title: 'Inner Core Docs',
 				hideOnScroll: true,
 				logo: {
 					alt: '',
