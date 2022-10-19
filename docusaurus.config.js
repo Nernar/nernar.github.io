@@ -83,7 +83,7 @@ module.exports = {
 				hideOnScroll: true,
 				logo: {
 					alt: '',
-					src: 'images/horizon.svg'
+					src: 'copyright/horizon.svg'
 				},
 				items: [
 					{
