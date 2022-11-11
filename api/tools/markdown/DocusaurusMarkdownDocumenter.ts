@@ -450,7 +450,7 @@ export class DocusaurusMarkdownDocumenter {
 		pageContent = pageContent.replace(/<b>|<\/b>/g, '**');
 		if (!fs.existsSync(filename)) {
 			pageContent = `---
-title: ${ scopedName }
+title: ${ scopedName || 'API' }
 sidebar_label: ${ this._getSidebarLabelForApiItem(apiItem) }
 hide_table_of_contents: true
 pagination_next: null

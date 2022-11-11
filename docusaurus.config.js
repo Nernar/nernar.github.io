@@ -41,7 +41,7 @@ module.exports =
 			mermaid: true
 		},
 		themes: ['@docusaurus/theme-mermaid'],
-		staticDirectories: ['static', 'api/declarations', 'node_modules/@vscode/codicons/src/icons'],
+		staticDirectories: ['static', 'api/declarations'],
 
 		organizationName: 'nernar',
 		projectName: 'nernar.github.io',
