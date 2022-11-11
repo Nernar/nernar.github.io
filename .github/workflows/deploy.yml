@@ -6,6 +6,25 @@ on:
       - master
 
 jobs:
+  build:
+    name: Build API Reference
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - uses: google/wireit@setup-github-actions-caching/v1
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Build documentation
+        run: npm run build:docs
+
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
@@ -16,7 +35,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install --save-exact
+        run: npm ci
       - name: Build website
         run: npm run build
 

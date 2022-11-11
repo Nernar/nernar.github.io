@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Production
+/temp
+/www
+
+# Generated files
+tsdoc-metadata.json
+/.wireit
+
+# Local declarations
+declarations/*.es6.d.ts
+declarations/core-engine.d.ts

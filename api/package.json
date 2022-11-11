@@ -1,0 +1,71 @@
+{
+	"name": "innercore-api",
+	"version": "2.3.0",
+	"author": "Nernar",
+	"description": "Core Engine API Reference",
+	"repository": "https://github.com/Nernar/nernar.github.io/tree/master/api",
+	"bugs": {
+		"url": "https://github.com/Nernar/nernar.github.io/issues"
+	},
+	"homepage": "https://t.me/ntInsideChat",
+	"license": "(GPL-3.0-or-later OR Apache-2.0 OR MIT)",
+	"private": true,
+	"scripts": {
+		"prebuild:types": "wireit",
+		"build:extract_diagnostics": "tsx tools/extract_model.ts core-engine --local --diagnostics",
+		"build:extract_local": "tsx tools/extract_model.ts core-engine --local",
+		"build:extract": "wireit",
+		"build:docs": "wireit"
+	},
+	"wireit": {
+		"prebuild:types": {
+			"command": "tsx tools/rebuild_types.ts core-engine",
+			"files": [
+				"tools/rebuild_types.ts",
+				"core-engine/**/*.d.ts"
+			],
+			"output": [
+				"declarations/core-engine.d.ts",
+				"declarations/core-engine.es6.d.ts"
+			]
+		},
+		"build:extract": {
+			"command": "tsx tools/extract_model.ts core-engine",
+			"files": [
+				"tools/extract_model.ts",
+				"declarations/core-engine.es6.d.ts"
+			],
+			"output": [
+				"temp/core-engine.api.json"
+			],
+			"dependencies": [
+				"prebuild:types"
+			]
+		},
+		"build:docs": {
+			"command": "tsx tools/generate_docs.ts core-engine www",
+			"files": [
+				"tools/generate_docs.ts",
+				"tools/markdown/**/*.ts",
+				"temp/core-engine.api.json"
+			],
+			"dependencies": [
+				"build:extract"
+			],
+			"output": [
+				"www"
+			],
+			"clean": false
+		}
+	},
+	"devDependencies": {
+		"@microsoft/api-documenter": "^7.19.24",
+		"@microsoft/api-extractor": "^7.33.6",
+		"@microsoft/api-extractor-model": "^7.25.2",
+		"@microsoft/tsdoc": "^0.14.2",
+		"@types/glob": "^8.0.0",
+		"glob": "^8.0.3",
+		"tsx": "^3.11.0",
+		"wireit": "^0.7.2"
+	}
+}

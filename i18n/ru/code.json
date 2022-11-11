@@ -1,10 +1,10 @@
 {
   "theme.ErrorPageContent.title": {
-    "message": "Что-то пошло не по плану.",
+    "message": "Что-то пошло не по плану",
     "description": "The title of the fallback page when the page crashed"
   },
   "theme.ErrorPageContent.tryAgain": {
-    "message": "Попробуйте выполнить свой запрос позже",
+    "message": "Обновить страницу",
     "description": "The label of the button to try again when the page crashed"
   },
   "theme.NotFound.title": {
@@ -20,23 +20,23 @@
     "description": "The 2nd paragraph of the 404 page"
   },
   "theme.admonition.note": {
-    "message": "note",
+    "message": "Замечание",
     "description": "The default label used for the Note admonition (:::note)"
   },
   "theme.admonition.tip": {
-    "message": "tip",
+    "message": "Подсказка",
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.danger": {
-    "message": "danger",
+    "message": "Опасность",
     "description": "The default label used for the Danger admonition (:::danger)"
   },
   "theme.admonition.info": {
-    "message": "info",
+    "message": "Информация",
     "description": "The default label used for the Info admonition (:::info)"
   },
   "theme.admonition.caution": {
-    "message": "caution",
+    "message": "Внимание",
     "description": "The default label used for the Caution admonition (:::caution)"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
@@ -242,6 +242,10 @@
     "message": "← Перейти к основному меню",
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
   },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Закрыть панель навигации",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
   "theme.docs.sidebar.expandButtonTitle": {
     "message": "Развернуть навигацию",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
@@ -249,6 +253,10 @@
   "theme.docs.sidebar.expandButtonAriaLabel": {
     "message": "Развернуть навигацию",
     "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Переключить навигационную панель",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.tags.tagsPageTitle": {
     "message": "Теги",
@@ -262,5 +270,176 @@
   },
   "component.page.notImplemented.contributeAdvice": {
     "message": "Или просто внесите вклад в создание этой страницы, это поможет сразу всем!"
+  },
+  "api.heading.entryPoint": {
+    "message": "Сводка методов — API"
+  },
+  "api.heading.class": {
+    "message": "Класс {scopedName}"
+  },
+  "api.heading.enumeration": {
+    "message": "Энум {scopedName}"
+  },
+  "api.heading.interface": {
+    "message": "Интерфейс {scopedName}"
+  },
+  "api.heading.method": {
+    "message": "Метод {scopedName}"
+  },
+  "api.heading.function": {
+    "message": "Функция {scopedName}"
+  },
+  "api.heading.namespace": {
+    "message": "Пространство {scopedName}"
+  },
+  "api.heading.property": {
+    "message": "Свойство {scopedName}"
+  },
+  "api.heading.typeAlias": {
+    "message": "Тип {scopedName}"
+  },
+  "api.heading.variable": {
+    "message": "Значение {scopedName}"
+  },
+  "api.section.signature": {
+    "message": "Сигнатура"
+  },
+  "api.section.decorators": {
+    "message": "Декораторы"
+  },
+  "api.section.remarks": {
+    "message": "Замечания"
+  },
+  "api.section.example": {
+    "message": "Пример"
+  },
+  "api.section.examples": {
+    "message": "Примеры"
+  },
+  "api.section.exceptions": {
+    "message": "Исключения"
+  },
+  "api.section.packages": {
+    "message": "Пакеты"
+  },
+  "api.section.namespaces": {
+    "message": "Пространства"
+  },
+  "api.section.classes": {
+    "message": "Классы"
+  },
+  "api.section.enumerations": {
+    "message": "Энумы"
+  },
+  "api.section.variables": {
+    "message": "Значения"
+  },
+  "api.section.functions": {
+    "message": "Функции"
+  },
+  "api.section.interfaces": {
+    "message": "Интерфейсы"
+  },
+  "api.section.typeAliases": {
+    "message": "Типы"
+  },
+  "api.section.events": {
+    "message": "События"
+  },
+  "api.section.constructors": {
+    "message": "Конструкторы"
+  },
+  "api.section.properties": {
+    "message": "Свойства"
+  },
+  "api.section.methods": {
+    "message": "Методы"
+  },
+  "api.section.parameters": {
+    "message": "Параметры"
+  },
+  "api.section.enumerationMembers": {
+    "message": "Входящие элементы"
+  },
+  "api.descriptor.extends": {
+    "message": "Унаследовано: "
+  },
+  "api.descriptor.implements": {
+    "message": "Реализует: "
+  },
+  "api.descriptor.references": {
+    "message": "Определения: "
+  },
+  "api.block.description": {
+    "message": "Описание"
+  },
+  "api.block.package": {
+    "message": "Пакет"
+  },
+  "api.block.namespace": {
+    "message": "Пространство"
+  },
+  "api.block.class": {
+    "message": "Класс"
+  },
+  "api.block.enumeration": {
+    "message": "Энум"
+  },
+  "api.block.function": {
+    "message": "Функция"
+  },
+  "api.block.variable": {
+    "message": "Значение"
+  },
+  "api.block.interface": {
+    "message": "Интерфейс"
+  },
+  "api.block.typeAlias": {
+    "message": "Тип"
+  },
+  "api.block.property": {
+    "message": "Свойство"
+  },
+  "api.block.modifiers": {
+    "message": "Модификаторы"
+  },
+  "api.block.type": {
+    "message": "Тип"
+  },
+  "api.block.constructor": {
+    "message": "Конструктор"
+  },
+  "api.block.method": {
+    "message": "Метод"
+  },
+  "api.block.member": {
+    "message": "Элемент"
+  },
+  "api.block.value": {
+    "message": "Значение"
+  },
+  "api.block.parameter": {
+    "message": "Параметр"
+  },
+  "api.block.optional": {
+    "message": "(Опционально)"
+  },
+  "api.descriptor.returns": {
+    "message": "Возвращает: "
+  },
+  "api.block.excerptNotFound": {
+    "message": "(не объявлено)"
+  },
+  "api.deprecatedNotice.title": {
+    "message": "Устарело"
+  },
+  "api.deprecatedNotice.message": {
+    "message": "Больше не поддерживается и не должно быть использовано!"
+  },
+  "api.nearlyFeature.title": {
+    "message": "Ранний функционал"
+  },
+  "api.nearlyFeature.message": {
+    "message": "Эта возможность представлена для разработчиков как предварительная и может измениться на основе полученного фидбека."
   }
 }

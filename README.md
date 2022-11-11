@@ -8,7 +8,7 @@ I mean modding documentation for Inner Core of course, rewrited from zero to Typ
 
 ## API Reference
 
-Forked with <https://github.com/Nernar/innercore-docs> from <https://github.com/mineprogramming/innercore-docs>.
+Forked with <https://github.com/Nernar/innercore-docs> from <https://github.com/mineprogramming/innercore-docs>. See [LICENSE](./LICENSE) for information on licensing this portion of the documentation.
 
 ## Modding Examples
 
