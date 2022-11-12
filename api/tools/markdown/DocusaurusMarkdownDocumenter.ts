@@ -1615,33 +1615,35 @@ slug: ${ path.basename(relpath) }`);
 	}
 
 	/**
-	 * Preserves insensitive systems build failing, prefixes
-	 * existing markdown files with "_" in lowercase.
+	 * Preserves insensitive systems build failing, recursive
+	 * prefixes existing files with "_" in lowercase.
 	 * 
 	 * @remarks
 	 * If file with that scheme already exists, checks if
 	 * it referred in same casing, otherwise marks self.
-	 * E.g. existing "path/to/File.mdx" with query "path/to/file"
+	 * E.g. existing "path/to/File" with query "path/to/file"
 	 * replaces it to "path/to/_file" and also another casings.
 	 */
 	private _preserveFilenameDuplication(scheme: string) {
 		let slash = scheme.lastIndexOf('/');
+		let basename = scheme.substring(slash + 1);
 		let directory = slash > 0
 			? path.join(this._outputFolder, scheme.substring(0, slash))
 			: this._outputFolder;
 
-		if (!fs.existsSync(directory)) {
-			return scheme;
+		if (fs.existsSync(directory)) {
+			let regex = new RegExp(`^${ basename }(.mdx?)?$`, 'i');
+			let insensitiveCasing = fs.readdirSync(directory)
+				.filter(value => regex.test(value));
+
+			insensitiveCasing.length < 2 && (
+				insensitiveCasing.length == 0 || new RegExp(`^${ basename }(.mdx?)?$`).test(insensitiveCasing[0])
+			) || (basename = `_${ basename.toLowerCase() }`);
 		}
 
-		let basename = `${ scheme.substring(slash + 1) }.mdx`;
-		let lowerBasename = basename.toLowerCase();
-		let insensitiveCasing = fs.readdirSync(directory)
-			.filter(value => value.toLowerCase() == lowerBasename);
-
-		return insensitiveCasing.length < 2 && (
-			insensitiveCasing.length == 0 || insensitiveCasing.indexOf(basename) != -1
-		) ? scheme : `${ scheme.substring(0, slash + 1) }_${ lowerBasename.replace(/\.mdx?$/, '') }`;
+		return slash > 0 ? `${
+			this._preserveFilenameDuplication(scheme.substring(0, slash))
+		}/${ basename }` : basename;
 	}
 
 	private _getSlugForApiItem(apiItem: ApiItem): string {
