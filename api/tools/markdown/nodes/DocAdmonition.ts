@@ -42,7 +42,7 @@ export abstract class DocAdmonition extends DocNode {
 		this.title = parameters.title instanceof DocExpression
 			? parameters.title.expression : parameters.title;
 		this.icon = parameters.icon;
-		this.rawTitle = parameters.rawTitle ?? false;
+		this.rawTitle = parameters.rawTitle ?? parameters.title instanceof DocExpression;
 		if (this.rawTitle && this.icon !== undefined) {
 			throw new Error('Only IDocAdmonitionParameters.rawTitle or IDocAdmonitionParameters.icon must appear directly');
 		}
