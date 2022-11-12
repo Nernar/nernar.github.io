@@ -1611,7 +1611,37 @@ slug: ${ path.basename(relpath) }`);
 			case ApiItemKind.Namespace:
 				baseName += '/index';
 		}
-		return baseName;
+		return this._preserveFilenameDuplication(baseName);
+	}
+
+	/**
+	 * Preserves insensitive systems build failing, prefixes
+	 * existing markdown files with "_" in lowercase.
+	 * 
+	 * @remarks
+	 * If file with that scheme already exists, checks if
+	 * it referred in same casing, otherwise marks self.
+	 * E.g. existing "path/to/File.mdx" with query "path/to/file"
+	 * replaces it to "path/to/_file" and also another casings.
+	 */
+	private _preserveFilenameDuplication(scheme: string) {
+		let slash = scheme.lastIndexOf('/');
+		let directory = slash > 0
+			? path.join(this._outputFolder, scheme.substring(0, slash))
+			: this._outputFolder;
+
+		if (!fs.existsSync(directory)) {
+			return scheme;
+		}
+
+		let basename = `${ scheme.substring(slash + 1) }.mdx`;
+		let lowerBasename = basename.toLowerCase();
+		let insensitiveCasing = fs.readdirSync(directory)
+			.filter(value => value.toLowerCase() == lowerBasename);
+
+		return insensitiveCasing.length < 2 && (
+			insensitiveCasing.length == 0 || insensitiveCasing.indexOf(basename) != -1
+		) ? scheme : `${ scheme.substring(0, slash + 1) }_${ lowerBasename.replace(/\.mdx?$/, '') }`;
 	}
 
 	private _getSlugForApiItem(apiItem: ApiItem): string {
