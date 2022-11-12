@@ -1585,19 +1585,6 @@ slug: ${ path.basename(relpath) }`);
 				case ApiItemKind.Package:
 					break;
 				default:
-					/* if (qualifiedName.indexOf('__') != -1) {
-						qualifiedName = qualifiedName.replace(/__/g, '_');
-					} else {
-						while (qualifiedName.charAt(qualifiedName.length - 1) == '_') {
-							qualifiedName = qualifiedName.slice(0, qualifiedName.length - 1);
-						}
-					}
-					while (qualifiedName.charAt(0) == '_') {
-						qualifiedName = qualifiedName.substring(1);
-					}
-					if (qualifiedName.length == 0) {
-						break;
-					} */
 					baseName += qualifiedName + '/';
 					selfKind = hierarchyItem.kind;
 			}
@@ -1647,7 +1634,6 @@ slug: ${ path.basename(relpath) }`);
 	}
 
 	private _getSlugForApiItem(apiItem: ApiItem): string {
-		// this._getFilenameForApiItem(apiItem).replace(/(\/?index)?\.mdx?$/i, '');
-		return this._routeBasePath + this._getSchemeForApiItem(apiItem).replace(/\/?index$/i, '');
+		return this._routeBasePath + this._getSchemeForApiItem(apiItem).replace(/(\/index|^index)$/i, '');
 	}
 }

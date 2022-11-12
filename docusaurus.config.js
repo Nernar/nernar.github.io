@@ -87,11 +87,6 @@ module.exports =
 						return generatorArgs.defaultSidebarItemsGenerator({
 							...generatorArgs,
 							docs: generatorArgs.docs.filter(function(value) {
-								// By some reason, global replacement doesn't working
-								// value.frontMatter = {
-									// ...value.frontMatter
-								// };
-								// It implemented internally in documenter
 								value.title = value.title.replace(/\\?\\_/g, '_');
 								return !(value.sourceDirName == '.' && value.unversionedId == 'index');
 							})
