@@ -33,7 +33,7 @@ module.exports =
 		tagline: 'Inner Core, Core Engine and Horizon documentation',
 		url: 'https://nernar.github.io',
 		baseUrl,
-		onBrokenLinks: 'throw',
+		onBrokenLinks: 'warn',
 		onBrokenMarkdownLinks: 'warn',
 		favicon: 'favicon/favicon.ico',
 
