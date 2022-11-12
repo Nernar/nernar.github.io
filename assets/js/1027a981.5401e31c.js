@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[13058],{26417:e=>{e.exports=JSON.parse('{"title":"UIs","slug":"/category/uis","permalink":"/docs/category/uis","navigation":{"previous":{"title":"index","permalink":"/docs/player/"},"next":{"title":"index","permalink":"/docs/ui/"}}}')}}]);

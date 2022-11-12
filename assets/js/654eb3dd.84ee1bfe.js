@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[6721],{9936:e=>{e.exports=JSON.parse('{"pluginId":"api","version":"current","label":"Next","banner":null,"badge":false,"noIndex":false,"className":"docs-version-current","isLast":true,"docsSidebars":{"defaultSidebar":[]},"docs":{"index":{"id":"index","title":"API","description":""}}}')}}]);

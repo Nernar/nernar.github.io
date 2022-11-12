@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[9190],{7834:e=>{e.exports=JSON.parse('{"title":"Renders","slug":"/category/renders","permalink":"/docs/category/renders","navigation":{"previous":{"title":"index","permalink":"/docs/block-entities/"},"next":{"title":"index","permalink":"/docs/renders/"}}}')}}]);

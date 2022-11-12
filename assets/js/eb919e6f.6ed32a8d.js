@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[59754],{93832:e=>{e.exports=JSON.parse('{"title":"Publishing","slug":"/category/publishing","permalink":"/docs/category/publishing","navigation":{"previous":{"title":"index","permalink":"/docs/structures/"},"next":{"title":"index","permalink":"/docs/publishing/"}}}')}}]);
