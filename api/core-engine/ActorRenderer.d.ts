@@ -1,16 +1,16 @@
 /**
  * Class, upon which armor and attachments render is based
- * It is a model that consists of parts, same as in deprecated [[Render]],
+ * It is a model that consists of parts, same as in deprecated {@link Render},
  * but more abstract, allows creating root parts instead of
  * inheritance from old humanoid model
  */
 declare class ActorRenderer {
     /**
-     * Constructs new [[ActorRenderer]] object without parts
+     * Constructs new {@link ActorRenderer} object without parts
      */
     constructor();
     /**
-     * Constructs new [[ActorRenderer]] object,
+     * Constructs new {@link ActorRenderer} object,
      * based on one of default Minecraft render templates
      * @param templateName default template name
      */
@@ -43,7 +43,7 @@ declare namespace ActorRenderer {
     class ModelPart {
 
         /**
-         * All methods of [[ActorRenderer.ModelPart]] build in such a way,
+         * All methods of {@link ActorRenderer.ModelPart} build in such a way,
          * that you can create full render in one chain of calls
          * ```js
          * new ActorRenderer().addPart("Child", "Parent").addPart("Grandchild", "Child").endPart();

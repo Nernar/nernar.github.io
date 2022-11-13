@@ -20,7 +20,7 @@ interface Vector {
  */
 interface BlockPosition extends Vector {
     /**
-     * Side of the block, one of the [[Native.BlockSide]] constants
+     * Side of the block, one of the {@link EBlockSide} constants
      */
     side: number
 }

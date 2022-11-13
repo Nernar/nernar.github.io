@@ -52,11 +52,11 @@ declare module com {
                         static addClientCloseListener(typeName: string, listener: ItemContainerFuncs.ClientOnCloseListener): void;
                         static getClientContainerInstance(name: string): Nullable<ItemContainer>;
                         /**
-                         * Constructs a new [[ItemContainer]] object
+                         * Constructs a new {@link ItemContainer} object
                          */
                         constructor();
                         /**
-                         * Constructs a new [[ItemContainer]] object from given deprecated [[innercore.api.mod.ui.container.Container]] object
+                         * Constructs a new {@link ItemContainer} object from given deprecated {@link innercore.api.mod.ui.container.Container} object
                          */
                         constructor(legacyContainer: innercore.api.mod.ui.container.Container);
                         getNetworkEntity(): NetworkEntity;
@@ -66,14 +66,14 @@ declare module com {
                         getWindowContent(): innercore.api.mod.ui.window.WindowContent;
                         removeEntity(): void;
                         /**
-                         * Sets container's parent object, for [[TileEntity]]'s container it 
-                         * should be a [[TileEntity]] reference, otherwise you can pass any 
+                         * Sets container's parent object, for {@link TileEntity|TileEntity's} container it 
+                         * should be it reference, otherwise you can pass any 
                          * value to be used in your code later
                          * @param parent an object to be set as container's parent
                          */
                         setParent(parent: Nullable<TileEntity> | any): void;
                         /**
-                         * @returns [[TileEntity]] if the following container is part of it,
+                         * @returns tile if the following container is part of it,
                          * and null otherwise
                          */
                         getParent(): Nullable<TileEntity> | any;
@@ -96,7 +96,7 @@ declare module com {
                          * Gets the slot by its name. If a slot with specified name doesn't 
                          * exists, creates an empty one with specified name
                          * @param name slot name
-                         * @returns contents of the slot in a [[ItemContainerSlot]] object.
+                         * @returns contents of the slot in a {@link ItemContainerSlot} object.
                          * You can modify it to change the contents of the slot
                          */
                         getSlot(name: string): ItemContainerSlot;
@@ -107,7 +107,7 @@ declare module com {
                          * Sets slot's content by its name from given slot object. If a slot with specified
                          * name doesn't exist, a new slot with specified name and item will be created.
                          * @param name slot name
-                         * @param slot [[ItemContainerSlot]] object to specify slot contents
+                         * @param slot {@link ItemContainerSlot} object to specify slot contents
                          */
                         setSlot(name: string, slot: ItemContainerSlot): void;
                         /**
@@ -173,7 +173,7 @@ declare module com {
                         /**
                          * Sends event to move specified amount of items from the container slot by given name
                          * to player's inventory. The index of the inventory slot, where to put item, can't be specified,
-                         * because it's decided by [[ItemContainer]] automatically, and you just don't need to do this.
+                         * because it's decided by {@link ItemContainer} automatically, and you just don't need to do this.
                          * This event is sent from client to server, so you should use it only on the client side,
                          * for example, in custom slot element touch events etc.
                          * @param slot string name of the container slot, from where to retrieve item
@@ -257,7 +257,7 @@ declare module com {
                         isSlotSavingEnabled(name: string): boolean;
                         /**
                          * @returns false if container supports multiplayer, true otherwise.
-                         * For [[ItemContainer]], it returns false
+                         * For {@link ItemContainer}, it returns false
                          */
                         isLegacyContainer(): false;
                         asLegacyContainer(allSlots: boolean): innercore.api.mod.ui.container.Container;

@@ -4,6 +4,10 @@
 	"noStandardTags": true,
 	"tagDefinitions": [
 		{
+			"tagName": "@beta",
+			"syntaxKind": "modifier"
+		},
+		{
 			"tagName": "@clientside",
 			"syntaxKind": "modifier"
 		},
@@ -63,18 +67,9 @@
 			"syntaxKind": "modifier"
 		},
 		{
-			"tagName": "@page",
-			"syntaxKind": "inline",
-			"allowMultiple": true
-		},
-		{
 			"tagName": "@param",
 			"syntaxKind": "block",
 			"allowMultiple": true
-		},
-		{
-			"tagName": "@preapproved",
-			"syntaxKind": "modifier"
 		},
 		{
 			"tagName": "@privateRemarks",
@@ -124,6 +119,7 @@
 		}
 	],
 	"supportForTags": {
+		"@beta": true,
 		"@clientside": true,
 		"@defaultValue": true,
 		"@decorator": true,
@@ -138,9 +134,7 @@
 		"@link": true,
 		"@override": true,
 		"@packageDocumentation": true,
-		"@page": true,
 		"@param": true,
-		"@preapproved": true,
 		"@privateRemarks": true,
 		"@readonly": true,
 		"@remarks": true,

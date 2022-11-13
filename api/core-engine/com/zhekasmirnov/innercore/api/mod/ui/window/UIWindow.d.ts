@@ -11,12 +11,12 @@ declare module com {
                             export interface WindowContent {
                                 /**
                                  * Specifies window's location, used for
-                                 * [[UI.Window]], [[UI.TabbedWindow]]
-                                 * and [[UI.StandartWindow]]
+                                 * {@link UI.Window}, {@link UI.TabbedWindow}
+                                 * and {@link UI.StandartWindow}
                                  */
                                 location?: WindowLocationDescription,
                                 /**
-                                 * If [[WindowContent.style]] is not specified, 
+                                 * If {@link WindowContent.style} is not specified, 
                                  * this argument will be used instead
                                  */
                                 params?: types.BindingSet;
@@ -30,7 +30,7 @@ declare module com {
                                  */
                                 drawing?: UI.DrawingSet;
                                 /**
-                                 * Object containing keys as gui elements names and [[UI.Elements]] 
+                                 * Object containing keys as gui elements names and {@link UI.Elements} 
                                  * instances as values. Gui elements are interactive components that are
                                  * used to create interfaces functionality
                                  */
@@ -44,7 +44,7 @@ declare module com {
                                     standard?: boolean,
                                     /**
                                      * Background color integer value, produced by 
-                                     * [[android.graphics.Color]] class. Default is white
+                                     * {@link android.graphics.Color} class. Default is white
                                      */
                                     color?: number,
                                     /**
@@ -75,23 +75,23 @@ declare module com {
                                     text?: string,
                                     /**
                                      * Specifies font params for the header text. Only 
-                                     * [[size]], [[color]] and [[shadow]]
+                                     * {@link size}, {@link color} and {@link shadow}
                                      * properties are used
                                      */
                                     font?: types.FontDescription,
                                     /**
-                                     * If [[font]] is not specified, used as
-                                     * [[size]] value
+                                     * If {@link font} is not specified, used as
+                                     * {@link size} value
                                      */
                                     size?: number,
                                     /**
-                                     * If [[font]] is not specified, used as
-                                     * [[color]] value
+                                     * If {@link font} is not specified, used as
+                                     * {@link color} value
                                      */
                                     color?: number,
                                     /**
-                                     * If [[font]] is not specified, used as
-                                     * [[shadow]] value
+                                     * If {@link font} is not specified, used as
+                                     * {@link shadow} value
                                      */
                                     shadow?: number,
                                 }
@@ -118,7 +118,7 @@ declare module com {
                                     frame?: string,
                                     /**
                                      * Header background color integer value, produced by 
-                                     * [[android.graphics.Color]] class. Default is 
+                                     * {@link android.graphics.Color} class. Default is 
                                      * *Color.rgb(0x72, 0x6a, 0x70)*
                                      */
                                     color?: number,
@@ -167,12 +167,12 @@ declare module com {
                                 }
                             }
                             /**
-                             * Extended [[WindowContent]] object with additional params for
-                             * [[UI.StandartWindow]] and [[UI.StandardWindow]]
+                             * Extended {@link WindowContent} object with additional params for
+                             * {@link UI.StandartWindow} and {@link UI.StandardWindow}
                              */                            
                             export interface StandardWindowContent extends WindowContent {
                                 /**
-                                 * Used for [[UI.StandartWindow]]s and [[UI.StandardWindow]]s.
+                                 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow|StandardWindows}.
                                  * Specifies additional parameters for standard windows
                                  */
                                 standard?: StandardWindowDescriptionTypes.StandardWindowParams
@@ -291,7 +291,7 @@ declare module com {
                                 isDynamic(): boolean;
                                 /**
                                  * Gets all the elements in the window
-                                 * @returns [[java.util.HashMap]] containing string element names
+                                 * @returns hashes containing string element names
                                  * as keys and element instances as values
                                  */
                                 getElements(): java.util.HashMap<String, elements.UIElement>;
@@ -343,7 +343,7 @@ declare module com {
                                 /**
                                  * Sets new style object as current window's style. If the new style is
                                  * a different object then an old one, forces window invalidation
-                                 * @param style [[UI.Style]] object to be used as style for the window
+                                 * @param style {@link UI.Style} object to be used as style for the window
                                  */
                                 setStyle(style: types.UIStyle): void;
                                 invalidateAllContent(): void;
@@ -352,7 +352,7 @@ declare module com {
                                  * store some values containing window's current state. Note that these 
                                  * properties are not saved between Inner Core launches
                                  * @param name custom property name
-                                 * @returns value set by [[UI.Window.putProperty]]
+                                 * @returns value set by {@link UI.Window.putProperty}
                                  * or null if no value was specified for this name
                                  */
                                 getProperty<T>(name: string): T;
@@ -363,7 +363,7 @@ declare module com {
                                  */
                                 putProperty<T>(name: string, value: T): void;
                                 /**
-                                 * @returns [[UI.Container]]
+                                 * @returns currently {@link UI.Container}
                                  * that was used to open this window or null, if
                                  * the window wasn't opened in container
                                  */
@@ -371,8 +371,8 @@ declare module com {
                                 /**
                                  * Sets container for the current window. Be careful when calling it 
                                  * manually. You should prefer opening the window via 
-                                 * [[UI.Container.openAs]] call
-                                 * @param container [[UI.Container]]
+                                 * {@link UI.Container.openAs} call
+                                 * @param container {@link UI.Container}
                                  * to be associated with current window
                                  * or null to associate no container with current window
                                  */

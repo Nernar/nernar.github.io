@@ -44,7 +44,7 @@ declare namespace Recipes {
     function addShaped(result: ItemInstance, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
 
     /**
-     * Same as [[Recipes.addShaped]], but you can specify result as three
+     * Same as {@link Recipes.addShaped}, but you can specify result as three
      * separate values corresponding to id, count and data
      */
     function addShaped2(id: number, count: number, aux: number, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
@@ -80,29 +80,29 @@ declare namespace Recipes {
 
     /**
      * Gets all available recipes for the recipe result
-     * @returns java.util.Collection object containing [[WorkbenchRecipe]]s
+     * @returns java.util.Collection object containing {@link WorkbenchRecipe|WorkbenchRecipes}
      */
     function getWorkbenchRecipesByResult(id: number, count: number, data: number): java.util.Collection<WorkbenchRecipe>;
 
     /**
      * Gets all available recipes containing an ingredient
-     * @returns java.util.Collection object containing [[WorkbenchRecipe]]s
+     * @returns java.util.Collection object containing {@link WorkbenchRecipe|WorkbenchRecipes}
      */
     function getWorkbenchRecipesByIngredient(id: number, data: number): java.util.Collection<WorkbenchRecipe>;
 
     /**
      * Gets recipe by the field and prefix
-     * @param field [[WorkbenchField]] object containing crafting field 
+     * @param field {@link WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
-     * @returns [[WorkbenchRecipe]] instance, containing useful methods and 
+     * @returns {@link WorkbenchRecipe} instance, containing useful methods and 
      * recipe information
      */
     function getRecipeByField(field: WorkbenchField, prefix?: string): Nullable<WorkbenchRecipe>;
 
     /**
      * Gets recipe result item by the field and recipe prefix
-     * @param field [[WorkbenchField]] object containing crafting field 
+     * @param field {@link WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      */
@@ -110,7 +110,7 @@ declare namespace Recipes {
 
     /**
      * Performs crafting by the field contents and recipe prefix
-     * @param field [[WorkbenchField]] object containing crafting field 
+     * @param field {@link WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      */
@@ -174,17 +174,17 @@ declare namespace Recipes {
      * @param resultId result item id
      * @param resultData result item data
      * @param prefix recipe prefix used for non-vanilla furnaces
-     * @returns [[java.util.Collection]] object with all furnace recipes found by given params
+     * @returns collection object with all furnace recipes found by given params
      */
     function getFurnaceRecipesByResult(resultId: number, resultData: number, prefix: string): java.util.Collection<FurnaceRecipe>;
 
     /**
-     * @returns [[java.util.Collection]] object with all registered workbench recipes
+     * @returns collection object with all registered workbench recipes
      */
     function getAllWorkbenchRecipes(): java.util.Collection<WorkbenchRecipe>;
 
     /**
-     * @returns [[java.util.Collection]] object with all registered furnace recipes
+     * @returns collection object with all registered furnace recipes
      */
     function getAllFurnaceRecipes(): java.util.Collection<FurnaceRecipe>;
 
@@ -195,7 +195,7 @@ declare namespace Recipes {
 
         /**
          * Constructs a new Workbench UI handler
-         * @param target target [[WindowContent.elements]] section
+         * @param target target {@link WindowContent.elements} section
          * @param targetCon target container
          * @param field workbench field
          */
@@ -216,7 +216,7 @@ declare namespace Recipes {
         /**
          * Runs recipes refresh in the ticking thread delaying refresh process 
          * for a tick. To get recipes count use 
-         * [[WorkbenchUIHandler.setOnRefreshListener]]
+         * {@link WorkbenchUIHandler.setOnRefreshListener}
          */
         refreshAsync(): void;
 

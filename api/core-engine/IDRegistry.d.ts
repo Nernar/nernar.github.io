@@ -22,7 +22,7 @@ declare namespace IDRegistry {
 
     /**
      * Generates a new numeric block id
-     * @param name string block id. Used in [[Block]] module functions and 
+     * @param name string block id. Used in {@link Block} module functions and 
      * in some other block-related functions. Inner Core converts it to 
      * block_<name> as minecraft vanilla block id to avoid string id clashes
      * @returns numeric block id
@@ -31,7 +31,7 @@ declare namespace IDRegistry {
 
     /**
      * Generates a new numeric item id
-     * @param name string item id. Used in [[Item]] module functions and 
+     * @param name string item id. Used in {@link Item} module functions and 
      * in some other item-related functions. Inner Core converts it to 
      * item_<name> as minecraft vanilla item id to avoid string id clashes
      * @returns numeric item id
@@ -46,7 +46,7 @@ declare namespace IDRegistry {
 
     /**
      * Ensures given id is a tile id, not a block id. It is generally recommended 
-     * to use [[Block.convertItemToBlockId]] since it performs less calculations
+     * to use {@link Block.convertItemToBlockId} since it performs less calculations
      * @param id block or tile id
      * @returns tile id
      */
@@ -54,7 +54,7 @@ declare namespace IDRegistry {
 
     /**
      * Ensures given id is a block id, not a tile id. It is generally recommended 
-     * to use [[Block.convertBlockToItemId]] since it performs less calculations
+     * to use {@link Block.convertBlockToItemId} since it performs less calculations
      * @param id block or tile id
      * @returns block id
      */

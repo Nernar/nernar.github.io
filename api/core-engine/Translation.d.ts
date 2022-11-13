@@ -2,8 +2,8 @@
  * Module that can be used to localize mods
  * All default strings (e.g. item names, windows titles, etc.) in the mod should 
  * be in English. Add translations to these strings using
- * [[Translation.addTranslation]]. For items and blocks translations are applied 
- * automatically. For the other strings, use [[Translation.translate]]
+ * {@link Translation.addTranslation}. For items and blocks translations are applied 
+ * automatically. For the other strings, use {@link Translation.translate}
  */
 declare namespace Translation {
     /**
@@ -16,7 +16,7 @@ declare namespace Translation {
 
     /**
      * Translates string from English to current game language (if available). 
-     * Add translations via [[Translation.addTranslation]] to apply them 
+     * Add translations via {@link Translation.addTranslation} to apply them 
      * @param name default string in English or name key
      * @returns string in the current game language or input string if 
      * translation is not available

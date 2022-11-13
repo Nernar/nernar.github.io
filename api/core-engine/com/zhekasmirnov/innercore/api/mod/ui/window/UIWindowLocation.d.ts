@@ -35,7 +35,7 @@ declare module com {
                             }
                             /**
                              * Object representing window location used in window content object and 
-                             * [[WindowLocation]] constructor
+                             * {@link WindowLocation} constructor
                              */
                             export interface WindowLocationDescription extends IWindowLocation {
                                 forceScrollX?: boolean, forceScrollY?: boolean,
@@ -74,15 +74,15 @@ declare module com {
                                 /** Window position on layers */
                                 zIndex: number;
                                 /**
-                                 * Constructs new [[UIWindowLocation]] instance with default position and 
+                                 * Constructs new {@link UIWindowLocation} instance with default position and 
                                  * size (fullscreen window)
                                  */
                                 constructor();
                                 /**
-                                 * Constructs new [[UIWindowLocation]] instance with specified parameters
+                                 * Constructs new {@link UIWindowLocation} instance with specified parameters
                                  * @param params 
                                  */
-                                constructor(desc: WindowLocationDescription);
+                                constructor(params: WindowLocationDescription);
                                 /**
                                  * Sets scrollable window size. Should be greater then window 
                                  * width/height for the changes to take effect
@@ -102,7 +102,7 @@ declare module com {
                                  */
                                 asScriptable(): IWindowLocation;
                                 /**
-                                 * Creates a copy of current [[WindowLocation]] object
+                                 * Creates a copy of current {@link WindowLocation} object
                                  * @returns newly created copy of the object
                                  */
                                 copy(): UIWindowLocation;
@@ -115,10 +115,10 @@ declare module com {
                                  */
                                 set(x: number, y: number, width: number, height: number): void;
                                 /**
-                                 * Sets window location parameters from another [[WindowLocation]]. 
+                                 * Sets window location parameters from another {@link WindowLocation}. 
                                  * Note that paddings are not copied
                                  * instance
-                                 * @param location another [[WindowLocation]] instance to copy 
+                                 * @param location another {@link WindowLocation} instance to copy 
                                  * parameters from
                                  */
                                 set(location: UIWindowLocation): void;
@@ -128,9 +128,9 @@ declare module com {
                                 removeScroll(): void;
                                 /**
                                  * Sets padding of the window
-                                 * @param padding one of the [[UIWindowLocation.PADDING_TOP]], 
-                                 * [[UIWindowLocation.PADDING_BOTTOM]], [[UIWindowLocation.PADDING_LEFT]],
-                                 * [[UIWindowLocation.PADDING_RIGHT]] constants
+                                 * @param padding one of the {@link UIWindowLocation.PADDING_TOP}, 
+                                 * {@link UIWindowLocation.PADDING_BOTTOM}, {@link UIWindowLocation.PADDING_LEFT},
+                                 * {@link UIWindowLocation.PADDING_RIGHT} constants
                                  * @param value value of the padding to be assigned to appropriate 
                                  * window bound
                                  */
@@ -148,7 +148,7 @@ declare module com {
                                  */
                                 getDrawingScale(): number;
                                 /**
-                                 * @returns window's rectangle in the [[android.graphics.Rect]] object
+                                 * @returns window's rectangle in the {@link android.graphics.Rect} object
                                  */
                                 getRect(): android.graphics.Rect;
                                 showPopupWindow(win: android.widget.PopupWindow): void;

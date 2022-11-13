@@ -5,12 +5,12 @@
  */
 declare class RenderMesh extends com.zhekasmirnov.innercore.api.NativeRenderMesh {
     /**
-     * Creates a new [[RenderMesh]] and initializes it from file. 
-     * See [[importFromFile]] method description for parameters details
+     * Creates a new {@link RenderMesh} and initializes it from file. 
+     * See {@link importFromFile} method description for parameters details
      */
     constructor(path: string, type: string, params: Nullable<RenderMesh.ImportParams>);
     /**
-     * Creates a new empty [[RenderMesh]]
+     * Creates a new empty {@link RenderMesh}
      */
     constructor();
 }

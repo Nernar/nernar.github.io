@@ -3,7 +3,7 @@
  */
 declare namespace BlockRenderer {
     /**
-     * Class representing model used by [[BlockRenderer]]
+     * Class representing model used by {@link BlockRenderer}
      */
     class Model {
         /**
@@ -12,7 +12,7 @@ declare namespace BlockRenderer {
         constructor();
 
         /**
-         * Constructs new model using specified [[RenderMesh]]
+         * Constructs new model using specified {@link RenderMesh}
          */
         constructor(mesh: RenderMesh);
 
@@ -79,13 +79,13 @@ declare namespace BlockRenderer {
         addBox(id: number, data?: number): void;
 
         /**
-         * Adds new [[RenderMesh]] to the model
+         * Adds new {@link RenderMesh} to the model
          */
         addMesh(mesh: RenderMesh): void;
     }
 
     /**
-     * Type used to describe a new model for [[BlockRenderer]]
+     * Type used to describe a new model for {@link BlockRenderer}
      */
     type ModelTextureSet =
         [string, number][];
@@ -128,7 +128,7 @@ declare namespace BlockRenderer {
      * Specifies custom collision shape for the block
      * @param id block id
      * @param data block data
-     * @param shape [[ICRender.CollisionShape]] object to be used as 
+     * @param shape {@link ICRender.CollisionShape} object to be used as 
      * default collision shape for the specified block
      */
     function setCustomCollisionShape(id: number, data: number, shape: ICRender.CollisionShape): void;
@@ -137,7 +137,7 @@ declare namespace BlockRenderer {
      * Specifies custom raycast shape for the block
      * @param id block id
      * @param data block data or -1 to map all the data values
-     * @param shape [[ICRender.CollisionShape]] object to be used as
+     * @param shape {@link ICRender.CollisionShape} object to be used as
      * default raycast shape for the specified block
      */
     function setCustomRaycastShape(id: number, data: number, shape: ICRender.CollisionShape): void;
@@ -146,7 +146,7 @@ declare namespace BlockRenderer {
      * Specifies custom collision and raycast shape for the block
      * @param id block id
      * @param data block data or -1 to map all the data values
-     * @param shape [[ICRender.CollisionShape]] object to be used as
+     * @param shape {@link ICRender.CollisionShape} object to be used as
      * default collision and raycast shape for the specified block
      */
     function setCustomCollisionAndRaycastShape(id: number, data: number, shape: ICRender.CollisionShape): void;
@@ -169,7 +169,7 @@ declare namespace BlockRenderer {
      * Sets static ICRender model as block render shape
      * @param id block id
      * @param data block data or -1 to map all the data values
-     * @param icRender [[ICRender.Model]] object to be used as static block shape
+     * @param icRender {@link ICRender.Model} object to be used as static block shape
      */
     function setStaticICRender(id: number, data: number, icRender: ICRender.Model): void;
 
@@ -183,7 +183,7 @@ declare namespace BlockRenderer {
 
     /**
      * Changes shape of the block on the specified coordinates
-     * @param icRender [[ICRender.Model]] object to be displayed at the coordinates
+     * @param icRender {@link ICRender.Model} object to be displayed at the coordinates
      * @param preventRebuild if false or not specified, rebuild is performed immediately 
      */
     function mapAtCoords(x: number, y: number, z: number, icRender: ICRender.Model, preventRebuild?: boolean): void;
@@ -196,19 +196,19 @@ declare namespace BlockRenderer {
 
     /**
      * Changes collision shape of the block on given coords in given dimension
-     * @param shape [[ICRender.CollisionShape]] object to be used as new collision shape
+     * @param shape {@link ICRender.CollisionShape} object to be used as new collision shape
      */
     function mapCollisionModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
 
     /**
      * Changes raycast shape of the block on given coords in given dimension
-     * @param shape [[ICRender.CollisionShape]] object to be used as new raycast shape
+     * @param shape {@link ICRender.CollisionShape} object to be used as new raycast shape
      */
     function mapRaycastModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
 
     /**
      * Changes both collision and raycast shape of the block on given coords in given dimension
-     * @param shape [[ICRender.CollisionShape]] object to be used as new collision and raycast shape
+     * @param shape {@link ICRender.CollisionShape} object to be used as new collision and raycast shape
      */
     function mapCollisionAndRaycastModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
 
@@ -229,7 +229,7 @@ declare namespace BlockRenderer {
 
     /**
      * Object used to manipulate rendered block during 
-     * [[Callback.CustomBlockTessellationFunction]] calls
+     * {@link Callback.CustomBlockTessellationFunction} calls
      */
     interface RenderAPI {
         /**

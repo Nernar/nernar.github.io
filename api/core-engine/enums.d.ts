@@ -572,7 +572,7 @@ declare enum EPotionEffect {
 
 /**
  * Defines numeric representation for vanilla TileEntity types.
- * Use [[NativeTileEntity]] class to work with them.
+ * Use {@link NativeTileEntity} class to work with them.
  */
 declare enum ETileEntityType {
     NONE = -1,

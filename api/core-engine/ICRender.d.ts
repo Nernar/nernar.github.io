@@ -54,16 +54,16 @@ declare namespace ICRender {
 		constructor(model?: BlockRenderer.Model);
 
 		/**
-		 * Adds block model as an entry to the [[ICRender]]. You can then call 
-		 * [[RenderEntry.asCondition]] to specify when to display the entry
-		 * @returns created [[RenderEntry]] object
+		 * Adds block model as an entry to the {@link ICRender}. You can then call 
+		 * {@link RenderEntry.asCondition} to specify when to display the entry
+		 * @returns created {@link RenderEntry} object
 		 */
 		addEntry(model?: BlockRenderer.Model): RenderEntry;
 
 		/**
-		 * Adds render mesh as an entry to the [[ICRender]]. You can then call 
-		 * [[RenderEntry.asCondition]] to specify when to display the entry
-		 * @returns created [[RenderEntry]] object
+		 * Adds render mesh as an entry to the {@link ICRender}. You can then call 
+		 * {@link RenderEntry.asCondition} to specify when to display the entry
+		 * @returns created {@link RenderEntry} object
 		 */
 		addEntry(mesh?: RenderMesh): RenderEntry;
 	}
@@ -73,26 +73,26 @@ declare namespace ICRender {
 	 */
 	interface RenderEntry {
 		/**
-		 * @returns [[Model]] object this entry belongs to
+		 * @returns parent {@link Model} object this entry belongs to
 		 */
 		getParent(): Model;
 
 		/**
-		 * Sets [[BLOCK]] condition with specified parameters. Uses coordinates 
+		 * Sets {@link BLOCK} condition with specified parameters. Uses coordinates 
 		 * that are relative to current block's ones
 		 * @param group group name or object
-		 * @param mode one of the [[MODE_INCLUDE]] and [[MODE_EXCLUDE]] constants
+		 * @param mode one of the {@link MODE_INCLUDE} and {@link MODE_EXCLUDE} constants
 		 * @returns reference to itself to be used in sequential calls
 		 */
 		asCondition(x: number, y: number, z: number, group: Group | string, mode: number): RenderEntry;
 
 		/**
-		 * Sets [[BLOCK]] condition with specified parameters. Uses coordinates 
+		 * Sets {@link BLOCK} condition with specified parameters. Uses coordinates 
 		 * that are relative to current block's ones. Creates a new anonymous
 		 * group with single block
 		 * @param id condition block id
 		 * @param data condition block data
-		 * @param mode one of the [[MODE_INCLUDE]] and [[MODE_EXCLUDE]] constants
+		 * @param mode one of the {@link MODE_INCLUDE} and {@link MODE_EXCLUDE} constants
 		 * @returns reference to itself to be used in sequential calls
 		 */
 		asCondition(x: number, y: number, z: number, id: number, data: number, mode: number): RenderEntry;
@@ -128,7 +128,7 @@ declare namespace ICRender {
 	class CollisionShape {
 		/**
 		 * Adds new entry to the collision shape. You can then call 
-		 * [[CollisionEntry.setCondition]] to specify when to display the entry
+		 * {@link CollisionEntry.setCondition} to specify when to display the entry
 		 */
 		addEntry(): CollisionEntry;
 	}
@@ -166,7 +166,7 @@ declare namespace ICRender {
 	}
 
 	/**
-	 * Constructs new [[RANDOM]] condition
+	 * Constructs new {@link RANDOM} condition
 	 * @param value value that a generated random integer number should be for the 
 	 * condition to evaluate as true
 	 * @param max maximum value for the generator
@@ -175,14 +175,14 @@ declare namespace ICRender {
 	function RANDOM(value: number, max: number, seed?: number): CONDITION;
 
 	/**
-	 * Constructs new [[RANDOM]] condition with default seed and 0 as 
+	 * Constructs new {@link RANDOM} condition with default seed and 0 as 
 	 * desired random value
 	 * @param max maximum value for the generator
 	 */
 	function RANDOM(max: number): CONDITION;
 
 	/**
-	 * Constructs new [[BLOCK]] condition
+	 * Constructs new {@link BLOCK} condition
 	 * @param x is relative x coordinate
 	 * @param y is relative y coordinate
 	 * @param z is relative z coordinate
@@ -193,18 +193,18 @@ declare namespace ICRender {
 	function BLOCK(x: number, y: number, z: number, group: ICRender.Group, exclude: boolean): CONDITION;
 
 	/**
-	 * Constructs new [[NOT]] condition
+	 * Constructs new {@link NOT} condition
 	 * @param condition condition to be inverted
 	 */
 	function NOT(condition: CONDITION): CONDITION;
 
 	/**
-	 * Constructs new [[OR]] condition
+	 * Constructs new {@link OR} condition
 	 */
 	function OR(...conditions: CONDITION[]): CONDITION;
 
 	/**
-	 * Constructs new [[AND]] condition
+	 * Constructs new {@link AND} condition
 	 */
 	function AND(...conditions: CONDITION[]): CONDITION;
 }

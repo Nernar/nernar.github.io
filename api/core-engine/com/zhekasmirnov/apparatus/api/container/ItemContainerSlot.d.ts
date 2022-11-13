@@ -23,11 +23,11 @@ declare module com {
                          */
                         getContainer(): ItemContainer;
                         /**
-                         * @returns following [[ItemContainerSlot]] as [[ItemInstance]] object
+                         * @returns following {@link ItemContainerSlot} as {@link ItemInstance} object
                          */
                         asScriptable(): ItemInstance;
                         /**
-                         * @returns following [[ItemContainerSlot]] as [[org.json.JSONObject]] instance
+                         * @returns following {@link ItemContainerSlot} as {@link org.json.JSONObject} instance
                          */
                         asJson(): org.json.JSONObject;
                         /**

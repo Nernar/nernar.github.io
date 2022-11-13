@@ -9,7 +9,7 @@ declare namespace Debug {
 
     /**
      * Spawns vanilla debug particle on the specified coordinates
-     * @param id particle type id, should be one of the [[Native.ParticleType]]
+     * @param id particle type id, should be one of the {@link EParticleType}
      * @param vx x velocity
      * @param vy y velocity
      * @param vz y velocity

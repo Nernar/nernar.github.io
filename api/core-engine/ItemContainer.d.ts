@@ -7,11 +7,11 @@ declare type TransferPolicy = com.zhekasmirnov.apparatus.api.container.ItemConta
 declare class ItemContainer extends com.zhekasmirnov.apparatus.api.container.ItemContainer {
 	static class: java.lang.Class<ItemContainer>;
 	/**
-	 * Constructs a new [[ItemContainer]] object
+	 * Constructs a new {@link ItemContainer} object
 	 */
 	constructor();
 	/**
-	 * Constructs a new [[ItemContainer]] object from given deprecated [[UI.Container]] object
+	 * Constructs a new {@link ItemContainer} object from given deprecated {@link UI.Container} object
 	 */
 	constructor(legacyContainer: UI.Container);
 }

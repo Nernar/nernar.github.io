@@ -12,24 +12,24 @@ declare module com {
                     static initSaverId(): void;
                     isFinalizableInstance(): boolean;
                     /**
-                     * Creates an [[NativeItemInstanceExtra]] Java object instance
+                     * Creates an {@link NativeItemInstanceExtra} Java object instance
                      * from given native item extra data object pointer,
                      * represented as 64-bit integer (long)
                      */
                     constructor(pointer: number);
                     /**
-                     * Creates an empty [[NativeItemInstanceExtra]] instance
+                     * Creates an empty {@link NativeItemInstanceExtra} instance
                      */
                     constructor();
                     /**
-                     * Creates a new [[NativeItemInstanceExtra]] instance
+                     * Creates a new {@link NativeItemInstanceExtra} instance
                      * and copies all data from another extra object given
                      */
                     constructor(other: NativeItemInstanceExtra);
 
                     asJson(): org.json.JSONObject;
                     /**
-                     * Creates a copy of current [[NativeItemInstanceExtra]] object
+                     * Creates a copy of current {@link NativeItemInstanceExtra} object
                      * @returns a created copy of the data
                      */
                     copy(): NativeItemInstanceExtra;
@@ -45,18 +45,18 @@ declare module com {
                     isEnchanted(): boolean;
                     /**
                      * Adds a new enchantment to the item
-                     * @param type enchantment id, one of the [[EEnchantment]] constants
+                     * @param type enchantment id, one of the {@link EEnchantment} constants
                      * @param level enchantment level, generally between 1 and 5
                      */
                     addEnchant(type: number, level: number): void;
                     /**
-                     * @param type enchantment id, one of the [[EEnchantment]] constants
+                     * @param type enchantment id, one of the {@link EEnchantment} constants
                      * @returns level of the specified enchantment
                      */
                     getEnchantLevel(type: number): number;
                     /**
                      * Removes enchantments by its id
-                     * @param id enchantment id, one of the [[EEnchantment]] constants
+                     * @param id enchantment id, one of the {@link EEnchantment} constants
                      */
                     removeEnchant(type: number): void;
                     /**
@@ -68,7 +68,7 @@ declare module com {
                      */
                     getEnchantCount(): number;
                     /**
-                     * @param id enchantment id, one of the [[EEnchantment]] constants
+                     * @param id enchantment id, one of the {@link EEnchantment} constants
                      * @param level enchantment level, generally between 1 and 5
                      * @returns enchantment name by its id and level
                      */

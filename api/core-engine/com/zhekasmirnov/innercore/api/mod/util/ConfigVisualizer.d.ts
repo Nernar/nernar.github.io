@@ -7,14 +7,14 @@ declare module com {
                         export class ConfigVisualizer extends java.lang.Object {
                             static class: java.lang.Class<ConfigVisualizer>;
                             /**
-                             * Constructs new [[ConfigVisualizer]] instance with specified elements 
+                             * Constructs new {@link ConfigVisualizer} instance with specified elements 
                              * names prefix
                              * @param config configuration file to be loaded
                              * @param prefix elements names prefix used for this visualizer
                              */
                             constructor(config: innercore.mod.build.Config, prefix: string);
                             /**
-                             * Constructs new [[ConfigVisualizer]] instance with default elements 
+                             * Constructs new {@link ConfigVisualizer} instance with default elements 
                              * names prefix (*config_vis*)
                              * @param config configuration file to be loaded
                              */
@@ -22,13 +22,13 @@ declare module com {
                             /**
                              * Removes all elements with current element name prefix. In other 
                              * words, removes all elements that were created by this 
-                             * [[ConfigVisualizer]] instance
-                             * @param elements target [[WindowContent.elements]] section
+                             * {@link ConfigVisualizer} instance
+                             * @param elements target {@link WindowContent.elements} section
                              */
                             clearVisualContent(elements: UI.ElementSet): void;
                             /**
                              * Creates elements in the window to visualize configuration file
-                             * @param elements target [[WindowContent.elements]] section
+                             * @param elements target {@link WindowContent.elements} section
                              * @param prefs top left position of the first element. Default position 
                              * is (0, 0, 0)
                              */

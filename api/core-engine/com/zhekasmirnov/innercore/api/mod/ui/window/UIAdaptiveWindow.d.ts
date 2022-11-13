@@ -10,12 +10,12 @@ declare module com {
                                 constructor(content: WindowContent);
                                 setContent(content: WindowContent): void;
                                 /**
-                                 * Sets style profile for the current [[AdaptiveWindow]]
+                                 * Sets style profile for the current {@link AdaptiveWindow}
                                  * @param profile 0 for classic profile, 1 for default profile
                                  */
                                 setProfile(profile: 0 | 1): void;
                                 /**
-                                 * Forces [[AdaptiveWindow]] to be displayed using some profile
+                                 * Forces {@link AdaptiveWindow} to be displayed using some profile
                                  * @param profile 0 for classic profile, 1 for default profile or -1 not
                                  * to force any profile. By default forced profile is -1
                                  */

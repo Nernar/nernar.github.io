@@ -12,22 +12,22 @@ declare module com {
                                 delay: number;
                                 isAnimation: boolean;
                                 /**
-                                 * Constructs new static [[Texture]] with specified bitmap
-                                 * @param bitmap [[android.graphics.Bitmap]] instance
+                                 * Constructs new static {@link Texture} with specified bitmap
+                                 * @param bitmap {@link android.graphics.Bitmap} instance
                                  */
                                 constructor(bitmap: android.graphics.Bitmap);
                                 /**
-                                 * Constructs new animated [[Texture]] with specified frames
-                                 * @param bitmaps an array of [[android.graphics.Bitmap]] instances to be 
+                                 * Constructs new animated {@link Texture} with specified frames
+                                 * @param bitmaps an array of {@link android.graphics.Bitmap} instances to be 
                                  * used as animation frames
                                  */
                                 constructor(bitmaps: android.graphics.Bitmap[]);
                                 /**
-                                 * Constructs new static or animated [[Texture]] with specified frames
+                                 * Constructs new static or animated {@link Texture} with specified frames
                                  * @param obj texture name or array of texture names for animated 
                                  * textures. Accepts raw gui textures names and style bindings
                                  * (formatted as "style:binding_name"). 
-                                 * @param style [[Style]] object to look for style bindings. If not 
+                                 * @param style {@link Style} object to look for style bindings. If not 
                                  * specified, default style is used
                                  */
                                 constructor(obj: string | {[key: string]: string}, style?: UIStyle);
@@ -42,7 +42,7 @@ declare module com {
                                 getFrame(): number;
                                 /**
                                  * @param frame frame number
-                                 * @returns [[android.graphics.Bitmap]] object containing animation frame 
+                                 * @returns bitmap object containing animation frame 
                                  * for the corresponding frame number
                                  */
                                 getBitmap(frame: number): android.graphics.Bitmap;

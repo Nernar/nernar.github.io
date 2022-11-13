@@ -62,12 +62,12 @@ declare module com {
                          */
                         clear(): void;
                         /**
-                         * @returns [[NativeRenderMesh]] specified via [[setMesh]] call or null, if 
+                         * @returns mesh specified via {@link setMesh} call or null, if 
                          * this part doesn't contain mesh
                          */
                         getMesh(): Nullable<NativeRenderMesh>;
                         /**
-                         * Specifies [[NativeRenderMesh]] to be used as a part
+                         * Specifies {@link NativeRenderMesh} to be used as a part
                          */
                         setMesh(mesh: Nullable<NativeRenderMesh>): void;
                         /**s

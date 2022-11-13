@@ -186,7 +186,7 @@ declare namespace Particles {
      * with given velocity and additional parameters in the world.
      * Note: called only on the client side! Use packets to spawn particles for multiple players.
      * @param type particle type's numeric id. If you want to spawn vanilla particles,
-     * see [[EParticleType]] and [[Native.ParticleType]] enums.
+     * see {@link EParticleType} enums.
      * @param vx velocity for the particle by X-axis
      * @param vy velocity for the particle by Y-axis
      * @param vz velocity for the particle by Z-axis
@@ -194,7 +194,7 @@ declare namespace Particles {
      */
     function addParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
     /**
-     * Same as [[Particles.addParticle]], but applies 'far' shader to the particle
+     * Same as {@link Particles.addParticle}, but applies 'far' shader to the particle
      */
     function addFarParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
     /**
@@ -203,25 +203,25 @@ declare namespace Particles {
      */
     function registerParticleType(descriptor: ParticleDescription): number;
     /**
-     * @returns [[Particles.ParticleType]] object of the particle by given id, if it exists
+     * @returns {@link Particles.ParticleType} object of the particle by given id, if it exists
      */
     function getParticleTypeById(id: number): ParticleType;
     /**
      * Class to create custom particle types.
-     * Mostly for internal use, you can use [[Particles.registerParticleType]] instead
+     * Mostly for internal use, you can use {@link Particles.registerParticleType} instead
      */
     class ParticleType {
         /**
-         * Constructs new [[Particles.ParticleType]] object from given needed params
+         * Constructs new {@link Particles.ParticleType} object from given needed params
          */
         constructor(textureName: string, minU: number, minV: number, maxU: number, maxV: number, textureCountHorizontal: number, textureCountVertical: number, isUsingBlockLight: boolean);
         /**
-         * Constructs new [[Particles.ParticleType]] object from given needed params
+         * Constructs new {@link Particles.ParticleType} object from given needed params
          * (unfinished documentation)
          */
         constructor(locationName: string, isUsingBlockLight: boolean, uv: number[], textureCountHorizontal: number, textureCountVertical: number);
         /**
-         * Constructs new [[Particles.ParticleType]] object from given descriptor object
+         * Constructs new {@link Particles.ParticleType} object from given descriptor object
          */
         constructor(descriptor: ParticleDescription);
         /**
@@ -292,7 +292,7 @@ declare namespace Particles {
          */
         release(): void;
         /**
-         * @returns the origin's coords in [[Vector]] object
+         * @returns the origin's coords in {@link Vector} object
          */
         getPosition(): Vector;
         /**
@@ -328,11 +328,11 @@ declare namespace Particles {
      */
     class ParticleAnimator {
         /**
-         * Constructs new [[Particles.ParticleAnimator]] object from given needed params 
+         * Constructs new {@link Particles.ParticleAnimator} object from given needed params 
          */
         constructor(period: number, fadeInTime: number, fadeInValue: number, fadeOutTime: number, fadeOutValue: number);
         /**
-         * Constructs new [[Particles.ParticleAnimator]] object from given descriptor object
+         * Constructs new {@link Particles.ParticleAnimator} object from given descriptor object
          */
         constructor(descriptor: AnimatorDescription);
     }
@@ -343,11 +343,11 @@ declare namespace Particles {
      */
     class ParticleSubEmitter {
         /**
-         * Constructs new [[Particles.ParticleSubEmitter]] object from given needed params
+         * Constructs new {@link Particles.ParticleSubEmitter} object from given needed params
          */
         constructor(chance: number, count: number, type: number, data: number);
         /**
-         * Constructs new [[Particles.ParticleSubEmitter]] object from given descriptor object
+         * Constructs new {@link Particles.ParticleSubEmitter} object from given descriptor object
          */
         constructor(descriptor: SubEmitterDescription);
         /**

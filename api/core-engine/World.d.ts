@@ -36,7 +36,7 @@ declare namespace World {
      * Retrieves coordinates relative to the block. For example, the following code
      * will return coordinates of the block above the specified:
      * ```ts
-     * World.getRelativeCoords(x, y, z, Native.BlockSide.UP);
+     * World.getRelativeCoords(x, y, z, EBlockSide.UP);
      * ```
      * @param side block side
      * @returns relative coordinates
@@ -47,19 +47,19 @@ declare namespace World {
      * Sets block in the world using its tile id and data
      * @param id block tile id
      * @param data block data
-     * @deprecated Consider using [[World.setBlock]] instead
+     * @deprecated Consider using {@link World.setBlock} instead
      */
     function nativeSetBlock(x: number, y: number, z: number, id: number, data: number): void;
 
     /**
      * @returns tile id of the block located on the specified coordinates
-     * @deprecated Consider using [[World.getBlockID]] instead
+     * @deprecated Consider using {@link World.getBlockID} instead
      */
     function nativeGetBlockID(x: number, y: number, z: number): number;
 
     /**
      * @returns data of the block located on the specified coordinates 
-     * @deprecated Consider using [[World.getBlockData]] instead
+     * @deprecated Consider using {@link World.getBlockData} instead
      */
     function nativeGetBlockData(x: number, y: number, z: number): number;
 
@@ -71,13 +71,13 @@ declare namespace World {
     function setBlock(x: number, y: number, z: number, id: number, data: number): void;
 
     /**
-     * Sets block in the world using specified [[Tile]] object
+     * Sets block in the world using specified {@link Tile} object
      * @param fullTile object containing id and data of the tile
      */
     function setFullBlock(x: number, y: number, z: number, fullTile: Tile): void;
 
     /**
-     * @returns [[Tile]] object containing tile id and data of the block located 
+     * @returns tile object containing tile id and data of the block located 
      * on the specified coordinates
      */
     function getBlock(x: number, y: number, z: number): Tile;
@@ -123,28 +123,28 @@ declare namespace World {
     function isChunkLoadedAt(x: number, y: number, z: number): boolean;
 
     /**
-     * @returns [[TileEntity]] located on the specified coordinates
+     * @returns {@link TileEntity} located on the specified coordinates
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
      * If the block on the specified coordinates is a TileEntity block and is 
-     * not initialized, initializes it and returns created [[TileEntity]] object
-     * @returns [[TileEntity]] if one was created, null otherwise
+     * not initialized, initializes it and returns created {@link TileEntity} object
+     * @returns tile if one was created, null otherwise
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
-     * If the block on the specified coordinates is a [[TileEntity]], destroys 
+     * If the block on the specified coordinates is a {@link TileEntity}, destroys 
      * it, dropping its container
-     * @returns true if the [[TileEntity]] was destroyed successfully, false 
+     * @returns true if the tile was destroyed successfully, false 
      * otherwise
      */
     function removeTileEntity(x: number, y: number, z: number, region?: BlockSource): boolean;
 
     /**
-     * @returns if the block on the specified coordinates is a [[TileEntity]], returns
-     * its container, if the block is a [[NativeTileEntity]], returns it, if 
+     * @returns if the block on the specified coordinates is a {@link TileEntity}, returns
+     * its container, if the block is a {@link NativeTileEntity}, returns it, if 
      * none of above, returns null
 	 * @param region BlockSource
      */
@@ -164,26 +164,26 @@ declare namespace World {
     /**
      * Sets current time to day or night
      * @param day if true, sets time to 10000 (day), else to 13000 (night)
-     * @deprecated Consider using [[World.setWorldTime]] instead
+     * @deprecated Consider using {@link World.setWorldTime} instead
      */
     function setDayMode(day: boolean): void;
 
     /**
      * Sets current time to day or night
      * @param day if true, sets time to 13000 (night), else to 10000 (day)
-     * @deprecated Consider using [[World.setWorldTime]] instead
+     * @deprecated Consider using {@link World.setWorldTime} instead
      */
     function setNightMode(night: boolean): void;
 
     /**
      * @returns current weather object. This value should not be edited, call 
-     * [[World.setWeather]] to change current weather
+     * {@link World.setWeather} to change current weather
      */
     function getWeather(): Weather;
 
     /**
      * Sets current weather in the world
-     * @param weather [[Weather]] object to be used as current weather value
+     * @param weather {@link Weather} object to be used as current weather value
      */
     function setWeather(weather: Weather): void;
 

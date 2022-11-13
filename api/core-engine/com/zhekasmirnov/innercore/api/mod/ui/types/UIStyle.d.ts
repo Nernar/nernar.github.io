@@ -46,13 +46,13 @@ declare module com {
                                  */
                                 addStyle(style: UIStyle): void;
                                 /**
-                                 * Constructs new [[UIStyle]] object
-                                 * with bindings from [[UIStyle.DEFAULT]]
+                                 * Constructs new {@link UIStyle} object
+                                 * with bindings from {@link UIStyle.DEFAULT}
                                  */
                                 constructor();
                                 /**
-                                 * Constructs new [[UIStyle]] object
-                                 * from given [[BindingSet]] object
+                                 * Constructs new {@link UIStyle} object
+                                 * from given {@link BindingSet} object
                                  */
                                 constructor(bindings: BindingSet);
                                 /**
@@ -66,11 +66,11 @@ declare module com {
                                  */
                                 inherit(style: UIStyle): void;
                                 /**
-                                 * Adds all values from given [[BindingSet]] object
+                                 * Adds all values from given {@link BindingSet} object
                                  */
                                 addAllBindings(bindings: BindingSet): void;
                                 /**
-                                 * @returns [[java.util.Collection]] containing all binding names
+                                 * @returns collection containing all binding names
                                  * from the current style object
                                  */
                                 getAllBindingNames(): java.util.Collection<string>;

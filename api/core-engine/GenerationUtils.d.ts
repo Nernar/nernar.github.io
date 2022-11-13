@@ -60,7 +60,7 @@ declare namespace GenerationUtils {
 
     /**
      * Generates ore vein on the specified coordinates using specified params
-     * @deprecated Consider using [[GenerationUtils.generateOre]] instead
+     * @deprecated Consider using {@link GenerationUtils.generateOre} instead
      * @param params generation params
      * @param params.id ore tile id
      * @param params.data ore data
@@ -92,7 +92,7 @@ declare namespace GenerationUtils {
     function generateOre(x: number, y: number, z: number, id: number, data: number, amount: number, noStoneCheck: boolean, seed?: number): void;
 
     /**
-     * Generates ore with custom whitelist/blacklist, see [[GenerationUtils.generateOre]]
+     * Generates ore with custom whitelist/blacklist, see {@link GenerationUtils.generateOre}
      * for details
      * @param mode if true, specified block ids are used as whitelist for generation
      * (only the ids from the list can be replaced with ores), if false - specified 

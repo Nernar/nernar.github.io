@@ -5,11 +5,11 @@
 declare class ItemExtraData extends com.zhekasmirnov.innercore.api.NativeItemInstanceExtra {
 	static class: java.lang.Class<ItemExtraData>;
 	/**
-	 * Creates an empty [[ItemExtraData]] instance
+	 * Creates an empty {@link ItemExtraData} instance
 	 */
 	constructor();
 	/**
-	 * Creates a copy of current [[ItemExtraData]] instance with the same contents
+	 * Creates a copy of current {@link ItemExtraData} instance with the same contents
 	 */
 	constructor(extraData?: ItemExtraData);
 }

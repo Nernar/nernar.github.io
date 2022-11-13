@@ -18,13 +18,13 @@ declare module com {
                                  * @param name window name
                                  * @param window window to be added to the group
                                  */
-                                addWindowInstance(name: string, win: IWindow): void;
+                                addWindowInstance(name: string, window: IWindow): void;
                                 /**
                                  * Creates a new window using provided description and adds it to the 
                                  * group
                                  * @param name window name
                                  * @param content window description object
-                                 * @returns created [[Window]] object
+                                 * @returns created {@link Window} object
                                  */
                                 addWindow(name: string, content: WindowContent): UIWindow;
                                 /**
@@ -46,12 +46,12 @@ declare module com {
                                  */
                                 setWindowContent(name: string, content: WindowContent): void;
                                 /**
-                                 * @returns [[java.util.Collection]] object containing all the
-                                 * [[UI.Window]]s in the group
+                                 * @returns collection object containing all the
+                                 * {@link UI.Window|UI.Windows} in the group
                                  */
                                 getAllWindows(): java.util.Collection<UIWindow>;
                                 /**
-                                 * @returns [[java.util.Collection]] object containing string names of the 
+                                 * @returns collection object containing string names of the 
                                  * windows in the group
                                  */
                                 getWindowNames(): java.util.Collection<string>;
@@ -97,31 +97,33 @@ declare module com {
                                 isDynamic(): boolean;
                                 /**
                                  * Gets all the elements in the window
-                                 * @returns [[java.util.HashMap]] containing string element name
+                                 * @returns hashes containing string element name
                                  * as keys and element instances as values
                                  */
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
-                                /** @returns null for [[UIWindowGroup]] */
+                                /**
+                                 * @returns null for {@link UIWindowGroup}
+                                 * */
                                 getContent(): Nullable<WindowContent>;
                                 /**
-                                 * @returns [[UI.Container]]
+                                 * @returns currently {@link UI.Container}
                                  * that was used to open this window or null, if the window wasn't opened in container
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
                                  * Sets container for the current window. Be careful when calling it 
                                  * manually. You should prefer opening the window via 
-                                 * [[UI.Container.openAs]] call
-                                 * @param container [[UI.Container]]
+                                 * {@link UI.Container.openAs} call
+                                 * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */
-                                setContainer(con: Nullable<container.UiAbstractContainer>): void;
+                                setContainer(container: Nullable<container.UiAbstractContainer>): void;
                                 /**
                                  * Turns debug mode for the window on and off
                                  * @param enabled if true, additional debug information will be drawn on
                                  * the window canvas
                                  */
-                                setDebugEnabled(debug: boolean): void;
+                                setDebugEnabled(enabled: boolean): void;
                                 invalidateAllContent(): void;
                                 setStyle(style: types.UIStyle): void;
                                 setStyle(style: types.BindingSet): void;

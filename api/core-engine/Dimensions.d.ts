@@ -9,7 +9,7 @@ declare namespace Dimensions {
         /**
          * Constructs a new dimension with specified name and preferred id
          * @param name dimension name, can be used to get dimension via 
-         * [[Dimensions.getDimensionByName]] call
+         * {@link Dimensions.getDimensionByName} call
          * @param preferredId preferred dimension id. If id is already occupied
          * by some another dimension, constructor will look for the next empty
          * dimension id and assign it to the current dimension
@@ -125,7 +125,7 @@ declare namespace Dimensions {
      */
     class CustomGenerator {
         /**
-         * Creates a new [[CustomGenerator]] instance using specified base type
+         * Creates a new {@link CustomGenerator} instance using specified base type
          * @param baseType base generator type constant, can be from 0 to 4. 0 
          * and 1 represent overworld generator, 2 represents flat world 
          * generator, 3 represents nether generator and 4 represents end 
@@ -134,7 +134,7 @@ declare namespace Dimensions {
         constructor(baseType: number);
 
         /**
-         * Creates a new [[CustomGenerator]] instance using specified base type
+         * Creates a new {@link CustomGenerator} instance using specified base type
          * @param baseType base generator type constant, can be one of the 
          * following: "overworld", "overworld1", "flat", "nether", "end"
          */
@@ -174,7 +174,7 @@ declare namespace Dimensions {
         setTerrainGenerator(generator: Nullable<AbstractTerrainGenerator>): CustomGenerator;
 
         /**
-         * Specifies which of the generation [[Callback]]s to call, -1 to call 
+         * Specifies which of the generation {@link Callback|Callbacks} to call, -1 to call 
          * no mods generation, 0 to call overworld generation callback, 1 for nether, 
          * 2 for end generation callbacks
          * @param id generation callback to call
@@ -200,7 +200,7 @@ declare namespace Dimensions {
      */
     class MonoBiomeTerrainGenerator implements AbstractTerrainGenerator {
         /**
-         * Constructs new [[MonoBiomeTerrainGenerator]] instance with no terrain
+         * Constructs new {@link MonoBiomeTerrainGenerator} instance with no terrain
          * layers
          */
         constructor();
@@ -296,10 +296,13 @@ declare namespace Dimensions {
         /**
          * Creates a new noise octave of specified type
          * @param type numeric type constant or one of the following strings:
-         * **"perlin"** (0) is a general-purpose noise generator. Used to generate 
-         * noise of completely random nature
+         * 
+         * **"perlin"** (0) is a general-purpose noise generator.
+         * 
+         * Used to generate noise of completely random nature
          * **"gray"** (1) 
-         * **"chess"** (2) 
+         * **"chess"** (2)
+         * 
          * The following sine noises are used to generate sinusoidal noise. 
          * Generally they should be used with some noise octaves of other types to avoid 
          * too mathematical landscapes
@@ -326,28 +329,25 @@ declare namespace Dimensions {
 
     /**
      * Overrides default generator of vanilla dimension
-     * @param id vanilla dimension id, one of the [[Native.Dimension]] 
+     * @param id vanilla dimension id, one of the {@link EDimension} 
      * values
      * @param generator custom landscape generator used for vanilla 
      * dimension
      */
     function overrideGeneratorForVanillaDimension(id: number, generator: CustomGenerator): void;
 
-
     /**
      * @param name dimension name
      * @returns dimension by its string name specified in 
-     * [[CustomDimension.constructor]]
+     * {@link CustomDimension.constructor}
      */
     function getDimensionByName(name: string): CustomDimension;
-
 
     /**
      * @param id dimension id
      * @returns custom dimension by its numeric id
      */
     function getDimensionById(id: number): CustomDimension;
-
 
     /**
      * @param id dimension id
@@ -377,33 +377,38 @@ declare namespace Dimensions {
      */
     function newGenerator(description: {
         /**
-         * Specifies base generator, see [[CustomGenerator.constructor]] for 
+         * Specifies base generator, see {@link CustomGenerator.constructor} for 
          * details
          */
         base?: number | string,
+
         /**
          * Specifies whether to use vanilla biome surface cover blocks (grass, 
          * sand, podzol, etc.).
-         * See [[CustomGenerator.setBuildVanillaSurfaces]] for details
+         * @see {@link CustomGenerator.setBuildVanillaSurfaces} for details
          */
         buildVanillaSurfaces?: boolean,
+
         /**
          * Specifies whether to generate minecraft vanilla structures.
-         * See [[CustomGenerator.setGenerateVanillaStructures]] for details
+         * @see {@link CustomGenerator.setGenerateVanillaStructures} for details
          */
         generateVanillaStructures?: boolean,
+
         /**
          * Can be either string for an existing dimensions ("overworld", 
          * "nether", "end") or -1 to disable mods generation. 
-         * See [[CustomGenerator.setModGenerationBaseDimension]] for details
+         * @see {@link CustomGenerator.setModGenerationBaseDimension} for details
          */
         modWorldgenDimension?: number | string,
+
         /**
          * Specifies what generator type to use. Default and the only currently
          * available option is "mono", that is equivalent to creating a 
-         * [[MonoBiomeTerrainGenerator]]
+         * {@link MonoBiomeTerrainGenerator}
          */
         type?: string,
+
         /**
          * Sets base biome for the current terrain, applicable only to "mono"
          */
@@ -411,8 +416,8 @@ declare namespace Dimensions {
 
         /**
          * An array of terrain layers descriptions, each one representing its 
-         * own terrain layer. See [[MonoBiomeTerrainGenerator.addTerrainLayer]] 
-         * for detailed explanation
+         * own terrain layer.
+         * @see {@link MonoBiomeTerrainGenerator.addTerrainLayer} for details
          */
         layers?: TerrainLayerParams[]
 
@@ -457,8 +462,8 @@ declare namespace Dimensions {
 
     interface NoiseOctaveParams {
         /**
-         * Noise octave type, **"perlin"** is default one. See [[NoiseOctave.constructor]]
-         * for details
+         * Noise octave type, **"perlin"** is default one.
+         * @see {@link NoiseOctave.constructor} for details
          */
         type?: number | string,
         scale?: Vec3Data,

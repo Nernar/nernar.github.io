@@ -5,7 +5,7 @@
 declare namespace CustomEnchant {
 
     /**
-     * Object returned by [[CustomEnchant.newEnchant]] method.
+     * Object returned by {@link CustomEnchant.newEnchant} method.
      * Used to configure different custom enchantment behaviors
      */
     interface EnchantSetupInterface {
@@ -73,16 +73,16 @@ declare namespace CustomEnchant {
 
         /**
          * Defines the function that will be called, when item with following enchantment is used for attack.
-         * The function must return bonus damage dealt to the victim. 
-         * NOTE: this method is highly experimental right now
+         * The function must return bonus damage dealt to the victim.
          * @returns reference to itself to be used in sequential calls
+         * @beta this method is highly experimental right now
          */
         setAttackDamageBonusProvider(func: AttackDamageBonusProvider): EnchantSetupInterface;
 
         /**
          * Defines the function that will be called after the item with following enchantment is used for attack.
-         * NOTE: this method is highly experimental right now
          * @returns reference to itself to be used in sequential calls
+         * @beta this method is highly experimental right now
          */
         setPostAttackCallback(func: DamageCallback): EnchantSetupInterface;
 
@@ -90,16 +90,16 @@ declare namespace CustomEnchant {
          * Defines the function that will be called, when the entity wearing item
          * with following enchantment, is hit.
          * The function must return bonus protection value.
-         * NOTE: this method is highly experimental right now
          * @returns reference to itself to be used in sequential calls
+         * @beta this method is highly experimental right now
          */
         setProtectionBonusProvider(func: ProtectionBonusProvider): EnchantSetupInterface;
 
         /**
          * Defines the function that will be called, when the entity wearing item
          * with following enchantment, is hit.
-         * NOTE: this method is highly experimental right now
          * @returns reference to itself to be used in sequential calls
+         * @beta this method is highly experimental right now
          */
         setPostHurtCallback(func: DamageCallback): EnchantSetupInterface;
 
@@ -110,13 +110,13 @@ declare namespace CustomEnchant {
      * @param nameID internal string id of the enchantment
      * @param displayedName enchantment name that will be displayed in the
      * tooltips of the items having this enchant.
-     * Use [[Translation]] module to make localization of the displayed name
+     * Use {@link Translation} module to make localization of the displayed name
      * @returns object to work with different enchantment behaviors
      */
     function newEnchant(nameID: string, displayedName: string): EnchantSetupInterface;
 
     /**
-     * Function interface used in [[EnchantSetupInterface.setAttackDamageBonusProvider]] method
+     * Function interface used in {@link EnchantSetupInterface.setAttackDamageBonusProvider} method
      */
     interface AttackDamageBonusProvider {
         (damage: number, entity: number): number;
@@ -124,15 +124,15 @@ declare namespace CustomEnchant {
 
     /**
      * Function interface used in
-     * [[EnchantSetupInterface.setPostAttackCallback]] and
-     * [[EnchantSetupInterface.setPostHurtCallback]] methods
+     * {@link EnchantSetupInterface.setPostAttackCallback} and
+     * {@link EnchantSetupInterface.setPostHurtCallback} methods
      */
     interface DamageCallback {
         (item: ItemInstance, damage: number, entity1: number, entity2: number): void;
     }
 
     /**
-     * Function interface used in [[EnchantSetupInterface.setProtectionBonusProvider]] method
+     * Function interface used in {@link EnchantSetupInterface.setProtectionBonusProvider} method
      */
     interface ProtectionBonusProvider {
         (damage: number, damageType: number, entity: number): number;

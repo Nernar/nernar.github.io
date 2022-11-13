@@ -25,7 +25,7 @@ declare namespace ModAPI {
 
     /**
      * Gets API by its name. The best approach is to call this method in the
-     * function passed as the second parameter of [[ModAPI.addAPICallback]].
+     * function passed as the second parameter of {@link ModAPI.addAPICallback}.
      * 
      * Example:
      * ```ts
@@ -54,6 +54,7 @@ declare namespace ModAPI {
     /**
      * @param name API name
      * @returns documentation for the specified mod API
+     * @deprecated Writing documentation that way is not better.
      */
     function requireAPIdoc(name: string): ModDocumentation;
 
@@ -63,6 +64,7 @@ declare namespace ModAPI {
      * @param prop property or method name
      * @returns string description of the method or null if no description was
      * provided by API vendor
+     * @deprecated Writing documentation that way is not better.
      */
     function requireAPIPropertyDoc(name: string, prop: string): Nullable<string>;
 
@@ -136,14 +138,14 @@ declare namespace ModAPI {
     function cloneObject(source: any, deep: any, rec?: number): object;
 
     /**
-     * @returns same as [[ModAPI.cloneObject]], but if call depth is more then
+     * @returns same as {@link ModAPI.cloneObject}, but if call depth is more then
      * 6, returns "stackoverflow" string value
      */
     function debugCloneObject(source: any, deep: any, rec?: number): object | string;
 
-
     /**
      * Objects used to represent mod API documentation
+     * @deprecated Writing documentation that way is not better.
      */
     interface ModDocumentation {
         /**

@@ -1,5 +1,5 @@
 /**
- * New class to work with world instead of some methods from [[World]] module.
+ * New class to work with world instead of some methods from {@link World} module.
  */
 declare class BlockSource {
 	/**
@@ -11,8 +11,8 @@ declare class BlockSource {
 	 * @param x X coord of the block
 	 * @param y Y coord of the block
 	 * @param z Z coord of the block
-	 * @returns [[BlockState]] object of the block on given coords
-	 * or [[Tile]] object in Legacy pack
+	 * @returns object of the block on given coords
+	 * or {@link Tile} object in Legacy pack
 	 */
 	getBlock(x: number, y: number, z: number): BlockState;
 
@@ -40,7 +40,7 @@ declare class BlockSource {
 	setBlock(x: number, y: number, z: number, id: number, data: number): void;
 
 	/**
-	 * Sets block by given [[BlockState]] on coords
+	 * Sets block by given {@link BlockState} on coords
 	 */
 	setBlock(x: number, y: number, z: number, state: BlockState): void;
 
@@ -50,12 +50,12 @@ declare class BlockSource {
 	setExtraBlock(x: number, y: number, z: number, id: number, data: number): void;
 
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given [[BlockState]]
+	 * Sets extra block (for example, water inside another blocks), on given coords by given {@link BlockState}
 	 */
 	setExtraBlock(x: number, y: number, z: number, state: BlockState): void;
 
 	/**
-	 * @returns [[BlockState]] object of the extra block on given coords
+	 * @returns object of the extra block on given coords
 	 */
 	getExtraBlock(x: number, y: number, z: number): BlockState;
 

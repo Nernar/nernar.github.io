@@ -24,7 +24,7 @@ declare namespace Animation {
         setInterpolationEnabled(enabled: boolean): void;
 
         /**
-         * @deprecated use [[setBlockLightPos]] and related methods instead
+         * @deprecated use {@link setBlockLightPos} and related methods instead
          */
         setIgnoreBlocklight(ignore: boolean): void;
 
@@ -57,12 +57,12 @@ declare namespace Animation {
         setIgnoreLightMode(): void;
 
         /**
-         * @returns [[Render.Transform]] object for current animation's render
+         * @returns object for current animation's render
          */
         transform(): Render.Transform;
 
         /**
-         * @returns [[ShaderUniformSet]] object for current animation's 
+         * @returns object for current animation's 
          * render
          */
         getShaderUniforms(): ShaderUniformSet;
@@ -74,12 +74,12 @@ declare namespace Animation {
          */
         newTransform(transformations: {
             /**
-             * Transformation function name, one of [[Render.Transform]] class member 
+             * Transformation function name, one of {@link Render.Transform} class member 
              * functions names
              */
             name: string,
             /**
-             * Transformation function parameters, see [[Render.Transform]] functions
+             * Transformation function parameters, see {@link Render.Transform} functions
              * for details
              */
             params: any[]
@@ -102,8 +102,8 @@ declare namespace Animation {
         load(): void;
 
         /**
-         * Loads animation in the world registering it as an [[Updatable]]
-         * @param func function to be used as [[Updatable.update]] function
+         * Loads animation in the world registering it as an {@link Updatable}
+         * @param func function to be used as {@link Updatable.update} function
          */
         loadCustom(func: () => void): void;
 
@@ -118,19 +118,19 @@ declare namespace Animation {
         refresh(): void;
 
         /**
-         * Describes animation parameters for the future use. Call [[load]] or 
-         * [[loadCustom]] to actually launch the animation
+         * Describes animation parameters for the future use. Call {@link load} or 
+         * {@link loadCustom} to actually launch the animation
          * @param description an object containing all the required data about 
          * animation
          */
         describe(description: {
             /**
-             * [[RenderMesh]] object to be displayed with animation
+             * {@link RenderMesh} object to be displayed with animation
              */
             mesh?: RenderMesh,
             /**
-             * Numeric id of the [[Render]] object to be displayed with animation.
-             * Can be obtained using [[Render.getId]]
+             * Numeric id of the {@link Render} object to be displayed with animation.
+             * Can be obtained using {@link Render.getId}
              */
             render?: number,
             /**
@@ -230,18 +230,18 @@ declare namespace Animation {
         }): void;
 
         /**
-         * Same as [[Item.describeItem]]
-         * @deprecated consider using [[Item.describeItem]] instead
+         * Same as {@link Item.describeItem}
+         * @deprecated consider using {@link Item.describeItem} instead
          */
         describeItemDefault(item: any): void;
 
         /**
-         * @deprecated use [[Item.describeItem]] instead
+         * @deprecated use {@link Item.describeItem} instead
          */
         describeItemAlternative(item: any, offset: any): void;
 
         /**
-         * Resets all the transformations made via [[Item.transform]] calls
+         * Resets all the transformations made via {@link Item.transform} calls
          */
         resetTransform(): void;
 

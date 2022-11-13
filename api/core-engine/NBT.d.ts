@@ -1,9 +1,9 @@
 /**
  * NBT (Named Binary Tag) is a tag based binary format designed to carry large 
  * amounts of binary data with smaller amounts of additional data. You can get
- * or set nbt tags of [[Entity]] (entities), [[NativeTileEntity]] 
- * (native tile entities, such as chests or beacons) and [[ItemExtraData]] 
- * (items). To get more information about these data structures, 
+ * or set nbt tags of {@link Entity|entities},
+ * {@link NativeTileEntity|native tile entities, such as chests or beacons} and
+ * {@link ItemExtraData|items}. To get more information about these data structures, 
  * see [this page](http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt)
  */
 declare namespace NBT {
@@ -40,14 +40,14 @@ declare namespace NBT {
 
         /**
          * @param key key to verify for the type
-         * @param type tag type to verify for, one of the [[Native.NbtDataType]] constants
+         * @param type tag type to verify for, one of the {@link ENbtDataType} constants
          * @returns true if specified key exists in compound tag and its value is
          * of specified type
          */
         containsValueOfType(key: string, type: number): boolean;
 
         /**
-         * @returns value type for the specified key. One of the [[Native.NbtDataType]] 
+         * @returns value type for the specified key. One of the {@link ENbtDataType} 
          * constants
          */
         getValueType(key: string): number;
@@ -91,7 +91,7 @@ declare namespace NBT {
          * @returns NBT tag of compound type by its key. Note that a copy of 
          * existing compound tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * [[CompoundTag.getCompoundTagNoClone]] to edit it directly
+         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly
          */
         getCompoundTag(key: string): NBT.CompoundTag;
 
@@ -106,7 +106,7 @@ declare namespace NBT {
          * @returns NBT tag of list type by its key. Note that a copy of 
          * existing list tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * [[CompoundTag.getListTagNoClone]] to edit it directly
+         * {@link CompoundTag.getListTagNoClone} to edit it directly
          */
         getListTag(key: string): NBT.ListTag;
 
@@ -201,7 +201,7 @@ declare namespace NBT {
         length(): number;
 
         /**
-         * @returns value type for the specified index. One of the [[Native.NbtDataType]] 
+         * @returns value type for the specified index. One of the {@link ENbtDataType} 
          * constants
          */
         getValueType(index: number): number;
@@ -245,7 +245,7 @@ declare namespace NBT {
          * @returns NBT tag of compound type by its index. Note that a copy of 
          * existing compound tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * [[CompoundTag.getCompoundTagNoClone]] to edit it directly
+         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly
          */
         getCompoundTag(index: number): NBT.CompoundTag;
 
@@ -260,7 +260,7 @@ declare namespace NBT {
          * @returns NBT tag of list type by its index. Note that a copy of 
          * existing list tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * [[CompoundTag.getListTagNoClone]] to edit it directly
+         * {@link CompoundTag.getListTagNoClone} to edit it directly
          */
         getListTag(index: number): NBT.ListTag;
 

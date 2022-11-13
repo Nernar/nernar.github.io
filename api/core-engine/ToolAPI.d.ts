@@ -149,7 +149,7 @@ declare namespace ToolAPI {
     /**
      * @param itemID numeric item id
      * @returns tool information stored in slightly modified 
-     * [[ToolAPI.ToolParams]] object or null if no tool data was specified
+     * {@link ToolAPI.ToolParams} object or null if no tool data was specified
      */
     function getToolData(itemID: number): Nullable<ToolParams>;
 
@@ -170,7 +170,7 @@ declare namespace ToolAPI {
 
     /**
      * @returns carried tool information stored in slightly modified 
-     * [[ToolAPI.ToolParams]] object or null if no tool data was specified
+     * {@link ToolAPI.ToolParams} object or null if no tool data was specified
      */
     function getCarriedToolData(): any;
 
@@ -196,7 +196,7 @@ declare namespace ToolAPI {
      * @param minVal minimum amount of orbs to be spawned
      * @param maxVal maximum amount of orbs to be spawned
      * @param modifier additional experiences, usually passed from 
-     * [[ToolAPI.EnchantData.experience]] field
+     * {@link ToolAPI.EnchantData.experience} field
      */
     function dropOreExp(coords: Vector, minVal: number, maxVal: number, modifier: number): void;
 
@@ -299,13 +299,13 @@ declare namespace ToolAPI {
         damage?: number,
 
 		/**
-		 * Properties of the tool material. Defined by [[ToolAPI.registerTool]]
+		 * Properties of the tool material. Defined by {@link ToolAPI.registerTool}
 		 */
 		toolMaterial?: ToolMaterial,
 
 		/**
 		 * List of block material names that can be broken by this instrument.
-		 * Defined by [[ToolAPI.registerTool]]
+		 * Defined by {@link ToolAPI.registerTool}
 		 */
 		blockMaterials?: {[key: string]: boolean}
 
@@ -384,7 +384,7 @@ declare namespace ToolAPI {
          * @param coords coordinates where the block is destroyed
          * @param carried an item in player's hand
          * @param fullTile block that was destroyed
-         * @param blockSource [[BlockSource]] object of the world where the block was destroyed
+         * @param blockSource {@link BlockSource} object of the world where the block was destroyed
          * @param player entity uid of the player that destroyed the block
          */
         onMineBlock?: (coords: Callback.ItemUseCoordinates, carried: ItemInstance, fullTile: Tile, blockSource: BlockSource, player: number) => void,

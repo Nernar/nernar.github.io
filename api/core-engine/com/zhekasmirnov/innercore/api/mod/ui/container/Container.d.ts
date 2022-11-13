@@ -20,44 +20,44 @@ declare module com {
                                 }
                             }
                             /**
-                             * @param container [[UI.Container]] the window was opened in
-                             * @param window an instance of [[UI.IWindow]] that was opened
+                             * @param container {@link UI.Container} the window was opened in
+                             * @param window an instance of {@link UI.IWindow} that was opened
                              */
                             export interface OnOpenCloseListenerJS { (container: Container, window: window.IWindow): void; }
                             export class Container extends java.lang.Object implements UiAbstractContainer, recipes.workbench.WorkbenchField {
                                 static class: java.lang.Class<Container>;
                                 static readonly isContainer: boolean;
                                 /**
-                                 * If container is a part of [[TileEntity]], this field stores reference 
+                                 * If container is a part of {@link TileEntity}, this field stores reference 
                                  * to it, otherwise null. You can also assign any value of any type to
-                                 * it using [[UI.Container.setParent]] method or using constructor 
-                                 * parameter. Consider using [[UI.Container.getParent]] instead of direct 
+                                 * it using {@link UI.Container.setParent} method or using constructor 
+                                 * parameter. Consider using {@link UI.Container.getParent} instead of direct 
                                  * field access
                                  */
                                 parent: Nullable<TileEntity> | any;
                                 slots: {[slotName: string]: container.Slot}
                                 /**
-                                 * Same as [[UI.Container.parent]]
+                                 * Same as {@link UI.Container.parent}
                                  */
                                 tileEntity: Nullable<TileEntity> | any;
                                 constructor();
                                 constructor(parent: any);
                                 /**
-                                 * Sets container's parent object, for [[TileEntity]]'s container it 
-                                 * should be a [[TileEntity]] reference, otherwise you can pass any 
+                                 * Sets container's parent object, for {@link TileEntity}'s container it 
+                                 * should be a {@link TileEntity} reference, otherwise you can pass any 
                                  * value to be used in your code later
                                  * @param parent an object to be set as container's parent
                                  */
                                 setParent(parent: Nullable<TileEntity> | any): void;
                                 /**
-                                 * Getter for [[UI.Container.parent]] field
+                                 * Getter for {@link UI.Container.parent} field
                                  */
                                 getParent(): Nullable<TileEntity> | any;
                                 /**
                                  * Gets the slot by its name. If a slot with specified name doesn't 
                                  * exists, creates an empty one with specified name
                                  * @param name slot name
-                                 * @returns contents of the slot in a [[UI.Slot]] object.
+                                 * @returns contents of the slot in a {@link UI.Slot} object.
                                  * You can modify it to change the contents of the slot
                                  */
                                 getSlot(name: string): Slot;
@@ -84,7 +84,7 @@ declare module com {
                                  * exists, creates new with specified name and item
                                  * @param name slot name
                                  * @param extra item extra value. Note that it should be an instance of
-                                 * [[ItemExtraData]] and not its numeric id
+                                 * {@link ItemExtraData} and not its numeric id
                                  */
                                 setSlot(name: string, id: number, count: number, data: number, extra: Nullable<NativeItemInstanceExtra>): void;
                                 /**
@@ -117,7 +117,7 @@ declare module com {
                                  */
                                 validateAll(): void;
                                 /**
-                                 * @returns currently opened [[UI.IWindow]]
+                                 * @returns currently opened {@link UI.IWindow}
                                  * or null if no window is currently opened in the container
                                  */
                                 getWindow(): window.IWindow;
@@ -125,8 +125,8 @@ declare module com {
                                 addElementInstance(element: elements.UIElement, name: string): void;
                                 _removeElement(name: string): void;
                                 /**
-                                 * Opens [[UI.IWindow]] object in the container
-                                 * @param win [[UI.IWindow]] object to be opened
+                                 * Opens {@link UI.IWindow} object in the container
+                                 * @param win {@link UI.IWindow} object to be opened
                                  */
                                 openAs(win: window.IWindow): void;
                                 /**
@@ -149,7 +149,7 @@ declare module com {
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * Same as [[UI.Container.getWindow]]
+                                 * Same as {@link UI.Container.getWindow}
                                  */
                                 getGuiScreen(): window.IWindow;
                                 /**
@@ -245,16 +245,16 @@ declare module com {
                                 /** @deprecated no longer supported */ applyChanges(): void;
                                 /**
                                  * If the container is a custom workbench, you can set the slot prefix
-                                 * via this method call. [[UI.Container.getFieldSlot]]
+                                 * via this method call. {@link UI.Container.getFieldSlot}
                                  * will get field slot by *prefix + slot* name
-                                 * @param prefix custom workbench slot prefix
+                                 * @param wbsnp custom workbench slot prefix
                                  */
                                 setWbSlotNamePrefix(wbsnp: string): void;
                                 /**
                                  * @param slot slot index
                                  * @returns workbench slot instance by slot index
                                  */
-                                getFieldSlot(i: number): Slot;
+                                getFieldSlot(slot: number): Slot;
                                 /**
                                  * @returns js array of all slots
                                  */

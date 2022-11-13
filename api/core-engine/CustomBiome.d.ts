@@ -6,8 +6,8 @@
 declare class CustomBiome {
 
     /**
-     * @returns [[java.util.HashMap]] object instance, with all
-     * custom biomes registered by every mod
+     * @returns object instance, with all custom
+     * biomes registered by every mod
      */
     static getAllCustomBiomes(): java.util.Map<String, CustomBiome>;
 
@@ -150,34 +150,34 @@ declare class CustomBiome {
     setSeaFloorBlock(id: number, data: number): CustomBiome;
 
     /**
-     * This method is mapped on native parameter with the same name and its 
-     * effect is currently not known
+     * Specifies the block that will cover the biome. E.g. most of the biomes 
+     * use grass as cover block, though some of the biomes use other blocks 
+     * (sand, ice, etc.)
      * @param id block's tile id
      * @param data block data
      * @returns reference to itself to be used in sequential calls
-     * @deprecated use [[CustomBiome.setSeaFloorBlock]] instead
+     * @deprecated use {@link CustomBiome.setSurfaceBlock} instead
      */
     setAdditionalBlock(id: number, data: number): CustomBiome;
 
     /**
-     * Sets the average depth of the see floor in this biome.
+     * Sets the average depth of the sea floor in this biome.
      * @param depth depth of the see floor by Y-axis
      * @returns reference to itself to be used in sequential calls
      */
     setSeaFloorDepth(depth: number): CustomBiome;
 
     /**
-     * This method is mapped on native parameter with the same name and its 
-     * effect is currently not known
+     * Sets the average depth of the something in this biome.
      * @param param some integer parameter. Default value is 7
      * @returns reference to itself to be used in sequential calls
-     * @deprecated use [[CustomBiome.setSeaFloorDepth]]
+     * @deprecated use {@link CustomBiome.setSeaFloorDepth}
      */
     setSurfaceParam(param: number): CustomBiome;
 
     /**
      * Defines the server-side biome params from given JSON string.
-     * Throws [[java.lang.IllegalArgumentException]] if the string cannot be parsed.
+     * Throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
      * @returns reference to itself to be used in sequential calls
      * ```js
      * // many thanks to DansZbar2 for the example
@@ -222,7 +222,7 @@ declare class CustomBiome {
 
     /**
      * Defines the client-side biome params from given JSON string.
-     * Throws [[java.lang.IllegalArgumentException]] if the string cannot be parsed.
+     * Throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
      * @returns reference to itself to be used in sequential calls
      * ```js
      * // many thanks to DansZbar2 for the example

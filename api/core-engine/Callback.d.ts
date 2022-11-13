@@ -6,9 +6,9 @@ declare namespace Callback {
 
     /**
      * Adds callback function for the specified callback name. Most of native 
-     * events can be prevented using [[Game.prevent]] call.
+     * events can be prevented using {@link Game.prevent} call.
      * @param name callback name, should be one of the pre-defined or a custom
-     * name if invoked via [[Callback.invokeCallback]]
+     * name if invoked via {@link Callback.invokeCallback}
      * @param func function to be called when an event occurs
      * @param priority the more this value is, the earlier your callback handler will be called when an event occurs
      */
@@ -268,7 +268,7 @@ declare namespace Callback {
 
     /**
      * Function used in "DimensionLoaded" callback
-     * @param dimension vanilla dimension id, one of the [[Native.Dimension]]
+     * @param dimension vanilla dimension id, one of the {@link EDimension}
      * values, or custom dimension id
      */
     interface DimensionLoadedFunction {
@@ -334,7 +334,7 @@ declare namespace Callback {
 
     /**
      * Function used in "ItemUseLocal" callback,
-     * and also in [[Item.registerUseFunction]] and [[Item.registerUseFunctionForID]] methods
+     * and also in {@link Item.registerUseFunction} and {@link Item.registerUseFunctionForID} methods
      * @param coords set of all coordinate values that can be useful to write 
      * custom use logics
      * @param item item that was in the player's hand when he touched the block
@@ -362,7 +362,7 @@ declare namespace Callback {
 
     /**
      * Function used in the "FoodEaten" callback. You can use 
-     * [[Entity.getCarriedItem]] to get info about food item
+     * {@link Entity.getCarriedItem} to get info about food item
      * @param food food amount produced by eaten food
      * @param ratio saturation ratio produced by food
      * @param player player entity uID
@@ -495,7 +495,7 @@ declare namespace Callback {
      * Function used in "ItemIconOverride" callback
      * @param item information about item that is used in override function
      * @param isModUi whether icon override is working in mod ui or in vanilla one
-     * @returns void if used in callback, [[Item.TextureData]] if used in item 
+     * @returns void if used in callback, {@link Item.TextureData} if used in item 
      * override function to return texture that will be used for the item
      */
     interface ItemIconOverrideFunction {
@@ -584,7 +584,7 @@ declare namespace Callback {
 
     /**
      * Function used in "ReadSaves" and "WriteSaves" callbacks
-     * Avoid modifying values directly, consider using [[Saver]] instead
+     * Avoid modifying values directly, consider using {@link Saver} instead
      */
     interface SavesFunction {
         (globalScope: object): void

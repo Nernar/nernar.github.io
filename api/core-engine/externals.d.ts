@@ -26,8 +26,8 @@ declare const BlockID: { [key: string]: number };
 declare const ItemID: { [key: string]: number };
 
 /**
- * Module containing [[ItemID]] and [[BlockID]] values
- * @deprecated consider using [[ItemID]] and [[BlockID]] instead
+ * Module containing {@link ItemID} and {@link BlockID} values
+ * @deprecated consider using {@link ItemID} and {@link BlockID} instead
  */
 declare namespace IDData {
 	/**
@@ -44,7 +44,7 @@ declare namespace IDData {
 }
 
 /**
- * Same as [[IMPORT]], consider using [[IMPORT]] instead 
+ * Same as {@link IMPORT}, consider using {@link IMPORT} instead 
  */
 declare function importLib(name: string, value?: string): void;
 
@@ -93,7 +93,7 @@ declare function runOnMainThread(func: () => void): void;
 
 /**
  * Runs specified function in the client thread.
- * Same as [[runOnMainThread]], but for the client side.
+ * Same as {@link runOnMainThread}, but for the client side.
  * @param func function to be run in the client thread
  */
 declare function runOnClientThread(func: () => void): void;
@@ -155,7 +155,7 @@ declare function LIBRARY(description: {
 
 /**
  * Exports object from library using specified name
- * @param name object name to be used when calling [[IMPORT]]. 
+ * @param name object name to be used when calling {@link IMPORT}. 
  * If the name contains a column (":"), the number after column 
  * is used to specify version of the library this export corresponds to.
  * To provide backward compatibility, library authors can use multiple 
@@ -169,16 +169,34 @@ declare function EXPORT(name: string, lib: any): void;
 
 /**
  * Function that must be written in launcher.js to enable multiplayer configuration
- * @param {string} name Unique readable network name of the mod
- * @param {string} version Mod version
- * @param {boolean} isClientOnly If true, mod is only client.
  * Client mods must not affect on the world.
  * They will not be taken into account in mod synchronization during the connection
  */
-declare function ConfigureMultiplayer(args: { name: string, version: string, isClientOnly: boolean }): void;
+declare function ConfigureMultiplayer(args: {
+	/**
+	 * Unique readable network name of the mod
+	 * @remarks
+	 * Value `"auto"` here means determine *mod.info*
+	 * property, which is preferred in most cases.
+	 * @default "auto"
+	 */
+	name?: string,
+	/**
+	 * Mod version
+	 * @remarks
+	 * Value `"auto"` here means determine *mod.info*
+	 * property, which is preferred in most cases.
+	 * @default "auto"
+	 */
+	version?: string,
+	/**
+	 * If true, mod is only client.
+	 */
+	isClientOnly: boolean
+}): void;
 
 /**
- * String types of armor to be specified when calling [[Item.createArmorItem]]
+ * String types of armor to be specified when calling {@link Item.createArmorItem}
  */
 declare type ArmorType = "helmet" | "chestplate" | "leggings" | "boots";
 

@@ -4,7 +4,7 @@
  */
 declare class Texture {
     /**
-     * Creates new [[Texture]] object using specified file path
+     * Creates new {@link Texture} object using specified file path
      */
     constructor(path: string);
 

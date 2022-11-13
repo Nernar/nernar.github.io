@@ -2,7 +2,7 @@
  * Module used to create and manipulate blocks. The difference between terms 
  * "block" and "tile" is in its usage: blocks are used in the inventory, 
  * tiles are placed in the world and have different ids for some vanilla blocks. 
- * Use [[Block.convertBlockToItemId]] and [[Block.convertItemToBlockId]]
+ * Use {@link Block.convertBlockToItemId} and {@link Block.convertItemToBlockId}
  */
 declare namespace Block {
 	/**
@@ -15,12 +15,12 @@ declare namespace Block {
 	/**
 	 * Creates new block using specified params
 	 * @param nameID string id of the block. You should register it via 
-	 * [[IDRegistry.genBlockID]] call first
+	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData array containing all variations of the block. Each 
 	 * variation corresponds to block data value, data values are assigned 
 	 * according to variations order
-	 * @param blockType [[SpecialType]] object, either java-object returned by
-	 * [[Block.createSpecialType]] or js-object with the required properties, 
+	 * @param blockType {@link SpecialType} object, either java-object returned by
+	 * {@link Block.createSpecialType} or js-object with the required properties, 
 	 * you can also pass special type name, if the type was previously 
 	 * registered
 	 */
@@ -32,12 +32,12 @@ declare namespace Block {
 	 * with the front side and defines the appropriate behavior. Useful for 
 	 * different machines and mechanisms
 	 * @param nameID string id of the block. You should register it via 
-	 * [[IDRegistry.genBlockID]] call first
+	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData array containing all variations of the block. Each 
 	 * variation corresponds to four block data values, data values are assigned 
 	 * according to variations order
-	 * @param blockType [[SpecialType]] object, either java-object returned by
-	 * [[Block.createSpecialType]] or js-object with the required properties, 
+	 * @param blockType {@link SpecialType} object, either java-object returned by
+	 * {@link Block.createSpecialType} or js-object with the required properties, 
 	 * you can also pass special type name, if the type was previously 
 	 * registered
 	 */
@@ -46,13 +46,13 @@ declare namespace Block {
 	/**
 	 * Creates new liquid block using specified params
 	 * @param nameID string id of the block. You should register it via
-	 * [[IDRegistry.genBlockID]] call first
+	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData object containing all needed params to describe your custom liquid block.
 	 * There you can specify custom name IDs for static and dynamic liquid blocks separately,
 	 * and if you do this, you have to register those name IDs
-	 * via [[IDRegistry.genBlockID]] before using them
-	 * @param blockType [[SpecialType]] object, either java-object returned by
-	 * [[Block.createSpecialType]] or js-object with the required properties,
+	 * via {@link IDRegistry.genBlockID} before using them
+	 * @param blockType {@link SpecialType} object, either java-object returned by
+	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously registered
 	 */
 	function createLiquidBlock(nameID: string, defineData: LiquidDescriptor, blockType?: SpecialType | string): void;
@@ -78,7 +78,7 @@ declare namespace Block {
 	function convertItemToBlockId(id: number): number;
 
 	/**
-	 * Same as [[Block.registerDropFunction]] but accepts only numeric 
+	 * Same as {@link Block.registerDropFunction} but accepts only numeric 
 	 * tile id as the first param
 	 */
 	function registerDropFunctionForID(numericID: number, dropFunc: DropFunction, level?: number): boolean;
@@ -97,7 +97,7 @@ declare namespace Block {
 	function registerDropFunction(nameID: string | number, dropFunc: DropFunction, level?: number): boolean;
 
 	/**
-	 * Same as [[Block.registerPopResourcesFunction]] but accepts only numeric 
+	 * Same as {@link Block.registerPopResourcesFunction} but accepts only numeric 
 	 * tile id as the first param
 	 */
 	function registerPopResourcesFunctionForID(numericID: number, func: PopResourcesFunction): boolean;
@@ -114,7 +114,7 @@ declare namespace Block {
 	function registerPopResourcesFunction(nameID: string | number, func: PopResourcesFunction): boolean;
 
 	/**
-	 * Same as [[Block.setDestroyLevel]] but accepts only numeric 
+	 * Same as {@link Block.setDestroyLevel} but accepts only numeric 
 	 * tile id as the first param
 	 */
 	function setDestroyLevelForID(id: number, level: number, resetData?: boolean): void;
@@ -208,8 +208,8 @@ declare namespace Block {
 
 	/**
 	 * Makes block accept redstone signal
-	 * @deprecated use [[Block.setupAsRedstoneReceiver]] and 
-	 * [[Block.setupAsRedstoneEmitter]] instead
+	 * @deprecated use {@link Block.setupAsRedstoneReceiver} and 
+	 * {@link Block.setupAsRedstoneEmitter} instead
 	 * @param nameID block numeric or string id
 	 * @param data block data, currently not used
 	 * @param isRedstone if true, the redstone changes at the block will notify
@@ -219,7 +219,7 @@ declare namespace Block {
 
 	/**
 	 * Gets drop for the specified block. Used mostly by Core Engine's 
-	 * [[ToolAPI]], though, can be useful in the mods, too
+	 * {@link ToolAPI}, though, can be useful in the mods, too
 	 * @param block block info
 	 * @param item item that was (or is going to be) used to break the block
 	 * @param coords coordinates where the block was (or is going to be) broken 
@@ -229,7 +229,7 @@ declare namespace Block {
 	function getBlockDropViaItem(block: Tile, item: ItemInstance, coords: Vector, region: BlockSource): ItemInstanceArray[];
 
 	/**
-	 * Same as [[Block.registerPlaceFunction]] but accepts only numeric 
+	 * Same as {@link Block.registerPlaceFunction} but accepts only numeric 
 	 * tile id as the first param
 	 */
 	function registerPlaceFunctionForID(block: number, func: PlaceFunction): void;
@@ -251,7 +251,7 @@ declare namespace Block {
 	function setBlockShape(id: number, pos1: Vector, pos2: Vector, data?: number): void;
 
 	/**
-	 * Same as [[Block.setBlockShape]], but accepts coordinates as scalar 
+	 * Same as {@link Block.setBlockShape}, but accepts coordinates as scalar 
 	 * params, not objects
 	 * @param id block numeric id
 	 * @param data  block data
@@ -287,7 +287,7 @@ declare namespace Block {
 
 	/**
 	 * Makes block invoke callback randomly depending on game speed. Occurs more 
-	 * often then [[Block.setRandomTickCallback]] and only if the block is not
+	 * often then {@link Block.setRandomTickCallback} and only if the block is not
 	 * far away from player
 	 * @param id block id to register
 	 * @param callback function to be called 
@@ -323,7 +323,7 @@ declare namespace Block {
 	function registerNeighbourChangeFunction(name: string | number, func: NeighbourChangeFunction): boolean;
 
 	/**
-	 * Same as [[Block.registerNeighbourChangeFunction]] but accepts only numeric
+	 * Same as {@link Block.registerNeighbourChangeFunction} but accepts only numeric
 	 * tile id as the first param
 	 */
 	function registerNeighbourChangeFunctionForID(id: number, func: NeighbourChangeFunction): boolean;
@@ -337,7 +337,7 @@ declare namespace Block {
 	function registerEntityInsideFunction(nameID: string | number, func: EntityInsideFunction): boolean
 
 	/**
-	 * Same as [[Block.registerEntityInsideFunction]] but accepts only numeric
+	 * Same as {@link Block.registerEntityInsideFunction} but accepts only numeric
 	 * tile id as the first param
 	 */
 	function registerEntityInsideFunctionForID(numericID: number, func: EntityInsideFunction): boolean
@@ -351,7 +351,7 @@ declare namespace Block {
 	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
 
 	/**
-	 * Same as [[Block.registerEntityStepOnFunction]] but accepts only numeric
+	 * Same as {@link Block.registerEntityStepOnFunction} but accepts only numeric
 	 * tile id as the first param
 	 */
 	function registerEntityStepOnFunctionForID(id: number, func: EntityStepOnFunction): boolean;
@@ -364,7 +364,7 @@ declare namespace Block {
 	function registerClickFunction(nameId: string | number, func: ClickFunction): void;
 
 	/**
-	 * Same as [[Block.registerClickFunction]], but only numeric block id can be passed
+	 * Same as {@link Block.registerClickFunction}, but only numeric block id can be passed
 	 */
 	function registerClickFunctionForID(id: number, func: ClickFunction): void;
 

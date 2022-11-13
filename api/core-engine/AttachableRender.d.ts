@@ -8,7 +8,7 @@ declare class AttachableRender {
     static detachRendererFromItem(id: number): void;
 
     /**
-     * Constructs new [[AttachableRender]] object bind to given entity
+     * Constructs new {@link AttachableRender} object bind to given entity
      */
     constructor(actorUid: number);
 

@@ -41,7 +41,7 @@ declare module UI {
 
     /**
 	 * Object containing ui elements with key as the name and value as the 
-	 * [[UIElement]] instance to be used
+	 * {@link UIElement} instance to be used
 	 */
 	export type Elements = (
 		UICustomElement
@@ -80,44 +80,44 @@ declare module UI {
 	export interface WindowEventListener {
 		/**
 		 * Called when the window is opened
-		 * @param window current [[Window]] object
+		 * @param window current {@link Window} object
 		 */
 		onOpen: (window: Window) => void,
 		/**
 		 * Called when the window is closed
-		 * @param window current [[Window]] object
+		 * @param window current {@link Window} object
 		 */
 		onClose: (window: Window) => void
 	}
 
     /**
 	 * Class representing several windows opened at the same. For example, 
-	 * [[StandardWindow]] is a window group that consists of several separate
+	 * {@link StandardWindow} is a window group that consists of several separate
 	 * windows
 	 */
     export class WindowGroup extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowGroup {
         static class: java.lang.Class<WindowGroup>;
         /**
-		 * Constructs new [[WindowGroup]] instance
+		 * Constructs new {@link WindowGroup} instance
 		 */
         constructor();
     }
 
     /**
 	 * Containers are used to properly manipulate windows and save slots 
-	 * contents and windows state between window opens. Every [[TileEntity]] has 
-	 * a built-in container that can be accessed as [[TileEntity.container]]
+	 * contents and windows state between window opens. Every {@link TileEntity} has 
+	 * a built-in container that can be accessed as {@link TileEntity.container}
 	 * @deprecated
 	 */
     export class Container extends com.zhekasmirnov.innercore.api.mod.ui.container.Container {
         static class: java.lang.Class<Container>;
         /**
-		 * Creates a new instance of [[Container]]
+		 * Creates a new instance of {@link Container}
 		 */
         constructor();
         /**
-		 * Creates a new instance of [[Container]] and initializes its parent. 
-		 * See [[Container.setParent]] for details
+		 * Creates a new instance of {@link Container} and initializes its parent. 
+		 * See {@link Container.setParent} for details
 		 */
         constructor(parent: Nullable<TileEntity> | any);
     }
@@ -129,24 +129,24 @@ declare module UI {
     export class Window extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindow {
         static class: java.lang.Class<Window>;
         /**
-		 * Constructs new [[Window]] object with specified bounds
+		 * Constructs new {@link Window} object with specified bounds
 		 * @param location object containing window's bounds. Note that the 
 		 * bounds change the width of the window, but the full width of the 
 		 * window becomes 1000 units.
 		 */
         constructor(loc: com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation);
         /**
-		 * Constructs new [[Window]] object with specified content
+		 * Constructs new {@link Window} object with specified content
 		 * @param content window's content
 		 */
         constructor(content: WindowContent);
         /**
-         * Constructs new empty [[Window]] object
+         * Constructs new empty {@link Window} object
          */
         constructor();
     }
 
-    /** @deprecated use [[StandardWindow]] instead */
+    /** @deprecated use {@link StandardWindow} instead */
     export class StandartWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandartWindow>;
         constructor(content: StandardWindowContent);
@@ -155,21 +155,21 @@ declare module UI {
 
     /**
 	 * Class used to create standard ui for the mod's machines. 
-	 * [[StandardWindow]] is a [[WindowGroup]] that has three windows with names
+	 * {@link StandardWindow} is a {@link WindowGroup} that has three windows with names
 	 * *"main"*, *"inventory"* and *"header"*. They represent custom window 
 	 * contents, player's inventory and window's header respectively
 	 */
     export class StandardWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandardWindow>;
         /**
-		 * Constructs new [[StandardWindow]] with specified content. 
+		 * Constructs new {@link StandardWindow} with specified content. 
 		 * Content is applied to the main window, header and inventory remain
 		 * the same
 		 * @param content object containing window description
 		 */
         constructor(content: StandardWindowContent);
         /**
-         * Constructs new empty [[StandardWindow]] object
+         * Constructs new empty {@link StandardWindow} object
          */
         constructor();
     }
@@ -177,12 +177,12 @@ declare module UI {
     export class AdaptiveWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIAdaptiveWindow {
         static class: java.lang.Class<AdaptiveWindow>;
         /**
-	     * Constructs new [[AdaptiveWindow]] with specified content
+	     * Constructs new {@link AdaptiveWindow} with specified content
 	     * @param content object containing window description
 	     */
         constructor(content: WindowContent);
         /**
-	     * Constructs a new empty [[AdaptiveWindow]]
+	     * Constructs a new empty {@link AdaptiveWindow}
 	     */
         constructor();
     }
@@ -193,17 +193,17 @@ declare module UI {
     export class TabbedWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow {
         static class: java.lang.Class<TabbedWindow>;
         /**
-		 * Constructs new [[TabbedWindow]] with specified location
+		 * Constructs new {@link TabbedWindow} with specified location
 		 * @param loc location to be used for the tabbed window
 		 */
         constructor(loc: com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation);
         /**
-		 * Constructs new [[TabbedWindow]] with specified content
+		 * Constructs new {@link TabbedWindow} with specified content
 		 * @param content object containing window description
 		 */
         constructor(content: WindowContent);
         /**
-         * Constructs new empty [[TabbedWindow]] object
+         * Constructs new empty {@link TabbedWindow} object
          */
         constructor();
     }
@@ -215,12 +215,12 @@ declare module UI {
     export class WindowLocation extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation {
         static class: java.lang.Class<WindowLocation>;
         /**
-		 * Constructs new [[WindowLocation]] instance with default position and 
+		 * Constructs new {@link WindowLocation} instance with default position and 
 		 * size (fullscreen window)
 		 */
         constructor();
         /**
-		 * Constructs new [[WindowLocation]] instance with specified parameters
+		 * Constructs new {@link WindowLocation} instance with specified parameters
 		 * @param params 
 		 */
         constructor(desc: com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription);
@@ -246,14 +246,14 @@ declare module UI {
     export class ConfigVisualizer extends com.zhekasmirnov.innercore.api.mod.util.ConfigVisualizer {
         static class: java.lang.Class<ConfigVisualizer>;
 		/**
-		 * Constructs new [[ConfigVisualizer]] instance with specified elements 
+		 * Constructs new {@link ConfigVisualizer} instance with specified elements 
 		 * names prefix
 		 * @param config configuration file to be loaded
 		 * @param prefix elements names prefix used for this visualizer
 		 */
         constructor(config: com.zhekasmirnov.innercore.mod.build.Config, prefix: string);
 		/**
-		 * Constructs new [[ConfigVisualizer]] instance with default elements 
+		 * Constructs new {@link ConfigVisualizer} instance with default elements 
 		 * names prefix (*config_vis*)
 		 * @param config configuration file to be loaded
 		 */
@@ -261,7 +261,7 @@ declare module UI {
     }
 
     /**
-	 * Namespace containing method to get [[FrameTexture]] instances
+	 * Namespace containing method to get {@link FrameTexture} instances
 	 */
     export class FrameTextureSource extends java.lang.Object {
         static class: java.lang.Class<FrameTextureSource>;
@@ -278,28 +278,28 @@ declare module UI {
         static class: java.lang.Class<TextureSource>;
         /**
 		 * @param name gui texture name
-		 * @returns [[android.graphics.Bitmap]] instance with the ui texture, if it 
+		 * @returns bitmap instance with the ui texture, if it 
 		 * was loaded, with "*missing_texture*" texture otherwise
 		 */
         static get(name: string): android.graphics.Bitmap;
         /**
 		 * 
 		 * @param name gui texture name
-		 * @returns [[android.graphics.Bitmap]] instance with the ui texture, if it 
+		 * @returns bitmap instance with the ui texture, if it 
 		 * was loaded, null otherwise
 		 */
         static getNullable(name: string): Nullable<android.graphics.Bitmap>;
         /**
 		 * Adds any bitmap as a gui texture with specified name
 		 * @param name gui texture name
-		 * @param bitmap [[android.graphics.Bitmap]] instance to be used as
+		 * @param bitmap {@link android.graphics.Bitmap} instance to be used as
 		 * gui texture
 		 */
         static put(name: string, bitmap: android.graphics.Bitmap): void;
     }
 
     /**
-	 * Same as [[UI.getScreenHeight]]
+	 * Same as {@link UI.getScreenHeight}
 	 */
     export function getScreenRelativeHeight(): number;
 
@@ -309,8 +309,8 @@ declare module UI {
     export function getScreenHeight(): number;
     
     /**
-	 * @returns current [[android.app.Activity]] instance that can be used as 
-	 * [[android.content.Context]] wherever required
+	 * @returns current {@link android.app.Activity} instance that can be used as 
+	 * {@link android.content.Context} wherever required
 	 */
     export function getContext(): android.app.Activity;
 

@@ -1,11 +1,11 @@
 /**
  * Module used to manipulate player. Player is also an entity in Minecraft, so 
- * you can use all the functions from [[Entity]] module as well. To get player's 
- * entity id, call [[Player.get]] function
+ * you can use all the functions from {@link Entity} module as well. To get player's 
+ * entity id, call {@link Player.get} function
  */
 declare namespace Player {
     /**
-     * @returns player's entity id that can be used with most of [[Entity]] 
+     * @returns player's entity id that can be used with most of {@link Entity} 
      * function
      */
     function get(): number;
@@ -21,7 +21,7 @@ declare namespace Player {
     function getName(): void;
 
     /**
-     * @returns current dimension numeric id, one of the [[Native.Dimension]] 
+     * @returns current dimension numeric id, one of the {@link EDimension} 
      * values or custom dimension id
      */
     function getDimension(): number;
@@ -99,7 +99,7 @@ declare namespace Player {
     function setInventorySlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]] 
+     * @param slot armor slot id, should be one of the {@link EArmorType} 
      * values
      * @returns information about item in the specified armor slot
      */
@@ -107,7 +107,7 @@ declare namespace Player {
 
     /**
      * Sets contents of the specified armor slot
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]] 
+     * @param slot armor slot id, should be one of the {@link EArmorType} 
      * values
      * @param id item id
      * @param count item count
@@ -152,7 +152,7 @@ declare namespace Player {
 
     /**
      * Get player's velocity
-     * @returns [[Vector]] containing player's velocity
+     * @returns currently {@link Vector} containing player's velocity
      */
     function getVelocity(): Vector;
 
@@ -163,8 +163,8 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player experience
-     * @deprecated Consider using [[Player.getExperience]], 
-     * [[Player.setExperience]], [[Player.addExperience]]
+     * @deprecated Consider using {@link Player.getExperience}, 
+     * {@link Player.setExperience}, {@link Player.addExperience}
      */
     function experience(): PlayerExperience;
 
@@ -187,8 +187,8 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player level
-     * @deprecated Consider using [[Player.getLevel]], 
-     * [[Player.setLevel]], [[Player.addLevel]]
+     * @deprecated Consider using {@link Player.getLevel}, 
+     * {@link Player.setLevel}, {@link Player.addLevel}
      */
     function level(): PlayerLevel;
 
@@ -212,8 +212,8 @@ declare namespace Player {
     /**
      * @returns an object that allows to manipulate player flying ability and
      * state
-     * @deprecated Consider using [[Player.getFlyingEnabled]], 
-     * [[Player.setFlyingEnabled]], [[Player.getFlying]], [[Player.setFlying]]
+     * @deprecated Consider using {@link Player.getFlyingEnabled}, 
+     * {@link Player.setFlyingEnabled}, {@link Player.getFlying}, {@link Player.setFlying}
      */
     function flying(): PlayerFlying;
 
@@ -234,7 +234,7 @@ declare namespace Player {
     function getFlying(): boolean;
 
     /**
-     * Changes player's current flying state, call [[Player.setFlyingEnabled]]
+     * Changes player's current flying state, call {@link Player.setFlyingEnabled}
      * to be able to set this property to true
      * @param enabled whether the player should fly or not
      */
@@ -242,8 +242,8 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player's exhaustion
-     * @deprecated Consider using [[Player.getExhaustion]] and
-     * [[Player.setExhaustion]]
+     * @deprecated Consider using {@link Player.getExhaustion} and
+     * {@link Player.setExhaustion}
      */
     function exhaustion(): PlayerExhaustion;
 
@@ -260,8 +260,8 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player's exhaustion
-     * @deprecated Consider using [[Player.getHunger]] and
-     * [[Player.setHunger]]
+     * @deprecated Consider using {@link Player.getHunger} and
+     * {@link Player.setHunger}
      */
     function hunger(): PlayerHunger;
 
@@ -278,8 +278,8 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player's saturation
-     * @deprecated Consider using [[Player.getSaturation]] and
-     * [[Player.setSaturation]]
+     * @deprecated Consider using {@link Player.getSaturation} and
+     * {@link Player.setSaturation}
      */
     function saturation(): PlayerSaturation;
 
@@ -296,8 +296,8 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player's health
-     * @deprecated Consider using [[Player.getHealth]] and
-     * [[Player.setHealth]]
+     * @deprecated Consider using {@link Player.getHealth} and
+     * {@link Player.setHealth}
      */
     function health(): PlayerHealth;
 
@@ -314,7 +314,7 @@ declare namespace Player {
 
     /**
      * @returns an object that allows to manipulate player's score
-     * @deprecated Consider using [[Player.getScore]]
+     * @deprecated Consider using {@link Player.getScore}
      */
     function score(): PlayerScore;
 
@@ -324,7 +324,7 @@ declare namespace Player {
     function getScore(): number;
 
     /**
-     * Sets view zoom, to reset value call [[Player.resetFov]]
+     * Sets view zoom, to reset value call {@link Player.resetFov}
      * @param fov view zoom, default zoom is about 70
      */
     function setFov(fov: number): void;
@@ -349,7 +349,7 @@ declare namespace Player {
      * Sets some of the player's {@page Abilities}. If the argument is of type 
      * Boolean, sets the ability as the boolean one, otherwise as numeric one
      * @param ability ability name constant, should be one of the 
-     * [[Native.PlayerAbility]] constants
+     * {@link EPlayerAbility} constants
      * @param value the value to be set for the ability. Can be either boolean
      * or number, depending on the ability
      */
@@ -359,7 +359,7 @@ declare namespace Player {
      * Gets one of the player's {@page Abilities} in a form of floating-point 
      * number
      * @param ability ability name constant, should be one of the 
-     * [[Native.PlayerAbility]] constants
+     * {@link EPlayerAbility} constants
      * @returns the current value of the ability in a form of floating-point
      * number
      */
@@ -368,15 +368,15 @@ declare namespace Player {
     /**
      * Gets one of the player's {@page Abilities} in a boolean form 
      * @param ability ability name constant, should be one of the 
-     * [[Native.PlayerAbility]] constants
+     * {@link EPlayerAbility} constants
      * @returns the current value of the ability in a boolean form 
      */
     function getBooleanAbility(ability: string): number;
 
     /**
      * Class used to manipulate player's experience
-     * @deprecated Consider using [[Player.getExperience]], 
-     * [[Player.setExperience]], [[Player.addExperience]]
+     * @deprecated Consider using {@link Player.getExperience}, 
+     * {@link Player.setExperience}, {@link Player.addExperience}
      */
     class PlayerExperience {
         /**
@@ -399,8 +399,8 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's level
-     * @deprecated Consider using [[Player.getLevel]], 
-     * [[Player.setLevel]], [[Player.addLevel]]
+     * @deprecated Consider using {@link Player.getLevel}, 
+     * {@link Player.setLevel}, {@link Player.addLevel}
      */
     class PlayerLevel {
         /**
@@ -423,8 +423,8 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's flying ability and state
-     * @deprecated Consider using [[Player.getFlyingEnabled]], 
-     * [[Player.setFlyingEnabled]], [[Player.getFlying]], [[Player.setFlying]]
+     * @deprecated Consider using {@link Player.getFlyingEnabled}, 
+     * {@link Player.setFlyingEnabled}, {@link Player.getFlying}, {@link Player.setFlying}
      */
     class PlayerFlying {
         /**
@@ -434,7 +434,7 @@ declare namespace Player {
 
         /**
          * Changes player's current flying state, call 
-         * [[Player.PlayerFlying.setEnabled]] to be able to set this property to 
+         * {@link Player.PlayerFlying.setEnabled} to be able to set this property to 
          * true
          * @param enabled whether the player should fly or not
          */
@@ -454,8 +454,8 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's exhaustion
-     * @deprecated Consider using [[Player.getExhaustion]] and
-     * [[Player.setExhaustion]]
+     * @deprecated Consider using {@link Player.getExhaustion} and
+     * {@link Player.setExhaustion}
      */
     class PlayerExhaustion {
         /**
@@ -472,8 +472,8 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's hunger
-     * @deprecated Consider using [[Player.getHunger]] and
-     * [[Player.setHunger]]
+     * @deprecated Consider using {@link Player.getHunger} and
+     * {@link Player.setHunger}
      */
     class PlayerHunger {
         /**
@@ -490,8 +490,8 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's saturation
-     * @deprecated Consider using [[Player.getSaturation]] and
-     * [[Player.setSaturation]]
+     * @deprecated Consider using {@link Player.getSaturation} and
+     * {@link Player.setSaturation}
      */
     class PlayerSaturation {
         /**
@@ -508,8 +508,8 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's health
-     * @deprecated Consider using [[Player.getHealth]] and
-     * [[Player.setHealth]]
+     * @deprecated Consider using {@link Player.getHealth} and
+     * {@link Player.setHealth}
      */
     class PlayerHealth {
         /**
@@ -526,7 +526,7 @@ declare namespace Player {
 
     /**
      * Class used to manipulate player's score
-     * @deprecated Consider using [[Player.getScore]]
+     * @deprecated Consider using {@link Player.getScore}
      */
     class PlayerScore {
         /**

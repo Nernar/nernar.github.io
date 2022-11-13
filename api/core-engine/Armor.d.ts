@@ -9,35 +9,48 @@ declare namespace Armor {
      * @deprecated, does not work in multiplayer
      */
     function registerFuncs(id: number | string, funcs: {
-        tick:
         /**
          * Called every tick if player wears the armor
          * @param item current armor item instance
-         * @param index armor slot, one of the [[Native.ArmorType]] values
+         * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor 
          * @returns true, if changes to the item parameter should be applied, 
          * false otherwise
          */
-        (item: ItemInstance, index: number, maxDamage: number) => boolean,
+        tick: (item: ItemInstance, index: number, maxDamage: number) => boolean,
 
-        hurt:
         /**
          * Called when player deals damage if player wears the armor
          * @param params additional data about damage
-         * @param params.attacker attacker entity or -1 if the damage was not 
-         * caused by an entity
-         * @param params.damage damage amount that was applied to the player
-         * @param params.type damage type
-         * @param params.b1 unknown param
-         * @param params.b2 unknown param
          * @param item current armor item instance
-         * @param index armor slot, one of the [[Native.ArmorType]] values
+         * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor 
          * @returns true, if changes to the item parameter should be applied, 
          * false otherwise
          */
-        (params: { attacker: number, damage: number, type: number, b1: boolean, b2: boolean },
-            item: ItemInstance, index: number, maxDamage: number) => boolean
+        hurt: (params: {
+            /**
+             * attacker entity or -1 if the damage was not 
+             * caused by an entity
+             */
+            attacker: number,
+            /**
+             * damage amount that was applied to the player
+             */
+            damage: number,
+            /**
+             * damage type
+             */
+            type: number,
+            /**
+             * TODO: unknown param
+             */
+            b1: boolean,
+            /**
+             * TODO: unknown param
+             */
+            b2: boolean
+        }, item: ItemInstance, index: number, maxDamage: number) => boolean
     }): void;
 
     /**

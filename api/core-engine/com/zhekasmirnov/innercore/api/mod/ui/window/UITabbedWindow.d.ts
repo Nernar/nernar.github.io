@@ -34,12 +34,12 @@ declare module com {
                                  */
                                 getGlobalTabSize(): number;
                                 /**
-                                 * Constructs new [[UI.TabbedWindow]] with specified location
+                                 * Constructs new {@link UI.TabbedWindow} with specified location
                                  * @param loc location to be used for the tabbed window
                                  */
                                 constructor(loc: UIWindowLocation);
                                 /**
-                                 * Constructs new [[UI.TabbedWindow]] with specified content
+                                 * Constructs new {@link UI.TabbedWindow} with specified content
                                  * @param content object containing window description
                                  */
                                 constructor(content: TabbedWindowContent);
@@ -64,14 +64,14 @@ declare module com {
                                 setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent): void;
                                 /**
                                  * Creates fake tab with no content
-                                 * @param index index of the tab, see [[TabbedWindow.setTab]] for 
+                                 * @param index index of the tab, see {@link TabbedWindow.setTab} for 
                                  * details
                                  * @param tabOverlay content of the tab selector
                                  */
                                 setFakeTab(index: number, tabOverlay: UI.ElementSet): void;
                                 /**
                                  * @param index index of the tab
-                                 * @returns [[UI.Window]] instance
+                                 * @returns new {@link UI.Window} instance
                                  * created for the specified tab or null if
                                  * no window was created for specified window
                                  */
@@ -101,7 +101,7 @@ declare module com {
                                 setBlockingBackground(b: boolean): void;
                                 /**
                                  * @returns current default tab index. If no default tab was specified 
-                                 * via [[UI.TabbedWindow.setDefaultTab]],
+                                 * via {@link UI.TabbedWindow.setDefaultTab},
                                  * the first tab added becomes default
                                  */
                                 getDefaultTab(): number;
@@ -113,7 +113,7 @@ declare module com {
                                 /**
                                  * Sets new style object as current window's style. If the new style is
                                  * a different object then an old one, forces window invalidation
-                                 * @param style [[UI.Style]] object to be used as style for the window
+                                 * @param style {@link UI.Style} object to be used as style for the window
                                  */
                                 setStyle(style: types.UIStyle): void;
                                 /**

@@ -10,21 +10,21 @@ declare namespace Game {
 
     /**
      * @returns true if the current callback function has already been
-     * prevented from being called in Minecraft using [[Game.prevent]],
+     * prevented from being called in Minecraft using {@link Game.prevent},
      * false otherwise
      */
     function isActionPrevented(): boolean;
 
     /**
      * Writes message to the chat. Message can be formatted using 
-     * [[Native.Color]] values
+     * {@link EColor} values
      * @param msg message to be displayed
      */
     function message(msg: string): void;
 
     /**
      * Writes message above the hot bar. Message can be formatted using 
-     * [[Native.Color]] values
+     * {@link EColor} values
      * @param msg message to be displayed
      */
     function tipMessage(msg: string): void;
@@ -37,26 +37,26 @@ declare namespace Game {
     function dialogMessage(message: string, title: string): void;
 
     /**
-     * Sets game difficulty, one of [[Native.GameDifficulty]] values
+     * Sets game difficulty, one of {@link EGameDifficulty} values
      * @param difficulty game difficulty to be set
      */
     function setDifficulty(difficulty: number): void;
 
     /**
-     * @returns current game difficulty, one of the [[Native.GameDifficulty]] 
+     * @returns current game difficulty, one of the {@link EGameDifficulty} 
      * values
      */
     function getDifficulty(): number;
 
     /**
      * Sets current level game mode
-     * @param gameMode new game mode, should be one of the [[Native.GameMode]]
+     * @param gameMode new game mode, should be one of the {@link EGameMode}
      * values
      */
     function setGameMode(gameMode: number): void;
 
     /**
-     * @returns current level game mode, one of the [[Native.GameMode]] values
+     * @returns current level game mode, one of the {@link EGameMode} values
      */
     function getGameMode(): number;
 
@@ -78,5 +78,5 @@ declare namespace Game {
     /**
      * true if developer mode was enabled in Inner Core config, false otherwise
      */
-    let isDeveloperMode: boolean;
+    const isDeveloperMode: boolean;
 }

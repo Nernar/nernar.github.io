@@ -11,7 +11,7 @@ declare namespace Entity {
 
     /**
      * @returns an array of all loaded entities ids
-     * @deprecated Consider using [[Entity.getAll]] instead
+     * @deprecated Consider using {@link Entity.getAll} instead
      */
     function getAllJS(): number[];
 
@@ -38,7 +38,7 @@ declare namespace Entity {
     /**
      * Adds an effect to the mob
      * @param effectId effect id, should be one
-     * one of [[Native.PotionEffect]] or [[EPotionEffect]] values.
+     * one of {@link EPotionEffect} values.
      * @returns whether the ]]
      * values
      * @param effectData effect amplifier
@@ -50,7 +50,7 @@ declare namespace Entity {
 
     /**
      * Clears effect, applied to the mob
-     * @param id effect id, should be one of the [[Native.PotionEffect]]
+     * @param id effect id, should be one of the {@link EPotionEffect}
      */
     function clearEffect(ent: number, id: number): void;
 
@@ -72,7 +72,7 @@ declare namespace Entity {
     function damageEntity(ent: number, damage: number, cause?: number, params?: { attacker?: number, bool1?: boolean, bool2?: boolean }): void;
 
     /**
-     * @returns current dimension numeric id, one of the [[Native.Dimension]] 
+     * @returns current dimension numeric id, one of the {@link EDimension} 
      * values or custom dimension id
      */
     function getDimension(ent: number): number;
@@ -84,7 +84,7 @@ declare namespace Entity {
     function healEntity(ent: number, heal: number): void;
 
     /**
-     * @returns numeric entity type, one of the [[Native.EntityType]]
+     * @returns numeric entity type, one of the {@link EEntityType}
      */
     function getType(ent: number): number;
 
@@ -124,7 +124,7 @@ declare namespace Entity {
 
     /**
      * Spawns vanilla entity on the specified coordinates
-     * @param type numeric entity type, one of the [[Native.EntityType]]
+     * @param type numeric entity type, one of the {@link EEntityType}
      * @param skin skin to set for the entity. Leave empty or null to use 
      * default skin of the mob
      * @returns numeric id of spawn entity or -1 if entity was not created
@@ -140,13 +140,13 @@ declare namespace Entity {
     function spawnCustom(name: string, x: number, y: number, z: number, extra?: object): CustomEntity;
 
     /**
-     * Same as [[Entity.spawnCustom]], but uses [[Vector]] object to represent 
+     * Same as {@link Entity.spawnCustom}, but uses {@link Vector} object to represent 
      * coordinates
      */
     function spawnCustomAtCoords(name: string, coords: Vector, extra?: any): CustomEntity;
 
     /**
-     * Same as [[Entity.spawn]], but uses [[Vector]] object to represent 
+     * Same as {@link Entity.spawn}, but uses {@link Vector} object to represent 
      * coordinates
      */
     function spawnAtCoords(coords: Vector, type: number, skin?: string): void;
@@ -183,22 +183,21 @@ declare namespace Entity {
     function setSkin(ent: number, skin: string): void;
 
     /**
-     * Sets mob skin, uses [[Texture]] object
-     * @deprecated use [[Entity.setSkin]] instead
-     * @param texture 
+     * Sets mob skin, uses {@link Texture} object
+     * @deprecated use {@link Entity.setSkin} instead
      */
     function setTexture(ent: number, texture: Texture): void;
 
     /**
      * @returns entity render type, should be one of the 
-     * [[Native.MobRenderType]] values
+     * {@link EMobRenderType} values
      */
     function getRender(ent: number): number;
 
     /**
      * Sets entity render type
      * @param render entity render type, should be one of the 
-     * [[Native.MobRenderType]] values
+     * {@link EMobRenderType} values
      */
     function setRender(ent: number, render: number): void;
 
@@ -275,8 +274,8 @@ declare namespace Entity {
 
     /**
      * @returns an object that allows to manipulate entity health
-     * @deprecated Consider using [[Entity.getHealth]], [[Entity.setHealth]],
-     * [[Entity.getMaxHealth]] and [[Entity.setMaxHealth]] instead
+     * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead
      */
     function health(ent: number): EntityHealth;
 
@@ -298,7 +297,6 @@ declare namespace Entity {
 
     /**
      * Sets entity's maximum health value
-     * @param maxHealth 
      */
     function setMaxHealth(ent: number, health: number): void;
 
@@ -320,15 +318,12 @@ declare namespace Entity {
 
     /**
      * Set current entity's velocity using velocity vector
-     * @param x velocity
-     * @param y velocity
-     * @param z velocity
      */
     function setVelocity(ent: number, x: number, y: number, z: number): void;
 
     /**
      * Get current entity's velocity using velocity vector
-     * @returns [[Vector]] containing current entity's velocity
+     * @returns containing current entity's velocity
      */
     function getVelocity(ent: number): Vector;
 
@@ -372,7 +367,7 @@ declare namespace Entity {
 
     /**
      * Transforms look angle into look vector
-     * @param angle look angle to transform into [[Vector]]
+     * @param angle look angle to transform into {@link Vector}
      * @returns transformation result
      */
     function getLookVectorByAngle(angle: LookAngle): Vector;
@@ -393,7 +388,7 @@ declare namespace Entity {
     function lookAt(ent: number, x: number, y: number, z: number): void;
 
     /**
-     * Same as [[Entity.lookAt]] but uses Vector as param type
+     * Same as {@link Entity.lookAt} but uses Vector as param type
      * @param coords 
      */
     function lookAtCoords(ent: number, coords: Vector): void;
@@ -459,7 +454,7 @@ declare namespace Entity {
     function getInventory(ent: number, handleNames?: boolean, handleEnchant?: boolean): void;
 
     /**
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]] 
+     * @param slot armor slot id, should be one of the {@link EArmorType} 
      * values
      * @returns armor slot contents for entity
      */
@@ -467,7 +462,7 @@ declare namespace Entity {
 
     /**
      * Sets armor slot contents for the entity
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]] 
+     * @param slot armor slot id, should be one of the {@link EArmorType} 
      * values
      * @param id item id
      * @param count item count
@@ -484,6 +479,14 @@ declare namespace Entity {
     function getCarriedItem(ent: number): ItemInstance;
 
     /**
+     * @returns entity's current carried item information
+     * @param bool1 parameter is no longer supported and should not be used
+     * @param bool2 parameter is no longer supported and should not be used
+     * @deprecated use same method without parameters
+     */
+    function getCarriedItem(ent: number, bool1: boolean, bool2: boolean): ItemInstance;
+
+    /**
      * Sets current carried item for the entity
      * @param id item id
      * @param count item count
@@ -494,7 +497,7 @@ declare namespace Entity {
 
     /**
      * Gets item from specified drop entity
-     * @returns [[ItemInstance]] that is in the dropped item
+     * @returns instance that is in the dropped item
      */
     function getDroppedItem(ent: number): ItemInstance;
 
@@ -520,15 +523,15 @@ declare namespace Entity {
     function getAttribute(ent: number, attribute: string): AttributeInstance;
 
     /**
-     * Creates or gets an existing [[PathNavigation]] instance for the specified mob
-     * @returns [[PathNavigation]] used to control entity's target position and
+     * Creates or gets an existing {@link PathNavigation} instance for the specified mob
+     * @returns navigation used to control entity's target position and
      * the way to get there
      */
     function getPathNavigation(ent: number): PathNavigation;
 
     /**
      * @param effectId numeric id of the potion effect,
-     * one of [[Native.PotionEffect]] or [[EPotionEffect]] values.
+     * one of {@link EPotionEffect} values.
      * @returns whether the given entity is affected by the potion effect with given numeric id
      */
     function hasEffect(entity: number, effectId: number): boolean;
@@ -544,7 +547,7 @@ declare namespace Entity {
 
     /**
      * Object used to build path and move mobs to the required coordinates using
-     * specified parameters. All the setters return current [[PathNavigation]] 
+     * specified parameters. All the setters return current {@link PathNavigation} 
      * instance to be able to produce chained calls. Some of the 
      */
     interface PathNavigation {
@@ -645,7 +648,7 @@ declare namespace Entity {
 
     /**
      * Occurs when path navigation is finished or aborted
-     * @param navigation [[PathNavigation]] that the handler is attached to
+     * @param navigation {@link PathNavigation} that the handler is attached to
      * @param result result code, one of the following:
      * 
      * 0 - success. You can call navigation.moveTo*** methods to resume path
@@ -660,8 +663,8 @@ declare namespace Entity {
 
     /**
      * Class used to manipulate entity's health
-     * @deprecated Consider using [[Entity.getHealth]], [[Entity.setHealth]],
-     * [[Entity.getMaxHealth]] and [[Entity.setMaxHealth]] instead
+     * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead
      */
     class EntityHealth {
         /**
@@ -784,4 +787,3 @@ declare namespace Entity {
         setDefaultValue(value: number): void;
     }
 }
-

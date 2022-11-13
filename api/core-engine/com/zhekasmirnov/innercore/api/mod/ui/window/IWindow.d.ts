@@ -9,8 +9,7 @@ declare module com {
                                 static class: java.lang.Class<IWindow>;
                                 constructor();
                                 /**
-                                 * Constructs new object inherited from
-                                 * [[UI.IWindow]].
+                                 * Constructs new object inherited from {@link UI.IWindow}.
                                  * You need to implement all the interface methods in the object param.
                                  */
                                 constructor(impl: {
@@ -41,7 +40,7 @@ declare module com {
                                  */
                                 frame(time: number): void;
                                 /**
-                                 * @returns [[UI.Container]]
+                                 * @returns new {@link UI.Container}
                                  * that was used to open this window or null, if
                                  * the window wasn't opened in container
                                  */
@@ -100,8 +99,8 @@ declare module com {
                                 /**
                                  * Sets container for the current window. Be careful when calling it 
                                  * manually. You should prefer opening the window via 
-                                 * [[UI.Container.openAs]] call
-                                 * @param container [[UI.Container]]
+                                 * {@link UI.Container.openAs} call
+                                 * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */
                                 setContainer(container: Nullable<container.UiAbstractContainer>): void;

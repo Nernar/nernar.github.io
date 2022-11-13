@@ -1,11 +1,11 @@
 /**
  * Interface providing access to native tile entities - chests, hoppers, furnaces,
  * smelters, etc. See full lists of supported native tile entities in the 
- * [[Native.TileEntityType]] enum
+ * {@link ETileEntityType} enum
  */
 declare interface NativeTileEntity {
     /**
-     * @returns native tile entity type constant, one of the [[Native.TileEntityType]]
+     * @returns native tile entity type constant, one of the {@link ETileEntityType}
      * constants
      */
     getType(): number,

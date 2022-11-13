@@ -13,7 +13,7 @@ declare module com {
                             export interface FontDescription {
                                 /**
                                  * Font color, android integer color value (produced by
-                                 * [[android.graphics.Color]]). Default value is black
+                                 * {@link android.graphics.Color}). Default value is black
                                  */
                                 color?: number,
                                 /**
@@ -25,12 +25,12 @@ declare module com {
                                  */
                                 shadow?: number,
                                 /**
-                                 * Font alignment, one of the [[Font.ALIGN_DEFAULT]],
-                                 * [[Font.ALIGN_CENTER]], [[Font.ALIGN_END]] constants
+                                 * Font alignment, one of the {@link Font.ALIGN_DEFAULT},
+                                 * {@link Font.ALIGN_CENTER}, {@link Font.ALIGN_END} constants
                                  */
                                 alignment?: number,
                                 /**
-                                 * Same as [[FontDescription.alignment]]
+                                 * Same as {@link FontDescription.alignment}
                                  */
                                 align?: number,
                                 /**
@@ -86,7 +86,7 @@ declare module com {
                                 constructor(params: FontDescription);
                                 /**
                                  * Draws text on the canvas using created font
-                                 * @param canvas [[android.graphics.Canvas]] instance to draw the text on
+                                 * @param canvas {@link android.graphics.Canvas} instance to draw the text on
                                  * @param x x coordinate of the text in pixels
                                  * @param y x coordinate of the text in pixels
                                  * @param text text string to draw
@@ -96,7 +96,7 @@ declare module com {
                                 /**
                                  * Calculates bounds of the text given text position, text string and 
                                  * additional scale
-                                 * @returns [[android.graphics.Rect]] object containing calculated bounds of 
+                                 * @returns rect object containing calculated bounds of 
                                  * the text
                                  */
                                 getBounds(text: string, x: number, y: number, scale: number): android.graphics.Rect;
@@ -113,7 +113,7 @@ declare module com {
                                  */
                                 getTextHeight(text: string, x: number, y: number, scale: number): number;
                                 /**
-                                 * Converts current [[Font]] object to scriptable font description
+                                 * Converts current {@link Font} object to scriptable font description
                                  */
                                 asScriptable(): FontDescription;
 

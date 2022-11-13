@@ -20,9 +20,9 @@ declare namespace Item {
     /**
      * Creates new item using specified parameters
      * @param nameID string id of the item. You should register it via 
-     * [[IDRegistry.genItemID]] call first
+     * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params additional item parameters
@@ -35,9 +35,9 @@ declare namespace Item {
     /**
      * Creates eatable item using specified parameters
      * @param nameID string id of the item. You should register it via 
-     * [[IDRegistry.genItemID]] call first
+     * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params additional item parameters
@@ -50,13 +50,13 @@ declare namespace Item {
     function createFoodItem(nameID: string, name: string, texture: TextureData, params?: { stack?: number, isTech?: boolean, food?: number }): NativeItem;
 
     /**
-     * @deprecated Use [[Item.createItem]] and [[Recipes.addFurnaceFuel]]
+     * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel}
      * instead
      */
     function createFuelItem(nameID: string, name: string, texture: TextureData, params: object): void;
 
     /**
-     * Object used in [[Item.createArmorItem]] method
+     * Object used in {@link Item.createArmorItem} method
      * to specify general armor item parameters
      */
     interface ArmorParams {
@@ -94,9 +94,9 @@ declare namespace Item {
     /**
      * Creates armor item using specified parameters
      * @param nameID string id of the item. You should register it via 
-     * [[IDRegistry.genItemID]] call first
+     * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params general armor item parameters object, the armor type there is required
@@ -106,9 +106,9 @@ declare namespace Item {
     /**
      * Creates throwable item using specified parameters
      * @param nameID string id of the item. You should register it via 
-     * [[IDRegistry.genItemID]] call first
+     * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params additional item parameters
@@ -173,7 +173,7 @@ declare namespace Item {
      * Sets item creative category
      * @param id string or numeric item id
      * @param category item category, should be one of the 
-     * [[Native.ItemCategory]] values
+     * {@link EItemCategory} values
      */
     function setCategory(id: number | string, category: number): void;
 
@@ -181,7 +181,7 @@ declare namespace Item {
      * Specifies how the item can be enchanted
      * @param id string or numeric item id
      * @param enchant enchant type defining when enchants can or cannot be
-     * applied to this item, one of the [[Native.EnchantType]]
+     * applied to this item, one of the {@link EEnchantType}
      * @param value quality of the enchants that are applied, the higher this 
      * value is, the better enchants you get with the same level
      */
@@ -246,7 +246,7 @@ declare namespace Item {
     /**
      * Sets animation type for the item
      * @param id string or numeric item id
-     * @param animType use animation type, one of the [[Native.ItemAnimation]] 
+     * @param animType use animation type, one of the {@link EItemAnimation} 
      * values
      */
     function setUseAnimation(id: number | string, animType: number): void;
@@ -259,7 +259,7 @@ declare namespace Item {
     function setMaxUseDuration(id: number | string, duration: number): void;
 
     /**
-     * Same as [[Item.registerUseFunction]], but supports numeric ids only
+     * Same as {@link Item.registerUseFunction}, but supports numeric ids only
      */
     function registerUseFunctionForID(numericID: number, useFunc: Callback.ItemUseLocalFunction): void;
 
@@ -272,7 +272,7 @@ declare namespace Item {
     function registerUseFunction(nameID: string | number, useFunc: Callback.ItemUseLocalFunction): void;
 
     /**
-     * Same as [[Item.registerThrowableFunction]], but supports numeric ids only
+     * Same as {@link Item.registerThrowableFunction}, but supports numeric ids only
      */
     function registerThrowableFunctionForID(numericID: number, useFunc: Callback.ProjectileHitFunction): void;
 
@@ -289,8 +289,8 @@ declare namespace Item {
      * to perform such an override
      * @param nameID string or numeric id of the item
      * @param func function that is called to override item icon. Should return 
-     * [[Item.TextureData]] object to be used for the item. See 
-     * [[Callback.ItemIconOverrideFunction]] documentation for details
+     * {@link Item.TextureData} object to be used for the item. See 
+     * {@link Callback.ItemIconOverrideFunction} documentation for details
      */
     function registerIconOverrideFunction(nameID: string | number, func: Callback.ItemIconOverrideFunction): void;
 
@@ -312,7 +312,7 @@ declare namespace Item {
 
     /**
      * Registers function to be called when player doesn't complete using item 
-     * that has maximum use time set with [[Item.setMaxUseDuration]] function.
+     * that has maximum use time set with {@link Item.setMaxUseDuration} function.
      * Vanilla bow uses this function with max use duration of 72000 ticks
      * @param nameID string or numeric id of the item
      * @param func function that is called when such an event occurs
@@ -321,7 +321,7 @@ declare namespace Item {
 
     /**
      * Registers function to be called when player completes using item 
-     * that has maximum use time set with [[Item.setMaxUseDuration]] function
+     * that has maximum use time set with {@link Item.setMaxUseDuration} function
      * @param nameID string or numeric id of the item
      * @param func function that is called when such an event occurs
      */
@@ -352,7 +352,7 @@ declare namespace Item {
     function invokeItemUseOn(coords: Callback.ItemUseCoordinates, item: ItemInstance, noModCallback: boolean, entity: number): void
 
     /**
-     * @deprecated Should not be used in new mods, consider using [[Item]] 
+     * @deprecated Should not be used in new mods, consider using {@link Item} 
      * properties setters instead
      */
     function setPrototype(nameID: any, Prototype: any): void;

@@ -6,7 +6,7 @@ declare module com {
                     static class: java.lang.Class<NativeRenderMesh>;
                     /**
                      * Adds new mesh to the current one on the specified coordinates with specified scale
-                     * @param mesh [[NativeRenderMesh]] object to be added to current mesh
+                     * @param mesh {@link NativeRenderMesh} object to be added to current mesh
                      */
                     addMesh(mesh: NativeRenderMesh): void;
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number): void;
@@ -26,7 +26,7 @@ declare module com {
                      */
                     clear(): void;
                     /**
-                     * Creates a copy of current [[NativeRenderMesh]]
+                     * Creates a copy of current {@link NativeRenderMesh}
                      */
                     clone(): NativeRenderMesh;
                     /**
@@ -40,7 +40,7 @@ declare module com {
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, keepRatio: boolean): void;
                     /**
                      * @returns pointer to the native object instance of the
-                     * following [[NativeRenderMesh]], represented as long number
+                     * following {@link NativeRenderMesh}, represented as long number
                      */
                     getPtr(): number;
                     getReadOnlyVertexData(): NativeRenderMesh.ReadOnlyVertexData;
@@ -50,13 +50,13 @@ declare module com {
                      * be relative to the resources folder or to the "models/" folder
                      * @param type file type to read mesh from. The only currently supported mesh file 
                      * type is "obj"
-                     * @param params additional import parameters or null, if not needed
+                     * @param importParams additional import parameters or null, if not needed
                      */
                     importFromFile(path: string, type: "obj", importParams: Nullable<NativeRenderMesh.ImportParams>): void;
                     invalidate(): void;
                     newGuiRenderMesh(): mod.ui.GuiRenderMesh;
                     /**
-                     * Forces Minecraft to rebuild specified [[NativeRenderMesh]] object
+                     * Forces Minecraft to rebuild specified {@link NativeRenderMesh} object
                      */
                     rebuild(): void;
                     /**
@@ -96,26 +96,26 @@ declare module com {
                     setColor(r: number, g: number, b: number): void;
                     setColor(r: number, g: number, b: number, a: number): void;
                     /**
-                     * Makes specified [[NativeRenderMesh]] foliage tinted
+                     * Makes specified {@link NativeRenderMesh} foliage tinted
                      */
                     setFoliageTinted(): void;
                     setFoliageTinted(tintSource: number): void;
                     /**
-                     * Makes specified [[NativeRenderMesh]] grass tinted
+                     * Makes specified {@link NativeRenderMesh} grass tinted
                      */
                     setGrassTinted(): void;
                     /**
-                     * Sets following [[NativeRenderMesh]] light direction
+                     * Sets following {@link NativeRenderMesh} light direction
                      */
                     setLightDir(x: number, y: number, z: number): void;
                     setLightIgnore(ignore: boolean, bool2: boolean): void;
                     setLightParams(float1: number, float2: number, float3: number): void;
                     /**
-                     * Sets following [[NativeRenderMesh]] light position
+                     * Sets following {@link NativeRenderMesh} light position
                      */
                     setLightPos(x: number, y: number, z: number): void;
                     /**
-                     * Removes any tint from specified [[NativeRenderMesh]]
+                     * Removes any tint from specified {@link NativeRenderMesh}
                      */
                     setNoTint(): void;
                     /**
@@ -123,7 +123,7 @@ declare module com {
                      */
                     setNormal(x: number, y: number, z: number): void;
                     /**
-                     * Makes specified [[NativeRenderMesh]] water tinted
+                     * Makes specified {@link NativeRenderMesh} water tinted
                      */
                     setWaterTinted(): void;
                     /**
@@ -142,7 +142,7 @@ declare module com {
                         private constructor(dataSize: number);
                     }
                     /**
-                     * Object used in [[NativeRenderMesh.importFromFile]] and one of [[NativeRenderMesh]] constructors.
+                     * Object used in {@link NativeRenderMesh.importFromFile} and one of {@link NativeRenderMesh} constructors.
                      * Here you can put some additional parameters, that will be applied to the mesh,
                      * when the file is being imported
                      */
@@ -165,7 +165,7 @@ declare module com {
                          */
                         scale?: [number, number, number],
                         /**
-                         * If true, Minecraft won't be forced to rebuild the following [[NativeRenderMesh]]
+                         * If true, Minecraft won't be forced to rebuild the following {@link NativeRenderMesh}
                          * before the file is imported
                          */
                         noRebuild: boolean
