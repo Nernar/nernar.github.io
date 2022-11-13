@@ -235,7 +235,7 @@ declare module com {
                                  */
                                 invalidateDrawing(onCurrentThread: boolean): void;
                                 /**
-                                 * @returns true if the window is opened, false otherwise
+                                 * @returns `true` if the window is opened, `false` otherwise.
                                  */
                                 isOpened(): boolean;
                                 postElementRefresh(): void;
@@ -250,11 +250,11 @@ declare module com {
                                  */
                                 setTouchable(touchable: boolean): void;
                                 /**
-                                 * @returns true if the window is touchable, false otherwise
+                                 * @returns `true` if the window is touchable, `false` otherwise.
                                  */
                                 isTouchable(): boolean;
                                 /**
-                                 * @returns true if window blocks background
+                                 * @returns `true` if window blocks background.
                                  */
                                 isBlockingBackground(): boolean;
                                 /**
@@ -265,7 +265,7 @@ declare module com {
                                  */
                                 setBlockingBackground(blockingBackground: boolean): void;
                                 /**
-                                 * @returns true if the window is game overlay, false otherwise
+                                 * @returns `true` if the window is game overlay, `false` otherwise.
                                  */
                                 isNotFocusable(): boolean;
                                 /**
@@ -282,22 +282,22 @@ declare module com {
                                  */
                                 setBackgroundColor(color: number): void;
                                 /**
-                                 * @returns true if the window has an inventory that should be updated
+                                 * @returns `true` if the window has an inventory that should be updated.
                                  */
                                 isInventoryNeeded(): boolean;
                                 /**
-                                 * @returns true if the window can change its contents position
+                                 * @returns `true` if the window can change it's contents position.
                                  */
                                 isDynamic(): boolean;
                                 /**
                                  * Gets all the elements in the window
-                                 * @returns hashes containing string element names
-                                 * as keys and element instances as values
+                                 * @returns Hashes containing string element names
+                                 * as keys and element instances as values.
                                  */
                                 getElements(): java.util.HashMap<String, elements.UIElement>;
                                 /**
-                                 * @returns window's content object (usually specified in the window's 
-                                 * constructor)
+                                 * @returns Window's content object (usually specified in the window's 
+                                 * constructor).
                                  */
                                 getContent(): WindowContent;
                                 /**
@@ -319,18 +319,18 @@ declare module com {
                                 invalidateBackground(): void;
                                 invalidateForeground(): void;
                                 /**
-                                 * @returns window's current location object
+                                 * @returns Window's current location object.
                                  */
                                 getLocation(): UIWindowLocation;
                                 getElementProvider(): IElementProvider;
                                 getBackgroundProvider(): IBackgroundProvider;
                                 getContentProvider(): ContentProvider;
                                 /**
-                                 * @returns unit size (in pixel) in the window's bounds
+                                 * @returns Unit size (in pixel) in the window's bounds.
                                  */
                                 getScale(): number;
                                 /**
-                                 * @returns object containing current style of the window
+                                 * @returns Object containing current style of the window.
                                  */
                                 getStyle(): types.UIStyle;
                                 /**
@@ -348,12 +348,12 @@ declare module com {
                                 setStyle(style: types.UIStyle): void;
                                 invalidateAllContent(): void;
                                 /**
-                                 * Gets custom property by its name. Custom properties can be used to
+                                 * Gets custom property by it's name. Custom properties can be used to
                                  * store some values containing window's current state. Note that these 
                                  * properties are not saved between Inner Core launches
                                  * @param name custom property name
-                                 * @returns value set by {@link UI.Window.putProperty}
-                                 * or null if no value was specified for this name
+                                 * @returns Value set by {@link UI.Window.putProperty}
+                                 * or null if no value was specified for this name.
                                  */
                                 getProperty<T>(name: string): T;
                                 /**
@@ -363,9 +363,9 @@ declare module com {
                                  */
                                 putProperty<T>(name: string, value: T): void;
                                 /**
-                                 * @returns currently {@link UI.Container}
+                                 * @returns Currently {@link UI.Container}
                                  * that was used to open this window or null, if
-                                 * the window wasn't opened in container
+                                 * the window wasn't opened in container.
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
@@ -386,12 +386,12 @@ declare module com {
                                 /**
                                  * Sets any window as current window's parent. If current window closes,
                                  * parent window closes too
-                                 * @param window window to be used as parent window for the current 
-                                 * window
+                                 * @param parent window to be used as parent window for the current 
+                                 * window.
                                  */
                                 setParentWindow(parent: IWindow): void;
                                 /**
-                                 * @returns current window's parent window
+                                 * @returns Current window's parent window.
                                  */
                                 getParentWindow(): Nullable<IWindow>;
                                 /**
@@ -409,7 +409,7 @@ declare module com {
                                  */
                                 setCloseOnBackPressed(val: boolean): void;
                                 /**
-                                 * @returns whether the window can be closed on pressing back navigation button
+                                 * @returns Whether the window can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
                             }

@@ -5,19 +5,19 @@
  */
 declare namespace ItemModel {
     /**
-     * Gets {@link ItemModel} object for the specified id and data
-     * @param id item or block id
+     * Gets {@link ItemModel} object for the specified ID and data
+     * @param id item or block ID
      * @param data item or block data
-     * @returns exist {@link ItemModel} object used to manipulate item's model
+     * @returns Exist {@link ItemModel} object used to manipulate item's model.
      */
 	function getFor(id: number, data: number): ItemModel;
 	
 	function setCurrentCacheGroup(mod: string, version: string): void;
 
     /**
-     * Gets {@link ItemModel} object for the specified id and data. If no {@link ItemModel} for
+     * Gets {@link ItemModel} object for the specified ID and data. If no {@link ItemModel} for
      * specified data exist, uses default data (0)
-     * @returns any {@link ItemModel} object used to manipulate item's model
+     * @returns Any {@link ItemModel} object used to manipulate item's model.
      */
     function getForWithFallback(id: number, data: number): ItemModel;
 
@@ -27,7 +27,7 @@ declare namespace ItemModel {
     function newStandalone(): ItemModel;
 
     /**
-     * @returns a collection of all existing item models
+     * @returns A collection of all existing item models.
      */
     function getAllModels(): java.util.Collection<ItemModel>;
 
@@ -46,8 +46,8 @@ declare namespace ItemModel {
     }
 
     /**
-     * @returns empty {@link RenderMesh} from the pool or creates an empty one. Used 
-     * to reduce constructors/destructors calls
+     * @returns Empty {@link RenderMesh} from the pool or creates an empty one. Used 
+     * to reduce constructors/destructors calls.
      */
     function getEmptyMeshFromPool(): RenderMesh;
 
@@ -59,14 +59,14 @@ declare namespace ItemModel {
 
     /**
      * @param randomize if true, item mesh position is randomized
-     * @returns new {@link RenderMesh} generated for specified item
+     * @returns New {@link RenderMesh} generated for specified item.
      */
     function getItemRenderMeshFor(id: number, count: number, data: number, randomize: boolean): RenderMesh;
 
     /**
-     * @param id item or block numeric id
+     * @param id item or block numeric ID
      * @param data item or block data
-     * @returns texture name for the specified item or block
+     * @returns Texture name for the specified item or block.
      */
     function getItemMeshTextureFor(id: number, data: number): string;
 }
@@ -79,7 +79,7 @@ declare namespace ItemModel {
  */
 declare interface ItemModel {
     /**
-     * Item or block id current {@link ItemModel} relates to
+     * Item or block ID current {@link ItemModel} relates to
      */
     readonly id: number;
 
@@ -99,19 +99,19 @@ declare interface ItemModel {
     isEmptyInWorld(): boolean;
 
     /**
-     * @returns true, if the model is empty
+     * @returns `true`, if the model is empty.
      */
     isEmpty(): boolean;
 
     isNonExistant(): boolean;
 
     /**
-     * @returns true, if this item model overrides the default model in player's hand
+     * @returns `true`, if this item model overrides the default model in player's hand.
      */
     overridesHand(): boolean;
 
     /**
-     * @returns true, if this item model overrides the default model in player's inventory
+     * @returns `true`, if this item model overrides the default model in player's inventory.
      */
     overridesUi(): boolean;
 

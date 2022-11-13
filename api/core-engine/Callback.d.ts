@@ -97,7 +97,7 @@ declare namespace Callback {
     function addCallback(name: "GenerateChunk", func: GenerateChunkFunction, priority?: number): void;
 
     /**
-     * @deprecated
+     * @deprecated Use "GenerateChunk" with condition instead.
      */
     function addCallback(name: "GenerateChunkUnderground", func: GenerateChunkFunction, priority?: number): void;
 
@@ -268,8 +268,8 @@ declare namespace Callback {
 
     /**
      * Function used in "DimensionLoaded" callback
-     * @param dimension vanilla dimension id, one of the {@link EDimension}
-     * values, or custom dimension id
+     * @param dimension vanilla dimension ID, one of the {@link EDimension}
+     * values, or custom dimension ID
      */
     interface DimensionLoadedFunction {
         (dimension: number): void
@@ -280,7 +280,7 @@ declare namespace Callback {
      * @param coords coordinates where the block is destroyed and side from
      * where it is destroyed
      * @param block block that is destroyed
-     * @param player player entity unique numeric id
+     * @param player player entity unique numeric ID
      */
     interface DestroyBlockFunction {
         (coords: ItemUseCoordinates, block: Tile, player: number): void
@@ -302,7 +302,7 @@ declare namespace Callback {
      * @param coords coordinates where the block is placed and side from
      * where it is placed
      * @param block block that is placed
-     * @param player player entity unique numeric id
+     * @param player player entity unique numeric ID
      */
     interface BuildBlockFunction {
         (coords: ItemUseCoordinates, block: Tile, player: number): void
@@ -351,7 +351,7 @@ declare namespace Callback {
      * @param params additional explosion data
      * @param params.power explosion power
      * @param params.entity if explosion is produced by an entity, entity unique
-     * id, -1 otherwise
+     * ID, -1 otherwise
      * @param onFire if true, explosion produced the fire
      * @param someBool some boolean value
      * @param someFloat some floating point value
@@ -400,8 +400,8 @@ declare namespace Callback {
 
     /**
      * Function used in "PlayerAttack" callback
-     * @param attacker player entity unique id
-     * @param victim attacked entity unique id
+     * @param attacker player entity unique ID
+     * @param victim attacked entity unique ID
      */
     interface PlayerAttackFunction {
         (attacker: number, victim: number): void
@@ -409,7 +409,7 @@ declare namespace Callback {
 
     /**
      * Function used in "EntityAdded" callback
-     * @param entity entity unique id
+     * @param entity entity unique ID
      */
     interface EntityAddedFunction {
         (entity: number): void
@@ -417,7 +417,7 @@ declare namespace Callback {
 
     /**
      * Function used in "EntityRemoved" callback
-     * @param entity entity unique id
+     * @param entity entity unique ID
      */
     interface EntityRemovedFunction {
         (entity: number): void
@@ -427,8 +427,8 @@ declare namespace Callback {
      * Function used in "EntityDeath" callback
      * @param entity entity that is dead
      * @param attacker if the entity was killed by another entity, attacker's 
-     * entity unique id, -1 otherwise
-     * @param damageType damage source id
+     * entity unique ID, -1 otherwise
+     * @param damageType damage source ID
      */
     interface EntityDeathFunction {
         (entity: number, attacker: number, damageType: number): void
@@ -437,10 +437,10 @@ declare namespace Callback {
     /**
      * Function used in "EntityHurt" callback
      * @param attacker if an entity was hurt by another entity, attacker's 
-     * unique id, -1 otherwise
+     * unique ID, -1 otherwise
      * @param entity entity that is hurt
      * @param damageValue amount of damage produced to entity
-     * @param damageType damage source id
+     * @param damageType damage source ID
      * @param someBool1 some boolean value
      * @param someBool2 some boolean value
      */
@@ -450,8 +450,8 @@ declare namespace Callback {
 
     /**
      * Function used in "EntityInteract" callback
-     * @param entity entity unique id
-     * @param player player entity unique id
+     * @param entity entity unique ID
+     * @param player player entity unique ID
      */
     interface EntityInteractFunction {
         (entity: number, player: number, coords: Vector): void
@@ -495,8 +495,8 @@ declare namespace Callback {
      * Function used in "ItemIconOverride" callback
      * @param item information about item that is used in override function
      * @param isModUi whether icon override is working in mod ui or in vanilla one
-     * @returns void if used in callback, {@link Item.TextureData} if used in item 
-     * override function to return texture that will be used for the item
+     * @returns Nothing if used in callback, {@link Item.TextureData} if used in item 
+     * override function to return texture that will be used for the item.
      */
     interface ItemIconOverrideFunction {
         (item: ItemInstance, isModUi: boolean): void | Item.TextureData
@@ -507,8 +507,8 @@ declare namespace Callback {
      * @param item information about item that is used in override function
      * @param translation translated item name
      * @param name original item name
-     * @returns void if used in callback, string if used in item override 
-     * function to return new name that will be displayed
+     * @returns Nothing if used in callback, string if used in item override 
+     * function to return new name that will be displayed.
      */
     interface ItemNameOverrideFunction {
         (item: ItemInstance, translation: string, name: string): void | string;
@@ -547,7 +547,7 @@ declare namespace Callback {
      * and `vec` are the coords for the item to be dropped at
      * @param item item that was dispensed
      * @param region BlockSource object
-     * @param slot numeric id of the slot from which the item was dispensed
+     * @param slot numeric ID of the slot from which the item was dispensed
      */
     interface ItemDispensedFunction {
         (coords: Callback.ItemUseCoordinates, item: ItemInstance, region: BlockSource, slot: number): void
@@ -572,7 +572,7 @@ declare namespace Callback {
      * coordinates
      * @param random java.util.Random object that should be used for generation
      * process. Already seeded by appropriate values
-     * @param dimensionId current dimension's numeric id
+     * @param dimensionId current dimension's numeric ID
      * @param chunkSeed chunk-specific seed to use in chunk random generation
      * @param chunkSeed world-specific seed to use in chunk generation
      * @param dimensionSeed dimension-specific seed to use in chunk generation
@@ -603,7 +603,7 @@ declare namespace Callback {
 
 	/**
      * Function used in "ServerPlayerTick" callback
-     * @param playerUid player entity unique id
+     * @param playerUid player entity unique ID
      * @param isPlayerDead is following player dead
      */
     interface ServerPlayerTickFunction {
@@ -613,8 +613,8 @@ declare namespace Callback {
     /**
      * Function used in "CustomDimensionTransfer" callback
      * @param entity entity that was transferred between dimensions
-     * @param from id of the dimension the entity was transferred from
-     * @param to id of the dimension the entity was transferred to
+     * @param from ID of the dimension the entity was transferred from
+     * @param to ID of the dimension the entity was transferred to
      */
     interface CustomDimensionTransferFunction {
     	(entity: number, from: number, to: number): void
@@ -664,7 +664,7 @@ declare namespace Callback {
 
     /**
      * Function used in "ServerPlayerLoaded" and "ServerPlayerLeft" callback
-     * @param player unique id of the player entity, that has been connected to server
+     * @param player unique ID of the player entity, that has been connected to server
      */
     interface PlayerFunction {
         (player: number): void
@@ -694,7 +694,7 @@ declare namespace Callback {
          */
         z: number,
         /**
-         * If an entity was hit, entity unique id, -1 otherwise
+         * If an entity was hit, entity unique ID, `-1` otherwise
          */
         entity: number,
         /**

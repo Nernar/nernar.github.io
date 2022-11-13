@@ -9,7 +9,7 @@ declare module com {
                                 static class: java.lang.Class<UIWindowGroup>;
                                 closeOnBackPressed: boolean;
                                 /**
-                                 * Removes window from group by its name
+                                 * Removes window from group by it's name
                                  * @param name window name
                                  */
                                 removeWindow(name: string): void;
@@ -24,39 +24,39 @@ declare module com {
                                  * group
                                  * @param name window name
                                  * @param content window description object
-                                 * @returns created {@link Window} object
+                                 * @returns Created {@link Window} object.
                                  */
                                 addWindow(name: string, content: WindowContent): UIWindow;
                                 /**
                                  * @param name window name
-                                 * @returns window from the group by its name or null if no window with 
-                                 * such a name was added
+                                 * @returns Window from the group by it's name or null if no window with 
+                                 * such a name was added.
                                  */
                                 getWindow(name: string): UIWindow;
                                 /**
                                  * @param name window name
-                                 * @returns window's description object if a window with specified name 
-                                 * exists or null otherwise
+                                 * @returns Window's description object if a window with specified name 
+                                 * exists or null otherwise.
                                  */
                                 getWindowContent(name: string): Nullable<WindowContent>;
                                 /**
-                                 * Sets content for the window by its name
+                                 * Sets content for the window by it's name
                                  * @param name window name
                                  * @param content content object
                                  */
                                 setWindowContent(name: string, content: WindowContent): void;
                                 /**
-                                 * @returns collection object containing all the
-                                 * {@link UI.Window|UI.Windows} in the group
+                                 * @returns Collection object containing all the
+                                 * {@link UI.Window|UI.Windows} in the group.
                                  */
                                 getAllWindows(): java.util.Collection<UIWindow>;
                                 /**
-                                 * @returns collection object containing string names of the 
-                                 * windows in the group
+                                 * @returns Collection object containing string names of the 
+                                 * windows in the group.
                                  */
                                 getWindowNames(): java.util.Collection<string>;
                                 /**
-                                 * Forces window refresh by its name
+                                 * Forces window refresh by it's name
                                  * @param name name of the window to refresh
                                  */
                                 refreshWindow(name: string): void;
@@ -84,30 +84,30 @@ declare module com {
                                  */
                                 frame(time: number): void;
                                 /**
-                                 * @returns true if the window is opened, false otherwise
+                                 * @returns `true` if the window is opened, false otherwise.
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * @returns true if the window has an inventory that should be updated
+                                 * @returns `true` if the window has an inventory that should be updated.
                                  */
                                 isInventoryNeeded(): boolean;
                                 /**
-                                 * @returns true if the window can change its contents position
+                                 * @returns `true` if the window can change it's contents position.
                                  */
                                 isDynamic(): boolean;
                                 /**
                                  * Gets all the elements in the window
-                                 * @returns hashes containing string element name
-                                 * as keys and element instances as values
+                                 * @returns Hashes containing string element name
+                                 * as keys and element instances as values.
                                  */
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
                                 /**
-                                 * @returns null for {@link UIWindowGroup}
+                                 * @returns `null` for {@link UIWindowGroup}.
                                  * */
                                 getContent(): Nullable<WindowContent>;
                                 /**
-                                 * @returns currently {@link UI.Container}
-                                 * that was used to open this window or null, if the window wasn't opened in container
+                                 * @returns Currently {@link UI.Container}
+                                 * that was used to open this window or null, if the window wasn't opened in container.
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
@@ -128,7 +128,7 @@ declare module com {
                                 setStyle(style: types.UIStyle): void;
                                 setStyle(style: types.BindingSet): void;
                                 /**
-                                 * @returns object containing current style of the window
+                                 * @returns Object containing current style of the window.
                                  */
                                 getStyle(): types.UIStyle;
                                 setBlockingBackground(bb: boolean): void;
@@ -153,7 +153,7 @@ declare module com {
                                  */
                                 setCloseOnBackPressed(val: boolean): void;
                                 /**
-                                 * @returns whether the window group can be closed on pressing back navigation button
+                                 * @returns Whether the window group can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
                             }

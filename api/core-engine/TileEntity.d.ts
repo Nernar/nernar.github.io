@@ -5,62 +5,66 @@
 declare namespace TileEntity {
     /**
      * Registers block as a TileEntity
-     * @param blockID numeric block id to be used
+     * @param blockID numeric block ID to be used
      * @param customPrototype a set of defining parameters
      * behavior
      */
     function registerPrototype(blockID: number, customPrototype: TileEntityPrototype): void;
 
     /**
-     * @returns prototype by its numeric block id
+     * @returns Prototype by it's numeric block ID.
      */
     function getPrototype(blockID: number): TileEntityPrototype;
 
     /**
-     * @param blockID numeric block id
-     * @returns true if the specified numeric block id is a {@link TileEntity}
-     * block id, false otherwise
+     * @param blockID numeric block ID
+     * @returns `true` if the specified numeric block ID is a {@link TileEntity}
+     * block ID, `false` otherwise.
      */
     function isTileEntityBlock(blockID: number): boolean;
 
     /**
-     * @returns a {@link TileEntity} on the specified coordinates or null if the block on the
-     * coordinates is not it
+     * @returns A {@link TileEntity} on the specified coordinates or `null` if the block on the
+     * coordinates is not it.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
      * If the block on the specified coordinates is a TileEntity block and is
      * not initialized, initializes it and returns created {@link TileEntity} object
-     * @returns tile if one was created, null otherwise
+     * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
-     * Destroys {@link TileEntity}, dropping its container
-     * @returns true if the it was destroyed successfully, false
-     * otherwise
+     * Destroys {@link TileEntity}, dropping it's container
+     * @returns `true` if the it was destroyed successfully, `false`
+     * otherwise.
      */
     function destroyTileEntity(tileEntity: TileEntity): boolean;
 
     /**
      * If the block on the specified coordinates is a {@link TileEntity}, destroys
-     * it, dropping its container
-     * @returns true if the it was destroyed successfully, false
-     * otherwise
+     * it, dropping it's container
+     * @returns `true` if the it was destroyed successfully, `false`
+     * otherwise.
      */
     function destroyTileEntityAtCoords(x: number, y: number, z: number, region?: BlockSource): boolean;
 
     /**
      * Checks whether the {@link TileEntity} is in the loaded chunk or not
      * @param tileEntity to be verified
-     * @returns true if the chunk with TileEntity and some of the surrounding
-     * chunks are loaded, false otherwise. The following chunks are verified:
+     * @returns `true` if the chunk with TileEntity and some of the surrounding
+     * chunks are loaded, `false` otherwise.
+     * @remarks
+     * The following chunks are verified:
+     * ```text
      *  + +
      *   #
      *  + +
-     * Where "#"" is the chunk containing the current TileEntity and "+" are
-     * the chunks that are also verified
+     * ```
+     * Where "#" is the chunk containing the current TileEntity and "+" are
+     * the chunks that are also verified.
      */
     function isTileEntityLoaded(tileEntity: TileEntity): boolean;
 
@@ -162,9 +166,9 @@ declare namespace TileEntity {
 
         /**
          * Called when player uses some item on a {@link TileEntity}
-         * @returns true if the event is handled and should not be propagated to
-         * the next handlers. E.g. return true if you don't want the user interface
-         * to be opened
+         * @returns `true` if the event is handled and should not be propagated to
+         * the next handlers. Return `true` if you don't want the user interface
+         * to be opened.
          */
         click?: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: ItemExtraData) => boolean | void,
 
@@ -188,7 +192,7 @@ declare namespace TileEntity {
 
         /**
          * Occurs when the {@link TileEntity} is being destroyed
-         * @returns true to prevent
+         * @returns `true` to prevent it.
          * {@link TileEntity} object from destroying (but if the block was destroyed, returning
          * true from this function doesn't replace the missing block with a new one)
          */
@@ -197,7 +201,7 @@ declare namespace TileEntity {
         /**
          * Called to get the {@link UI.IWindow} object for the current {@link TileEntity}. The
          * window is then opened within {@link TileEntity.container} when the player clicks it
-		 * @deprecated Don't use in multiplayer
+		 * @deprecated Client method only.
          */
 		getGuiScreen?: () => com.zhekasmirnov.innercore.api.mod.ui.window.IWindow;
 
@@ -226,15 +230,15 @@ declare namespace TileEntity {
 
 declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
-     * X coord of the TileEntity in its dimension
+     * X coord of the TileEntity in it's dimension
      */
     readonly x: number,
     /**
-     * Y coord of the TileEntity in its dimension
+     * Y coord of the TileEntity in it's dimension
      */
     readonly y: number,
     /**
-     * Z coord of the TileEntity in its dimension
+     * Z coord of the TileEntity in it's dimension
      */
     readonly z: number,
     /**
@@ -242,7 +246,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     readonly dimension: number,
     /**
-     * block id of TileEntity
+     * block ID of TileEntity
      */
     readonly blockID: number,
     /**

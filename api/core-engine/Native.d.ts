@@ -1,31 +1,35 @@
 /**
  * Module containing enums that can make user code more readable
- * @deprecated 2.2.1b89, use enums instead
+ * @deprecated Consider specified sub-enum to determine which
+ * rellocation must be used.
  */
 declare namespace Native {
     /**
-     * Defines armor type and armor slot index in player's inventory
+     * Defines armor type and armor slot index in player's inventory.
+     * @deprecated Use {@link EArmorType} instead.
      */
     enum ArmorType {
         boots = 3,
         chestplate = 1,
         helmet = 0,
-        leggings = 2,
+        leggings = 2
     }
 
     /**
-     * Defines item category in creative inventory
+     * Defines item category in creative inventory.
+     * @deprecated Use {@link EItemCategory} instead.
      */
     enum ItemCategory {
         DECORATION = 2,
         FOOD = 4,
         INTERNAL = 0,
         MATERIAL = 1,
-        TOOL = 3,
+        TOOL = 3
     }
 
     /**
-     * Defines all existing vanilla particles
+     * Defines all existing vanilla particles.
+     * @deprecated Use {@link EParticleType} instead.
      */
     enum ParticleType {
         angryVillager = 32,
@@ -60,11 +64,12 @@ declare namespace Native {
         splash = 22,
         suspendedTown = 19,
         terrain = 16,
-        waterWake = 31,
+        waterWake = 31
     }
 
     /**
-     * Defines text colors and font styles for chat and tip messages
+     * Defines text colors and font styles for chat and tip messages.
+     * @deprecated Use {@link EColor} instead.
      */
     enum Color {
         AQUA = "§b",
@@ -89,11 +94,12 @@ declare namespace Native {
         STRIKETHROUGH = "§m",
         UNDERLINE = "§n",
         WHITE = "§f",
-        YELLOW = "§e",
+        YELLOW = "§e"
     }
 
     /**
-     * Defines all vanilla entity type ids
+     * Defines all vanilla entity type IDs.
+     * @deprecated Use {@link EEntityType} instead.
      */
     enum EntityType {
         AREA_EFFECT_CLOUD = 95,
@@ -196,11 +202,12 @@ declare namespace Native {
         ZOMBIE = 32,
         ZOMBIE_HORSE = 27,
         ZOMBIE_VILLAGER = 44,
-        ZOMBIE_VILLAGE_V2 = 116,
+        ZOMBIE_VILLAGE_V2 = 116
     }
 
     /**
-     * Defines vanilla mob render types
+     * Defines vanilla mob render types.
+     * @deprecated Use {@link EMobRenderType} instead.
      */
     enum MobRenderType {
         arrow = 25,
@@ -249,11 +256,12 @@ declare namespace Native {
         witch = 47,
         wolf = 11,
         zombie = 14,
-        zombiePigman = 15,
+        zombiePigman = 15
     }
 
     /**
-     * Defines vanilla potion effects
+     * Defines vanilla potion effects.
+     * @deprecated Use {@link EPotionEffect} instead.
      */
     enum PotionEffect {
         absorption = 22,
@@ -284,28 +292,31 @@ declare namespace Native {
         village_hero = 29,
         waterBreathing = 13,
         weakness = 18,
-        wither = 20,
+        wither = 20
     }
 
     /**
-     * Defines the three dimensions currently available for player 
+     * Defines the three dimensions currently available for player.
+     * @deprecated Use {@link EDimension} instead.
      */
     enum Dimension {
         END = 2,
         NETHER = 1,
-        NORMAL = 0,
+        NORMAL = 0
     }
 
     /**
-     * Defines item animation types
+     * Defines item animation types.
+     * @deprecated Use {@link EItemAnimation} instead.
      */
     enum ItemAnimation {
         bow = 4,
-        normal = 0,
+        normal = 0
     }
 
     /**
-     * Defines numeric representation for each block side
+     * Defines numeric representation for each block side.
+     * @deprecated Use {@link EBlockSide} instead.
      */
     enum BlockSide {
         DOWN = 0,
@@ -313,11 +324,12 @@ declare namespace Native {
         NORTH = 2,
         SOUTH = 3,
         UP = 1,
-        WEST = 4,
+        WEST = 4
     }
 
     /**
-     * Defines numeric ids of all vanilla enchantments
+     * Defines numeric IDs of all vanilla enchantments.
+     * @deprecated Use {@link EEnchantment} instead.
      */
     enum Enchantment {
         AQUA_AFFINITY = 7,
@@ -352,12 +364,13 @@ declare namespace Native {
         SMITE = 10,
         THORNS = 5,
         UNBREAKING = 17,
-        VANISHING_CURSE = 28,
+        VANISHING_CURSE = 28
     }
 
     /**
      * Defines what enchantments can or cannot be applied to every instrument 
-     * type
+     * type.
+     * @deprecated Use {@link EEnchantType} instead.
      */
     enum EnchantType {
         all = 16383,
@@ -374,11 +387,12 @@ declare namespace Native {
         pickaxe = 1024,
         shears = 128,
         shovel = 2048,
-        weapon = 16,
+        weapon = 16
     }
 
     /**
-     * Defines possible render layers (display methods) for blocks
+     * Defines possible render layers (display methods) for blocks.
+     * @deprecated Use {@link EBlockRenderLayer} instead.
      */
     enum BlockRenderLayer {
         alpha = 4099,
@@ -391,31 +405,34 @@ declare namespace Native {
         opaque_seasons = 1,
         seasons_far = 10,
         seasons_far_alpha = 11,
-        water = 7,
+        water = 7
     }
 
     /**
-     * Defines possible game difficulty
+     * Defines possible game difficulty.
+     * @deprecated Use {@link EGameDifficulty} instead.
      */
     enum GameDifficulty {
         PEACEFUL = 0,
         EASY = 1,
         NORMAL = 2,
-        HARD = 3,
+        HARD = 3
     }
 
     /**
-     * Defines possible game modes
+     * Defines possible game modes.
+     * @deprecated Use {@link EGameMode} instead.
      */
     enum GameMode {
         SURVIVAL = 0,
         CREATIVE = 1,
         ADVENTURE = 2,
-        SPECTATOR = 3,
+        SPECTATOR = 3
     }
 
     /**
-     * Defines player's abilities. See {@page Abilities} for details
+     * Defines player's abilities. See {@page Abilities} for details.
+     * @deprecated Use {@link EPlayerAbility} instead.
      */
     enum PlayerAbility {
         INVULNERABLE = "invulnerable",
@@ -438,6 +455,9 @@ declare namespace Native {
         TELEPORT = "teleport"
     }
 
+    /**
+     * @deprecated Use {@link ETileEntityType} instead.
+     */
     enum TileEntityType {
         NONE = -1,
         BEACON = 21,
@@ -451,6 +471,9 @@ declare namespace Native {
         LECTERN = 37
     }
 
+    /**
+     * @deprecated Use {@link ENbtDataType} instead.
+     */
     enum NbtDataType {
         END_TAG = 0,
         BYTE = 1,

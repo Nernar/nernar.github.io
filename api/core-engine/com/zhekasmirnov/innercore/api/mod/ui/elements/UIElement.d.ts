@@ -31,7 +31,7 @@ declare module com {
                             export type BitmapTypes = string | string[] | android.graphics.Bitmap | android.graphics.Bitmap[];
                             /**
                              * There are 12 types of UI elements given by Inner Core, and you can also create your custom ones.
-                             * Each element type has its own specific description object.
+                             * Each element type has it's own specific description object.
                              * These description objects are all inherited from this {@link BasicElementDescription}.
                              * It means that each element must have coords on the GUI by X, Y, and additionally Z axis,
                              * and also you can specify how the element will behave when touched, in clicker object (optional).
@@ -94,13 +94,13 @@ declare module com {
                                 setBinding<T=any>(bindingName: string, value: T): void;
                                 /**
                                  * Gets any value from the element
-                                 * @param bindingName binding name, you can access the value from the 
-                                 * element by this name. Some binding names are reserved for additional
-                                 * element information, e.g. "element_obj" contains pointer to the
-                                 * current object and "element_rect" contains {@link android.graphics.Rect} 
-                                 * object containing drawing rectangle 
-                                 * @returns value that was get from the element or null if the element 
-                                 * doesn't exist
+                                 * @param name binding name, you can access the value from the 
+                                 * element by this name; some binding names are reserved for additional
+                                 * element information, e.g. `"element_obj"` contains pointer to the
+                                 * current object and `"element_rect"` contains {@link android.graphics.Rect} 
+                                 * object containing drawing rectangle
+                                 * @returns Value that was get from the element or `null` if the element 
+                                 * doesn't exist.
                                  */
                                 getBinding<T=any>(name: string): UIElement | android.graphics.Rect | T;
                                 setupInitialBindings(container: container.UiAbstractContainer, elementName: string): void;

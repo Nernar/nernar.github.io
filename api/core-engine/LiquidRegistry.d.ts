@@ -49,16 +49,17 @@ declare namespace LiquidRegistry {
     }
 
     /**
-     * @returns string id of a liquid for given block,
-     * or null, if a block with given id is not a liquid
+     * @returns String ID of a liquid for given block,
+     * or `null`, if a block with given ID is not a liquid.
      */
     function getLiquidByBlock(id: number): Nullable<string>;
 
     /**
-     * @returns numeric id of the liquid block by given {@link LiquidRegistry} string id.
-     * If `isStatic` param is passed and it is true, the static liquid block id will be returned,
-     * otherwise the dynamic block id will be returned.
-     * This function will return 0 if no liquid with given string id exists
+     * @param isStatic static liquid block ID will be returned, otherwise
+     * the dynamic block ID will be returned
+     * @returns Numeric ID of the liquid block by given {@link LiquidRegistry} string ID.
+     * @remarks
+     * This function will return `0` if no liquid with given string ID exists.
      */
     function getBlockByLiquid(liquidId: string, isStatic?: boolean): number;
 

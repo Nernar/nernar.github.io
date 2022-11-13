@@ -24,7 +24,7 @@ declare namespace Animation {
         setInterpolationEnabled(enabled: boolean): void;
 
         /**
-         * @deprecated use {@link setBlockLightPos} and related methods instead
+         * @deprecated Use {@link setBlockLightPos} and related methods instead.
          */
         setIgnoreBlocklight(ignore: boolean): void;
 
@@ -36,7 +36,7 @@ declare namespace Animation {
         setBlockLightPos(x: number, y: number, z: number): void;
 
         /**
-         * Resets light measuring position for the animation (to its coordinates)
+         * Resets light measuring position for the animation (to it's coordinates)
          */
         resetBlockLightPos(): void;
 
@@ -57,13 +57,12 @@ declare namespace Animation {
         setIgnoreLightMode(): void;
 
         /**
-         * @returns object for current animation's render
+         * @returns Object for current animation's render.
          */
         transform(): Render.Transform;
 
         /**
-         * @returns object for current animation's 
-         * render
+         * @returns Object for current animation's render.
          */
         getShaderUniforms(): ShaderUniformSet;
 
@@ -108,7 +107,7 @@ declare namespace Animation {
         loadCustom(func: () => void): void;
 
         /**
-         * @deprecated always returns 0
+         * @deprecated Backwards compatibility, render doesn't have attributes.
          */
         getAge(): void;
 
@@ -129,7 +128,7 @@ declare namespace Animation {
              */
             mesh?: RenderMesh,
             /**
-             * Numeric id of the {@link Render} object to be displayed with animation.
+             * Numeric ID of the {@link Render} object to be displayed with animation.
              * Can be obtained using {@link Render.getId}
              */
             render?: number,
@@ -149,7 +148,8 @@ declare namespace Animation {
         }): void;
 
         /**
-         * @deprecated
+         * @deprecated Backwards compatibility, returned thing
+         * considered as deprecated long ago.
          */
         getRenderAPI(base: any): any;
 
@@ -174,7 +174,7 @@ declare namespace Animation {
          */
         describeItem(item: {
             /**
-             * Item id
+             * Item ID
              */
             id: number,
 
@@ -230,13 +230,12 @@ declare namespace Animation {
         }): void;
 
         /**
-         * Same as {@link Item.describeItem}
-         * @deprecated consider using {@link Item.describeItem} instead
+         * @deprecated Consider using {@link describeItem} instead.
          */
         describeItemDefault(item: any): void;
 
         /**
-         * @deprecated use {@link Item.describeItem} instead
+         * @deprecated Consider using {@link describeItem} instead.
          */
         describeItemAlternative(item: any, offset: any): void;
 

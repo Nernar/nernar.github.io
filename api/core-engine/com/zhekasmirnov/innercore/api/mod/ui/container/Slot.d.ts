@@ -21,7 +21,10 @@ declare module com {
                                 put(name: string, prop: any): void;
                                 getInt(name: string): number;
                                 validate(): void;
-                                /** @deprecated */ drop(x: number, y: number, z: number): void;
+                                /**
+                                 * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
+                                 */
+                                drop(x: number, y: number, z: number): void;
                                 getTarget(): ItemInstance;
                                 getId(): number; getCount(): number; getData(): number;
                                 getExtraValue(): number;

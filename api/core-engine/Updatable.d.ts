@@ -18,19 +18,19 @@ declare namespace Updatable {
     function addLocalUpdatable(obj: Updatable): any;
 
     /**
-     * @returns java.util.ArrayList instance containing all defined 
-     * {@link Updatable} objects
+     * @returns ArrayList instance containing all defined 
+     * {@link Updatable} objects.
      */
     function getAll(): java.util.ArrayList<Updatable>;
 
     /**
-     * @returns current thread tick number
+     * @returns Current thread tick number.
      */
     function getSyncTime(): number;
 }
 
 /**
- * Updatable is an object that is notified every tick via its 
+ * Updatable is an object that is notified every tick via it's 
  * {@link Updatable.update} method call
  */
 interface Updatable {

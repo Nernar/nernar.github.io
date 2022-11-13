@@ -31,7 +31,7 @@ declare namespace Saver {
      * Registers object as scope saver
      * @param name saves scope name
      * @param saver object that implements {@link Saver.ScopeSaver} interface and 
-     * can be loaded and saved via its functions calls
+     * can be loaded and saved via it's functions calls
      */
     function registerScopeSaver(name: string, saver: any): ScopeSaver;
 
@@ -47,7 +47,7 @@ declare namespace Saver {
      */
     type SaveScopeFunc =
         /**
-         * @returns saved data
+         * @returns Data to be saved.
          */
         () => object;
 

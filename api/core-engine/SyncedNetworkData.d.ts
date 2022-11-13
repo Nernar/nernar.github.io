@@ -3,27 +3,27 @@
  */
 declare class SyncedNetworkData {
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getInt(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getLong(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getFloat(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getDouble(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getString(key: any, fallback?: string): string;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getBoolean(key: any, fallback?: boolean): boolean;
     /**

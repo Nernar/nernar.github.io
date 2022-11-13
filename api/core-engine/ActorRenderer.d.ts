@@ -1,6 +1,6 @@
 /**
  * Class, upon which armor and attachments render is based
- * It is a model that consists of parts, same as in deprecated {@link Render},
+ * It is a model that consists of parts, same as in {@link Render},
  * but more abstract, allows creating root parts instead of
  * inheritance from old humanoid model
  */

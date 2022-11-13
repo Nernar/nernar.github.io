@@ -18,13 +18,13 @@ declare namespace Translation {
      * Translates string from English to current game language (if available). 
      * Add translations via {@link Translation.addTranslation} to apply them 
      * @param name default string in English or name key
-     * @returns string in the current game language or input string if 
-     * translation is not available
+     * @returns String in the current game language or input string if 
+     * translation is not available.
      */
     function translate(name: string): string;
 
     /**
-     * @returns two-letter language code for current game language
+     * @returns Two-letter language code for current game language.
      */
     function getLanguage(): string;
 }

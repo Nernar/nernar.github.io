@@ -8,7 +8,7 @@
  */
 declare namespace NBT {
     /**
-     * List tags represent NBT map-like data structure (key-value pairs). Its values may
+     * List tags represent NBT map-like data structure (key-value pairs). it's values may
      * be of any type, so check the type before calling the appropriate getter
      */
     class CompoundTag {
@@ -24,96 +24,96 @@ declare namespace NBT {
 
         /**
          * Converts compound tag to JavaScript object for easier reading
-         * @returns valid JavaScript representation of compound tag
+         * @returns Valid JavaScript representation of compound tag.
          */
         toScriptable(): { [key: string]: any };
 
         /**
-         * @returns Java-array containing all the keys of the compound tag
+         * @returns Java-array containing all the keys of the compound tag.
          */
         getAllKeys(): native.Array<string>;
 
         /**
-         * @returns true if specified key exists in compound tag
+         * @returns `true` if specified key exists in compound tag.
          */
         contains(key: string): boolean;
 
         /**
          * @param key key to verify for the type
          * @param type tag type to verify for, one of the {@link ENbtDataType} constants
-         * @returns true if specified key exists in compound tag and its value is
-         * of specified type
+         * @returns `true` if specified key exists in compound tag and it's value is
+         * of specified type.
          */
         containsValueOfType(key: string, type: number): boolean;
 
         /**
-         * @returns value type for the specified key. One of the {@link ENbtDataType} 
-         * constants
+         * @returns Value type for the specified key. One of the {@link ENbtDataType} 
+         * constants.
          */
         getValueType(key: string): number;
 
         /**
-         * @returns NBT tag of byte type by its key
+         * @returns NBT tag of byte type by it's key.
          */
         getByte(key: string): number;
 
         /**
-         * @returns NBT tag of short type by its key
+         * @returns NBT tag of short type by it's key.
          */
         getShort(key: string): number;
 
         /**
-         * @returns NBT tag of 32-bit integer type by its key
+         * @returns NBT tag of 32-bit integer type by it's key.
          */
         getInt(key: string): number;
 
         /**
-         * @returns NBT tag of 64-bit integer type by its key
+         * @returns NBT tag of 64-bit integer type by it's key.
          */
         getInt64(key: string): number;
 
         /**
-         * @returns NBT tag of float type by its key
+         * @returns NBT tag of float type by it's key.
          */
         getFloat(key: string): number;
 
         /**
-         * @returns NBT tag of double type by its key
+         * @returns NBT tag of double type by it's key.
          */
         getDouble(key: string): number;
 
         /**
-         * @returns NBT tag of string type by its key
+         * @returns NBT tag of string type by it's key.
          */
         getString(key: string): string;
 
         /**
-         * @returns NBT tag of compound type by its key. Note that a copy of 
+         * @returns NBT tag of compound type by it's key. Note that a copy of 
          * existing compound tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly
+         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly.
          */
         getCompoundTag(key: string): NBT.CompoundTag;
 
         /**
-         * @returns directly editable NBT tag of byte type by its key. Don't save
+         * @returns Directly editable NBT tag of byte type by it's key. Don't save
          * reference for future usage since they get destroyed when the parent 
-         * object is destroyed
+         * object is destroyed.
          */
         getCompoundTagNoClone(key: string): NBT.CompoundTag;
 
         /**
-         * @returns NBT tag of list type by its key. Note that a copy of 
+         * @returns NBT tag of list type by it's key. Note that a copy of 
          * existing list tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getListTagNoClone} to edit it directly
+         * {@link CompoundTag.getListTagNoClone} to edit it directly.
          */
         getListTag(key: string): NBT.ListTag;
 
         /**
-         * @returns directly editable NBT tag of byte type by its key. Don't save
+         * @returns Directly editable NBT tag of byte type by it's key. Don't save
          * reference for future usage since they get destroyed when the parent 
-         * object is destroyed
+         * object is destroyed.
          */
         getListTagNoClone(key: string): NBT.ListTag;
 
@@ -163,7 +163,7 @@ declare namespace NBT {
         putListTag(key: string, value: ListTag): void;
 
         /**
-         * Removes tag by its key
+         * Removes tag by it's key
          */
         remove(key: string): void;
 
@@ -175,7 +175,7 @@ declare namespace NBT {
 
 
     /**
-     * List tags represent NBT array-like indexed data structure. Its values may
+     * List tags represent NBT array-like indexed data structure. it's values may
      * be of any type, so check the type before calling the appropriate getter
      */
     class ListTag {
@@ -191,83 +191,83 @@ declare namespace NBT {
 
         /**
          * Converts list tag to JavaScript object for easier reading
-         * @returns valid JavaScript representation of list tag
+         * @returns Valid JavaScript representation of list tag.
          */
         toScriptable(): any[];
 
         /**
-         * @returns count of the tags in the list tag
+         * @returns Count of the tags in the list tag.
          */
         length(): number;
 
         /**
-         * @returns value type for the specified index. One of the {@link ENbtDataType} 
-         * constants
+         * @returns Value type for the specified index. One of the {@link ENbtDataType} 
+         * constants.
          */
         getValueType(index: number): number;
 
         /**
-         * @returns NBT tag of byte type by its index
+         * @returns NBT tag of byte type by it's index.
          */
         getByte(index: number): number;
 
         /**
-         * @returns NBT tag of short type by its index
+         * @returns NBT tag of short type by it's index.
          */
         getShort(index: number): number;
 
         /**
-         * @returns NBT tag of 32-bit integer type by its index
+         * @returns NBT tag of 32-bit integer type by it's index.
          */
         getInt(index: number): number;
 
         /**
-         * @returns NBT tag of 64-bit integer type by its index
+         * @returns NBT tag of 64-bit integer type by it's index.
          */
         getInt64(index: number): number;
 
         /**
-         * @returns NBT tag of float type by its index
+         * @returns NBT tag of float type by it's index.
          */
         getFloat(index: number): number;
 
         /**
-         * @returns NBT tag of double type by its index
+         * @returns NBT tag of double type by it's index.
          */
         getDouble(index: number): number;
 
         /**
-         * @returns NBT tag of string type by its index
+         * @returns NBT tag of string type by it's index.
          */
         getString(index: number): string;
 
         /**
-         * @returns NBT tag of compound type by its index. Note that a copy of 
+         * @returns NBT tag of compound type by it's index. Note that a copy of 
          * existing compound tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly
+         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly.
          */
         getCompoundTag(index: number): NBT.CompoundTag;
 
         /**
-         * @returns directly editable NBT tag of byte type by its index. Don't save
+         * @returns Directly editable NBT tag of byte type by it's index. Don't save
          * reference for future usage since they get destroyed when the parent 
-         * object is destroyed
+         * object is destroyed.
          */
         getCompoundTagNoClone(index: number): NBT.CompoundTag;
 
         /**
-         * @returns NBT tag of list type by its index. Note that a copy of 
+         * @returns NBT tag of list type by it's index. Note that a copy of 
          * existing list tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getListTagNoClone} to edit it directly
+         * {@link CompoundTag.getListTagNoClone} to edit it directly.
          */
         getListTag(index: number): NBT.ListTag;
 
         /**
-         * @returns directly editable NBT tag of byte type by its index. Don't save
+         * @returns Directly editable NBT tag of byte type by it's index. Don't save
          * reference for future usage since they get destroyed when the parent 
-         * object is destroyed
+         * object is destroyed.
          */
         getListTagNoClone(index: number): NBT.ListTag;
 

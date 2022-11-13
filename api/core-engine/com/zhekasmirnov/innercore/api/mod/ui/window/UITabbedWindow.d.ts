@@ -18,19 +18,19 @@ declare module com {
                                  */
                                 setLocation(location: UIWindowLocation): void;
                                 /**
-                                 * @returns tab content window width in units
+                                 * @returns Tab content window width in units.
                                  */
                                 getInnerWindowWidth(): number;
                                 /**
-                                 * @returns tab content window height in units
+                                 * @returns Tab content window height in units.
                                  */
                                 getInnerWindowHeight(): number;
                                 /**
-                                 * @returns tab selector window width in units
+                                 * @returns Tab selector window width in units.
                                  */
                                 getWindowTabSize(): number;
                                 /**
-                                 * @returns tab selector window width in global units
+                                 * @returns Tab selector window width in global units.
                                  */
                                 getGlobalTabSize(): number;
                                 /**
@@ -71,9 +71,9 @@ declare module com {
                                 setFakeTab(index: number, tabOverlay: UI.ElementSet): void;
                                 /**
                                  * @param index index of the tab
-                                 * @returns new {@link UI.Window} instance
+                                 * @returns New {@link UI.Window} instance
                                  * created for the specified tab or null if
-                                 * no window was created for specified window
+                                 * no window was created for specified window.
                                  */
                                 getWindowForTab(index: number): Nullable<UIWindow>;
                                 open(): void;
@@ -100,9 +100,9 @@ declare module com {
                                  */
                                 setBlockingBackground(b: boolean): void;
                                 /**
-                                 * @returns current default tab index. If no default tab was specified 
+                                 * @returns Current default tab index. If no default tab was specified 
                                  * via {@link UI.TabbedWindow.setDefaultTab},
-                                 * the first tab added becomes default
+                                 * the first tab added becomes default.
                                  */
                                 getDefaultTab(): number;
                                 /**

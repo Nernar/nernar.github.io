@@ -7,17 +7,17 @@ declare class PlayerActor {
     constructor(playerUid: number);
 
     /**
-     * @returns player's unique numeric entity id
+     * @returns Player's unique numeric entity ID.
      */
     getUid(): number;
 
     /**
-     * @returns the id of dimension where player is.
+     * @returns ID of dimension where player is.
      */
     getDimension(): number;
 
     /**
-     * @returns player's gamemode.
+     * @returns Player's gamemode.
      */
     getGameMode(): number;
 
@@ -28,7 +28,7 @@ declare class PlayerActor {
     addItemToInventory(id: number, count: number, data: number, extra: ItemExtraData | null, dropRemaining: boolean): void;
 
     /**
-     * @returns inventory slot's contents.
+     * @returns Inventory slot's contents.
      */
     getInventorySlot(slot: number): ItemInstance;
 
@@ -38,7 +38,7 @@ declare class PlayerActor {
     setInventorySlot(slot: number, id: number, count: number, data: number, extra: ItemExtraData | null): void;
 
     /**
-     * @returns armor slot's contents.
+     * @returns Armor slot's contents.
      */
     getArmor(slot: number): ItemInstance;
 
@@ -59,12 +59,12 @@ declare class PlayerActor {
     spawnExpOrbs(x: number, y: number, z: number, value: number): void;
 
     /**
-     * @returns whether the player is a valid entity.
+     * @returns Whether the player is a valid entity.
      */
     isValid(): boolean;
 
     /**
-     * @returns player's selected slot.
+     * @returns Player's selected slot.
      */
     getSelectedSlot(): number;
 
@@ -74,7 +74,7 @@ declare class PlayerActor {
     setSelectedSlot(slot: number): void;
 
     /**
-     * @returns player's experience.
+     * @returns Player's experience.
      */
     getExperience(): number;
 
@@ -89,7 +89,7 @@ declare class PlayerActor {
     addExperience(amount: number): void;
 
     /**
-     * @returns player's xp level.
+     * @returns Player's xp level.
      */
     getLevel(): number;
 
@@ -99,7 +99,7 @@ declare class PlayerActor {
     setLevel(level: number): void;
 
     /**
-     * @returns player's exhaustion.
+     * @returns Player's exhaustion.
      */
     getExhaustion(): number;
 
@@ -109,7 +109,7 @@ declare class PlayerActor {
     setExhaustion(value: number): void;
 
     /**
-     * @returns player's hunger.
+     * @returns Player's hunger.
      */
     getHunger(): number;
 
@@ -119,7 +119,7 @@ declare class PlayerActor {
     setHunger(value: number): void;
 
     /**
-     * @returns player's saturation.
+     * @returns Player's saturation.
      */
     getSaturation(): number;
 
@@ -129,7 +129,7 @@ declare class PlayerActor {
     setSaturation(value: number): void;
 
     /**
-     * @returns player's score.
+     * @returns Player's score.
      */
     getScore(): number;
 

@@ -1,94 +1,94 @@
 /**
- * Module that allows to work with current Minecraft world
- * Most of the methods are out of date in multiplayer, use BlockSource instead
+ * Module that allows to work with current Minecraft world.
+ * Most of the methods are client, use BlockSource instead.
  */
 declare namespace World {
     /**
      * Setups the module to work properly with the world. Usually called by 
-     * Core Engine, so you generally shouldn't call it yourself
+     * Core Engine, so you generally shouldn't call it yourself.
      * @param isLoaded whether the world is loaded or not
+     * @internal
      */
     function setLoaded(isLoaded: boolean): boolean;
 
     /**
-     * @returns whether the world is loaded or not
+     * @returns Whether the world is loaded or not.
      */
     function isWorldLoaded(): boolean;
 
     /**
-     * @returns current tick number since the player joined the world
+     * @returns Tick number since the player joined the world.
      */
 	function getThreadTime(): number;
 
 	/**
 	 * @param side number from 0 to 6 (exclusive)
-     * @returns opposite side to argument
+     * @returns Opposite side to argument.
      */
     function getInverseBlockSide(side: number): number;
 
     /**
      * @param side block side
-     * @returns normal vector for this side
+     * @returns Normalized vector for this side.
      */
     function getVectorByBlockSide(side: number): Vector;
 
     /**
-     * Retrieves coordinates relative to the block. For example, the following code
-     * will return coordinates of the block above the specified:
-     * ```ts
-     * World.getRelativeCoords(x, y, z, EBlockSide.UP);
-     * ```
+     * Retrieves coordinates relative to the block.
      * @param side block side
-     * @returns relative coordinates
+     * @returns Relative coordinates.
+     * @example
+     * // return coordinates of the block above the specified
+     * World.getRelativeCoords(x, y, z, EBlockSide.UP);
      */
     function getRelativeCoords(x: number, y: number, z: number, side: number): Vector;
 
     /**
-     * Sets block in the world using its tile id and data
-     * @param id block tile id
+     * Sets block in the world using it's tile ID and data
+     * @param id block tile ID
      * @param data block data
-     * @deprecated Consider using {@link World.setBlock} instead
+     * @deprecated Consider using {@link World.setBlock} instead.
      */
     function nativeSetBlock(x: number, y: number, z: number, id: number, data: number): void;
 
     /**
-     * @returns tile id of the block located on the specified coordinates
-     * @deprecated Consider using {@link World.getBlockID} instead
+     * @returns Tile ID of the block located on the specified coordinates.
+     * @deprecated Consider using {@link World.getBlockID} instead.
      */
     function nativeGetBlockID(x: number, y: number, z: number): number;
 
     /**
-     * @returns data of the block located on the specified coordinates 
-     * @deprecated Consider using {@link World.getBlockData} instead
+     * @returns Data of the block located on the specified coordinates.
+     * @deprecated Consider using {@link World.getBlockData} instead.
      */
     function nativeGetBlockData(x: number, y: number, z: number): number;
 
     /**
-     * Sets block in the world using its tile id and data
-     * @param id block tile id
+     * Sets block in the world using it's tile ID and data
+     * @param id block tile ID
      * @param data block data
      */
     function setBlock(x: number, y: number, z: number, id: number, data: number): void;
 
     /**
      * Sets block in the world using specified {@link Tile} object
-     * @param fullTile object containing id and data of the tile
+     * @param fullTile object containing ID and data of the tile
      */
     function setFullBlock(x: number, y: number, z: number, fullTile: Tile): void;
 
     /**
-     * @returns tile object containing tile id and data of the block located 
+     * @returns Tile object containing tile ID and data of the block located.
      * on the specified coordinates
      */
     function getBlock(x: number, y: number, z: number): Tile;
 
     /**
-     * @returns tile id of the block located on the specified coordinates
+     * @returns Tile ID of the block located on the specified coordinates.
      */
     function getBlockID(x: number, y: number, z: number): number;
 
     /**
-     * @returns data of the block located on the specified coordinates
+     * @returns Data of the block located on the specified coordinates.
      */
     function getBlockData(x: number, y: number, z: number): number;
 
@@ -101,15 +101,15 @@ declare namespace World {
     function destroyBlock(x: number, y: number, z: number, drop?: boolean): void;
 
     /**
-     * @returns light level on the specified coordinates, from 0 to 15
-     * @deprecated Out of date in multiplayer
+     * @returns Light level on the specified coordinates, from 0 to 15.
+     * @deprecated Client method only.
      */
     function getLightLevel(x: number, y: number, z: number): number;
 
     /**
      * @param x chunk coordinate
      * @param z chunk coordinate
-     * @returns whether the chunk with specified coordinates is loaded or not
+     * @returns Whether the chunk with specified coordinates is loaded or not.
      */
     function isChunkLoaded(x: number, z: number): boolean;
 
@@ -117,46 +117,48 @@ declare namespace World {
      * @param x block coordinate
      * @param y block coordinate
      * @param z block coordinate
-     * @returns whether the chunk containing specified block coordinates is 
-     * loaded or not
+     * @returns Whether the chunk containing specified block coordinates is 
+     * loaded or not.
      */
     function isChunkLoadedAt(x: number, y: number, z: number): boolean;
 
     /**
-     * @returns {@link TileEntity} located on the specified coordinates
+     * @returns Requested {@link TileEntity} located on the specified coordinates
+     * or `null` if it doesn't.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
      * If the block on the specified coordinates is a TileEntity block and is 
      * not initialized, initializes it and returns created {@link TileEntity} object
-     * @returns tile if one was created, null otherwise
+     * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
      * If the block on the specified coordinates is a {@link TileEntity}, destroys 
-     * it, dropping its container
-     * @returns true if the tile was destroyed successfully, false 
-     * otherwise
+     * it, dropping it's container
+     * @returns `true` if the tile was destroyed successfully, `false` 
+     * otherwise.
      */
     function removeTileEntity(x: number, y: number, z: number, region?: BlockSource): boolean;
 
     /**
-     * @returns if the block on the specified coordinates is a {@link TileEntity}, returns
-     * its container, if the block is a {@link NativeTileEntity}, returns it, if 
-     * none of above, returns null
 	 * @param region BlockSource
+     * @returns If the block on the specified coordinates is a {@link TileEntity}, returns
+     * it's container, if the block is a {@link NativeTileEntity}, returns it, if 
+     * none of above, returns `null`.
      */
     function getContainer(x: number, y: number, z: number, region?: BlockSource): Nullable<NativeTileEntity | UI.Container | ItemContainer>;
 
     /**
-     * @returns current world's time in ticks 
+     * @returns Current client world's time in ticks.
      */
     function getWorldTime(): number;
 
     /**
-     * Sets current world time
+     * Sets current world time, does actually nothing
+     * useful to game itself, changes thread time.
      * @param time time in ticks
      */
     function setWorldTime(time: number): number;
@@ -164,34 +166,34 @@ declare namespace World {
     /**
      * Sets current time to day or night
      * @param day if true, sets time to 10000 (day), else to 13000 (night)
-     * @deprecated Consider using {@link World.setWorldTime} instead
+     * @deprecated Consider using {@link World.setWorldTime} instead.
      */
     function setDayMode(day: boolean): void;
 
     /**
      * Sets current time to day or night
-     * @param day if true, sets time to 13000 (night), else to 10000 (day)
-     * @deprecated Consider using {@link World.setWorldTime} instead
+     * @param night if true, sets time to 13000 (night), else to 10000 (day)
+     * @deprecated Consider using {@link World.setWorldTime} instead.
      */
     function setNightMode(night: boolean): void;
 
     /**
-     * @returns current weather object. This value should not be edited, call 
-     * {@link World.setWeather} to change current weather
+     * @returns Current weather object. This value should not be edited, call 
+     * {@link World.setWeather} to change current weather.
      */
     function getWeather(): Weather;
 
     /**
-     * Sets current weather in the world
+     * Sets current weather in the world.
      * @param weather {@link Weather} object to be used as current weather value
      */
     function setWeather(weather: Weather): void;
 
     /**
-     * Drops item or block with specified id, count, data and extra on the
-     * specified coordinates. For blocks, be sure to use block id, not the tile
-     * id
-     * @returns created drop entity id
+     * Drops item or block with specified ID, count, data and extra on the
+     * specified coordinates. For blocks, be sure to use block ID, not the tile
+     * ID
+     * @returns Spawned drop entity ID.
      */
     function drop(x: number, y: number, z: number, id: number, count: number, data: number, extra?: ItemExtraData): number;
 
@@ -204,54 +206,55 @@ declare namespace World {
     function explode(x: number, y: number, z: number, power: number, fire: boolean): void;
 
     /**
-     * @returns biome id on the specified coordinates
+     * @returns Biome ID on the specified coordinates.
      */
     function getBiome(x: number, z: number): number;
 
     /**
-     * @returns biome name on the specified coordinates
-     * @deprecated This method will return "Unknown" for all the biomes
+     * @returns Biome name on the specified coordinates.
+     * @deprecated This method will return `"Unknown"` for all the biomes.
      */
     function getBiomeName(x: number, z: number): string;
 
     /**
-     * @returns grass color for specified coordinates, uses android integer
-     * color model
+     * @returns Grass color for specified coordinates, uses android integer
+     * color model.
      */
     function getGrassColor(x: number, z: number): number;
 
     /**
      * Sets grass color on the specified coordinates, uses android integer color
-     * model
+     * model.
      * @param color grass color to be set for the specified coordinates
      */
     function setGrassColor(x: number, z: number, color: number): void;
 
     /**
-     * @returns grass color for specified coordinates, uses rgb color model
+     * @returns Grass color for specified coordinates, uses rgb color model.
      */
     function getGrassColorRGB(x: number, z: number): Color;
 
     /**
-     * Sets grass color on the specified coordinates, uses rgb color model
-     * @param color grass color to be set for the specified coordinates
+     * Sets grass color on the specified coordinates, uses rgb color model.
+     * @param rgb grass color to be set for the specified coordinates
      */
     function setGrassColorRGB(x: number, z: number, rgb: Color): void;
 
     /**
-     * @returns true, if one can see sky from the specified position, false 
-     * otherwise
-	 * @deprecated Out of date in multiplayer
+     * @returns `true`, if one can see sky from the specified position, `false`
+     * otherwise.
+	 * @deprecated Client only method.
      */
     function canSeeSky(x: number, y: number, z: number): boolean;
 
     /**
-     * @returns true, if tile can be replaced (for example, grass and water can be replaced), false otherwise
+     * @returns `true`, if tile can be replaced (for example, grass (not block) and
+     * water can be replaced), `false` otherwise
      */
     function canTileBeReplaced(id: number, data: number): boolean;
 
     /**
-     * Plays standart Minecraft sound on the specified coordinates
+     * Plays standart Minecraft sound on the specified coordinates.
      * @param name sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
@@ -267,21 +270,21 @@ declare namespace World {
     function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
 
     /**
-     * Enables "BlockChanged" event for the block id. Event occurs when either
+     * Enables "BlockChanged" event for the block ID. Event occurs when either
      * old block or new block is registered using this method
-     * @param id numeric tile id
+     * @param id numeric tile ID
      * @param enabled if true, the block will be watched
      */
     function setBlockChangeCallbackEnabled(id: number, enabled: boolean): void;
 
     /**
-     * Enables "BlockChanged" event for specified block ids and registers 
-     * callback function for the ids
-     * @param ids string or numeric tile id, or an array of string and/or 
-     * numeric tile ids
+     * Enables "BlockChanged" event for specified block IDs and registers 
+     * callback function for the IDs
+     * @param ids string or numeric tile ID, or an array of string and/or 
+     * numeric tile IDs
      * @param callback function that will be called when "BlockChanged" callback 
      * occurs involving one of the blocks. **Warning!** If both old and new 
-     * blocks are in the ids list, callback function will be called twice.
+     * blocks are in the IDs list, callback function will be called twice.
      */
     function registerBlockChangeCallback(ids: number | string | (string | number)[], callback: Callback.BlockChangedFunction): void;
 
@@ -290,7 +293,7 @@ declare namespace World {
      * Should be called only in *GenerateBiomeMap* callback
      * @param x block x coordinate
      * @param z block y coordinate
-     * @returns biome's numeric id
+     * @returns Biome's numeric ID.
      */
     function getBiomeMap(x: number, z: number): number;
 
@@ -299,7 +302,7 @@ declare namespace World {
      * Should be called only in *GenerateBiomeMap* callback
      * @param x block x coordinate
      * @param z block y coordinate
-     * @param id biome id to be set on the specified coordinates
+     * @param id biome ID to be set on the specified coordinates
      */
     function setBiomeMap(x: number, z: number, id: number): void;
 

@@ -32,12 +32,12 @@ declare module com {
                                  */
                                 addBinding(key: string, name: string): void;
                                 /**
-                                 * Gets texture binding bt its name. Searches first in the additional 
-                                 * styles, then in the current style, then in all its parents
+                                 * Gets texture binding bt it's name. Searches first in the additional 
+                                 * styles, then in the current style, then in all it's parents
                                  * @param key binding name
                                  * @param fallback value to return on binding failure
-                                 * @returns gui texture name if current object, additional styles or one 
-                                 * of the parents contains such a binding name, fallback otherwise. 
+                                 * @returns Ui texture name if current object, additional styles or one 
+                                 * of the parents contains such a binding name, fallback otherwise.
                                  */
                                 getBinding(key: string, fallback: string): string;
                                 /**
@@ -56,8 +56,8 @@ declare module com {
                                  */
                                 constructor(bindings: BindingSet);
                                 /**
-                                 * @returns a copy of the current style. Only style bindings of the 
-                                 * current style are copied, no parent/additional styles are copied
+                                 * @returns A copy of the current style. Only style bindings of the 
+                                 * current style are copied, no parent/additional styles are copied.
                                  */
                                 copy(): UIStyle;
                                 /**
@@ -70,8 +70,8 @@ declare module com {
                                  */
                                 addAllBindings(bindings: BindingSet): void;
                                 /**
-                                 * @returns collection containing all binding names
-                                 * from the current style object
+                                 * @returns Collection containing all binding names
+                                 * from the current style object.
                                  */
                                 getAllBindingNames(): java.util.Collection<string>;
                                 /**

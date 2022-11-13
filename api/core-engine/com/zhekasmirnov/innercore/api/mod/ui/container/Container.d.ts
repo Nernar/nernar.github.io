@@ -54,19 +54,19 @@ declare module com {
                                  */
                                 getParent(): Nullable<TileEntity> | any;
                                 /**
-                                 * Gets the slot by its name. If a slot with specified name doesn't 
+                                 * Gets the slot by it's name. If a slot with specified name doesn't 
                                  * exists, creates an empty one with specified name
                                  * @param name slot name
-                                 * @returns contents of the slot in a {@link UI.Slot} object.
-                                 * You can modify it to change the contents of the slot
+                                 * @returns Contents of the slot in a {@link UI.Slot} object.
+                                 * You can modify it to change the contents of the slot.
                                  */
                                 getSlot(name: string): Slot;
                                 /**
-                                 * Gets the slot by its name. If a slot with specified name doesn't 
+                                 * Gets the slot by it's name. If a slot with specified name doesn't 
                                  * exists, creates an empty one with specified name
                                  * @param name slot name
-                                 * @returns contents of the slot in a FullSlot object containing 
-                                 * more useful methods for slot manipulation
+                                 * @returns Contents of the slot in a FullSlot object containing 
+                                 * more useful methods for slot manipulation.
                                  */
                                 getFullSlot(name: string): Slot;
                                 getSlotVisualImpl(name: string): UiVisualSlotImpl;
@@ -74,22 +74,22 @@ declare module com {
                                 handleSlotToSlotTransaction(from: string, to: string, amount: number): void;
                                 handleSlotToInventoryTransaction(slotName: string, amount: number): void;
                                 /**
-                                 * Set slot's content by its name. If a slot with specified name doesn't 
+                                 * Set slot's content by it's name. If a slot with specified name doesn't 
                                  * exists, creates an empty one with specified name and item
                                  * @param name slot name
                                  */
                                 setSlot(name: string, id: number, count: number, data: number): void;
                                 /**
-                                 * Set slot's content by its name. If a slot with specified name doesn't 
+                                 * Set slot's content by it's name. If a slot with specified name doesn't 
                                  * exists, creates new with specified name and item
                                  * @param name slot name
                                  * @param extra item extra value. Note that it should be an instance of
-                                 * {@link ItemExtraData} and not its numeric id
+                                 * {@link ItemExtraData} and not it's numeric ID
                                  */
                                 setSlot(name: string, id: number, count: number, data: number, extra: Nullable<NativeItemInstanceExtra>): void;
                                 /**
                                  * Validates slot contents. If the data value is less then 0, it becomes
-                                 * 0, if id is 0 or count is less then or equals to zero, slot is reset 
+                                 * 0, if ID is 0 or count is less then or equals to zero, slot is reset 
                                  * to an empty one
                                  * @param name slot name
                                  */
@@ -103,13 +103,13 @@ declare module com {
                                  * Drops slot's contents on the specified coordinates
                                  * and clears the slot
                                  * @param name slot name
-                                 * @deprecated doesn't make sense in multiplayer
+                                 * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
                                  */
                                 dropSlot(name: string, x: number, y: number, z: number): void;
                                 /**
                                  * Drops the contents of all the slots in the container on the specified
                                  * coordinates and clears them
-                                 * @deprecated doesn't make sense in multiplayer
+                                 * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
                                  */
                                 dropAt(x: number, y: number, z: number): void;
                                 /**
@@ -117,8 +117,8 @@ declare module com {
                                  */
                                 validateAll(): void;
                                 /**
-                                 * @returns currently opened {@link UI.IWindow}
-                                 * or null if no window is currently opened in the container
+                                 * @returns Currently opened {@link UI.IWindow}
+                                 * or `null` if no window is currently opened in the container.
                                  */
                                 getWindow(): window.IWindow;
                                 _addElement(element: elements.UIElement, name: string): void;
@@ -145,7 +145,7 @@ declare module com {
                                 setOnCloseListener(listener: Container.OnCloseListener | OnOpenCloseListenerJS): void;
                                 onWindowClosed(): void;
                                 /**
-                                 * @returns true, if some window is opened in the container
+                                 * @returns `true`, if some window is opened in the container.
                                  */
                                 isOpened(): boolean;
                                 /**
@@ -153,12 +153,12 @@ declare module com {
                                  */
                                 getGuiScreen(): window.IWindow;
                                 /**
-                                 * @returns window's content object (usually specified in the window's 
-                                 * constructor) if a window was opened in the container, null otherwise
+                                 * @returns Window's content object (usually specified in the window's 
+                                 * constructor) if a window was opened in the container, `null` otherwise.
                                  */
                                 getGuiContent(): Nullable<window.WindowContent>;
                                 /**
-                                 * @returns window's element by its name
+                                 * @returns Window's element by it's name.
                                  * @param name element name
                                  */
                                 getElement(name: string): Nullable<elements.UIElement>;
@@ -178,8 +178,8 @@ declare module com {
                                  * element information, e.g. "element_obj" contains pointer to the
                                  * current object and "element_rect" contains android.graphics.Rect 
                                  * object containing drawing rectangle 
-                                 * @returns value that was get from the element or null if the element 
-                                 * doesn't exist
+                                 * @returns Value that was get from the element or `null` if the
+                                 * element doesn't exist.
                                  */
                                 getBinding<T=any>(elementName: string, bindingName: string): elements.UIElement | android.graphics.Rect | T | null;
                                 handleBindingDirty(): void;
@@ -192,12 +192,12 @@ declare module com {
                                 setScale(name: string, value: number): void;
                                 /**
                                  * @param name element name
-                                 * @returns "value" binding value, e.g. scale value, or null if no 
-                                 * element with specified name exist
+                                 * @returns Value "value" binding, e.g. scale value, or `null` if no 
+                                 * element with specified name exist.
                                  */
                                 getValue(name: string): Nullable<number>;
                                 /**
-                                 * Sets "text" binding value for the element. Used to set element's text
+                                 * Sets "text" binding value for the element. Used to set element's text.
                                  * @param name element name
                                  * @param value value to be set for the element
                                  */
@@ -205,13 +205,13 @@ declare module com {
                                 /**
                                  * 
                                  * @param name element name
-                                 * @returns "text" binding value, usually the text displayed on the 
-                                 * element, or null if no element with specified name exist
+                                 * @returns Value "text" binding, usually the text displayed on the 
+                                 * element, or `null` if no element with specified name exist.
                                  */
                                 getText(name: string): Nullable<string>;
                                 /**
                                  * @param name element name
-                                 * @returns true if the element is currently touched
+                                 * @returns `true` if the element is currently hovered.
                                  */
                                 isElementTouched(name: string): boolean;
                                 /**
@@ -241,8 +241,14 @@ declare module com {
                                  */
                                 invalidateUI(onCurrentThread: boolean): void;
                                 invalidateUI(): void;
-                                /** @deprecated no longer supported */ refreshSlots(): void;
-                                /** @deprecated no longer supported */ applyChanges(): void;
+                                /**
+                                 * @deprecated Backwards compatibility.
+                                 */
+                                refreshSlots(): void;
+                                /**
+                                 * @deprecated Backwards compatibility.
+                                 */
+                                applyChanges(): void;
                                 /**
                                  * If the container is a custom workbench, you can set the slot prefix
                                  * via this method call. {@link UI.Container.getFieldSlot}
@@ -252,15 +258,15 @@ declare module com {
                                 setWbSlotNamePrefix(wbsnp: string): void;
                                 /**
                                  * @param slot slot index
-                                 * @returns workbench slot instance by slot index
+                                 * @returns Workbench slot instance by slot index.
                                  */
                                 getFieldSlot(slot: number): Slot;
                                 /**
-                                 * @returns js array of all slots
+                                 * @returns JS array of all slots.
                                  */
                                 asScriptableField(): Slot[];
                                 /**
-                                 * @returns false if container supports multiplayer, true otherwise
+                                 * @returns `false` if container supports multiplayer, `true` otherwise.
                                  */
                                 isLegacyContainer(): boolean;
                             }

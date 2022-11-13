@@ -49,7 +49,7 @@ declare namespace ToolAPI {
 
     /**
      * Registers item as a tool
-     * @param id numeric item id
+     * @param id numeric item ID
      * @param toolMaterial registered tool material name or tool material object
      * used to register the tool
      * @param blockMaterials block material names that can be broken by this 
@@ -60,7 +60,7 @@ declare namespace ToolAPI {
 
     /**
      * Registers item as a sword
-     * @param id numeric item id
+     * @param id numeric item ID
      * @param toolMaterial registered tool material name or tool material object
      * used to register the sword
      * @param params additional tool parameters
@@ -69,7 +69,7 @@ declare namespace ToolAPI {
 
     /**
      * Registers material and digging level for the specified block
-     * @param uid numeric tile id
+     * @param uid numeric tile ID
      * @param materialName material name
      * @param level block's digging level
      * @param isNative used to mark vanilla blocks data. Generally used within 
@@ -81,7 +81,7 @@ declare namespace ToolAPI {
     /**
      * Sets digging level for block. If digging level of tool is higher then 
      * block's one, the block is dropped
-     * @param uid numeric tile id
+     * @param uid numeric tile ID
      * @param level block's digging level
      */
     function registerBlockDiggingLevel(uid: number, level: number): void;
@@ -89,7 +89,7 @@ declare namespace ToolAPI {
     /**
      * Registers material and digging level for the specified blocks
      * @param materialName material name
-     * @param UIDs an array of numeric tiles ids 
+     * @param UIDs an array of numeric tiles IDs 
      * @param isNative used to mark vanilla blocks data. Generally used within 
      * Core Engine code and should not be used within mods until you really 
      * know what you're doing
@@ -97,36 +97,36 @@ declare namespace ToolAPI {
     function registerBlockMaterialAsArray(materialName: string, UIDs: number[], isNative: boolean): void;
 
     /** 
-     * @deprecated No longer supported
+     * @deprecated Backwards compatibility.
      */
     function refresh(): void;
 
     /**
-     * @param blockID numeric tile id
-     * @returns object containing ToolAPI block data or undefined if no block 
-     * data was specified for this block
+     * @param blockID numeric tile ID
+     * @returns Object containing ToolAPI block data or undefined if no block 
+     * data was specified for this block.
      */
     function getBlockData(blockID: number): BlockData | undefined;
 
     /**
-     * @param blockID numeric tile id
-     * @returns object containing block material information or null, if no 
-     * block data was specified for this block
+     * @param blockID numeric tile ID
+     * @returns Object containing block material information or `null`, if no 
+     * block data was specified for this block.
      */
     function getBlockMaterial(blockID: number): Nullable<BlockMaterial>;
 
     /**
-     * @param blockID numeric tile id
-     * @returns destroy level of the block with specified id or 0, if no block 
-     * data was specified for this block
+     * @param blockID numeric tile ID
+     * @returns Destroy level of the block with specified ID or `0`, if no block 
+     * data was specified for this block.
      */
     function getBlockDestroyLevel(blockID: number): number;
 
     /**
      * @param extra item extra instance, if not specified, method uses carried
      * item's extra
-     * @returns enchant data object, containing enchants used for blocks
-     * destroy speed calculations
+     * @returns Enchant data object, containing enchants used for blocks
+     * destroy speed calculations.
      */
     function getEnchantExtraData(extra?: ItemExtraData): EnchantData;
 
@@ -147,35 +147,35 @@ declare namespace ToolAPI {
     function getDestroyTimeViaTool(fullBlock: Tile, toolItem: ItemInstance, coords: Callback.ItemUseCoordinates, ignoreNative?: boolean): number;
 
     /**
-     * @param itemID numeric item id
-     * @returns tool information stored in slightly modified 
-     * {@link ToolAPI.ToolParams} object or null if no tool data was specified
+     * @param itemID numeric item ID
+     * @returns Tool information stored in slightly modified
+     * {@link ToolAPI.ToolParams} object or null if no tool data was specified.
      */
     function getToolData(itemID: number): Nullable<ToolParams>;
 
     /**
-     * @param itemID numeric item id
-     * @returns tool's breaking level or 0 if no tool data was provided
+     * @param itemID numeric item ID
+     * @returns Tool's breaking level or 0 if no tool data was provided.
      */
     function getToolLevel(itemID: number): number;
 
     /**
-     * @param itemID numeric item id
-     * @param blockID numeric tile id
-     * @returns digging level if specified tool can mine specified block, 0 if
+     * @param itemID numeric item ID
+     * @param blockID numeric tile ID
+     * @returns Digging level if specified tool can mine specified block, `0` if
      * data for the tool or for the block was not specified or if specified tool
-     * cannot mine specified block
+     * cannot mine specified block.
      */
     function getToolLevelViaBlock(itemID: number, blockID: number): number;
 
     /**
-     * @returns carried tool information stored in slightly modified 
-     * {@link ToolAPI.ToolParams} object or null if no tool data was specified
+     * @returns Carried tool information stored in slightly modified
+     * {@link ToolAPI.ToolParams} object or null if no tool data was specified.
      */
     function getCarriedToolData(): any;
 
     /**
-     * @returns carried tool's breaking level or 0 if no tool data was provided
+     * @returns Carried tool's breaking level or `0` if no tool data was provided.
      */
     function getCarriedToolLevel(): number;
 
@@ -201,8 +201,7 @@ declare namespace ToolAPI {
     function dropOreExp(coords: Vector, minVal: number, maxVal: number, modifier: number): void;
 
     /**
-     * @param blockID numeric tile id
-     * @returns 
+     * @param blockID numeric tile ID
      */
     function getBlockMaterialName(blockID: number): Nullable<string>;
 
@@ -287,7 +286,7 @@ declare namespace ToolAPI {
      */
     interface ToolParams {
         /**
-         * Numeric id of the item that replaces tool item when it's broken. 
+         * Numeric ID of the item that replaces tool item when it's broken. 
          * By default it is 0 (the tool disappears)
          */
         brokenId?: number,
@@ -338,17 +337,17 @@ declare namespace ToolAPI {
          * @param item tool item
          * @param coords coordinates where the block is destroyed
          * @param block the block that is destroyed
-         * @returns true if default damage should not be applied to the instrument,
-         * false otherwise
+         * @returns `true` if default damage should not be applied to the instrument,
+         * `false` otherwise.
          */
         onDestroy?: (item: ItemInstance, coords: Callback.ItemUseCoordinates, block: Tile, player: number) => boolean,
 
         /**
          * Function that is called when players attacks some entity with the tool
          * @param item tool item
-         * @param victim unique numeric id of the entity that is attacked
-         * @returns true if default damage should not be applied to the instrument,
-         * false otherwise
+         * @param victim unique numeric ID of the entity that is attacked
+         * @returns `true` if default damage should not be applied to the instrument,
+         * `false` otherwise.
          */
         onAttack?: (item: ItemInstance, victim: number, attacker: number) => boolean,
 
@@ -361,8 +360,8 @@ declare namespace ToolAPI {
         /**
          * Function that is called when the instrument is broken
          * @param item tool item
-         * @returns true if default breaking behavior (replacing by *brokenId* item) 
-         * should not be applied 
+         * @returns `true` if default breaking behavior (replacing by `brokenId` item) 
+         * should not be applied.
          */
         onBroke?: (item: ItemInstance) => boolean,
 

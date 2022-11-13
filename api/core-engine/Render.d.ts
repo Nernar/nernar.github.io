@@ -12,7 +12,7 @@ declare class Render {
     /**
      * Creates a new Render instance with specified parameters
      * @param parameters specifies all the 
-     * properties of the object. If it is a number, vanilla render id is used,
+     * properties of the object. If it is a number, vanilla render ID is used,
      * if it is a string, used as {@link RenderParameters.name} name property
      */
     constructor(parameters?: Render.RenderParameters | string | number);
@@ -20,7 +20,7 @@ declare class Render {
     /**
      * Specifies additional params for the following {@link Render}
      * @param params specifies all the 
-     * properties of the object. If it is a number, vanilla render id is used,
+     * properties of the object. If it is a number, vanilla render ID is used,
      * if it is a string, used as {@link RenderParameters.name} name property
      */
     init(params?: Render.RenderParameters | string | number): void
@@ -30,58 +30,57 @@ declare class Render {
     checkChangeable(): void;
 
     /** 
-     * @deprecated use {@link getId} instead
+     * @deprecated Use {@link getId} instead.
      */
     getID(): number;
 
     /**
-     * @returns render id that can be used to set render to the mob, animation 
-     * or block
+     * @returns Render identifier that can be used to set render to the mob, animation 
+     * or block.
      */
     getId(): number;
 
     /**
-     * @deprecated use {@link getId} instead
+     * @deprecated Use {@link getId} instead.
      */
     getRenderType(): number;
 
     /** 
-     * @returns render's model that defines its visual shape. 
+     * @returns Render's model that defines it's visual shape. 
      */
     getModel(): Render.Model;
 
     /**
-     * @returns transform object used to manipulate current render
+     * @returns Transform object used to manipulate current render.
      */
     transform(): Render.Transform;
 
     /** 
-     * @returns a part of the render by its full name. By default, there are six 
+     * @param partName full name of the part separated by "."
+     * @returns A part of the render by it's full name. By default, there are six 
      * parts available to the user. However, you can create your own parts that 
      * suit your needs and get them by their names.
-     * @param partName full name of the part separated by "."
-     * @returns part of the render with specified full name
      */
     getPart(partName: string): Render.ModelPart;
 
     /**
-     * Adds a part to the render by its full name. The part should be descendent 
+     * Adds a part to the render by it's full name. The part should be descendent 
      * of one of the six default parts, see {@link ModelPart} for details.
      * @param partName full name of the part separated by "."
      * @param partParams specifies all the parameters of the part
-     * @returns newly created part
+     * @returns Newly created part.
      */
     addPart(partName: string, partParams?: Render.PartParameters): Render.ModelPart;
 
     /**
-     * Sets all the properties of the part by its full name. 
+     * Sets all the properties of the part by it's full name. 
      * @param partName full name of the part separated by "."
      * @param partParams specifies all the parameters of the part
      */
     setPartParams(partName: string, partParams?: Render.PartParameters): void;
 
     /**
-     * Sets the content and all properties of the part by its full name.
+     * Sets the content and all properties of the part by it's full name.
      * @param name full name of the part separated by "."
      * @param data array of part data objects to be applied to the part
      * @param params specifies all the parameters of the part
@@ -98,7 +97,7 @@ declare class Render {
     saveToNext(name: string, isLocal: boolean): void;
 
     /**
-     * @deprecated
+     * @deprecated Does nothing, not required anymore.
      */
     setTextureResolution(...params: any): void;
 }
@@ -162,8 +161,8 @@ declare namespace Render {
         /**
          * Scales the render along all the three axes. Applicable only to the 
          * {@link Animation|Animation's} transformations
-         * @deprecated consider using {@link Transform.scale} instead
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
+         * @deprecated Consider using {@link Transform.scale} instead.
          */
         scaleLegacy(scale: number): Transform;
     }

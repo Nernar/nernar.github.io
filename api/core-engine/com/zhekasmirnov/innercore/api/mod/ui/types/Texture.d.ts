@@ -37,24 +37,24 @@ declare module com {
                                  */
                                 readOffset(obj: { x?: number, y?: number }): void;
                                 /**
-                                 * @returns frame number of the animation corresponding to current system time
+                                 * @returns Frame number of the animation corresponding to current system time.
                                  */
                                 getFrame(): number;
                                 /**
                                  * @param frame frame number
-                                 * @returns bitmap object containing animation frame 
-                                 * for the corresponding frame number
+                                 * @returns Bitmap object containing animation frame 
+                                 * for the corresponding frame number.
                                  */
                                 getBitmap(frame: number): android.graphics.Bitmap;
                                 getBitmapWrap(frame: number): memory.BitmapWrap;
                                 draw(canvas: android.graphics.Canvas, x: number, y: number, scale: number): void;
                                 drawCutout(canvas: android.graphics.Canvas, cutout: android.graphics.RectF, x: number, y: number, scale: number): void;
                                 /**
-                                 * @returns width of the texture in pixels
+                                 * @returns Width of the texture in pixels.
                                  */
                                 getWidth(): number;
                                 /**
-                                 * @returns height of the texture in pixels
+                                 * @returns Height of the texture in pixels.
                                  */
                                 getHeight(): number;
                                 /**

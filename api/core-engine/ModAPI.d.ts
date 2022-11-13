@@ -24,7 +24,7 @@ declare namespace ModAPI {
     function registerAPI(name: string, api: object, descr?: { name?: string, props?: object }): void;
 
     /**
-     * Gets API by its name. The best approach is to call this method in the
+     * Gets API by it's name. The best approach is to call this method in the
      * function passed as the second parameter of {@link ModAPI.addAPICallback}.
      * 
      * Example:
@@ -40,7 +40,7 @@ declare namespace ModAPI {
      * because Industrial Craft PE may not be installed on the user's phone
      * @param name API name
      * @returns API object if an API with specified was previously registered,
-     * null otherwise
+     * `null` otherwise.
      */
     function requireAPI(name: string): Nullable<object>;
 
@@ -53,7 +53,7 @@ declare namespace ModAPI {
 
     /**
      * @param name API name
-     * @returns documentation for the specified mod API
+     * @returns Documentation for the specified mod API.
      * @deprecated Writing documentation that way is not better.
      */
     function requireAPIdoc(name: string): ModDocumentation;
@@ -62,19 +62,19 @@ declare namespace ModAPI {
      * Fetches information about the method or property of mod API
      * @param name API name
      * @param prop property or method name
-     * @returns string description of the method or null if no description was
-     * provided by API vendor
+     * @returns String description of the method or null if no description was
+     * provided by API vendor.
      * @deprecated Writing documentation that way is not better.
      */
     function requireAPIPropertyDoc(name: string, prop: string): Nullable<string>;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function getModByName(modName: string): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function isModLoaded(modName: string): void;
 
@@ -90,22 +90,22 @@ declare namespace ModAPI {
         (api: object) => void): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function addModCallback(modName: string, func: any): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function getModList(): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function getModPEList(): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function addTexturePack(path: any): void;
 
@@ -113,7 +113,7 @@ declare namespace ModAPI {
      * Recursively copies (duplicates) the object to the new one
      * @param api an object to be copied
      * @param deep if true, copies the object recursively
-     * @returns a copy of the object
+     * @returns A copy of the object.
      */
     function cloneAPI(api: object, deep: boolean): object;
 
@@ -127,19 +127,19 @@ declare namespace ModAPI {
 
     /**
      * Recursively clones object to the new one counting call depth and 
-     * interrupting copying after 7th recursion call
+     * interrupting copying after 7th recursion call.
      * @param source an object to be cloned
      * @param deep if true, copies the object recursively
      * @param rec current recursion state, if > 6, recursion stops. Default 
      * value is 0
-     * @returns cloned object, all the properties that are less then then 8 in
-     * depth, get copied
+     * @returns Cloned object, all the properties that are less then then 8 in
+     * depth, get copied.
      */
     function cloneObject(source: any, deep: any, rec?: number): object;
 
     /**
-     * @returns same as {@link ModAPI.cloneObject}, but if call depth is more then
-     * 6, returns "stackoverflow" string value
+     * Same as {@link ModAPI.cloneObject}, but if call depth is more then
+     * 6, returns "stackoverflow" string value.
      */
     function debugCloneObject(source: any, deep: any, rec?: number): object | string;
 

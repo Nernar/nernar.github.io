@@ -5,26 +5,26 @@
  */
 declare interface NativeTileEntity {
     /**
-     * @returns native tile entity type constant, one of the {@link ETileEntityType}
-     * constants
+     * @returns NativeTileEntity type constant, one of the {@link ETileEntityType}
+     * constants.
      */
     getType(): number,
 
     /**
-     * @returns slots count for the specified native tile entity
+     * @returns Slots count for the specified NativeTileEntity.
      */
     getSize(): number,
 
     /**
      * @param slot slot number
-     * @returns item instance in the specified slot of item TE
+     * @returns Item instance in the specified slot of item TE.
      */
     getSlot(slot: number): ItemInstance,
 
     /**
      * Sets the contents of a native tile entity's slot
      * @param slot slot number
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra data
@@ -39,7 +39,7 @@ declare interface NativeTileEntity {
     setSlot(slot: number, item: ItemInstance): void;
 
     /**
-     * @returns compound tag associated with specified native tile entity
+     * @returns CompoundTag associated with specified native tile entity.
      */
     getCompoundTag(): NBT.CompoundTag;
 

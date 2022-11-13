@@ -47,12 +47,12 @@ interface LookAngle {
  */
 interface ItemInstance {
     /**
-     * Item id
+     * Item ID
      */
     id: number,
 
     /**
-     * Amount of items of the specified id
+     * Amount of items of the specified ID
      */
     count: number,
 
@@ -71,7 +71,7 @@ interface ItemInstance {
 }
 
 /**
- * Array of three or four elements representing item id, count, data and extra respectively. 
+ * Array of three or four elements representing item ID, count, data and extra respectively. 
  * Uses in block drop functions
  */
 type ItemInstanceArray = [number, number, number, ItemExtraData?];

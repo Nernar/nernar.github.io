@@ -6,13 +6,13 @@
 declare class CustomBiome {
 
     /**
-     * @returns object instance, with all custom
-     * biomes registered by every mod
+     * @returns Object instance, with all custom
+     * biomes registered by every mod.
      */
     static getAllCustomBiomes(): java.util.Map<String, CustomBiome>;
 
     /**
-     * @returns whether biome is invalid
+     * @returns Whether biome is invalid.
      */
     isInvalid(): boolean;
 
@@ -23,7 +23,7 @@ declare class CustomBiome {
     constructor(name: string);
 
     /**
-     * custom biome numeric id
+     * custom biome numeric ID
      */
     readonly id: number;
 
@@ -44,7 +44,7 @@ declare class CustomBiome {
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setGrassColor(r: number, g: number, b: number): CustomBiome;
 
@@ -52,7 +52,7 @@ declare class CustomBiome {
      * Sets biome's grass color. Grass color is interpolated on the bounds of 
      * the biome
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setGrassColor(color: number): CustomBiome;
 
@@ -61,14 +61,14 @@ declare class CustomBiome {
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSkyColor(r: number, g: number, b: number): CustomBiome;
 
     /**
      * Sets biome's sky color
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSkyColor(color: number): CustomBiome;
 
@@ -77,14 +77,14 @@ declare class CustomBiome {
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setFoliageColor(r: number, g: number, b: number): CustomBiome;
 
     /**
      * Sets biome's foliage color
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setFoliageColor(color: number): CustomBiome;
 
@@ -93,14 +93,14 @@ declare class CustomBiome {
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setWaterColor(r: number, g: number, b: number): CustomBiome;
 
     /**
      * Sets biome's water color
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setWaterColor(color: number): CustomBiome;
 
@@ -108,7 +108,7 @@ declare class CustomBiome {
      * Sets biome's temperature and downfall
      * @param temperature temperature value, from 0 to 1
      * @param downfall downfall value, from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setTemperatureAndDownfall(temperature: number, downfall: number): CustomBiome;
 
@@ -116,9 +116,9 @@ declare class CustomBiome {
      * Specifies the block that will cover the biome. E.g. most of the biomes 
      * use grass as cover block, though some of the biomes use other blocks 
      * (sand, ice, etc.)
-     * @param id block's tile id
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setCoverBlock(id: number, data: number): CustomBiome;
 
@@ -126,26 +126,26 @@ declare class CustomBiome {
      * Specifies the block that will be under the covering block of the biome. 
      * E.g. most of the biomes use dirt as cover block, 
      * though some of the biomes use other blocks
-     * @param id block's tile id
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSurfaceBlock(id: number, data: number): CustomBiome;
 
     /**
      * Sets the block that fills the terrain. Vanilla biomes use stone filling
-     * @param id block's tile id
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setFillingBlock(id: number, data: number): CustomBiome;
 
     /**
      * Sets the block that fills the floor at the bottom of the sea or the ocean.
      * Vanilla biomes use gravel or stone filling
-     * @param id block's tile id
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSeaFloorBlock(id: number, data: number): CustomBiome;
 
@@ -153,33 +153,34 @@ declare class CustomBiome {
      * Specifies the block that will cover the biome. E.g. most of the biomes 
      * use grass as cover block, though some of the biomes use other blocks 
      * (sand, ice, etc.)
-     * @param id block's tile id
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
-     * @deprecated use {@link CustomBiome.setSurfaceBlock} instead
+     * @returns Reference to itself to be used in sequential calls.
+     * @deprecated Use {@link setSurfaceBlock} instead.
      */
     setAdditionalBlock(id: number, data: number): CustomBiome;
 
     /**
      * Sets the average depth of the sea floor in this biome.
-     * @param depth depth of the see floor by Y-axis
-     * @returns reference to itself to be used in sequential calls
+     * @param depth depth of the see floor by Y-axis.
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSeaFloorDepth(depth: number): CustomBiome;
 
     /**
      * Sets the average depth of the something in this biome.
-     * @param param some integer parameter. Default value is 7
-     * @returns reference to itself to be used in sequential calls
-     * @deprecated use {@link CustomBiome.setSeaFloorDepth}
+     * @param param some integer parameter.
+     * @returns Reference to itself to be used in sequential calls.
+     * @default 7
+     * @deprecated Use {@link CustomBiome.setSeaFloorDepth} instead.
      */
     setSurfaceParam(param: number): CustomBiome;
 
     /**
      * Defines the server-side biome params from given JSON string.
      * Throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
-     * @returns reference to itself to be used in sequential calls
-     * ```js
+     * @returns Reference to itself to be used in sequential calls.
+     * @example
      * // many thanks to DansZbar2 for the example
      * var cherry = new CustomBiome("environmental_cherry");
      * cherry.setServerJson(JSON.stringify({
@@ -212,19 +213,18 @@ declare class CustomBiome {
      *        "generate_for_climates": [ 
      *            [ "cold", 5 ],
      *            [ "medium", 20 ],
-     *            [ "warm", 35 ],
+     *            [ "warm", 35 ]
      *        ]
      *     }
      * }));
-     * ```
      */
     setServerJson(json: string): CustomBiome;
 
     /**
      * Defines the client-side biome params from given JSON string.
      * Throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
-     * @returns reference to itself to be used in sequential calls
-     * ```js
+     * @returns Reference to itself to be used in sequential calls.
+     * @example
      * // many thanks to DansZbar2 for the example
      * var cherry = new CustomBiome("environmental_cherry");
      * cherry.setClientJson(JSON.stringify({
@@ -232,9 +232,9 @@ declare class CustomBiome {
      *     "water_fog_color": "#a35dc2",
      *     "water_surface_transparency": 0.7,
      *     "water_fog_distance": 11,
-     *     "fog_identifier": "environmental:environmental_cherry" // custom fog defined in the addon
+     *     // custom fog defined in the addon
+     *     "fog_identifier": "environmental:environmental_cherry"
      * }));
-     * ```
      */
     setClientJson(json: string): CustomBiome;
 }

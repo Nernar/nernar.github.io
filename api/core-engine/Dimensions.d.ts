@@ -7,17 +7,17 @@ declare namespace Dimensions {
      */
     class CustomDimension {
         /**
-         * Constructs a new dimension with specified name and preferred id
+         * Constructs a new dimension with specified name and preferred ID
          * @param name dimension name, can be used to get dimension via 
          * {@link Dimensions.getDimensionByName} call
-         * @param preferredId preferred dimension id. If id is already occupied
+         * @param preferredId preferred dimension ID. If ID is already occupied
          * by some another dimension, constructor will look for the next empty
-         * dimension id and assign it to the current dimension
+         * dimension ID and assign it to the current dimension
          */
         constructor(name: string, preferredId: number);
 
         /**
-         * Custom dimension id
+         * Custom dimension ID
          */
         id: number;
 
@@ -25,7 +25,7 @@ declare namespace Dimensions {
          * Sets custom landscape generator
          * @param generator custom landscape generator used for current 
          * dimension
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setGenerator(generator: CustomGenerator): CustomDimension;
 
@@ -33,89 +33,90 @@ declare namespace Dimensions {
          * Specifies whether the sky produces light (like in overworld) or not 
          * (like in the End or Nether). By default this value is true
          * @param hasSkyLight if true, the sky produces light in the dimension
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setHasSkyLight(hasSkyLight: boolean): CustomDimension;
 
         /**
-         * @returns whether the sky produces light in the current dimension
+         * @returns Whether the sky produces light in the current dimension.
          */
         hasSkyLight(): boolean;
 
         /**
          * Sets sky color for the dimension in the RGB format. Default 
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setSkyColor(r: number, g: number, b: number): CustomDimension;
 
         /**
-         * Resets sky color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets sky color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetSkyColor(): CustomDimension;
 
         /**
          * Sets fog color for the dimension in the RGB format. Default 
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setFogColor(r: number, g: number, b: number): CustomDimension;
 
         /**
-         * Resets fog color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets fog color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetFogColor(): CustomDimension;
 
         /**
          * Sets clouds color for the dimension in the RGB format. Default 
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setCloudColor(r: number, g: number, b: number): CustomDimension;
 
         /**
-         * Resets clouds color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets clouds color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetCloudColor(): CustomDimension;
 
         /**
          * Sets sunset sky color for the dimension in the RGB format. Default 
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setSunsetColor(r: number, g: number, b: number): CustomDimension;
 
         /**
-         * Resets sunset sky color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets sunset sky color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetSunsetColor(): CustomDimension;
 
         /**
-         * Sets fog displaying distance
+         * Sets fog displaying distance.
          * @param start nearest fog distance
          * @param end farthest fog distance
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setFogDistance(start: number, end: number): CustomDimension;
 
         /**
          * Resets fog displaying distance
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetFogDistance(): CustomDimension;
     }
@@ -125,7 +126,7 @@ declare namespace Dimensions {
      */
     class CustomGenerator {
         /**
-         * Creates a new {@link CustomGenerator} instance using specified base type
+         * Creates a new {@link CustomGenerator} instance using specified base type.
          * @param baseType base generator type constant, can be from 0 to 4. 0 
          * and 1 represent overworld generator, 2 represents flat world 
          * generator, 3 represents nether generator and 4 represents end 
@@ -134,7 +135,7 @@ declare namespace Dimensions {
         constructor(baseType: number);
 
         /**
-         * Creates a new {@link CustomGenerator} instance using specified base type
+         * Creates a new {@link CustomGenerator} instance using specified base type.
          * @param baseType base generator type constant, can be one of the 
          * following: "overworld", "overworld1", "flat", "nether", "end"
          */
@@ -142,26 +143,26 @@ declare namespace Dimensions {
 
         /**
          * Specifies whether to use vanilla biome surface cover blocks (grass, 
-         * sand, podzol, etc.)
-         * @param value if true, vanilla surface will be generated, default 
-         * value is false
-         * @returns reference to itself to be used in sequential calls
+         * sand, podzol, etc.).
+         * @param value if `true`, vanilla surface will be generated
+         * @default false
+         * @returns Reference to itself to be used in sequential calls.
          */
         setBuildVanillaSurfaces(value: boolean): CustomGenerator;
 
         /**
          * Specifies whether to generate minecraft vanilla structures
-         * @param value if true, vanilla structures will be generated, default
-         * value is false
-         * @returns reference to itself to be used in sequential calls
+         * @param value if `true`, vanilla structures will be generated
+         * @default false
+         * @returns Reference to itself to be used in sequential calls.
          */
         setGenerateVanillaStructures(value: boolean): CustomGenerator;
 
         /**
          * Specifies whether to use mod's generation callbacks
-         * @param value if true, mod generation will be used, default
-         * value is true
-         * @returns reference to itself to be used in sequential calls
+         * @param value if `true`, mod generation will be used
+         * @default true
+         * @returns Reference to itself to be used in sequential calls.
          */
         setGenerateModStructures(value: boolean): CustomGenerator;
 
@@ -169,20 +170,22 @@ declare namespace Dimensions {
          * Sets terrain generator object used for the landscape generation
          * @param generator terrain generator to be used with current landscape 
          * generator or removes terrain generator, if the value is null
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setTerrainGenerator(generator: Nullable<AbstractTerrainGenerator>): CustomGenerator;
 
         /**
          * Specifies which of the generation {@link Callback|Callbacks} to call, -1 to call 
          * no mods generation, 0 to call overworld generation callback, 1 for nether, 
-         * 2 for end generation callbacks
+         * 2 for end generation callbacks.
          * @param id generation callback to call
+         * @returns Reference to itself to be used in sequential calls.
          */
         setModGenerationBaseDimension(id: number): CustomGenerator;
 
         /**
-         * Disables mods generation in current generator
+         * Disables mods generation in current generator.
+         * @returns Reference to itself to be used in sequential calls.
          */
         removeModGenerationBaseDimension(): CustomGenerator;
     }
@@ -191,9 +194,7 @@ declare namespace Dimensions {
      * Interface representing terrain generator. All terrain generators found
      * in Inner Core API implement this interface
      */
-    interface AbstractTerrainGenerator {
-
-    }
+    interface AbstractTerrainGenerator {}
 
     /**
      * Class representing terrain that consists of single biome
@@ -209,7 +210,7 @@ declare namespace Dimensions {
 
         /**
          * Sets base biome for the current terrain 
-         * @param id id of the biome to be used as a single biome of the terrain
+         * @param id ID of the biome to be used as a single biome of the terrain
          * layer
          */
         setBaseBiome(id: number): MonoBiomeTerrainGenerator;
@@ -329,7 +330,7 @@ declare namespace Dimensions {
 
     /**
      * Overrides default generator of vanilla dimension
-     * @param id vanilla dimension id, one of the {@link EDimension} 
+     * @param id vanilla dimension ID, one of the {@link EDimension} 
      * values
      * @param generator custom landscape generator used for vanilla 
      * dimension
@@ -338,47 +339,47 @@ declare namespace Dimensions {
 
     /**
      * @param name dimension name
-     * @returns dimension by its string name specified in 
+     * @returns Dimension by it's string name specified in.
      * {@link CustomDimension.constructor}
      */
     function getDimensionByName(name: string): CustomDimension;
 
     /**
-     * @param id dimension id
-     * @returns custom dimension by its numeric id
+     * @param id dimension ID
+     * @returns Custom dimension by it's numeric ID.
      */
     function getDimensionById(id: number): CustomDimension;
 
     /**
-     * @param id dimension id
-     * @returns true, if dimension is a limbo dimension. Limbo dimension is 
+     * @param id dimension ID
+     * @returns `true`, if dimension is a limbo dimension; limbo dimension is 
      * created by Horizon automatically if you try to teleport the player to
      * non-existing dimension
      */
     function isLimboId(id: number): boolean;
 
     /**
-     * Transfers specified entity to the dimension with specified id
-     * @param entity numeric id of the 
-     * @param dimensionId numeric id of the dimension to transfer the entity to
+     * Transfers specified entity to the dimension with specified ID
+     * @param entity numeric ID of the 
+     * @param dimensionId numeric ID of the dimension to transfer the entity to
      */
     function transfer(entity: number, dimensionId: number): void;
 
     /**
-     * @returns JS object instance, containing all registered custom biomes
+     * @returns JS object instance, containing all registered custom biomes.
      */
-    function getAllRegisteredCustomBiomes(): {[key: string]: CustomBiome};
+    function getAllRegisteredCustomBiomes(): { [key: string]: CustomBiome };
 
     /**
      * Function used to simplify the creation of terrain generator by passing 
      * a json-like structure as a single generator parameter. For detailed 
-     * explanations see {@See Custom Dimensions} page
+     * explanations see {@See Custom Dimensions} page.
      * @param description object containing all the required generator information
      */
     function newGenerator(description: {
         /**
          * Specifies base generator, see {@link CustomGenerator.constructor} for 
-         * details
+         * details.
          */
         base?: number | string,
 
@@ -415,14 +416,13 @@ declare namespace Dimensions {
         biome?: number,
 
         /**
-         * An array of terrain layers descriptions, each one representing its 
+         * An array of terrain layers descriptions, each one representing it's 
          * own terrain layer.
          * @see {@link MonoBiomeTerrainGenerator.addTerrainLayer} for details
          */
         layers?: TerrainLayerParams[]
 
     }): CustomGenerator;
-
 
     interface TerrainLayerParams {
         minY: number,

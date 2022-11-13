@@ -11,7 +11,7 @@ declare class ItemContainer extends com.zhekasmirnov.apparatus.api.container.Ite
 	 */
 	constructor();
 	/**
-	 * Constructs a new {@link ItemContainer} object from given deprecated {@link UI.Container} object
+	 * Constructs a new {@link ItemContainer} object from given deprecated {@link UI.Container} object.
 	 */
 	constructor(legacyContainer: UI.Container);
 }

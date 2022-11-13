@@ -1,19 +1,20 @@
 /**
- * New module to work with client and server packets in multiplayer.
+ * Working with client and server packets in multiplayer
+ * and also determine stuff.
  */
 declare namespace Network {
     /**
-     * @returns array containing connected clients
+     * @returns Array containing connected clients.
      */
     function getConnectedClients(): native.Array<NetworkClient>;
 
     /**
-     * @returns array containing connected players uids
+     * @returns Array containing connected players UIDs.
      */
     function getConnectedPlayers(): native.Array<number>;
 
     /**
-     * @returns Client object for player by player's entity id
+     * @returns Client object for player by player's entity ID.
      */
     function getClientForPlayer(player: number): NetworkClient;
 
@@ -46,12 +47,12 @@ declare namespace Network {
     function sendServerMessage(message: string): void;
 
     /**
-     * Converts item or block id from server to local value
+     * Converts item or block ID from server to local value
      */
     function serverToLocalId(id: string | number): number;
 
     /**
-     * Converts item or block id from local to server value
+     * Converts item or block ID from local to server value
      */
     function localToServerId(id: string | number): number;
 

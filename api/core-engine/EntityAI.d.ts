@@ -64,7 +64,7 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     changeSelfPriority(priority: number): void;
 
     /**
-     * Enables any AI by its name in the controller
+     * Enables any AI by it's name in the controller
      * @param name AI name to be enables
      * @param priority priority to be set to the enabled AI
      * @param extra some extra data passed to 
@@ -72,20 +72,20 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     enableAI(name: string, priority: number, extra: any): void;
 
     /**
-     * Disables any AI by its name in the controller
+     * Disables any AI by it's name in the controller
      * @param name AI name to be disabled
      */
     disableAI(name: string): void;
 
     /**
-     * Sets any AI priority by its name in the controller
+     * Sets any AI priority by it's name in the controller
      * @param name AI name to change priority
      * @param priority priority to be set to the AI
      */
     setPriority(name: string, priority: number): void;
 
     /**
-     * Gets any AI object by its name from the current controller
+     * Gets any AI object by it's name from the current controller
      * @param name AI name
      */
     getAI(name: string): EntityAIClass;
@@ -97,7 +97,7 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     getPriority(name: string): number;
 
     /**
-     * @returns AI type's default name
+     * @returns AI type's default name.
      */
     setParams(params: object): void;
 
@@ -118,12 +118,12 @@ declare namespace EntityAIClass {
      */
     interface EntityAIPrototype {
         /**
-         * @returns AI type's default priority
+         * @returns AI type's default priority.
          */
         getDefaultPriority?(): number,
 
         /**
-         * @returns AI type's default name
+         * @returns AI type's default name.
          */
         getDefaultName?(): string,
 
@@ -180,7 +180,7 @@ declare namespace EntityAIClass {
 
         /**
          * Called when a projectile hits the entity
-         * @param projectile projectile entity id
+         * @param projectile projectile entity ID
          */
         projectileHit?(projectile: number): void;
 
@@ -213,18 +213,18 @@ declare namespace EntityAIClass {
  */
 declare namespace EntityAI {
     /**
-     * Simple idle AI type, entity just does nothing
+     * Simple IDle AI type, entity just does nothing
      */
     class Idle extends EntityAIClass {
         /**
-         * Creates idle entity AI type
+         * Creates IDle entity AI type
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.EntityAIPrototype);
     }
 
     /**
-     * Follow AI type, entity follows its target. Use another AI type to set 
+     * Follow AI type, entity follows it's target. Use another AI type to set 
      * target for this AI type
      */
     class Follow extends EntityAIClass {
@@ -250,11 +250,11 @@ declare namespace EntityAI {
              */
             rotateRatio?: number;
             /**
-             * if true, entity turns its head to the target
+             * if true, entity turns it's head to the target
              */
             rotateHead?: boolean;
             /**
-             * if true, entity won't change its Y velocity
+             * if true, entity won't change it's Y velocity
              */
             denyY?: boolean;
             /**

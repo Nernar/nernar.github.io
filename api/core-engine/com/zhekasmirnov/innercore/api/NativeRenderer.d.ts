@@ -23,13 +23,13 @@ declare module com {
                         clearAllParts(): void;
                         /**
                          * @param partName part name
-                         * @returns part by its name or null if part doesn't exist
+                         * @returns Part by it's name or null if part doesn't exist.
                          */
                         getPart(partName: string): Nullable<ModelPart>;
                         /**
                          * @param partName part name
-                         * @returns true if part with specified name exists in the model, 
-                         * false otherwise
+                         * @returns `true` if part with specified name exists in the model, 
+                         * `false` otherwise.
                          */
                         hasPart(partName: string): boolean;
                         /**
@@ -62,8 +62,8 @@ declare module com {
                          */
                         clear(): void;
                         /**
-                         * @returns mesh specified via {@link setMesh} call or null, if 
-                         * this part doesn't contain mesh
+                         * @returns Mesh specified via {@link setMesh} call or `null`, if 
+                         * this part doesn't contain mesh.
                          */
                         getMesh(): Nullable<NativeRenderMesh>;
                         /**
@@ -84,7 +84,12 @@ declare module com {
                         setTextureOffset(u: number, v: number): void;
                         /**
                          * Specifies texture uv offset
+                         */
+                        setTextureOffset(u: number, v: number): void;
+                        /**
+                         * Specifies texture uv offset
                          * @param placeholder deprecated boolean parameter
+                         * @deprecated Use same method without last parameter.
                          */
                         setTextureOffset(u: number, v: number, placeholder: boolean): void;
                         /**
@@ -94,8 +99,14 @@ declare module com {
                         setTextureSize(w: number, h: number): void;
                         /**
                          * Specifies texture size size, use the real texture file size or change 
-                         * it to stretch texture
+                         * it to stretch texture.
+                         */
+                        setTextureSize(w: number, h: number): void;
+                        /**
+                         * Specifies texture size size, use the real texture file size or change 
+                         * it to stretch texture.
                          * @param placeholder deprecated boolean parameter
+                         * @deprecated Use same method without last parameter.
                          */
                         setTextureSize(w: number, h: number, placeholder: boolean): void;
                     }
@@ -138,39 +149,39 @@ declare module com {
                     class Transform extends java.lang.Object {
                         static class: java.lang.Class<Transform>;
                         /**
-                         * Clears all the transformations applied to the render
-                         * @returns reference to itself to be used in sequential calls
+                         * Clears all the transformations applied to the render.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         clear(): Transform;
                         /**
-                         * @returns reference to itself to be used in sequential calls
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         lock(): Transform;
                         /**
-                         * Performs arbitrary matrix transformations on the render
-                         * @returns reference to itself to be used in sequential calls
+                         * Performs arbitrary matrix transformations on the render.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         matrix(m00: number, m01: number, m02: number, m03: number,
                                 m10: number, m11: number, m12: number, m13: number,
                                 m20: number, m21: number, m22: number, m23: number,
                                 m30: number, m31: number, m32: number, m33: number): Transform;
                         /**
-                         * Rotates render along three axes
-                         * @returns reference to itself to be used in sequential calls
+                         * Rotates render along three axes.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         rotate(rotX: number, rotY: number, rotZ: number): Transform;
                         /**
-                         * Scales render along the three axes
-                         * @returns reference to itself to be used in sequential calls
+                         * Scales render along the three axes.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         scale(scaleX: number, scaleY: number, scaleZ: number): Transform;
                         /**
-                         * Translates render along three axes
-                         * @returns reference to itself to be used in sequential calls
+                         * Translates render along three axes.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         translate(x: number, y: number, z: number): Transform;
                         /**
-                         * @returns reference to itself to be used in sequential calls
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         unlock(): Transform;
                     }

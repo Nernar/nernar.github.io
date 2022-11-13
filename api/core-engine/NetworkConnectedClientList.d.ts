@@ -16,9 +16,9 @@ declare class NetworkConnectedClientList {
      * @param x X coord of the conditional centre point of the area where clients are located
      * @param y Y coord of the conditional centre point of the area where clients are located
      * @param z Z coord of the conditional centre point of the area where clients are located
-     * @param dimensionID numeric id of the dimension where clients are located
+     * @param dimensionID numeric ID of the dimension where clients are located
      * @param maxDistance max distance from the client to the conditional centre, to bound the client to the list
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupDistancePolicy(x: number, y: number, z: number, dimensionID: number, maxDistance: number): NetworkConnectedClientList;
 
@@ -40,40 +40,40 @@ declare class NetworkConnectedClientList {
     remove(client: NetworkClient): void;
 
     /**
-     * @returns whether the list contains given client
+     * @returns Whether the list contains given client.
      */
     contains(client: NetworkClient): boolean;
 
     /**
      * Sets up policy to add all players to the list
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllPlayersPolicy(): NetworkConnectedClientList;
 
     /**
      * Sets up policy to add all players to the list
      * @param updateRate how many milliseconds will have to pass between list updates
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllPlayersPolicy(updateRate: number): NetworkConnectedClientList;
 
     /**
      * Sets up policy to add players from the same given dimension to the list
-     * @param dimensionID numeric id of the dimension where the clients have to be located to be included into the list
+     * @param dimensionID numeric ID of the dimension where the clients have to be located to be included into the list
      * @param updateRate how many milliseconds will have to pass between list updates
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllInDimensionPolicy(dimensionID: number, updateRate: number): NetworkConnectedClientList;
 
     /**
      * Sets up policy to add players from the same given dimension to the list
-     * @param dimensionID numeric id of the dimension where the clients have to be located to be included into the list
-     * @returns the client list itself
+     * @param dimensionID numeric ID of the dimension where the clients have to be located to be included into the list
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllInDimensionPolicy(dimensionID: number): NetworkConnectedClientList;
 
     /**
-     * @returns the iterator across clients' objects that the list consists of
+     * @returns Iterator across clients' objects that the list consists of.
      */
     iterator(): java.util.Iterator<NetworkClient>
 

@@ -106,8 +106,8 @@ declare module UI {
     /**
 	 * Containers are used to properly manipulate windows and save slots 
 	 * contents and windows state between window opens. Every {@link TileEntity} has 
-	 * a built-in container that can be accessed as {@link TileEntity.container}
-	 * @deprecated
+	 * a built-in container that can be accessed as {@link TileEntity.container}.
+	 * @deprecated Client class only.
 	 */
     export class Container extends com.zhekasmirnov.innercore.api.mod.ui.container.Container {
         static class: java.lang.Class<Container>;
@@ -116,7 +116,7 @@ declare module UI {
 		 */
         constructor();
         /**
-		 * Creates a new instance of {@link Container} and initializes its parent. 
+		 * Creates a new instance of {@link Container} and initializes it's parent. 
 		 * See {@link Container.setParent} for details
 		 */
         constructor(parent: Nullable<TileEntity> | any);
@@ -146,7 +146,9 @@ declare module UI {
         constructor();
     }
 
-    /** @deprecated use {@link StandardWindow} instead */
+    /**
+	 * @deprecated Use {@link StandardWindow} instead.
+	 */
     export class StandartWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandartWindow>;
         constructor(content: StandardWindowContent);
@@ -278,15 +280,15 @@ declare module UI {
         static class: java.lang.Class<TextureSource>;
         /**
 		 * @param name gui texture name
-		 * @returns bitmap instance with the ui texture, if it 
-		 * was loaded, with "*missing_texture*" texture otherwise
+		 * @returns Bitmap instance with the ui texture, if it
+		 * was loaded, with `"missing_texture"` texture otherwise.
 		 */
         static get(name: string): android.graphics.Bitmap;
         /**
 		 * 
 		 * @param name gui texture name
-		 * @returns bitmap instance with the ui texture, if it 
-		 * was loaded, null otherwise
+		 * @returns Bitmap instance with the ui texture, if it
+		 * was loaded, `null` otherwise.
 		 */
         static getNullable(name: string): Nullable<android.graphics.Bitmap>;
         /**
@@ -304,13 +306,13 @@ declare module UI {
     export function getScreenRelativeHeight(): number;
 
     /**
-	 * @returns screen height in units
+	 * @returns Screen height in units.
 	 */
     export function getScreenHeight(): number;
     
     /**
-	 * @returns current {@link android.app.Activity} instance that can be used as 
-	 * {@link android.content.Context} wherever required
+	 * @returns Current {@link android.app.Activity} instance that can be used as 
+	 * {@link android.content.Context} wherever required.
 	 */
     export function getContext(): android.app.Activity;
 

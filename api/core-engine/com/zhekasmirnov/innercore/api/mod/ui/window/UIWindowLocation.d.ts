@@ -97,13 +97,13 @@ declare module com {
                                  */
                                 setSize(x: number, y: number): void;
                                 /**
-                                 * @returns window location as a js object. Note that paddings are not 
-                                 * included into the object
+                                 * @returns Window location as a js object. Note that paddings are not 
+                                 * included into the object.
                                  */
                                 asScriptable(): IWindowLocation;
                                 /**
                                  * Creates a copy of current {@link WindowLocation} object
-                                 * @returns newly created copy of the object
+                                 * @returns Newly created copy of the object.
                                  */
                                 copy(): UIWindowLocation;
                                 /**
@@ -136,19 +136,19 @@ declare module com {
                                  */
                                 setPadding(padding: 0 | 1 | 2 | 3, value: number): void;
                                 /**
-                                 * Sets the four paddings of the window for the appropriate bounds
+                                 * Sets the four paddings of the window for the appropriate bounds.
                                  */
                                 setPadding(top: number, bottom: number, left: number, right: number): void;
                                 /**
-                                 * @returns unit size (in pixels) in the fullscreen context (*screen width / 1000*)
+                                 * @returns Unit size (in pixels) in the fullscreen context (*screen width / 1000*).
                                  */
                                 getScale(): number;
                                 /**
-                                 * @returns unit size (in pixels) in the window's bounds
+                                 * @returns Unit size (in pixels) in the window's bounds.
                                  */
                                 getDrawingScale(): number;
                                 /**
-                                 * @returns window's rectangle in the {@link android.graphics.Rect} object
+                                 * @returns Window's rectangle in the {@link android.graphics.Rect} object.
                                  */
                                 getRect(): android.graphics.Rect;
                                 showPopupWindow(win: android.widget.PopupWindow): void;
@@ -162,12 +162,12 @@ declare module com {
                                  */
                                 setZ(z: number): void;
                                 /**
-                                 * @returns window's width in units
-                                 * (always 1000 by definition of the unit)
+                                 * @returns Window's width in units
+                                 * (always 1000 by definition of the unit).
                                  */
                                 getWindowWidth(): 1000;
                                 /**
-                                 * @returns window's height in units
+                                 * @returns Window's height in units.
                                  */
                                 getWindowHeight(): number;
                                 /**

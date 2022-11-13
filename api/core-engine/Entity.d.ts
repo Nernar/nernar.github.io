@@ -1,46 +1,44 @@
 /**
  * Module used to manipulate entities (mobs, drop, arrows, etc.) in the world.
- * Every entity has its unique numeric id which is often used across this module 
+ * Every entity has it's unique numeric ID which is often used across this module 
  * as the first function parameter
  */
 declare namespace Entity {
     /**
-     * @returns an array of all loaded entities ids
+     * @returns An array of all loaded entities IDs.
      */
     function getAll(): number[];
 
     /**
-     * @returns an array of all loaded entities ids
-     * @deprecated Consider using {@link Entity.getAll} instead
+     * @returns An array of all loaded entities IDs.
+     * @deprecated Consider using {@link Entity.getAll} instead.
      */
     function getAllJS(): number[];
 
     /** 
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
     function getExtra(ent: number, name: string): null;
 
     /** 
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function putExtra(ent: number, name: string, extra?: ItemExtraData): void;
+    function putExtra(ent: number, name: string, extra?: any): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
     function getExtraJson(ent: number, name: string): object;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
     function putExtraJson(ent: number, name: string, obj: object): void;
 
     /**
      * Adds an effect to the mob
-     * @param effectId effect id, should be one
+     * @param effectId effect ID, should be one
      * one of {@link EPotionEffect} values.
-     * @returns whether the ]]
-     * values
      * @param effectData effect amplifier
      * @param effectTime effect time in ticks
      * @param ambience if true, particles are ambient
@@ -50,7 +48,7 @@ declare namespace Entity {
 
     /**
      * Clears effect, applied to the mob
-     * @param id effect id, should be one of the {@link EPotionEffect}
+     * @param id effect ID, should be one of the {@link EPotionEffect}
      */
     function clearEffect(ent: number, id: number): void;
 
@@ -72,8 +70,8 @@ declare namespace Entity {
     function damageEntity(ent: number, damage: number, cause?: number, params?: { attacker?: number, bool1?: boolean, bool2?: boolean }): void;
 
     /**
-     * @returns current dimension numeric id, one of the {@link EDimension} 
-     * values or custom dimension id
+     * @returns Current dimension numeric ID, one of the {@link EDimension} 
+     * values or custom dimension ID.
      */
     function getDimension(ent: number): number;
 
@@ -84,23 +82,23 @@ declare namespace Entity {
     function healEntity(ent: number, heal: number): void;
 
     /**
-     * @returns numeric entity type, one of the {@link EEntityType}
+     * @returns Numeric entity type, one of the {@link EEntityType}.
      */
     function getType(ent: number): number;
 
     /**
-     * @returns string type for entities defined via add-ons or numeric type for
-     * all the other entities 
+     * @returns String type for entities defined via add-ons or numeric type for
+     * all the other entities.
      */
     function getTypeUniversal(ent: number): number | string;
 
     /**
-     * @returns string type for entities defined via add-ons, otherwise null
+     * @returns String type for entities defined via add-ons, otherwise null.
      */
     function getTypeAddon(ent: number): Nullable<string>;
 
     /**
-     * @returns compound tag for the specified entity
+     * @returns Compound tag for the specified entity.
      */
     function getCompoundTag(ent: number): NBT.CompoundTag;
 
@@ -117,24 +115,24 @@ declare namespace Entity {
     function setHitbox(ent: number, w: number, h: number): void;
 
     /**
-     * @returns true if specified entity id is valid and entity with this id 
-     * exists in the world
+     * @returns `true` if specified entity ID is valid and entity with this ID 
+     * exists in the world.
      */
     function isExist(ent: number): boolean;
 
     /**
-     * Spawns vanilla entity on the specified coordinates
+     * Spawns vanilla entity on the specified coordinates.
      * @param type numeric entity type, one of the {@link EEntityType}
      * @param skin skin to set for the entity. Leave empty or null to use 
      * default skin of the mob
-     * @returns numeric id of spawn entity or -1 if entity was not created
+     * @returns Numeric ID of spawn entity or -1 if entity was not created.
      */
     function spawn(x: number, y: number, z: number, type: number, skin?: Nullable<string>): number;
 
     /**
      * Spawns custom entity on the specified coords. Allows to pass some values 
-     * to controllers via extra param
-     * @param name custom entity string id
+     * to controllers via extra param.
+     * @param name custom entity string ID
      * @param extra object that contains some data for the controllers
      */
     function spawnCustom(name: string, x: number, y: number, z: number, extra?: object): CustomEntity;
@@ -157,45 +155,48 @@ declare namespace Entity {
     function remove(ent: number): void;
 
     /**
-     * @returns custom entity object by its numeric entity id
+     * @returns Custom entity object by it's numeric entity ID.
+     * @deprecated Unsupported usage, use behavior packs
+     * instead.
      */
     function getCustom(ent: number): CustomEntity;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead.
      */
     function getAge(ent: number): number;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead.
      */
     function setAge(ent: number, age: number): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead.
      */
     function getSkin(ent: number): string;
 
     /**
      * Sets mob skin
      * @param skin skin name, full path in the resourcepack (mod assets)
+     * @deprecated Use attributes or resource packs instead.
      */
     function setSkin(ent: number, skin: string): void;
 
     /**
      * Sets mob skin, uses {@link Texture} object
-     * @deprecated use {@link Entity.setSkin} instead
+     * @deprecated Use attributes instead.
      */
     function setTexture(ent: number, texture: Texture): void;
 
     /**
-     * @returns entity render type, should be one of the 
-     * {@link EMobRenderType} values
+     * @returns Entity render type, should be one of the 
+     * {@link EMobRenderType} values.
      */
     function getRender(ent: number): number;
 
     /**
-     * Sets entity render type
+     * Sets entity render type.
      * @param render entity render type, should be one of the 
      * {@link EMobRenderType} values
      */
@@ -209,59 +210,61 @@ declare namespace Entity {
     function rideAnimal(entity: number, rider: number): void;
 
     /**
-     * @returns entity custom name tag
+     * @returns Entity name tag or player name.
      */
     function getNameTag(ent: number): string;
 
     /**
-     * Sets custom entity tag. Custom entity tags are displayed above the 
-     * entities and can be set by player using label
+     * Sets custom entity name tag. Custom entity tags are
+     * displayed above the entities and can be set by player
+     * using label.
      * @param tag name tag to be set to the entity
      */
     function setNameTag(ent: number, tag: string): void;
 
     /**
      * Gets the attack target of current entity
-     * @returns target entity's unique id
+     * @returns Target entity's unique ID.
      */
     function getTarget(ent: number): number;
 
     /**
      * Sets the attack target for current entity. Works only for mobs that 
      * actually can attack
-     * @param target target entity's unique id
+     * @param target target entity's unique ID
      */
     function setTarget(ent: number, target: number): void;
 
     /**
-     * @returns true, if entity was immobilized
+     * @returns `true`, if entity was immobilized.
      */
     function getMobile(ent: number): boolean;
 
     /**
-     * Sets entity's immobile state
-     * @param mobile if true, entity can move, otherwise it is immobilized
+     * Sets entity's immobile state.
+     * @param mobile if `true`, entity can move, otherwise it is immobilized
      */
     function setMobile(ent: number, mobile: boolean): void;
 
     /**
-     * @returns true if entity is sneaking, false otherwise
+     * @returns `true` if entity is sneaking, `false` otherwise.
      */
     function getSneaking(ent: number): boolean;
 
     /**
-     * Sets entity's sneaking state
-     * @param sneak if true, entity becomes sneaking, else not
+     * Sets entity's sneaking state, supported slightly
+     * entities, resource pack render controlling it.
+     * @param sneak if `true`, entity becomes sneaking, else not
      */
     function setSneaking(ent: number, sneak: boolean): void;
 
     /**
-     * @returns entity that is riding the specified entity
+     * @returns Entity that is riding the specified entity.
      */
     function getRider(ent: number): number;
 
     /**
-     * @returns entity that is ridden by specified entity
+     * @returns Entity that is ridden by specified entity.
      */
     function getRiding(ent: number): number;
 
@@ -273,14 +276,14 @@ declare namespace Entity {
     function setFire(ent: number, fire: number, force: boolean): void;
 
     /**
-     * @returns an object that allows to manipulate entity health
+     * @returns An object that allows to manipulate entity health.
      * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
-     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
      */
     function health(ent: number): EntityHealth;
 
     /**
-     * @returns entity's current health value
+     * @returns Entity's current health value.
      */
     function getHealth(ent: number): number;
 
@@ -291,23 +294,23 @@ declare namespace Entity {
     function setHealth(ent: number, health: number): void;
 
     /**
-     * @returns entity's maximum health value
+     * @returns Entity's maximum health value.
      */
     function getMaxHealth(ent: number): number;
 
     /**
-     * Sets entity's maximum health value
+     * Sets entity's maximum health value.
      */
     function setMaxHealth(ent: number, health: number): void;
 
     /**
      * Sets the specified coordinates as a new position for the entity. No 
-     * checks are performed
+     * checks are performed.
      */
     function setPosition(ent: number, x: number, y: number, z: number): void;
 
     /**
-     * @returns entity position
+     * @returns Entity position.
      */
     function getPosition(ent: number): Vector;
 
@@ -323,7 +326,7 @@ declare namespace Entity {
 
     /**
      * Get current entity's velocity using velocity vector
-     * @returns containing current entity's velocity
+     * @returns Containing current entity's velocity.
      */
     function getVelocity(ent: number): Vector;
 
@@ -333,28 +336,28 @@ declare namespace Entity {
     function addVelocity(ent: number, x: number, y: number, z: number): void;
 
     /**
-     * @returns distance in blocks between the two coordinate sets
+     * @returns Distance in blocks between the two coordinate sets.
      */
     function getDistanceBetweenCoords(coords1: Vector, coords2: Vector): number;
 
     /**
-     * @returns distance between specified entity and a fixed coordinate set
+     * @returns Distance between specified entity and a fixed coordinate set.
      */
     function getDistanceToCoords(ent: number, coords: Vector): number;
 
     /**
-     * @returns distance in blocks between two entities
+     * @returns Distance in blocks between two entities.
      */
     function getDistanceToEntity(ent1: number, ent2: number): number;
 
     /**
-     * @returns distance between player and entity, counting only x and z values
-     * (y value is ignored)
+     * @returns Distance between player and entity, counting only x and z values
+     * (y value is ignored).
      */
     function getXZPlayerDis(ent: number): number;
 
     /**
-     * @returns entity's look angle in radians
+     * @returns Entity's look angle in radians.
      */
     function getLookAngle(ent: number): LookAngle;
 
@@ -368,17 +371,17 @@ declare namespace Entity {
     /**
      * Transforms look angle into look vector
      * @param angle look angle to transform into {@link Vector}
-     * @returns transformation result
+     * @returns Transformation result.
      */
     function getLookVectorByAngle(angle: LookAngle): Vector;
 
     /**
-     * @returns look vector for the entity
+     * @returns Look vector for the entity.
      */
     function getLookVector(ent: number): Vector;
 
     /**
-     * @returns look angle between entity and static coordinates
+     * @returns Look angle between entity and static coordinates.
      */
     function getLookAt(ent: number, x: number, y: number, z: number): LookAngle;
 
@@ -407,26 +410,26 @@ declare namespace Entity {
     function moveToAngle(ent: number, angle: LookAngle, params: MoveParams): void;
 
     /**
-     * Makes entity move towards its current look angle
+     * Makes entity move towards it's current look angle
      * @param params additional move parameters
      */
     function moveToLook(ent: number, params: MoveParams): void;
 
     /**
      * Retrieves entity's current movement information
-     * @returns object that contains normalized moving vector, moving speed and
-     * moving xz speed (with no Y coordinate)
+     * @returns Object that contains normalized moving vector, moving speed and
+     * moving xz speed (with no Y coordinate).
      */
     function getMovingVector(ent: number): MovingVector;
 
     /**
      * Retrieves entity look angle in the form of pitch/yaw angle. No other 
-     * information included to the resulting object
+     * information included to the resulting object.
      */
     function getMovingAngle(ent: number): LookAngle;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Nothing to perform here anymore.
      */
     function getMovingAngleByPositions(pos1: any, pos2: any): void;
 
@@ -440,7 +443,7 @@ declare namespace Entity {
     function findNearest(coords: Vector, type?: number, maxRange?: number): Nullable<number>;
 
     /**
-     * Returns array of all entities' numeric ids in given range in blocks
+     * Returns array of all entities' numeric IDs in given range in blocks
      * @param coords search range center coordinates
      * @param maxRange determines search radius
      * @param type entity type ID. Parameter is no longer supported and should 
@@ -449,22 +452,22 @@ declare namespace Entity {
     function getAllInRange(coords: Vector, maxRange: number, type?: number): number[];
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Consider use TODO instead.
      */
     function getInventory(ent: number, handleNames?: boolean, handleEnchant?: boolean): void;
 
     /**
-     * @param slot armor slot id, should be one of the {@link EArmorType} 
+     * @param slot armor slot ID, should be one of the {@link EArmorType} 
      * values
-     * @returns armor slot contents for entity
+     * @returns Armor slot contents for entity.
      */
     function getArmorSlot(ent: number, slot: number): ItemInstance;
 
     /**
      * Sets armor slot contents for the entity
-     * @param slot armor slot id, should be one of the {@link EArmorType} 
+     * @param slot armor slot ID, should be one of the {@link EArmorType} 
      * values
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
@@ -472,23 +475,21 @@ declare namespace Entity {
     function setArmorSlot(ent: number, slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
-     * @param bool1 parameter is no longer supported and should not be used
-     * @param bool2 parameter is no longer supported and should not be used
-     * @returns entity's current carried item information
+     * @returns Entity's current carried item information.
      */
     function getCarriedItem(ent: number): ItemInstance;
 
     /**
-     * @returns entity's current carried item information
      * @param bool1 parameter is no longer supported and should not be used
      * @param bool2 parameter is no longer supported and should not be used
-     * @deprecated use same method without parameters
+     * @returns Entity's current carried item information.
+     * @deprecated Use same method without last parameters.
      */
     function getCarriedItem(ent: number, bool1: boolean, bool2: boolean): ItemInstance;
 
     /**
-     * Sets current carried item for the entity
-     * @param id item id
+     * Sets current carried item for the entity.
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
@@ -497,13 +498,13 @@ declare namespace Entity {
 
     /**
      * Gets item from specified drop entity
-     * @returns instance that is in the dropped item
+     * @returns Instance that is in the dropped item.
      */
     function getDroppedItem(ent: number): ItemInstance;
 
     /**
      * Sets item to the specified drop entity
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
@@ -511,35 +512,35 @@ declare namespace Entity {
     function setDroppedItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
-     * @deprecated No longer supported
+     * @deprecated Use callbacks and {@link getAll} instead.
      */
     function getProjectileItem(projectile: number): ItemInstance;
 
     /**
      * Creates an object used to change entity's attributes. See {@page Attributes} page
      * for details.
-     * @returns object used to manipulate entity's attributes
+     * @returns Object used to manipulate entity's attributes.
      */
     function getAttribute(ent: number, attribute: string): AttributeInstance;
 
     /**
      * Creates or gets an existing {@link PathNavigation} instance for the specified mob
-     * @returns navigation used to control entity's target position and
-     * the way to get there
+     * @returns Navigation used to control entity's target position and
+     * the way to get there.
      */
     function getPathNavigation(ent: number): PathNavigation;
 
     /**
-     * @param effectId numeric id of the potion effect,
+     * @param effectId numeric ID of the potion effect,
      * one of {@link EPotionEffect} values.
-     * @returns whether the given entity is affected by the potion effect with given numeric id
+     * @returns Whether the given entity is affected by the potion effect with given numeric ID.
      */
     function hasEffect(entity: number, effectId: number): boolean;
 
     interface EffectInstance { level: number, duration: number }
 
     /**
-     * @returns object with duration and level of the potion effect with given numeric id
+     * @returns Object with duration and level of the potion effect with given numeric ID
      * on the given entity. These fields are set to 0, if the given effect doesn't affect
      * the given entity at the moment.
      */
@@ -566,7 +567,7 @@ declare namespace Entity {
 
         /**
          * Sets function to be notified when path navigation is finished or aborted
-         * @param function function to be called when navigation is finished or aborted
+         * @param callback function to be called when navigation is finished or aborted
          */
         setResultFunction(callback: PathNavigationResultFunction): PathNavigation;
 
@@ -583,7 +584,7 @@ declare namespace Entity {
         setIsRiverFollowing(value: boolean): PathNavigation;
 
         /**
-         * @returns whether the entity can open doors
+         * @returns Whether the entity can open doors.
          */
         canOpenDoors(): boolean;
         /**
@@ -597,7 +598,7 @@ declare namespace Entity {
         setAvoidSun(value: boolean): PathNavigation;
 
         /**
-         * @returns whether the entity avoids water
+         * @returns Whether the entity avoids water.
          */
         getAvoidWater(): boolean;
         /**
@@ -626,22 +627,22 @@ declare namespace Entity {
         setCanBreach(value: boolean): PathNavigation;
 
         /**
-         * @returns whether entity can jump
+         * @returns Whether entity can jump.
          */
         getCanJump(): boolean;
 
         /**
-         * Enables or disables entity's jumping ability
+         * Enables or disables entity's jumping ability.
          */
         setCanJump(value: boolean): PathNavigation;
 
         /**
-         * @returns entity's speed value
+         * @returns Entity's speed value.
          */
         getSpeed(): number;
 
         /**
-         * Sets entity's speed value
+         * Sets entity's speed value.
          */
         setSpeed(value: number): PathNavigation;
     }
@@ -651,7 +652,8 @@ declare namespace Entity {
      * @param navigation {@link PathNavigation} that the handler is attached to
      * @param result result code, one of the following:
      * 
-     * 0 - success. You can call navigation.moveTo*** methods to resume path
+     * 0 - success; you can call {@link PathNavigation.moveToCoords},
+     * {@link PathNavigation.moveToEntity} methods to resume path
      * 
      * 2 - entity was removed from the world
      * 
@@ -664,11 +666,11 @@ declare namespace Entity {
     /**
      * Class used to manipulate entity's health
      * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
-     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
      */
     class EntityHealth {
         /**
-         * @returns entity's current health value
+         * @returns Entity's current health value.
          */
         get(): number;
 
@@ -679,7 +681,7 @@ declare namespace Entity {
         set(health: number): void;
 
         /**
-         * @returns entity's maximum health value
+         * @returns Entity's maximum health value.
          */
         getMax(): number;
 
@@ -700,7 +702,7 @@ declare namespace Entity {
         speed?: number,
 
         /**
-         * If true, entity won't change its Y velocity
+         * If true, entity won't change it's Y velocity
          */
         denyY?: boolean,
 
@@ -747,22 +749,22 @@ declare namespace Entity {
     interface AttributeInstance {
 
         /**
-         * @returns current attribute's value
+         * @returns Current attribute's value.
          */
         getValue(): number;
 
         /**
-         * @returns attribute's maximum value
+         * @returns Attribute's maximum value.
          */
         getMaxValue(): number;
 
         /**
-         * @returns attribute's minimum value
+         * @returns Attribute's minimum value.
          */
         getMinValue(): number;
 
         /**
-         * @returns attribute's default value
+         * @returns Attribute's default value
          */
         getDefaultValue(): number;
 

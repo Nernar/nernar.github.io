@@ -9,15 +9,15 @@ declare namespace Game {
     function prevent(): void;
 
     /**
-     * @returns true if the current callback function has already been
+     * @returns `true` if the current callback function has already been
      * prevented from being called in Minecraft using {@link Game.prevent},
-     * false otherwise
+     * `false `otherwise.
      */
     function isActionPrevented(): boolean;
 
     /**
      * Writes message to the chat. Message can be formatted using 
-     * {@link EColor} values
+     * {@link EColor} values.
      * @param msg message to be displayed
      */
     function message(msg: string): void;
@@ -43,8 +43,8 @@ declare namespace Game {
     function setDifficulty(difficulty: number): void;
 
     /**
-     * @returns current game difficulty, one of the {@link EGameDifficulty} 
-     * values
+     * @returns Current game difficulty, one of the {@link EGameDifficulty} 
+     * values.
      */
     function getDifficulty(): number;
 
@@ -56,22 +56,22 @@ declare namespace Game {
     function setGameMode(gameMode: number): void;
 
     /**
-     * @returns current level game mode, one of the {@link EGameMode} values
+     * @returns Current level game mode, one of the {@link EGameMode} values.
      */
     function getGameMode(): number;
 
     /**
-     * @returns string containing current Minecraft version
+     * @returns String containing current Minecraft version.
      */
     function getMinecraftVersion(): string;
 
     /**
-     * @returns string containing current Core Engine version
+     * @returns String containing current Core Engine version.
      */
     function getEngineVersion(): string;
 
     /**
-     * @returns true if item spending allowed
+     * @returns `true` if item spending allowed.
      */
     function isItemSpendingAllowed(player?: number): boolean;
 

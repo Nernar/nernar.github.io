@@ -36,7 +36,7 @@ declare namespace Recipes {
      * 
      * @param data an array explaining the meaning of each character within 
      * mask. The array should contain three values for each symbol: the symbol
-     * itself, item id and item data. 
+     * itself, item ID and item data. 
      * @param func function to be called when the craft is processed
      * @param prefix recipe prefix. Use a non-empty values to register recipes
      * for custom workbenches
@@ -45,7 +45,7 @@ declare namespace Recipes {
 
     /**
      * Same as {@link Recipes.addShaped}, but you can specify result as three
-     * separate values corresponding to id, count and data
+     * separate values corresponding to ID, count and data
      */
     function addShaped2(id: number, count: number, aux: number, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
 
@@ -60,7 +60,7 @@ declare namespace Recipes {
      * 
      * @param result recipe result item
      * @param data crafting ingredients, an array of objects representing item
-     * id and data
+     * ID and data
      * @param func function to be called when the craft is processed
      * @param prefix recipe prefix. Use a non-empty values to register recipes
      * for custom workbenches
@@ -68,25 +68,25 @@ declare namespace Recipes {
     function addShapeless(result: ItemInstance, data: { id: number, data: number }[], func?: CraftingFunction, prefix?: string): WorkbenchShapelessRecipe;
 
     /**
-     * Deletes recipe by its result 
+     * Deletes recipe by it's result 
      * @param result recipe result
      */
     function deleteRecipe(result: ItemInstance): void;
 
     /**
-     * Removes recipe by result id, count and data
+     * Removes recipe by result ID, count and data
      */
     function removeWorkbenchRecipe(id: number, count: number, data: number): void;
 
     /**
      * Gets all available recipes for the recipe result
-     * @returns java.util.Collection object containing {@link WorkbenchRecipe|WorkbenchRecipes}
+     * @returns Collection object containing {@link WorkbenchRecipe|WorkbenchRecipes}.
      */
     function getWorkbenchRecipesByResult(id: number, count: number, data: number): java.util.Collection<WorkbenchRecipe>;
 
     /**
      * Gets all available recipes containing an ingredient
-     * @returns java.util.Collection object containing {@link WorkbenchRecipe|WorkbenchRecipes}
+     * @returns Collection object containing {@link WorkbenchRecipe|WorkbenchRecipes}.
      */
     function getWorkbenchRecipesByIngredient(id: number, data: number): java.util.Collection<WorkbenchRecipe>;
 
@@ -95,8 +95,8 @@ declare namespace Recipes {
      * @param field {@link WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
-     * @returns {@link WorkbenchRecipe} instance, containing useful methods and 
-     * recipe information
+     * @returns Recipe {@link WorkbenchRecipe} instance, containing useful methods and 
+     * recipe information.
      */
     function getRecipeByField(field: WorkbenchField, prefix?: string): Nullable<WorkbenchRecipe>;
 
@@ -118,9 +118,9 @@ declare namespace Recipes {
 
     /**
      * Adds new furnace recipe
-     * @param sourceId source item id
+     * @param sourceId source item ID
      * @param sourceData source item data
-     * @param resultId resulting item id
+     * @param resultId resulting item ID
      * @param resultData resulting item data
      * @param prefix prefix, used to create recipes for non-vanilla furnaces
      */
@@ -129,8 +129,8 @@ declare namespace Recipes {
     /**
      * Adds new furnace recipe with no need to manually specify input item data
      * (it defaults to -1)
-     * @param sourceId source item id
-     * @param resultId result item id
+     * @param sourceId source item ID
+     * @param resultId result item ID
      * @param resultData resulting item data
      * @param prefix prefix, used to create recipes for non-vanilla furnaces. If
      * the prefix is not empty and some recipes for this source exist for 
@@ -140,51 +140,51 @@ declare namespace Recipes {
 
     /**
      * Removes furnace recipes by source item
-     * @param sourceId source item id
+     * @param sourceId source item ID
      * @param sourceData source item data
      */
     function removeFurnaceRecipe(sourceId: number, sourceData: number): void;
 
     /**
      * Adds fuel that can be used in the furnace
-     * @param id fuel item id
+     * @param id fuel item ID
      * @param data fuel item data
      * @param time burning time in ticks
      */
     function addFurnaceFuel(id: number, data: number, time: number): void;
 
     /**
-     * Removes furnace fuel by fuel item id and data
+     * Removes furnace fuel by fuel item ID and data
      */
     function removeFurnaceFuel(id: number, data: number): void;
 
     /**
      * @param prefix recipe prefix used for non-vanilla furnaces
-     * @returns furnace recipe resulting item
+     * @returns Furnace recipe resulting item.
      */
     function getFurnaceRecipeResult(id: number, data: number, prefix?: string): ItemInstance;
 
     /**
-     * @returns fuel burn duration by fuel item id and data
+     * @returns Fuel burn duration by fuel item ID and data.
      */
     function getFuelBurnDuration(id: number, data: number): number;
 
     /**
      * Gets furnace recipes by result and custom prefix
-     * @param resultId result item id
+     * @param resultId result item ID
      * @param resultData result item data
      * @param prefix recipe prefix used for non-vanilla furnaces
-     * @returns collection object with all furnace recipes found by given params
+     * @returns Collection object with all furnace recipes found by given params.
      */
     function getFurnaceRecipesByResult(resultId: number, resultData: number, prefix: string): java.util.Collection<FurnaceRecipe>;
 
     /**
-     * @returns collection object with all registered workbench recipes
+     * @returns Collection object with all registered workbench recipes.
      */
     function getAllWorkbenchRecipes(): java.util.Collection<WorkbenchRecipe>;
 
     /**
-     * @returns collection object with all registered furnace recipes
+     * @returns Collection object with all registered furnace recipes.
      */
     function getAllFurnaceRecipes(): java.util.Collection<FurnaceRecipe>;
 
@@ -209,7 +209,7 @@ declare namespace Recipes {
 
         /**
          * Refreshes all the recipes in the workbench
-         * @returns amount of recipes displayed
+         * @returns Amount of recipes displayed.
          */
         refresh(): number;
 
@@ -251,39 +251,39 @@ declare namespace Recipes {
      */
     interface WorkbenchRecipe extends java.lang.Object {
         /**
-         * @returns true, if the recipe is valid, false otherwise
+         * @returns `true`, if the recipe is valid, `false` otherwise.
          */
         isValid(): boolean;
 
         /**
          * @param c recipe entry character
-         * @returns recipe entry by entry character
+         * @returns Recipe entry by entry character.
          */
         getEntry(c: string): RecipeEntry;
 
         /**
-         * @returns resulting item instance
+         * @returns Resulting item instance.
          */
         getResult(): ItemInstance;
 
         /**
-         * @returns true if specified item is recipe's result, false otherwise
+         * @returns `true` if specified item is recipe's result, `false` otherwise.
          */
         isMatchingResult(id: number, count: number, data: number): boolean;
 
         /**
-         * @returns recipe unique mask identifier
+         * @returns Recipe unique mask identifier.
          */
         getRecipeMask(): string;
 
         /**
          * @param field workbench field to compare with
-         * @returns true if the field contains this recipe, false otherwise
+         * @returns `true` if the field contains this recipe, false` otherwise.
          */
         isMatchingField(field: WorkbenchField): boolean;
 
         /**
-         * @returns all recipe's entries in a java array
+         * @returns All recipe's entries in a java array.
          */
         getSortedEntries(): native.Array<RecipeEntry>;
 
@@ -294,21 +294,22 @@ declare namespace Recipes {
         putIntoTheField(field: WorkbenchField): void;
 
         /**
-         * @returns recipe prefix. Defaults to empty string
+         * @returns Recipe prefix.
+         * @default ""
          */
         getPrefix(): string;
 
         /**
-         * Sets prefix value for the recipe
+         * Sets prefix value for the recipe.
          * @param prefix new prefix value
          */
         setPrefix(prefix: string): void;
 
         /**
-         * Compares current recipe's prefix with given one
+         * Compares current recipe's prefix with given one.
          * @param prefix prefix value to compare with
-         * @returns true, if current recipe's prefix is the same as given one,
-         * false otherwise
+         * @returns `true`, if current recipe's prefix is the same as given one,
+         * `false` otherwise.
          */
         isMatchingPrefix(prefix: string): boolean;
 
@@ -319,7 +320,7 @@ declare namespace Recipes {
         setCallback(callback: CraftingFunction): void;
 
         /**
-         * @returns current crafting function or null if no one was specified
+         * @returns Current crafting function or null if no one was specified.
          */
         getCallback(): Nullable<CraftingFunction>;
 
@@ -344,7 +345,7 @@ declare namespace Recipes {
         setEntries(entries: java.util.HashMap<java.lang.Character, RecipeEntry>): void;
 
         /**
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setVanilla(isVanilla: boolean): WorkbenchRecipe;
 
@@ -384,22 +385,23 @@ declare namespace Recipes {
         readonly resId: number;
 
         /**
-         * @returns true, if the recipe is valid, false otherwise
+         * @returns `true`, if the recipe is valid, `false` otherwise.
          */
         isValid(): boolean;
 
         /**
-         * @returns resulting item instance
+         * @returns Resulting item instance.
          */
         getResult(): ItemInstance;
 
         /**
-         * @returns recipe prefix. Defaults to empty string
+         * @returns Recipe prefix.
+         * @default ""
          */
         getPrefix(): string;
 
         /**
-         * Sets prefix value for the recipe
+         * Sets prefix value for the recipe.
          * @param prefix new prefix value
          */
         setPrefix(prefix: string): void;
@@ -407,8 +409,8 @@ declare namespace Recipes {
         /**
          * Compares current recipe's prefix with given one
          * @param prefix prefix value to compare with
-         * @returns true, if current recipe's prefix is the same as given one,
-         * false otherwise
+         * @returns `true`, if current recipe's prefix is the same as given one,
+         * `false` otherwise.
          */
         isMatchingPrefix(prefix: string): boolean;
 
@@ -434,12 +436,12 @@ declare namespace Recipes {
     interface WorkbenchField {
         /**
          * @param slot slot index
-         * @returns workbench slot instance by slot index
+         * @returns Workbench slot instance by slot index.
          */
         getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.Slot,
 
         /**
-         * @returns js array of all slots
+         * @returns JS array of all slots.
          */
         asScriptableField(): com.zhekasmirnov.innercore.api.mod.ui.container.Slot[]
     }
@@ -452,7 +454,7 @@ declare namespace Recipes {
 
         /**
          * @param slot slot index
-         * @returns workbench slot instance by slot index
+         * @returns Workbench slot instance by slot index.
          */
         getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.Slot;
 
@@ -468,11 +470,10 @@ declare namespace Recipes {
         prevent(): void;
 
         /**
-         * @returns true, if crafting event was prevented, false otherwise
+         * @returns `true`, if crafting event was prevented, `false` otherwise.
          */
         isPrevented(): boolean;
     }
-
 
     /**
      * Crafting recipe entry
@@ -481,13 +482,13 @@ declare namespace Recipes {
 
         /**
          * @param slot slot to compare with
-         * @returns true if recipe entry matches the slot
+         * @returns `true` if recipe entry matches the slot.
          */
         isMatching(slot: com.zhekasmirnov.innercore.api.mod.ui.container.Slot): boolean;
 
         /**
          * @param entry entry to compare with
-         * @returns true if recipe entry matches another entry
+         * @returns `true` if recipe entry matches another entry.
          */
         isMatching(entry: RecipeEntry): boolean;
     }

@@ -18,10 +18,10 @@ declare class GameObject {
 
     /**
      * Creates a new game object with specified params and registers it for saving
-     * and as an {@link Updatable}
+     * and as an {@link Updatable}.
      * @param args any arguments that are passed to {@link GameObjectPrototype.init}
      * function
-     * @returns instantiated game object
+     * @returns Instantiated game object.
      */
     deploy(...args: any): GameObject;
 

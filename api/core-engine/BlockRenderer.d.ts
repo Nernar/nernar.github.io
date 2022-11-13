@@ -41,16 +41,16 @@ declare namespace BlockRenderer {
 
         /**
          * Constructs new block model with single box inside specified block shape. 
-         * The width of the full block is 1x1x1 units. Uses block id and data to
+         * The width of the full block is 1x1x1 units. Uses block ID and data to
          * determine texture
-         * @param id sample block id
+         * @param id sample block ID
          * @param data sample block data
          */
         constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number);
 
         /**
          * Constructs new block model with single box of the normal block size.
-         * The width of the full block is 1x1x1 units. Uses block id and data to
+         * The width of the full block is 1x1x1 units. Uses block ID and data to
          * determine texture
          * @param id 
          * @param data 
@@ -69,7 +69,7 @@ declare namespace BlockRenderer {
         addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, descr: ModelTextureSet): void;
 
         /**
-         * Adds new box to the model using specified block texture name and id
+         * Adds new box to the model using specified block texture name and ID
          */
         addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, texName: string, texId: number): void;
 
@@ -91,8 +91,8 @@ declare namespace BlockRenderer {
         [string, number][];
 
     /**
-     * Creates a new empty block model
-     * @returns empty block model
+     * Creates a new empty block model.
+     * @returns Empty block model.
      */
     function createModel(): BlockRenderer.Model;
 
@@ -111,8 +111,8 @@ declare namespace BlockRenderer {
     function createTexturedBlock(descr: ModelTextureSet): BlockRenderer.Model;
 
     /**
-     * Adds "CustomBlockTessellation" callback function for specified block id 
-     * @param id block id
+     * Adds "CustomBlockTessellation" callback function for specified block ID 
+     * @param id block ID
      * @param callback function to be called when the event occurs
      */
     function addRenderCallback(id: number, callback: Callback.CustomBlockTessellationFunction): void;
@@ -126,7 +126,7 @@ declare namespace BlockRenderer {
 
     /**
      * Specifies custom collision shape for the block
-     * @param id block id
+     * @param id block ID
      * @param data block data
      * @param shape {@link ICRender.CollisionShape} object to be used as 
      * default collision shape for the specified block
@@ -135,7 +135,7 @@ declare namespace BlockRenderer {
 
     /**
      * Specifies custom raycast shape for the block
-     * @param id block id
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      * @param shape {@link ICRender.CollisionShape} object to be used as
      * default raycast shape for the specified block
@@ -144,7 +144,7 @@ declare namespace BlockRenderer {
 
     /**
      * Specifies custom collision and raycast shape for the block
-     * @param id block id
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      * @param shape {@link ICRender.CollisionShape} object to be used as
      * default collision and raycast shape for the specified block
@@ -153,21 +153,21 @@ declare namespace BlockRenderer {
 
     /**
      * Enables custom rendering for the specified block
-     * @param id block id
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      */
     function enableCustomRender(id: number, data: number): void;
 
     /**
      * Disables custom rendering for the specified block
-     * @param id block id
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      */
     function disableCustomRender(id: number, data: number): void;
 
     /**
      * Sets static ICRender model as block render shape
-     * @param id block id
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      * @param icRender {@link ICRender.Model} object to be used as static block shape
      */
@@ -175,7 +175,7 @@ declare namespace BlockRenderer {
 
     /**
      * Enables block mapping for the specified block
-     * @param id block id
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      * @param icRender default model for the block
      */
@@ -231,22 +231,23 @@ declare namespace BlockRenderer {
      * Object used to manipulate rendered block during 
      * {@link Callback.CustomBlockTessellationFunction} calls
      */
+
     interface RenderAPI {
         /**
-         * @returns pointer to native object instance of the following object,
-         * to be used in custom native code etc.
+         * @returns Pointer to native object instance of the following object,
+         * to be used in custom native code, etc.
          */
         getAddr(): number;
         /**
          * Renders box at the specified coordinates of the specified size
-         * @param id id of the block to be used as texture source
+         * @param id ID of the block to be used as texture source
          * @param data data of the block to be used as texture source
          */
         renderBoxId(x: number, y: number, z: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
 
         /**
          * Renders box at current block coordinates of the specified size
-         * @param id id of the block to be used as texture source
+         * @param id ID of the block to be used as texture source
          * @param data data of the block to be used as texture source
          */
         renderBoxIdHere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
@@ -254,27 +255,27 @@ declare namespace BlockRenderer {
         /**
          * Renders box at the specified coordinates of the specified size
          * @param texName block texture name
-         * @param texId block texture id
+         * @param texId block texture ID
          */
         renderBoxTexture(x: number, y: number, z: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, texName: string, texId: number): void;
 
         /**
          * Renders box at current block coordinates of the specified size
          * @param texName block texture name
-         * @param texId block texture id
+         * @param texId block texture ID
          */
         renderBoxTextureHere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
 
         /**
          * Renders full block at specified coordinates
-         * @param blockId id of the block to be used as texture source
+         * @param blockId ID of the block to be used as texture source
          * @param blockData data of the block to be used as texture source
          */
         renderBlock(x: number, y: number, z: number, blockId: number, blockData: number): void;
 
         /**
          * Renders full block at current block coordinates
-         * @param blockId id of the block to be used as texture source
+         * @param blockId ID of the block to be used as texture source
          * @param blockData data of the block to be used as texture source
          */
         renderBlockHere(blockId: number, blockData: number): void;

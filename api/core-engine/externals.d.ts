@@ -1,11 +1,13 @@
 /**
- * Empty function used to verify Rhino functionality. Should not be called by 
- * hand
+ * Method provided to log inherited Rhino class type and
+ * determine which instance is used.
+ * @returns Something like {@link java.lang.Class.getName()}.
+ * @internal
  */
-declare function __debug_typecheck__(): void;
+declare function __debug_typecheck__(obj: any): string;
 
 /**
- * Runs custom source in the specified context by its name. Define custom 
+ * Runs custom source in the specified context by it's name. Define custom 
  * sources using *"sourceType": "custom"* for the source in your *build.config*.
  * @param name path to the executable. Can be built the way built-in source 
  * types are built
@@ -14,37 +16,37 @@ declare function __debug_typecheck__(): void;
 declare function runCustomSource(name: string, scope?: object): void;
 
 /**
- * Object containing custom block string ids  as keys and their numeric
- * ids as values
+ * Object containing custom block string IDs  as keys and their numeric
+ * IDs as values
  */
 declare const BlockID: { [key: string]: number };
 
 /**
- * Object containing custom item string ids as keys and their numeric
- * ids as values
+ * Object containing custom item string IDs as keys and their numeric
+ * IDs as values
  */
 declare const ItemID: { [key: string]: number };
 
 /**
- * Module containing {@link ItemID} and {@link BlockID} values
- * @deprecated consider using {@link ItemID} and {@link BlockID} instead
+ * Module containing {@link ItemID} and {@link BlockID} values.
+ * @internal
  */
 declare namespace IDData {
 	/**
-	 * Object containing custom item string ids as keys and their numeric
-	 * ids as values
+	 * Object containing custom item string IDs as keys and their numeric
+	 * IDs as values
 	 */
 	const item: { [key: string]: number };
 
 	/**
-	 * Object containing custom block string ids as keys and their numeric
-	 * ids as values
+	 * Object containing custom block string IDs as keys and their numeric
+	 * IDs as values
 	 */
 	const block: { [key: string]: number };
 }
 
 /**
- * Same as {@link IMPORT}, consider using {@link IMPORT} instead 
+ * Same as {@link IMPORT}, consider using {@link IMPORT} instead.
  */
 declare function importLib(name: string, value?: string): void;
 
@@ -69,19 +71,19 @@ declare function IMPORT_NATIVE(name: string, target: object): any;
 /**
  * Allows to create new JS modules imported from C++ code and use it in the mod
  * @param name name of the module, as registered from native code
- * @returns js module, implemented in native (C++) code 
+ * @returns JS module, implemented in native (C++) code.
  */
 declare function WRAP_NATIVE<T = any>(name: string): T;
 
 /**
  * Allows to create new JS modules imported from Java code and use it in the mod
  * @param name name of the module, as registered from Java code
- * @returns js module, implemented in Java code 
+ * @returns JS module, implemented in Java code.
  */
 declare function WRAP_JAVA<T = any>(name: string): T;
 
 /**
- * @returns current Core Engine API level
+ * @returns Current Core Engine API level.
  */
 declare function getCoreAPILevel(): number;
 
@@ -99,12 +101,25 @@ declare function runOnMainThread(func: () => void): void;
 declare function runOnClientThread(func: () => void): void;
 
 /**
- * @returns minecraft version information in some readable form
- * @param str string version representation, three dot-separated numbers
- * @param array array containing three version numbers
- * @param main version number, calculated as *array[0] * 17 + array[1]*
+ * @returns Minecraft version information in several variants.
  */
-declare function getMCPEVersion(): { str: string, array: number[], main: number };
+declare function getMCPEVersion(): {
+	/**
+	 * string version representation, three dot-separated numbers
+	 * @default "1.16.201" or "1.11.4"
+	 */
+	str: string,
+	/**
+	 * array containing three version numbers
+	 * @default [1, 16, 201] or [1, 11, 4]
+	 */
+	array: number[],
+	/**
+	 * version number
+	 * @default 16 or 11
+	 */
+	main: number
+};
 
 /**
  * Displays android.widget.Toast with specified message. If this function is called
@@ -112,7 +127,6 @@ declare function getMCPEVersion(): { str: string, array: number[], main: number 
  * @param arg 
  */
 declare function alert(arg: any): any;
-
 
 /**
  * Library declaration, specifies all the information about library it is called from. 
@@ -165,7 +179,6 @@ declare function LIBRARY(description: {
  * can be of any valid js/java type
  */
 declare function EXPORT(name: string, lib: any): void;
-
 
 /**
  * Function that must be written in launcher.js to enable multiplayer configuration

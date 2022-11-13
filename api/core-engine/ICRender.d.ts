@@ -15,8 +15,8 @@ declare namespace ICRender {
 
 	/**
 	 * @param name group name
-	 * @returns block group by its name, if no group with specified name exist,
-	 * this function creates a new one
+	 * @returns Block group by it's name, if no group with specified name exist,
+	 * this function creates a new one.
 	 */
 	function getGroup(name: string): ICRender.Group;
 
@@ -32,7 +32,7 @@ declare namespace ICRender {
 	 */
 	interface Group {
 		/**
-		 * @returns group's name
+		 * @returns Group's name.
 		 */
 		getName(): string,
 		
@@ -40,7 +40,7 @@ declare namespace ICRender {
 
 		/**
 		 * Adds a block to the group
-		 * @param id block id
+		 * @param id block ID
 		 * @param data block data or -1 to use with all registered data values
 		 */
 		add(id: number, data: number): void
@@ -56,68 +56,68 @@ declare namespace ICRender {
 		/**
 		 * Adds block model as an entry to the {@link ICRender}. You can then call 
 		 * {@link RenderEntry.asCondition} to specify when to display the entry
-		 * @returns created {@link RenderEntry} object
+		 * @returns Created {@link RenderEntry} object.
 		 */
 		addEntry(model?: BlockRenderer.Model): RenderEntry;
 
 		/**
 		 * Adds render mesh as an entry to the {@link ICRender}. You can then call 
 		 * {@link RenderEntry.asCondition} to specify when to display the entry
-		 * @returns created {@link RenderEntry} object
+		 * @returns Created {@link RenderEntry} object.
 		 */
 		addEntry(mesh?: RenderMesh): RenderEntry;
 	}
 
 	/**
-	 * Object representing render entry with its displaying condition
+	 * Object representing render entry with it's displaying condition
 	 */
 	interface RenderEntry {
 		/**
-		 * @returns parent {@link Model} object this entry belongs to
+		 * @returns Parent {@link Model} object this entry belongs to.
 		 */
 		getParent(): Model;
 
 		/**
 		 * Sets {@link BLOCK} condition with specified parameters. Uses coordinates 
-		 * that are relative to current block's ones
+		 * that are relative to current block's ones.
 		 * @param group group name or object
 		 * @param mode one of the {@link MODE_INCLUDE} and {@link MODE_EXCLUDE} constants
-		 * @returns reference to itself to be used in sequential calls
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		asCondition(x: number, y: number, z: number, group: Group | string, mode: number): RenderEntry;
 
 		/**
 		 * Sets {@link BLOCK} condition with specified parameters. Uses coordinates 
 		 * that are relative to current block's ones. Creates a new anonymous
-		 * group with single block
-		 * @param id condition block id
+		 * group with single block.
+		 * @param id condition block ID
 		 * @param data condition block data
 		 * @param mode one of the {@link MODE_INCLUDE} and {@link MODE_EXCLUDE} constants
-		 * @returns reference to itself to be used in sequential calls
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		asCondition(x: number, y: number, z: number, id: number, data: number, mode: number): RenderEntry;
 
 		/**
-		 * Sets condition to be used for current entry
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets condition to be used for current entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setCondition(condition: CONDITION): RenderEntry;
 
 		/**
-		 * Sets block model used for the entry, specifying its coordinates
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets block model used for the entry, specifying it's coordinates.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setModel(x: number, y: number, z: number, model: BlockRenderer.Model): RenderEntry;
 
 		/**
-		 * Sets block model used for the entry
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets block model used for the entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setModel(model: BlockRenderer.Model): RenderEntry;
 
 		/**
-		 * Sets render mesh to be used for the entry
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets render mesh to be used for the entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setMesh(mesh: RenderMesh): RenderEntry;
 	}
@@ -128,22 +128,24 @@ declare namespace ICRender {
 	class CollisionShape {
 		/**
 		 * Adds new entry to the collision shape. You can then call 
-		 * {@link CollisionEntry.setCondition} to specify when to display the entry
+		 * {@link CollisionEntry.setCondition} to specify when to display the entry.
 		 */
 		addEntry(): CollisionEntry;
 	}
 
 	/**
-	 * Object representing collision shape entry with its displaying condition
+	 * Object representing collision shape entry with it's displaying condition
 	 */
 	interface CollisionEntry {
 		/**
-		 * Adds new collision box to collision entry
+		 * Adds new collision box to collision entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): CollisionEntry;
 
 		/**
-		 * Sets condition, all the boxes of the entry work only if the condition is true
+		 * Sets condition, all the boxes of the entry work only if the condition is `true`.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setCondition(condition: CONDITION): CollisionEntry;
 	}

@@ -3,23 +3,23 @@
  */
 declare namespace Item {
     /**
-     * @param id string id of the item
-     * @returns item numeric id by its string id or just returns its numeric id 
-     * if input was a numeric id
+     * @param id string ID of the item
+     * @returns Item numeric ID by it's string ID or just returns it's numeric ID 
+     * if input was a numeric ID.
      */
     function getNumericId(id: string | number): number;
 
     /**
      * Gets NativeItem instance that can be used to apply some properties to the
      * item
-     * @param id string id of the item
-     * @returns NativeItem instance associated with this item
+     * @param id string ID of the item
+     * @returns NativeItem instance associated with this item.
      */
     function getItemById(id: string): NativeItem;
 
     /**
      * Creates new item using specified parameters
-     * @param nameID string id of the item. You should register it via 
+     * @param nameID string ID of the item. You should register it via 
      * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
      * {@link Translation} module, all translation to the item and block names are
@@ -34,7 +34,7 @@ declare namespace Item {
 
     /**
      * Creates eatable item using specified parameters
-     * @param nameID string id of the item. You should register it via 
+     * @param nameID string ID of the item. You should register it via 
      * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
      * {@link Translation} module, all translation to the item and block names are
@@ -51,7 +51,7 @@ declare namespace Item {
 
     /**
      * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel}
-     * instead
+     * instead.
      */
     function createFuelItem(nameID: string, name: string, texture: TextureData, params: object): void;
 
@@ -93,7 +93,7 @@ declare namespace Item {
 
     /**
      * Creates armor item using specified parameters
-     * @param nameID string id of the item. You should register it via 
+     * @param nameID string ID of the item. You should register it via 
      * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
      * {@link Translation} module, all translation to the item and block names are
@@ -105,7 +105,7 @@ declare namespace Item {
 
     /**
      * Creates throwable item using specified parameters
-     * @param nameID string id of the item. You should register it via 
+     * @param nameID string ID of the item. You should register it via 
      * {@link IDRegistry.genItemID} call first
      * @param name item name in English. Add translations to the name using
      * {@link Translation} module, all translation to the item and block names are
@@ -119,59 +119,71 @@ declare namespace Item {
     function createThrowableItem(nameID: string, name: string, texture: TextureData, params: any): NativeItem;
 
     /**
-     * @param id numeric item id
-     * @returns true if given item is vanilla item, false otherwise
+     * @param id numeric item ID
+     * @returns `true` if given item is vanilla item, `false` otherwise.
      */
     function isNativeItem(id: number): boolean;
 
     /**
-     * @param id numeric item id
-     * @returns maximum damage value for the specified item
+     * @param id numeric item ID
+     * @returns Maximum damage value for the specified item.
      */
     function getMaxDamage(id: number): number;
 
     /**
-     * @param id numeric item id
-     * @returns maximum stack size for the specified item
+     * @param id numeric item ID
+     * @returns Maximum stack size for the specified item.
      */
     function getMaxStack(id: number): number;
 
     /**
-     * @param id numeric item id
+     * @param id numeric item ID
      * @param data item data
-     * @param encode no longer supported, do not use this parameter
-     * @returns current item name
+     * @returns Current item name.
      */
-    function getName(id: number, data: number, encode?: any): string;
+    function getName(id: number, data: number): string;
 
     /**
-     * @param id numeric item id
-     * @param data no longer supported, do not use this parameter
-     * @returns true, if an item with such id exists, false otherwise
+     * @param id numeric item ID
+     * @param data item data
+     * @param encode no longer supported, do not use this parameter
+     * @returns Current item name.
+     * @deprecated Use same method without last parameter.
      */
-    function isValid(id: number, data?: number): boolean;
+    function getName(id: number, data: number, encode: any): string;
+
+    /**
+     * @param id numeric item ID
+     * @returns `true`, if an item with such ID exists, `false` otherwise.
+     */
+    function isValid(id: number): boolean;
+
+    /**
+     * @param id numeric item ID
+     * @param data no longer supported, do not use this parameter
+     * @returns `true`, if an item with such ID exists, `false` otherwise.
+     * @deprecated Use same method without last parameter.
+     */
+     function isValid(id: number, data: number): boolean;
 
     /**
      * Adds item to creative inventory
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param count amount of the item to be added, generally should be 1
      * @param data item data
      */
     function addToCreative(id: number | string, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
-     * Applies several properties via one method call
-     * @deprecated Consider using appropriate setters instead
-     * @param numericID numeric item id
-     * @param description 
+     * Applies several properties via one method call.
+     * @param numericID numeric item ID
+     * @deprecated Consider using appropriate setters instead.
      */
-    function describeItem(numericID: number, description: {
-        category?
-    }): void;
+    function describeItem(numericID: number, description: object): void;
 
     /**
      * Sets item creative category
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param category item category, should be one of the 
      * {@link EItemCategory} values
      */
@@ -179,7 +191,7 @@ declare namespace Item {
 
     /**
      * Specifies how the item can be enchanted
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param enchant enchant type defining when enchants can or cannot be
      * applied to this item, one of the {@link EEnchantType}
      * @param value quality of the enchants that are applied, the higher this 
@@ -189,14 +201,14 @@ declare namespace Item {
 
     /**
      * Specifies what items can be used to repair this item in the anvil
-     * @param id string or numeric item id
-     * @param items array of numeric item ids to be used as repair items
+     * @param id string or numeric item ID
+     * @param items array of numeric item IDs to be used as repair items
      */
     function addRepairItemIds(id: number | string, items: number[]): void;
 
     /**
      * Specifies how the player should hold the item
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param enabled if true, player holds the item as a tool, not as a simple
      * item
      */
@@ -204,33 +216,33 @@ declare namespace Item {
 
     /**
      * Sets item maximum data value
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param maxdamage maximum data value for the item
      */
     function setMaxDamage(id: number | string, maxdamage: number): void;
 
     /**
      * Sets item as glint (like enchanted tools or golden apple)
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param enabled if true, the item will be displayed as glint item
      */
     function setGlint(id: number | string, enabled: boolean): void;
 
     /**
      * Allows to click with item on liquid blocks
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param enabled if true, liquid blocks can be selected on click
      */
     function setLiquidClip(id: number | string, enabled: boolean): void;
 
-    /** 
-     * @deprecated No longer supported
+    /**
+     * @deprecated No longer supported.
      */
     function setStackedByData(id: number | string, enabled: boolean): void;
 
     /**
      * Allows item to be put in offhand slot
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param allowed
      */
     function setAllowedInOffhand(id: number | string, allowed: boolean): void;
@@ -238,14 +250,14 @@ declare namespace Item {
     /**
      * Sets additional properties for the item, uses Minecraft mechanisms to
      * set them. Full list of properties is currently unavailable 
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param props JSON string containing some of the properties
      */
     function setProperties(id: number | string, props: string): void;
 
     /**
      * Sets animation type for the item
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param animType use animation type, one of the {@link EItemAnimation} 
      * values
      */
@@ -253,41 +265,41 @@ declare namespace Item {
 
     /**
      * Limits maximum use duration. This is useful to create such items as bows
-     * @param id string or numeric item id
+     * @param id string or numeric item ID
      * @param duration maximum use duration in ticks
      */
     function setMaxUseDuration(id: number | string, duration: number): void;
 
     /**
-     * Same as {@link Item.registerUseFunction}, but supports numeric ids only
+     * Same as {@link Item.registerUseFunction}, but supports numeric IDs only
      */
     function registerUseFunctionForID(numericID: number, useFunc: Callback.ItemUseLocalFunction): void;
 
     /**
      * Registers function that is called when user touches some block in the 
      * world with specified item
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param useFunc function that is called when such an event occurs
      */
     function registerUseFunction(nameID: string | number, useFunc: Callback.ItemUseLocalFunction): void;
 
     /**
-     * Same as {@link Item.registerThrowableFunction}, but supports numeric ids only
+     * Same as {@link Item.registerThrowableFunction}, but supports numeric IDs only
      */
     function registerThrowableFunctionForID(numericID: number, useFunc: Callback.ProjectileHitFunction): void;
 
     /**
-     * Registers function that is called when throwable item with specified id
+     * Registers function that is called when throwable item with specified ID
      * hits block or entity
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param useFunc function that is called when such an event occurs
      */
     function registerThrowableFunction(nameID: string | number, useFunc: Callback.ProjectileHitFunction): void;
 
     /**
-     * Registers item id as requiring item icon override and registers function 
+     * Registers item ID as requiring item icon override and registers function 
      * to perform such an override
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called to override item icon. Should return 
      * {@link Item.TextureData} object to be used for the item. See 
      * {@link Callback.ItemIconOverrideFunction} documentation for details
@@ -296,7 +308,7 @@ declare namespace Item {
 
     /**
      * Registers function to perform item name override
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called to override item name. Should return 
      * string to be used as new item name
      */
@@ -305,7 +317,7 @@ declare namespace Item {
     /**
      * Registers function to be called when player uses item in the air (not on
      * the block)
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerNoTargetUseFunction(nameID: string | number, func: Callback.ItemUseNoTargetFunction): void;
@@ -314,7 +326,7 @@ declare namespace Item {
      * Registers function to be called when player doesn't complete using item 
      * that has maximum use time set with {@link Item.setMaxUseDuration} function.
      * Vanilla bow uses this function with max use duration of 72000 ticks
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerUsingReleasedFunction(nameID: string | number, func: Callback.ItemUsingReleasedFunction): void;
@@ -322,14 +334,14 @@ declare namespace Item {
     /**
      * Registers function to be called when player completes using item 
      * that has maximum use time set with {@link Item.setMaxUseDuration} function
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerUsingCompleteFunction(nameID: string | number, func: Callback.ItemUsingCompleteFunction): void;
 
     /**
      * Registers function to be called when item is dispensed from dispenser. 
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerDispenseFunction(nameID: string | number, func: Callback.ItemDispensedFunction): void;
@@ -353,12 +365,12 @@ declare namespace Item {
 
     /**
      * @deprecated Should not be used in new mods, consider using {@link Item} 
-     * properties setters instead
+     * properties setters instead.
      */
     function setPrototype(nameID: any, Prototype: any): void;
 
     /**
-     * Class representing item used to set its properties
+     * Class representing item used to set it's properties
      */
     interface NativeItem {
 
@@ -390,7 +402,9 @@ declare namespace Item {
 
         setMaxUseDuration(duration: number): void;
 
-        /**@deprecated */
+        /**
+         * @deprecated Consider using appropriate setters instead.
+         * */
         setProperties(props: string): void;
 
         setStackedByData(stacked: boolean): void;
@@ -408,17 +422,18 @@ declare namespace Item {
     interface TextureData {
         /**
          * Texture name, name of the file stored in the 'items-opaque' asset
-         * folder without extension and _N suffixes
+         * folder without extension and _N suffixes.
          */
         name: string,
 
         /**
-         * Texture index defined by _N texture suffix. Default value id 0
+         * Texture index defined by _N texture suffix.
+         * @default 0
          */
         data?: number,
 
         /**
-         * @deprecated same as data, so data is preferred in all cases
+         * @deprecated Same as data, so data is preferred in all cases.
          */
         meta?: number
     }

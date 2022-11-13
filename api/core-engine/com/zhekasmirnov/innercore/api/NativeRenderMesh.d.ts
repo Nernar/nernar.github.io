@@ -39,8 +39,8 @@ declare module com {
                      */
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, keepRatio: boolean): void;
                     /**
-                     * @returns pointer to the native object instance of the
-                     * following {@link NativeRenderMesh}, represented as long number
+                     * @returns Pointer to the native object instance of the
+                     * following {@link NativeRenderMesh}, represented as long number.
                      */
                     getPtr(): number;
                     getReadOnlyVertexData(): NativeRenderMesh.ReadOnlyVertexData;

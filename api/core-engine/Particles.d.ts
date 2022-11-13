@@ -28,12 +28,13 @@ declare namespace Particles {
          */
         end?: number;
     }
+
     /**
      * Custom particle's sub-emitter params object
      */
     interface SubEmitterDescription {
         /**
-         * Emitted particle's type numeric id
+         * Emitted particle's type numeric ID
          */
         type: number;
         /**
@@ -54,7 +55,7 @@ declare namespace Particles {
          */
         keepVelocity?: boolean;
         /**
-         * If true, the new particle will save the emitter that was used for its creation if it had been.
+         * If true, the new particle will save the emitter that was used for it's creation if it had been.
          * Note: in this case we are talking about emitters, not about sub-emitters.
          */
         keepEmitter?: boolean;
@@ -64,6 +65,7 @@ declare namespace Particles {
          */
         randomize?: number;
     }
+
     /**
      * Custom particle type params object
      */
@@ -124,7 +126,7 @@ declare namespace Particles {
          */
         keepVelocityAfterImpact?: boolean;
         /**
-         * Particle will lose given number of ticks from its maximum lifetime, when touching a block.
+         * Particle will lose given number of ticks from it's maximum lifetime, when touching a block.
          * This value makes sense only if collision param is true. Default is 0
          */
         addLifetimeAfterImpact?: number;
@@ -152,7 +154,7 @@ declare namespace Particles {
             /**
              * Describes the animation frame, if particle supports it.
              * Must have the value between 0 and 1
-             * @deprecated use icon instead
+             * @deprecated Use `icon` instead.
              */
             texture?: AnimatorDescription;
             /**
@@ -170,7 +172,7 @@ declare namespace Particles {
             /**
              * Called every tick
              */
-            idle?: SubEmitterDescription;
+            IDle?: SubEmitterDescription;
             /**
              * Called when touching a block, makes sense only if collision parameter is true
              */
@@ -181,11 +183,12 @@ declare namespace Particles {
             death?: SubEmitterDescription;
         }
     }
+
     /**
      * Spawns particle of given type on given coords 
      * with given velocity and additional parameters in the world.
      * Note: called only on the client side! Use packets to spawn particles for multiple players.
-     * @param type particle type's numeric id. If you want to spawn vanilla particles,
+     * @param type particle type's numeric ID. If you want to spawn vanilla particles,
      * see {@link EParticleType} enums.
      * @param vx velocity for the particle by X-axis
      * @param vy velocity for the particle by Y-axis
@@ -193,22 +196,26 @@ declare namespace Particles {
      * @param data additional params, currently don't know how to use, just put 0
      */
     function addParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
+
     /**
      * Same as {@link Particles.addParticle}, but applies 'far' shader to the particle
      */
     function addFarParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
+
     /**
      * Registers new custom particle type of given params object
-     * @returns created particle type's numeric id
+     * @returns Created particle type's numeric ID.
      */
     function registerParticleType(descriptor: ParticleDescription): number;
+
     /**
-     * @returns {@link Particles.ParticleType} object of the particle by given id, if it exists
+     * @returns Object {@link Particles.ParticleType} of the particle by given ID, if it exists.
      */
     function getParticleTypeById(id: number): ParticleType;
+
     /**
      * Class to create custom particle types.
-     * Mostly for internal use, you can use {@link Particles.registerParticleType} instead
+     * Mostly for internal use, you can use {@link Particles.registerParticleType} instead.
      */
     class ParticleType {
         /**
@@ -225,7 +232,7 @@ declare namespace Particles {
          */
         constructor(descriptor: ParticleDescription);
         /**
-         * @returns following particle type's numeric id
+         * @returns Following particle type's numeric ID.
          */
         getId(): number;
         setRenderType(renderType: 0 | 1 | 2): void;
@@ -241,11 +248,13 @@ declare namespace Particles {
         setSubEmitter(name: "idle" | "impact" | "death", emitter: ParticleSubEmitter): void;
         setAnimator(name: "size" | "icon" | "alpha" | "color", animator: ParticleAnimator): void;
     }
+
     /**
      * Particle emitter allows to change their position after spawn.
      * It represents a coordinate system, where created particles are located
      * and which you can move however you want.
-     * Note: emitter can be moved only while being in world, 
+     * @remarks
+     * Emitter can be moved only while being in world, 
      * and it works ONLY for custom particles, not for vanilla!
      */
     class ParticleEmitter {
@@ -292,11 +301,11 @@ declare namespace Particles {
          */
         release(): void;
         /**
-         * @returns the origin's coords in {@link Vector} object
+         * @returns Origin's coords in {@link Vector} object.
          */
         getPosition(): Vector;
         /**
-         * @returns the origin's coords in float array of 3 elements
+         * @returns Origin's coords in float array of 3 elements.
          */
         getPositionArray(): [number, number, number];
         /**
@@ -360,8 +369,9 @@ declare namespace Particles {
          */
         setKeepVelocity(keepVelocity: boolean): void;
         /**
-         * @param keepEmitter If true, the new particle will save the emitter that was used for its creation if it had been.
-         * Note: in this case we are talking about emitters, not about sub-emitters.
+         * @param keepEmitter If true, the new particle will save the emitter that was used for it's creation if it had been.
+         * @remarks
+         * In this case we are talking about emitters, not about sub-emitters.
          */
         setKeepEmitter(keepEmitter: boolean): void;
     }

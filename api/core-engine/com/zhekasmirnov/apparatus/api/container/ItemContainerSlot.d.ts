@@ -15,23 +15,23 @@ declare module com {
                         constructor(item: ItemInstance);
                         constructor(json: org.json.JSONObject, convert: boolean);
                         /**
-                         * @returns slot name
+                         * @returns Slot name.
                          */
                         getName(): string;
                         /**
-                         * @returns container linked to the slot
+                         * @returns Container linked to the slot.
                          */
                         getContainer(): ItemContainer;
                         /**
-                         * @returns following {@link ItemContainerSlot} as {@link ItemInstance} object
+                         * @returns Following {@link ItemContainerSlot} as {@link ItemInstance} object.
                          */
                         asScriptable(): ItemInstance;
                         /**
-                         * @returns following {@link ItemContainerSlot} as {@link org.json.JSONObject} instance
+                         * @returns Following {@link ItemContainerSlot} as {@link org.json.JSONObject} instance.
                          */
                         asJson(): org.json.JSONObject;
                         /**
-                         * @returns whether the slot is empty or not
+                         * @returns Whether the slot is empty or not.
                          */
                         isEmpty(): boolean;
                         /**
@@ -43,7 +43,7 @@ declare module com {
                          */
                         clear(): void;
                         /**
-                         * Resets slot if its id or count equals 0
+                         * Resets slot if it's ID or count equals 0
                          */
                         validate(): void;
                         /**
@@ -59,20 +59,20 @@ declare module com {
                         setSavingEnabled(enabled: boolean): void;
                         isSavingEnabled(): boolean;
                         /**
-                         * @returns numeric id of the item in slot
+                         * @returns Numeric ID of the item in slot.
                          */
                         getId(): number;
                         /**
-                         * @returns count of the item in slot
+                         * @returns Count of the item in slot.
                          */
                         getCount(): number;
                         /**
-                         * @returns data of the item in slot
+                         * @returns Data of the item in slot.
                          */
                         getData(): number;
                         /**
-                         * @returns extra data object of the item in slot,
-                         * or null if it is not present in the given item
+                         * @returns Extra data object of the item in slot,
+                         * or `null` if it is not present in the given item.
                          */
                         getExtra(): Nullable<innercore.api.NativeItemInstanceExtra>;
                         set(id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>): void;

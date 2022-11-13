@@ -4,9 +4,10 @@
 declare namespace Armor {
     /**
      * Registers armor's hurt and tick functions
-     * @param id armor item string or numeric id
+     * @param id armor item string or numeric ID
      * @param funcs 
-     * @deprecated, does not work in multiplayer
+     * @deprecated Use multiplayer {@link registerOnHurtListener} and
+     * anothers or callbacks.
      */
     function registerFuncs(id: number | string, funcs: {
         /**
@@ -14,8 +15,8 @@ declare namespace Armor {
          * @param item current armor item instance
          * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor 
-         * @returns true, if changes to the item parameter should be applied, 
-         * false otherwise
+         * @returns `true`, if changes to the item parameter should be applied, 
+         * `false` otherwise.
          */
         tick: (item: ItemInstance, index: number, maxDamage: number) => boolean,
 
@@ -25,8 +26,8 @@ declare namespace Armor {
          * @param item current armor item instance
          * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor 
-         * @returns true, if changes to the item parameter should be applied, 
-         * false otherwise
+         * @returns `true`, if changes to the item parameter should be applied, 
+         * `false` otherwise.
          */
         hurt: (params: {
             /**
@@ -55,7 +56,7 @@ declare namespace Armor {
 
     /**
      * Prevents armor from being damaged
-     * @param id armor item string or numeric id
+     * @param id armor item string or numeric ID
      */
 	function preventDamaging(id: number | string): void;
 
@@ -69,15 +70,15 @@ declare namespace Armor {
 
 	/**
      * This event is called every tick for every player that has this armor put on.
-     * @returns the {id: , count: , data: , extra: } object to change armor item,
-     * if nothing is returned, armor will not be changed.
+     * @returns Item object to change armor item, if nothing is returned,
+     * armor will not be changed.
      */
     function registerOnTickListener(id: number, func: ArmorGeneralFunction): ItemInstance | void;
 
     /**
      * This event is called when the damage is dealt to the player that has this armor put on.
-     * @returns the {id: , count: , data: , extra: } object to change armor item,
-     * if nothing is returned, armor will be damaged by default.
+     * @returns Item object to change armor item, if nothing is returned,
+     * armor will not be changed.
      */
     function registerOnHurtListener(id: number, func: ArmorHurtFunction): ItemInstance | void;
 

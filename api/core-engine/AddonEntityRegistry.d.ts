@@ -4,12 +4,12 @@
 declare namespace AddonEntityRegistry {
     /**
      * Spawns an entity defined via add-on on the specified coordinates
-     * @param nameID entity name id, as defined from add-on
+     * @param nameID entity name ID, as defined from add-on
      */
     function spawn(x: number, y: number, z: number, nameID: string): number;
 
     /**
-     * @returns add-on entity information by entity id
+     * @returns Add-on entity information by entity ID.
      * @param entity 
      */
     function getEntityData(entity: number): AddonEntity;
@@ -17,26 +17,26 @@ declare namespace AddonEntityRegistry {
 
     interface AddonEntity {
         /**
-         * Entity unique id
+         * Entity unique ID
          */
         readonly id: number,
 
         /**
-         * Add-on defined entity name id
+         * Add-on defined entity name ID
          */
         readonly type: string,
 
         /**
          * Executes command with the entity
          * @param command command to be executed
-         * @returns error message or null if the command was run successfully 
+         * @returns Error message or null if the command was run successfully.
          */
         exec(command: string): Nullable<string>;
 
         /**
          * Executes command with the entity on the specified coordinates
          * @param command command to be executed
-         * @returns error message or null if the command was run successfully 
+         * @returns Error message or null if the command was run successfully.
          */
         execAt(command: string, x: number, y: number, z: number): Nullable<string>;
     }

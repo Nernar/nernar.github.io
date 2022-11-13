@@ -73,8 +73,8 @@ declare module com {
                          */
                         setParent(parent: Nullable<TileEntity> | any): void;
                         /**
-                         * @returns tile if the following container is part of it,
-                         * and null otherwise
+                         * @returns Tile if the following container is part of it,
+                         * and `null` otherwise.
                          */
                         getParent(): Nullable<TileEntity> | any;
 
@@ -93,25 +93,28 @@ declare module com {
                         getBindingValidator(composedBindingName: string): ItemContainerFuncs.BindingValidator;
                         runTransaction(transaction: ItemContainerFuncs.Transaction): void;
                         /**
-                         * Gets the slot by its name. If a slot with specified name doesn't 
+                         * Gets the slot by it's name. If a slot with specified name doesn't 
                          * exists, creates an empty one with specified name
                          * @param name slot name
-                         * @returns contents of the slot in a {@link ItemContainerSlot} object.
-                         * You can modify it to change the contents of the slot
+                         * @returns Contents of the slot in a {@link ItemContainerSlot} object.
+                         * You can modify it to change the contents of the slot.
                          */
                         getSlot(name: string): ItemContainerSlot;
-                        /** @deprecated */ getFullSlot(name: string): ItemContainerSlot;
+                        /**
+                         * @deprecated Use {@link getSlot} instead.
+                         */
+                        getFullSlot(name: string): ItemContainerSlot;
                         markSlotDirty(name: string): void;
                         markAllSlotsDirty(): void;
                         /**
-                         * Sets slot's content by its name from given slot object. If a slot with specified
+                         * Sets slot's content by it's name from given slot object. If a slot with specified
                          * name doesn't exist, a new slot with specified name and item will be created.
                          * @param name slot name
                          * @param slot {@link ItemContainerSlot} object to specify slot contents
                          */
                         setSlot(name: string, slot: ItemContainerSlot): void;
                         /**
-                         * Set slot's content by its name. If a slot with specified name doesn't 
+                         * Set slot's content by it's name. If a slot with specified name doesn't 
                          * exists, creates new with specified name and item
                          * @param name slot name
                          * @param extra item extra data.
@@ -132,7 +135,7 @@ declare module com {
                         validateAll(): void;
                         /**
                          * Validates slot contents. If the data value is less then 0, it becomes
-                         * 0, if id is 0 or count is less then or equals to zero, slot is reset 
+                         * 0, if ID is 0 or count is less then or equals to zero, slot is reset 
                          * to an empty one
                          * @param name slot name
                          */
@@ -199,8 +202,8 @@ declare module com {
                         setClientScale(elementName: string, value: number): void;
                         /**
                          * @param elementName element name
-                         * @returns "value" binding value, e.g. scale value, or null if no 
-                         * element with specified name exist
+                         * @returns Value with "value" binding, e.g. scale value, or `null` if no 
+                         * element with specified name exist.
                          */
                         getValue(elementName: string, value: number): Nullable<number>;
                         /**
@@ -212,8 +215,8 @@ declare module com {
                         setClientText(elementName: string, text: string): void;
                         /**
                          * @param elementName element name
-                         * @returns "text" binding value, usually the text displayed on the 
-                         * element, or null if no element with specified name exist
+                         * @returns Value "text" binding, usually the text displayed on the 
+                         * element, or `null` if no element with specified name exist.
                          */
                         getText(elementName: string): Nullable<string>;
                         setClientContainerTypeName(type: string): void;
@@ -256,8 +259,7 @@ declare module com {
                         resetSlotSavingEnabled(name: string): void;
                         isSlotSavingEnabled(name: string): boolean;
                         /**
-                         * @returns false if container supports multiplayer, true otherwise.
-                         * For {@link ItemContainer}, it returns false
+                         * @returns `false` if container supports multiplayer, `true` otherwise.
                          */
                         isLegacyContainer(): false;
                         asLegacyContainer(allSlots: boolean): innercore.api.mod.ui.container.Container;

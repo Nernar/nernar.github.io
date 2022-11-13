@@ -11,7 +11,7 @@ declare class NetworkClient {
     send(name: string, packetData: object): void;
 
     /**
-     * @returns unique numeric entity ID of the player
+     * @returns Unique numeric entity ID of the player.
      */
     getPlayerUid(): number;
 

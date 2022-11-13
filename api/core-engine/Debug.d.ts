@@ -3,13 +3,13 @@
  */
 declare namespace Debug {
     /**
-     * @returns current system time in milliseconds
+     * @returns Current system time in milliseconds.
      */
     function sysTime(): number;
 
     /**
      * Spawns vanilla debug particle on the specified coordinates
-     * @param id particle type id, should be one of the {@link EParticleType}
+     * @param ID particle type ID, should be one of the {@link EParticleType}
      * @param vx x velocity
      * @param vy y velocity
      * @param vz y velocity

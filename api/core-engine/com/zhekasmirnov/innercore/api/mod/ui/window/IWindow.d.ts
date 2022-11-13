@@ -40,24 +40,24 @@ declare module com {
                                  */
                                 frame(time: number): void;
                                 /**
-                                 * @returns new {@link UI.Container}
+                                 * @returns New {@link UI.Container}
                                  * that was used to open this window or null, if
-                                 * the window wasn't opened in container
+                                 * the window wasn't opened in container.
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
-                                 * @returns window's content object
-                                 * (usually specified in the window's constructor)
+                                 * @returns Window's content object
+                                 * (usually specified in the window's constructor).
                                  */
                                 getContent(): WindowContent;
                                 /**
                                  * Gets all the elements in the window
-                                 * @returns java.util.HashMap containing string element name as keys and
-                                 * element instances as values
+                                 * @returns HashMap containing string element name as keys and
+                                 * element instances as values.
                                  */
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
                                 /**
-                                 * @returns object containing current style of the window
+                                 * @returns Object containing current style of the window.
                                  */
                                 getStyle(): types.UIStyle;
                                 /**
@@ -77,19 +77,19 @@ declare module com {
                                  */
                                 invalidateElements(onCurrentThread: boolean): void;
                                 /**
-                                 * @returns true if the window can change its contents position
+                                 * @returns `true` if the window can change it's contents position.
                                  */
                                 isDynamic(): boolean;
                                 /**
-                                 * @returns true if the window has an inventory that should be updated
+                                 * @returns `true` if the window has an inventory that should be updated.
                                  */
                                 isInventoryNeeded(): boolean;
                                 /**
-                                 * @returns true if the window is opened, false otherwise
+                                 * @returns `true` if the window is opened, `false` otherwise.
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * @returns whether the window can be closed on pressing back navigation button
+                                 * @returns Whether the window can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
                                 /**
