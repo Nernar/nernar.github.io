@@ -37,14 +37,14 @@ declare namespace Threading {
      * fatal and lead to fatal error AlertDialog, formatted with *formatFunc*
      * @param formatFunc function that formats exceptions in the thread to 
      * display in fatal error AlertDialog
-     * @return java.lang.Thread instance representing created thread
+     * @returns instance representing created thread
      */
     function initThread(name: string, func: () => void, priority?: number, isErrorFatal?: boolean, formatFunc?: ErrorMessageFormatFunction): java.lang.Thread;
 
     /**
      * Gets thread by its name
      * @param name name of the thread
-     * @return java.lang.Thread instance representing the thread
+     * @returns instance representing the thread
      */
     function getThread(name: string): java.lang.Thread;
 }

@@ -20,7 +20,6 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
      */
     removeExecutionTimer(): void;
 
-
     /**
      * If set to true, it is an instance of AI type, else the pattern 
      * (pattern should not be modified directly, AI controller calls 
@@ -167,7 +166,7 @@ declare namespace EntityAIClass {
 
         /**
          * Called when entity is attacked by player
-         * @param entity player that attacked this entity
+         * @param attacker player that attacked this entity
          */
         attackedBy?(attacker: number): void;
 
@@ -192,6 +191,21 @@ declare namespace EntityAIClass {
          */
         death?(attacker: number): void;
     }
+
+    /**
+     * Object used to register entity AI prototypes
+     */
+    interface WanderLikeAIPrototype extends EntityAIPrototype {
+        /**
+         * entity movement speed when AI is executed
+         */
+        speed?: number;
+        /**
+         * entity speed when turning
+         */
+        angular_speed?: number;
+    }
+
 }
 
 /**
@@ -201,72 +215,156 @@ declare namespace EntityAI {
     /**
      * Simple idle AI type, entity just does nothing
      */
-    const Idle: EntityAIClass;
+    class Idle extends EntityAIClass {
+        /**
+         * Creates idle entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype);
+    }
 
     /**
      * Follow AI type, entity follows its target. Use another AI type to set 
      * target for this AI type
-     * 
-     * @params **speed:** *number* entity movement speed when AI is executed
-     * @params **jumpVel:** *number* jump (y) velocity
-     * @params **rotateSpeed:** *number* entity rotation speed
-     * @params **rotateRatio:** *number* how long will be the rotation path
-     * @params **rotateHead:** *boolean* if true, entity turns its head to the target
-     * @params **denyY:** *boolean* if true, entity won't change its Y velocity
-     * 
-     * @data **target:** [[Vector]] coordinates used as a target
-     * @data **targetEntity:** *number* entity used as a target. If specified, 
-     * target data is ignored
      */
-    const Follow: EntityAIClass;
+    class Follow extends EntityAIClass {
+        /**
+         * Creates follow entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * entity movement speed when AI is executed
+             */
+            speed?: number;
+            /**
+             * jump (y) velocity
+             */
+            jumpVel?: number;
+            /**
+             * entity rotation speed
+             */
+            rotateSpeed?: number;
+            /**
+             * how long will be the rotation path
+             */
+            rotateRatio?: number;
+            /**
+             * if true, entity turns its head to the target
+             */
+            rotateHead?: boolean;
+            /**
+             * if true, entity won't change its Y velocity
+             */
+            denyY?: boolean;
+            /**
+             * coordinates used as a target
+             */
+            target?: Vector;
+            /**
+             * entity used as a target; when specified, target data is ignored
+             */
+            targetEntity?: number;
+        });
+    }
 
     /**
      * Panic AI type, entity just rushes around
-     * 
-     * @params **speed:** *number* entity movement speed when AI is executed
-     * @params **angular_speed:** *number* entity speed when turning
-     * 
      */
-    const Panic: EntityAIClass;
+    class Panic extends EntityAIClass {
+        /**
+         * Creates panic entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype);
+    }
 
     /**
      * Wander AI type, entity walks around making pauses
-     * 
-     * @params **speed:** *number* entity movement speed when AI is executed
-     * @params **angular_speed:** *number* entity speed when turning
-     * @params **delay_weight:** *number* part of the time entity is making 
-     * pause
-     * 
      */
-    const Wander: EntityAIClass;
+    class Wander extends EntityAIClass {
+        /**
+         * Creates wander entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype & {
+            /**
+             * part of the time entity is making pause
+             */
+            delay_weight?: number;
+        });
+    }
 
     /**
      * Attack AI type, entity causes damage to the target entity
-     * 
-     * @params **attack_damage:** *number* damage amount
-     * @params **attack_range:** *number* damage radius
-     * @params **attack_rate:** *number* time between to attacks in ticks
-     * 
-     * @data **target:** target entity
      */
-    const Attack: EntityAIClass;
+    class Attack extends EntityAIClass {
+        /**
+         * Creates attack entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * damage amount
+             */
+            attack_damage?: number;
+            /**
+             * damage radius
+             */
+            attack_range?: number;
+            /**
+             * time between to attacks in ticks
+             */
+            attack_rate?: number;
+            /**
+             * target entity
+             */
+            target?: number;
+        });
+    }
 
     /**
      * Swim AI type, if the entity is in water, it swims
-     * 
-     * @params **velocity:** *number* swimming speed
      */
-    const Swim: EntityAIClass;
+    class Swim extends EntityAIClass {
+        /**
+         * Creates swim entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * swimming speed
+             */
+            velocity?: number;
+        });
+    }
 
     /**
      * Panic AI watcher type, controls entity panic behavior after getting hurt
-     * 
-     * @params **panic_time:** *number* time the entity will be in panic
-     * @params **priority_panic:** *number* panic AI priority when entity should
-     * be in panic
-     * @params **priority_default:** *number* panic AI priority when entity
-     * should not be in panic
-     * @params **name:** *number* name of the panic AI controller
      */
-    const PanicWatcher: EntityAIClass;
+    class PanicWatcher extends EntityAIClass {
+        /**
+         * Creates panic watcher entity AI type
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * time the entity will be in panic
+             */
+            panic_time?: number;
+            /**
+             * panic AI priority when entity should be in panic
+             */
+            priority_panic?: number;
+            /**
+             * panic AI priority when entity should not be in panic
+             */
+            priority_default?: number;
+            /**
+             * panic AI priority when entity should not be in panic
+             * TODO: Which type must be used here, recently number.
+             */
+            name?: string;
+        });
+    }
 }
