@@ -11,8 +11,8 @@
   "license": "GPL-3.0-or-later",
   "private": true,
   "scripts": {
-    "start": "docusaurus start --no-open",
-    "start-ru": "docusaurus start --locale ru --no-open",
+    "start": "docusaurus start --no-open --no-minify",
+    "start-ru": "docusaurus start --locale ru --no-open --no-minify",
     "build-serve": "npm run build && npm run serve",
     "build": "node --max-old-space-size=6144 node_modules/.bin/docusaurus build",
     "serve": "node --max-old-space-size=6144 node_modules/.bin/docusaurus serve --no-open",
