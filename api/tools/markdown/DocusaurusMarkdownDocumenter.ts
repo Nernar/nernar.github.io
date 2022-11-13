@@ -321,14 +321,6 @@ export class DocusaurusMarkdownDocumenter {
 
 		if (apiItem instanceof ApiDeclaredItem) {
 			if (apiItem.excerpt.text.length > 0) {
-				output.appendNode(
-					new DocParagraph({ configuration }, [
-						new DocEmphasisSpan({ configuration, bold: true }, [
-							this._constructTranslation('api.section.signature', 'Signature')
-						])
-					])
-				);
-
 				let code: string;
 				switch (apiItem.parent?.kind) {
 					case ApiItemKind.Class:
@@ -1225,7 +1217,7 @@ slug: ${ path.basename(relpath) }`);
 			if (apiParameter.isOptional) {
 				parameterDescription.appendNodesInParagraph([
 					new DocEmphasisSpan({ configuration, italic: true }, [
-						this._constructTranslation('api.block.optional', '(Optional)')
+						this._constructTranslation('api.block.optional', '(optional)')
 					]),
 					new DocPlainText({ configuration, text: ' ' })
 				]);
@@ -1273,6 +1265,7 @@ slug: ${ path.basename(relpath) }`);
 					this._constructTranslation('api.descriptor.returns', 'Returns: ')
 				])
 			]);
+
 			this._appendExcerptByType(apiParameterListMixin.returnTypeExcerpt, returnTypeParagraph);
 			output.appendNode(returnTypeParagraph);
 
@@ -1416,7 +1409,7 @@ slug: ${ path.basename(relpath) }`);
 		if (ApiOptionalMixin.isBaseClassOf(apiItem) && apiItem.isOptional) {
 			section.appendNodesInParagraph([
 				new DocEmphasisSpan({ configuration, italic: true }, [
-					this._constructTranslation('api.block.optional', '(Optional)')
+					this._constructTranslation('api.block.optional', '(optional)')
 				]),
 				new DocPlainText({ configuration, text: ' ' })
 			]);
@@ -1512,10 +1505,7 @@ slug: ${ path.basename(relpath) }`);
 				title: this._constructTranslation('api.nearlyFeature.title', 'Nearly Feature')
 			}, [
 				new DocParagraph({ configuration: this._tsdocConfiguration }, [
-					this._constructTranslation(
-						'api.nearlyFeature.message',
-						'This API is provided as a preview for developers and may change based on feedback that we receive.'
-					)
+					this._constructTranslation('api.nearlyFeature.message', 'This API is provided as a preview for developers and may change based on feedback that we receive.')
 				])
 			])
 		);

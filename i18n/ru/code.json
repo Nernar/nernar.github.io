@@ -370,6 +370,9 @@
   "api.descriptor.references": {
     "message": "Определения: "
   },
+  "api.descriptor.returns": {
+    "message": "Возвращает: "
+  },
   "api.block.description": {
     "message": "Описание"
   },
@@ -422,10 +425,7 @@
     "message": "Параметр"
   },
   "api.block.optional": {
-    "message": "(Опционально)"
-  },
-  "api.descriptor.returns": {
-    "message": "Возвращает: "
+    "message": "(опционально)"
   },
   "api.block.excerptNotFound": {
     "message": "(не объявлено)"
