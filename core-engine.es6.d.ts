@@ -53,11 +53,12 @@ export module com {
                         static addClientCloseListener(typeName: string, listener: ItemContainerFuncs.ClientOnCloseListener): void;
                         static getClientContainerInstance(name: string): Nullable<ItemContainer>;
                         /**
-                         * Constructs a new [[ItemContainer]] object
+                         * Constructs a new {@link ItemContainer} object.
                          */
                         constructor();
                         /**
-                         * Constructs a new [[ItemContainer]] object from given deprecated [[innercore.api.mod.ui.container.Container]] object
+                         * Constructs a new {@link ItemContainer} object from given deprecated
+                         * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"]|Container} object.
                          */
                         constructor(legacyContainer: innercore.api.mod.ui.container.Container);
                         getNetworkEntity(): NetworkEntity;
@@ -67,15 +68,15 @@ export module com {
                         getWindowContent(): innercore.api.mod.ui.window.WindowContent;
                         removeEntity(): void;
                         /**
-                         * Sets container's parent object, for [[TileEntity]]'s container it
-                         * should be a [[TileEntity]] reference, otherwise you can pass any
-                         * value to be used in your code later
+                         * Sets container's parent object, for {@link TileEntity["interface"]|TileEntity's}
+                         * container it should be it reference, otherwise you can pass any
+                         * value to be used in your code later.
                          * @param parent an object to be set as container's parent
                          */
                         setParent(parent: Nullable<TileEntity> | any): void;
                         /**
-                         * @returns [[TileEntity]] if the following container is part of it,
-                         * and null otherwise
+                         * @returns Tile if the following container is part of it,
+                         * and `null` otherwise.
                          */
                         getParent(): Nullable<TileEntity> | any;
                         setGlobalAddTransferPolicy(policy: ItemContainerFuncs.TransferPolicy): ItemContainer;
@@ -93,26 +94,29 @@ export module com {
                         getBindingValidator(composedBindingName: string): ItemContainerFuncs.BindingValidator;
                         runTransaction(transaction: ItemContainerFuncs.Transaction): void;
                         /**
-                         * Gets the slot by its name. If a slot with specified name doesn't
-                         * exists, creates an empty one with specified name
+                         * Gets the slot by it's name. If a slot with specified name doesn't
+                         * exists, creates an empty one with specified name.
                          * @param name slot name
-                         * @returns contents of the slot in a [[ItemContainerSlot]] object.
-                         * You can modify it to change the contents of the slot
+                         * @returns Contents of the slot in a {@link ItemContainerSlot} object.
+                         * You can modify it to change the contents of the slot.
                          */
                         getSlot(name: string): ItemContainerSlot;
-                        /** @deprecated */ getFullSlot(name: string): ItemContainerSlot;
+                        /**
+                         * @deprecated Use {@link com.zhekasmirnov.apparatus.api.container.ItemContainer.getSlot|getSlot} instead.
+                         */
+                        getFullSlot(name: string): ItemContainerSlot;
                         markSlotDirty(name: string): void;
                         markAllSlotsDirty(): void;
                         /**
-                         * Sets slot's content by its name from given slot object. If a slot with specified
+                         * Sets slot's content by it's name from given slot object. If a slot with specified
                          * name doesn't exist, a new slot with specified name and item will be created.
                          * @param name slot name
-                         * @param slot [[ItemContainerSlot]] object to specify slot contents
+                         * @param slot {@link com.zhekasmirnov.apparatus.api.container.ItemContainerSlot|ItemContainerSlot} object to specify slot contents
                          */
                         setSlot(name: string, slot: ItemContainerSlot): void;
                         /**
-                         * Set slot's content by its name. If a slot with specified name doesn't
-                         * exists, creates new with specified name and item
+                         * Set slot's content by it's name. If a slot with specified name doesn't
+                         * exists, creates new with specified name and item.
                          * @param name slot name
                          * @param extra item extra data.
                          */
@@ -127,31 +131,31 @@ export module com {
                         sendChanges(): void;
                         dropAt(region: BlockSource, x: number, y: number, z: number): void;
                         /**
-                         * Validates all the slots in the container
+                         * Validates all the slots in the container.
                          */
                         validateAll(): void;
                         /**
                          * Validates slot contents. If the data value is less then 0, it becomes
-                         * 0, if id is 0 or count is less then or equals to zero, slot is reset
-                         * to an empty one
+                         * 0, if ID is 0 or count is less then or equals to zero, slot is reset
+                         * to an empty one.
                          * @param name slot name
                          */
                         validateSlot(name: string): void;
                         /**
-                         * Clears slot's contents
+                         * Clears slot's contents.
                          * @param name slot name
                          */
                         clearSlot(name: string): void;
                         /**
                          * Drops slot's contents on the specified coordinates and clears the
-                         * slot
+                         * slot.
                          * @param name slot name
                          */
                         dropSlot(region: BlockSource, name: string, x: number, y: number, z: number): void;
                         /**
                          * Sends event to move specified amount of items from the player inventory slot by given index
                          * to container slot by given name. This event is sent from client to server,
-                         * so you should use it only on the client side, for example, in custom slot element touch events etc.
+                         * so you should use it only on the client side, for example, in custom slot element touch events, etc.
                          * @param inventorySlot numeric index of the inventory slot, from where to retrieve the item
                          * @param slotName string name of the container slot, where to put taken item
                          * @param amount item count to be retrieved from inventory slot
@@ -162,7 +166,7 @@ export module com {
                         /**
                          * Sends event to move specified amount of items from one container slot to another by given names.
                          * This event is sent from client to server, so you should use it only on the client side,
-                         * for example, in custom slot element touch events etc.
+                         * for example, in custom slot element touch events, etc.
                          * @param slot1 string name of the container slot, from where to retrieve item
                          * @param slot2 string name of the container slot, where to put taken item
                          * @param amount item count to be retrieved from container slot
@@ -173,9 +177,9 @@ export module com {
                         /**
                          * Sends event to move specified amount of items from the container slot by given name
                          * to player's inventory. The index of the inventory slot, where to put item, can't be specified,
-                         * because it's decided by [[ItemContainer]] automatically, and you just don't need to do this.
+                         * because it's decided by {@link ItemContainer} automatically, and you just don't need to do this.
                          * This event is sent from client to server, so you should use it only on the client side,
-                         * for example, in custom slot element touch events etc.
+                         * for example, in custom slot element touch events, etc.
                          * @param slot string name of the container slot, from where to retrieve item
                          * @param amount item count to be retrieved from container slot
                          * @clientside
@@ -191,7 +195,7 @@ export module com {
                         setClientBinding(elementName: string, bindingName: string, value: PrimitiveTypes): void;
                         getBinding(elementName: string, bindingName: string): PrimitiveTypes;
                         /**
-                         * Sets "value" binding value for the element. Used to set scales values
+                         * Sets "value" binding value for the element. Used to set scales values.
                          * @param elementName element name
                          * @param value value to be set for the element
                          */
@@ -199,12 +203,12 @@ export module com {
                         setClientScale(elementName: string, value: number): void;
                         /**
                          * @param elementName element name
-                         * @returns "value" binding value, e.g. scale value, or null if no
-                         * element with specified name exist
+                         * @returns Value with "value" binding, e.g. scale value, or `null` if no
+                         * element with specified name exist.
                          */
                         getValue(elementName: string, value: number): Nullable<number>;
                         /**
-                         * Sets "text" binding value for the element. Used to set element's text
+                         * Sets "text" binding value for the element. Used to set element's text.
                          * @param elementName element name
                          * @param text value to be set for the element
                          */
@@ -212,8 +216,8 @@ export module com {
                         setClientText(elementName: string, text: string): void;
                         /**
                          * @param elementName element name
-                         * @returns "text" binding value, usually the text displayed on the
-                         * element, or null if no element with specified name exist
+                         * @returns Value "text" binding, usually the text displayed on the
+                         * element, or `null` if no element with specified name exist.
                          */
                         getText(elementName: string): Nullable<string>;
                         setClientContainerTypeName(type: string): void;
@@ -231,17 +235,18 @@ export module com {
                         sendEvent(client: NetworkClient, name: string, data: PacketData | string): void;
                         /**
                          * Sends packet from server container.
-                         * ONLY AVAILABLE IN SERVER CONTAINER EVENTS
+                         * @remarks
+                         * Available only in server container events!
                          */
                         sendResponseEvent(name: string, data: PacketData | string): void;
                         /**
-                         * Opens UI for client
+                         * Opens UI for client.
                          * @param client client in which UI will be open
                          * @param screenName name of the screen to open
                          */
                         openFor(client: NetworkClient, screenName: string): void;
                         /**
-                         * Closes UI for client
+                         * Closes UI for client.
                          * @param client client in which UI will be open
                          */
                         closeFor(client: NetworkClient): void;
@@ -256,8 +261,7 @@ export module com {
                         resetSlotSavingEnabled(name: string): void;
                         isSlotSavingEnabled(name: string): boolean;
                         /**
-                         * @returns false if container supports multiplayer, true otherwise.
-                         * For [[ItemContainer]], it returns false
+                         * @returns `false` if container supports multiplayer, `true` otherwise.
                          */
                         isLegacyContainer(): false;
                         asLegacyContainer(allSlots: boolean): innercore.api.mod.ui.container.Container;
@@ -288,43 +292,43 @@ export module com {
                         constructor(item: ItemInstance);
                         constructor(json: org.json.JSONObject, convert: boolean);
                         /**
-                         * @returns slot name
+                         * @returns Slot name.
                          */
                         getName(): string;
                         /**
-                         * @returns container linked to the slot
+                         * @returns Container linked to the slot.
                          */
                         getContainer(): ItemContainer;
                         /**
-                         * @returns following [[ItemContainerSlot]] as [[ItemInstance]] object
+                         * @returns Following {@link ItemContainerSlot} as {@link ItemInstance} object.
                          */
                         asScriptable(): ItemInstance;
                         /**
-                         * @returns following [[ItemContainerSlot]] as [[org.json.JSONObject]] instance
+                         * @returns Following {@link ItemContainerSlot} as {@link org.json.JSONObject} instance.
                          */
                         asJson(): org.json.JSONObject;
                         /**
-                         * @returns whether the slot is empty or not
+                         * @returns Whether the slot is empty or not.
                          */
                         isEmpty(): boolean;
                         /**
-                         * Refreshes slot in UI
+                         * Refreshes slot in UI.
                          */
                         markDirty(): void;
                         /**
-                         * Clears slot contents
+                         * Clears slot contents.
                          */
                         clear(): void;
                         /**
-                         * Resets slot if its id or count equals 0
+                         * Resets slot if it's ID or count equals `0`.
                          */
                         validate(): void;
                         /**
-                         * Drops slot contents in given world at given coords
+                         * Drops slot contents in given world at given coords.
                          */
                         dropAt(region: BlockSource, x: number, y: number, z: number): void;
                         /**
-                         * Sets slot contents
+                         * Sets slot contents.
                          */
                         setSlot(id: number, count: number, data: number): void;
                         setSlot(id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>): void;
@@ -332,20 +336,20 @@ export module com {
                         setSavingEnabled(enabled: boolean): void;
                         isSavingEnabled(): boolean;
                         /**
-                         * @returns numeric id of the item in slot
+                         * @returns Numeric ID of the item in slot.
                          */
                         getId(): number;
                         /**
-                         * @returns count of the item in slot
+                         * @returns Count of the item in slot.
                          */
                         getCount(): number;
                         /**
-                         * @returns data of the item in slot
+                         * @returns Data of the item in slot.
                          */
                         getData(): number;
                         /**
-                         * @returns extra data object of the item in slot,
-                         * or null if it is not present in the given item
+                         * @returns Extra data object of the item in slot,
+                         * or `null` if it is not present in the given item.
                          */
                         getExtra(): Nullable<innercore.api.NativeItemInstanceExtra>;
                         set(id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>): void;
@@ -1500,53 +1504,53 @@ export module com {
                                 }
                             }
                             /**
-                             * @param container [[UI.Container]] the window was opened in
-                             * @param window an instance of [[UI.IWindow]] that was opened
+                             * @param container {@link UI.Container} the window was opened in
+                             * @param window an instance of {@link UI.IWindow} that was opened
                              */
                             export interface OnOpenCloseListenerJS { (container: Container, window: window.IWindow): void; }
                             export class Container extends java.lang.Object implements UiAbstractContainer, recipes.workbench.WorkbenchField {
                                 static class: java.lang.Class<Container>;
                                 static readonly isContainer: boolean;
                                 /**
-                                 * If container is a part of [[TileEntity]], this field stores reference
+                                 * If container is a part of {@link TileEntity["interface"]}, this field stores reference
                                  * to it, otherwise null. You can also assign any value of any type to
-                                 * it using [[UI.Container.setParent]] method or using constructor
-                                 * parameter. Consider using [[UI.Container.getParent]] instead of direct
-                                 * field access
+                                 * it using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].setParent|UI.Container.setParent} method or using constructor
+                                 * parameter. Consider using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getParent|UI.Container.getParent} instead of direct
+                                 * field access.
                                  */
                                 parent: Nullable<TileEntity> | any;
                                 slots: {[slotName: string]: container.Slot}
                                 /**
-                                 * Same as [[UI.Container.parent]]
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].parent|UI.Container.parent}.
                                  */
                                 tileEntity: Nullable<TileEntity> | any;
                                 constructor();
                                 constructor(parent: any);
                                 /**
-                                 * Sets container's parent object, for [[TileEntity]]'s container it
-                                 * should be a [[TileEntity]] reference, otherwise you can pass any
-                                 * value to be used in your code later
+                                 * Sets container's parent object, for {@link TileEntity["interface"]}'s container it
+                                 * should be a {@link TileEntity["interface"]} reference, otherwise you can pass any
+                                 * value to be used in your code later.
                                  * @param parent an object to be set as container's parent
                                  */
                                 setParent(parent: Nullable<TileEntity> | any): void;
                                 /**
-                                 * Getter for [[UI.Container.parent]] field
+                                 * Getter for {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].parent|UI.Container.parent} field.
                                  */
                                 getParent(): Nullable<TileEntity> | any;
                                 /**
-                                 * Gets the slot by its name. If a slot with specified name doesn't
-                                 * exists, creates an empty one with specified name
+                                 * Gets the slot by it's name. If a slot with specified name doesn't
+                                 * exists, creates an empty one with specified name.
                                  * @param name slot name
-                                 * @returns contents of the slot in a [[UI.Slot]] object.
-                                 * You can modify it to change the contents of the slot
+                                 * @returns Contents of the slot in a {@link UI.Slot} object.
+                                 * You can modify it to change the contents of the slot.
                                  */
                                 getSlot(name: string): Slot;
                                 /**
-                                 * Gets the slot by its name. If a slot with specified name doesn't
-                                 * exists, creates an empty one with specified name
+                                 * Gets the slot by it's name. If a slot with specified name doesn't
+                                 * exists, creates an empty one with specified name.
                                  * @param name slot name
-                                 * @returns contents of the slot in a FullSlot object containing
-                                 * more useful methods for slot manipulation
+                                 * @returns Contents of the slot in a FullSlot object containing
+                                 * more useful methods for slot manipulation.
                                  */
                                 getFullSlot(name: string): Slot;
                                 getSlotVisualImpl(name: string): UiVisualSlotImpl;
@@ -1554,96 +1558,96 @@ export module com {
                                 handleSlotToSlotTransaction(from: string, to: string, amount: number): void;
                                 handleSlotToInventoryTransaction(slotName: string, amount: number): void;
                                 /**
-                                 * Set slot's content by its name. If a slot with specified name doesn't
-                                 * exists, creates an empty one with specified name and item
+                                 * Set slot's content by it's name. If a slot with specified name doesn't
+                                 * exists, creates an empty one with specified name and item.
                                  * @param name slot name
                                  */
                                 setSlot(name: string, id: number, count: number, data: number): void;
                                 /**
-                                 * Set slot's content by its name. If a slot with specified name doesn't
-                                 * exists, creates new with specified name and item
+                                 * Set slot's content by it's name. If a slot with specified name doesn't
+                                 * exists, creates new with specified name and item.
                                  * @param name slot name
                                  * @param extra item extra value. Note that it should be an instance of
-                                 * [[ItemExtraData]] and not its numeric id
+                                 * {@link ItemExtraData} and not it's numeric ID
                                  */
                                 setSlot(name: string, id: number, count: number, data: number, extra: Nullable<NativeItemInstanceExtra>): void;
                                 /**
-                                 * Validates slot contents. If the data value is less then 0, it becomes
-                                 * 0, if id is 0 or count is less then or equals to zero, slot is reset
-                                 * to an empty one
+                                 * Validates slot contents. If the data value is less then `0`, it becomes
+                                 * `0`, if ID is `0` or count is less then or equals to zero, slot is reset
+                                 * to an empty one.
                                  * @param name slot name
                                  */
                                 validateSlot(name: string): void;
                                 /**
-                                 * Clears slot's contents
+                                 * Clears slot's contents.
                                  * @param name slot name
                                  */
                                 clearSlot(name: string): void;
                                 /**
                                  * Drops slot's contents on the specified coordinates
-                                 * and clears the slot
+                                 * and clears the slot.
                                  * @param name slot name
-                                 * @deprecated doesn't make sense in multiplayer
+                                 * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
                                  */
                                 dropSlot(name: string, x: number, y: number, z: number): void;
                                 /**
                                  * Drops the contents of all the slots in the container on the specified
-                                 * coordinates and clears them
-                                 * @deprecated doesn't make sense in multiplayer
+                                 * coordinates and clears them.
+                                 * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
                                  */
                                 dropAt(x: number, y: number, z: number): void;
                                 /**
-                                 * Validates all the slots in the container
+                                 * Validates all the slots in the container.
                                  */
                                 validateAll(): void;
                                 /**
-                                 * @returns currently opened [[UI.IWindow]]
-                                 * or null if no window is currently opened in the container
+                                 * @returns Currently opened {@link UI.IWindow}
+                                 * or `null` if no window is currently opened in the container.
                                  */
                                 getWindow(): window.IWindow;
                                 _addElement(element: elements.UIElement, name: string): void;
                                 addElementInstance(element: elements.UIElement, name: string): void;
                                 _removeElement(name: string): void;
                                 /**
-                                 * Opens [[UI.IWindow]] object in the container
-                                 * @param win [[UI.IWindow]] object to be opened
+                                 * Opens {@link UI.IWindow} object in the container.
+                                 * @param win {@link UI.IWindow} object to be opened
                                  */
                                 openAs(win: window.IWindow): void;
                                 /**
-                                 * Closes currently opened window
+                                 * Closes currently opened window.
                                  */
                                 close(): void;
                                 /**
-                                 * Sets an object to be notified when the window is opened
+                                 * Sets an object to be notified when the window is opened.
                                  * @param listener object to be notified when the window is opened
                                  */
                                 setOnOpenListener(listener: Container.OnOpenListener | OnOpenCloseListenerJS): void;
                                 /**
-                                 * Sets an object to be notified when the window is closed
+                                 * Sets an object to be notified when the window is closed.
                                  * @param listener object to be notified when the window is closed
                                  */
                                 setOnCloseListener(listener: Container.OnCloseListener | OnOpenCloseListenerJS): void;
                                 onWindowClosed(): void;
                                 /**
-                                 * @returns true, if some window is opened in the container
+                                 * @returns `true`, if some window is opened in the container.
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * Same as [[UI.Container.getWindow]]
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getWindow|UI.Container.getWindow}.
                                  */
                                 getGuiScreen(): window.IWindow;
                                 /**
-                                 * @returns window's content object (usually specified in the window's
-                                 * constructor) if a window was opened in the container, null otherwise
+                                 * @returns Window's content object (usually specified in the window's
+                                 * constructor) if a window was opened in the container, `null` otherwise.
                                  */
                                 getGuiContent(): Nullable<window.WindowContent>;
                                 /**
-                                 * @returns window's element by its name
+                                 * @returns Window's element by it's name.
                                  * @param name element name
                                  */
                                 getElement(name: string): Nullable<elements.UIElement>;
                                 /**
-                                 * Passes any value to the element
+                                 * Passes any value to the element.
                                  * @param elementName element name
                                  * @param bindingName binding name, you can access the value from the
                                  * element by this name
@@ -1651,33 +1655,33 @@ export module com {
                                  */
                                 setBinding<T=any>(elementName: string, bindingName: string, val: T): void;
                                 /**
-                                 * Gets any value from the element
+                                 * Gets any value from the element.
                                  * @param elementName element name
                                  * @param bindingName binding name, you can access the value from the
                                  * element by this name. Some binding names are reserved for additional
                                  * element information, e.g. "element_obj" contains pointer to the
                                  * current object and "element_rect" contains android.graphics.Rect
                                  * object containing drawing rectangle
-                                 * @returns value that was get from the element or null if the element
-                                 * doesn't exist
+                                 * @returns Value that was get from the element or `null` if the
+                                 * element doesn't exist.
                                  */
                                 getBinding<T=any>(elementName: string, bindingName: string): elements.UIElement | android.graphics.Rect | T | null;
                                 handleBindingDirty(): void;
                                 sendChanges(): void;
                                 /**
-                                 * Sets "value" binding value for the element. Used to set scales values
+                                 * Sets "value" binding value for the element. Used to set scales values.
                                  * @param name element name
                                  * @param value value to be set for the element
                                  */
                                 setScale(name: string, value: number): void;
                                 /**
                                  * @param name element name
-                                 * @returns "value" binding value, e.g. scale value, or null if no
-                                 * element with specified name exist
+                                 * @returns Value "value" binding, e.g. scale value, or `null` if no
+                                 * element with specified name exist.
                                  */
                                 getValue(name: string): Nullable<number>;
                                 /**
-                                 * Sets "text" binding value for the element. Used to set element's text
+                                 * Sets "text" binding value for the element. Used to set element's text.
                                  * @param name element name
                                  * @param value value to be set for the element
                                  */
@@ -1685,62 +1689,74 @@ export module com {
                                 /**
                                  *
                                  * @param name element name
-                                 * @returns "text" binding value, usually the text displayed on the
-                                 * element, or null if no element with specified name exist
+                                 * @returns Value "text" binding, usually the text displayed on the
+                                 * element, or `null` if no element with specified name exist.
                                  */
                                 getText(name: string): Nullable<string>;
                                 /**
                                  * @param name element name
-                                 * @returns true if the element is currently touched
+                                 * @returns `true` if the element is currently hovered.
                                  */
                                 isElementTouched(name: string): boolean;
                                 /**
-                                 * Forces ui elements of the window to refresh
-                                 * @param onCurrentThread if true, the elements will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui elements of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateUIElements(onCurrentThread: boolean): void;
+                                /**
+                                 * Forces ui elements of the window to refresh.
+                                 */
                                 invalidateUIElements(): void;
                                 /**
-                                 * Forces ui drawables of the window to refresh
-                                 * @param onCurrentThread if true, the drawables will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateUIDrawing(onCurrentThread: boolean): void;
                                 invalidateUIDrawing(): void;
                                 /**
-                                 * Forces ui elements and drawables of the window to refresh
-                                 * @param onCurrentThread if true, the elements drawables will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui elements and drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateUI(onCurrentThread: boolean): void;
+                                /**
+                                 * Forces ui elements and drawables of the window to refresh.
+                                 */
                                 invalidateUI(): void;
-                                /** @deprecated no longer supported */ refreshSlots(): void;
-                                /** @deprecated no longer supported */ applyChanges(): void;
+                                /**
+                                 * @deprecated Backwards compatibility.
+                                 */
+                                refreshSlots(): void;
+                                /**
+                                 * @deprecated Backwards compatibility.
+                                 */
+                                applyChanges(): void;
                                 /**
                                  * If the container is a custom workbench, you can set the slot prefix
-                                 * via this method call. [[UI.Container.getFieldSlot]]
-                                 * will get field slot by *prefix + slot* name
-                                 * @param prefix custom workbench slot prefix
+                                 * via this method call. {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getFieldSlot|UI.Container.getFieldSlot}
+                                 * will get field slot by `prefix + slot` name.
+                                 * @param wbsnp custom workbench slot prefix
                                  */
                                 setWbSlotNamePrefix(wbsnp: string): void;
                                 /**
                                  * @param slot slot index
-                                 * @returns workbench slot instance by slot index
+                                 * @returns Workbench slot instance by slot index.
                                  */
-                                getFieldSlot(i: number): Slot;
+                                getFieldSlot(slot: number): Slot;
                                 /**
-                                 * @returns js array of all slots
+                                 * @returns JS array of all slots.
                                  */
                                 asScriptableField(): Slot[];
                                 /**
-                                 * @returns false if container supports multiplayer, true otherwise
+                                 * @returns `false` if container supports multiplayer, `true` otherwise.
                                  */
                                 isLegacyContainer(): boolean;
                             }
@@ -1796,7 +1812,10 @@ export module com {
                                 put(name: string, prop: any): void;
                                 getInt(name: string): number;
                                 validate(): void;
-                                /** @deprecated */ drop(x: number, y: number, z: number): void;
+                                /**
+                                 * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
+                                 */
+                                drop(x: number, y: number, z: number): void;
                                 getTarget(): ItemInstance;
                                 getId(): number; getCount(): number; getData(): number;
                                 getExtraValue(): number;
@@ -2033,34 +2052,30 @@ export module com {
                 export module mod {
                     export module ui {
                         export module elements {
-                            /* <DMHYT>: 'I am not sure about the function parameters order in this interface,
-                            which I saw in previous docs. In the source code I could see (container, position),\
-                            whereas here is (position, container, tile, window, canvas, scale). So TODO here is
-                            to make sure if parameters order is correct' */
                             /**
                              * Object where you can specify how the UI element will behave on touch events.
                              */
                             export interface UIClickEvent {
                                 /**
-                                 * This function will be called when element is short touched
+                                 * This function will be called when element is short touched.
                                  */
                                 onClick?: (position: Vector, container: container.UiAbstractContainer | apparatus.api.container.ItemContainer, tileEntity: Nullable<TileEntity> | any, window: window.IWindow, canvas: android.graphics.Canvas, scale: number) => void;
                                 /**
-                                 * This function will be called when element is long touched
+                                 * This function will be called when element is long touched.
                                  */
                                 onLongClick?: (position: Vector, container: container.UiAbstractContainer | apparatus.api.container.ItemContainer, tileEntity: Nullable<TileEntity> | any, window: window.IWindow, canvas: android.graphics.Canvas, scale: number) => void;
                             }
                             /**
                              * Types that can be used to create element texture.
-                             * For static textures it can be string path to texture in assets directory, or [[android.graphics.Bitmap]] instance.
-                             * For animated textures it can be array of string paths to texture in assets directory, or an array of [[android.graphics.Bitmap]] instances.
-                             * Each element in the array represents one of animation frames
+                             * For static textures it can be string path to texture in assets directory, or {@link android.graphics.Bitmap} instance.
+                             * For animated textures it can be array of string paths to texture in assets directory, or an array of {@link android.graphics.Bitmap} instances.
+                             * Each element in the array represents one of animation frames.
                              */
                             export type BitmapTypes = string | string[] | android.graphics.Bitmap | android.graphics.Bitmap[];
                             /**
                              * There are 12 types of UI elements given by Inner Core, and you can also create your custom ones.
-                             * Each element type has its own specific description object.
-                             * These description objects are all inherited from this [[BasicElementDescription]].
+                             * Each element type has it's own specific description object.
+                             * These description objects are all inherited from this BasicElementDescription.
                              * It means that each element must have coords on the GUI by X, Y, and additionally Z axis,
                              * and also you can specify how the element will behave when touched, in clicker object (optional).
                              */
@@ -2075,7 +2090,7 @@ export module com {
                              * Whereas in JavaScript, you should use "custom" element type in description object,
                              * where you can specify custom behavior for different events.
                              * For more information about custom element types in JavaScript,
-                             * see [[UI.UICustomElement]]
+                             * see {@link UI.UICustomElement}.
                              */
                             export abstract class UIElement extends java.lang.Object {
                                 static class: java.lang.Class<UIElement>;
@@ -2094,19 +2109,19 @@ export module com {
                                 abstract onDraw(canvas: android.graphics.Canvas, scale: number): void;
                                 abstract onSetup<T extends BasicElementDescription>(descr?: T): void;
                                 /**
-                                 * Creates a new [[UI.Texture]] instance
+                                 * Creates a new {@link UI.Texture} instance
                                  * with specified style applied.
-                                 * See [[UI.Texture.constructor]] for parameters description
+                                 * See {@link UI.Texture.constructor} for parameters description.
                                  */
                                 createTexture(obj: BitmapTypes): types.Texture;
                                 /**
-                                 * Sets element's position in the window's unit coordinates
+                                 * Sets element's position in the window's unit coordinates.
                                  * @param x x position
                                  * @param y y position
                                  */
                                 setPosition(x: number, y: number): void;
                                 /**
-                                 * Sets element's size in the window's unit coordinates
+                                 * Sets element's size in the window's unit coordinates.
                                  * @param width element's width
                                  * @param height element's height
                                  */
@@ -2114,21 +2129,21 @@ export module com {
                                 constructor(window: window.UIWindow, scriptable: object);
                                 getCleanerCopy(): UIElementCleaner;
                                 /**
-                                 * Passes any value to the element
+                                 * Passes any value to the element.
                                  * @param bindingName binding name, you can access the value from the
                                  * element by this name
                                  * @param value value to be passed to the element
                                  */
                                 setBinding<T=any>(bindingName: string, value: T): void;
                                 /**
-                                 * Gets any value from the element
-                                 * @param bindingName binding name, you can access the value from the
-                                 * element by this name. Some binding names are reserved for additional
-                                 * element information, e.g. "element_obj" contains pointer to the
-                                 * current object and "element_rect" contains [[android.graphics.Rect]]
+                                 * Gets any value from the element.
+                                 * @param name binding name, you can access the value from the
+                                 * element by this name; some binding names are reserved for additional
+                                 * element information, e.g. `"element_obj"` contains pointer to the
+                                 * current object and `"element_rect"` contains {@link android.graphics.Rect}
                                  * object containing drawing rectangle
-                                 * @returns value that was get from the element or null if the element
-                                 * doesn't exist
+                                 * @returns Value that was get from the element or `null` if the element
+                                 * doesn't exist.
                                  */
                                 getBinding<T=any>(name: string): UIElement | android.graphics.Rect | T;
                                 setupInitialBindings(container: container.UiAbstractContainer, elementName: string): void;
@@ -2987,60 +3002,68 @@ export module com {
                             /**
                              * Object containing font parameters. If no color, size and shadow are
                              * specified, default values are ignored and white font with text size 20,
-                             * white color and 0.45 shadow is created
+                             * white color and 0.45 shadow is created.
                              */
                             export interface FontDescription {
                                 /**
                                  * Font color, android integer color value (produced by
-                                 * [[android.graphics.Color]]). Default value is black
+                                 * {@link android.graphics.Color}).
+                                 * @default 0x000 // black
                                  */
                                 color?: number,
                                 /**
-                                 * Font size. Default value is 20
+                                 * Font size.
+                                 * @default 20
                                  */
                                 size?: number,
                                 /**
-                                 * Font shadow offset. Default value is 0, witch produces no shadow
+                                 * Font shadow offset.
+                                 * @default 0 // no shadow
                                  */
                                 shadow?: number,
                                 /**
-                                 * Font alignment, one of the [[Font.ALIGN_DEFAULT]],
-                                 * [[Font.ALIGN_CENTER]], [[Font.ALIGN_END]] constants
+                                 * Font alignment, one of the
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_DEFAULT|Font.ALIGN_DEFAULT},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_CENTER|Font.ALIGN_CENTER},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_END|Font.ALIGN_END} constants.
                                  */
                                 alignment?: number,
                                 /**
-                                 * Same as [[FontDescription.alignment]]
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription.alignment|FontDescription.alignment}.
                                  */
                                 align?: number,
                                 /**
-                                 * If true, the font is bold, false otherwise. Default value is false
+                                 * If `true`, the font is bold, `false` otherwise.
+                                 * @default false
                                  */
                                 bold?: boolean,
                                 /**
-                                 * If true, the font is italic, false otherwise. Default value is false
+                                 * If `true`, the font is italic, `false` otherwise.
+                                 * @default false
                                  */
                                 cursive?: boolean,
                                 /**
-                                 * If true, the font is underlined, false otherwise. Default value is false
+                                 * If `true`, the font is underlined, `false` otherwise.
+                                 * @default false
                                  */
                                 underline?: boolean
                             }
                             export class Font extends java.lang.Object {
                                 static class: java.lang.Class<Font>;
                                 /**
-                                 * Aligns text to the start of the element (left for English locale)
+                                 * Aligns text to the start of the element (left for English locale).
                                  */
                                 static readonly ALIGN_CENTER: number;
                                 /**
-                                 * Aligns text to the center of the element
+                                 * Aligns text to the center of the element.
                                  */
                                 static readonly ALIGN_DEFAULT: number;
                                 /**
-                                 * Aligns text to the end of the element (right for English locale)
+                                 * Aligns text to the end of the element (right for English locale).
                                  */
                                 static readonly ALIGN_END: number;
                                 /**
-                                 * Aligns text to the center of the element horizontally
+                                 * Aligns text to the center of the element horizontally.
                                  */
                                 static ALIGN_CENTER_HORIZONTAL: number;
                                 alignment: number;
@@ -3051,7 +3074,7 @@ export module com {
                                 shadow: number;
                                 size: number;
                                 /**
-                                 * Constructs new instance of the font with specified parameters
+                                 * Constructs new instance of the font with specified parameters.
                                  * @param color font color, android integer color value (produced by
                                  * android.graphics.Color)
                                  * @param size font size
@@ -3059,13 +3082,13 @@ export module com {
                                  */
                                 constructor(color: number, size: number, shadow: number);
                                 /**
-                                 * Constructs new instance of the font with specified parameters
+                                 * Constructs new instance of the font with specified parameters.
                                  * @param params parameters of the font
                                  */
                                 constructor(params: FontDescription);
                                 /**
-                                 * Draws text on the canvas using created font
-                                 * @param canvas [[android.graphics.Canvas]] instance to draw the text on
+                                 * Draws text on the canvas using created font.
+                                 * @param canvas {@link android.graphics.Canvas} instance to draw the text on
                                  * @param x x coordinate of the text in pixels
                                  * @param y x coordinate of the text in pixels
                                  * @param text text string to draw
@@ -3074,35 +3097,35 @@ export module com {
                                 drawText(canvas: android.graphics.Canvas, x: number, y: number, text: string, scale: number): void;
                                 /**
                                  * Calculates bounds of the text given text position, text string and
-                                 * additional scale
-                                 * @returns [[android.graphics.Rect]] object containing calculated bounds of
+                                 * additional scale.
+                                 * @returns rect object containing calculated bounds of
                                  * the text
                                  */
                                 getBounds(text: string, x: number, y: number, scale: number): android.graphics.Rect;
                                 /**
-                                 * Calculates text width given text string and additional scale
+                                 * Calculates text width given text string and additional scale.
                                  * @returns width of the specified string when painted with specified
                                  * scale
                                  */
                                 getTextWidth(text: string, scale: number): number;
                                 /**
-                                 * Calculates text height given text string and additional scale
+                                 * Calculates text height given text string and additional scale.
                                  * @returns height of the specified string when painted with specified
                                  * scale
                                  */
                                 getTextHeight(text: string, x: number, y: number, scale: number): number;
                                 /**
-                                 * Converts current [[Font]] object to scriptable font description
+                                 * Converts current {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font|Font} object to scriptable font description.
                                  */
                                 asScriptable(): FontDescription;
                                 /* <DMHYT>: "Not sure about these two methods, that I saw in previous docs.
                                 I can't see them in sources 0_0" */
                                 /**
-                                 * Sets listener to be notified about window opening/closing events
+                                 * Sets listener to be notified about window opening/closing events.
                                  */
                                 setEventListener(listener: window.IWindowEventListener | UI.WindowEventListener): void;
                                 /**
-                                 * Sets listener to be notified about tab with specified index opening/closing events
+                                 * Sets listener to be notified about tab with specified index opening/closing events.
                                  * @param tab tab index
                                  * @param listener object to be notified about the events
                                  */
@@ -3123,77 +3146,106 @@ export module com {
                     export module ui {
                         export module types {
                             /**
-                             * Object used to manipulate frame textures. Frame texture allows to
+                             * Object used to manipulate frame textures.
                              */
                             export class FrameTexture extends java.lang.Object {
                                 static class: java.lang.Class<FrameTexture>;
-                                /** Specifies bottom left corner of the frame */
+                                /**
+                                 * Specifies bottom left corner of the frame.
+                                 */
                                 static readonly CORNER_BOTTOM_LEFT: number;
-                                /** Specifies bottom right corner of the frame */
+                                /**
+                                 * Specifies bottom right corner of the frame.
+                                 */
                                 static readonly CORNER_BOTTOM_RIGHT: number;
-                                /** Specifies top left corner of the frame */
+                                /**
+                                 * Specifies top left corner of the frame.
+                                 */
                                 static readonly CORNER_TOP_LEFT: number;
-                                /** Specifies top right corner of the frame */
+                                /**
+                                 * Specifies top right corner of the frame.
+                                 */
                                 static readonly CORNER_TOP_RIGHT: number;
-                                /** Specifies bottom side of the frame */
+                                /**
+                                 * Specifies bottom side of the frame.
+                                 */
                                 static readonly SIDE_BOTTOM: number;
-                                /** Specifies left side of the frame */
+                                /**
+                                 * Specifies left side of the frame.
+                                 */
                                 static readonly SIDE_LEFT: number;
-                                /** Specifies right side of the frame */
+                                /**
+                                 * Specifies right side of the frame.
+                                 */
                                 static readonly SIDE_RIGHT: number;
-                                /** Specifies top side of the frame */
+                                /**
+                                 * Specifies top side of the frame.
+                                 */
                                 static readonly SIDE_TOP: number;
                                 constructor(source: android.graphics.Bitmap);
                                 /**
-                                 * Expands side of the texture by specified amount of pixels
+                                 * Expands side of the texture by specified amount of pixels.
                                  * @param sideId side of the texture, one of the
                                  * **FrameTexture.SIDE_LEFT**, **FrameTexture.SIDE_RIGHT**,
                                  * **FrameTexture.SIDE_UP**, **FrameTexture.SIDE_DOWN** constants
-                                 * @returns expanded [[android.graphics.Bitmap]] instance with the frame
+                                 * @returns Expanded {@link android.graphics.Bitmap} instance with the frame.
                                  */
                                 expandSide(sideId: number, pixels: number): android.graphics.Bitmap;
                                 /**
                                  * Expands texture to the specified side, filling the middle with
-                                 * specified color
-                                 * @param color integer color value produced by [[android.graphics.Color]]
+                                 * specified color.
+                                 * @param color integer color value produced by {@link android.graphics.Color}
                                  * class
                                  * @param sides array of booleans marking whether the side should be
                                  * expanded or not. The order of the sides is
                                  * **FrameTexture.SIDE_LEFT**, **FrameTexture.SIDE_RIGHT**,
                                  * **FrameTexture.SIDE_UP**, **FrameTexture.SIDE_DOWN**
-                                 * @returns expanded [[android.graphics.Bitmap]] instance with the frame
+                                 * @returns Expanded {@link android.graphics.Bitmap} instance with the frame.
                                  */
                                 expand(width: number, height: number, color: number, sides: [boolean, boolean, boolean, boolean]): android.graphics.Bitmap;
+                                /**
+                                 * Expands texture to the specified side, filling the middle with
+                                 * specified color.
+                                 * @param color integer color value produced by {@link android.graphics.Color}
+                                 * class
+                                 */
                                 expand(width: number, height: number, color: number): android.graphics.Bitmap;
                                 /**
                                  * Expands texture to the specified side, filling the middle with
-                                 * specified color
+                                 * specified color.
                                  * @param scale scale of the created bitmap
-                                 * @param color integer color value produced by [[android.graphics.Color]]
+                                 * @param color integer color value produced by {@link android.graphics.Color}
                                  * class
                                  * @param sides array of booleans marking whether the side should be
-                                 * expanded or not. See [[FrameTexture.expand]] parameters for details.
+                                 * expanded or not. See {@link com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture.expand#1|FrameTexture.expand} parameters for details.
                                  * Default behavior is to scale all sides
-                                 * @returns expanded and scaled [[android.graphics.Bitmap]] instance with
+                                 * @returns Expanded and scaled {@link android.graphics.Bitmap} instance.
                                  */
                                 expandAndScale(width: number, height: number, scale: number, color: number, sides: [boolean, boolean, boolean, boolean]): android.graphics.Bitmap;
+                                /**
+                                 * Expands texture to the specified side, filling the middle with
+                                 * specified color.
+                                 * @param scale scale of the created bitmap
+                                 * @param color integer color value produced by {@link android.graphics.Color}
+                                 * class
+                                 */
                                 expandAndScale(width: number, height: number, scale: number, color: number): android.graphics.Bitmap;
                                 /**
-                                 * @returns original frame texture source stored in
-                                 * [[android.graphics.Bitmap]] instance
+                                 * @returns Original frame texture source stored in
+                                 * {@link android.graphics.Bitmap} instance.
                                  */
                                 getSource(): android.graphics.Bitmap;
                                 /**
                                  * @param side side of the texture, one of the
                                  * **FrameTexture.SIDE_LEFT**, **FrameTexture.SIDE_RIGHT**,
                                  * **FrameTexture.SIDE_UP**, **FrameTexture.SIDE_DOWN** constants
-                                 * @returns texture side source extracted from the original frame
-                                 * texture source stored in [[android.graphics.Bitmap]] instance
+                                 * @returns Texture side source extracted from the original frame
+                                 * texture source stored in {@link android.graphics.Bitmap} instance.
                                  */
                                 getSideSource(side: number): android.graphics.Bitmap;
                                 /**
-                                 * @returns [[android.graphics.Color]] integer color value
-                                 * of the central pixel of the source texture
+                                 * @returns Object packed integer color value
+                                 * of the central pixel of the source texture.
                                  */
                                 getCentralColor(): number;
                                 draw(canvas: android.graphics.Canvas, rect: android.graphics.RectF, scale: number, color: number, sides: [boolean, boolean, boolean, boolean]): void;
@@ -3262,67 +3314,67 @@ export module com {
                                 delay: number;
                                 isAnimation: boolean;
                                 /**
-                                 * Constructs new static [[Texture]] with specified bitmap
-                                 * @param bitmap [[android.graphics.Bitmap]] instance
+                                 * Constructs new static {@link Texture} with specified bitmap.
+                                 * @param bitmap {@link android.graphics.Bitmap} instance
                                  */
                                 constructor(bitmap: android.graphics.Bitmap);
                                 /**
-                                 * Constructs new animated [[Texture]] with specified frames
-                                 * @param bitmaps an array of [[android.graphics.Bitmap]] instances to be
+                                 * Constructs new animated {@link Texture} with specified frames.
+                                 * @param bitmaps an array of {@link android.graphics.Bitmap} instances to be
                                  * used as animation frames
                                  */
                                 constructor(bitmaps: android.graphics.Bitmap[]);
                                 /**
-                                 * Constructs new static or animated [[Texture]] with specified frames
+                                 * Constructs new static or animated {@link Texture} with specified frames.
                                  * @param obj texture name or array of texture names for animated
                                  * textures. Accepts raw gui textures names and style bindings
                                  * (formatted as "style:binding_name").
-                                 * @param style [[Style]] object to look for style bindings. If not
+                                 * @param style {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object to look for style bindings. If not
                                  * specified, default style is used
                                  */
                                 constructor(obj: string | {[key: string]: string}, style?: UIStyle);
                                 isAnimated(): boolean;
                                 /**
-                                 * Sets texture offsets in pixels from the upper left bound of the bitmap
+                                 * Sets texture offsets in pixels from the upper left bound of the bitmap.
                                  */
                                 readOffset(obj: { x?: number, y?: number }): void;
                                 /**
-                                 * @returns frame number of the animation corresponding to current system time
+                                 * @returns Frame number of the animation corresponding to current system time.
                                  */
                                 getFrame(): number;
                                 /**
                                  * @param frame frame number
-                                 * @returns [[android.graphics.Bitmap]] object containing animation frame
-                                 * for the corresponding frame number
+                                 * @returns Bitmap object containing animation frame
+                                 * for the corresponding frame number.
                                  */
                                 getBitmap(frame: number): android.graphics.Bitmap;
                                 getBitmapWrap(frame: number): memory.BitmapWrap;
                                 draw(canvas: android.graphics.Canvas, x: number, y: number, scale: number): void;
                                 drawCutout(canvas: android.graphics.Canvas, cutout: android.graphics.RectF, x: number, y: number, scale: number): void;
                                 /**
-                                 * @returns width of the texture in pixels
+                                 * @returns Width of the texture in pixels.
                                  */
                                 getWidth(): number;
                                 /**
-                                 * @returns height of the texture in pixels
+                                 * @returns Height of the texture in pixels.
                                  */
                                 getHeight(): number;
                                 /**
-                                 * Resizes all the frames of the texture to the specified size
+                                 * Resizes all the frames of the texture to the specified size.
                                  */
                                 resizeAll(width: number, height: number): void;
                                 /**
-                                 * Resizes all the frames by constant scale multiplier
+                                 * Resizes all the frames by constant scale multiplier.
                                  * @param scale scale to modify the frames by
                                  */
                                 rescaleAll(scale: number): void;
                                 /**
-                                 * Resizes all the frames to match the first one
+                                 * Resizes all the frames to match the first one.
                                  */
                                 fitAllToOneSize(): void;
                                 /**
                                  * Releases all allocated resources, should be called when the texture
-                                 * is not longer needed
+                                 * is not longer needed.
                                  */
                                 release(): void;
                             }
@@ -3397,76 +3449,77 @@ export module com {
                         export module types {
                             /**
                              * Object containing binding names as keys and string values as gui textures
-                             * names
+                             * names.
                              */
                             export type BindingSet = {[key: string]: string};
                             /**
                              * Object representing window style. Window styles allows to customize the
-                             * way your windows look like
+                             * way your windows look like.
                              */
                             export class UIStyle extends java.lang.Object {
                                 static class: java.lang.Class<UIStyle>;
                                 /**
-                                 * Classic (0.16.*-like) windows style
+                                 * Classic (0.16.*-like) windows style, which also used before
+                                 * legacy version.
                                  */
                                 static readonly CLASSIC: UIStyle;
                                 /**
-                                 * Default windows style
+                                 * Default windows style.
                                  */
                                 static readonly DEFAULT: UIStyle;
                                 static readonly LEGACY: UIStyle;
                                 /**
-                                 * Adds gui texture name to use for the specified window part
+                                 * Adds gui texture name to use for the specified window part.
                                  * @param key binding name
                                  * @param name gui texture name
                                  */
                                 addBinding(key: string, name: string): void;
                                 /**
-                                 * Gets texture binding bt its name. Searches first in the additional
-                                 * styles, then in the current style, then in all its parents
+                                 * Gets texture binding bt it's name. Searches first in the additional
+                                 * styles, then in the current style, then in all it's parents.
                                  * @param key binding name
                                  * @param fallback value to return on binding failure
-                                 * @returns gui texture name if current object, additional styles or one
+                                 * @returns Ui texture name if current object, additional styles or one
                                  * of the parents contains such a binding name, fallback otherwise.
                                  */
                                 getBinding(key: string, fallback: string): string;
                                 /**
-                                 * Adds an additional style object to the current style
+                                 * Adds an additional style object to the current style.
                                  * @param style additional style object to be added
                                  */
                                 addStyle(style: UIStyle): void;
                                 /**
-                                 * Constructs new [[UIStyle]] object
-                                 * with bindings from [[UIStyle.DEFAULT]]
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object
+                                 * with bindings from {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle.DEFAULT|UIStyle.DEFAULT}.
                                  */
                                 constructor();
                                 /**
-                                 * Constructs new [[UIStyle]] object
-                                 * from given [[BindingSet]] object
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object
+                                 * from given {@link com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet|BindingSet} object.
                                  */
                                 constructor(bindings: BindingSet);
                                 /**
-                                 * @returns a copy of the current style. Only style bindings of the
-                                 * current style are copied, no parent/additional styles are copied
+                                 * @returns A copy of the current style. Only style bindings of the
+                                 * current style are copied, no parent/additional styles are copied.
                                  */
                                 copy(): UIStyle;
                                 /**
-                                 * Specifies parent style object for the current style
+                                 * Specifies parent style object for the current style.
                                  * @param style style to be set as parent
                                  */
                                 inherit(style: UIStyle): void;
                                 /**
-                                 * Adds all values from given [[BindingSet]] object
+                                 * Adds all values from given {@link com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet|BindingSet} object.
                                  */
                                 addAllBindings(bindings: BindingSet): void;
                                 /**
-                                 * @returns [[java.util.Collection]] containing all binding names
-                                 * from the current style object
+                                 * @returns Collection containing all binding names
+                                 * from the current style object.
                                  */
                                 getAllBindingNames(): java.util.Collection<string>;
                                 /**
-                                 * If name is a style value (starts with "style:"), returns
-                                 * corresponding gui texture name, else returns input string
+                                 * If name is a style value (starts with `"style:"`), returns
+                                 * corresponding gui texture name, else returns input string.
                                  * @param name style value or bitmap name
                                  */
                                 getBitmapName(name: string): string;
@@ -3496,8 +3549,7 @@ export module com {
                                 static class: java.lang.Class<IWindow>;
                                 constructor();
                                 /**
-                                 * Constructs new object inherited from
-                                 * [[UI.IWindow]].
+                                 * Constructs new object inherited from {@link UI.IWindow}.
                                  * You need to implement all the interface methods in the object param.
                                  */
                                 constructor(impl: {
@@ -3519,82 +3571,82 @@ export module com {
                                 });
                                 /**
                                  * Closes window without container. Use only if the window was opened
-                                 * without container
+                                 * without container.
                                  */
                                 close(): void;
                                 /**
-                                 * Called up to 66 times a second to update window's content
+                                 * Called up to 66 times a second to update window's content.
                                  * @param time current time in milliseconds
                                  */
                                 frame(time: number): void;
                                 /**
-                                 * @returns [[UI.Container]]
+                                 * @returns New {@link UI.Container}
                                  * that was used to open this window or null, if
-                                 * the window wasn't opened in container
+                                 * the window wasn't opened in container.
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
-                                 * @returns window's content object
-                                 * (usually specified in the window's constructor)
+                                 * @returns Window's content object
+                                 * (usually specified in the window's constructor).
                                  */
                                 getContent(): WindowContent;
                                 /**
-                                 * Gets all the elements in the window
-                                 * @returns java.util.HashMap containing string element name as keys and
-                                 * element instances as values
+                                 * Gets all the elements in the window.
+                                 * @returns HashMap containing string element name as keys and
+                                 * element instances as values.
                                  */
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
                                 /**
-                                 * @returns object containing current style of the window
+                                 * @returns Object containing current style of the window.
                                  */
                                 getStyle(): types.UIStyle;
                                 /**
-                                 * Forces ui drawables of the window to refresh
-                                 * @param onCurrentThread if true, the drawables will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateDrawing(onCurrentThread: boolean): void;
                                 /**
-                                 * Forces ui elements of the window to refresh
-                                 * @param onCurrentThread if true, the elements will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui elements of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateElements(onCurrentThread: boolean): void;
                                 /**
-                                 * @returns true if the window can change its contents position
+                                 * @returns `true` if the window can change it's contents position.
                                  */
                                 isDynamic(): boolean;
                                 /**
-                                 * @returns true if the window has an inventory that should be updated
+                                 * @returns `true` if the window has an inventory that should be updated.
                                  */
                                 isInventoryNeeded(): boolean;
                                 /**
-                                 * @returns true if the window is opened, false otherwise
+                                 * @returns `true` if the window is opened, `false` otherwise.
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * @returns whether the window can be closed on pressing back navigation button
+                                 * @returns Whether the window can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
                                 /**
-                                 * Opens window without container. It is usually mor
+                                 * Opens window without container.
                                  */
                                 open(): void;
                                 /**
                                  * Sets container for the current window. Be careful when calling it
                                  * manually. You should prefer opening the window via
-                                 * [[UI.Container.openAs]] call
-                                 * @param container [[UI.Container]]
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call.
+                                 * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */
                                 setContainer(container: Nullable<container.UiAbstractContainer>): void;
                                 /**
-                                 * Turns debug mode for the window on and off
-                                 * @param debug if true, additional debug information will be drawn on
+                                 * Turns debug mode for the window on and off.
+                                 * @param debug if `true`, additional debug information will be drawn on
                                  * the window canvas
                                  */
                                 setDebugEnabled(debug: boolean): void;
@@ -3641,12 +3693,12 @@ export module com {
                                 constructor(content: WindowContent);
                                 setContent(content: WindowContent): void;
                                 /**
-                                 * Sets style profile for the current [[AdaptiveWindow]]
+                                 * Sets style profile for the current {@link UI.AdaptiveWindow}.
                                  * @param profile 0 for classic profile, 1 for default profile
                                  */
                                 setProfile(profile: 0 | 1): void;
                                 /**
-                                 * Forces [[AdaptiveWindow]] to be displayed using some profile
+                                 * Forces {@link UI.AdaptiveWindow} to be displayed using some profile.
                                  * @param profile 0 for classic profile, 1 for default profile or -1 not
                                  * to force any profile. By default forced profile is -1
                                  */
@@ -3675,41 +3727,47 @@ export module com {
                                 closeOnBackPressed: boolean;
                                 currentTab: number;
                                 /**
-                                 * Sets window location (bounds) to draw window within
+                                 * Sets window location (bounds) to draw window within.
                                  * @param location location to be used for the tabbed window
                                  */
                                 setLocation(location: UIWindowLocation): void;
                                 /**
-                                 * @returns tab content window width in units
+                                 * @returns Tab content window width in units.
                                  */
                                 getInnerWindowWidth(): number;
                                 /**
-                                 * @returns tab content window height in units
+                                 * @returns Tab content window height in units.
                                  */
                                 getInnerWindowHeight(): number;
                                 /**
-                                 * @returns tab selector window width in units
+                                 * @returns Tab selector window width in units.
                                  */
                                 getWindowTabSize(): number;
                                 /**
-                                 * @returns tab selector window width in global units
+                                 * @returns Tab selector window width in global units.
                                  */
                                 getGlobalTabSize(): number;
                                 /**
-                                 * Constructs new [[UI.TabbedWindow]] with specified location
+                                 * Constructs new {@link UI.TabbedWindow} with specified location.
                                  * @param loc location to be used for the tabbed window
                                  */
                                 constructor(loc: UIWindowLocation);
                                 /**
-                                 * Constructs new [[UI.TabbedWindow]] with specified content
+                                 * Constructs new {@link UI.TabbedWindow} with specified content.
                                  * @param content object containing window description
                                  */
                                 constructor(content: TabbedWindowContent);
                                 /**
-                                 * Sets content of the tab
-                                 * @param index index of the tab. There are 12 tabs available, from 0 to
-                                 * 11. The location of the tabs is as follows:
-                                 * ```
+                                 * Sets content of the tab.
+                                 * @param index index of the tab; there are 12 tabs available, from 0 to
+                                 * 11
+                                 * @param tabOverlay content of the tab selector
+                                 * @param tabContent content of the window to be created for the tab
+                                 * @param isAlwaysSelected if `true`, tab is always displayed as selected;
+                                 * default value is `false`
+                                 * @remarks
+                                 * The location of the tabs is as follows:
+                                 * ```txt
                                  * 0    6
                                  * 1    7
                                  * 2    8
@@ -3717,25 +3775,38 @@ export module com {
                                  * 4    10
                                  * 5    11
                                  * ```
-                                 * @param tabOverlay content of the tab selector
-                                 * @param tabContent content of the window to be created for the tab
-                                 * @param isAlwaysSelected if true, tab is always displayed as selected.
-                                 * Default value is false
                                  */
                                 setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent, isAlwaysSelected: boolean): void;
+                                /**
+                                 * Sets content of the tab.
+                                 * @param index index of the tab; there are 12 tabs available, from 0 to
+                                 * 11
+                                 * @param tabOverlay content of the tab selector
+                                 * @param tabContent content of the window to be created for the tab
+                                 * @remarks
+                                 * The location of the tabs is as follows:
+                                 * ```txt
+                                 * 0    6
+                                 * 1    7
+                                 * 2    8
+                                 * 3    9
+                                 * 4    10
+                                 * 5    11
+                                 * ```
+                                 */
                                 setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent): void;
                                 /**
-                                 * Creates fake tab with no content
-                                 * @param index index of the tab, see [[TabbedWindow.setTab]] for
+                                 * Creates fake tab with no content.
+                                 * @param index index of the tab, see {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setTab#1|UI.TabbedWindow.setTab} for
                                  * details
                                  * @param tabOverlay content of the tab selector
                                  */
                                 setFakeTab(index: number, tabOverlay: UI.ElementSet): void;
                                 /**
                                  * @param index index of the tab
-                                 * @returns [[UI.Window]] instance
+                                 * @returns New {@link UI.Window} instance
                                  * created for the specified tab or null if
-                                 * no window was created for specified window
+                                 * no window was created for specified window.
                                  */
                                 getWindowForTab(index: number): Nullable<UIWindow>;
                                 open(): void;
@@ -3749,38 +3820,38 @@ export module com {
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
                                 getContent(): Nullable<TabbedWindowContent>;
                                 getContainer(): Nullable<container.UiAbstractContainer>;
-                                setContainer(con: container.UiAbstractContainer): void;
+                                setContainer(container: container.UiAbstractContainer): void;
                                 setDebugEnabled(debug: boolean): void;
                                 setEventListener(listener: IWindowEventListener): void;
                                 setTabEventListener(index: number, listener: IWindowEventListener): void;
                                 onTabSelected(index: number): void;
                                 /**
                                  * Specifies whether the window should darken and block background.
-                                 * Default value is false
-                                 * @param b pass true if you want the window to block
+                                 * @param enabled pass `true` if you want the window to block
                                  * background
+                                 * @default false
                                  */
-                                setBlockingBackground(b: boolean): void;
+                                setBlockingBackground(enabled: boolean): void;
                                 /**
-                                 * @returns current default tab index. If no default tab was specified
-                                 * via [[UI.TabbedWindow.setDefaultTab]],
-                                 * the first tab added becomes default
+                                 * @returns Current default tab index. If no default tab was specified
+                                 * via {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setDefaultTab|UI.TabbedWindow.setDefaultTab},
+                                 * the first tab added becomes default.
                                  */
                                 getDefaultTab(): number;
                                 /**
-                                 * Sets default tab index
+                                 * Sets default tab index.
                                  * @param tab index of the tab to be opened by default
                                  */
                                 setDefaultTab(tab: number): void;
                                 /**
                                  * Sets new style object as current window's style. If the new style is
-                                 * a different object then an old one, forces window invalidation
-                                 * @param style [[UI.Style]] object to be used as style for the window
+                                 * a different object then an old one, forces window invalidation.
+                                 * @param style {@link UI.Style} object to be used as style for the window
                                  */
                                 setStyle(style: types.UIStyle): void;
                                 /**
                                  * Overrides style properties of the current style by the values
-                                 * specified in the style parameter
+                                 * specified in the style parameter.
                                  * @param style js object where keys represent binding names and values
                                  * represent texture gui names
                                  */
@@ -3805,23 +3876,23 @@ export module com {
                     export module ui {
                         export module window {
                             /**
-                             * Specifies contents and additional parameters for all types of windows
+                             * Specifies contents and additional parameters for all types of windows.
                              */
                             export interface WindowContent {
                                 /**
                                  * Specifies window's location, used for
-                                 * [[UI.Window]], [[UI.TabbedWindow]]
-                                 * and [[UI.StandartWindow]]
+                                 * {@link UI.Window}, {@link UI.TabbedWindow}
+                                 * and {@link UI.StandartWindow}.
                                  */
                                 location?: WindowLocationDescription,
                                 /**
-                                 * If [[WindowContent.style]] is not specified,
-                                 * this argument will be used instead
+                                 * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.style|WindowContent.style} is not specified,
+                                 * this argument will be used instead.
                                  */
                                 params?: types.BindingSet;
                                 /**
                                  * Specifies window's style, an object containing keys as style binding
-                                 * names and values as gui texture names corresponding to the binding
+                                 * names and values as gui texture names corresponding to the binding.
                                  */
                                 style?: types.BindingSet;
                                 /**
@@ -3829,34 +3900,36 @@ export module com {
                                  */
                                 drawing?: UI.DrawingSet;
                                 /**
-                                 * Object containing keys as gui elements names and [[UI.Elements]]
+                                 * Object containing keys as gui elements names and {@link UI.Elements}
                                  * instances as values. Gui elements are interactive components that are
-                                 * used to create interfaces functionality
+                                 * used to create interfaces functionality.
                                  */
                                 elements?: UI.ElementSet;
                             }
                             export namespace StandardWindowDescriptionTypes {
                                 export interface StandardWindowBackground {
                                     /**
-                                     * If true, default window is created
+                                     * If `true`, default window is created.
                                      */
                                     standard?: boolean,
                                     /**
                                      * Background color integer value, produced by
-                                     * [[android.graphics.Color]] class. Default is white
+                                     * {@link android.graphics.Color} class.
+                                     * @default 0xfff // white
                                      */
                                     color?: number,
                                     /**
                                      * Background bitmap texture name. If the bitmap size doesn't
-                                     * match the screen size, bitmap will be stretched to fit
+                                     * match the screen size, bitmap will be stretched to fit.
                                      */
                                     bitmap?: string,
                                     /**
-                                     * Specifies window's frame parameters
+                                     * Specifies window's frame parameters.
                                      */
                                     frame?: {
                                         /**
-                                         * Frame bitmap scale. Default value is 3
+                                         * Frame bitmap scale.
+                                         * @default 3
                                          */
                                         scale?: number,
                                         /**
@@ -3869,110 +3942,116 @@ export module com {
                                 }
                                 export interface StandardWindowHeaderText {
                                     /**
-                                     * Specifies header text. Defaults to *"No Title"*
+                                     * Specifies header text.
+                                     * @default "No Title"
                                      */
                                     text?: string,
                                     /**
                                      * Specifies font params for the header text. Only
-                                     * [[size]], [[color]] and [[shadow]]
-                                     * properties are used
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size|size},
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color|color}
+                                     * and {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow|shadow}
+                                     * properties are used.
                                      */
                                     font?: types.FontDescription,
                                     /**
-                                     * If [[font]] is not specified, used as
-                                     * [[size]] value
+                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font|font} is not specified, used as
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size|size} value.
                                      */
                                     size?: number,
                                     /**
-                                     * If [[font]] is not specified, used as
-                                     * [[color]] value
+                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font|font} is not specified, used as
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color|color} value.
                                      */
                                     color?: number,
                                     /**
-                                     * If [[font]] is not specified, used as
-                                     * [[shadow]] value
+                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font|font} is not specified, used as
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow|shadow} value.
                                      */
                                     shadow?: number,
                                 }
                                 export interface StandardWindowHeader {
                                     /**
                                      * Specifies whether the header should have shadow or not. If
-                                     * true, the shadow is not displayed. Default is false
+                                     * `true`, the shadow is not displayed.
+                                     * @default false
                                      */
                                     hideShadow?: boolean,
                                     /**
-                                     * Specifies header height in units. Defaults to 80
+                                     * Specifies header height in units.
+                                     * @default 80
                                      */
                                     height?: number,
                                     /**
                                      * If *height* is not specified, used to specify header height
-                                     * in units
+                                     * in units.
                                      */
                                     width?: number,
                                     /**
                                      * Frame bitmap gui texture name. Defaults to *"headerFrame"*
                                      * style binding or, if not specified, to
-                                     * *"default_frame_7"* gui texture
+                                     * *"default_frame_7"* gui texture.
                                      */
                                     frame?: string,
                                     /**
                                      * Header background color integer value, produced by
-                                     * [[android.graphics.Color]] class. Default is
-                                     * *Color.rgb(0x72, 0x6a, 0x70)*
+                                     * {@link android.graphics.Color} class. Default is
+                                     * *Color.rgb(0x72, 0x6a, 0x70)*.
                                      */
                                     color?: number,
                                     /**
-                                     * Specifies header text styles and value
+                                     * Specifies header text styles and value.
                                      */
                                     text?: StandardWindowHeaderText
                                     /**
-                                     * If true, close button is not displayed. Default is false
+                                     * If `true`, close button is not displayed.
+                                     * @default false
                                      */
                                     hideButton?: boolean
                                 }
                                 export interface StandardWindowInventory {
                                     /**
-                                     * Inventory width in units. Defaults to 300 units
+                                     * Inventory width in units. Defaults to 300 units.
                                      */
                                     width?: number,
                                     /**
                                      * Specifies additional padding for the inventory in units.
-                                     * Defaults to 20 units
+                                     * Defaults to 20 units.
                                      */
                                     padding?: number,
                                     /**
-                                     * If true, default window is created
+                                     * If `true`, default window is created.
                                      */
                                     standard?: boolean
                                 }
                                 export interface StandardWindowParams {
                                     /**
                                      * Specifies minimum contents window height. If actual height is
-                                     * less then desired, scrolling is used
+                                     * less then desired, scrolling is used.
                                      */
                                     minHeight?: number,
                                     /**
-                                     * Specifies background properties
+                                     * Specifies background properties.
                                      */
                                     background?: StandardWindowBackground;
                                     /**
-                                     * Specifies additional parameters for standard window's header
+                                     * Specifies additional parameters for standard window's header.
                                      */
                                     header?: StandardWindowHeader
                                     /**
-                                     * Specifies parameters for standard inventory window
+                                     * Specifies parameters for standard inventory window.
                                      */
                                     inventory?: StandardWindowInventory
                                 }
                             }
                             /**
-                             * Extended [[WindowContent]] object with additional params for
-                             * [[UI.StandartWindow]] and [[UI.StandardWindow]]
+                             * Extended {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent|WindowContent} object with additional params for
+                             * {@link UI.StandartWindow} and {@link UI.StandardWindow}.
                              */
                             export interface StandardWindowContent extends WindowContent {
                                 /**
-                                 * Used for [[UI.StandartWindow]]s and [[UI.StandardWindow]]s.
-                                 * Specifies additional parameters for standard windows
+                                 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow|StandardWindows}.
+                                 * Specifies additional parameters for standard windows.
                                  */
                                 standard?: StandardWindowDescriptionTypes.StandardWindowParams
                             }
@@ -3990,7 +4069,7 @@ export module com {
                                 constructor(location: UIWindowLocation);
                                 constructor(content: WindowContent);
                                 /**
-                                 * Opens window without container. It is usually mor
+                                 * Opens window without container.
                                  */
                                 open(): void;
                                 /**
@@ -4001,7 +4080,7 @@ export module com {
                                  */
                                 addAdjacentWindow(window: UIWindow): void;
                                 /**
-                                 * Removes adjacent window from the adjacent windows list
+                                 * Removes adjacent window from the adjacent windows list.
                                  * @param window another window that was added as adjacent
                                  */
                                 removeAdjacentWindow(window: UIWindow): void;
@@ -4009,32 +4088,32 @@ export module com {
                                 postOpen(): void;
                                 /**
                                  * Closes window without container. Use only if the window was opened
-                                 * without container
+                                 * without container.
                                  */
                                 close(): void;
                                 /**
-                                 * Called up to 66 times a second to update window's content
+                                 * Called up to 66 times a second to update window's content.
                                  * @param time current time in milliseconds
                                  */
                                 frame(time: number): void;
                                 /**
-                                 * Forces ui elements of the window to refresh
-                                 * @param onCurrentThread if true, the elements will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui elements of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateElements(onCurrentThread: boolean): void;
                                 /**
-                                 * Forces ui drawables of the window to refresh
-                                 * @param onCurrentThread if true, the drawables will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateDrawing(onCurrentThread: boolean): void;
                                 /**
-                                 * @returns true if the window is opened, false otherwise
+                                 * @returns `true` if the window is opened, `false` otherwise.
                                  */
                                 isOpened(): boolean;
                                 postElementRefresh(): void;
@@ -4043,171 +4122,172 @@ export module com {
                                 /**
                                  * Specifies whether touch events should be handled by this window or
                                  * passed to underlying windows (to the game). By default all windows
-                                 * are touchable
-                                 * @param touchable pass true if the window should handle touch events,
-                                 * false otherwise
+                                 * are touchable.
+                                 * @param touchable pass `true` if the window should handle touch events,
+                                 * `false` otherwise
                                  */
                                 setTouchable(touchable: boolean): void;
                                 /**
-                                 * @returns true if the window is touchable, false otherwise
+                                 * @returns `true` if the window is touchable, `false` otherwise.
                                  */
                                 isTouchable(): boolean;
                                 /**
-                                 * @returns true if window blocks background
+                                 * @returns `true` if window blocks background.
                                  */
                                 isBlockingBackground(): boolean;
                                 /**
                                  * Specifies whether the window should darken and block background.
-                                 * Default value is false
-                                 * @param blockingBackground pass true if you want the window to block
+                                 * @param blockingBackground pass `true` if you want the window to block
                                  * background
+                                 * @default false
                                  */
                                 setBlockingBackground(blockingBackground: boolean): void;
                                 /**
-                                 * @returns true if the window is game overlay, false otherwise
+                                 * @returns `true` if the window is game overlay, `false` otherwise.
                                  */
                                 isNotFocusable(): boolean;
                                 /**
                                  * Allows window to be displayed as game overlay without blocking
-                                 * Minecraft sounds. Note that this drops window's FPS. Default value is
-                                 * false
-                                 * @param inGameOverlay if true, the window is opened in PopupWindow
+                                 * Minecraft sounds. Note that this drops window's FPS.
+                                 * @param inGameOverlay if `true`, the window is opened in PopupWindow
                                  * to avoid blocking Minecraft sounds
+                                 * @default false
                                  */
                                 setAsGameOverlay(inGameOverlay: boolean): void;
                                 /**
-                                 * Set background color of window
+                                 * Set background color of window.
                                  * @param color integer color value (you can specify it using hex value)
                                  */
                                 setBackgroundColor(color: number): void;
                                 /**
-                                 * @returns true if the window has an inventory that should be updated
+                                 * @returns `true` if the window has an inventory that should be updated.
                                  */
                                 isInventoryNeeded(): boolean;
                                 /**
-                                 * @returns true if the window can change its contents position
+                                 * @returns `true` if the window can change it's contents position.
                                  */
                                 isDynamic(): boolean;
                                 /**
-                                 * Gets all the elements in the window
-                                 * @returns [[java.util.HashMap]] containing string element names
-                                 * as keys and element instances as values
+                                 * Gets all the elements in the window.
+                                 * @returns Hashes containing string element names
+                                 * as keys and element instances as values.
                                  */
                                 getElements(): java.util.HashMap<String, elements.UIElement>;
                                 /**
-                                 * @returns window's content object (usually specified in the window's
-                                 * constructor)
+                                 * @returns Window's content object (usually specified in the window's
+                                 * constructor).
                                  */
                                 getContent(): WindowContent;
                                 /**
-                                 * Specifies the content of the window
+                                 * Specifies the content of the window.
                                  * @param content content object to be applied to the window
                                  */
                                 setContent(content: WindowContent): void;
                                 /**
-                                 * @param dynamic specify true, if the window contains dynamic
-                                 * (animated) elements, false otherwise. By default all windows are
+                                 * @param dynamic specify `true`, if the window contains dynamic
+                                 * (animated) elements, `false` otherwise. By default all windows are
                                  * dynamic. Make them static for better performance
                                  */
                                 setDynamic(dynamic: boolean): void;
                                 /**
-                                 * @param inventoryNeeded specify true if the window requires player's
-                                 * inventory. Default value is false
+                                 * @param inventoryNeeded specify `true` if the window requires player's
+                                 * inventory
+                                 * @default false
                                  */
                                 setInventoryNeeded(inventoryNeeded: boolean): void;
                                 invalidateBackground(): void;
                                 invalidateForeground(): void;
                                 /**
-                                 * @returns window's current location object
+                                 * @returns Window's current location object.
                                  */
                                 getLocation(): UIWindowLocation;
                                 getElementProvider(): IElementProvider;
                                 getBackgroundProvider(): IBackgroundProvider;
                                 getContentProvider(): ContentProvider;
                                 /**
-                                 * @returns unit size (in pixel) in the window's bounds
+                                 * @returns Unit size (in pixel) in the window's bounds.
                                  */
                                 getScale(): number;
                                 /**
-                                 * @returns object containing current style of the window
+                                 * @returns Object containing current style of the window.
                                  */
                                 getStyle(): types.UIStyle;
                                 /**
                                  * Overrides style properties of the current style by the values
-                                 * specified in the style parameter
+                                 * specified in the style parameter.
                                  * @param style js object where keys represent binding names and values
                                  * represent texture gui names
                                  */
                                 setStyle(style: types.BindingSet): void;
                                 /**
                                  * Sets new style object as current window's style. If the new style is
-                                 * a different object then an old one, forces window invalidation
-                                 * @param style [[UI.Style]] object to be used as style for the window
+                                 * a different object then an old one, forces window invalidation.
+                                 * @param style {@link UI.Style} object to be used as style for the window
                                  */
                                 setStyle(style: types.UIStyle): void;
                                 invalidateAllContent(): void;
                                 /**
-                                 * Gets custom property by its name. Custom properties can be used to
+                                 * Gets custom property by it's name. Custom properties can be used to
                                  * store some values containing window's current state. Note that these
-                                 * properties are not saved between Inner Core launches
+                                 * properties are not saved between Inner Core launches.
                                  * @param name custom property name
-                                 * @returns value set by [[UI.Window.putProperty]]
-                                 * or null if no value was specified for this name
+                                 * @returns Value set by {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindow.putProperty|UI.Window.putProperty}
+                                 * or null if no value was specified for this name.
                                  */
                                 getProperty<T>(name: string): T;
                                 /**
-                                 * Sets custom property value
+                                 * Sets custom property value.
                                  * @param name custom property name
                                  * @param value custom property value
                                  */
                                 putProperty<T>(name: string, value: T): void;
                                 /**
-                                 * @returns [[UI.Container]]
+                                 * @returns Currently {@link UI.Container}
                                  * that was used to open this window or null, if
-                                 * the window wasn't opened in container
+                                 * the window wasn't opened in container.
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
                                  * Sets container for the current window. Be careful when calling it
-                                 * manually. You should prefer opening the window via
-                                 * [[UI.Container.openAs]] call
-                                 * @param container [[UI.Container]]
+                                 * manually. You should prefer opening the window via it.
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call
+                                 * @param container {@link UI.Container}
                                  * to be associated with current window
                                  * or null to associate no container with current window
                                  */
                                 setContainer(container: Nullable<container.UiAbstractContainer>): void;
                                 /**
-                                 * Turns debug mode for the window on and off
-                                 * @param enabled if true, additional debug information will be drawn on
+                                 * Turns debug mode for the window on and off.
+                                 * @param enabled if `true`, additional debug information will be drawn on
                                  * the window canvas
                                  */
                                 setDebugEnabled(enabled: boolean): void;
                                 /**
                                  * Sets any window as current window's parent. If current window closes,
-                                 * parent window closes too
-                                 * @param window window to be used as parent window for the current
-                                 * window
+                                 * parent window closes too.
+                                 * @param parent window to be used as parent window for the current
+                                 * window.
                                  */
                                 setParentWindow(parent: IWindow): void;
                                 /**
-                                 * @returns current window's parent window
+                                 * @returns Current window's parent window.
                                  */
                                 getParentWindow(): Nullable<IWindow>;
                                 /**
-                                 * Sets listener to be notified about window opening/closing events
+                                 * Sets listener to be notified about window opening/closing events.
                                  */
                                 setEventListener(listener: UI.WindowEventListener | IWindowEventListener): void;
                                 runCachePreparation(async: boolean): void;
                                 /**
-                                 * Writes debug information about current window to the log
+                                 * Writes debug information about current window to the log.
                                  */
                                 debug(): void;
                                 /**
-                                 * Gives the property to be closed on pressing back navigation button to the given window
+                                 * Gives the property to be closed on pressing back navigation button to the given window.
                                  */
                                 setCloseOnBackPressed(val: boolean): void;
                                 /**
-                                 * @returns whether the window can be closed on pressing back navigation button
+                                 * @returns Whether the window can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
                             }
@@ -4236,10 +4316,14 @@ export module com {
                                 prepareCache(): void;
                                 releaseCache(): void;
                                 setAlpha(alpha: number): void;
-                                /* Just for TS not to be angry */
+                                /**
+                                 * Just for TS not to be angry.
+                                 */
                                 setColorFilter(par1: number, par2: android.graphics.PorterDuff.Mode): void;
                                 setColorFilter(filter: Nullable<android.graphics.ColorFilter>): void;
-                                /** @returns -3 */
+                                /**
+                                 * @default -3
+                                 */
                                 getOpacity(): number;
                             }
                         }
@@ -4275,10 +4359,14 @@ export module com {
                                 drawDirty(canvas: android.graphics.Canvas, scale: number): void;
                                 onTouchEvent(event: types.TouchEvent): void;
                                 setAlpha(alpha: number): void;
-                                /* Just for TS not to be angry */
+                                /**
+                                 * Just for TS not to be angry.
+                                 */
                                 setColorFilter(par1: number, par2: android.graphics.PorterDuff.Mode): void;
                                 setColorFilter(filter: Nullable<android.graphics.ColorFilter>): void;
-                                /** @returns -3 */
+                                /**
+                                 * @default -3
+                                 */
                                 getOpacity(): number;
                                 toString(): string;
                             }
@@ -4300,149 +4388,151 @@ export module com {
                                 static class: java.lang.Class<UIWindowGroup>;
                                 closeOnBackPressed: boolean;
                                 /**
-                                 * Removes window from group by its name
+                                 * Removes window from group by it's name.
                                  * @param name window name
                                  */
                                 removeWindow(name: string): void;
                                 /**
-                                 * Adds window instance with specified name to the group
+                                 * Adds window instance with specified name to the group.
                                  * @param name window name
                                  * @param window window to be added to the group
                                  */
-                                addWindowInstance(name: string, win: IWindow): void;
+                                addWindowInstance(name: string, window: IWindow): void;
                                 /**
                                  * Creates a new window using provided description and adds it to the
-                                 * group
+                                 * group.
                                  * @param name window name
                                  * @param content window description object
-                                 * @returns created [[Window]] object
+                                 * @returns Created {@link UI.Window} object.
                                  */
                                 addWindow(name: string, content: WindowContent): UIWindow;
                                 /**
                                  * @param name window name
-                                 * @returns window from the group by its name or null if no window with
-                                 * such a name was added
+                                 * @returns Window from the group by it's name or null if no window with
+                                 * such a name was added.
                                  */
                                 getWindow(name: string): UIWindow;
                                 /**
                                  * @param name window name
-                                 * @returns window's description object if a window with specified name
-                                 * exists or null otherwise
+                                 * @returns Window's description object if a window with specified name
+                                 * exists or null otherwise.
                                  */
                                 getWindowContent(name: string): Nullable<WindowContent>;
                                 /**
-                                 * Sets content for the window by its name
+                                 * Sets content for the window by it's name.
                                  * @param name window name
                                  * @param content content object
                                  */
                                 setWindowContent(name: string, content: WindowContent): void;
                                 /**
-                                 * @returns [[java.util.Collection]] object containing all the
-                                 * [[UI.Window]]s in the group
+                                 * @returns Collection object containing all the
+                                 * {@link UI.Window|UI.Windows} in the group.
                                  */
                                 getAllWindows(): java.util.Collection<UIWindow>;
                                 /**
-                                 * @returns [[java.util.Collection]] object containing string names of the
-                                 * windows in the group
+                                 * @returns Collection object containing string names of the
+                                 * windows in the group.
                                  */
                                 getWindowNames(): java.util.Collection<string>;
                                 /**
-                                 * Forces window refresh by its name
+                                 * Forces window refresh by it's name.
                                  * @param name name of the window to refresh
                                  */
                                 refreshWindow(name: string): void;
                                 /**
-                                 * Forces refresh for all windows
+                                 * Forces refresh for all windows.
                                  */
                                 refreshAll(): void;
                                 /**
-                                 * Moves window with specified name to the top of the group
+                                 * Moves window with specified name to the top of the group.
                                  * @param name window name
                                  */
                                 moveOnTop(name: string): void;
                                 /**
-                                 * Opens window without container. It is usually mor
+                                 * Opens window without container.
                                  */
                                 open(): void;
                                 /**
                                  * Closes window without container. Use only if the window was opened
-                                 * without container
+                                 * without container.
                                  */
                                 close(): void;
                                 /**
-                                 * Called up to 66 times a second to update window's content
+                                 * Called up to 66 times a second to update window's content.
                                  * @param time current time in milliseconds
                                  */
                                 frame(time: number): void;
                                 /**
-                                 * @returns true if the window is opened, false otherwise
+                                 * @returns `true` if the window is opened, `false` otherwise.
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * @returns true if the window has an inventory that should be updated
+                                 * @returns `true` if the window has an inventory that should be updated.
                                  */
                                 isInventoryNeeded(): boolean;
                                 /**
-                                 * @returns true if the window can change its contents position
+                                 * @returns `true` if the window can change it's contents position.
                                  */
                                 isDynamic(): boolean;
                                 /**
-                                 * Gets all the elements in the window
-                                 * @returns [[java.util.HashMap]] containing string element name
-                                 * as keys and element instances as values
+                                 * Gets all the elements in the window.
+                                 * @returns Hashes containing string element name
+                                 * as keys and element instances as values.
                                  */
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
-                                /** @returns null for [[UIWindowGroup]] */
+                                /**
+                                 * @returns `null` for {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowGroup|UIWindowGroup}.
+                                 * */
                                 getContent(): Nullable<WindowContent>;
                                 /**
-                                 * @returns [[UI.Container]]
-                                 * that was used to open this window or null, if the window wasn't opened in container
+                                 * @returns Currently {@link UI.Container}
+                                 * that was used to open this window or null, if the window wasn't opened in container.
                                  */
                                 getContainer(): Nullable<container.UiAbstractContainer>;
                                 /**
                                  * Sets container for the current window. Be careful when calling it
                                  * manually. You should prefer opening the window via
-                                 * [[UI.Container.openAs]] call
-                                 * @param container [[UI.Container]]
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call.
+                                 * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */
-                                setContainer(con: Nullable<container.UiAbstractContainer>): void;
+                                setContainer(container: Nullable<container.UiAbstractContainer>): void;
                                 /**
-                                 * Turns debug mode for the window on and off
-                                 * @param enabled if true, additional debug information will be drawn on
+                                 * Turns debug mode for the window on and off.
+                                 * @param enabled if `true`, additional debug information will be drawn on
                                  * the window canvas
                                  */
-                                setDebugEnabled(debug: boolean): void;
+                                setDebugEnabled(enabled: boolean): void;
                                 invalidateAllContent(): void;
                                 setStyle(style: types.UIStyle): void;
                                 setStyle(style: types.BindingSet): void;
                                 /**
-                                 * @returns object containing current style of the window
+                                 * @returns Object containing current style of the window.
                                  */
                                 getStyle(): types.UIStyle;
                                 setBlockingBackground(bb: boolean): void;
                                 /**
-                                 * Forces ui elements of the window to refresh
-                                 * @param onCurrentThread if true, the elements will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui elements of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateElements(onCurrentThread: boolean): void;
                                 /**
-                                 * Forces ui drawables of the window to refresh
-                                 * @param onCurrentThread if true, the drawables will be refreshed
-                                 * immediately, otherwise refresh event will be posted. Default value
-                                 * if false. Ensure you are in the UI thread if you pass true as the
-                                 * parameter
+                                 * Forces ui drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateDrawing(onCurrentThread: boolean): void;
                                 /**
-                                 * Gives the property to be closed on pressing back navigation button to the given window group
+                                 * Gives the property to be closed on pressing back navigation button to the given window group.
                                  */
                                 setCloseOnBackPressed(val: boolean): void;
                                 /**
-                                 * @returns whether the window group can be closed on pressing back navigation button
+                                 * @returns Whether the window group can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
                             }
@@ -4462,107 +4552,133 @@ export module com {
                         export module window {
                             export interface IWindowLocation {
                                 /**
-                                 * X coordinate of the window in units, 0 by default
+                                 * X coordinate of the window in units.
+                                 * @default 0
                                  */
                                 x?: number,
                                 /**
-                                 * Y coordinate of the window in units, 0 by default
+                                 * Y coordinate of the window in units.
+                                 * @default 0
                                  */
                                 y?: number,
                                 /**
                                  * Width of the window in units, by default calculated to match right
-                                 * screen bound
+                                 * screen bound.
                                  */
                                 width?: number,
                                 /**
                                  * Height of the window in units, by default calculated to match bottom
-                                 * screen bound
+                                 * screen bound.
                                  */
                                 height?: number,
                                 /**
-                                 * Defines scrollable window size along the X axis
+                                 * Defines scrollable window size along the X axis.
                                  */
                                 scrollX?: number,
                                 /**
-                                 * Defines scrollable window size along the Y axis
+                                 * Defines scrollable window size along the Y axis.
                                  */
                                 scrollY?: number;
                             }
                             /**
                              * Object representing window location used in window content object and
-                             * [[WindowLocation]] constructor
+                             * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} constructor.
                              */
                             export interface WindowLocationDescription extends IWindowLocation {
                                 forceScrollX?: boolean, forceScrollY?: boolean,
                                 /**
                                  * Paddings are distances from the window bounds to the elements in the
-                                 * window
+                                 * window.
                                  */
                                 padding?: { top?: number, bottom?: number, left?: number, right?: number };
                             }
                             export class UIWindowLocation extends java.lang.Object {
                                 static class: java.lang.Class<UIWindowLocation>;
-                                /** Constant used to represent bottom padding */
+                                /**
+                                 * Constant used to represent bottom padding.
+                                 */
                                 static readonly PADDING_BOTTOM: number;
-                                /** Constant used to represent left padding */
+                                /**
+                                 * Constant used to represent left padding.
+                                 */
                                 static readonly PADDING_LEFT: number;
-                                /** Constant used to represent right padding */
+                                /**
+                                 * Constant used to represent right padding.
+                                 */
                                 static readonly PADDING_RIGHT: number;
-                                /** Constant used to represent top padding */
+                                /**
+                                 * Constant used to represent top padding.
+                                 */
                                 static readonly PADDING_TOP: number;
                                 forceScrollX: boolean;
                                 forceScrollY: boolean;
-                                /** Window height */
+                                /**
+                                 * Window height.
+                                 */
                                 height: number;
-                                /** Window scale */
+                                /**
+                                 * Window scale.
+                                 */
                                 scale: number;
-                                /** Horizontal window scroll */
+                                /**
+                                 * Horizontal window scroll.
+                                 */
                                 scrollX: number;
-                                /** Vertical window scroll */
+                                /**
+                                 * Vertical window scroll.
+                                 */
                                 scrollY: number;
-                                /** Window width */
+                                /**
+                                 * Window width.
+                                 */
                                 width: number;
-                                /** Window horizontal position */
+                                /**
+                                 * Window horizontal position.
+                                 */
                                 x: number;
-                                /** Window vertical position */
+                                /**
+                                 * Window vertical position.
+                                 */
                                 y: number;
-                                /** Window position on layers */
+                                /**
+                                 * Window position on layers.
+                                 */
                                 zIndex: number;
                                 /**
-                                 * Constructs new [[UIWindowLocation]] instance with default position and
-                                 * size (fullscreen window)
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} instance with default position and
+                                 * size (fullscreen window).
                                  */
                                 constructor();
                                 /**
-                                 * Constructs new [[UIWindowLocation]] instance with specified parameters
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} instance with specified parameters.
                                  * @param params
                                  */
-                                constructor(desc: WindowLocationDescription);
+                                constructor(params: WindowLocationDescription);
                                 /**
                                  * Sets scrollable window size. Should be greater then window
-                                 * width/height for the changes to take effect
+                                 * width/height for the changes to take effect.
                                  * @param x scrollable window size along the X axis
                                  * @param y scrollable window size along the Y axis
                                  */
                                 setScroll(x: number, y: number): void;
                                 /**
-                                 * Sets the size of the window
+                                 * Sets the size of the window.
                                  * @param x window's width
                                  * @param y window's height
                                  */
                                 setSize(x: number, y: number): void;
                                 /**
-                                 * @returns window location as a js object. Note that paddings are not
-                                 * included into the object
+                                 * @returns Window location as a js object. Note that paddings are not
+                                 * included into the object.
                                  */
                                 asScriptable(): IWindowLocation;
                                 /**
-                                 * Creates a copy of current [[WindowLocation]] object
-                                 * @returns newly created copy of the object
+                                 * Creates a copy of current {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} object.
+                                 * @returns Newly created copy of the object.
                                  */
                                 copy(): UIWindowLocation;
                                 /**
-                                 * Sets window location parameters
+                                 * Sets window location parameters.
                                  * @param x X coordinate of the window
                                  * @param y Y coordinate of the window
                                  * @param width width of the window
@@ -4570,40 +4686,40 @@ export module com {
                                  */
                                 set(x: number, y: number, width: number, height: number): void;
                                 /**
-                                 * Sets window location parameters from another [[WindowLocation]].
-                                 * Note that paddings are not copied
-                                 * instance
-                                 * @param location another [[WindowLocation]] instance to copy
+                                 * Sets window location parameters from another {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation}.
+                                 * Note that paddings are not copied instance.
+                                 * @param location another {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} instance to copy
                                  * parameters from
                                  */
                                 set(location: UIWindowLocation): void;
                                 /**
-                                 * Sets window's scroll size to the windows size to remove scroll
+                                 * Sets window's scroll size to the windows size to remove scroll.
                                  */
                                 removeScroll(): void;
                                 /**
-                                 * Sets padding of the window
-                                 * @param padding one of the [[UIWindowLocation.PADDING_TOP]],
-                                 * [[UIWindowLocation.PADDING_BOTTOM]], [[UIWindowLocation.PADDING_LEFT]],
-                                 * [[UIWindowLocation.PADDING_RIGHT]] constants
+                                 * Sets padding of the window.
+                                 * @param padding one of the {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_TOP|UIWindowLocation.PADDING_TOP},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_BOTTOM|UIWindowLocation.PADDING_BOTTOM},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_LEFT|UIWindowLocation.PADDING_LEFT},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_RIGHT|UIWindowLocation.PADDING_RIGHT} constants
                                  * @param value value of the padding to be assigned to appropriate
                                  * window bound
                                  */
                                 setPadding(padding: 0 | 1 | 2 | 3, value: number): void;
                                 /**
-                                 * Sets the four paddings of the window for the appropriate bounds
+                                 * Sets the four paddings of the window for the appropriate bounds.
                                  */
                                 setPadding(top: number, bottom: number, left: number, right: number): void;
                                 /**
-                                 * @returns unit size (in pixels) in the fullscreen context (*screen width / 1000*)
+                                 * @returns Unit size (in pixels) in the fullscreen context (`<screen width> / 1000`).
                                  */
                                 getScale(): number;
                                 /**
-                                 * @returns unit size (in pixels) in the window's bounds
+                                 * @returns Unit size (in pixels) in the window's bounds.
                                  */
                                 getDrawingScale(): number;
                                 /**
-                                 * @returns window's rectangle in the [[android.graphics.Rect]] object
+                                 * @returns Window's rectangle in the {@link android.graphics.Rect} object.
                                  */
                                 getRect(): android.graphics.Rect;
                                 showPopupWindow(win: android.widget.PopupWindow): void;
@@ -4612,28 +4728,28 @@ export module com {
                                 setupAndShowPopupWindow(win: android.widget.PopupWindow): void;
                                 /**
                                  * Sets window's Z index. Z index determines how the window will be
-                                 * displayed when several windows are open
+                                 * displayed when several windows are open.
                                  * @param z window Z index
                                  */
                                 setZ(z: number): void;
                                 /**
-                                 * @returns window's width in units
-                                 * (always 1000 by definition of the unit)
+                                 * @returns Window's width in units
+                                 * (always 1000 by definition of the unit).
                                  */
                                 getWindowWidth(): 1000;
                                 /**
-                                 * @returns window's height in units
+                                 * @returns Window's height in units.
                                  */
                                 getWindowHeight(): number;
                                 /**
                                  * Transforms dimension in fullscreen units to the dimension within
-                                 * window's bounds
+                                 * window's bounds.
                                  * @param val value to be transformed
                                  */
                                 globalToWindow(val: number): number;
                                 /**
                                  * Transforms dimension within window's bounds to the dimension in
-                                 * fullscreen units
+                                 * fullscreen units.
                                  * @param val value to be transformed
                                  */
                                 windowToGlobal(val: number): number;
@@ -4719,28 +4835,28 @@ export module com {
                         export class ConfigVisualizer extends java.lang.Object {
                             static class: java.lang.Class<ConfigVisualizer>;
                             /**
-                             * Constructs new [[ConfigVisualizer]] instance with specified elements
-                             * names prefix
+                             * Constructs new {@link UI.ConfigVisualizer} instance with specified elements
+                             * names prefix.
                              * @param config configuration file to be loaded
                              * @param prefix elements names prefix used for this visualizer
                              */
                             constructor(config: innercore.mod.build.Config, prefix: string);
                             /**
-                             * Constructs new [[ConfigVisualizer]] instance with default elements
-                             * names prefix (*config_vis*)
+                             * Constructs new {@link UI.ConfigVisualizer} instance with default elements
+                             * names prefix (*config_vis*).
                              * @param config configuration file to be loaded
                              */
                             constructor(config: innercore.mod.build.Config);
                             /**
                              * Removes all elements with current element name prefix. In other
-                             * words, removes all elements that were created by this
-                             * [[ConfigVisualizer]] instance
-                             * @param elements target [[WindowContent.elements]] section
+                             * words, removes all elements that were created by this.
+                             * {@link UI.ConfigVisualizer} instance
+                             * @param elements target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements|WindowContent.elements} section
                              */
                             clearVisualContent(elements: UI.ElementSet): void;
                             /**
-                             * Creates elements in the window to visualize configuration file
-                             * @param elements target [[WindowContent.elements]] section
+                             * Creates elements in the window to visualize configuration file.
+                             * @param elements target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements|WindowContent.elements} section
                              * @param prefs top left position of the first element. Default position
                              * is (0, 0, 0)
                              */
@@ -4781,7 +4897,7 @@ export module com {
             export module api {
                 /**
                  * Class representing item extra data. Used to store additional information
-                 * about item other then just item id and data
+                 * about item other then just item ID and data.
                  */
                 export class NativeItemInstanceExtra extends java.lang.Object {
                     static class: java.lang.Class<NativeItemInstanceExtra>;
@@ -4789,177 +4905,178 @@ export module com {
                     static initSaverId(): void;
                     isFinalizableInstance(): boolean;
                     /**
-                     * Creates an [[NativeItemInstanceExtra]] Java object instance
+                     * Creates an {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} Java object instance
                      * from given native item extra data object pointer,
-                     * represented as 64-bit integer (long)
+                     * represented as 64-bit integer (long).
                      */
                     constructor(pointer: number);
                     /**
-                     * Creates an empty [[NativeItemInstanceExtra]] instance
+                     * Creates an empty {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} instance.
                      */
                     constructor();
                     /**
-                     * Creates a new [[NativeItemInstanceExtra]] instance
-                     * and copies all data from another extra object given
+                     * Creates a new {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} instance
+                     * and copies all data from another extra object given.
                      */
                     constructor(other: NativeItemInstanceExtra);
                     asJson(): org.json.JSONObject;
                     /**
-                     * Creates a copy of current [[NativeItemInstanceExtra]] object
-                     * @returns a created copy of the data
+                     * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} object.
+                     * @returns A created copy of the data.
                      */
                     copy(): NativeItemInstanceExtra;
                     getValue(): number;
                     /**
-                     * @returns true, if item extra exists and is not empty
+                     * @returns `true`, if item extra exists and is not empty.
                      */
                     isEmpty(): boolean;
                     applyTo(item: ItemInstance): void;
                     /**
-                     * @returns true if the item is enchanted, false otherwise
+                     * @returns `true` if the item is enchanted, `false` otherwise.
                      */
                     isEnchanted(): boolean;
                     /**
-                     * Adds a new enchantment to the item
-                     * @param type enchantment id, one of the [[EEnchantment]] constants
+                     * Adds a new enchantment to the item.
+                     * @param type enchantment ID, one of the {@link EEnchantment} constants
                      * @param level enchantment level, generally between 1 and 5
                      */
                     addEnchant(type: number, level: number): void;
                     /**
-                     * @param type enchantment id, one of the [[EEnchantment]] constants
-                     * @returns level of the specified enchantment
+                     * @param type enchantment ID, one of the {@link EEnchantment} constants
+                     * @returns Level of the specified enchantment.
                      */
                     getEnchantLevel(type: number): number;
                     /**
-                     * Removes enchantments by its id
-                     * @param id enchantment id, one of the [[EEnchantment]] constants
+                     * Removes enchantments by it's ID.
+                     * @param type enchantment ID, one of the {@link EEnchantment} constants
                      */
                     removeEnchant(type: number): void;
                     /**
-                     * Removes all the enchantments of the item
+                     * Removes all the enchantments of the item.
                      */
                     removeAllEnchants(): void;
                     /**
-                     * @returns amount of enchantments applied to the item
+                     * @returns Amount of enchantments applied to the item.
                      */
                     getEnchantCount(): number;
                     /**
-                     * @param id enchantment id, one of the [[EEnchantment]] constants
+                     * @param id enchantment ID, one of the {@link EEnchantment} constants
                      * @param level enchantment level, generally between 1 and 5
-                     * @returns enchantment name by its id and level
+                     * @returns Enchantment name by it's ID and level.
                      */
                     getEnchantName(id: number, level: number): string;
                     getRawEnchants(): number[][];
                     getEnchants(): {[id: number]: number};
                     /**
-                     * @returns all enchantments names separated by line breaks
+                     * @returns All enchantments names separated by line breaks.
                      */
                     getAllEnchantNames(): string;
                     getAllCustomData(): string;
                     setAllCustomData(data: string): void;
                     /**
-                     * @returns item's custom name
+                     * @returns Item's custom name.
                      */
                     getCustomName(): string;
                     /**
-                     * Sets item's custom name
+                     * Sets item's custom name.
                      */
                     setCustomName(name: string): void;
                     /**
-                     * @returns compound tag for the specified item
-                     * @deprecated temporarily disabled
+                     * @returns Compound tag for the specified item.
+                     * @deprecated Temporarily disabled!
                      */
                     getCompoundTag(): Nullable<NBT.CompoundTag>;
                     /**
-                     * Sets compound tag for the specified item
-                     * @deprecated temporarily disabled
+                     * Sets compound tag for the specified item.
+                     * @deprecated Temporarily disabled!
                      */
                     setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
+                    /**
+                     * @returns Reference to itself to be used in sequential calls.
+                     */
                     putObject(name: string, value: java.lang.Object): NativeItemInstanceExtra;
                     /**
-                     * Puts some custom string parameter to the extra data of the item
+                     * Puts some custom string parameter to the extra data of the item.
                      * @param name parameter name
                      * @param value parameter value
-                     * @returns reference to itself to be used in sequential calls
+                     * @returns Reference to itself to be used in sequential calls.
                      */
                     putString(name: string, value: string): NativeItemInstanceExtra;
                     /**
-                     * Puts some custom integer parameter to the extra data of the item
+                     * Puts some custom integer parameter to the extra data of the item.
                      * @param name parameter name
                      * @param int parameter value
-                     * @returns reference to itself to be used in sequential calls
+                     * @returns Reference to itself to be used in sequential calls.
                      */
                     putInt(name: string, int: number): NativeItemInstanceExtra;
                     /**
-                     * Puts some custom long integer parameter to the extra data of the item
+                     * Puts some custom long integer parameter to the extra data of the item.
                      * @param name parameter name
                      * @param long parameter value
-                     * @returns reference to itself to be used in sequential calls
+                     * @returns Reference to itself to be used in sequential calls.
                      */
                     putLong(name: string, long: number): NativeItemInstanceExtra;
                     /**
-                     * Puts some custom floating point number parameter to the extra data of the item
+                     * Puts some custom floating point number parameter to the extra data of the item.
                      * @param name parameter name
                      * @param float parameter value
-                     * @returns reference to itself to be used in sequential calls
+                     * @returns Reference to itself to be used in sequential calls.
                      */
                     putFloat(name: string, float: number): NativeItemInstanceExtra;
                     /**
-                     * Puts some custom boolean parameter to the extra data of the item
+                     * Puts some custom boolean parameter to the extra data of the item.
                      * @param name parameter name
                      * @param bool parameter value
-                     * @returns reference to itself to be used in sequential calls
+                     * @returns Reference to itself to be used in sequential calls.
                      */
                     putBoolean(name: string, bool: boolean): NativeItemInstanceExtra;
                     /**
                      * @param name parameter name
                      * @param fallback default value to be returned if item extra data doesn't
                      * contain a parameter with specified name
-                     * @returns custom string parameter value if extra data of the item contains
-                     * one, fallback value otherwise.
-                     * If fallback was not specified, null is returned.
+                     * @returns Custom string parameter value if extra data of the item contains
+                     * one, fallback value otherwise. If fallback was not specified, `null` is returned.
                      */
                     getString(name: string, fallback?: string): Nullable<string>;
                     /**
                      * @param name parameter name
                      * @param fallback default value to be returned if item extra data doesn't
                      * contain a parameter with specified name
-                     * @returns custom integer parameter value if extra data of the item contains
-                     * one, fallback value otherwise.
-                     * If fallback was not specified, null is returned.
+                     * @returns Custom integer parameter value if extra data of the item contains
+                     * one, fallback value otherwise. If fallback was not specified, `null` is returned.
                      */
                     getInt(name: string, fallback?: number): Nullable<number>;
                     /**
                      * @param name parameter name
                      * @param fallback default value to be returned if item extra data doesn't
                      * contain a parameter with specified name
-                     * @returns custom long integer parameter value if extra data of the item contains
-                     * one, fallback value otherwise.
-                     * If fallback was not specified, null is returned.
+                     * @returns Custom long integer parameter value if extra data of the item contains
+                     * one, fallback value otherwise. If fallback was not specified, `null` is returned.
                      */
                     getLong(name: string, fallback?: number): Nullable<number>;
                     /**
                      * @param name parameter name
                      * @param fallback default value to be returned if item extra data doesn't
                      * contain a parameter with specified name
-                     * @returns custom float parameter value if extra data of the item contains
-                     * one, fallback value otherwise.
-                     * If fallback was not specified, null is returned.
+                     * @returns Custom float parameter value if extra data of the item contains
+                     * one, fallback value otherwise. If fallback was not specified, `null` is returned.
                      */
                     getFloat(name: string, fallback?: number): Nullable<number>;
                     /**
                      * @param name parameter name
                      * @param fallback default value to be returned if item extra data doesn't
                      * contain a parameter with specified name
-                     * @returns custom boolean parameter value if extra data of the item contains
-                     * one, fallback value otherwise.
-                     * If fallback was not specified, null is returned.
+                     * @returns Custom boolean parameter value if extra data of the item contains
+                     * one, fallback value otherwise. If fallback was not specified, `null` is returned.
                      */
                     getBoolean(name: string, fallback?: boolean): Nullable<boolean>;
+                    /**
+                     * @returns Reference to itself to be used in sequential calls.
+                     */
                     putSerializable(name: string, serializableObject: any): NativeItemInstanceExtra;
                     getSerializable(name: string): any;
                     /**
-                     * Removes all custom parameters from item extra data
+                     * Removes all custom parameters from item extra data.
                      */
                     removeCustomData(): void;
                     toString(): string;
@@ -4994,18 +5111,18 @@ export module com {
                     export class Model extends java.lang.Object {
                         static class: java.lang.Class<Model>;
                         /**
-                         * Clears all parts of the model
+                         * Clears all parts of the model.
                          */
                         clearAllParts(): void;
                         /**
                          * @param partName part name
-                         * @returns part by its name or null if part doesn't exist
+                         * @returns Part by it's name or null if part doesn't exist.
                          */
                         getPart(partName: string): Nullable<ModelPart>;
                         /**
                          * @param partName part name
-                         * @returns true if part with specified name exists in the model,
-                         * false otherwise
+                         * @returns `true` if part with specified name exists in the model,
+                         * `false` otherwise.
                          */
                         hasPart(partName: string): boolean;
                         /**
@@ -5017,61 +5134,72 @@ export module com {
                         static class: java.lang.Class<ModelPart>;
                         /**
                          * Adds a new box to the part on the specified coordinates (relative to
-                         * the part's coordinates) of the specified size (width, height, length)
+                         * the part's coordinates) of the specified size (width, height, length).
                          */
                         addBox(x: number, y: number, z: number, w: number, h: number, l: number): void;
                         /**
                          * Adds a new box to the part on the specified coordinates (relative to
-                         * the part's coordinates) of the specified size (width, height, length)
+                         * the part's coordinates) of the specified size (width, height, length).
                          * @param add additional size to be added from all the six sizes of the
                          * box
                          */
                         addBox(x: number, y: number, z: number, w: number, h: number, l: number, add: number): void;
                         /**
                          * Creates a new part with specified name. If a part with specified name
-                         * already exists, returns the existing part
+                         * already exists, returns the existing part.
                          * @param name name of the part to create or return
                          */
                         addPart(name: string): ModelPart;
                         /**
-                         * Clears the contents of the part
+                         * Clears the contents of the part.
                          */
                         clear(): void;
                         /**
-                         * @returns [[NativeRenderMesh]] specified via [[setMesh]] call or null, if
-                         * this part doesn't contain mesh
+                         * @returns Mesh specified via {@link com.zhekasmirnov.innercore.api.NativeRenderer["namespace"].ModelPart.setMesh|setMesh} call or `null`, if
+                         * this part doesn't contain mesh.
                          */
                         getMesh(): Nullable<NativeRenderMesh>;
                         /**
-                         * Specifies [[NativeRenderMesh]] to be used as a part
+                         * Specifies {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} to be used as a part.
                          */
                         setMesh(mesh: Nullable<NativeRenderMesh>): void;
-                        /**s
-                         * Specifies part default offset
+                        /**
+                         * Specifies part default offset.
                          */
                         setOffset(offsetX: number, offsetY: number, offsetZ: number): void;
                         /**
-                         * Specifies part rotation
+                         * Specifies part rotation.
                          */
                         setRotation(rotationX: number, rotationY: number, rotationZ: number): void;
                         /**
-                         * Specifies texture uv offset
+                         * Specifies texture UV offset.
                          */
                         setTextureOffset(u: number, v: number): void;
                         /**
-                         * Specifies texture uv offset
+                         * Specifies texture UV offset.
+                         */
+                        setTextureOffset(u: number, v: number): void;
+                        /**
+                         * Specifies texture UV offset.
                          * @param placeholder deprecated boolean parameter
+                         * @deprecated Use same method without last parameter.
                          */
                         setTextureOffset(u: number, v: number, placeholder: boolean): void;
                         /**
                          * Specifies texture size size, use the real texture file size or change
-                         * it to stretch texture
+                         * it to stretch texture.
                          */
                         setTextureSize(w: number, h: number): void;
                         /**
                          * Specifies texture size size, use the real texture file size or change
-                         * it to stretch texture
+                         * it to stretch texture.
+                         */
+                        setTextureSize(w: number, h: number): void;
+                        /**
+                         * Specifies texture size size, use the real texture file size or change
+                         * it to stretch texture.
                          * @param placeholder deprecated boolean parameter
+                         * @deprecated Use same method without last parameter.
                          */
                         setTextureSize(w: number, h: number, placeholder: boolean): void;
                     }
@@ -5114,39 +5242,39 @@ export module com {
                     class Transform extends java.lang.Object {
                         static class: java.lang.Class<Transform>;
                         /**
-                         * Clears all the transformations applied to the render
-                         * @returns reference to itself to be used in sequential calls
+                         * Clears all the transformations applied to the render.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         clear(): Transform;
                         /**
-                         * @returns reference to itself to be used in sequential calls
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         lock(): Transform;
                         /**
-                         * Performs arbitrary matrix transformations on the render
-                         * @returns reference to itself to be used in sequential calls
+                         * Performs arbitrary matrix transformations on the render.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         matrix(m00: number, m01: number, m02: number, m03: number,
                                 m10: number, m11: number, m12: number, m13: number,
                                 m20: number, m21: number, m22: number, m23: number,
                                 m30: number, m31: number, m32: number, m33: number): Transform;
                         /**
-                         * Rotates render along three axes
-                         * @returns reference to itself to be used in sequential calls
+                         * Rotates render along three axes.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         rotate(rotX: number, rotY: number, rotZ: number): Transform;
                         /**
-                         * Scales render along the three axes
-                         * @returns reference to itself to be used in sequential calls
+                         * Scales render along the three axes.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         scale(scaleX: number, scaleY: number, scaleZ: number): Transform;
                         /**
-                         * Translates render along three axes
-                         * @returns reference to itself to be used in sequential calls
+                         * Translates render along three axes.
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         translate(x: number, y: number, z: number): Transform;
                         /**
-                         * @returns reference to itself to be used in sequential calls
+                         * @returns Reference to itself to be used in sequential calls.
                          */
                         unlock(): Transform;
                     }
@@ -5165,129 +5293,130 @@ export module com {
                 export class NativeRenderMesh extends java.lang.Object {
                     static class: java.lang.Class<NativeRenderMesh>;
                     /**
-                     * Adds new mesh to the current one on the specified coordinates with specified scale
-                     * @param mesh [[NativeRenderMesh]] object to be added to current mesh
+                     * Adds new mesh to the current one on the specified coordinates with specified scale.
+                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
                      */
                     addMesh(mesh: NativeRenderMesh): void;
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number): void;
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number, scaleX: number, scaleY: number, scaleZ: number): void;
                     /**
-                     * Adds a new vertex on the specified coordinates
+                     * Adds a new vertex on the specified coordinates.
                      */
                     addVertex(x: number, y: number, z: number): void;
                     /**
-                     * Adds a new vertex on the specified coordinates
+                     * Adds a new vertex on the specified coordinates.
                      * @param u x texture offset of the vertex
                      * @param v y texture offset of the vertex
                      */
                     addVertex(x: number, y: number, z: number, u: number, v: number): void;
                     /**
-                     * Removes all vertices of the mesh
+                     * Removes all vertices of the mesh.
                      */
                     clear(): void;
                     /**
-                     * Creates a copy of current [[NativeRenderMesh]]
+                     * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}.
                      */
                     clone(): NativeRenderMesh;
                     /**
-                     * Scales the mesh to fit into the specified box
+                     * Scales the mesh to fit into the specified box.
                      */
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
                     /**
-                     * Scales the mesh to fit into the specified box
-                     * @param keepRatio if true, the ratio of the dimensions are preserved
+                     * Scales the mesh to fit into the specified box.
+                     * @param keepRatio if `true`, the ratio of the dimensions are preserved
                      */
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, keepRatio: boolean): void;
                     /**
-                     * @returns pointer to the native object instance of the
-                     * following [[NativeRenderMesh]], represented as long number
+                     * @returns Pointer to the native object instance of the
+                     * following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}, represented as long number.
                      */
                     getPtr(): number;
                     getReadOnlyVertexData(): NativeRenderMesh.ReadOnlyVertexData;
                     /**
-                     * Imports mesh file using specified path
+                     * Imports mesh file using specified path.
                      * @param path path to the mesh file. Path should be absolute path or
                      * be relative to the resources folder or to the "models/" folder
                      * @param type file type to read mesh from. The only currently supported mesh file
                      * type is "obj"
-                     * @param params additional import parameters or null, if not needed
+                     * @param importParams additional import parameters or null, if not needed
                      */
                     importFromFile(path: string, type: "obj", importParams: Nullable<NativeRenderMesh.ImportParams>): void;
                     invalidate(): void;
                     newGuiRenderMesh(): mod.ui.GuiRenderMesh;
                     /**
-                     * Forces Minecraft to rebuild specified [[NativeRenderMesh]] object
+                     * Forces Minecraft to rebuild specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object.
                      */
                     rebuild(): void;
                     /**
-                     * Resets color applied to the mesh. Default is white
+                     * Resets color applied to the mesh.
+                     * @default 0xfff // white
                      */
                     resetColor(): void;
                     /**
-                     * Resets texture of the mesh
+                     * Resets texture of the mesh.
                      */
                     resetTexture(): void;
                     /**
-                     * Rotates the mesh around the specified coordinates
+                     * Rotates the mesh around the specified coordinates.
                      * @param rotX rotation angle along X axis, in radians
                      * @param rotY rotation angle along Y axis, in radians
                      * @param rotZ rotation angle along Z axis, in radians
                      */
                     rotate(x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number): void;
                     /**
-                     * Rotates the mesh around the (0, 0, 0) coordinates
+                     * Rotates the mesh around the (0, 0, 0) coordinates.
                      * @param rotX rotation angle along X axis, in radians
                      * @param rotY rotation angle along Y axis, in radians
                      * @param rotZ rotation angle along Z axis, in radians
                      */
                     rotate(rotX: number, rotY: number, rotZ: number): void;
                     /**
-                     * Scales the whole mesh along the three axis
+                     * Scales the whole mesh along the three axis.
                      */
                     scale(x: number, y: number, z: number): void;
                     /**
-                     * Specifies block texture to be used by mesh
+                     * Specifies block texture to be used by mesh.
                      */
                     setBlockTexture(textureName: string, textureMeta: number): void;
                     /**
                      * Specifies color to be applied to the next vertices. If the color is not white and
-                     * the texture is applied to mesh, texture's colors will be affected
+                     * the texture is applied to mesh, texture's colors will be affected.
                      */
                     setColor(r: number, g: number, b: number): void;
                     setColor(r: number, g: number, b: number, a: number): void;
                     /**
-                     * Makes specified [[NativeRenderMesh]] foliage tinted
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} foliage tinted.
                      */
                     setFoliageTinted(): void;
                     setFoliageTinted(tintSource: number): void;
                     /**
-                     * Makes specified [[NativeRenderMesh]] grass tinted
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} grass tinted.
                      */
                     setGrassTinted(): void;
                     /**
-                     * Sets following [[NativeRenderMesh]] light direction
+                     * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} light direction.
                      */
                     setLightDir(x: number, y: number, z: number): void;
                     setLightIgnore(ignore: boolean, bool2: boolean): void;
                     setLightParams(float1: number, float2: number, float3: number): void;
                     /**
-                     * Sets following [[NativeRenderMesh]] light position
+                     * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} light position.
                      */
                     setLightPos(x: number, y: number, z: number): void;
                     /**
-                     * Removes any tint from specified [[NativeRenderMesh]]
+                     * Removes any tint from specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}.
                      */
                     setNoTint(): void;
                     /**
-                     * Specifies the normal vector for the next vertices
+                     * Specifies the normal vector for the next vertices.
                      */
                     setNormal(x: number, y: number, z: number): void;
                     /**
-                     * Makes specified [[NativeRenderMesh]] water tinted
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} water tinted.
                      */
                     setWaterTinted(): void;
                     /**
-                     * Translates the whole mesh along three axis
+                     * Translates the whole mesh along three axis.
                      */
                     translate(x: number, y: number, z: number): void;
                 }
@@ -5302,31 +5431,33 @@ export module com {
                         private constructor(dataSize: number);
                     }
                     /**
-                     * Object used in [[NativeRenderMesh.importFromFile]] and one of [[NativeRenderMesh]] constructors.
-                     * Here you can put some additional parameters, that will be applied to the mesh,
-                     * when the file is being imported
+                     * Object used in {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"].importFromFile|NativeRenderMesh.importFromFile} and
+                     * one of {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} constructors. Here you can put
+                     * some additional parameters, that will be applied to the mesh,
+                     * when the file is being imported.
                      */
                     export interface ImportParams {
                         /**
-                         * If true, all existing vertices of the mesh are deleted
-                         * before the file is imported
+                         * If `true`, all existing vertices of the mesh are deleted
+                         * before the file is imported.
                          */
                         clear?: boolean,
                         /**
-                         * If true, v of the texture is inverted
+                         * If `true`, vertex of the texture is inverted.
                          */
                         invertV: boolean,
                         /**
-                         * Additional translation along x, y and z axis
+                         * Additional translation along x, y and z axis.
                          */
                         translate?: [number, number, number],
                         /**
-                         * Additional scale along x, y and z axis
+                         * Additional scale along x, y and z axis.
                          */
                         scale?: [number, number, number],
                         /**
-                         * If true, Minecraft won't be forced to rebuild the following [[NativeRenderMesh]]
-                         * before the file is imported
+                         * If `true`, Minecraft won't be forced to rebuild the following
+                         * {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}
+                         * before the file is imported.
                          */
                         noRebuild: boolean
                     }
@@ -5780,18 +5911,18 @@ export module com {
 }
 /**
  * Class, upon which armor and attachments render is based
- * It is a model that consists of parts, same as in deprecated [[Render]],
+ * It is a model that consists of parts, same as in {@link Render["class"]},
  * but more abstract, allows creating root parts instead of
- * inheritance from old humanoid model
+ * inheritance from old humanoid model.
  */
 export class ActorRenderer {
     /**
-     * Constructs new [[ActorRenderer]] object without parts
+     * Constructs new {@link ActorRenderer["class"]} object without parts.
      */
     constructor();
     /**
-     * Constructs new [[ActorRenderer]] object,
-     * based on one of default Minecraft render templates
+     * Constructs new {@link ActorRenderer["class"]} object,
+     * based on one of default Minecraft render templates.
      * @param templateName default template name
      */
     constructor(templateName: DefaultRenderTemplate);
@@ -5800,23 +5931,27 @@ export class ActorRenderer {
     setMaterial(materialName: string): void;
     getPart(name: string): ActorRenderer.ModelPart;
     /**
-     * Adds a child model part of an existing one
+     * Adds a child model part of an existing one.
      * @param name child model name
      * @param parentName parent model name
      */
     addPart(name: string, parentName: string, mesh?: RenderMesh): ActorRenderer.ModelPart;
     /**
-     * Adds a root model part
+     * Adds a root model part.
      */
     addPart(name: string, mesh?: RenderMesh): ActorRenderer.ModelPart;
 }
 export namespace ActorRenderer {
     class ModelPart {
         /**
-         * All methods of [[ActorRenderer.ModelPart]] build in such a way,
-         * that you can create full render in one chain of calls
+         * All methods of {@link ActorRenderer["namespace"].ModelPart} build in such a way,
+         * that you can create full render in one chain of calls.
+         * @example
          * ```js
-         * new ActorRenderer().addPart("Child", "Parent").addPart("Grandchild", "Child").endPart();
+         * new ActorRenderer()
+         *     .addPart("child", "parent")
+         *     .addPart("grandChild", "child")
+         *     .endPart();
          * ```
          */
         endPart(): ActorRenderer;
@@ -5835,57 +5970,56 @@ export namespace ActorRenderer {
     }
 }
 /**
- * Module used to manage custom entities added via add-ons
+ * Module used to manage custom entities added via add-ons.
  */
 export namespace AddonEntityRegistry {
     /**
-     * Spawns an entity defined via add-on on the specified coordinates
-     * @param nameID entity name id, as defined from add-on
+     * Spawns an entity defined via add-on on the specified coordinates.
+     * @param nameID entity name ID, as defined from add-on
      */
     function spawn(x: number, y: number, z: number, nameID: string): number;
     /**
-     * @returns add-on entity information by entity id
-     * @param entity
+     * @returns Add-on entity information by entity ID.
      */
     function getEntityData(entity: number): AddonEntity;
     interface AddonEntity {
         /**
-         * Entity unique id
+         * Entity unique ID.
          */
         readonly id: number,
         /**
-         * Add-on defined entity name id
+         * Add-on defined entity name ID.
          */
         readonly type: string,
         /**
-         * Executes command with the entity
+         * Executes command with the entity.
          * @param command command to be executed
-         * @returns error message or null if the command was run successfully
+         * @returns Error message or null if the command was run successfully.
          */
         exec(command: string): Nullable<string>;
         /**
-         * Executes command with the entity on the specified coordinates
+         * Executes command with the entity on the specified coordinates.
          * @param command command to be executed
-         * @returns error message or null if the command was run successfully
+         * @returns Error message or null if the command was run successfully.
          */
         execAt(command: string, x: number, y: number, z: number): Nullable<string>;
     }
 }
 /**
  * Animations are used to display some 3d models in the world without use of
- * entities
+ * entities.
  */
 export namespace Animation {
     /**
-     * Base animations are used to display arbitrary model in the world
+     * Base animations are used to display arbitrary model in the world.
      */
     class Base {
         /**
-         * Constructs a new Base animation on the specified coordinates
+         * Constructs a new Base animation on the specified coordinates.
          */
         constructor(x: number, y: number, z: number);
         /**
-         * Changes the animation's position
+         * Changes the animation's position.
          */
         setPos(x: number, y: number, z: number): void;
         /**
@@ -5894,251 +6028,267 @@ export namespace Animation {
          */
         setInterpolationEnabled(enabled: boolean): void;
         /**
-         * @deprecated use [[setBlockLightPos]] and related methods instead
+         * @deprecated Use {@link Animation.Base.setBlockLightPos|setBlockLightPos} and related methods instead.
          */
         setIgnoreBlocklight(ignore: boolean): void;
         /**
          * Sets specified coordinates as light measuring position for the
          * animation. In other words, animation lightning will be calculated
-         * as if animation was at the specified coordinates
+         * as if animation was at the specified coordinates.
          */
         setBlockLightPos(x: number, y: number, z: number): void;
         /**
-         * Resets light measuring position for the animation (to its coordinates)
+         * Resets light measuring position for the animation (to it's coordinates).
          */
         resetBlockLightPos(): void;
         /**
          * Sets light measuring position to always match day/night lightning,
-         * even when the animation is not directly illuminated
+         * even when the animation is not directly illuminated.
          */
         setSkylightMode(): void;
         /**
-         * Sets light measuring to match the animation coordinated
+         * Sets light measuring to match the animation coordinated.
          */
         setBlocklightMode(): void;
         /**
-         * Makes the animation ignore light at all
+         * Makes the animation ignore light at all.
          */
         setIgnoreLightMode(): void;
         /**
-         * @returns [[Render.Transform]] object for current animation's render
+         * @returns Object for current animation's render.
          */
         transform(): Render.Transform;
         /**
-         * @returns [[ShaderUniformSet]] object for current animation's
-         * render
+         * @returns Object for current animation's render.
          */
         getShaderUniforms(): ShaderUniformSet;
         /**
-         * Creates a set of transformations for the current animation
+         * Creates a set of transformations for the current animation.
          * @param transformations
          * @param noClear
          */
         newTransform(transformations: {
             /**
-             * Transformation function name, one of [[Render.Transform]] class member
-             * functions names
+             * Transformation function name, one of {@link Render["namespace"].Transform} class member
+             * functions names.
              */
             name: string,
             /**
-             * Transformation function parameters, see [[Render.Transform]] functions
-             * for details
+             * Transformation function parameters, see {@link Render["namespace"].Transform} functions
+             * for details.
              */
             params: any[]
         }[], noClear: boolean): void;
         /**
          * Creates render if it was not previously created and applies all the
-         * parameters from animation description
+         * parameters from animation description.
          */
         createRenderIfNeeded(): void;
         /**
-         * Refreshes the animation
+         * Refreshes the animation.
          */
         updateRender(): void;
         /**
-         * Loads animation in the world
+         * Loads animation in the world.
          */
         load(): void;
         /**
-         * Loads animation in the world registering it as an [[Updatable]]
-         * @param func function to be used as [[Updatable.update]] function
+         * Loads animation in the world registering it as an {@link Updatable["interface"]}.
+         * @param func function to be used as {@link Updatable["interface"].update} function
          */
         loadCustom(func: () => void): void;
         /**
-         * @deprecated always returns 0
+         * @deprecated Backwards compatibility, render doesn't have attributes.
          */
         getAge(): void;
         /**
-         * Refreshes the animation
+         * Refreshes the animation.
          */
         refresh(): void;
         /**
-         * Describes animation parameters for the future use. Call [[load]] or
-         * [[loadCustom]] to actually launch the animation
+         * Describes animation parameters for the future use. Call {@link Animation.Base.load|load} or
+         * {@link Animation.Base.loadCustom|loadCustom} to actually launch the animation.
          * @param description an object containing all the required data about
          * animation
          */
         describe(description: {
             /**
-             * [[RenderMesh]] object to be displayed with animation
+             * {@link RenderMesh["class"]} object to be displayed with animation.
              */
             mesh?: RenderMesh,
             /**
-             * Numeric id of the [[Render]] object to be displayed with animation.
-             * Can be obtained using [[Render.getId]]
+             * Numeric ID of the {@link Render["class"]} object to be displayed with animation.
+             * Can be obtained using {@link Render["class"].getId}
              */
             render?: number,
             /**
-             * Name of the texture to be used as render's skin
+             * Name of the texture to be used as render's skin.
              */
             skin?: string,
             /**
-             * Animation scale, default is 1
+             * Animation scale.
+             * @default 1
              */
             scale?: number,
             /**
              * Animation material, can be used to apply custom materials to the
-             * animation
+             * animation.
              */
             material?: string
         }): void;
         /**
-         * @deprecated
+         * @deprecated Backwards compatibility, returned thing
+         * considered as deprecated long ago.
          */
         getRenderAPI(base: any): any;
         /**
-         * Destroys animation and releases all the resources
+         * Destroys animation and releases all the resources.
          */
         destroy(): void;
     }
     /**
-     * Item animations are used to display items or blocks models in the world
+     * Item animations are used to display items or blocks models in the world.
      */
     class Item extends Base {
         /**
-         * Constructs a new Item animation on the specified coordinates
+         * Constructs a new Item animation on the specified coordinates.
          */
         constructor(x: number, y: number, z: number);
         /**
-         * Describes item to be used for the animation
+         * Describes item to be used for the animation.
          * @param item item parameters object
          */
         describeItem(item: {
             /**
-             * Item id
+             * Item ID.
              */
             id: number,
             /**
-             * Item count, will be transform to display an appropriate animation
+             * Item count, will be transform to display an appropriate animation.
              */
             count?: number,
             /**
-             * Item data
+             * Item data.
              */
             data?: number,
             /**
-             * Item extra
+             * Item extra.
              */
             extra?: ItemExtraData,
             /**
-             * Whether the item should be in glint state or not
+             * Whether the item should be in glint state or not.
              */
             glint?: boolean,
             /**
-             * Item/block size, default is 0.5
+             * Item/block size.
+             * @default 0.5
              */
             size?: number,
             /**
-             * If true, the position of the item will not be randomized
+             * If `true`, the position of the item will not be randomized.
              */
             notRandomize?: boolean,
             /**
              * If string "x" is passed, the item is rotated 90 along x axis, if
              * "z" is passed, the item is rotated 90 along z axis, otherwise the
              * item is rotated according to the rotation array along all the three
-             * axes
+             * axes.
              */
             rotation?: string | [number, number, number],
             /**
              * Skin name to be used for the render. If no skin is passed, default
-             * item skin is used
+             * item skin is used.
              */
             skin?: string,
             /**
-             * Shader material name
+             * Shader material name.
              */
-            material?: string,
+            material?: string
         }): void;
         /**
-         * Same as [[Item.describeItem]]
-         * @deprecated consider using [[Item.describeItem]] instead
+         * @deprecated Consider using {@link Animation.Item.describeItem|describeItem} instead.
          */
         describeItemDefault(item: any): void;
         /**
-         * @deprecated use [[Item.describeItem]] instead
+         * @deprecated Consider using {@link Animation.Item.describeItem|describeItem} instead.
          */
         describeItemAlternative(item: any, offset: any): void;
         /**
-         * Resets all the transformations made via [[Item.transform]] calls
+         * Resets all the transformations made via {@link Animation.Base.transform|transform} calls.
          */
         resetTransform(): void;
         /**
-         * Specifies item rotation along the three axes
+         * Specifies item rotation along the three axes.
          */
         setItemRotation(x: number, y: number, z: number): void;
         /**
-         * Specifies item size, default value is 0.5
+         * Specifies item size.
+         * @default 0.5
          */
         setItemSize(size: number): void;
         /**
-         * Specifies item size and rotation via single function call
+         * Specifies item size and rotation via single function call.
          */
         setItemSizeAndRotation(size: number, x: number, y: number, z: number): void;
     }
 }
 /**
- * Module used to manage armor's behavior
+ * Module used to manage armor's behavior.
  */
 export namespace Armor {
     /**
-     * Registers armor's hurt and tick functions
-     * @param id armor item string or numeric id
+     * Registers armor's hurt and tick functions.
+     * @param id armor item string or numeric ID
      * @param funcs
-     * @deprecated, does not work in multiplayer
+     * @deprecated Use multiplayer {@link Armor.registerOnHurtListener} and
+     * anothers or callbacks.
      */
     function registerFuncs(id: number | string, funcs: {
-        tick:
         /**
-         * Called every tick if player wears the armor
+         * Called every tick if player wears the armor.
          * @param item current armor item instance
-         * @param index armor slot, one of the [[Native.ArmorType]] values
+         * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor
-         * @returns true, if changes to the item parameter should be applied,
-         * false otherwise
+         * @returns `true`, if changes to the item parameter should be applied,
+         * `false` otherwise.
          */
-        (item: ItemInstance, index: number, maxDamage: number) => boolean,
-        hurt:
+        tick: (item: ItemInstance, index: number, maxDamage: number) => boolean,
         /**
-         * Called when player deals damage if player wears the armor
+         * Called when player deals damage if player wears the armor.
          * @param params additional data about damage
-         * @param params.attacker attacker entity or -1 if the damage was not
-         * caused by an entity
-         * @param params.damage damage amount that was applied to the player
-         * @param params.type damage type
-         * @param params.b1 unknown param
-         * @param params.b2 unknown param
          * @param item current armor item instance
-         * @param index armor slot, one of the [[Native.ArmorType]] values
+         * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor
-         * @returns true, if changes to the item parameter should be applied,
-         * false otherwise
+         * @returns `true`, if changes to the item parameter should be applied,
+         * `false` otherwise.
          */
-        (params: { attacker: number, damage: number, type: number, b1: boolean, b2: boolean },
-            item: ItemInstance, index: number, maxDamage: number) => boolean
+        hurt: (params: {
+            /**
+             * Attacker entity or -1 if the damage was not
+             * caused by an entity.
+             */
+            attacker: number,
+            /**
+             * Damage amount that was applied to the player.
+             */
+            damage: number,
+            /**
+             * Damage type.
+             */
+            type: number,
+            /**
+             * TODO: Unknown param!
+             */
+            b1: boolean,
+            /**
+             * TODO: Unknown param!
+             */
+            b2: boolean
+        }, item: ItemInstance, index: number, maxDamage: number) => boolean
     }): void;
     /**
-     * Prevents armor from being damaged
-     * @param id armor item string or numeric id
+     * Prevents armor from being damaged.
+     * @param id armor item string or numeric ID
      */
 	function preventDamaging(id: number | string): void;
     interface ArmorGeneralFunction {
@@ -6149,14 +6299,14 @@ export namespace Armor {
     }
 	/**
      * This event is called every tick for every player that has this armor put on.
-     * @returns the {id: , count: , data: , extra: } object to change armor item,
-     * if nothing is returned, armor will not be changed.
+     * @returns Item object to change armor item, if nothing is returned,
+     * armor will not be changed.
      */
     function registerOnTickListener(id: number, func: ArmorGeneralFunction): ItemInstance | void;
     /**
      * This event is called when the damage is dealt to the player that has this armor put on.
-     * @returns the {id: , count: , data: , extra: } object to change armor item,
-     * if nothing is returned, armor will be damaged by default.
+     * @returns Item object to change armor item, if nothing is returned,
+     * armor will not be changed.
      */
     function registerOnHurtListener(id: number, func: ArmorHurtFunction): ItemInstance | void;
     /**
@@ -6169,20 +6319,20 @@ export namespace Armor {
     function registerOnTakeOffListener(id: number, func: ArmorGeneralFunction): void;
 }
 /**
- * Class used to attach attachables to entities
+ * Class used to attach attachables to entities.
  */
 export class AttachableRender {
     static attachRendererToItem(id: number, renderer: AttachableRender, texture?: string, material?: string): void;
     static detachRendererFromItem(id: number): void;
     /**
-     * Constructs new [[AttachableRender]] object bind to given entity
+     * Constructs new {@link AttachableRender} object bind to given entity.
      */
     constructor(actorUid: number);
     getUniformSet(): ShaderUniformSet;
     /**
      * Sets the render, root render parts will be drawing
      * together with mob's render parts with same names
-     * (names can be seen in json description of the model in resources)
+     * (names can be seen in json description of the model in resources).
      */
     setRenderer(actorRenderer: ActorRenderer): AttachableRender;
     setTexture(textureName: string): AttachableRender;
@@ -6192,26 +6342,27 @@ export class AttachableRender {
 }
 /**
  * Module used to create and manipulate blocks. The difference between terms
- * "block" and "tile" is in its usage: blocks are used in the inventory,
- * tiles are placed in the world and have different ids for some vanilla blocks.
- * Use [[Block.convertBlockToItemId]] and [[Block.convertItemToBlockId]]
+ * "block" and "tile" is in it's usage: blocks are used in the inventory,
+ * tiles are placed in the world and have different IDs for some vanilla blocks.
+ * Use {@link Block.convertBlockToItemId} and {@link Block.convertItemToBlockId}
+ * to perform conversion between block and it item variation.
  */
 export namespace Block {
 	/**
-	 * @param id string id of the block
-	 * @returns block numeric id by its string id or just returns its numeric id
-	 * if input was a numeric id
+	 * @param id string ID of the block
+	 * @returns Block numeric ID by it's string ID or just returns it's numeric ID
+	 * if input was a numeric ID.
 	 */
 	function getNumericId(id: string | number): number;
 	/**
-	 * Creates new block using specified params
-	 * @param nameID string id of the block. You should register it via
-	 * [[IDRegistry.genBlockID]] call first
+	 * Creates new block using specified params.
+	 * @param nameID string ID of the block. You should register it via
+	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData array containing all variations of the block. Each
 	 * variation corresponds to block data value, data values are assigned
 	 * according to variations order
-	 * @param blockType [[SpecialType]] object, either java-object returned by
-	 * [[Block.createSpecialType]] or js-object with the required properties,
+	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
+	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously
 	 * registered
 	 */
@@ -6220,306 +6371,307 @@ export namespace Block {
 	 * Creates new block using specified params, creating four variations for
 	 * each of the specified variations to be able to place it facing flayer
 	 * with the front side and defines the appropriate behavior. Useful for
-	 * different machines and mechanisms
-	 * @param nameID string id of the block. You should register it via
-	 * [[IDRegistry.genBlockID]] call first
+	 * different machines and mechanisms.
+	 * @param nameID string ID of the block. You should register it via
+	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData array containing all variations of the block. Each
 	 * variation corresponds to four block data values, data values are assigned
 	 * according to variations order
-	 * @param blockType [[SpecialType]] object, either java-object returned by
-	 * [[Block.createSpecialType]] or js-object with the required properties,
+	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
+	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously
 	 * registered
 	 */
 	function createBlockWithRotation(nameID: string, defineData: BlockVariation[], blockType?: SpecialType | string): void;
 	/**
-	 * Creates new liquid block using specified params
-	 * @param nameID string id of the block. You should register it via
-	 * [[IDRegistry.genBlockID]] call first
+	 * Creates new liquid block using specified params.
+	 * @param nameID string ID of the block. You should register it via
+	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData object containing all needed params to describe your custom liquid block.
 	 * There you can specify custom name IDs for static and dynamic liquid blocks separately,
 	 * and if you do this, you have to register those name IDs
-	 * via [[IDRegistry.genBlockID]] before using them
-	 * @param blockType [[SpecialType]] object, either java-object returned by
-	 * [[Block.createSpecialType]] or js-object with the required properties,
+	 * via {@link IDRegistry.genBlockID} before using them
+	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
+	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously registered
 	 */
 	function createLiquidBlock(nameID: string, defineData: LiquidDescriptor, blockType?: SpecialType | string): void;
 	/**
-	 * @param id numeric block id
-	 * @returns true, if the specified block id is a vanilla block
+	 * @param id numeric block ID
+	 * @returns `true`, if the specified block ID is a vanilla block.
 	 */
 	function isNativeTile(id: number): boolean;
 	/**
-	 * Converts tile id to the block id
-	 * @param id numeric tile id
-	 * @returns numeric block id corresponding to the given tile id
+	 * Converts tile ID to the block ID.
+	 * @param id numeric tile ID
+	 * @returns Numeric block ID corresponding to the given tile ID.
 	 */
 	function convertBlockToItemId(id: number): number;
 	/**
-	 * Converts block id to the tile id
-	 * @param id numeric tile id
-	 * @returns numeric tile id corresponding to the given block id
+	 * Converts block ID to the tile ID.
+	 * @param id numeric tile ID
+	 * @returns Numeric tile ID corresponding to the given block ID.
 	 */
 	function convertItemToBlockId(id: number): number;
 	/**
-	 * Same as [[Block.registerDropFunction]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.registerDropFunction} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function registerDropFunctionForID(numericID: number, dropFunc: DropFunction, level?: number): boolean;
 	/**
 	 * Registers function used by Core Engine to determine block drop for the
-	 * specified block id
-	 * @param nameID tile string or numeric id
+	 * specified block ID.
+	 * @param nameID tile string or numeric ID
 	 * @param dropFunc function to be called to determine what will be dropped
 	 * when the block is broken
 	 * @param level if level is specified and is not 0, digging level of the
 	 * block is additionally set
-	 * @returns true, if specified string or numeric id exists and the function
-	 * was registered correctly, false otherwise
+	 * @returns `true`, if specified string or numeric ID exists and the function
+	 * was registered correctly, `false` otherwise.
 	 */
 	function registerDropFunction(nameID: string | number, dropFunc: DropFunction, level?: number): boolean;
 	/**
-	 * Same as [[Block.registerPopResourcesFunction]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.registerPopResourcesFunction} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function registerPopResourcesFunctionForID(numericID: number, func: PopResourcesFunction): boolean;
 	/**
 	 * Registered function used by Core Engine to determine block drop for the
-	 * specified block id
-	 * @param nameID tile string or numeric id
+	 * specified block ID.
+	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when a block in the world is broken by
 	 * environment (explosions, pistons, etc.)
-	 * @returns true, if specified string or numeric id exists and the function
-	 * was registered correctly, false otherwise
+	 * @returns `true`, if specified string or numeric ID exists and the function
+	 * was registered correctly, `false` otherwise.
 	 */
 	function registerPopResourcesFunction(nameID: string | number, func: PopResourcesFunction): boolean;
 	/**
-	 * Same as [[Block.setDestroyLevel]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.setDestroyLevel} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function setDestroyLevelForID(id: number, level: number, resetData?: boolean): void;
 	/**
 	 * Registers a default destroy function for the specified block, considering
-	 * its digging level
-	 * @param nameID tile string id
+	 * it's digging level.
+	 * @param nameID tile string ID
 	 * @param level digging level of the block
 	 * @param resetData if true, the block is dropped with data equals to 0
 	 */
 	function setDestroyLevel(nameID: string | number, level: number, resetData?: boolean): void;
 	/**
-	 * Sets destroy time for the block with specified id
-	 * @param nameID string or numeric block id
+	 * Sets destroy time for the block with specified ID.
+	 * @param nameID string or numeric block ID
 	 * @param time destroy time for the block, in ticks
 	 */
 	function setDestroyTime(nameID: string | number, time: number): void;
 	/**
-	 * @param numericID numeric block id
-	 * @returns true, if block is solid, false otherwise
+	 * @param numericID numeric block ID
+	 * @returns `true`, if block is solid, `false` otherwise.
 	 */
 	function isSolid(numericID: number): boolean;
 	/**
-	 * @param numericID numeric block id
-	 * @returns destroy time of the block, in ticks
+	 * @param numericID numeric block ID
+	 * @returns Destroy time of the block, in ticks.
 	 */
 	function getDestroyTime(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns explosion resistance of the block
+	 * @param numericID numeric block ID
+	 * @returns Explosion resistance of the block.
 	 */
 	function getExplosionResistance(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns friction of the block
+	 * @param numericID numeric block ID
+	 * @returns Friction of the block.
 	 */
 	function getFriction(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns translucency of the block
+	 * @param numericID numeric block ID
+	 * @returns Translucency of the block.
 	 */
 	function getTranslucency(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns light level, emitted by block, from 0 to 15
+	 * @param numericID numeric block ID
+	 * @returns Light level, emitted by block, from 0 to 15.
 	 */
 	function getLightLevel(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns light opacity of the block, from 0 to 15
+	 * @param numericID numeric block ID
+	 * @returns Light opacity of the block, from 0 to 15.
 	 */
 	function getLightOpacity(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns render layer of the block
+	 * @param numericID numeric block ID
+	 * @returns Render layer of the block.
 	 */
 	function getRenderLayer(numericID: number): number;
 	/**
-	 * @param numericID numeric block id
-	 * @returns render type of the block
+	 * @param numericID numeric block ID
+	 * @returns Render type of the block.
 	 */
 	function getRenderType(numericID: number): number;
 	/**
 	 * Temporarily sets destroy time for block, saving the old value for the
-	 * further usage
-	 * @param numericID numeric block id
+	 * further usage.
+	 * @param numericID numeric block ID
 	 * @param time new destroy time in ticks
 	 */
 	function setTempDestroyTime(numericID: number, time: number): void;
 	/**
-	 * Registers material and digging level for the specified block
-	 * @param nameID block numeric or string id
+	 * Registers material and digging level for the specified block.
+	 * @param nameID block numeric or string ID
 	 * @param material material name
 	 * @param level block's digging level
-	 * @returns true if specified string or numeric id exists, false otherwise
+	 * @returns `true` if specified string or numeric ID exists, `false` otherwise.
 	 */
 	function setBlockMaterial(nameID: string | number, material: string, level: number): boolean;
 	/**
-	 * Makes block accept redstone signal
-	 * @deprecated use [[Block.setupAsRedstoneReceiver]] and
-	 * [[Block.setupAsRedstoneEmitter]] instead
-	 * @param nameID block numeric or string id
+	 * Makes block accept redstone signal.
+	 * @param nameID block numeric or string ID
 	 * @param data block data, currently not used
 	 * @param isRedstone if true, the redstone changes at the block will notify
 	 * the "RedstoneSignal" callback
+	 * @deprecated Use {@link Block.setupAsRedstoneReceiver} and
+	 * {@link Block.setupAsRedstoneEmitter} instead.
 	 */
 	function setRedstoneTile(nameID: string | number, data: number, isRedstone: boolean): void;
 	/**
 	 * Gets drop for the specified block. Used mostly by Core Engine's
-	 * [[ToolAPI]], though, can be useful in the mods, too
+	 * {@link ToolAPI}, though, can be useful in the mods, too.
 	 * @param block block info
 	 * @param item item that was (or is going to be) used to break the block
 	 * @param coords coordinates where the block was (or is going to be) broken
-	 * @returns block drop, the array of arrays, each containing three values:
-	 * id, count and data respectively
+	 * @returns Block drop, the array of arrays, each containing three values:
+	 * ID, count and data respectively.
 	 */
 	function getBlockDropViaItem(block: Tile, item: ItemInstance, coords: Vector, region: BlockSource): ItemInstanceArray[];
 	/**
-	 * Same as [[Block.registerPlaceFunction]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.registerPlaceFunction} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function registerPlaceFunctionForID(block: number, func: PlaceFunction): void;
 	/**
-	 * Registers function to be called when the block is placed in the world
-	 * @param nameID block numeric or string id
+	 * Registers function to be called when the block is placed in the world.
+	 * @param nameID block numeric or string ID
 	 * @param func function to be called when the block is placed in the world
 	 */
 	function registerPlaceFunction(nameID: string | number, func: PlaceFunction): void;
 	/**
-	 * Sets block box shape
-	 * @param id block numeric id
+	 * Sets block box shape.
+	 * @param id block numeric ID
 	 * @param pos1 block lower corner position, in voxels (1/16 of the block)
 	 * @param pos2 block upper conner position, in voxels (1/16 of the block)
-	 * @param data block data
+	 * @param data block optional data
 	 */
 	function setBlockShape(id: number, pos1: Vector, pos2: Vector, data?: number): void;
 	/**
-	 * Same as [[Block.setBlockShape]], but accepts coordinates as scalar
-	 * params, not objects
-	 * @param id block numeric id
-	 * @param data  block data
+	 * Same as {@link Block.setBlockShape}, but accepts coordinates as scalar
+	 * params, not objects.
+	 * @param id block numeric ID
+	 * @param data block data
 	 */
 	function setShape(id: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, data?: number): void;
 	/**
 	 * Creates a new special type using specified params and registers it by
-	 * name
+	 * name.
 	 * @param description special type properties
 	 * @param nameKey string name to register the special type
-	 * @returns special type name
+	 * @returns Special type name.
 	 */
 	function createSpecialType(description: SpecialType, nameKey?: string): string;
 	/**
-	 * @deprecated No longer supported
+	 * @deprecated Better performance should be inherited by manually
+	 * manipulation with properties and {@link Block.SpecialType|SpecialType}.
 	 */
 	function setPrototype(nameID: string | number, Prototype: any): number;
 	/**
-	 * @param id numeric block id
-	 * @returns the color specified block is displayed on the vanilla maps
+	 * @param id numeric block ID
+	 * @returns Color specified block is displayed on the vanilla maps.
 	 */
 	function getMapColor(id: number): number;
 	/**
-	 * Makes block invoke callback randomly depending on game speed
-	 * @param id block id to register for random ticks
+	 * Makes block invoke callback randomly depending on game speed.
+	 * @param id block ID to register for random ticks
 	 * @param callback function to be called on random block tick
 	 */
 	function setRandomTickCallback(id: number, callback: RandomTickFunction): void;
 	/**
 	 * Makes block invoke callback randomly depending on game speed. Occurs more
-	 * often then [[Block.setRandomTickCallback]] and only if the block is not
-	 * far away from player
-	 * @param id block id to register
+	 * often then {@link Block.setRandomTickCallback} and only if the block is not
+	 * far away from player.
+	 * @param id block ID to register
 	 * @param callback function to be called
 	 */
 	function setAnimateTickCallback(id: number, callback: AnimateTickFunction): void;
 	/**
-	 * Makes block receive redstone signals via "RedstoneSignal" callback
-	 * @param id block numeric or string id
+	 * Makes block receive redstone signals via "RedstoneSignal" callback.
+	 * @param nameID block numeric or string ID
 	 * @param connectToRedstone if true, redstone wires will connect to the block
 	 */
-	function setupAsRedstoneReceiver(id: number | string, connectToRedstone: boolean): void;
+	function setupAsRedstoneReceiver(nameID: number | string, connectToRedstone: boolean): void;
 	/**
-	 * Makes block emit redstone signal
-	 * @param id block numeric or string id
+	 * Makes block emit redstone signal.
+	 * @param nameID block numeric or string ID
 	 * @param connectToRedstone if true, redstone wires will connect to the block
 	 */
-	function setupAsRedstoneEmitter(id: number | string, connectToRedstone: boolean): void;
+	function setupAsRedstoneEmitter(nameID: number | string, connectToRedstone: boolean): void;
 	/**
-	 * Removes all the redstone functionality from the block
-	 * @param id block numeric or string id
+	 * Removes all the redstone functionality from the block.
+	 * @param nameID block numeric or string ID
 	 */
-	function setupAsNonRedstoneTile(id: number | string): void;
+	function setupAsNonRedstoneTile(nameID: number | string): void;
 	/**
-	 * Registers function on neighbour blocks updates
-	 * @param numericID tile string or numeric id
+	 * Registers function on neighbour blocks updates.
+	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when neighbour block updates
-	 * @returns true, if the function was registered correctly, false otherwise
+	 * @returns `true`, if the function was registered correctly, `false` otherwise.
 	 */
-	function registerNeighbourChangeFunction(name: string | number, func: NeighbourChangeFunction): boolean;
+	function registerNeighbourChangeFunction(nameID: string | number, func: NeighbourChangeFunction): boolean;
 	/**
-	 * Same as [[Block.registerNeighbourChangeFunction]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.registerNeighbourChangeFunction} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function registerNeighbourChangeFunctionForID(id: number, func: NeighbourChangeFunction): boolean;
 	/**
 	 * Registers function on entity being inside the block. Can be used to create portals.
-	 * @param numericID tile string or numeric id
+	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when entity is inside the block
-	 * @returns true, if the function was registered correctly, false otherwise
+	 * @returns `true`, if the function was registered correctly, `false` otherwise.
 	 */
 	function registerEntityInsideFunction(nameID: string | number, func: EntityInsideFunction): boolean
 	/**
-	 * Same as [[Block.registerEntityInsideFunction]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.registerEntityInsideFunction} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function registerEntityInsideFunctionForID(numericID: number, func: EntityInsideFunction): boolean
 	/**
 	 * Registers function on entity step on the block.
-	 * @param numericID tile string or numeric id
+	 * @param numericID tile string or numeric ID
 	 * @param func function to be called when entity step on the block
-	 * @returns true, if the function was registered correctly, false otherwise
+	 * @returns `true`, if the function was registered correctly, `false` otherwise.
 	 */
-	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
+	function registerEntityStepOnFunction(numericID: string | number, func: EntityStepOnFunction): boolean;
 	/**
-	 * Same as [[Block.registerEntityStepOnFunction]] but accepts only numeric
-	 * tile id as the first param
+	 * Same as {@link Block.registerEntityStepOnFunction} but accepts only numeric
+	 * tile ID as the first param.
 	 */
 	function registerEntityStepOnFunctionForID(id: number, func: EntityStepOnFunction): boolean;
 	/**
-	 * Defines custom behavior when the player clicks on the block with definite id
-	 * @param nameId block's numeric or string id
-	 * @param func function that will be called when the player clicks the block with given id
+	 * Defines custom behavior when the player clicks on the block with definite ID.
+	 * @param nameId block's numeric or string ID
+	 * @param func function that will be called when the player clicks the block with given ID
 	 */
 	function registerClickFunction(nameId: string | number, func: ClickFunction): void;
 	/**
-	 * Same as [[Block.registerClickFunction]], but only numeric block id can be passed
+	 * Same as {@link Block.registerClickFunction}, but only numeric block ID can be passed.
 	 */
 	function registerClickFunctionForID(id: number, func: ClickFunction): void;
 	/**
-	 * @returns whether the block of given id can contain liquid inside
+	 * @returns Whether the block of given ID can contain liquid inside.
 	 */
 	function canContainLiquid(id: number): boolean;
 	/**
-	 * @returns whether the block of given id can be an extra block
-	 * (it's the block that can be set inside of another blocks, for ex. water and other liquids)
+	 * @returns Whether the block of given ID can be an extra block
+	 * (it's the block that can be set inside of another blocks, for ex. water and other liquids).
 	 */
 	function canBeExtraBlock(id: number): boolean;
 	type ColorSource = "grass" | "leaves" | "water";
@@ -6548,202 +6700,210 @@ export namespace Block {
 	/**
 	 * Special types are used to set properties to the block. Unlike items,
 	 * blocks properties are defined using special types, due to old Inner
-	 * Core's block ids limitations
+	 * Core's block IDs limitations.
 	 */
 	interface SpecialType {
 		/**
-		 * Unique string identifier of the SpecialType
+		 * Unique string identifier of the SpecialType.
 		 */
 		name?: string,
 		/**
-		 * Vanilla block ID to inherit some of the properties. Default is 0
+		 * Vanilla block ID to inherit some of the properties.
+		 * @default 0
 		 */
 		base?: number,
 		/**
-		 * Block material constant. Default is 3
+		 * Block material constant to be inherited.
+		 * @default 3
 		 */
 		material?: number,
 		/**
-		 * If true, the block is not transparent. Default is false
+		 * If `true`, the block is not transparent.
+		 * @default false
 		 */
 		solid?: boolean,
 		/**
-		 * If true, all block faces are rendered, otherwise back faces are not
-		 * rendered (for optimization purposes). Default is false
+		 * If `true`, all block faces are rendered, otherwise back faces are not
+		 * rendered, like for glass.
+		 * @default false
 		 */
 		renderallfaces?: boolean,
 		/**
-		 * Sets render type of the block. Default is 0 (full block), use other
-		 * values to change block's shape
+		 * Sets render type of the block. Default is full block, use other
+		 * values to change block's shape.
+		 * @default 0
 		 */
 		rendertype?: number,
 		/**
-		 * Specifies the layer that is used to render the block. Default is 4
+		 * Specifies the layer that is used to render the block.
+		 * @default 4
 		 */
 		renderlayer?: number,
 		/**
 		 * If non-zero value is used, the block emits light of that value.
-		 * Default is 0, use values from 1 to 15 to set light level
+		 * Default is no lighting, use values from 1 to 15 to set light level.
+		 * @default 0
 		 */
 		lightlevel?: number,
 		/**
-		 * Specifies how opaque the block is. Default is 0 (transparent), use values
-		 * from 1 to 15 to make the block opaque
+		 * Specifies how opaque the block is. Default is transparent, use values
+		 * from 1 to 15 to make the block opaque.
+		 * @default 0
 		 */
 		lightopacity?: number,
 		/**
-		 * Specifies how block resists to the explosions. Default value is 3
+		 * Specifies how block resists to the explosions.
+		 * @default 3
 		 */
 		explosionres?: number,
 		/**
 		 * Specifies how player walks on this block. The higher the friction is,
-		 * the more difficult it is to change speed and direction. Default value
-		 * is 0.6000000238418579
+		 * the more difficult it is to change speed and direction.
+		 * @default 0.6000000238418579
 		 */
 		friction?: number,
 		/**
-		 * Specifies the time required to destroy the block, in ticks
+		 * Specifies the time required to destroy the block, in ticks.
 		 */
 		destroytime?: number,
 		/**
 		 * If non-zero value is used, the shadows will be rendered on the block.
-		 * Default is 0, allows float values from 0 to 1
+		 * Default is zero, allows float values from 0 to 1.
+		 * @default 0
 		 */
 		translucency?: number,
 		/**
-		 * Block color when displayed on the vanilla maps
+		 * Block color when displayed on the vanilla maps.
 		 */
 		mapcolor?: number,
 		/**
-		 * Makes block use biome color source when displayed on the vanilla maps
+		 * Makes block use biome color source when displayed on the vanilla maps.
 		 */
 		color_source?: ColorSource,
 		/**
-		 * Specifies sounds of the block
+		 * Specifies sounds of the block.
 		 */
 		sound?: Sound
 	}
 	/**
-	 * Object used to represent single block variation
+	 * Object used to represent single block variation.
 	 */
 	interface BlockVariation {
 		/**
-		 * Variation name, displayed as item name everywhere. Default value is
-		 * *"Unknown Block"*
+		 * Variation name, displayed as item name everywhere.
+		 * @default "Unknown Block"
 		 */
 		name?: string,
 		/**
 		 * Variation textures, array containing pairs of texture name and data.
-		 * Texture file should be located in items-opaque folder and its name
-		 * should be in the format: *name_data*, e.g. if the file name is
-		 * *ingot_copper_0*, you should specify an array
-		 * ```js
-		 * ["ingot_copper", 0]
-		 * ```
-		 * There should be from one to six texture
-		 * pairs in the array, if less then six variations are specified, the
-		 * last texture is used for missing textures. The sides go in the
-		 * following order:
+		 * Texture file should be located in items-opaque folder and it's name
+		 * should be in the format: `"name_data"`, e.g. if the file name is
+		 * `"ingot_copper_0"`, you should specify an array `["ingot_copper", 0]`.
+		 * @remarks
+		 * There should be from one to six texture pairs in the array,
+		 * if less then six variations are specified, the last texture is used
+		 * for missing textures. The sides go in the following order:
 		 * ```js
 		 * texture: [
-		 *   ["название1", индекс1], // bottom (Y: -1)
-		 *   ["название2", индекс2], // top (Y: +1)
-		 *   ["название3", индекс3], // back (X: -1)
-		 *   ["название4", индекс4], // front (X: +1)
-		 *   ["название5", индекс5], // left (Z: -1)
-		 *   ["название6", индекс6]  // right (Z: +1)
+		 * 	["name1", index1], // bottom (Y: -1)
+		 * 	["name2", index2], // top (Y: +1)
+		 * 	["name3", index3], // back (X: -1)
+		 * 	["name4", index4], // front (X: +1)
+		 * 	["name5", index5], // left (Z: -1)
+		 * 	["name6", index6]  // right (Z: +1)
 		 * ]
 		 * ```
 		 */
-		texture: [string, number][]
+		texture: [string, number][],
 		/**
-		 * If true, block variation will be added to creative inventory
+		 * If `true`, block variation will be added to creative inventory.
+		 * @default false
 		 */
-		inCreative?: boolean,
+		inCreative?: boolean
 	}
 	/**
-	 * Object to specify needed params for custom liquid block
+	 * Object to specify needed params for custom liquid block.
 	 */
 	interface LiquidDescriptor {
 		/**
-		 * Name of the block to be displayed
+		 * Name of the block to be displayed.
 		 */
 		name: string,
 		/**
 		 * Delay between liquid spreading steps in ticks.
-		 * This is optional, default value is 10
+		 * @default 10
 		 */
 		tickDelay?: number,
 		/**
-		 * True if the liquid will be renewable, as water,
-		 * this parameter is false by default
+		 * True if the liquid will be renewable, as water.
+		 * @default false
 		 */
 		isRenewable?: boolean,
 		/**
 		 * Object to describe static liquid block
-		 * texture, and name id additionally
+		 * texture, and name ID additionally.
 		 */
 		still: {
 			/**
-			 * Optional, name id for static liquid block,
-			 * by default it is `nameId_still`
+			 * Optional, name ID for static liquid block.
+			 * @default "nameId_still"
 			 */
 			id?: string,
 			/**
 			 * For static liquid block,
-			 * textures must be of standard block texture format
+			 * textures must be of standard block texture format.
 			 */
 			texture: [string, number]
 		},
 		/**
 		 * Object to describe dynamic liquid block
-		 * texture, and name id additionally
+		 * texture, and name ID additionally.
 		 */
 		flowing: {
 			/**
-			 * Optional, name id for dynamic liquid block,
-			 * by default it is `nameId`
+			 * Optional, name ID for dynamic liquid block.
+			 * @default "nameId"
 			 */
 			id?: string,
 			/**
 			 * Unlike static liquid blocks,
 			 * for dynamic ones, texture must look like
-			 * `texture.liquid.png` (with no index)
+			 * `"texture.liquid.png"` (with no index).
 			 */
 			texture: [string, number]
 		},
 		/**
 		 * Optional section, if added, this will create fully
-		 * functional (including dispensers) bucket items
+		 * functional (including dispensers) bucket items.
 		 */
 		bucket?: {
 			/**
-			 * Optional, name id for bucket item,
-			 * by default it is `nameId_bucket`
+			 * Optional, name ID for bucket item.
+			 * @default "nameId_bucket"
 			 */
 			id?: string,
 			texture: { name: string, meta?: number }
 		},
 		/**
-		 * Whether to add liquid block to creative inventory,
-		 * default is false
+		 * Whether to add liquid block to creative inventory.
+		 * @default false
 		 */
 		inCreative?: boolean,
 		uiTextures?: string,
 		modelTextures?: string
 	}
 	/**
-	 * Function used to determine block drop
+	 * Function used to determine block drop.
 	 * @param blockCoords coordinates where the block is destroyed and side from
 	 * where it is destroyed
-	 * @param blockID numeric tile id
+	 * @param blockID numeric tile ID
 	 * @param blockData block data value
 	 * @param diggingLevel level of the tool the block was dug with
 	 * @param enchant enchant data of the tool held in player's hand
 	 * @param item item stack held in player's hand
 	 * @param region BlockSource object
-	 * @returns block drop, the array of arrays, each containing three or four values:
-	 * id, count, data and extra respectively
+	 * @returns Block drop, the array of arrays, each containing three or four values:
+	 * ID, count, data and extra respectively.
 	 */
 	interface DropFunction {
 		(blockCoords: Callback.ItemUseCoordinates, blockID: number, blockData: number, diggingLevel: number, enchant: ToolAPI.EnchantData, item: ItemInstance, region: BlockSource): ItemInstanceArray[]
@@ -6756,7 +6916,7 @@ export namespace Block {
 	}
 	/**
 	 * Function used to determine when block is broken by
-	 * environment (explosions, pistons, etc.)
+	 * environment (explosions, pistons, etc.).
 	 * @param blockCoords coordinates where the block is destroyed and side from
 	 * where it is destroyed
 	 * @param block information about block that is broken
@@ -6767,25 +6927,25 @@ export namespace Block {
 		(blockCoords: Vector, block: Tile, region: BlockSource, explosionRadius: number, i: number): void
 	}
 	/**
-	 * Function used to determine when block is placed in the world
+	 * Function used to determine when block is placed in the world.
 	 * @param coords set of all coordinate values that can be useful to write
 	 * custom use logics
 	 * @param item item that was in the player's hand when he touched the block
 	 * @param block block that was touched
-	 * @param player Player unique id
+	 * @param player Player unique ID
 	 * @param region BlockSource object
-	 * @returns coordinates where to actually place the block, or void for
-	 * default placement
+	 * @returns Coordinates where to actually place the block, or void for
+	 * default placement.
 	 */
 	interface PlaceFunction {
 		(coords: Callback.ItemUseCoordinates, item: ItemInstance, block: Tile, player: number, region: BlockSource): Vector | void
 	}
 	/**
-	 * Function used to track random block ticks
+	 * Function used to track random block ticks.
 	 * @param x x coordinate of the block that ticked
 	 * @param y y coordinate of the block that ticked
 	 * @param z z coordinate of the block that ticked
-	 * @param id block id
+	 * @param id block ID
 	 * @param data block data
 	 * @param region BlockSource object
 	 */
@@ -6793,18 +6953,18 @@ export namespace Block {
 		(x: number, y: number, z: number, id: number, data: number, region: BlockSource): void
 	}
 	/**
-	 * Function used to track random block animation ticks
+	 * Function used to track random block animation ticks.
 	 * @param x x coordinate of the block that should be updated
 	 * @param y y coordinate of the block that should be updated
 	 * @param z z coordinate of the block that should be updated
-	 * @param id block id
+	 * @param id block ID
 	 * @param data block data
 	 */
 	interface AnimateTickFunction {
 		(x: number, y: number, z: number, id: number, data: number): void
 	}
 	/**
-	 * Function used to check block's neighbours changes
+	 * Function used to check block's neighbours changes.
 	 * @param coords coords vector of the block
 	 * @param block Tile object of the block
 	 * @param changedCoords coords vector of the neighbour block that was changed
@@ -6814,27 +6974,27 @@ export namespace Block {
 		(coords: Vector, block: Tile, changedCoords: Vector, region: BlockSource): void
 	}
 	/**
-	 * Function used to define how the block will behave when the player clicks on it
+	 * Function used to define how the block will behave when the player clicks on it.
 	 * @param coords set of all coordinate values that can be useful to write
 	 * custom logics on click
 	 * @param item item that was in the player's hand when he touched the block
 	 * @param block block that was touched
-	 * @param player unique id of the player entity
+	 * @param player unique ID of the player entity
 	 */
 	interface ClickFunction {
 		(coords: Callback.ItemUseCoordinates, item: ItemInstance, block: Tile, player: number): void;
 	}
 	/**
-	 * @returns drop function of the block with given numeric id
+	 * @returns Drop function of the block with given numeric ID.
 	 */
 	function getDropFunction(id: number): Block.DropFunction;
 	/**
-	 * @returns place function of the block with given numeric id,
-	 * or undefined if it was not specified
+	 * @returns Place function of the block with given numeric ID,
+	 * or undefined if it was not specified.
 	 */
 	function getPlaceFunc(id: number): Block.PlaceFunction;
 	/**
-	 * @returns given block's material numeric id
+	 * @returns Given block's material numeric ID.
 	 */
 	function getMaterial(id: number): number;
 	function setBlockChangeCallbackEnabled(id: number, enabled: boolean): void;
@@ -6849,25 +7009,21 @@ export namespace Block {
 	function getBlockAtlasTextureCoords(str: string, int: number): BlockAtlasTextureCoords;
 }
 /**
- * Module used to create blocks with any custom model
+ * Module used to create blocks with any custom model.
  */
 export namespace BlockRenderer {
     /**
-     * Class representing model used by [[BlockRenderer]]
+     * Class representing model used by {@link BlockRenderer}.
      */
     class Model {
         /**
-         * Creates a new empty model
+         * Creates a new empty model.
          */
         constructor();
         /**
-         * Constructs new model using specified [[RenderMesh]]
+         * Constructs new model using specified {@link RenderMesh["class"]}.
          */
         constructor(mesh: RenderMesh);
-        /**
-         *
-         * @param descr
-         */
         constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, descr: ModelTextureSet);
         constructor(descr: ModelTextureSet);
         /**
@@ -6885,276 +7041,276 @@ export namespace BlockRenderer {
         constructor(texName: string, texId: number);
         /**
          * Constructs new block model with single box inside specified block shape.
-         * The width of the full block is 1x1x1 units. Uses block id and data to
-         * determine texture
-         * @param id sample block id
+         * The width of the full block is 1x1x1 units. Uses block ID and data to
+         * determine texture.
+         * @param id sample block ID
          * @param data sample block data
          */
         constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number);
         /**
          * Constructs new block model with single box of the normal block size.
-         * The width of the full block is 1x1x1 units. Uses block id and data to
-         * determine texture
+         * The width of the full block is 1x1x1 units. Uses block ID and data to
+         * determine texture.
          * @param id
          * @param data
          */
         constructor(id: number, data: number);
         /**
-         * Adds new box to the model using specified block's textures
+         * Adds new box to the model using specified block's textures.
          */
         addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
         /**
          * Adds new box to the model using specified textures for the six sides
-         * of the box
+         * of the box.
          */
         addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, descr: ModelTextureSet): void;
         /**
-         * Adds new box to the model using specified block texture name and id
+         * Adds new box to the model using specified block texture name and ID.
          */
         addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, texName: string, texId: number): void;
         /**
-         * Adds new block with specified block's textures
+         * Adds new block with specified block's textures.
          */
         addBox(id: number, data?: number): void;
         /**
-         * Adds new [[RenderMesh]] to the model
+         * Adds new {@link RenderMesh["class"]} to the model.
          */
         addMesh(mesh: RenderMesh): void;
     }
     /**
-     * Type used to describe a new model for [[BlockRenderer]]
+     * Type used to describe a new model for {@link BlockRenderer}.
      */
     type ModelTextureSet =
         [string, number][];
     /**
-     * Creates a new empty block model
-     * @returns empty block model
+     * Creates a new empty block model.
+     * @returns Empty block model.
      */
     function createModel(): BlockRenderer.Model;
     /**
      * Constructs new block model of specified simple block shape with specified
-     * textures
+     * textures.
      * @param descr texture set used for the box
      */
     function createTexturedBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, descr: ModelTextureSet): BlockRenderer.Model;
     /**
      * Constructs new block model of specified simple block of the normal block
-     * size shape with specified textures
+     * size shape with specified textures.
      * @param descr texture set used for the box
      */
     function createTexturedBlock(descr: ModelTextureSet): BlockRenderer.Model;
     /**
-     * Adds "CustomBlockTessellation" callback function for specified block id
-     * @param id block id
+     * Adds "CustomBlockTessellation" callback function for specified block ID.
+     * @param id block ID
      * @param callback function to be called when the event occurs
      */
     function addRenderCallback(id: number, callback: Callback.CustomBlockTessellationFunction): void;
     /**
-     * Forces block renders to be rebuilt immediately
+     * Forces block renders to be rebuilt immediately.
      * @param mode if 0 is passed, only the specified block gets rebuilt, if
      * 1 is passed, all the blocks along y axes are rebuilt
      */
     function forceRenderRebuild(x: number, y: number, z: number, mode: number): void;
     /**
-     * Specifies custom collision shape for the block
-     * @param id block id
+     * Specifies custom collision shape for the block.
+     * @param id block ID
      * @param data block data
-     * @param shape [[ICRender.CollisionShape]] object to be used as
+     * @param shape {@link ICRender.CollisionShape} object to be used as
      * default collision shape for the specified block
      */
     function setCustomCollisionShape(id: number, data: number, shape: ICRender.CollisionShape): void;
     /**
-     * Specifies custom raycast shape for the block
-     * @param id block id
+     * Specifies custom raycast shape for the block.
+     * @param id block ID
      * @param data block data or -1 to map all the data values
-     * @param shape [[ICRender.CollisionShape]] object to be used as
+     * @param shape {@link ICRender.CollisionShape} object to be used as
      * default raycast shape for the specified block
      */
     function setCustomRaycastShape(id: number, data: number, shape: ICRender.CollisionShape): void;
     /**
-     * Specifies custom collision and raycast shape for the block
-     * @param id block id
+     * Specifies custom collision and raycast shape for the block.
+     * @param id block ID
      * @param data block data or -1 to map all the data values
-     * @param shape [[ICRender.CollisionShape]] object to be used as
+     * @param shape {@link ICRender.CollisionShape} object to be used as
      * default collision and raycast shape for the specified block
      */
     function setCustomCollisionAndRaycastShape(id: number, data: number, shape: ICRender.CollisionShape): void;
     /**
-     * Enables custom rendering for the specified block
-     * @param id block id
+     * Enables custom rendering for the specified block.
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      */
     function enableCustomRender(id: number, data: number): void;
     /**
-     * Disables custom rendering for the specified block
-     * @param id block id
+     * Disables custom rendering for the specified block.
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      */
     function disableCustomRender(id: number, data: number): void;
     /**
-     * Sets static ICRender model as block render shape
-     * @param id block id
+     * Sets static ICRender model as block render shape.
+     * @param id block ID
      * @param data block data or -1 to map all the data values
-     * @param icRender [[ICRender.Model]] object to be used as static block shape
+     * @param icRender {@link ICRender.Model} object to be used as static block shape
      */
     function setStaticICRender(id: number, data: number, icRender: ICRender.Model): void;
     /**
-     * Enables block mapping for the specified block
-     * @param id block id
+     * Enables block mapping for the specified block.
+     * @param id block ID
      * @param data block data or -1 to map all the data values
      * @param icRender default model for the block
      */
     function enableCoordMapping(id: number, data: number, icRender: ICRender.Model): void;
     /**
-     * Changes shape of the block on the specified coordinates
-     * @param icRender [[ICRender.Model]] object to be displayed at the coordinates
+     * Changes shape of the block on the specified coordinates.
+     * @param icRender {@link ICRender.Model} object to be displayed at the coordinates
      * @param preventRebuild if false or not specified, rebuild is performed immediately
      */
     function mapAtCoords(x: number, y: number, z: number, icRender: ICRender.Model, preventRebuild?: boolean): void;
     /**
-     * Resets shape of the block to default on the specified coordinates
+     * Resets shape of the block to default on the specified coordinates.
      * @param preventRebuild if false or not specified, rebuild is performed immediately
      */
     function unmapAtCoords(x: number, y: number, z: number, preventRebuild?: boolean): void;
     /**
-     * Changes collision shape of the block on given coords in given dimension
-     * @param shape [[ICRender.CollisionShape]] object to be used as new collision shape
+     * Changes collision shape of the block on given coords in given dimension.
+     * @param shape {@link ICRender.CollisionShape} object to be used as new collision shape
      */
     function mapCollisionModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
     /**
-     * Changes raycast shape of the block on given coords in given dimension
-     * @param shape [[ICRender.CollisionShape]] object to be used as new raycast shape
+     * Changes raycast shape of the block on given coords in given dimension.
+     * @param shape {@link ICRender.CollisionShape} object to be used as new raycast shape
      */
     function mapRaycastModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
     /**
-     * Changes both collision and raycast shape of the block on given coords in given dimension
-     * @param shape [[ICRender.CollisionShape]] object to be used as new collision and raycast shape
+     * Changes both collision and raycast shape of the block on given coords in given dimension.
+     * @param shape {@link ICRender.CollisionShape} object to be used as new collision and raycast shape
      */
     function mapCollisionAndRaycastModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
     /**
-     * Resets collision shape of the block to default on given coords in given dimension
+     * Resets collision shape of the block to default on given coords in given dimension.
      */
     function unmapCollisionModelAtCoords(dimension: number, x: number, y: number, z: number): void;
     /**
-     * Resets raycast shape of the block to default on given coords in given dimension
+     * Resets raycast shape of the block to default on given coords in given dimension.
      */
     function unmapRaycastModelAtCoords(dimension: number, x: number, y: number, z: number): void;
     /**
-     * Resets both collision and raycast shape of the block to default on given coords in given dimension
+     * Resets both collision and raycast shape of the block to default on given coords in given dimension.
      */
     function unmapCollisionAndRaycastModelAtCoords(dimension: number, x: number, y: number, z: number): void;
     /**
      * Object used to manipulate rendered block during
-     * [[Callback.CustomBlockTessellationFunction]] calls
+     * {@link Callback.CustomBlockTessellationFunction} calls.
      */
     interface RenderAPI {
         /**
-         * @returns pointer to native object instance of the following object,
-         * to be used in custom native code etc.
+         * @returns Pointer to native object instance of the following object,
+         * to be used in custom native code, etc.
          */
         getAddr(): number;
         /**
-         * Renders box at the specified coordinates of the specified size
-         * @param id id of the block to be used as texture source
+         * Renders box at the specified coordinates of the specified size.
+         * @param id ID of the block to be used as texture source
          * @param data data of the block to be used as texture source
          */
         renderBoxId(x: number, y: number, z: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
         /**
-         * Renders box at current block coordinates of the specified size
-         * @param id id of the block to be used as texture source
+         * Renders box at current block coordinates of the specified size.
+         * @param id ID of the block to be used as texture source
          * @param data data of the block to be used as texture source
          */
         renderBoxIdHere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
         /**
-         * Renders box at the specified coordinates of the specified size
+         * Renders box at the specified coordinates of the specified size.
          * @param texName block texture name
-         * @param texId block texture id
+         * @param texId block texture ID
          */
         renderBoxTexture(x: number, y: number, z: number, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, texName: string, texId: number): void;
         /**
-         * Renders box at current block coordinates of the specified size
+         * Renders box at current block coordinates of the specified size.
          * @param texName block texture name
-         * @param texId block texture id
+         * @param texId block texture ID
          */
         renderBoxTextureHere(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, id: number, data: number): void;
         /**
-         * Renders full block at specified coordinates
-         * @param blockId id of the block to be used as texture source
+         * Renders full block at specified coordinates.
+         * @param blockId ID of the block to be used as texture source
          * @param blockData data of the block to be used as texture source
          */
         renderBlock(x: number, y: number, z: number, blockId: number, blockData: number): void;
         /**
-         * Renders full block at current block coordinates
-         * @param blockId id of the block to be used as texture source
+         * Renders full block at current block coordinates.
+         * @param blockId ID of the block to be used as texture source
          * @param blockData data of the block to be used as texture source
          */
         renderBlockHere(blockId: number, blockData: number): void;
         /**
-         * Renders block model at the specified coordinates
+         * Renders block model at the specified coordinates.
          * @param model block model to be rendered at the specified coordinates
          */
         renderModel(x: number, y: number, z: number, model: BlockRenderer.Model): void;
         /**
-         * Renders block model at current block coordinates
+         * Renders block model at current block coordinates.
          * @param model block model to be rendered at current block coordinates
          */
         renderModelHere(model: BlockRenderer.Model): void;
     }
 }
 /**
- * New class to work with world instead of some methods from [[World]] module.
+ * New class to work with world instead of some methods from {@link World} module.
  */
 export class BlockSource {
 	/**
-	 * @returns the dimension id to which the following object belongs
+	 * @returns Dimension ID to which the following object belongs.
 	 */
 	getDimension(): number;
 	/**
 	 * @param x X coord of the block
 	 * @param y Y coord of the block
 	 * @param z Z coord of the block
-	 * @returns [[BlockState]] object of the block on given coords
-	 * or [[Tile]] object in Legacy pack
+	 * @returns Object of the block on given coords
+	 * or {@link Tile} object in Legacy pack.
 	 */
 	getBlock(x: number, y: number, z: number): BlockState;
 	/**
-	 * @returns block's id at coords
+	 * @returns Block's ID at coords.
 	 * @param x X coord of the block
 	 * @param y Y coord of the block
 	 * @param z Z coord of the block
 	 */
 	getBlockId(x: number, y: number, z: number): number;
 	/**
-	 * @returns block's data at coords
+	 * @returns Block's data at coords.
 	 * @param x X coord of the block
 	 * @param y Y coord of the block
 	 * @param z Z coord of the block
 	 */
 	getBlockData(x: number, y: number, z: number): number;
 	/**
-	 * Sets block on coords
-	 * @param id id of the block to set
+	 * Sets block on coords.
+	 * @param id ID of the block to set
 	 * @param data data of the block to set
 	 */
 	setBlock(x: number, y: number, z: number, id: number, data: number): void;
 	/**
-	 * Sets block by given [[BlockState]] on coords
+	 * Sets block by given {@link BlockState} on coords.
 	 */
 	setBlock(x: number, y: number, z: number, state: BlockState): void;
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given id and data
+	 * Sets extra block (for example, water inside another blocks), on given coords by given ID and data.
 	 */
 	setExtraBlock(x: number, y: number, z: number, id: number, data: number): void;
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given [[BlockState]]
+	 * Sets extra block (for example, water inside another blocks), on given coords by given {@link BlockState}.
 	 */
 	setExtraBlock(x: number, y: number, z: number, state: BlockState): void;
 	/**
-	 * @returns [[BlockState]] object of the extra block on given coords
+	 * @returns Object of the extra block on given coords.
 	 */
 	getExtraBlock(x: number, y: number, z: number): BlockState;
 	 /**
-	  * Creates an explosion on coords
+	  * Creates an explosion on coords.
 	  * @param power defines how many blocks can the explosion destroy and what
 	  * blocks can or cannot be destroyed
 	  * @param fire if true, puts the crater on fire
@@ -7163,252 +7319,260 @@ export class BlockSource {
 	/**
 	 * Destroys block on coords producing appropriate drop
 	 * and particles. Do not use for massive tasks due to particles being
-	 * produced
-	 * @param x X coord of the block
-	 * @param y Y coord of the block
-	 * @param z Z coord of the block
+	 * produced.
 	 * @param drop whether to provide drop for the block or not
 	 */
 	destroyBlock(x: number, y: number, z: number, drop?: boolean): void;
 	/**
 	 * Destroys block on coords by entity using specified item.
-	 * @param x X coord of the block
-	 * @param y Y coord of the block
-	 * @param z Z coord of the block
 	 * @param allowDrop whether to provide drop for the block or not
-	 * @param entity Entity id or -1 id if entity is not specified
+	 * @param entity Entity ID or -1 ID if entity is not specified
 	 * @param item Tool which broke block
 	 */
 	breakBlock(x: number, y: number, z: number, allowDrop: boolean, entity: number, item: ItemInstance): void;
 	/**
-	 * Same as breakBlock, but returns object containing drop and experince.
-	 * @param x X coord of the block
-	 * @param y Y coord of the block
-	 * @param z Z coord of the block
-	 * @param entity Entity id or -1 id if entity is not specified
+	 * Same as breakBlock, but returns object containing drop and experience.
+	 * @param player Player ID or -1 ID if entity is not specified
 	 * @param item Tool which broke block
 	 */
 	breakBlockForJsResult(x: number, y: number, z: number, player: number, item: ItemInstance): {items: ItemInstance[], experience: number};
 	/**
-	 * @param x X coord of the block
-	 * @param y Y coord of the block
-	 * @param z Z coord of the block
-	 * @returns interface to the vanilla TileEntity (chest, furnace, etc.)
-	 * on the coords, and null if it's not found
+	 * @returns Interface to the vanilla TileEntity (chest, furnace, etc.)
+	 * on the coords, and null if it's not found.
 	 */
 	getBlockEntity(x: number, y: number, z: number): Nullable<NativeTileEntity>;
 	/**
 	 * @param x X coord of the block
 	 * @param z Z coord of the block
-	 * @returns biome id
+	 * @returns Biome ID.
 	 */
 	getBiome(x: number, z: number): number;
 	/**
-	 * Sets biome id by coords
-	 * @param id id of the biome to set
+	 * Sets biome ID by coords.
+	 * @param biomeID ID of the biome to set
 	 */
 	setBiome(x: number, z: number, biomeID: number): void;
 	/**
-	 * @returns temperature of the biome on coords
+	 * @returns Temperature of the biome on coords.
 	 */
 	getBiomeTemperatureAt(x: number, y: number, z: number): number;
 	/**
-	 * @returns downfall of the biome on coords
+	 * @returns Downfall of the biome on coords.
 	 */
 	getBiomeDownfallAt(x: number, y: number, z: number): number;
 	/**
 	* @param chunkX X coord of the chunk
 	 * @param chunkZ Z coord of the chunk
-	 * @returns true if chunk is loaded, false otherwise
+	 * @returns `true` if chunk is loaded, `false` otherwise.
 	 */
 	isChunkLoaded(chunkX: number, chunkZ: number): boolean;
 	/**
 	* @param x X coord of the position
 	 * @param z Z coord of the position
-	 * @returns true if chunk on the position is loaded, false otherwise
+	 * @returns `true` if chunk on the position is loaded, `false` otherwise.
 	 */
 	isChunkLoadedAt(x: number, z: number): boolean;
 	/**
 	* @param chunkX X coord of the chunk
 	 * @param chunkZ Z coord of the chunk
-	 * @returns the loading state of the chunk by chunk coords
+	 * @returns Loading state of the chunk by chunk coords.
 	 */
 	getChunkState(chunkX: number, chunkZ: number): number;
 	/**
 	* @param x X coord of the position
 	 * @param z Z coord of the position
-	 * @returns the loading state of the chunk by coords
+	 * @returns Loading state of the chunk by coords.
 	 */
 	getChunkStateAt(x: number, z: number): number;
 	/**
-     * @returns light level on the specified coordinates, from 0 to 15
+     * @returns Light level on the specified coordinates, from 0 to 15.
      */
 	getLightLevel(x: number, y: number, z: number): number;
 	/**
-	 * @returns whether the sky can be seen from coords
+	 * @returns Whether the sky can be seen from coords.
 	 */
 	canSeeSky(x: number, y: number, z: number): boolean;
 	/**
-	 * @returns grass color on coords
+	 * @returns Grass color on coords.
 	 */
 	getGrassColor(x: number, y: number, z: number): number;
 	/**
-	 * Creates dropped item and returns entity id
-	 * @param x X coord of the place where item will be dropped
-	 * @param y Y coord of the place where item will be dropped
-	 * @param z Z coord of the place where item will be dropped
-	 * @param id id of the item to drop
+	 * Creates dropped item and returns entity ID.
+	 * @param id ID of the item to drop
 	 * @param count count of the item to drop
 	 * @param data data of the item to drop
 	 * @param extra extra of the item to drop
-	 * @returns drop entity id
+	 * @returns Drop entity ID.
 	 */
 	spawnDroppedItem(x: number, y: number, z: number, id: number, count: number, data: number, extra?: ItemExtraData): number;
 	/**
-	  * Spawns entity of given numeric type on coords
+	  * Spawns entity of given numeric or namespaced type on coords.
+	  * @example
+	  * ```ts
+	  * Callback.addCallback("ItemUse", (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, player: number) =>
+	  * 	BlockSource.getDefaultForActor(player)?.spawnEntity(coords.relative.x, coords.relative.y, coords.relative.z, EEntityType.CHICKEN));
+	  * ```
 	  */
 	spawnEntity(x: number, y: number, z: number, type: number | string): number;
-	spawnEntity(x: number, y: number, z: number, namespace: string, type: string, init_data: string): number;
 	/**
-	  * Spawns experience orbs on coords
+	  * Spawns entity of given namespace by string type on coords
+	  * with optional spawn events data.
+	  * @example
+	  * ```ts
+	  * Callback.addCallback("ItemUse", (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, player: number) =>
+	  * 	BlockSource.getDefaultForActor(player)?.spawnEntity(coords.relative.x, coords.relative.y, coords.relative.z, "minecraft", "chicken", "<>"));
+	  * ```
+	  */
+	spawnEntity(x: number, y: number, z: number, namespace: string, type: string, init_data?: string): number;
+	/**
+	  * Spawns experience orbs on coords.
 	  * @param amount experience amount
 	  */
 	spawnExpOrbs(x: number, y: number, z: number, amount: number): void;
 	/**
-	 * @returns the list of entity IDs in given box,
-	 * that are equal to the given type, if blacklist value is false,
-	 * and all except the entities of the given type, if blacklist value is true
+	 * @returns List of entity IDs in given box,
+	 * that are equal to the given type, if blacklist value is `false`,
+	 * and all except the entities of the given type, if blacklist value is `true`.
 	 */
 	fetchEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, blacklist: boolean): number[];
 	/**
-	 * @returns the list of entity IDs in given box,
-	 * that are equal to the given type, if blacklist value is false,
-	 * and all except the entities of the given type, if blacklist value is true
+	 * @returns List of entity IDs in given box,
+	 * that are equal to the given type, if blacklist value is `false`,
+	 * and all except the entities of the given type, if blacklist value is `true`.
 	 */
 	listEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, blacklist: boolean): number[];
+	/**
+	 * Whether or not particles must be enabled when destroying
+	 * blocks with this source.
+	 * @default true
+	 */
 	setDestroyParticlesEnabled(destroyParticlesEnabled: boolean): void;
 	/**
-	 * @returns interface to given dimension by default
-	 * (null if given dimension is not loaded and this interface
-	 * was not created yet)
+	 * @returns Interface to given dimension by default
+	 * (`null` if given dimension is not loaded and this interface
+	 * was not created yet).
 	 */
 	static getDefaultForDimension(dimension: number): Nullable<BlockSource>;
 	/**
-	 * @returns interface to the dimension where the given entity is
-	 * (null if given entity does not exist or the dimension is not loaded
-	 * and interface was not created)
+	 * @returns Interface to the dimension where the given entity is
+	 * (`null` if given entity does not exist or the dimension is not loaded
+	 * and interface was not created).
 	 */
 	static getDefaultForActor(entityUid: number): Nullable<BlockSource>;
 	/**
-	 * @returns BlockSource for world generation
+	 * @returns BlockSource for world generation.
 	 */
 	static getCurrentWorldGenRegion(): Nullable<BlockSource>;
 	/**
-	 * @returns BlockSource for the current client
+	 * @returns BlockSource for the current client.
 	 */
 	static getCurrentClientRegion(): Nullable<BlockSource>;
 }
 /**
- * Class to work with vanilla blocks parameters
+ * Class to work with vanilla blocks parameters.
  */
 export class BlockState implements Tile {
-    /**Data of the block */
+    /**
+     * Data of the block.
+     */
     readonly data: number;
-    /**Numeric ID of the block */
+    /**
+     * Numeric ID of the block.
+     */
     readonly id: number;
     /**
      * Constructs new BlockState object
-     * from given id and data
+     * from given ID and data.
      */
     constructor(id: number, data: number);
     /**
      * Constructs new BlockState object
-     * from given id and states object
+     * from given ID and states object.
      */
     constructor(id: number, scriptable: {[key: number]: number});
     /**
-     * @returns id of the block
+     * @returns ID of the block.
      */
     getId(): number;
     /**
-     * @returns data of the block
+     * @returns Data of the block.
      */
     getData(): number;
     /**
-     * @returns id of the blockstate in runtime
+     * @returns ID of the blockstate in runtime.
      */
     getRuntimeId(): number;
     /**
-     * @returns whether the state is valid
+     * @returns Whether the state is valid.
      */
     isValidState(): boolean;
     /**
-     * @returns state of the given number
-     * if it's present in the following object
+     * @returns State of the given number
+     * if it's present in the following object.
      */
     getState(state: number): number;
     /**
-     * @returns whether the state by given number
-     * is present in the following object
+     * @returns Whether the state by given number
+     * is present in the following object.
      */
     hasState(state: number): boolean;
     /**
-     * Adds state to the following object
-     * @returns BlockState object itself
+     * Adds state to the following object.
+     * @returns BlockState object itself.
      */
     addState(state: number, value: number): BlockState;
     /**
      * Adds states to the following object
-     * from given java.util.Map instance
-     * @returns BlockState object itself
+     * from given map instance.
+     * @returns BlockState object itself.
      */
     addStates(states: java.util.Map<unknown, number>): BlockState;
     /**
      * Adds states to the following object
-     * from given JS object instance
-     * @returns BlockState object itself
+     * from given JS object instance.
+     * @returns BlockState object itself.
      */
     addStates(states: object): BlockState;
     /**
-     * @returns all states from following object
-     * in java.util.Map instance
+     * @returns All states from following object
+     * in {@link java.util.Map} instance.
      */
     getStates(): java.util.Map<number, number>;
     /**
-     * @returns all NAMED states from following object
-     * in java.util.Map instance
+     * @returns All NAMED states from following object
+     * in {@link java.util.Map} instance.
      */
     getNamedStates(): java.util.Map<string, number>;
     /**
-     * @returns all states from following object
-     * in JS object instance
+     * @returns All states from following object
+     * in JS object instance.
      */
     getStatesScriptable(): {[key: string]: number};
     /**
-     * @returns all NAMED states from following object
-     * in JS object instance
+     * @returns All NAMED states from following object
+     * in JS object instance.
      */
     getNamedStatesScriptable(): {[key: string]: number};
     /**
-     * @returns string representation of the following object
+     * @returns String representation of the following object.
      */
     toString(): string;
     /**
-     * @returns whether the following object is equal to given,
-     * according to different parameters
+     * @returns Whether the following object is equal to given,
+     * according to different parameters.
      */
     equals(object: any): boolean;
 }
 /**
- * Module used to handle callbacks. See {@page Callbacks} for details about the
- * callback mechanism and the list of pre-defined callbacks
+ * Module used to handle callbacks. Investigate details about the
+ * callback mechanism and the list of pre-defined callbacks.
  */
 export namespace Callback {
     /**
      * Adds callback function for the specified callback name. Most of native
-     * events can be prevented using [[Game.prevent]] call.
+     * events can be prevented using {@link Game.prevent} call.
      * @param name callback name, should be one of the pre-defined or a custom
-     * name if invoked via [[Callback.invokeCallback]]
+     * name if invoked via {@link Callback.invokeCallback}
      * @param func function to be called when an event occurs
      * @param priority the more this value is, the earlier your callback handler will be called when an event occurs
      */
@@ -7455,7 +7619,7 @@ export namespace Callback {
     function addCallback(name: "NativeGuiChanged", func: NativeGuiChangedFunction, priority?: number): void;
     function addCallback(name: "GenerateChunk", func: GenerateChunkFunction, priority?: number): void;
     /**
-     * @deprecated
+     * @deprecated Use "GenerateChunk" with condition instead.
      */
     function addCallback(name: "GenerateChunkUnderground", func: GenerateChunkFunction, priority?: number): void;
     function addCallback(name: "GenerateNetherChunk", func: GenerateChunkFunction, priority?: number): void;
@@ -7493,12 +7657,12 @@ export namespace Callback {
      * Invokes callback with any name and up to 10 additional parameters. You
      * should not generally call pre-defined callbacks until you really need to
      * do so. If you want to trigger some event in your mod, use your own
-     * callback names
+     * callback names.
      * @param name callback name
      */
     function invokeCallback(name: string, o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any): void;
     /**
-     * Function used in "CraftRecipePreProvided" callback
+     * Function used in "CraftRecipePreProvided" callback.
      * @param recipe object containing recipe information
      * @param field object containing crafting field information
      */
@@ -7506,7 +7670,7 @@ export namespace Callback {
         (recipe: Recipes.WorkbenchRecipe, field: Recipes.WorkbenchField): void
     }
     /**
-     * Function used in "CraftRecipeProvided" callback
+     * Function used in "CraftRecipeProvided" callback.
      * @param recipe object containing recipe information
      * @param field object containing crafting field information
      * @param isPrevented if true, recipe was prevented by craft function
@@ -7516,7 +7680,7 @@ export namespace Callback {
     }
     /**
      * Function used in "VanillaWorkbenchCraft" and "VanillaWorkbenchPostCraft"
-     * callbacks
+     * callbacks.
      * @param result recipe result item
      * @param workbenchContainer workbench container instance
      */
@@ -7524,7 +7688,7 @@ export namespace Callback {
         (result: ItemInstance, workbenchContainer: UI.Container, player: number): void
     }
     /**
-     * Function used in "VanillaWorkbenchRecipeSelected" callback
+     * Function used in "VanillaWorkbenchRecipeSelected" callback.
      * @param recipe object containing recipe information
      * @param result recipe result item
      * @param workbenchContainer workbench container instance
@@ -7533,7 +7697,7 @@ export namespace Callback {
         (recipe: Recipes.WorkbenchRecipe, result: ItemInstance, workbenchContainer: UI.Container)
     }
     /**
-     * Function used in "ContainerClosed" callback
+     * Function used in "ContainerClosed" callback.
      * @param container container that was closed
      * @param window window that was loaded in the container
      * @param byUser if true, container was closed by user, from the code
@@ -7543,7 +7707,7 @@ export namespace Callback {
         (container: UI.Container, window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow, byUser: boolean): void
     }
     /**
-     * Function used in "ContainerOpened" callback
+     * Function used in "ContainerOpened" callback.
      * @param container container that was opened
      * @param window window that was loaded in the container
      */
@@ -7551,28 +7715,28 @@ export namespace Callback {
         (container: UI.Container, window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow | UI.WindowGroup): void
     }
     /**
-     * Function used in "CustomWindowOpened" callback
+     * Function used in "CustomWindowOpened" callback.
      * @param window window that was opened
      */
     interface CustomWindowOpenedFunction {
         (window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow): void;
     }
     /**
-     * Function used in "CustomWindowClosed" callback
+     * Function used in "CustomWindowClosed" callback.
      * @param window window that was closed
      */
     interface CustomWindowClosedFunction {
         (window: com.zhekasmirnov.innercore.api.mod.ui.window.IWindow): void;
     }
     /**
-     * Function used in "CoreConfigured" callback
+     * Function used in "CoreConfigured" callback.
      * @param config Inner Core default config instance
      */
     interface CoreConfiguredFunction {
         (config: Config): void;
     }
     /**
-     * Function used in "LevelSelected" callback
+     * Function used in "LevelSelected" callback.
      * @param worldName name of the selected world
      * @param worldDir name of the directory where the world is stored. Worlds
      * directories are located at games/horizon/minecraftWorlds/
@@ -7581,25 +7745,25 @@ export namespace Callback {
         (worldName: string, worldDir: string): void
     }
     /**
-     * Function used in "DimensionLoaded" callback
-     * @param dimension vanilla dimension id, one of the [[Native.Dimension]]
-     * values, or custom dimension id
+     * Function used in "DimensionLoaded" callback.
+     * @param dimension vanilla dimension ID, one of the {@link EDimension}
+     * values, or custom dimension ID
      */
     interface DimensionLoadedFunction {
         (dimension: number): void
     }
     /**
-     * Function used in "DestroyBlock" and "DestroyBlockStart" callbacks
+     * Function used in "DestroyBlock" and "DestroyBlockStart" callbacks.
      * @param coords coordinates where the block is destroyed and side from
      * where it is destroyed
      * @param block block that is destroyed
-     * @param player player entity unique numeric id
+     * @param player player entity unique numeric ID
      */
     interface DestroyBlockFunction {
         (coords: ItemUseCoordinates, block: Tile, player: number): void
     }
     /**
-     * Function used in "DestroyBlockContinue" callback
+     * Function used in "DestroyBlockContinue" callback.
      * @param coords coordinates where the block is destroyed and side from
      * where it is destroyed
      * @param block block that is destroyed
@@ -7609,17 +7773,17 @@ export namespace Callback {
         (coords: ItemUseCoordinates, block: Tile, progress: number): void
     }
     /**
-     * Function used in "BuildBlock" callback
+     * Function used in "BuildBlock" callback.
      * @param coords coordinates where the block is placed and side from
      * where it is placed
      * @param block block that is placed
-     * @param player player entity unique numeric id
+     * @param player player entity unique numeric ID
      */
     interface BuildBlockFunction {
         (coords: ItemUseCoordinates, block: Tile, player: number): void
     }
     /**
-     * Function used in "BlockChanged" callback
+     * Function used in "BlockChanged" callback.
      * @param coords coordinates where block change occurred
      * @param oldBlock the block that is being replaced
      * @param newBlock replacement block
@@ -7629,7 +7793,7 @@ export namespace Callback {
         (coords: Vector, oldBlock: Tile, newBlock: Tile, region: BlockSource): void
     }
     /**
-     * Function used in "ItemUse" and "ItemUseLocalServer" callbacks
+     * Function used in "ItemUse" and "ItemUseLocalServer" callbacks.
      * @param coords set of all coordinate values that can be useful to write
      * custom use logics
      * @param item item that was in the player's hand when he touched the block
@@ -7641,8 +7805,8 @@ export namespace Callback {
         (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, player: number): void
     }
     /**
-     * Function used in "ItemUseLocal" callback,
-     * and also in [[Item.registerUseFunction]] and [[Item.registerUseFunctionForID]] methods
+     * Function used in "ItemUseLocal" callback, and also in
+     * {@link Item.registerUseFunction} and {@link Item.registerUseFunctionForID} methods.
      * @param coords set of all coordinate values that can be useful to write
      * custom use logics
      * @param item item that was in the player's hand when he touched the block
@@ -7653,12 +7817,12 @@ export namespace Callback {
         (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, player: number): void
     }
     /**
-     * Function used in "Explosion" callback
+     * Function used in "Explosion" callback.
      * @param coords coordinates of the explosion
      * @param params additional explosion data
      * @param params.power explosion power
      * @param params.entity if explosion is produced by an entity, entity unique
-     * id, -1 otherwise
+     * ID, -1 otherwise
      * @param onFire if true, explosion produced the fire
      * @param someBool some boolean value
      * @param someFloat some floating point value
@@ -7668,7 +7832,7 @@ export namespace Callback {
     }
     /**
      * Function used in the "FoodEaten" callback. You can use
-     * [[Entity.getCarriedItem]] to get info about food item
+     * {@link Entity.getCarriedItem#1} to get info about food item.
      * @param food food amount produced by eaten food
      * @param ratio saturation ratio produced by food
      * @param player player entity uID
@@ -7677,7 +7841,7 @@ export namespace Callback {
         (food: number, ratio: number, player: number): void
     }
     /**
-     * Function used in "ExpAdd" callback
+     * Function used in "ExpAdd" callback.
      * @param exp amount of experience to be added
      * @param player player's uID
      */
@@ -7685,7 +7849,7 @@ export namespace Callback {
         (exp: number, player: number): void
     }
     /**
-     * Function used in "ExpLevelAdd" callback
+     * Function used in "ExpLevelAdd" callback.
      * @param level amount of levels to be added
      * @param player player's uID
      */
@@ -7693,7 +7857,7 @@ export namespace Callback {
         (level: number, player: number): void
     }
     /**
-     * Function used in "NativeCommand" callback
+     * Function used in "NativeCommand" callback.
      * @param command command that was entered or null if no command was
      * provided
      */
@@ -7701,44 +7865,44 @@ export namespace Callback {
         (command: Nullable<string>): void
     }
     /**
-     * Function used in "PlayerAttack" callback
-     * @param attacker player entity unique id
-     * @param victim attacked entity unique id
+     * Function used in "PlayerAttack" callback.
+     * @param attacker player entity unique ID
+     * @param victim attacked entity unique ID
      */
     interface PlayerAttackFunction {
         (attacker: number, victim: number): void
     }
     /**
-     * Function used in "EntityAdded" callback
-     * @param entity entity unique id
+     * Function used in "EntityAdded" callback.
+     * @param entity entity unique ID
      */
     interface EntityAddedFunction {
         (entity: number): void
     }
     /**
-     * Function used in "EntityRemoved" callback
-     * @param entity entity unique id
+     * Function used in "EntityRemoved" callback.
+     * @param entity entity unique ID
      */
     interface EntityRemovedFunction {
         (entity: number): void
     }
     /**
-     * Function used in "EntityDeath" callback
+     * Function used in "EntityDeath" callback.
      * @param entity entity that is dead
      * @param attacker if the entity was killed by another entity, attacker's
-     * entity unique id, -1 otherwise
-     * @param damageType damage source id
+     * entity unique ID, -1 otherwise
+     * @param damageType damage source ID
      */
     interface EntityDeathFunction {
         (entity: number, attacker: number, damageType: number): void
     }
     /**
-     * Function used in "EntityHurt" callback
+     * Function used in "EntityHurt" callback.
      * @param attacker if an entity was hurt by another entity, attacker's
-     * unique id, -1 otherwise
+     * unique ID, -1 otherwise
      * @param entity entity that is hurt
      * @param damageValue amount of damage produced to entity
-     * @param damageType damage source id
+     * @param damageType damage source ID
      * @param someBool1 some boolean value
      * @param someBool2 some boolean value
      */
@@ -7746,15 +7910,15 @@ export namespace Callback {
         (attacker: number, entity: number, damageValue: number, damageType: number, someBool1: boolean, someBool2: boolean): void
     }
     /**
-     * Function used in "EntityInteract" callback
-     * @param entity entity unique id
-     * @param player player entity unique id
+     * Function used in "EntityInteract" callback.
+     * @param entity entity unique ID
+     * @param player player entity unique ID
      */
     interface EntityInteractFunction {
         (entity: number, player: number, coords: Vector): void
     }
     /**
-     * Function used in "ProjectileHit" callback
+     * Function used in "ProjectileHit" callback.
      * @param projectile projectile entity unique ID
      * @param item projectile item
      * @param target object containing hit coordinates and information about
@@ -7764,7 +7928,7 @@ export namespace Callback {
         (projectile: number, item: ItemInstance, target: ProjectileHitTarget): void
     }
     /**
-     * Function used in "RedstoneSignal" callback
+     * Function used in "RedstoneSignal" callback.
      * @param coords coordinates where redstone signal changed
      * @param params information about redstone signal
      * @param params.power redstone signal power
@@ -7776,7 +7940,7 @@ export namespace Callback {
         (coords: Vector, params: { power: number, signal: number, onLoad: boolean }, block: Tile, world?: BlockSource): void
     }
     /**
-     * Function used in "PopBlockResources" callback
+     * Function used in "PopBlockResources" callback.
      * @param coords coordinates of the block that was broken
      * @param block information about the block that was broken
      * @param i unknown parameter, supposed to always be zero
@@ -7785,28 +7949,28 @@ export namespace Callback {
         (coords: Vector, block: Tile, explosionRadius: number, i: number, region: BlockSource): void
     }
     /**
-     * Function used in "ItemIconOverride" callback
+     * Function used in "ItemIconOverride" callback.
      * @param item information about item that is used in override function
      * @param isModUi whether icon override is working in mod ui or in vanilla one
-     * @returns void if used in callback, [[Item.TextureData]] if used in item
-     * override function to return texture that will be used for the item
+     * @returns Nothing if used in callback, {@link Item.TextureData} if used in item
+     * override function to return texture that will be used for the item.
      */
     interface ItemIconOverrideFunction {
         (item: ItemInstance, isModUi: boolean): void | Item.TextureData
     }
     /**
-     * Function used in "ItemNameOverride" callback
+     * Function used in "ItemNameOverride" callback.
      * @param item information about item that is used in override function
      * @param translation translated item name
      * @param name original item name
-     * @returns void if used in callback, string if used in item override
-     * function to return new name that will be displayed
+     * @returns Nothing if used in callback, string if used in item override
+     * function to return new name that will be displayed.
      */
     interface ItemNameOverrideFunction {
         (item: ItemInstance, translation: string, name: string): void | string;
     }
     /**
-     * Function used in "ItemUseNoTarget" callback
+     * Function used in "ItemUseNoTarget" callback.
      * @param item item that was in the player's hand when the event occurred
      * @param ticks amount of ticks player kept touching screen
      */
@@ -7814,7 +7978,7 @@ export namespace Callback {
         (item: ItemInstance, player: number): void
     }
     /**
-     * Function used in "ItemUsingReleased" callback
+     * Function used in "ItemUsingReleased" callback.
      * @param item item that was in the player's hand when the event occurred
      * @param ticks amount of ticks left to the specified max use duration value
      */
@@ -7822,26 +7986,26 @@ export namespace Callback {
         (item: ItemInstance, ticks: number, player: number): void
     }
     /**
-     * Function used in "ItemUsingComplete" callback
+     * Function used in "ItemUsingComplete" callback.
      * @param item item that was in the player's hand when the event occurred
      */
     interface ItemUsingCompleteFunction {
         (item: ItemInstance, player: number): void
     }
     /**
-     * Function used in "ItemDispensed" callback
+     * Function used in "ItemDispensed" callback.
      * @param coords full coords object, where the main coords are the position of the dispenser block,
      * `relative` ones are the position of the block to which the dispenser is pointed,
      * and `vec` are the coords for the item to be dropped at
      * @param item item that was dispensed
      * @param region BlockSource object
-     * @param slot numeric id of the slot from which the item was dispensed
+     * @param slot numeric ID of the slot from which the item was dispensed
      */
     interface ItemDispensedFunction {
         (coords: Callback.ItemUseCoordinates, item: ItemInstance, region: BlockSource, slot: number): void
     }
     /**
-     * Function used in "NativeGuiChanged" callback
+     * Function used in "NativeGuiChanged" callback.
      * @param screenName current screen name
      * @param lastScreenName previous screen name
      * @param isPushEvent if true, the new screen was pushed on the Minecraft
@@ -7851,14 +8015,14 @@ export namespace Callback {
         (screenName: string, lastScreenName: string, isPushEvent: boolean): void
     }
     /**
-     * Function used in all generation callbacks
+     * Function used in all generation callbacks.
      * @param chunkX chunk X coordinate. Multiply by 16 to receive corner block
      * coordinates
      * @param chunkY chunk Y coordinate. Multiply by 16 to receive corner block
      * coordinates
      * @param random java.util.Random object that should be used for generation
      * process. Already seeded by appropriate values
-     * @param dimensionId current dimension's numeric id
+     * @param dimensionId current dimension's numeric ID
      * @param chunkSeed chunk-specific seed to use in chunk random generation
      * @param chunkSeed world-specific seed to use in chunk generation
      * @param dimensionSeed dimension-specific seed to use in chunk generation
@@ -7868,14 +8032,14 @@ export namespace Callback {
             dimensionId: number, chunkSeed: number, worldSeed: number, dimensionSeed: number): void
     }
     /**
-     * Function used in "ReadSaves" and "WriteSaves" callbacks
-     * Avoid modifying values directly, consider using [[Saver]] instead
+     * Function used in "ReadSaves" and "WriteSaves" callbacks.
+     * Avoid modifying values directly, consider using {@link Saver} instead.
      */
     interface SavesFunction {
         (globalScope: object): void
     }
     /**
-     * Function used in "CustomBlockTessellation" callback
+     * Function used in "CustomBlockTessellation" callback.
      * @param api object used to manipulate block rendering process
      * @param coords rendering block coordinates
      * @param block block information
@@ -7885,50 +8049,50 @@ export namespace Callback {
         (api: BlockRenderer.RenderAPI, coords: Vector, block: Tile, b: boolean): void
     }
 	/**
-     * Function used in "ServerPlayerTick" callback
-     * @param playerUid player entity unique id
+     * Function used in "ServerPlayerTick" callback.
+     * @param playerUid player entity unique ID
      * @param isPlayerDead is following player dead
      */
     interface ServerPlayerTickFunction {
         (playerUid: number, isPlayerDead?: boolean): void
     }
     /**
-     * Function used in "CustomDimensionTransfer" callback
+     * Function used in "CustomDimensionTransfer" callback.
      * @param entity entity that was transferred between dimensions
-     * @param from id of the dimension the entity was transferred from
-     * @param to id of the dimension the entity was transferred to
+     * @param from ID of the dimension the entity was transferred from
+     * @param to ID of the dimension the entity was transferred to
      */
     interface CustomDimensionTransferFunction {
     	(entity: number, from: number, to: number): void
     }
     /**
-     * Function used in "ConnectingToHost" callback
+     * Function used in "ConnectingToHost" callback.
      */
     interface ConnectingToHostFunction {
         (host: string, someInt: number, port: number): void
     }
     /**
-     * Function used in "DimensionUnloaded" callback
+     * Function used in "DimensionUnloaded" callback.
      */
     interface DimensionUnloadedFunction {
         (dimensionId: number): void
     }
     /**
-     * Function used in "SystemKeyEventDispatched" callback
+     * Function used in "SystemKeyEventDispatched" callback.
      * @todo understand the meaning of the params
      */
     interface SystemKeyEventDispatchedFunction {
         (someInt: number, someInt2: number): void
     }
     /**
-     * Function used in "LevelLoaded" and "LevelPreLoaded" callbacks
+     * Function used in "LevelLoaded" and "LevelPreLoaded" callbacks.
      * @todo understand param's meaning
      */
     interface LevelLoadedFunction {
         (someBool: boolean): void
     }
     /**
-     * Function used in "EntityPickUpDrop" callback
+     * Function used in "EntityPickUpDrop" callback.
      * @param entity entity that picked up the item
      * (this callback is currently called only for players)
      * @param dropEntity dropped item's entity
@@ -7939,87 +8103,87 @@ export namespace Callback {
         (entity: number, dropEntity: number, dropStack: ItemInstance, count: number)
     }
     /**
-     * Function used in "ServerPlayerLoaded" and "ServerPlayerLeft" callback
-     * @param player unique id of the player entity, that has been connected to server
+     * Function used in "ServerPlayerLoaded" and "ServerPlayerLeft" callback.
+     * @param player unique ID of the player entity, that has been connected to server
      */
     interface PlayerFunction {
         (player: number): void
     }
     /**
-     * Function used in "GenerateCustomDimensionChunk" callback
+     * Function used in "GenerateCustomDimensionChunk" callback.
      */
     interface GenerateCustomDimensionChunkFunction {
         (chunkX: number, chunkZ: number, random: java.util.Random, dimensionId: number): void
     }
     /**
-     * Object containing hit coordinates and information about hit entity/block
+     * Object containing hit coordinates and information about hit entity/block.
      */
     interface ProjectileHitTarget {
         /**
-         * Exact hit position x
+         * Exact hit position x.
          */
         x: number,
         /**
-         * Exact hit position y
+         * Exact hit position y.
          */
         y: number,
         /**
-         * Exact hit position z
+         * Exact hit position z.
          */
         z: number,
         /**
-         * If an entity was hit, entity unique id, -1 otherwise
+         * If an entity was hit, entity unique ID, `-1` otherwise.
          */
         entity: number,
         /**
-         * Coordinates and side of the hit block or null if an entity was hit
+         * Coordinates and side of the hit block or null if an entity was hit.
          */
         coords: Nullable<ItemUseCoordinates>
     }
     /**
      * Object used in some callbacks for coordinate set with side information
-     * and relative coordinates set
+     * and relative coordinates set.
      */
     interface ItemUseCoordinates extends BlockPosition {
         /**
          * Relative coordinates, coordinates of the block to the specified side
-         * of current block
+         * of current block.
          */
         relative: Vector,
         /**
          * Exact touch point, absolute point coordinates. Used only in "ItemUse"
-         * callback
+         * callback.
          */
         vec?: Vector
     }
 }
 /**
- * Namespace used to manipulate minecraft commands
+ * Namespace used to manipulate minecraft commands.
  */
 export namespace Commands {
     /**
-     * Executes specified command
+     * Executes specified command.
      * @param command command to be executed
-     * @returns error message or null if the command was run successfully
+     * @returns Error message or null if the command was run successfully.
      */
     function exec(command: string): Nullable<string>;
     /**
      * Executes specified command using specified coordinates as command
-     * location for all relative calculations
+     * location for all relative calculations.
      * @param command command to be executed
-     * @returns error message or null if the command was run successfully
+     * @returns Error message or null if the command was run successfully.
      */
     function execAt(command: string, x: number, y: number, z: number): Nullable<string>;
 }
 /**
- * Json configuration file reading/writing utility
+ * Json configuration file reading/writing utility.
  */
 export class Config extends com.zhekasmirnov.innercore.mod.build.Config {
     static class: java.lang.Class<Config>;
 }
 export namespace Config {
     /**
-     * Class representing config value with its path withing Config object
+     * Class representing config value with it's path withing Config object.
      */
     class ConfigValue extends com.zhekasmirnov.innercore.mod.build.Config.ConfigValue {
         static class: java.lang.Class<ConfigValue>;
@@ -8028,165 +8192,167 @@ export namespace Config {
 /**
  * Class used to create custom biomes. Note that Minecraft has a limit of 256 biomes
  * and there are already more than 100 vanilla biomes, so do not overuse
- * this functionality. See {@page Biomes}
+ * this functionality.
  */
 export class CustomBiome {
     /**
-     * @returns [[java.util.HashMap]] object instance, with all
-     * custom biomes registered by every mod
+     * @returns Object instance, with all custom
+     * biomes registered by every mod.
      */
     static getAllCustomBiomes(): java.util.Map<String, CustomBiome>;
     /**
-     * @returns whether biome is invalid
+     * @returns Whether biome is invalid.
      */
     isInvalid(): boolean;
     /**
-     * Crates a new custom biome with specified string identifier
+     * Crates a new custom biome with specified string identifier.
      * @param name string identifier of the biome
      */
     constructor(name: string);
     /**
-     * custom biome numeric id
+     * custom biome numeric ID.
      */
     readonly id: number;
     /**
-     * Custom biome name
+     * Custom biome name.
      */
     readonly name: string;
     /**
      * Pointer to biome's native object,
-     * represented as long number
+     * represented as long number.
      */
     readonly pointer: number;
     /**
      * Sets biome's grass color. Grass color is interpolated on the bounds of
-     * the biome
+     * the biome.
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setGrassColor(r: number, g: number, b: number): CustomBiome;
     /**
      * Sets biome's grass color. Grass color is interpolated on the bounds of
-     * the biome
+     * the biome.
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setGrassColor(color: number): CustomBiome;
     /**
-     * Sets biome's sky color
+     * Sets biome's sky color.
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSkyColor(r: number, g: number, b: number): CustomBiome;
     /**
-     * Sets biome's sky color
+     * Sets biome's sky color.
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSkyColor(color: number): CustomBiome;
     /**
-     * Sets biome's foliage color
+     * Sets biome's foliage color.
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setFoliageColor(r: number, g: number, b: number): CustomBiome;
     /**
-     * Sets biome's foliage color
+     * Sets biome's foliage color.
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setFoliageColor(color: number): CustomBiome;
     /**
-     * Sets biome's water color
+     * Sets biome's water color.
      * @param r red color component, value from 0 to 1
      * @param g green color component, value from 0 to 1
      * @param b blue color component, value from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setWaterColor(r: number, g: number, b: number): CustomBiome;
     /**
-     * Sets biome's water color
+     * Sets biome's water color.
      * @param color integer color value (you can specify it using hex value)
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setWaterColor(color: number): CustomBiome;
     /**
-     * Sets biome's temperature and downfall
+     * Sets biome's temperature and downfall.
      * @param temperature temperature value, from 0 to 1
      * @param downfall downfall value, from 0 to 1
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setTemperatureAndDownfall(temperature: number, downfall: number): CustomBiome;
     /**
-     * Specifies the block that will cover the biome. E.g. most of the biomes
+     * Specifies the block that will cover the biome; e.g., most of the biomes
      * use grass as cover block, though some of the biomes use other blocks
-     * (sand, ice, etc.)
-     * @param id block's tile id
+     * (sand, ice, etc.).
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setCoverBlock(id: number, data: number): CustomBiome;
     /**
-     * Specifies the block that will be under the covering block of the biome.
-     * E.g. most of the biomes use dirt as cover block,
-     * though some of the biomes use other blocks
-     * @param id block's tile id
+     * Specifies the block that will be under the covering block of the biome;
+     * e.g., most of the biomes use dirt as cover block,
+     * though some of the biomes use other blocks.
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSurfaceBlock(id: number, data: number): CustomBiome;
     /**
-     * Sets the block that fills the terrain. Vanilla biomes use stone filling
-     * @param id block's tile id
+     * Sets the block that fills the terrain. Vanilla biomes use stone filling.
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setFillingBlock(id: number, data: number): CustomBiome;
     /**
      * Sets the block that fills the floor at the bottom of the sea or the ocean.
-     * Vanilla biomes use gravel or stone filling
-     * @param id block's tile id
+     * Vanilla biomes use gravel or stone filling.
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSeaFloorBlock(id: number, data: number): CustomBiome;
     /**
-     * This method is mapped on native parameter with the same name and its
-     * effect is currently not known
-     * @param id block's tile id
+     * Specifies the block that will cover the biome. E.g. most of the biomes
+     * use grass as cover block, though some of the biomes use other blocks
+     * (sand, ice, etc.).
+     * @param id block's tile ID
      * @param data block data
-     * @returns reference to itself to be used in sequential calls
-     * @deprecated use [[CustomBiome.setSeaFloorBlock]] instead
+     * @returns Reference to itself to be used in sequential calls.
+     * @deprecated Use {@link CustomBiome.setSurfaceBlock} instead.
      */
     setAdditionalBlock(id: number, data: number): CustomBiome;
     /**
-     * Sets the average depth of the see floor in this biome.
-     * @param depth depth of the see floor by Y-axis
-     * @returns reference to itself to be used in sequential calls
+     * Sets the average depth of the sea floor in this biome.
+     * @param depth depth of the see floor by Y-axis.
+     * @returns Reference to itself to be used in sequential calls.
      */
     setSeaFloorDepth(depth: number): CustomBiome;
     /**
-     * This method is mapped on native parameter with the same name and its
-     * effect is currently not known
-     * @param param some integer parameter. Default value is 7
-     * @returns reference to itself to be used in sequential calls
-     * @deprecated use [[CustomBiome.setSeaFloorDepth]]
+     * Sets the average depth of the something in this biome.
+     * @param param some integer parameter.
+     * @returns Reference to itself to be used in sequential calls.
+     * @default 7
+     * @deprecated Use {@link CustomBiome.setSeaFloorDepth} instead.
      */
     setSurfaceParam(param: number): CustomBiome;
     /**
      * Defines the server-side biome params from given JSON string.
-     * Throws [[java.lang.IllegalArgumentException]] if the string cannot be parsed.
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
+     * @throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
+     * @example
+     * Many thanks to DansZbar2 for the example!
      * ```js
-     * // many thanks to DansZbar2 for the example
-     * var cherry = new CustomBiome("environmental_cherry");
-     * cherry.setServerJson(JSON.stringify({
+     * const CHERRY_BIOME = new CustomBiome("environmental_cherry");
+     * CHERRY_BIOME.setServerJson(JSON.stringify({
      *     "minecraft:climate": {
      *        "downfall": 0.0,
      *        "snow_accumulation": [ 0.0, 0.0 ],
@@ -8216,7 +8382,7 @@ export class CustomBiome {
      *        "generate_for_climates": [
      *            [ "cold", 5 ],
      *            [ "medium", 20 ],
-     *            [ "warm", 35 ],
+     *            [ "warm", 35 ]
      *        ]
      *     }
      * }));
@@ -8225,17 +8391,19 @@ export class CustomBiome {
     setServerJson(json: string): CustomBiome;
     /**
      * Defines the client-side biome params from given JSON string.
-     * Throws [[java.lang.IllegalArgumentException]] if the string cannot be parsed.
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
+     * @throws {@link java.lang.IllegalArgumentException} if the string cannot be parsed.
+     * @example
+     * Many thanks to DansZbar2 for the example!
      * ```js
-     * // many thanks to DansZbar2 for the example
-     * var cherry = new CustomBiome("environmental_cherry");
-     * cherry.setClientJson(JSON.stringify({
+     * const CHERRY_BIOME = new CustomBiome("environmental_cherry");
+     * CHERRY_BIOME.setClientJson(JSON.stringify({
      *     "water_surface_color": "#d176e1",
      *     "water_fog_color": "#a35dc2",
      *     "water_surface_transparency": 0.7,
      *     "water_fog_distance": 11,
-     *     "fog_identifier": "environmental:environmental_cherry" // custom fog defined in the addon
+     *     // custom fog defined in the addon
+     *     "fog_identifier": "environmental:environmental_cherry"
      * }));
      * ```
      */
@@ -8247,133 +8415,136 @@ export class CustomBiome {
  */
 export namespace CustomEnchant {
     /**
-     * Object returned by [[CustomEnchant.newEnchant]] method.
-     * Used to configure different custom enchantment behaviors
+     * Object returned by {@link CustomEnchant.newEnchant} method.
+     * Used to configure different custom enchantment behaviors.
      */
     interface EnchantSetupInterface {
         /**
-         * The numeric id of the following enchantment
+         * The numeric ID of the following enchantment
          * to be used in different operations.
-         * This id will not change after the first generation,
-         * same as it works with blocks' and items' ids.
+         * This ID will not change after the first generation,
+         * same as it works with blocks' and items' IDs.
          */
         readonly id: number;
         /**
          * Sets the following enchantment frequency, possibly used in treasures.
-         * Default value is 3
-         * @returns reference to itself to be used in sequential calls
+         * @default 3
+         * @returns Reference to itself to be used in sequential calls.
          */
         setFrequency(freq: number): EnchantSetupInterface;
         /**
          * Sets whether the following enchantment will be able
          * to be found in dungeon chests or not.
-         * Default value is true.
-         * @returns reference to itself to be used in sequential calls
+         * @default true
+         * @returns Reference to itself to be used in sequential calls.
          */
         setIsLootable(lootable: boolean): EnchantSetupInterface;
         /**
          * Sets whether the following enchantment will be able
          * to be received on the enchanting table or not.
-         * Default value is true.
-         * @returns reference to itself to be used in sequential calls
+         * @default true
+         * @returns Reference to itself to be used in sequential calls.
          */
         setIsDiscoverable(discoverable: boolean): EnchantSetupInterface;
         /**
          * Sets whether the following enchantment will be able
          * to be caught during fishing as a treasure, or not.
-         * Default value is false.
-         * @returns reference to itself to be used in sequential calls
+         * @default false
+         * @returns Reference to itself to be used in sequential calls.
          */
         setIsTreasure(treasure: boolean): EnchantSetupInterface;
         /**
          * Sets the mask of items, that the following enchantment can be applied to,
-         * paired parameter for item is enchant slot, default is -1 = 0xFFFFFFFF - all
-         * @returns reference to itself to be used in sequential calls
+         * paired parameter for item is enchant slot.
+         * @returns Reference to itself to be used in sequential calls.
+         * @default -1 = 0xFFFFFFFF // all
          */
         setMask(mask: number): EnchantSetupInterface;
         /**
          * Sets minimum and maximum level, that the following enchantment
          * will be able to have in legal conditions.
-         * Default is 1-5
-         * @returns reference to itself to be used in sequential calls
+         * @default min: 1, max: 5
+         * @returns Reference to itself to be used in sequential calls.
          */
         setMinMaxLevel(min: number, max: number): EnchantSetupInterface;
         /**
          * Sets linear dependency of enchant cost by level,
-         * the formula is `level * b + c`
-         * @returns reference to itself to be used in sequential calls
+         * the formula is `level * b + c`.
+         * @returns Reference to itself to be used in sequential calls.
          */
         setMinMaxCost(bMin: number, cMin: number, bMax: number, cMax: number): EnchantSetupInterface;
         /**
          * Defines the function that will be called, when item with following enchantment is used for attack.
          * The function must return bonus damage dealt to the victim.
-         * NOTE: this method is highly experimental right now
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
+         * @beta This method is highly experimental right now.
          */
         setAttackDamageBonusProvider(func: AttackDamageBonusProvider): EnchantSetupInterface;
         /**
          * Defines the function that will be called after the item with following enchantment is used for attack.
-         * NOTE: this method is highly experimental right now
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
+         * @beta This method is highly experimental right now.
          */
         setPostAttackCallback(func: DamageCallback): EnchantSetupInterface;
         /**
          * Defines the function that will be called, when the entity wearing item
          * with following enchantment, is hit.
          * The function must return bonus protection value.
-         * NOTE: this method is highly experimental right now
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
+         * @beta This method is highly experimental right now.
          */
         setProtectionBonusProvider(func: ProtectionBonusProvider): EnchantSetupInterface;
         /**
          * Defines the function that will be called, when the entity wearing item
          * with following enchantment, is hit.
-         * NOTE: this method is highly experimental right now
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
+         * @beta This method is highly experimental right now.
          */
         setPostHurtCallback(func: DamageCallback): EnchantSetupInterface;
     }
     /**
-     * Registers new custom enchantment from given name id and displayed name
-     * @param nameID internal string id of the enchantment
+     * Registers new custom enchantment from given name ID and displayed name.
+     * @param nameID internal string ID of the enchantment
      * @param displayedName enchantment name that will be displayed in the
      * tooltips of the items having this enchant.
-     * Use [[Translation]] module to make localization of the displayed name
-     * @returns object to work with different enchantment behaviors
+     * Use {@link Translation} module to make localization of the displayed name
+     * @returns Object to work with different enchantment behaviors.
      */
     function newEnchant(nameID: string, displayedName: string): EnchantSetupInterface;
     /**
-     * Function interface used in [[EnchantSetupInterface.setAttackDamageBonusProvider]] method
+     * Function interface used in
+     * {@link CustomEnchant.EnchantSetupInterface.setAttackDamageBonusProvider|EnchantSetupInterface.setAttackDamageBonusProvider} method.
      */
     interface AttackDamageBonusProvider {
         (damage: number, entity: number): number;
     }
     /**
      * Function interface used in
-     * [[EnchantSetupInterface.setPostAttackCallback]] and
-     * [[EnchantSetupInterface.setPostHurtCallback]] methods
+     * {@link CustomEnchant.EnchantSetupInterface.setPostAttackCallback|EnchantSetupInterface.setPostAttackCallback} and
+     * {@link CustomEnchant.EnchantSetupInterface.setPostHurtCallback|EnchantSetupInterface.setPostHurtCallback} methods.
      */
     interface DamageCallback {
         (item: ItemInstance, damage: number, entity1: number, entity2: number): void;
     }
     /**
-     * Function interface used in [[EnchantSetupInterface.setProtectionBonusProvider]] method
+     * Function interface used in
+     * {@link CustomEnchant.EnchantSetupInterface.setProtectionBonusProvider|EnchantSetupInterface.setProtectionBonusProvider} method.
      */
     interface ProtectionBonusProvider {
         (damage: number, damageType: number, entity: number): number;
     }
 }
 /**
- * Defines some useful methods for debugging
+ * Defines some useful methods for debugging.
  */
 export namespace Debug {
     /**
-     * @returns current system time in milliseconds
+     * @returns Current system time in milliseconds.
      */
     function sysTime(): number;
     /**
-     * Spawns vanilla debug particle on the specified coordinates
-     * @param id particle type id, should be one of the [[Native.ParticleType]]
+     * Spawns vanilla debug particle on the specified coordinates.
+     * @param id particle type ID, should be one of the {@link EParticleType}
      * @param vx x velocity
      * @param vy y velocity
      * @param vz y velocity
@@ -8381,40 +8552,43 @@ export namespace Debug {
      */
     function addParticle(id: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data: number): void;
     /**
-     * Writes general debug message (in green) to the chat
+     * Writes general debug message (in green) to the chat.
      * @param message message to be displayed
      */
     function message(message: string): void;
     /**
-     * Writes warning debug message (in gold) to the chat
+     * Writes warning debug message (in gold) to the chat.
      * @param message message to be displayed
      */
     function warning(message: string): void;
     /**
-     * Writes error debug message (in red) to the chat
+     * Writes error debug message (in red) to the chat.
      * @param message message to be displayed
      */
     function error(message: string): void;
     /**
      * Writes several comma-separated values to the chat as a general debug
-     * message, serializing javascript objects if possible
+     * message, serializing javascript objects if possible.
      * @param args messages to be displayed
      */
     function m(...args: any[]): void;
     /**
      * Writes several values in JSON format to the copyable alert window text view,
-     * serializing javascript objects if possible
+     * serializing javascript objects if possible.
      * @param args messages to be displayed
      */
     function big(...args: any[]): void;
     /**
-     * Displays an AlertDialog with given title and bitmap
+     * Displays an AlertDialog with given title and bitmap.
      * @param bitmap android.graphics.Bitmap object of the bitmap to be
      * displayed
      * @param title title of the AlertDialog
      */
     function bitmap(bitmap: android.graphics.Bitmap, title: string): void;
 }
+/**
+ * @deprecated Use behavior packs to creating entities.
+ */
 export namespace MobRegistry {
     namespace customEntities { }
     namespace loadedEntities { }
@@ -8426,6 +8600,10 @@ export namespace MobRegistry {
     function registerEntityRemove(entity: number): any;
     function resetEngine(): any;
 }
+/**
+ * @deprecated Use behavior packs to register spawning
+ * entities in server or use callbacks.
+ */
 export namespace MobSpawnRegistry {
     namespace spawnData { }
     function registerSpawn(entityType: any, rarity: number, condition: any, denyNaturalDespawn: any): any;
@@ -8436,121 +8614,131 @@ export namespace MobSpawnRegistry {
     function tick(): any;
     function onChunkGenerated(x: number, z: number): any;
 }
+/**
+ * @deprecated Use resource packs to customize entities
+ * appereance nor {@link Render["class"]} with {@link AttachableRender}.
+ */
 export function EntityModelWatcher(entity: number, model: any): any;
+/**
+ * @deprecated Use behavior packs to customize entities
+ * intellect nor consider to use {@link Entity.getPathNavigation}.
+ */
 export function EntityAIWatcher(customPrototype: any): any;
 /**
- * Namespace used to create and manipulate custom dimensions
+ * Namespace used to create and manipulate custom dimensions.
  */
 export namespace Dimensions {
     /**
-     * Class representing custom dimension
+     * Class representing custom dimension.
      */
     class CustomDimension {
         /**
-         * Constructs a new dimension with specified name and preferred id
+         * Constructs a new dimension with specified name and preferred ID.
          * @param name dimension name, can be used to get dimension via
-         * [[Dimensions.getDimensionByName]] call
-         * @param preferredId preferred dimension id. If id is already occupied
+         * {@link Dimensions.getDimensionByName} call
+         * @param preferredId preferred dimension ID. If ID is already occupied
          * by some another dimension, constructor will look for the next empty
-         * dimension id and assign it to the current dimension
+         * dimension ID and assign it to the current dimension
          */
         constructor(name: string, preferredId: number);
         /**
-         * Custom dimension id
+         * Custom dimension ID.
          */
         id: number;
         /**
-         * Sets custom landscape generator
+         * Sets custom landscape generator.
          * @param generator custom landscape generator used for current
          * dimension
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setGenerator(generator: CustomGenerator): CustomDimension;
         /**
          * Specifies whether the sky produces light (like in overworld) or not
-         * (like in the End or Nether). By default this value is true
+         * (like in the End or Nether).
          * @param hasSkyLight if true, the sky produces light in the dimension
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
+         * @default true
          */
         setHasSkyLight(hasSkyLight: boolean): CustomDimension;
         /**
-         * @returns whether the sky produces light in the current dimension
+         * @returns Whether the sky produces light in the current dimension.
          */
         hasSkyLight(): boolean;
         /**
          * Sets sky color for the dimension in the RGB format. Default
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setSkyColor(r: number, g: number, b: number): CustomDimension;
         /**
-         * Resets sky color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets sky color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetSkyColor(): CustomDimension;
         /**
          * Sets fog color for the dimension in the RGB format. Default
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setFogColor(r: number, g: number, b: number): CustomDimension;
         /**
-         * Resets fog color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets fog color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetFogColor(): CustomDimension;
         /**
          * Sets clouds color for the dimension in the RGB format. Default
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setCloudColor(r: number, g: number, b: number): CustomDimension;
         /**
-         * Resets clouds color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets clouds color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetCloudColor(): CustomDimension;
         /**
          * Sets sunset sky color for the dimension in the RGB format. Default
-         * color is as in the Overworld
+         * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
          * @param b blue color component, value from 0 to 1
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setSunsetColor(r: number, g: number, b: number): CustomDimension;
         /**
-         * Resets sunset sky color to the default value
-         * @returns reference to itself to be used in sequential calls
+         * Resets sunset sky color to the default value.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetSunsetColor(): CustomDimension;
         /**
-         * Sets fog displaying distance
+         * Sets fog displaying distance.
          * @param start nearest fog distance
          * @param end farthest fog distance
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setFogDistance(start: number, end: number): CustomDimension;
         /**
-         * Resets fog displaying distance
+         * Resets fog displaying distance.
+         * @returns Reference to itself to be used in sequential calls.
          */
         resetFogDistance(): CustomDimension;
     }
     /**
-     * Class representing landscape generator used for the dimension
+     * Class representing landscape generator used for the dimension.
      */
     class CustomGenerator {
         /**
-         * Creates a new [[CustomGenerator]] instance using specified base type
+         * Creates a new {@link Dimensions.CustomGenerator} instance using specified base type.
          * @param baseType base generator type constant, can be from 0 to 4. 0
          * and 1 represent overworld generator, 2 represents flat world
          * generator, 3 represents nether generator and 4 represents end
@@ -8558,78 +8746,79 @@ export namespace Dimensions {
          */
         constructor(baseType: number);
         /**
-         * Creates a new [[CustomGenerator]] instance using specified base type
+         * Creates a new {@link Dimensions.CustomGenerator} instance using specified base type.
          * @param baseType base generator type constant, can be one of the
          * following: "overworld", "overworld1", "flat", "nether", "end"
          */
         constructor(baseType: string);
         /**
          * Specifies whether to use vanilla biome surface cover blocks (grass,
-         * sand, podzol, etc.)
-         * @param value if true, vanilla surface will be generated, default
-         * value is false
-         * @returns reference to itself to be used in sequential calls
+         * sand, podzol, etc.).
+         * @param value if `true`, vanilla surface will be generated
+         * @default false
+         * @returns Reference to itself to be used in sequential calls.
          */
         setBuildVanillaSurfaces(value: boolean): CustomGenerator;
         /**
-         * Specifies whether to generate minecraft vanilla structures
-         * @param value if true, vanilla structures will be generated, default
-         * value is false
-         * @returns reference to itself to be used in sequential calls
+         * Specifies whether to generate minecraft vanilla structures.
+         * @param value if `true`, vanilla structures will be generated
+         * @default false
+         * @returns Reference to itself to be used in sequential calls.
          */
         setGenerateVanillaStructures(value: boolean): CustomGenerator;
         /**
-         * Specifies whether to use mod's generation callbacks
-         * @param value if true, mod generation will be used, default
-         * value is true
-         * @returns reference to itself to be used in sequential calls
+         * Specifies whether to use mod's generation callbacks.
+         * @param value if `true`, mod generation will be used
+         * @default true
+         * @returns Reference to itself to be used in sequential calls.
          */
         setGenerateModStructures(value: boolean): CustomGenerator;
         /**
-         * Sets terrain generator object used for the landscape generation
+         * Sets terrain generator object used for the landscape generation.
          * @param generator terrain generator to be used with current landscape
          * generator or removes terrain generator, if the value is null
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setTerrainGenerator(generator: Nullable<AbstractTerrainGenerator>): CustomGenerator;
         /**
-         * Specifies which of the generation [[Callback]]s to call, -1 to call
-         * no mods generation, 0 to call overworld generation callback, 1 for nether,
-         * 2 for end generation callbacks
+         * Specifies which of the generation {@link Callback|Callbacks} to call, `-1` to call
+         * no mods generation, `0` to call overworld generation callback, `1` for nether,
+         * `2` for end generation callbacks.
          * @param id generation callback to call
+         * @returns Reference to itself to be used in sequential calls.
          */
         setModGenerationBaseDimension(id: number): CustomGenerator;
         /**
-         * Disables mods generation in current generator
+         * Disables mods generation in current generator.
+         * @returns Reference to itself to be used in sequential calls.
          */
         removeModGenerationBaseDimension(): CustomGenerator;
     }
     /**
      * Interface representing terrain generator. All terrain generators found
-     * in Inner Core API implement this interface
+     * in Inner Core API implement this interface.
      */
-    interface AbstractTerrainGenerator {
-    }
+    interface AbstractTerrainGenerator {}
     /**
-     * Class representing terrain that consists of single biome
+     * Class representing terrain that consists of single biome.
      */
     class MonoBiomeTerrainGenerator implements AbstractTerrainGenerator {
         /**
-         * Constructs new [[MonoBiomeTerrainGenerator]] instance with no terrain
-         * layers
+         * Constructs new {@link Dimensions.MonoBiomeTerrainGenerator|MonoBiomeTerrainGenerator}
+         * instance with no terrain layers.
          */
         constructor();
         addTerrainLayer(minY: number, maxY: number): TerrainLayer;
         /**
-         * Sets base biome for the current terrain
-         * @param id id of the biome to be used as a single biome of the terrain
+         * Sets base biome for the current terrain.
+         * @param id ID of the biome to be used as a single biome of the terrain
          * layer
          */
         setBaseBiome(id: number): MonoBiomeTerrainGenerator;
     }
     /**
      * Class representing single terrain layer that may consist of several noise
-     * layers
+     * layers.
      */
     interface TerrainLayer {
         addNewMaterial(generator: NoiseGenerator, priority: number): TerrainMaterial;
@@ -8639,7 +8828,7 @@ export namespace Dimensions {
         getMainMaterial(): TerrainMaterial;
     }
     /**
-     * Class representing material that is used to generate terrain layer
+     * Class representing material that is used to generate terrain layer.
      */
     interface TerrainMaterial {
         setBase(id: number, data: number): TerrainMaterial;
@@ -8651,12 +8840,12 @@ export namespace Dimensions {
     /**
      * Class representing noise conversion function. Used to define "density" of
      * the landscape at a given height. Values between nodes are interpolated
-     * linearly
+     * linearly.
      */
     class NoiseConversion {
         constructor();
         /**
-         * Adds a new node to the noise conversion function
+         * Adds a new node to the noise conversion function.
          * @param x value from 0 to 1 representing the height of the block in the
          * terrain layer
          * @param y landscape density at a given height, generally can be between
@@ -8665,7 +8854,7 @@ export namespace Dimensions {
         addNode(x: number, y: number): NoiseConversion;
     }
     /**
-     * Class representing multi-layer noise generator
+     * Class representing multi-layer noise generator.
      */
     class NoiseGenerator {
         constructor();
@@ -8673,7 +8862,7 @@ export namespace Dimensions {
         setConversion(conversion: NoiseConversion): NoiseGenerator;
     }
     /**
-     * Class representing single noise layer
+     * Class representing single noise layer.
      */
     class NoiseLayer {
         constructor();
@@ -8683,16 +8872,19 @@ export namespace Dimensions {
     type NoiseOctaveStringType = "perlin" | "gray" | "chess" | "sine_x" | "sine_y" | "sine_z" | "sine_xy" | "sine_yz" | "sine_xz" | "sine_xyz";
     /**
      * Class representing noise octave. Each noise layer consists of multiple
-     * noise octaves of different scale and weight
+     * noise octaves of different scale and weight.
      */
     class NoiseOctave {
         /**
-         * Creates a new noise octave of specified type
+         * Creates a new noise octave of specified type.
          * @param type numeric type constant or one of the following strings:
-         * **"perlin"** (0) is a general-purpose noise generator. Used to generate
-         * noise of completely random nature
+         *
+         * **"perlin"** (0) is a general-purpose noise generator.
+         *
+         * Used to generate noise of completely random nature
          * **"gray"** (1)
          * **"chess"** (2)
+         *
          * The following sine noises are used to generate sinusoidal noise.
          * Generally they should be used with some noise octaves of other types to avoid
          * too mathematical landscapes
@@ -8712,8 +8904,8 @@ export namespace Dimensions {
         setConversion(conversion: NoiseConversion): NoiseOctave;
     }
     /**
-     * Overrides default generator of vanilla dimension
-     * @param id vanilla dimension id, one of the [[Native.Dimension]]
+     * Overrides default generator of vanilla dimension.
+     * @param id vanilla dimension ID, one of the {@link EDimension}
      * values
      * @param generator custom landscape generator used for vanilla
      * dimension
@@ -8721,75 +8913,78 @@ export namespace Dimensions {
     function overrideGeneratorForVanillaDimension(id: number, generator: CustomGenerator): void;
     /**
      * @param name dimension name
-     * @returns dimension by its string name specified in
-     * [[CustomDimension.constructor]]
+     * @returns Dimension by it's string name specified in
+     * {@link Dimensions.CustomDimension|CustomDimension} constructor.
      */
     function getDimensionByName(name: string): CustomDimension;
     /**
-     * @param id dimension id
-     * @returns custom dimension by its numeric id
+     * @param id dimension ID
+     * @returns Custom dimension by it's numeric ID.
      */
     function getDimensionById(id: number): CustomDimension;
     /**
-     * @param id dimension id
-     * @returns true, if dimension is a limbo dimension. Limbo dimension is
+     * @param id dimension ID
+     * @returns `true`, if dimension is a limbo dimension; limbo dimension is
      * created by Horizon automatically if you try to teleport the player to
      * non-existing dimension
      */
     function isLimboId(id: number): boolean;
     /**
-     * Transfers specified entity to the dimension with specified id
-     * @param entity numeric id of the
-     * @param dimensionId numeric id of the dimension to transfer the entity to
+     * Transfers specified entity to the dimension with specified ID.
+     * @param entity numeric ID of the
+     * @param dimensionId numeric ID of the dimension to transfer the entity to
      */
     function transfer(entity: number, dimensionId: number): void;
     /**
-     * @returns JS object instance, containing all registered custom biomes
+     * @returns JS object instance, containing all registered custom biomes.
      */
-    function getAllRegisteredCustomBiomes(): {[key: string]: CustomBiome};
+    function getAllRegisteredCustomBiomes(): { [key: string]: CustomBiome };
     /**
      * Function used to simplify the creation of terrain generator by passing
-     * a json-like structure as a single generator parameter. For detailed
-     * explanations see {@See Custom Dimensions} page
+     * a json-like structure as a single generator parameter.
      * @param description object containing all the required generator information
      */
     function newGenerator(description: {
         /**
-         * Specifies base generator, see [[CustomGenerator.constructor]] for
-         * details
+         * Specifies base generator, see {@link Dimensions.CustomGenerator|CustomGenerator}
+         * constructor for details.
          */
         base?: number | string,
         /**
-         * Specifies whether to use vanilla biome surface cover blocks (grass,
-         * sand, podzol, etc.).
-         * See [[CustomGenerator.setBuildVanillaSurfaces]] for details
+         * Specifies whether to use vanilla biome surface cover blocks
+         * (grass, sand, podzol, etc.).
+         *
+         * See {@link Dimensions.CustomGenerator.setBuildVanillaSurfaces|setBuildVanillaSurfaces} for details.
          */
         buildVanillaSurfaces?: boolean,
         /**
          * Specifies whether to generate minecraft vanilla structures.
-         * See [[CustomGenerator.setGenerateVanillaStructures]] for details
+         *
+         * See {@link Dimensions.CustomGenerator.setGenerateVanillaStructures|setGenerateVanillaStructures} for details.
          */
         generateVanillaStructures?: boolean,
         /**
-         * Can be either string for an existing dimensions ("overworld",
-         * "nether", "end") or -1 to disable mods generation.
-         * See [[CustomGenerator.setModGenerationBaseDimension]] for details
+         * Can be either string for an existing dimensions (**"overworld"**,
+         * **"nether"**, **"end"**) or -1 to disable mods generation.
+         *
+         * See {@link Dimensions.CustomGenerator.setModGenerationBaseDimension|setModGenerationBaseDimension} for details.
          */
         modWorldgenDimension?: number | string,
         /**
          * Specifies what generator type to use. Default and the only currently
          * available option is "mono", that is equivalent to creating a
-         * [[MonoBiomeTerrainGenerator]]
+         * {@link MonoBiomeTerrainGenerator}.
          */
         type?: string,
         /**
-         * Sets base biome for the current terrain, applicable only to "mono"
+         * Sets base biome for the current terrain, applicable only to **"mono"**.
          */
         biome?: number,
         /**
-         * An array of terrain layers descriptions, each one representing its
-         * own terrain layer. See [[MonoBiomeTerrainGenerator.addTerrainLayer]]
-         * for detailed explanation
+         * An array of terrain layers descriptions, each one representing it's
+         * own terrain layer.
+         *
+         * See {@link Dimensions.MonoBiomeTerrainGenerator.addTerrainLayer|MonoBiomeTerrainGenerator.addTerrainLayer} for details.
          */
         layers?: TerrainLayerParams[]
     }): CustomGenerator;
@@ -8827,8 +9022,8 @@ export namespace Dimensions {
     }
     interface NoiseOctaveParams {
         /**
-         * Noise octave type, **"perlin"** is default one. See [[NoiseOctave.constructor]]
-         * for details
+         * Noise octave type, see {@link Dimensions.NoiseOctave["constructor"]} for details.
+         * @default "perlin"
          */
         type?: number | string,
         scale?: Vec3Data,
@@ -8852,41 +9047,39 @@ export namespace Dimensions {
 }
 /**
  * Module used to manipulate entities (mobs, drop, arrows, etc.) in the world.
- * Every entity has its unique numeric id which is often used across this module
- * as the first function parameter
+ * Every entity has it's unique numeric ID which is often used across this module
+ * as the first function parameter.
  */
 export namespace Entity {
     /**
-     * @returns an array of all loaded entities ids
+     * @returns An array of all loaded entities IDs.
      */
     function getAll(): number[];
     /**
-     * @returns an array of all loaded entities ids
-     * @deprecated Consider using [[Entity.getAll]] instead
+     * @returns An array of all loaded entities IDs.
+     * @deprecated Consider using {@link Entity.getAll} instead.
      */
     function getAllJS(): number[];
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
     function getExtra(ent: number, name: string): null;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function putExtra(ent: number, name: string, extra?: ItemExtraData): void;
+    function putExtra(ent: number, name: string, extra?: any): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
     function getExtraJson(ent: number, name: string): object;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead, or {@link Saver}.
      */
     function putExtraJson(ent: number, name: string, obj: object): void;
     /**
-     * Adds an effect to the mob
-     * @param effectId effect id, should be one
-     * one of [[Native.PotionEffect]] or [[EPotionEffect]] values.
-     * @returns whether the ]]
-     * values
+     * Adds an effect to the mob.
+     * @param effectId effect ID, should be one
+     * one of {@link EPotionEffect} values.
      * @param effectData effect amplifier
      * @param effectTime effect time in ticks
      * @param ambience if true, particles are ambient
@@ -8894,16 +9087,16 @@ export namespace Entity {
      */
     function addEffect(ent: number, effectId: number, effectData: number, effectTime: number, ambience?: boolean, particles?: boolean): void;
     /**
-     * Clears effect, applied to the mob
-     * @param id effect id, should be one of the [[Native.PotionEffect]]
+     * Clears effect, applied to the mob.
+     * @param id effect ID, should be one of the {@link EPotionEffect}
      */
     function clearEffect(ent: number, id: number): void;
     /**
-     * Clears all effects of the mob
+     * Clears all effects of the mob.
      */
     function clearEffects(ent: number): void;
     /**
-     * Damages entity
+     * Damages entity.
      * @param damage damage value
      * @param cause if specified, can be used as callback cause param
      * @param params additional params for the damage
@@ -8914,309 +9107,309 @@ export namespace Entity {
      */
     function damageEntity(ent: number, damage: number, cause?: number, params?: { attacker?: number, bool1?: boolean, bool2?: boolean }): void;
     /**
-     * @returns current dimension numeric id, one of the [[Native.Dimension]]
-     * values or custom dimension id
+     * @returns Current dimension numeric ID, one of the {@link EDimension}
+     * values or custom dimension ID.
      */
     function getDimension(ent: number): number;
     /**
-     * Adds specified health amount to the entity
+     * Adds specified health amount to the entity.
      * @param heal health to be added to entity, in half-hearts
      */
     function healEntity(ent: number, heal: number): void;
     /**
-     * @returns numeric entity type, one of the [[Native.EntityType]]
+     * @returns Numeric entity type, one of the {@link EEntityType}.
      */
     function getType(ent: number): number;
     /**
-     * @returns string type for entities defined via add-ons or numeric type for
-     * all the other entities
+     * @returns String type for entities defined via add-ons or numeric type for
+     * all the other entities.
      */
     function getTypeUniversal(ent: number): number | string;
     /**
-     * @returns string type for entities defined via add-ons, otherwise null
+     * @returns String type for entities defined via add-ons, otherwise null.
      */
     function getTypeAddon(ent: number): Nullable<string>;
     /**
-     * @returns compound tag for the specified entity
+     * @returns Compound tag for the specified entity.
      */
     function getCompoundTag(ent: number): NBT.CompoundTag;
     /**
-     * Sets compound tag for the specified entity
+     * Sets compound tag for the specified entity.
      */
     function setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
     /**
-     * Sets hitbox to the entity. Hitboxes define entities collisions
+     * Sets hitbox to the entity. Hitboxes define entities collisions.
      * @param w hitbox width and length
      * @param h hitbox height
      */
     function setHitbox(ent: number, w: number, h: number): void;
     /**
-     * @returns true if specified entity id is valid and entity with this id
-     * exists in the world
+     * @returns `true` if specified entity ID is valid and entity with this ID
+     * exists in the world.
      */
     function isExist(ent: number): boolean;
     /**
-     * Spawns vanilla entity on the specified coordinates
-     * @param type numeric entity type, one of the [[Native.EntityType]]
+     * Spawns vanilla entity on the specified coordinates.
+     * @param type numeric entity type, one of the {@link EEntityType}
      * @param skin skin to set for the entity. Leave empty or null to use
      * default skin of the mob
-     * @returns numeric id of spawn entity or -1 if entity was not created
+     * @returns Numeric ID of spawn entity or -1 if entity was not created.
      */
     function spawn(x: number, y: number, z: number, type: number, skin?: Nullable<string>): number;
     /**
      * Spawns custom entity on the specified coords. Allows to pass some values
-     * to controllers via extra param
-     * @param name custom entity string id
+     * to controllers via extra param.
+     * @param name custom entity string ID
      * @param extra object that contains some data for the controllers
      */
     function spawnCustom(name: string, x: number, y: number, z: number, extra?: object): CustomEntity;
     /**
-     * Same as [[Entity.spawnCustom]], but uses [[Vector]] object to represent
-     * coordinates
+     * Same as {@link Entity.spawnCustom}, but uses {@link Vector} object to represent
+     * coordinates.
      */
     function spawnCustomAtCoords(name: string, coords: Vector, extra?: any): CustomEntity;
     /**
-     * Same as [[Entity.spawn]], but uses [[Vector]] object to represent
-     * coordinates
+     * Same as {@link Entity.spawn}, but uses {@link Vector} object to represent
+     * coordinates.
      */
     function spawnAtCoords(coords: Vector, type: number, skin?: string): void;
     /**
-     * Removes entity from the world
+     * Removes entity from the world.
      */
     function remove(ent: number): void;
     /**
-     * @returns custom entity object by its numeric entity id
+     * @returns Custom entity object by it's numeric entity ID.
+     * @deprecated Unsupported usage, use behavior packs
+     * instead.
      */
     function getCustom(ent: number): CustomEntity;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead.
      */
     function getAge(ent: number): number;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead.
      */
     function setAge(ent: number, age: number): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes instead.
      */
     function getSkin(ent: number): string;
     /**
-     * Sets mob skin
+     * Sets mob skin.
      * @param skin skin name, full path in the resourcepack (mod assets)
+     * @deprecated Use attributes or resource packs instead.
      */
     function setSkin(ent: number, skin: string): void;
     /**
-     * Sets mob skin, uses [[Texture]] object
-     * @deprecated use [[Entity.setSkin]] instead
-     * @param texture
+     * Sets mob skin, uses {@link Texture} object.
+     * @deprecated Use attributes instead.
      */
     function setTexture(ent: number, texture: Texture): void;
     /**
-     * @returns entity render type, should be one of the
-     * [[Native.MobRenderType]] values
+     * @returns Entity render type, should be one of the
+     * {@link EMobRenderType} values.
      */
     function getRender(ent: number): number;
     /**
-     * Sets entity render type
+     * Sets entity render type.
      * @param render entity render type, should be one of the
-     * [[Native.MobRenderType]] values
+     * {@link EMobRenderType} values
      */
     function setRender(ent: number, render: number): void;
     /**
-     * Makes rider ride entity
+     * Makes rider ride entity.
      * @param entity ridden entity
      * @param rider rider entity
      */
     function rideAnimal(entity: number, rider: number): void;
     /**
-     * @returns entity custom name tag
+     * @returns Entity name tag or player name.
      */
     function getNameTag(ent: number): string;
     /**
-     * Sets custom entity tag. Custom entity tags are displayed above the
-     * entities and can be set by player using label
+     * Sets custom entity name tag. Custom entity tags are
+     * displayed above the entities and can be set by player
+     * using label.
      * @param tag name tag to be set to the entity
      */
     function setNameTag(ent: number, tag: string): void;
     /**
-     * Gets the attack target of current entity
-     * @returns target entity's unique id
+     * Gets the attack target of current entity.
+     * @returns Target entity's unique ID.
      */
     function getTarget(ent: number): number;
     /**
      * Sets the attack target for current entity. Works only for mobs that
-     * actually can attack
-     * @param target target entity's unique id
+     * actually can attack.
+     * @param target target entity's unique ID
      */
     function setTarget(ent: number, target: number): void;
     /**
-     * @returns true, if entity was immobilized
+     * @returns `true`, if entity was immobilized.
      */
     function getMobile(ent: number): boolean;
     /**
-     * Sets entity's immobile state
-     * @param mobile if true, entity can move, otherwise it is immobilized
+     * Sets entity's immobile state.
+     * @param mobile if `true`, entity can move, otherwise it is immobilized
      */
     function setMobile(ent: number, mobile: boolean): void;
     /**
-     * @returns true if entity is sneaking, false otherwise
+     * @returns `true` if entity is sneaking, `false` otherwise.
      */
     function getSneaking(ent: number): boolean;
     /**
-     * Sets entity's sneaking state
-     * @param sneak if true, entity becomes sneaking, else not
+     * Sets entity's sneaking state, supported slightly
+     * entities, resource pack render controlling it.
+     * @param sneak if `true`, entity becomes sneaking, else not
      */
     function setSneaking(ent: number, sneak: boolean): void;
     /**
-     * @returns entity that is riding the specified entity
+     * @returns Entity that is riding the specified entity.
      */
     function getRider(ent: number): number;
     /**
-     * @returns entity that is ridden by specified entity
+     * @returns Entity that is ridden by specified entity.
      */
     function getRiding(ent: number): number;
     /**
-     * Puts entity on fire
+     * Puts entity on fire.
      * @param fire duration (in ticks) of the fire
      * @param force should always be true
      */
     function setFire(ent: number, fire: number, force: boolean): void;
     /**
-     * @returns an object that allows to manipulate entity health
-     * @deprecated Consider using [[Entity.getHealth]], [[Entity.setHealth]],
-     * [[Entity.getMaxHealth]] and [[Entity.setMaxHealth]] instead
+     * @returns An object that allows to manipulate entity health.
+     * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
      */
     function health(ent: number): EntityHealth;
     /**
-     * @returns entity's current health value
+     * @returns Entity's current health value.
      */
     function getHealth(ent: number): number;
     /**
-     * Sets entity's current health value
+     * Sets entity's current health value.
      * @param health health value to be set
      */
     function setHealth(ent: number, health: number): void;
     /**
-     * @returns entity's maximum health value
+     * @returns Entity's maximum health value.
      */
     function getMaxHealth(ent: number): number;
     /**
-     * Sets entity's maximum health value
-     * @param maxHealth
+     * Sets entity's maximum health value.
      */
     function setMaxHealth(ent: number, health: number): void;
     /**
-     * Sets the specified coordinates as a new position for the entity. No
-     * checks are performed
+     * Sets the specified coordinates as a new position for the entity.
+     * No checks are performed.
      */
     function setPosition(ent: number, x: number, y: number, z: number): void;
     /**
-     * @returns entity position
+     * @returns Entity position.
      */
     function getPosition(ent: number): Vector;
     /**
-     * Updates current entity position by specified coordinates
+     * Updates current entity position by specified coordinates.
      */
     function addPosition(ent: number, x: number, y: number, z: number): void;
     /**
-     * Set current entity's velocity using velocity vector
-     * @param x velocity
-     * @param y velocity
-     * @param z velocity
+     * Set current entity's velocity using velocity vector.
      */
     function setVelocity(ent: number, x: number, y: number, z: number): void;
     /**
-     * Get current entity's velocity using velocity vector
-     * @returns [[Vector]] containing current entity's velocity
+     * Get current entity's velocity using velocity vector.
+     * @returns Containing current entity's velocity.
      */
     function getVelocity(ent: number): Vector;
     /**
-     * Updates current entity's velocity by specified value
+     * Updates current entity's velocity by specified value.
      */
     function addVelocity(ent: number, x: number, y: number, z: number): void;
     /**
-     * @returns distance in blocks between the two coordinate sets
+     * @returns Distance in blocks between the two coordinate sets.
      */
     function getDistanceBetweenCoords(coords1: Vector, coords2: Vector): number;
     /**
-     * @returns distance between specified entity and a fixed coordinate set
+     * @returns Distance between specified entity and a fixed coordinate set.
      */
     function getDistanceToCoords(ent: number, coords: Vector): number;
     /**
-     * @returns distance in blocks between two entities
+     * @returns Distance in blocks between two entities.
      */
     function getDistanceToEntity(ent1: number, ent2: number): number;
     /**
-     * @returns distance between player and entity, counting only x and z values
-     * (y value is ignored)
+     * @returns Distance between player and entity, counting only x and z values
+     * (y value is ignored).
      */
     function getXZPlayerDis(ent: number): number;
     /**
-     * @returns entity's look angle in radians
+     * @returns Entity's look angle in radians.
      */
     function getLookAngle(ent: number): LookAngle;
     /**
-     * Sets specified pitch and yaw as look angle for the entity
+     * Sets specified pitch and yaw as look angle for the entity.
      * @param yaw look angle yaw in radians
      * @param pitch look angle pitch in radians
      */
     function setLookAngle(ent: number, yaw: number, pitch: number): void;
     /**
-     * Transforms look angle into look vector
-     * @param angle look angle to transform into [[Vector]]
-     * @returns transformation result
+     * Transforms look angle into look vector.
+     * @param angle look angle to transform into {@link Vector}
+     * @returns Transformation result.
      */
     function getLookVectorByAngle(angle: LookAngle): Vector;
     /**
-     * @returns look vector for the entity
+     * @returns Look vector for the entity.
      */
     function getLookVector(ent: number): Vector;
     /**
-     * @returns look angle between entity and static coordinates
+     * @returns Look angle between entity and static coordinates.
      */
     function getLookAt(ent: number, x: number, y: number, z: number): LookAngle;
     /**
-     * Sets entity look angle to look at specified coordinates
+     * Sets entity look angle to look at specified coordinates.
      */
     function lookAt(ent: number, x: number, y: number, z: number): void;
     /**
-     * Same as [[Entity.lookAt]] but uses Vector as param type
+     * Same as {@link Entity.lookAt} but uses Vector as param type.
      * @param coords
      */
     function lookAtCoords(ent: number, coords: Vector): void;
     /**
-     * Makes entity move to the target coordinates
+     * Makes entity move to the target coordinates.
      * @param params additional move parameters
      */
     function moveToTarget(ent: number, target: Vector, params: MoveParams): void;
     /**
-     * Makes entity move using pitch/yaw angle to determine direction
+     * Makes entity move using pitch/yaw angle to determine direction.
      * @param angle angle to define entity's direction
      * @param params additional move parameters
      */
     function moveToAngle(ent: number, angle: LookAngle, params: MoveParams): void;
     /**
-     * Makes entity move towards its current look angle
+     * Makes entity move towards it's current look angle.
      * @param params additional move parameters
      */
     function moveToLook(ent: number, params: MoveParams): void;
     /**
-     * Retrieves entity's current movement information
-     * @returns object that contains normalized moving vector, moving speed and
-     * moving xz speed (with no Y coordinate)
+     * Retrieves entity's current movement information.
+     * @returns Object that contains normalized moving vector, moving speed and
+     * moving xz speed (with no Y coordinate).
      */
     function getMovingVector(ent: number): MovingVector;
     /**
      * Retrieves entity look angle in the form of pitch/yaw angle. No other
-     * information included to the resulting object
+     * information included to the resulting object.
      */
     function getMovingAngle(ent: number): LookAngle;
     /**
-     * @deprecated No longer supported
+     * @deprecated Nothing to perform here anymore.
      */
     function getMovingAngleByPositions(pos1: any, pos2: any): void;
     /**
-     * Retrieves nearest to the coordinates entity of the specified entity type
+     * Retrieves nearest to the coordinates entity of the specified entity type.
      * @param coords search range center coordinates
      * @param type entity type ID. Parameter is no longer supported and should
      * be 0 in all cases
@@ -9224,7 +9417,7 @@ export namespace Entity {
      */
     function findNearest(coords: Vector, type?: number, maxRange?: number): Nullable<number>;
     /**
-     * Returns array of all entities' numeric ids in given range in blocks
+     * Returns array of all entities numeric IDs in given range in blocks.
      * @param coords search range center coordinates
      * @param maxRange determines search radius
      * @param type entity type ID. Parameter is no longer supported and should
@@ -9232,34 +9425,39 @@ export namespace Entity {
      */
     function getAllInRange(coords: Vector, maxRange: number, type?: number): number[];
     /**
-     * @deprecated No longer supported
+     * @deprecated Consider use {@link Player.getInventorySlot} instead.
      */
     function getInventory(ent: number, handleNames?: boolean, handleEnchant?: boolean): void;
     /**
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]]
+     * @param slot armor slot ID, should be one of the {@link EArmorType}
      * values
-     * @returns armor slot contents for entity
+     * @returns Armor slot contents for entity.
      */
     function getArmorSlot(ent: number, slot: number): ItemInstance;
     /**
-     * Sets armor slot contents for the entity
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]]
+     * Sets armor slot contents for the entity.
+     * @param slot armor slot ID, should be one of the {@link EArmorType}
      * values
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
      */
     function setArmorSlot(ent: number, slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * @param bool1 parameter is no longer supported and should not be used
-     * @param bool2 parameter is no longer supported and should not be used
-     * @returns entity's current carried item information
+     * @returns Entity's current carried item information.
      */
     function getCarriedItem(ent: number): ItemInstance;
     /**
-     * Sets current carried item for the entity
-     * @param id item id
+     * @param bool1 parameter is no longer supported and should not be used
+     * @param bool2 parameter is no longer supported and should not be used
+     * @returns Entity's current carried item information.
+     * @deprecated Use same method without last parameters.
+     */
+    function getCarriedItem(ent: number, bool1: boolean, bool2: boolean): ItemInstance;
+    /**
+     * Sets current carried item for the entity.
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
@@ -9267,96 +9465,95 @@ export namespace Entity {
     function setCarriedItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
      * Gets item from specified drop entity
-     * @returns [[ItemInstance]] that is in the dropped item
+     * @returns Instance that is in the dropped item.
      */
     function getDroppedItem(ent: number): ItemInstance;
     /**
      * Sets item to the specified drop entity
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
      */
     function setDroppedItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use callbacks and {@link Entity.getAll} instead.
      */
     function getProjectileItem(projectile: number): ItemInstance;
     /**
-     * Creates an object used to change entity's attributes. See {@page Attributes} page
-     * for details.
-     * @returns object used to manipulate entity's attributes
+     * Creates an object used to change entity's attributes.
+     * @returns Object used to manipulate entity's attributes.
      */
     function getAttribute(ent: number, attribute: string): AttributeInstance;
     /**
-     * Creates or gets an existing [[PathNavigation]] instance for the specified mob
-     * @returns [[PathNavigation]] used to control entity's target position and
-     * the way to get there
+     * Creates or gets an existing {@link Entity.PathNavigation} instance for the specified mob
+     * @returns Navigation used to control entity's target position and
+     * the way to get there.
      */
     function getPathNavigation(ent: number): PathNavigation;
     /**
-     * @param effectId numeric id of the potion effect,
-     * one of [[Native.PotionEffect]] or [[EPotionEffect]] values.
-     * @returns whether the given entity is affected by the potion effect with given numeric id
+     * @param effectId numeric ID of the potion effect,
+     * one of {@link EPotionEffect} values
+     * @returns Whether the given entity is affected by the potion effect with given numeric ID.
      */
     function hasEffect(entity: number, effectId: number): boolean;
     interface EffectInstance { level: number, duration: number }
     /**
-     * @returns object with duration and level of the potion effect with given numeric id
+     * @returns Object with duration and level of the potion effect with given numeric ID
      * on the given entity. These fields are set to 0, if the given effect doesn't affect
      * the given entity at the moment.
      */
     function getEffect(entity: number, effectId: number): EffectInstance;
     /**
      * Object used to build path and move mobs to the required coordinates using
-     * specified parameters. All the setters return current [[PathNavigation]]
-     * instance to be able to produce chained calls. Some of the
+     * specified parameters. All the setters return current {@link Entity.PathNavigation}
+     * instance to be able to produce chained calls.
      */
     interface PathNavigation {
         /**
-         * Builds path to the specified coordinates
+         * Builds path to the specified coordinates.
          * @param speed entity movement speed
          */
         moveToCoords(x: number, y: number, z: number, speed: number): PathNavigation;
         /**
          * Builds path to the specified entity. Note that current coordinates of
-         * entity are used, and are not updated
+         * entity are used, and are not updated.
          * @param speed entity movement speed
          */
         moveToEntity(entity: number, speed: number): PathNavigation;
         /**
-         * Sets function to be notified when path navigation is finished or aborted
-         * @param function function to be called when navigation is finished or aborted
+         * Sets function to be notified when path navigation is finished or aborted.
+         * @param callback function to be called when navigation is finished or aborted
          */
         setResultFunction(callback: PathNavigationResultFunction): PathNavigation;
         /**
-         * @returns whether the entity can pass doors
+         * @returns Whether the entity can pass doors.
          */
         canPassDoors(): boolean;
         /**
-         * Sets entity's door passing ability
+         * Sets entity's door passing ability.
          */
         setCanPassDoors(value: boolean): PathNavigation;
         isRiverFollowing(): boolean;
         setIsRiverFollowing(value: boolean): PathNavigation;
         /**
-         * @returns whether the entity can open doors
+         * @returns Whether the entity can open doors.
          */
         canOpenDoors(): boolean;
         /**
-         * Sets entity's door opening ability
+         * Sets entity's door opening ability.
          */
         setCanOpenDoors(value: boolean): PathNavigation;
         /**
-         * Sets entity's sun avoiding
+         * Sets entity's sun avoiding.
          */
         setAvoidSun(value: boolean): PathNavigation;
         /**
-         * @returns whether the entity avoids water
+         * @returns Whether the entity avoids water.
          */
         getAvoidWater(): boolean;
         /**
-         * Sets entity's water avoiding
+         * Sets entity's water avoiding.
          */
         setAvoidWater(value: boolean): PathNavigation;
         setEndPathRadius(value: boolean): PathNavigation;
@@ -9373,28 +9570,29 @@ export namespace Entity {
         getCanBreach(): boolean;
         setCanBreach(value: boolean): PathNavigation;
         /**
-         * @returns whether entity can jump
+         * @returns Whether entity can jump.
          */
         getCanJump(): boolean;
         /**
-         * Enables or disables entity's jumping ability
+         * Enables or disables entity's jumping ability.
          */
         setCanJump(value: boolean): PathNavigation;
         /**
-         * @returns entity's speed value
+         * @returns Entity's speed value.
          */
         getSpeed(): number;
         /**
-         * Sets entity's speed value
+         * Sets entity's speed value.
          */
         setSpeed(value: number): PathNavigation;
     }
     /**
-     * Occurs when path navigation is finished or aborted
-     * @param navigation [[PathNavigation]] that the handler is attached to
+     * Occurs when path navigation is finished or aborted.
+     * @param navigation {@link Entity.PathNavigation} that the handler is attached to
      * @param result result code, one of the following:
      *
-     * 0 - success. You can call navigation.moveTo*** methods to resume path
+     * 0 - success; you can call {@link Entity.PathNavigation.moveToCoords|Entity.PathNavigation.moveToCoords},
+     * {@link Entity.PathNavigation.moveToEntity|PathNavigation.moveToEntity} methods to resume path
      *
      * 2 - entity was removed from the world
      *
@@ -9404,349 +9602,449 @@ export namespace Entity {
         (navigation: PathNavigation, result: number): void
     }
     /**
-     * Class used to manipulate entity's health
-     * @deprecated Consider using [[Entity.getHealth]], [[Entity.setHealth]],
-     * [[Entity.getMaxHealth]] and [[Entity.setMaxHealth]] instead
+     * Class used to manipulate entity's health.
+     * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
      */
     class EntityHealth {
         /**
-         * @returns entity's current health value
+         * @returns Entity's current health value.
          */
         get(): number;
         /**
-         * Sets entity's current health value
+         * Sets entity's current health value.
          * @param health health value to be set
          */
         set(health: number): void;
         /**
-         * @returns entity's maximum health value
+         * @returns Entity's maximum health value.
          */
         getMax(): number;
         /**
-         * Sets entity's maximum health value
+         * Sets entity's maximum health value.
          * @param maxHealth
          */
         setMax(maxHealth: number): void;
     }
     /**
-     * Interface used to specify how entity should move
+     * Interface used to specify how entity should move.
      */
     interface MoveParams {
         /**
-         * Movement speed
+         * Movement speed.
          */
         speed?: number,
         /**
-         * If true, entity won't change its Y velocity
+         * If `true`, entity won't change it's Y velocity.
          */
         denyY?: boolean,
         /**
-         * Y velocity (jump speed)
+         * Y velocity (jump speed).
          */
         jumpVel?: number
     }
     /**
      * Interface used to return entity's current moving vector and some
-     * additional data
+     * additional data.
      */
     interface MovingVector {
         /**
-         * Normalized vector X coordinate
+         * Normalized vector X coordinate.
          */
         x: number,
         /**
-         * Normalized vector Y coordinate
+         * Normalized vector Y coordinate.
          */
         y: number,
         /**
-         * Normalized vector Z coordinate
+         * Normalized vector Z coordinate.
          */
         z: number,
         /**
-         * Vector real length
+         * Vector real length.
          */
         size: number,
         /**
-         * Vector real length excluding Y coordinate
+         * Vector real length excluding Y coordinate.
          */
         xzsize: number
     }
     /**
-     * Interface used to modify attribute values
+     * Interface used to modify attribute values.
      */
     interface AttributeInstance {
         /**
-         * @returns current attribute's value
+         * @returns Current attribute's value.
          */
         getValue(): number;
         /**
-         * @returns attribute's maximum value
+         * @returns Attribute's maximum value.
          */
         getMaxValue(): number;
         /**
-         * @returns attribute's minimum value
+         * @returns Attribute's minimum value.
          */
         getMinValue(): number;
         /**
-         * @returns attribute's default value
+         * @returns Attribute's default value
          */
         getDefaultValue(): number;
         /**
-         * Sets current attribute's value
+         * Sets current attribute's value.
          */
         setValue(value: number): void;
         /**
-         * Sets attribute's maximum value
+         * Sets attribute's maximum value.
          */
         setMaxValue(value: number): void;
         /**
-         * Sets attribute's minimum value
+         * Sets attribute's minimum value.
          */
         setMinValue(value: number): void;
         /**
-         * Sets attribute's default value
+         * Sets attribute's default value.
          */
         setDefaultValue(value: number): void;
     }
 }
 /**
- * Class used to create new entity AI types
+ * Class used to create new entity AI types.
  */
 export class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     /**
-     * Creates new entity AI type
+     * Creates new entity AI type.
      * @param customPrototype AI type prototype
      */
     constructor(customPrototype: EntityAIClass.EntityAIPrototype);
     /**
      * Sets execution timer time in ticks. AI will be executed specified
-     * number of ticks
+     * number of ticks.
      * @param timer execution time in ticks
      */
     setExecutionTimer(timer: number): void;
     /**
-     * Resets execution timer so that AI is executed with no time limits
+     * Resets execution timer so that AI is executed with no time limits.
      */
     removeExecutionTimer(): void;
     /**
      * If set to true, it is an instance of AI type, else the pattern
      * (pattern should not be modified directly, AI controller calls
-     * instantiate to create instances of AI type)
+     * instantiate to create instances of AI type).
      *
-     * TODO: add link to AI controller type
+     * @todo Add link to AI controller type.
      */
     isInstance: boolean;
     /**
-     * TODO: determine type
+     * @todo Determine type.
      */
     parent: any;
     /**
-     * Id of the entity that uses this AI type instance or null if it is
-     * the pattern
+     * Id of the entity that uses this AI type instance or `null` if it is
+     * the pattern.
      */
     entity?: number;
     /**
      * Method that is called to create AI type instance using current
-     * instance as pattern
+     * instance as pattern.
      */
     instantiate(parent: any, name: string): EntityAIClass;
     /**
      * Occurs when entity this instance is assigned to this AI type
      * instance, if you override this method, be sure to assign entity
-     * to [[EntityAIClass.EntityAIPrototype]]
+     * to {@link EntityAIClass["namespace"].EntityAIPrototype}.
      */
     aiEntityChanged(entity: number): void;
     /**
-     * Finishes AI execution and disables it in parent controller
+     * Finishes AI execution and disables it in parent controller.
      */
     finishExecution(): void;
     /**
-     * Changes own priority in parent's controller
+     * Changes own priority in parent's controller.
      */
     changeSelfPriority(priority: number): void;
     /**
-     * Enables any AI by its name in the controller
+     * Enables any AI by it's name in the controller.
      * @param name AI name to be enables
      * @param priority priority to be set to the enabled AI
      * @param extra some extra data passed to
      */
     enableAI(name: string, priority: number, extra: any): void;
     /**
-     * Disables any AI by its name in the controller
+     * Disables any AI by it's name in the controller.
      * @param name AI name to be disabled
      */
     disableAI(name: string): void;
     /**
-     * Sets any AI priority by its name in the controller
+     * Sets any AI priority by it's name in the controller.
      * @param name AI name to change priority
      * @param priority priority to be set to the AI
      */
     setPriority(name: string, priority: number): void;
     /**
-     * Gets any AI object by its name from the current controller
+     * Gets any AI object by it's name from the current controller.
      * @param name AI name
      */
     getAI(name: string): EntityAIClass;
     /**
-     * Gets any AI priority from the current controller by AI name
+     * Gets any AI priority from the current controller by AI name.
      * @param name AI name
      */
     getPriority(name: string): number;
     /**
-     * @returns AI type's default name
+     * @returns AI type's default name.
      */
     setParams(params: object): void;
     /**
-     * All the parameters of the AI instance
+     * All the parameters of the AI instance.
      */
     params: object;
     /**
-     * Object containing the state of the AI type
+     * Object containing the state of the AI type.
      */
     data: object;
 }
 export namespace EntityAIClass {
     /**
-     * Object used to register entity AI prototypes
+     * Object used to register entity AI prototypes.
      */
     interface EntityAIPrototype {
         /**
-         * @returns AI type's default priority
+         * @returns AI type's default priority.
          */
         getDefaultPriority?(): number,
         /**
-         * @returns AI type's default name
+         * @returns AI type's default name.
          */
         getDefaultName?(): string,
         /**
-         * Default parameters set
+         * Default parameters set.
          */
         params?: object,
         /**
-         * Called when AI type execution starts
-         * @param extra additional data passed from [[EntityAIClass.enableAI]]
+         * Called when AI type execution starts.
+         * @param extra additional data passed from {@link EntityAIClass["class"].enableAI}
          * method
          */
         executionStarted?(extra?: any): void,
         /**
-         * Called when AI type execution ends
+         * Called when AI type execution ends.
          */
         executionEnded?(): void,
         /**
-         * Called when AI type execution is paused
+         * Called when AI type execution is paused.
          */
         executionPaused?(): void,
         /**
-         * Called when AI type execution is resumed
+         * Called when AI type execution is resumed.
          */
         executionResumed?(): void,
         /**
-         * Defines main logic of the AI type
+         * Defines main logic of the AI type.
          */
         execute?(): void,
         /**
-         * Object containing the state of the AI type
+         * Object containing the state of the AI type.
          */
         data?: object,
         /**
-         * Called when entity is attacked by player
-         * @param entity player that attacked this entity
+         * Called when entity is attacked by player.
+         * @param attacker player that attacked this entity
          */
         attackedBy?(attacker: number): void;
         /**
-         * Called when entity gets hurt
+         * Called when entity gets hurt.
          * @param attacker entity that damaged this entity, or -1 if damage
          * source is not an entity
          * @param damage amount of damage
          */
         hurtBy?(attacker: number, damage: number): void;
         /**
-         * Called when a projectile hits the entity
-         * @param projectile projectile entity id
+         * Called when a projectile hits the entity.
+         * @param projectile projectile entity ID
          */
         projectileHit?(projectile: number): void;
         /**
-         * Called when entity is dead
+         * Called when entity is dead.
          * @param attacker entity that damaged this entity, or -1 if damage
          * source is not an entity
          */
         death?(attacker: number): void;
     }
+    /**
+     * Object used to register entity AI prototypes.
+     */
+    interface WanderLikeAIPrototype extends EntityAIPrototype {
+        /**
+         * Entity movement speed when AI is executed.
+         */
+        speed?: number;
+        /**
+         * Entity speed when turning.
+         */
+        angular_speed?: number;
+    }
 }
 /**
- * A set of predefined entity AI types
+ * A set of predefined entity AI types.
  */
 export namespace EntityAI {
     /**
-     * Simple idle AI type, entity just does nothing
+     * Simple Idle AI type, entity just does nothing.
      */
-    const Idle: EntityAIClass;
+    class Idle extends EntityAIClass {
+        /**
+         * Creates Idle entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype);
+    }
     /**
-     * Follow AI type, entity follows its target. Use another AI type to set
-     * target for this AI type
-     *
-     * @params **speed:** *number* entity movement speed when AI is executed
-     * @params **jumpVel:** *number* jump (y) velocity
-     * @params **rotateSpeed:** *number* entity rotation speed
-     * @params **rotateRatio:** *number* how long will be the rotation path
-     * @params **rotateHead:** *boolean* if true, entity turns its head to the target
-     * @params **denyY:** *boolean* if true, entity won't change its Y velocity
-     *
-     * @data **target:** [[Vector]] coordinates used as a target
-     * @data **targetEntity:** *number* entity used as a target. If specified,
-     * target data is ignored
+     * Follow AI type, entity follows it's target. Use another AI type to set
+     * target for this AI type.
      */
-    const Follow: EntityAIClass;
+    class Follow extends EntityAIClass {
+        /**
+         * Creates follow entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * Entity movement speed when AI is executed.
+             */
+            speed?: number;
+            /**
+             * Jump (y) velocity.
+             */
+            jumpVel?: number;
+            /**
+             * Entity rotation speed.
+             */
+            rotateSpeed?: number;
+            /**
+             * How long will be the rotation path.
+             */
+            rotateRatio?: number;
+            /**
+             * If `true`, entity turns it's head to the target.
+             */
+            rotateHead?: boolean;
+            /**
+             * If `true`, entity won't change it's Y velocity.
+             */
+            denyY?: boolean;
+            /**
+             * Coordinates used as a target.
+             */
+            target?: Vector;
+            /**
+             * Entity used as a target; when specified, target data is ignored.
+             */
+            targetEntity?: number;
+        });
+    }
     /**
-     * Panic AI type, entity just rushes around
-     *
-     * @params **speed:** *number* entity movement speed when AI is executed
-     * @params **angular_speed:** *number* entity speed when turning
-     *
+     * Panic AI type, entity just rushes around.
      */
-    const Panic: EntityAIClass;
+    class Panic extends EntityAIClass {
+        /**
+         * Creates panic entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype);
+    }
     /**
-     * Wander AI type, entity walks around making pauses
-     *
-     * @params **speed:** *number* entity movement speed when AI is executed
-     * @params **angular_speed:** *number* entity speed when turning
-     * @params **delay_weight:** *number* part of the time entity is making
-     * pause
-     *
+     * Wander AI type, entity walks around making pauses.
      */
-    const Wander: EntityAIClass;
+    class Wander extends EntityAIClass {
+        /**
+         * Creates wander entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype & {
+            /**
+             * Part of the time entity is making pause.
+             */
+            delay_weight?: number;
+        });
+    }
     /**
-     * Attack AI type, entity causes damage to the target entity
-     *
-     * @params **attack_damage:** *number* damage amount
-     * @params **attack_range:** *number* damage radius
-     * @params **attack_rate:** *number* time between to attacks in ticks
-     *
-     * @data **target:** target entity
+     * Attack AI type, entity causes damage to the target entity.
      */
-    const Attack: EntityAIClass;
+    class Attack extends EntityAIClass {
+        /**
+         * Creates attack entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * Damage amount.
+             */
+            attack_damage?: number;
+            /**
+             * Damage radius.
+             */
+            attack_range?: number;
+            /**
+             * Time between to attacks in ticks.
+             */
+            attack_rate?: number;
+            /**
+             * Target entity.
+             */
+            target?: number;
+        });
+    }
     /**
-     * Swim AI type, if the entity is in water, it swims
-     *
-     * @params **velocity:** *number* swimming speed
+     * Swim AI type, if the entity is in water, it swims.
      */
-    const Swim: EntityAIClass;
+    class Swim extends EntityAIClass {
+        /**
+         * Creates swim entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * Swimming speed.
+             */
+            velocity?: number;
+        });
+    }
     /**
-     * Panic AI watcher type, controls entity panic behavior after getting hurt
-     *
-     * @params **panic_time:** *number* time the entity will be in panic
-     * @params **priority_panic:** *number* panic AI priority when entity should
-     * be in panic
-     * @params **priority_default:** *number* panic AI priority when entity
-     * should not be in panic
-     * @params **name:** *number* name of the panic AI controller
+     * Panic AI watcher type, controls entity panic behavior after getting hurt.
      */
-    const PanicWatcher: EntityAIClass;
-}
-export class EntityModel {
+    class PanicWatcher extends EntityAIClass {
+        /**
+         * Creates panic watcher entity AI type.
+         * @param customPrototype AI type prototype
+         */
+        constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
+            /**
+             * Time the entity will be in panic.
+             */
+            panic_time?: number;
+            /**
+             * Panic AI priority when entity should be in panic.
+             */
+            priority_panic?: number;
+            /**
+             * Panic AI priority when entity should not be in panic.
+             */
+            priority_default?: number;
+            /**
+             * Panic AI priority when entity should not be in panic
+             * @todo Which type must be used here, recently number.
+             */
+            name?: string;
+        });
+    }
 }
 /**
- * Defines armor type and armor slot index in player's inventory
+ * @deprecated Use resource packs or {@link Render["class"]} instead.
+ */
+export class EntityModel {}
+/**
+ * Defines armor type and armor slot index in player's inventory.
+ * @since 2.2.1b89
  */
 export enum EArmorType {
     HELMET = 0,
@@ -9755,7 +10053,8 @@ export enum EArmorType {
     BOOTS = 3
 }
 /**
- * Defines possible render layers (display methods) for blocks
+ * Defines possible render layers (display methods) for blocks.
+ * @since 2.2.1b89
  */
 export enum EBlockRenderLayer {
     DOUBLE_SIDE = 0,
@@ -9771,7 +10070,8 @@ export enum EBlockRenderLayer {
     STRUCTURE_VOID = 11
 }
 /**
- * Defines numeric representation for each block side
+ * Defines numeric representation for each block side.
+ * @since 2.2.1b89
  */
 export enum EBlockSide {
     DOWN = 0,
@@ -9782,7 +10082,8 @@ export enum EBlockSide {
     EAST = 5
 }
 /**
- * Defines numeric representation for each vanilla block state
+ * Defines numeric representation for each vanilla block state.
+ * @since 2.2.1b89
  */
 export enum EBlockStates {
     HEIGHT = 0,
@@ -9901,7 +10202,8 @@ export enum EBlockStates {
     RESPAWN_ANCHOR_CHARGE = 113
 }
 /**
- * Defines text colors and font styles for chat and tip messages
+ * Defines text colors and font styles for chat and tip messages.
+ * @since 2.2.1b89
  */
 export enum EColor {
     AQUA = "§b",
@@ -9929,7 +10231,8 @@ export enum EColor {
     YELLOW = "§e",
 }
 /**
- * Defines numeric representation for three vanilla dimensions
+ * Defines numeric representation for three vanilla dimensions.
+ * @since 2.2.1b89
  */
 export enum EDimension {
     NORMAL = 0,
@@ -9937,7 +10240,8 @@ export enum EDimension {
     END = 2
 }
 /**
- * Defines what enchantments can or cannot be applied to every instrument type
+ * Defines what enchantments can or cannot be applied to every instrument type.
+ * @since 2.2.1b89
  */
 export enum EEnchantType {
     HELMET = 0,
@@ -9957,7 +10261,8 @@ export enum EEnchantType {
     BOOK = 16383
 }
 /**
- * Defines numeric ids of all vanilla enchantments
+ * Defines numeric IDs of all vanilla enchantments.
+ * @since 2.2.1b89
  */
 export enum EEnchantment {
     PROTECTION = 0,
@@ -9995,7 +10300,8 @@ export enum EEnchantment {
     CHANNELING = 32
 }
 /**
- * Defines all vanilla entity type numeric ids
+ * Defines all vanilla entity type numeric IDs.
+ * @since 2.2.1b89
  */
 export enum EEntityType {
     PLAYER = 63,
@@ -10101,7 +10407,8 @@ export enum EEntityType {
     ENDER_GUARDIAN_GHOST = 120
 }
 /**
- * Defines possible game difficulties
+ * Defines possible game difficulties.
+ * @since 2.2.1b89
  */
 export enum EGameDifficulty {
     PEACEFUL = 0,
@@ -10110,7 +10417,8 @@ export enum EGameDifficulty {
     HARD = 3
 }
 /**
- * Defines possible game modes
+ * Defines possible game modes.
+ * @since 2.2.1b89
  */
 export enum EGameMode {
     SURVIVAL = 0,
@@ -10119,14 +10427,16 @@ export enum EGameMode {
     SPECTATOR = 3
 }
 /**
- * Defines item animation types
+ * Defines item animation types.
+ * @since 2.2.1b89
  */
 export enum EItemAnimation {
     NORMAL = 0,
     BOW = 4
 }
 /**
- * Defines vanilla item categories in creative inventory
+ * Defines vanilla item categories in creative inventory.
+ * @since 2.2.1b89
  */
 export enum EItemCategory {
     INTERNAL = 0,
@@ -10136,7 +10446,8 @@ export enum EItemCategory {
     FOOD = 4
 }
 /**
- * Defines vanilla mob render types
+ * Defines vanilla mob render types.
+ * @since 2.2.1b89
  */
 export enum EMobRenderType {
     TNT = 2,
@@ -10188,7 +10499,8 @@ export enum EMobRenderType {
     MAP = 50
 }
 /**
- * Defines numeric representation for each NBT data type
+ * Defines numeric representation for each NBT data type.
+ * @since 2.2.1b89
  */
 export enum ENbtDataType {
     TYPE_END_TAG = 0,
@@ -10205,7 +10517,8 @@ export enum ENbtDataType {
     TYPE_INT_ARRAY = 11
 }
 /**
- * Defines all existing vanilla particles
+ * Defines all existing vanilla particles.
+ * @since 2.2.1b89
  */
 export enum EParticleType {
     BUBBLE = 1,
@@ -10243,7 +10556,8 @@ export enum EParticleType {
     NOTE = 36
 }
 /**
- * Defines player's abilities. See {@page Abilities} for details
+ * Defines player's abilities.
+ * @since 2.2.1b89
  */
 export enum EPlayerAbility {
     ATTACK_MOBS = "attackmobs",
@@ -10266,7 +10580,8 @@ export enum EPlayerAbility {
     WORLDBUILDER = "worldbuilder"
 }
 /**
- * Defines vanilla potion effects
+ * Defines vanilla potion effects.
+ * @since 2.2.1b89
  */
 export enum EPotionEffect {
     MOVEMENT_SPEED = 1,
@@ -10301,7 +10616,8 @@ export enum EPotionEffect {
 }
 /**
  * Defines numeric representation for vanilla TileEntity types.
- * Use [[NativeTileEntity]] class to work with them.
+ * Use {@link NativeTileEntity} class to work with them.
+ * @since 2.2.1b89
  */
 export enum ETileEntityType {
     NONE = -1,
@@ -10316,101 +10632,121 @@ export enum ETileEntityType {
     LECTERN = 37
 }
 /**
- * Empty function used to verify Rhino functionality. Should not be called by
- * hand
+ * @packageDocumentation
+ * Core Engine is the most fashion Minecraft: Bedrock Edition
+ * engine determined to make game modded with minimum tons of code.
  */
-export function __debug_typecheck__(): void;
 /**
- * Runs custom source in the specified context by its name. Define custom
+ * Method provided to log inherited Rhino class type and
+ * determine which instance is used.
+ * @returns Something like {@link java.lang.Class.getName()}.
+ * @internal
+ */
+export function __debug_typecheck__(obj: any): string;
+/**
+ * Runs custom source in the specified context by it's name. Define custom
  * sources using *"sourceType": "custom"* for the source in your *build.config*.
- * @param name path to the executable. Can be built the way built-in source
+ * @param name path to the executable; can be built the way built-in source
  * types are built
  * @param scope additional scope to be added to the current context
  */
 export function runCustomSource(name: string, scope?: object): void;
 /**
- * Object containing custom block string ids  as keys and their numeric
- * ids as values
+ * Object containing custom block string IDs  as keys and their numeric
+ * IDs as values.
  */
 export const BlockID: { [key: string]: number };
 /**
- * Object containing custom item string ids as keys and their numeric
- * ids as values
+ * Object containing custom item string IDs as keys and their numeric
+ * IDs as values.
  */
 export const ItemID: { [key: string]: number };
 /**
- * Module containing [[ItemID]] and [[BlockID]] values
- * @deprecated consider using [[ItemID]] and [[BlockID]] instead
+ * Module containing {@link ItemID} and {@link BlockID} values.
+ * @internal
  */
 export namespace IDData {
 	/**
-	 * Object containing custom item string ids as keys and their numeric
-	 * ids as values
+	 * Object containing custom item string IDs as keys and their numeric
+	 * IDs as values.
 	 */
 	const item: { [key: string]: number };
 	/**
-	 * Object containing custom block string ids as keys and their numeric
-	 * ids as values
+	 * Object containing custom block string IDs as keys and their numeric
+	 * IDs as values.
 	 */
 	const block: { [key: string]: number };
 }
 /**
- * Same as [[IMPORT]], consider using [[IMPORT]] instead
+ * Same as {@link IMPORT}, consider using {@link IMPORT} instead.
  */
 export function importLib(name: string, value?: string): void;
 /**
  * Imports library dependency. Libraries should be stored in the *"libraryDir"*
  * directory, specified in your *build.config*. You can either import the whole
- * library or single function/value using value parameter
+ * library or single function/value using value parameter.
  * @param name library name specified in the library's EXPORT declaration
  * @param value name of the function or value you wish to import, or "*" to
  * import the whole library. Defaults to importing the whole library
  */
 export function IMPORT(name: string, value?: string): void;
 /**
- * Injects methods from C++ into the target object to use in the mod
+ * Injects methods from C++ into the target object to use in the mod.
  * @param name name of the module, as registered from native code
  * @param target target object, where all the methods from native module will be
  * injected
  */
 export function IMPORT_NATIVE(name: string, target: object): any;
 /**
- * Allows to create new JS modules imported from C++ code and use it in the mod
+ * Allows to create new JS modules imported from C++ code and use it in the mod.
  * @param name name of the module, as registered from native code
- * @returns js module, implemented in native (C++) code
+ * @returns JS module, implemented in native (C++) code.
  */
 export function WRAP_NATIVE<T = any>(name: string): T;
 /**
- * Allows to create new JS modules imported from Java code and use it in the mod
+ * Allows to create new JS modules imported from Java code and use it in the mod.
  * @param name name of the module, as registered from Java code
- * @returns js module, implemented in Java code
+ * @returns JS module, implemented in Java code.
  */
 export function WRAP_JAVA<T = any>(name: string): T;
 /**
- * @returns current Core Engine API level
+ * @returns Current Core Engine API level.
  */
 export function getCoreAPILevel(): number;
 /**
- * Runs specified function in the main thread
+ * Runs specified function in the main thread.
  * @param func function to be run in the main thread
  */
 export function runOnMainThread(func: () => void): void;
 /**
  * Runs specified function in the client thread.
- * Same as [[runOnMainThread]], but for the client side.
+ * Same as {@link runOnMainThread}, but for the client side.
  * @param func function to be run in the client thread
  */
 export function runOnClientThread(func: () => void): void;
 /**
- * @returns minecraft version information in some readable form
- * @param str string version representation, three dot-separated numbers
- * @param array array containing three version numbers
- * @param main version number, calculated as *array[0] * 17 + array[1]*
+ * @returns Minecraft version information in several variants.
  */
-export function getMCPEVersion(): { str: string, array: number[], main: number };
+export function getMCPEVersion(): {
+	/**
+	 * String version representation, three dot-separated numbers.
+	 * @default "1.16.201" or "1.11.4"
+	 */
+	str: string,
+	/**
+	 * Array containing three version numbers.
+	 * @default [1, 16, 201] or [1, 11, 4]
+	 */
+	array: number[],
+	/**
+	 * Version number.
+	 * @default 16 or 11
+	 */
+	main: number
+};
 /**
  * Displays android.widget.Toast with specified message. If this function is called
- * more then once, messages are stacked and displayed together
+ * more then once, messages are stacked and displayed together.
  * @param arg
  */
 export function alert(arg: any): any;
@@ -10423,33 +10759,33 @@ export function alert(arg: any): any;
 export function LIBRARY(description: {
 	/**
 	 * Library name, used to avoid conflicts when several
-	 * mods have the same library installed
+	 * mods have the same library installed.
 	 */
 	name: string,
 	/**
 	 * Library version, used to load the latest library version
-	 * if different mods have different library version installed
+	 * if different mods have different library version installed.
 	 */
 	version: number,
 	/**
-	 * API name, one of the "CoreEngine", "AdaptedScript" or "PrefsWinAPI" strings
+	 * API name.
 	 */
-	api: string,
+	api: "CoreEngine" | "AdaptedScript" | "PrefsWinAPI" | "Preloader",
 	/**
-	 * If set to true, the context of the library is shared between mods to
-	 * allow for better integration
+	 * If set to `true`, the context of the library is shared between mods to
+	 * allow for better integration.
 	 */
 	shared: boolean,
 	/**
 	 * List of names of libraries that should be loaded before the current library is loaded.
 	 * Every entry should be either just a library name or library name and version
-	 * separated by a column (":")
+	 * separated by a column (":").
 	 */
 	dependencies?: string[]
 }): void;
 /**
- * Exports object from library using specified name
- * @param name object name to be used when calling [[IMPORT]].
+ * Exports object from library using specified name.
+ * @param name object name to be used when calling {@link IMPORT}.
  * If the name contains a column (":"), the number after column
  * is used to specify version of the library this export corresponds to.
  * To provide backward compatibility, library authors can use multiple
@@ -10460,149 +10796,167 @@ export function LIBRARY(description: {
  */
 export function EXPORT(name: string, lib: any): void;
 /**
- * Function that must be written in launcher.js to enable multiplayer configuration
- * @param {string} name Unique readable network name of the mod
- * @param {string} version Mod version
- * @param {boolean} isClientOnly If true, mod is only client.
+ * Function that must be written in launcher.js to enable multiplayer configuration.
  * Client mods must not affect on the world.
- * They will not be taken into account in mod synchronization during the connection
+ * They will not be taken into account in mod synchronization during the connection.
  */
-export function ConfigureMultiplayer(args: { name: string, version: string, isClientOnly: boolean }): void;
+export function ConfigureMultiplayer(args: {
+	/**
+	 * Unique readable network name of the mod.
+	 * @remarks
+	 * Value `"auto"` here means determine *mod.info*
+	 * property, which is preferred in most cases.
+	 * @default "auto"
+	 */
+	name?: string,
+	/**
+	 * Mod version.
+	 * @remarks
+	 * Value `"auto"` here means determine *mod.info*
+	 * property, which is preferred in most cases.
+	 * @default "auto"
+	 */
+	version?: string,
+	/**
+	 * If `true`, mod is only client.
+	 */
+	isClientOnly: boolean
+}): void;
 /**
- * String types of armor to be specified when calling [[Item.createArmorItem]]
+ * String types of armor to be specified when calling {@link Item.createArmorItem}.
  */
 export type ArmorType = "helmet" | "chestplate" | "leggings" | "boots";
 /**
  * Default render templates used inside of Inner Core,
- * currently there are only default armor models
+ * currently there are only default armor models.
  */
 export type DefaultRenderTemplate = ArmorType;
 /**
- * Module that provides methods to work with android file system
+ * Module that provides methods to work with file system.
  */
 export namespace FileTools {
     /**
-     * Defines path to android /mnt directory
+     * Defines path to android *\/mnt* directory.
      */
     const mntdir: string;
     /**
-     * Defines user directory path, ends with "/"
+     * Defines user directory path, ends with "/".
      */
     const root: string;
     /**
-     * Defines mods folder path, ends with "/"
+     * Defines mods folder path, ends with "/".
      */
     const moddir: string;
     /**
-     * Creates directory by its home-relative or absolute path, if one of the
-     * parent directories doesn't exist, creates them
+     * Creates directory by it's home-relative or absolute path, if one of the
+     * parent directories doesn't exist, creates them.
      * @param dir path to the new directory
      */
     function mkdir(dir: string): void;
     /**
      * Creates CoreEngine working directories. Called by CoreEngine and should
-     * not be called by end user
+     * not be called by end user.
      */
     function mkworkdirs(): void;
     /**
-     * Converts home-relative path to absolute
+     * Converts home-relative path to absolute.
      * @param path input path
-     * @returns input string if input string is an absolute path, an absolute
-     * path if input string is a home-relative path
+     * @returns Same string if input string is an absolute path, an absolute
+     * path if input string is a home-relative path.
      */
     function getFullPath(path: string): string;
     /**
-     * Verifies if specified home-relative or absolute path exists
+     * Verifies if specified home-relative or absolute path exists.
      * @param path path to be verified
-     * @returns true, if specified path exists, false otherwise
+     * @returns `true`, if specified path exists, `false` otherwise.
      */
     function isExists(path: string): boolean;
     /**
-     * Writes text to the file
+     * Writes text to the file.
      * @param file home-relative or absolute path to the file
      * @param text text to be written to the file
-     * @param add if true, appends text to the file, overrides it otherwise.
-     * Default value is false
+     * @param add if `true`, appends text to the file, overrides it otherwise
+     * @default add: false
      */
     function WriteText(file: string, text: string, add?: boolean): void;
     /**
-     * Reads text from file
+     * Reads text from file.
      * @param file home-relative or absolute path to the file
-     * @returns file contents or null if file does not exist or not accessible
+     * @returns File contents or `null` if file does not exist or not accessible.
      */
     function ReadText(file: any): Nullable<string>;
     /**
-     * Writes bitmap to png file
+     * Writes bitmap to png file.
      * @param file home-relative or absolute path to the file
      * @param bitmap android.graphics.Bitmap object of the bitmap to be written
      * to the file
      */
     function WriteImage(file: string, bitmap: android.graphics.Bitmap): void;
     /**
-     * Reads bitmap from file
+     * Reads bitmap from file.
      * @param file home-relative or absolute path to the file
-     * @returns android.graphics.Bitmap object of the bitmap that was read from
-     * file or null if file does not exist or is not accessible
+     * @returns Bitmap object of the bitmap that was read from
+     * file or null if file does not exist or is not accessible.
      */
     function ReadImage(file: string): Nullable<android.graphics.Bitmap>;
     /**
-     * Reads string from asset by its full name
+     * Reads string from asset by it's full name.
      * @param name asset name
-     * @returns asset contents or null if asset doesn't exist
+     * @returns Asset contents or `null` if asset doesn't exist.
      */
     function ReadTextAsset(name: string): string;
     /**
-     * Reads bitmap from asset by its full name
+     * Reads bitmap from asset by it's full name.
      * @param name asset name
-     * @returns android.graphics.Bitmap object of the bitmap that was read from
-     * asset or null, if asset doesn't exist
+     * @returns Bitmap object of the bitmap that was read from
+     * asset or null, if asset doesn't exist.
      */
     function ReadImageAsset(name: string): Nullable<android.graphics.Bitmap>;
     /**
-     * Reads bytes array from assets
+     * Reads bytes array from assets.
      * @param name asset name
-     * @returns java array of bytes read from assets or null if asset doesn't
-     * exist
+     * @returns Java array of bytes read from assets or null if asset doesn't
+     * exist.
      */
     function ReadBytesAsset(name: string): native.Array<jbyte>;
     /**
-     * Lists children directories for the specified path
+     * Lists children directories for the specified path.
      * @param path home-relative or absolute path to the file
-     * @returns array of java.io.File instances of listed directories
+     * @returns Array of {@link java.io.File} instances of listed directories.
      */
     function GetListOfDirs(path: string): java.io.File[];
     /**
-     * Lists files in the specified directory
+     * Lists files in the specified directory.
      * @param path path to directory to look for files in
      * @param ext extension of the files to include to the output. Use empty
      * string to include all files
-     * @returns array of java.io.File instances that match specified extension
+     * @returns Array of {@link java.io.File} instances that match specified extension.
      */
     function GetListOfFiles(path: string, ext: string): java.io.File[];
     /**
-     * Reads file as key:value pairs
+     * Reads file as key:value pairs.
      * @param dir home-relative or absolute path to the file
      * @param specialSeparator separator between key and value, ":" by default
-     * @returns object containing key:value pairs from file
+     * @returns Object containing key:value pairs from file.
      */
     function ReadKeyValueFile(dir: string, specialSeparator?: string): {
         [key: string]: string
     };
     /**
-     * Writes key:value pairs to the file
+     * Writes key:value pairs to the file.
      * @param dir home-relative or absolute path to the file
      * @param data object to be written to the file as a set of key:value pairs
      * @param specialSeparator separator between key and value, ":" by default
      */
     function WriteKeyValueFile(dir: string, data: object, specialSeparator?: string): void;
     /**
-     * Reads file as JSON
+     * Reads file as JSON.
      * @param dir home-relative or absolute path to the file
-     * @returns value read from JSON file
+     * @returns JSON value read from JSON file.
      */
     function ReadJSON(dir: string): any;
     /**
-     * Writes object to file as JSON
+     * Writes object to file as JSON.
      * @param dir home-relative or absolute path to the file
      * @param obj object to be written to the file as JSON
      * @param beautify if true, output JSON is beautified
@@ -10615,170 +10969,170 @@ export namespace FileTools {
 export namespace Game {
     /**
      * Prevents current callback function from being called in Minecraft.
-     * For most callbacks it prevents default game behaviour
+     * For most callbacks it prevents default game behavior.
      */
     function prevent(): void;
     /**
-     * @returns true if the current callback function has already been
-     * prevented from being called in Minecraft using [[Game.prevent]],
-     * false otherwise
+     * @returns `true` if the current callback function has already been
+     * prevented from being called in Minecraft using {@link Game.prevent},
+     * `false `otherwise.
      */
     function isActionPrevented(): boolean;
     /**
      * Writes message to the chat. Message can be formatted using
-     * [[Native.Color]] values
+     * {@link EColor} values.
      * @param msg message to be displayed
      */
     function message(msg: string): void;
     /**
      * Writes message above the hot bar. Message can be formatted using
-     * [[Native.Color]] values
+     * {@link EColor} values.
      * @param msg message to be displayed
      */
     function tipMessage(msg: string): void;
     /**
-     * Displays android AlertDialog with given message and dialog title
+     * Displays android AlertDialog with given message and dialog title.
      * @param message message to be displayed
      * @param title title of the AlertDialog
      */
     function dialogMessage(message: string, title: string): void;
     /**
-     * Sets game difficulty, one of [[Native.GameDifficulty]] values
+     * Sets game difficulty, one of {@link EGameDifficulty} values.
      * @param difficulty game difficulty to be set
      */
     function setDifficulty(difficulty: number): void;
     /**
-     * @returns current game difficulty, one of the [[Native.GameDifficulty]]
-     * values
+     * @returns Current game difficulty, one of the {@link EGameDifficulty}
+     * values.
      */
     function getDifficulty(): number;
     /**
-     * Sets current level game mode
-     * @param gameMode new game mode, should be one of the [[Native.GameMode]]
+     * Sets current level game mode.
+     * @param gameMode new game mode, should be one of the {@link EGameMode}
      * values
      */
     function setGameMode(gameMode: number): void;
     /**
-     * @returns current level game mode, one of the [[Native.GameMode]] values
+     * @returns Current level game mode, one of the {@link EGameMode} values.
      */
     function getGameMode(): number;
     /**
-     * @returns string containing current Minecraft version
+     * @returns String containing current Minecraft version.
      */
     function getMinecraftVersion(): string;
     /**
-     * @returns string containing current Core Engine version
+     * @returns String containing current Core Engine version.
      */
     function getEngineVersion(): string;
     /**
-     * @returns true if item spending allowed
+     * @returns `true` if item spending allowed.
      */
     function isItemSpendingAllowed(player?: number): boolean;
     /**
-     * true if developer mode was enabled in Inner Core config, false otherwise
+     * `true` if developer mode was enabled in Inner Core config, `false` otherwise.
      */
-    let isDeveloperMode: boolean;
+    const isDeveloperMode: boolean;
 }
 /**
- * Class used to create and manipulate game objects. Game objects are [[Updatable]]s
- * that are being saved between game launches
+ * Class used to create and manipulate game objects. Game objects are {@link Updatable["interface"]|Updatables}
+ * that are being saved between game launches.
  */
 export class GameObject {
     /**
-     * Constructs a new [[GameObject]] with given params
+     * Constructs a new {@link GameObject} with given params.
      * @param type unique name for the game object type. Use package-like names to
      * ensure your game object name is unique
      * @param prototype
      */
     constructor(type: string, prototype: GameObjectPrototype);
     /**
-     * Original value passed to [[GameObject.constructor]]
+     * Original value passed to {@link GameObject.constructor}.
      */
     readonly originalName: string;
     /**
      * Creates a new game object with specified params and registers it for saving
-     * and as an [[Updatable]]
-     * @param args any arguments that are passed to [[GameObjectPrototype.init]]
+     * and as an {@link Updatable["interface"]}.
+     * @param args any arguments that are passed to {@link GameObjectPrototype.init}
      * function
-     * @returns instantiated game object
+     * @returns Instantiated game object.
      */
     deploy(...args: any): GameObject;
     /**
-     * Destroys current game object
+     * Destroys current game object.
      */
     destroy(): void;
     /**
-     * True if current GameObject was deployed, false otherwise
+     * `true` if current GameObject was deployed, `false` otherwise.
      */
     readonly isInstance: boolean;
 }
 interface GameObjectPrototype extends Updatable {
     /**
-     * Function that is called when a new instance of [[GameObject]] is created,
-     * the engine passes all the arguments of [[GameObject.deploy]] function to
-     * this function
+     * Function that is called when a new instance of {@link GameObject} is created,
+     * the engine passes all the arguments of {@link GameObject.deploy} function to
+     * this function.
      */
     init?: (...args: any) => void,
     /**
-     * Function that is called when a [[GameObject]] is loaded
+     * Function that is called when a {@link GameObject} is loaded.
      */
     loaded?: () => void,
     /**
-     * Any other user-defined methods and properties
+     * Any other user-defined methods and properties.
      */
     [key: string]: any
 }
 export namespace GameObjectRegistry {
     /**
-     * Gets an array of [[GameObject]]s of specified type.
-     * @param type unique [[GameObject]] type to get all the instances of
-     * @param clone if true, a new array is created to ensure the original engine's
-     * data safety
+     * Gets an array of {@link GameObject|GameObjects} of specified type.
+     * @param type unique {@link GameObject} type to get all the instances of
+     * @param clone if true, a new array is created to ensure the original
+     * engine's data safety.
      */
     function getAllByType(type: string, clone: boolean): GameObject[];
     /**
-     * Calls function of the [[GameObject]] of specified type with specified
-     * parameters
-     * @param type unique [[GameObject]] type to get all the instances of
-     * @param func function name as defined in [[GameObjectPrototype]] passed to
-     * [[GameObject.constructor]]
+     * Calls function of the {@link GameObject} of specified type with specified
+     * parameters.
+     * @param type unique {@link GameObject} type to get all the instances of
+     * @param func function name as defined in {@link GameObjectPrototype} passed to
+     * {@link GameObject.constructor}
      * @param params parameters to be passed to the function
      */
     function callForType(type: string, func: string, ...params: any): any;
     /**
-     * Same as [[GameObjectRegistry.callForType]], though a new array is created
+     * Same as {@link GameObjectRegistry.callForType}, though a new array is created
      * before calling functions on the game objects to ensure the original engine's
-     * data safety
+     * data safety.
      */
     function callForTypeSafe(type: string, func: string, ...params: any): any;
 }
 /**
- * Module used to simplify generation tasks in mods logic
+ * Module used to simplify generation tasks in mods logic.
  */
 export namespace GenerationUtils {
     /**
-     * @param id numeric tile id
-     * @returns true if block is solid and light blocking block, false otherwise
+     * @param id numeric tile ID
+     * @returns `true` if block is solid and light blocking block, `false` otherwise.
      */
     function isTerrainBlock(id: number): boolean;
     /**
-     * @param id numeric tile id
-     * @returns true if block is transparent, false otherwise
+     * @param id numeric tile ID
+     * @returns `true` if block is transparent, `false` otherwise.
      */
     function isTransparentBlock(id: number): boolean;
     /**
-     * @returns true, if one can see sky from the specified position, false
-     * otherwise
+     * @returns `true`, if one can see sky from the specified position, `false`
+     * otherwise.
      */
     function canSeeSky(x: number, y: number, z: number): boolean;
     /**
-     * Generates random x and z coordinates inside specified chunk
+     * Generates random x and z coordinates inside specified chunk.
      * @param cx chunk x coordinate
      * @param cz chunk z coordinate
      */
     function randomXZ(cx: number, cz: number): { x: number, z: number };
     /**
-     * Generates random coordinates inside specified chunk
+     * Generates random coordinates inside specified chunk.
      * @param cx chunk x coordinate
      * @param cz chunk z coordinate
      * @param lowest lowest possible y coordinate. Default is 0
@@ -10787,64 +11141,81 @@ export namespace GenerationUtils {
     function randomCoords(cx: number, cz: number, lowest?: number, highest?: number): Vector;
     /**
      * Finds nearest to the specified y coordinate empty space on the specified
-     * x and z coordinates
+     * x and z coordinates.
      */
     function findSurface(x: number, y: number, z: number): Vector;
     /**
      * Finds nearest to y=128 coordinate empty space on the specified x and z
-     * coordinates
+     * coordinates.
      */
     function findHighSurface(x: number, z: number): Vector;
     /**
      * Finds nearest to y=64 coordinate empty space on the specified x and z
-     * coordinates
+     * coordinates.
      */
     function findLowSurface(x: number, z: number): Vector;
     function lockInBlock(id: number, data: number, checkerTile: any, checkerMode: any): void;
     function setLockedBlock(x: number, y: number, z: number): void;
     /**
-     * Generates ore vein on the specified coordinates using specified params
-     * @deprecated Consider using [[GenerationUtils.generateOre]] instead
+     * Generates ore vein on the specified coordinates using specified params.
      * @param params generation params
-     * @param params.id ore tile id
-     * @param params.data ore data
-     * @param params.noStoneCheck if true, no check for stone is performed so
-     * the ore may be generated in the air. Use this to debug ore generation in
-     * the superflat worlds
-     * @param params.amount amount of the ore to be generated
-     * @param params.ratio if amount is not specified, used to calculate amount
-     * @param params.size if amount is not specified, used to calculate amount,
-     * using simple formula
-     * ```
-     * size * ratio * 3
-     * ```
+     * @deprecated Consider using {@link GenerationUtils.generateOre} instead.
      */
-    function genMinable(x: number, y: number, z: number, params: { id: number, data: number, noStoneCheck: number, amount?: number, ratio?: number, size?: number }): void;
+    function genMinable(x: number, y: number, z: number, params: {
+        /**
+         * Ore tile ID.
+         */
+        id: number,
+        /**
+         * Ore data.
+         */
+        data: number,
+        /**
+         * If `true`, no check for stone is performed so the ore may be
+         * generated in the air. Use this to debug ore generation in
+         * the superflat worlds.
+         */
+        noStoneCheck?: number,
+        /**
+         * Amount of the ore to be generated.
+         */
+        amount?: number,
+        /**
+         * If amount is not specified, used to calculate amount.
+         */
+        ratio?: number,
+        /**
+         * If amount is not specified, used to calculate amount,
+         * using simple formula `size * ratio * 3`.
+         */
+        size?: number
+    }): void;
     /**
-     * Generates ore vein on the specified coordinates
-     * @param id ore tile id
+     * Generates ore vein on the specified coordinates.
+     * @param id ore tile ID
      * @param data ore data
      * @param amount ore amount, use number at least 6 to be able to find
-     * generated ore. Note that amount doesn't mean blocks count, it is just an
+     * generated ore; note that amount doesn't mean blocks count, it is just an
      * input value for generation algorithm
-     * @param noStoneCheck if true, no check for stone is performed so the ore
+     * @param noStoneCheck if `true`, no check for stone is performed so the ore
      * may be generated in the air. Use this to debug ore generation in the
      * superflat worlds
      * @param seed random generation seed
      */
     function generateOre(x: number, y: number, z: number, id: number, data: number, amount: number, noStoneCheck: boolean, seed?: number): void;
     /**
-     * Generates ore with custom whitelist/blacklist, see [[GenerationUtils.generateOre]]
-     * for details
-     * @param mode if true, specified block ids are used as whitelist for generation
-     * (only the ids from the list can be replaced with ores), if false - specified
-     * block ids are used as a blacklist (only the ids from the list canNOT be
+     * Generates ore with custom whitelist/blacklist.
+     * @param mode if true, specified block IDs are used as whitelist for generation
+     * (only the IDs from the list can be replaced with ores), if false - specified
+     * block IDs are used as a blacklist (only the IDs from the list canNOT be
      * replaced with ores)
-     * @param listOfIds array of block ids to be used as whitelist or blacklist
+     * @param listOfIds array of block IDs to be used as whitelist or blacklist
+     *
+     * See {@link GenerationUtils.generateOre} for details.
      */
     function generateOreCustom(x: number, y: number, z: number, id: number, data: number, amount: number, mode: boolean, listOfIds: number[], seed?: number): void;
     /**
-     * Retrieves perlin noise value at the specified coordinates
+     * Retrieves perlin noise value at the specified coordinates.
      * @param seed integer random generator seed. If not specified or set to 0, the default
      * constant value is used
      * @param scale noise size, to set the main octave size, use *1 / octave size*
@@ -10860,161 +11231,163 @@ export namespace GenerationUtils {
  */
 export namespace ICRender {
 	/**
-	 * Used to specify that the block should be present to satisfy condition
+	 * Used to specify that the block should be present to satisfy condition.
 	 */
 	const MODE_INCLUDE = 0;
 	/**
-	 * Used to specify that the block should be absent to satisfy condition
+	 * Used to specify that the block should be absent to satisfy condition.
 	 */
 	const MODE_EXCLUDE = 1;
 	/**
 	 * @param name group name
-	 * @returns block group by its name, if no group with specified name exist,
-	 * this function creates a new one
+	 * @returns Block group by it's name, if no group with specified name exist,
+	 * this function creates a new one.
 	 */
 	function getGroup(name: string): ICRender.Group;
 	/**
-	 * Creates a new group with a unique name
+	 * Creates a new group with a unique name.
 	 */
 	function getUnnamedGroup(): ICRender.Group;
 	/**
-	 * Groups (of blocks) are used to determine some render conditions. E.g.
+	 * Groups (of blocks) are used to determine some render conditions; e.g.,
 	 * if a block exists on some relative coordinates, display some part of the
-	 * model
+	 * model.
 	 */
 	interface Group {
 		/**
-		 * @returns group's name
+		 * @returns Group's name.
 		 */
 		getName(): string,
 		name: string;
 		/**
-		 * Adds a block to the group
-		 * @param id block id
+		 * Adds a block to the group.
+		 * @param id block ID
 		 * @param data block data or -1 to use with all registered data values
 		 */
 		add(id: number, data: number): void
 	}
 	class Model {
 		/**
-		 * Constructs a base model that will be displayed
+		 * Constructs a base model that will be displayed.
 		 * @param model optional model to be added without additional conditions
 		 */
 		constructor(model?: BlockRenderer.Model);
 		/**
-		 * Adds block model as an entry to the [[ICRender]]. You can then call
-		 * [[RenderEntry.asCondition]] to specify when to display the entry
-		 * @returns created [[RenderEntry]] object
+		 * Adds block model as an entry to the {@link ICRender}. You can then call
+		 * {@link ICRender.RenderEntry.asCondition#1|RenderEntry.asCondition} to specify when to display the entry.
+		 * @returns Created {@link ICRender.RenderEntry|RenderEntry} object.
 		 */
 		addEntry(model?: BlockRenderer.Model): RenderEntry;
 		/**
-		 * Adds render mesh as an entry to the [[ICRender]]. You can then call
-		 * [[RenderEntry.asCondition]] to specify when to display the entry
-		 * @returns created [[RenderEntry]] object
+		 * Adds render mesh as an entry to the {@link ICRender}. You can then call
+		 * {@link ICRender.RenderEntry.asCondition#1|RenderEntry.asCondition} to specify when to display the entry.
+		 * @returns Created {@link ICRender.RenderEntry|RenderEntry} object.
 		 */
 		addEntry(mesh?: RenderMesh): RenderEntry;
 	}
 	/**
-	 * Object representing render entry with its displaying condition
+	 * Object representing render entry with it's displaying condition.
 	 */
 	interface RenderEntry {
 		/**
-		 * @returns [[Model]] object this entry belongs to
+		 * @returns Parent {@link ICRender.Model|Model} object this entry belongs to.
 		 */
 		getParent(): Model;
 		/**
-		 * Sets [[BLOCK]] condition with specified parameters. Uses coordinates
-		 * that are relative to current block's ones
+		 * Sets {@link ICRender.BLOCK} condition with specified parameters. Uses coordinates
+		 * that are relative to current block's ones.
 		 * @param group group name or object
-		 * @param mode one of the [[MODE_INCLUDE]] and [[MODE_EXCLUDE]] constants
-		 * @returns reference to itself to be used in sequential calls
+		 * @param mode one of the {@link ICRender.MODE_INCLUDE} and {@link ICRender.MODE_EXCLUDE} constants
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		asCondition(x: number, y: number, z: number, group: Group | string, mode: number): RenderEntry;
 		/**
-		 * Sets [[BLOCK]] condition with specified parameters. Uses coordinates
+		 * Sets {@link ICRender.BLOCK} condition with specified parameters. Uses coordinates
 		 * that are relative to current block's ones. Creates a new anonymous
-		 * group with single block
-		 * @param id condition block id
+		 * group with single block.
+		 * @param id condition block ID
 		 * @param data condition block data
-		 * @param mode one of the [[MODE_INCLUDE]] and [[MODE_EXCLUDE]] constants
-		 * @returns reference to itself to be used in sequential calls
+		 * @param mode one of the {@link ICRender.MODE_INCLUDE} and {@link ICRender.MODE_EXCLUDE} constants
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		asCondition(x: number, y: number, z: number, id: number, data: number, mode: number): RenderEntry;
 		/**
-		 * Sets condition to be used for current entry
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets condition to be used for current entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setCondition(condition: CONDITION): RenderEntry;
 		/**
-		 * Sets block model used for the entry, specifying its coordinates
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets block model used for the entry, specifying it's coordinates.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setModel(x: number, y: number, z: number, model: BlockRenderer.Model): RenderEntry;
 		/**
-		 * Sets block model used for the entry
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets block model used for the entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setModel(model: BlockRenderer.Model): RenderEntry;
 		/**
-		 * Sets render mesh to be used for the entry
-		 * @returns reference to itself to be used in sequential calls
+		 * Sets render mesh to be used for the entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setMesh(mesh: RenderMesh): RenderEntry;
 	}
 	/**
-	 * Class representing custom collision shapes used for block
+	 * Class representing custom collision shapes used for block.
 	 */
 	class CollisionShape {
 		/**
 		 * Adds new entry to the collision shape. You can then call
-		 * [[CollisionEntry.setCondition]] to specify when to display the entry
+		 * {@link ICRender.CollisionEntry.setCondition|CollisionEntry.setCondition} to specify when to display the entry.
 		 */
 		addEntry(): CollisionEntry;
 	}
 	/**
-	 * Object representing collision shape entry with its displaying condition
+	 * Object representing collision shape entry with it's displaying condition.
 	 */
 	interface CollisionEntry {
 		/**
-		 * Adds new collision box to collision entry
+		 * Adds new collision box to collision entry.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		addBox(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): CollisionEntry;
 		/**
-		 * Sets condition, all the boxes of the entry work only if the condition is true
+		 * Sets condition, all the boxes of the entry work only if the condition is `true`.
+		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		setCondition(condition: CONDITION): CollisionEntry;
 	}
 	/**
-	 * Common superclass for all condition classes
+	 * Common superclass for all condition classes.
 	 */
 	abstract class CONDITION { }
 	/**
-	 * Condition depending on random value
+	 * Condition depending on random value.
 	 */
 	class RANDOM_CONDITION implements CONDITION {
 		/**
 		 * Forces engine to treat blocks along some axis in same way if enabled
-		 * parameter value is false
+		 * parameter value is `false.`
 		 * @param axis 0 fpr x, 1 for y, 2 for z axis
 		 */
 		setAxisEnabled(axis: number, enabled: boolean): RANDOM_CONDITION;
 	}
 	/**
-	 * Constructs new [[RANDOM]] condition
+	 * Constructs new {@link ICRender.RANDOM_CONDITION} condition.
 	 * @param value value that a generated random integer number should be for the
 	 * condition to evaluate as true
 	 * @param max maximum value for the generator
 	 * @param seed seed to be used for random numbers generation
 	 */
-	function RANDOM(value: number, max: number, seed?: number): CONDITION;
+	function RANDOM(value: number, max: number, seed?: number): RANDOM_CONDITION;
 	/**
-	 * Constructs new [[RANDOM]] condition with default seed and 0 as
-	 * desired random value
+	 * Constructs new {@link ICRender.RANDOM#1} condition with default seed and `0` as
+	 * desired random value.
 	 * @param max maximum value for the generator
 	 */
 	function RANDOM(max: number): CONDITION;
 	/**
-	 * Constructs new [[BLOCK]] condition
+	 * Constructs new {@link ICRender.BLOCK} condition.
 	 * @param x is relative x coordinate
 	 * @param y is relative y coordinate
 	 * @param z is relative z coordinate
@@ -11024,382 +11397,409 @@ export namespace ICRender {
 	 */
 	function BLOCK(x: number, y: number, z: number, group: ICRender.Group, exclude: boolean): CONDITION;
 	/**
-	 * Constructs new [[NOT]] condition
+	 * Constructs new {@link ICRender.NOT} condition.
 	 * @param condition condition to be inverted
 	 */
 	function NOT(condition: CONDITION): CONDITION;
 	/**
-	 * Constructs new [[OR]] condition
+	 * Constructs new {@link ICRender.OR} condition.
 	 */
 	function OR(...conditions: CONDITION[]): CONDITION;
 	/**
-	 * Constructs new [[AND]] condition
+	 * Constructs new {@link ICRender.AND} condition.
 	 */
 	function AND(...conditions: CONDITION[]): CONDITION;
 }
 /**
- * Module used to manage item and block ids. Items and blocks have the same
- * underlying nature, so their ids are interchangeable. Though, the blocks are
+ * Module used to manage item and block IDs. Items and blocks have the same
+ * underlying nature, so their IDs are interchangeable. Though, the blocks are
  * defined "twice", as an item (in player's hand or inventory) and as a tile
- * (a block placed in the world)
+ * (a block placed in the world).
  */
 export namespace IDRegistry {
     /**
-     * Defines the numeric id of the first user-defined item
+     * Defines the numeric ID of the first user-defined item.
      */
     const ITEM_ID_OFFSET: number;
     /**
-     * Defines the numeric id of the first user-defined block
+     * Defines the numeric ID of the first user-defined block.
      */
     const BLOCK_ID_OFFSET: number;
     /**
-     * Defines maximum item/block id
+     * Defines maximum item/block ID.
      */
     const MAX_ID: number;
     /**
-     * Generates a new numeric block id
-     * @param name string block id. Used in [[Block]] module functions and
+     * Generates a new numeric block ID.
+     * @param name string block ID. Used in {@link Block} module functions and
      * in some other block-related functions. Inner Core converts it to
-     * block_<name> as minecraft vanilla block id to avoid string id clashes
-     * @returns numeric block id
+     * block_<name> as minecraft vanilla block ID to avoid string ID clashes
+     * @returns Numeric block ID.
      */
     function genBlockID(name: string): number;
     /**
-     * Generates a new numeric item id
-     * @param name string item id. Used in [[Item]] module functions and
+     * Generates a new numeric item ID.
+     * @param name string item ID. Used in {@link Item} module functions and
      * in some other item-related functions. Inner Core converts it to
-     * item_<name> as minecraft vanilla item id to avoid string id clashes
-     * @returns numeric item id
+     * item_<name> as minecraft vanilla item ID to avoid string ID clashes
+     * @returns Numeric item ID.
      */
     function genItemID(name: string): number;
     /**
-     * Gets item or block string id by its numeric id
-     * @param id numeric item or block id
+     * Gets item or block string ID by it's numeric ID.
+     * @param id numeric item or block ID
      */
     function getNameByID(id: number): string;
     /**
-     * Ensures given id is a tile id, not a block id. It is generally recommended
-     * to use [[Block.convertItemToBlockId]] since it performs less calculations
-     * @param id block or tile id
-     * @returns tile id
+     * Ensures given ID is a tile ID, not a block ID. It is generally recommended
+     * to use {@link Block.convertItemToBlockId} since it performs less calculations.
+     * @param id block or tile ID
+     * @returns Tile ID.
      */
     function ensureBlockId(id: number): number;
     /**
-     * Ensures given id is a block id, not a tile id. It is generally recommended
-     * to use [[Block.convertBlockToItemId]] since it performs less calculations
-     * @param id block or tile id
-     * @returns block id
+     * Ensures given ID is a block ID, not a tile ID. It is generally recommended
+     * to use {@link Block.convertBlockToItemId} since it performs less calculations.
+     * @param id block or tile ID
+     * @returns Block ID.
      */
     function ensureItemId(id: number): number;
     /**
-     * @param id numeric item or block id
-     * @returns true if item is vanilla Minecraft item, false otherwise
+     * @param id numeric item or block ID
+     * @returns `true` if item is vanilla Minecraft item, `false` otherwise.
      */
     function isVanilla(id: number): boolean;
     /**
-     * Gets type of item ("block" or "item") and its string id in Minecraft
-     * @param id numeric item or block id
-     * @returns string in format "type:string_id" or
-     * "type:string_id#extra_information"
+     * Gets type of item ("block" or "item") and it's string ID in Minecraft.
+     * @param id numeric item or block ID
+     * @returns String in format `"type:string_id"` or
+     * `"type:string_id#extra_information"`.
      */
     function getIdInfo(id: number): string;
 }
 /**
- * Module used to define items and their properties
+ * Module used to define items and their properties.
  */
 export namespace Item {
     /**
-     * @param id string id of the item
-     * @returns item numeric id by its string id or just returns its numeric id
-     * if input was a numeric id
+     * @param id string ID of the item
+     * @returns Item numeric ID by it's string ID or just returns it's numeric ID
+     * if input was a numeric ID.
      */
     function getNumericId(id: string | number): number;
     /**
      * Gets NativeItem instance that can be used to apply some properties to the
-     * item
-     * @param id string id of the item
-     * @returns NativeItem instance associated with this item
+     * item.
+     * @param id string ID of the item
+     * @returns NativeItem instance associated with this item.
      */
     function getItemById(id: string): NativeItem;
     /**
-     * Creates new item using specified parameters
-     * @param nameID string id of the item. You should register it via
-     * [[IDRegistry.genItemID]] call first
-     * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * Object used in {@link Item.createItem} and {@link Item.createThrowableItem}
+     * methods to specify general item parameters.
+     */
+    interface ItemParams {
+        /**
+         * Maximum item in stack size.
+         * @default 64
+         */
+        stack?: number;
+        /**
+         * If true, the item will not be added to creative.
+         * @default false
+         */
+        isTech?: boolean;
+    }
+    /**
+     * Creates new item using specified parameters.
+     * @param nameID string ID of the item; you should register it via
+     * {@link IDRegistry.genItemID} call first
+     * @param name item name in English; add translations to the name using
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params additional item parameters
-     * @param params.stack maximum item stack size. Default value is 64
-     * @param params.isTech if true, the item will not be added to creative.
-     * Default value is false
      */
-    function createItem(nameID: string, name: string, texture: TextureData, params?: { stack?: number, isTech?: boolean }): NativeItem;
+    function createItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): NativeItem;
     /**
-     * Creates eatable item using specified parameters
-     * @param nameID string id of the item. You should register it via
-     * [[IDRegistry.genItemID]] call first
-     * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * Object used in {@link Item.createFoodItem} method
+     * to specify general food item parameters.
+     */
+    interface FoodParams extends ItemParams {
+        /**
+         * Amount of hunger restored by this food in halfs.
+         * @default 1 // 0.5 hunger unit
+         */
+        food?: number;
+    }
+    /**
+     * Creates eatable item using specified parameters.
+     * @param nameID string ID of the item. You should register it via
+     * {@link IDRegistry.genItemID} call first
+     * @param name item name in English; add translations to the name using
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params additional item parameters
-     * @param params.stack maximum item stack size. Default value is 64
-     * @param params.isTech if true, the item will not be added to creative.
-     * Default value is false
-     * @param params.food amount of hunger restored by this food. Default value
-     * is 1
      */
-    function createFoodItem(nameID: string, name: string, texture: TextureData, params?: { stack?: number, isTech?: boolean, food?: number }): NativeItem;
+    function createFoodItem(nameID: string, name: string, texture: TextureData, params?: FoodParams): NativeItem;
     /**
-     * @deprecated Use [[Item.createItem]] and [[Recipes.addFurnaceFuel]]
-     * instead
+     * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel}
+     * instead.
      */
-    function createFuelItem(nameID: string, name: string, texture: TextureData, params: object): void;
+    function createFuelItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): void;
     /**
-     * Object used in [[Item.createArmorItem]] method
-     * to specify general armor item parameters
+     * Object used in {@link Item.createArmorItem} method
+     * to specify general armor item parameters.
      */
     interface ArmorParams {
         /**
-         * If true, the item will not be added to creative.
-         * Default value is false.
+         * If `true`, the item will not be added to creative.
+         * @default false
          */
         isTech?: boolean,
         /**
          * Armor durability, the more it is, the more hits the armor will resist.
-         * Default value is 1.
+         * @default 1
          */
         durability?: number,
         /**
-         * Armor proptection. Default value is 0.
+         * Armor protection.
+         * @default 0
          */
         armor?: number,
         /**
          * Relative path to the armor model texture from the mod assets directory.
-         * Default value is `textures/logo.png`
+         * @default "textures/logo.png"
          */
         texture?: string,
         /**
-         * Armor type, should be one of the `helmet`, `chestplate`, `leggings` or `boots`
+         * Armor type, should be one of the `helmet`, `chestplate`, `leggings` or `boots`.
          */
         type: ArmorType,
         /**
          * Knockback resistance, that the player will have when wearing the following armor.
          * It must be value from 0 (no knockback resistance) to 1 (full knockback resistance).
-         * Default value is 0.
+         * @default 0
          */
         knockbackResist?: number;
     }
     /**
-     * Creates armor item using specified parameters
-     * @param nameID string id of the item. You should register it via
-     * [[IDRegistry.genItemID]] call first
-     * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * Creates armor item using specified parameters.
+     * @param nameID string ID of the item; you should register it via
+     * {@link IDRegistry.genItemID} call first
+     * @param name item name in English; add translations to the name using
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params general armor item parameters object, the armor type there is required
      */
     function createArmorItem(nameID: string, name: string, texture: TextureData, params: ArmorParams): NativeItem;
     /**
-     * Creates throwable item using specified parameters
-     * @param nameID string id of the item. You should register it via
-     * [[IDRegistry.genItemID]] call first
-     * @param name item name in English. Add translations to the name using
-     * [[Translation]] module, all translation to the item and block names are
+     * Creates throwable item using specified parameters.
+     * @param nameID string ID of the item; you should register it via
+     * {@link IDRegistry.genItemID} call first
+     * @param name item name in English; add translations to the name using
+     * {@link Translation} module, all translation to the item and block names are
      * applied automatically
      * @param texture texture data used to create item
      * @param params additional item parameters
-     * @param params.stack maximum item stack size. Default value is 64
-     * @param params.isTech if true, the item will not be added to creative.
-     * Default value is false
      */
-    function createThrowableItem(nameID: string, name: string, texture: TextureData, params: any): NativeItem;
+    function createThrowableItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): NativeItem;
     /**
-     * @param id numeric item id
-     * @returns true if given item is vanilla item, false otherwise
+     * @param id numeric item ID
+     * @returns `true` if given item is vanilla item, `false` otherwise.
      */
     function isNativeItem(id: number): boolean;
     /**
-     * @param id numeric item id
-     * @returns maximum damage value for the specified item
+     * @param id numeric item ID
+     * @returns Maximum damage value for the specified item.
      */
     function getMaxDamage(id: number): number;
     /**
-     * @param id numeric item id
-     * @returns maximum stack size for the specified item
+     * @param id numeric item ID
+     * @returns Maximum stack size for the specified item.
      */
     function getMaxStack(id: number): number;
     /**
-     * @param id numeric item id
+     * @param id numeric item ID
+     * @param data item data
+     * @returns Current item name.
+     */
+    function getName(id: number, data: number): string;
+    /**
+     * @param id numeric item ID
      * @param data item data
      * @param encode no longer supported, do not use this parameter
-     * @returns current item name
+     * @returns Current item name.
+     * @deprecated Use same method without last parameter.
      */
-    function getName(id: number, data: number, encode?: any): string;
+    function getName(id: number, data: number, encode: any): string;
     /**
-     * @param id numeric item id
+     * @param id numeric item ID
+     * @returns `true`, if an item with such ID exists, `false` otherwise.
+     */
+    function isValid(id: number): boolean;
+    /**
+     * @param id numeric item ID
      * @param data no longer supported, do not use this parameter
-     * @returns true, if an item with such id exists, false otherwise
+     * @returns `true`, if an item with such ID exists, `false` otherwise.
+     * @deprecated Use same method without last parameter.
      */
-    function isValid(id: number, data?: number): boolean;
+     function isValid(id: number, data: number): boolean;
     /**
-     * Adds item to creative inventory
-     * @param id string or numeric item id
+     * Adds item to creative inventory.
+     * @param id string or numeric item ID
      * @param count amount of the item to be added, generally should be 1
      * @param data item data
      */
     function addToCreative(id: number | string, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * Applies several properties via one method call
-     * @deprecated Consider using appropriate setters instead
-     * @param numericID numeric item id
-     * @param description
+     * Applies several properties via one method call.
+     * @param numericID numeric item ID
+     * @deprecated Consider using appropriate setters instead.
      */
-    function describeItem(numericID: number, description: {
-        category?
-    }): void;
+    function describeItem(numericID: number, description: object): void;
     /**
-     * Sets item creative category
-     * @param id string or numeric item id
+     * Sets item creative category.
+     * @param id string or numeric item ID
      * @param category item category, should be one of the
-     * [[Native.ItemCategory]] values
+     * {@link EItemCategory} values
      */
     function setCategory(id: number | string, category: number): void;
     /**
-     * Specifies how the item can be enchanted
-     * @param id string or numeric item id
+     * Specifies how the item can be enchanted.
+     * @param id string or numeric item ID
      * @param enchant enchant type defining when enchants can or cannot be
-     * applied to this item, one of the [[Native.EnchantType]]
+     * applied to this item, one of the {@link EEnchantType}
      * @param value quality of the enchants that are applied, the higher this
      * value is, the better enchants you get with the same level
      */
     function setEnchantType(id: number | string, enchant: number, value: number): void;
     /**
-     * Specifies what items can be used to repair this item in the anvil
-     * @param id string or numeric item id
-     * @param items array of numeric item ids to be used as repair items
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param items array of numeric item IDs to be used as repair items
      */
     function addRepairItemIds(id: number | string, items: number[]): void;
     /**
-     * Specifies how the player should hold the item
-     * @param id string or numeric item id
+     * Specifies how the player should hold the item.
+     * @param id string or numeric item ID
      * @param enabled if true, player holds the item as a tool, not as a simple
      * item
      */
     function setToolRender(id: number | string, enabled: boolean): void;
     /**
-     * Sets item maximum data value
-     * @param id string or numeric item id
+     * Sets item maximum data value.
+     * @param id string or numeric item ID
      * @param maxdamage maximum data value for the item
      */
     function setMaxDamage(id: number | string, maxdamage: number): void;
     /**
-     * Sets item as glint (like enchanted tools or golden apple)
-     * @param id string or numeric item id
+     * Sets item as glint (like enchanted tools or golden apple).
+     * @param id string or numeric item ID
      * @param enabled if true, the item will be displayed as glint item
      */
     function setGlint(id: number | string, enabled: boolean): void;
     /**
-     * Allows to click with item on liquid blocks
-     * @param id string or numeric item id
+     * Allows to click with item on liquid blocks.
+     * @param id string or numeric item ID
      * @param enabled if true, liquid blocks can be selected on click
      */
     function setLiquidClip(id: number | string, enabled: boolean): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function setStackedByData(id: number | string, enabled: boolean): void;
     /**
-     * Allows item to be put in offhand slot
-     * @param id string or numeric item id
+     * Allows item to be put in offhand slot.
+     * @param id string or numeric item ID
      * @param allowed
      */
     function setAllowedInOffhand(id: number | string, allowed: boolean): void;
     /**
      * Sets additional properties for the item, uses Minecraft mechanisms to
-     * set them. Full list of properties is currently unavailable
-     * @param id string or numeric item id
+     * set them. Full list of properties is currently unavailable.
+     * @param id string or numeric item ID
      * @param props JSON string containing some of the properties
      */
     function setProperties(id: number | string, props: string): void;
     /**
-     * Sets animation type for the item
-     * @param id string or numeric item id
-     * @param animType use animation type, one of the [[Native.ItemAnimation]]
+     * Sets animation type for the item.
+     * @param id string or numeric item ID
+     * @param animType use animation type, one of the {@link EItemAnimation}
      * values
      */
     function setUseAnimation(id: number | string, animType: number): void;
     /**
-     * Limits maximum use duration. This is useful to create such items as bows
-     * @param id string or numeric item id
+     * Limits maximum use duration. This is useful to create such items as bows.
+     * @param id string or numeric item ID
      * @param duration maximum use duration in ticks
      */
     function setMaxUseDuration(id: number | string, duration: number): void;
     /**
-     * Same as [[Item.registerUseFunction]], but supports numeric ids only
+     * Same as {@link Item.registerUseFunction}, but supports numeric IDs only.
      */
     function registerUseFunctionForID(numericID: number, useFunc: Callback.ItemUseLocalFunction): void;
     /**
      * Registers function that is called when user touches some block in the
-     * world with specified item
-     * @param nameID string or numeric id of the item
+     * world with specified item.
+     * @param nameID string or numeric ID of the item
      * @param useFunc function that is called when such an event occurs
      */
     function registerUseFunction(nameID: string | number, useFunc: Callback.ItemUseLocalFunction): void;
     /**
-     * Same as [[Item.registerThrowableFunction]], but supports numeric ids only
+     * Same as {@link Item.registerThrowableFunction}, but supports numeric IDs only.
      */
     function registerThrowableFunctionForID(numericID: number, useFunc: Callback.ProjectileHitFunction): void;
     /**
-     * Registers function that is called when throwable item with specified id
-     * hits block or entity
-     * @param nameID string or numeric id of the item
+     * Registers function that is called when throwable item with specified ID
+     * hits block or entity.
+     * @param nameID string or numeric ID of the item
      * @param useFunc function that is called when such an event occurs
      */
     function registerThrowableFunction(nameID: string | number, useFunc: Callback.ProjectileHitFunction): void;
     /**
-     * Registers item id as requiring item icon override and registers function
-     * to perform such an override
-     * @param nameID string or numeric id of the item
+     * Registers item ID as requiring item icon override and registers function
+     * to perform such an override.
+     * @param nameID string or numeric ID of the item
      * @param func function that is called to override item icon. Should return
-     * [[Item.TextureData]] object to be used for the item. See
-     * [[Callback.ItemIconOverrideFunction]] documentation for details
+     * {@link Item.TextureData} object to be used for the item. See
+     * {@link Callback.ItemIconOverrideFunction} documentation for details
      */
     function registerIconOverrideFunction(nameID: string | number, func: Callback.ItemIconOverrideFunction): void;
     /**
-     * Registers function to perform item name override
-     * @param nameID string or numeric id of the item
+     * Registers function to perform item name override.
+     * @param nameID string or numeric ID of the item
      * @param func function that is called to override item name. Should return
      * string to be used as new item name
      */
     function registerNameOverrideFunction(nameID: string | number, func: Callback.ItemNameOverrideFunction): void;
     /**
      * Registers function to be called when player uses item in the air (not on
-     * the block)
-     * @param nameID string or numeric id of the item
+     * the block).
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerNoTargetUseFunction(nameID: string | number, func: Callback.ItemUseNoTargetFunction): void;
     /**
      * Registers function to be called when player doesn't complete using item
-     * that has maximum use time set with [[Item.setMaxUseDuration]] function.
-     * Vanilla bow uses this function with max use duration of 72000 ticks
-     * @param nameID string or numeric id of the item
+     * that has maximum use time set with {@link Item.setMaxUseDuration} function.
+     * Vanilla bow uses this function with max use duration of 72000 ticks.
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerUsingReleasedFunction(nameID: string | number, func: Callback.ItemUsingReleasedFunction): void;
     /**
      * Registers function to be called when player completes using item
-     * that has maximum use time set with [[Item.setMaxUseDuration]] function
-     * @param nameID string or numeric id of the item
+     * that has maximum use time set with {@link Item.setMaxUseDuration} function.
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerUsingCompleteFunction(nameID: string | number, func: Callback.ItemUsingCompleteFunction): void;
     /**
      * Registers function to be called when item is dispensed from dispenser.
-     * @param nameID string or numeric id of the item
+     * @param nameID string or numeric ID of the item
      * @param func function that is called when such an event occurs
      */
     function registerDispenseFunction(nameID: string | number, func: Callback.ItemDispensedFunction): void;
@@ -11411,7 +11811,7 @@ export namespace Item {
      */
     function addCreativeGroup(name: string, displayedName: string, ids: number[]): void
     /**
-     * Invoke click on the block in world
+     * Invoke click on the block in world.
      * @param coords Coords of click on the block
      * @param item item which used on the block
      * @param noModCallback if true, mod ItemUse callback will be not executed
@@ -11419,12 +11819,12 @@ export namespace Item {
      */
     function invokeItemUseOn(coords: Callback.ItemUseCoordinates, item: ItemInstance, noModCallback: boolean, entity: number): void
     /**
-     * @deprecated Should not be used in new mods, consider using [[Item]]
-     * properties setters instead
+     * @deprecated Should not be used in new mods, consider using {@link Item}
+     * properties setters instead.
      */
     function setPrototype(nameID: any, Prototype: any): void;
     /**
-     * Class representing item used to set its properties
+     * Class representing item used to set it's properties.
      */
     interface NativeItem {
         addRepairItem(id: number): void;
@@ -11441,102 +11841,110 @@ export namespace Item {
         setMaxDamage(maxDamage: number): void;
         setMaxStackSize(maxStack: number): void;
         setMaxUseDuration(duration: number): void;
-        /**@deprecated */
+        /**
+         * @deprecated Consider using appropriate setters instead.
+         * */
         setProperties(props: string): void;
         setStackedByData(stacked: boolean): void;
         setUseAnimation(animation: number): void;
     }
     /**
-     * Represents item texture data. For example, if 'items-opaque' folder
-     * contains file *nugget_iron_0.png*, you should pass *nugget_iron* as
-     * texture name and 0 as texture index. _N suffix can be omitted, but it is
-     * generally not recommended
+     * Represents item texture data. For example, if *\/items-opaque* folder
+     * contains file *nugget_iron_0.png*, you should pass `"nugget_iron"` as
+     * texture name and `0` as texture index. *_N* suffix can be omitted, but it is
+     * generally not recommended.
      */
     interface TextureData {
         /**
-         * Texture name, name of the file stored in the 'items-opaque' asset
-         * folder without extension and _N suffixes
+         * Texture name, name of the file stored in the *\/items-opaque* asset
+         * folder without extension and *_N* suffixes.
          */
         name: string,
         /**
-         * Texture index defined by _N texture suffix. Default value id 0
+         * Texture index defined by *_N* texture suffix.
+         * @default 0
          */
         data?: number,
         /**
-         * @deprecated same as data, so data is preferred in all cases
+         * @deprecated Same as data, so data is preferred in all cases.
          */
         meta?: number
     }
     /**
-     * All items name override functions object for internal use
+     * All items name override functions object.
+     * @internal
      */
-    var nameOverrideFunctions: {[key: number]: Callback.ItemNameOverrideFunction};
+    var nameOverrideFunctions: { [key: number]: Callback.ItemNameOverrideFunction };
     /**
-     * All items icon override functions object for internal use
+     * All items icon override functions object.
+     * @internal
      */
-    var iconOverrideFunctions: {[key: number]: Callback.ItemIconOverrideFunction};
+    var iconOverrideFunctions: { [key: number]: Callback.ItemIconOverrideFunction };
 }
-// Backward compatibility
+/**
+ * Backward compatibility.
+ */
 export type TransferPolicy = com.zhekasmirnov.apparatus.api.container.ItemContainerFuncs.TransferPolicy;
 /**
- * New type of TileEntity container that supports multiplayer
+ * Type of TileEntity container that supports multiplayer.
  */
 export class ItemContainer extends com.zhekasmirnov.apparatus.api.container.ItemContainer {
 	static class: java.lang.Class<ItemContainer>;
 	/**
-	 * Constructs a new [[ItemContainer]] object
+	 * Constructs a new {@link ItemContainer} object.
 	 */
 	constructor();
 	/**
-	 * Constructs a new [[ItemContainer]] object from given deprecated [[UI.Container]] object
+	 * Constructs a new {@link ItemContainer} object from given deprecated {@link UI.Container} object.
 	 */
 	constructor(legacyContainer: UI.Container);
 }
 export class ItemContainerSlot extends com.zhekasmirnov.apparatus.api.container.ItemContainerSlot {}
 /**
  * Class representing item extra data. Used to store additional information
- * about item other then just item id and data
+ * about item other then just item ID and data.
  */
 export class ItemExtraData extends com.zhekasmirnov.innercore.api.NativeItemInstanceExtra {
 	static class: java.lang.Class<ItemExtraData>;
 	/**
-	 * Creates an empty [[ItemExtraData]] instance
+	 * Creates an empty {@link ItemExtraData} instance.
 	 */
 	constructor();
 	/**
-	 * Creates a copy of current [[ItemExtraData]] instance with the same contents
+	 * Creates a copy of current {@link ItemExtraData} instance with the same contents.
 	 */
 	constructor(extraData?: ItemExtraData);
 }
 /**
  * Namespace used to change item models in player's hand and/or inventory.
- * By default, if the block has an [[ICRender]], it is automatically applied as item's model
+ * By default, if the block has an {@link ICRender}, it is automatically applied as item's model.
  */
 export namespace ItemModel {
     /**
-     * Gets [[ItemModel]] object for the specified id and data
-     * @param id item or block id
+     * Gets {@link ItemModel["interface"]} object for the specified ID and data.
+     * @param id item or block ID
      * @param data item or block data
-     * @returns [[ItemModel]] object used to manipulate item's model
+     * @returns Exist {@link ItemModel["interface"]} object used to manipulate item's model.
      */
 	function getFor(id: number, data: number): ItemModel;
 	function setCurrentCacheGroup(mod: string, version: string): void;
     /**
-     * Gets [[ItemModel]] object for the specified id and data. If no [[ItemModel]] for
-     * specified data exist, uses default data (0)
-     * @returns [[ItemModel]] object used to manipulate item's model
+     * Gets {@link ItemModel["interface"]} object for the specified ID and data. If no {@link ItemModel["interface"]} for
+     * specified data exist, uses default data `0`.
+     * @returns Any {@link ItemModel["interface"]} object used to manipulate item's model.
      */
     function getForWithFallback(id: number, data: number): ItemModel;
     /**
-     * Creates a new standalone item model that is not connected with any item or block
+     * Creates a new standalone item model that is not connected with any item or block.
      */
     function newStandalone(): ItemModel;
     /**
-     * @returns a collection of all existing item models
+     * @returns A collection of all existing item models.
      */
     function getAllModels(): java.util.Collection<ItemModel>;
     /**
      * Releases some of the bitmaps to free up memory
+     * by run garbage cleaner.
      * @param bytes bytes count to be released
      */
     function tryReleaseModelBitmapsOnLowMemory(bytes: number): void;
@@ -11547,40 +11955,42 @@ export namespace ItemModel {
         (model: ItemModel, newIcon: android.graphics.Bitmap): void
     }
     /**
-     * @returns empty [[RenderMesh]] from the pool or creates an empty one. Used
-     * to reduce constructors/destructors calls
+     * @returns Empty {@link RenderMesh["class"]} from the pool or creates an empty one. Used
+     * to reduce constructors/destructors calls.
      */
     function getEmptyMeshFromPool(): RenderMesh;
     /**
-     * Releases [[RenderMesh]] and returns it to the pool. Used to reduce
-     * constructors/destructors calls
+     * Releases {@link RenderMesh["class"]} and returns it to the pool. Used to reduce
+     * constructors/destructors calls.
      */
     function releaseMesh(mesh: RenderMesh): void;
     /**
      * @param randomize if true, item mesh position is randomized
-     * @returns [[RenderMesh]] generated for specified item
+     * @returns New {@link RenderMesh["class"]} generated for specified item.
      */
     function getItemRenderMeshFor(id: number, count: number, data: number, randomize: boolean): RenderMesh;
     /**
-     * @param id item or block numeric id
+     * @param id item or block numeric ID
      * @param data item or block data
-     * @returns texture name for the specified item or block
+     * @returns Texture name for the specified item or block.
      */
     function getItemMeshTextureFor(id: number, data: number): string;
 }
 /**
  * Class representing item model in player's hand and/or inventory. To get an instance of this
- * class from your code, use [[ItemModel.getFor]] static function. The coordinates of the full block in
- * player's hand or inventory is (0, 0, 0), (1, 1, 1), so it is generally recommended to use the models
- * that fit that bound at least for the inventory
+ * class from your code, use {@link ItemModel["namespace"].getFor} static function.
+ * @remarks
+ * The coordinates of the full block in player's hand or inventory is
+ * (0, 0, 0), (1, 1, 1), so it is generally recommended to use the models
+ * that fit that bound at least for the inventory.
  */
 export interface ItemModel {
     /**
-     * Item or block id current [[ItemModel]] relates to
+     * Item or block ID current {@link ItemModel["interface"]} relates to.
      */
     readonly id: number;
     /**
-     * Item or block data current [[ItemModel]] relates to
+     * Item or block data current {@link ItemModel["interface"]} relates to.
      */
     readonly data: number;
     occupy(): ItemModel;
@@ -11589,69 +11999,68 @@ export interface ItemModel {
     isSpriteInWorld(): boolean;
     isEmptyInWorld(): boolean;
     /**
-     * @returns true, if the model is empty
+     * @returns `true`, if the model is empty.
      */
     isEmpty(): boolean;
     isNonExistant(): boolean;
     /**
-     * @returns true, if this item model overrides the default model in player's hand
+     * @returns `true`, if this item model overrides the default model in player's hand.
      */
     overridesHand(): boolean;
     /**
-     * @returns true, if this item model overrides the default model in player's inventory
+     * @returns `true`, if this item model overrides the default model in player's inventory.
      */
     overridesUi(): boolean;
     getShaderUniforms(): ShaderUniformSet;
     setSpriteUiRender(isSprite: boolean): ItemModel;
     /**
-     * Sets item's model to display both in the inventory and in hand
-     * @param model [[RenderMesh]], [[ICRender.Model]] or [[BlockRenderer.Model]] to be used as item model
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item's model to display both in the inventory and in hand.
+     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
     setModel(model: RenderMesh | ICRender.Model | BlockRenderer.Model, texture?: string, material?: string): ItemModel;
     /**
-     * Sets item's model to display only in player's hand
-     * @param model [[RenderMesh]], [[ICRender.Model]] or [[BlockRenderer.Model]] to be used as item model
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item's model to display only in player's hand.
+     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
     setHandModel(model: RenderMesh | ICRender.Model | BlockRenderer.Model, texture?: string, material?: string): ItemModel;
     /**
-     * Sets item's model to display only in player's inventory
-     * @param model [[RenderMesh]], [[ICRender.Model]] or [[BlockRenderer.Model]] to be used as item model
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item's model to display only in player's inventory.
+     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
     setUiModel(model: RenderMesh | ICRender.Model | BlockRenderer.Model, texture?: string, material?: string): ItemModel;
     /**
-     * Sets item model's texture in both player's inventory and in hand
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item model's texture in both player's inventory and in hand.
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      */
     setTexture(texture: string): ItemModel;
     /**
-     * Sets item model's texture only in player's hand
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item model's texture only in player's hand.
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      */
     setHandTexture(texture: string): ItemModel;
     /**
-     * Sets item model's texture only in player's inventory
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item model's texture only in player's inventory.
+     * @param texture texture name to be used for the model (use `"atlas::terrain" `for block textures)
      */
     setUiTexture(texture: string): ItemModel;
     /**
-     * Sets item model's material in both player's inventory and in hand
-     * @param texture material name to be used for the model. See
-     * {@page Materials and Shaders} for more information
+     * Sets item model's material in both player's inventory and in hand.
+     * @param texture material name to be used for the model.
      */
     setMaterial(texture: string): ItemModel;
     /**
-     * Sets item model's material only in player's hand
+     * Sets item model's material only in player's hand.
      * @param texture material name to be used for the model
      */
     setHandMaterial(texture: string): ItemModel;
     /**
-     * Sets item model's material only in player's inventory
+     * Sets item model's material only in player's inventory.
      * @param texture material name to be used for the model
      */
     setUiMaterial(texture: string): ItemModel;
@@ -11725,44 +12134,45 @@ export namespace LiquidRegistry {
         _setContainerScale(container: UI.Container, scale: string, liquid: string, val: number): void;
     }
     /**
-     * @returns string id of a liquid for given block,
-     * or null, if a block with given id is not a liquid
+     * @returns String ID of a liquid for given block,
+     * or `null`, if a block with given ID is not a liquid.
      */
     function getLiquidByBlock(id: number): Nullable<string>;
     /**
-     * @returns numeric id of the liquid block by given [[LiquidRegistry]] string id.
-     * If `isStatic` param is passed and it is true, the static liquid block id will be returned,
-     * otherwise the dynamic block id will be returned.
-     * This function will return 0 if no liquid with given string id exists
+     * @param isStatic static liquid block ID will be returned, otherwise
+     * the dynamic block ID will be returned
+     * @returns Numeric ID of the liquid block by given {@link LiquidRegistry} string ID.
+     * @remarks
+     * This function will return `0` if no liquid with given string ID exists.
      */
     function getBlockByLiquid(liquidId: string, isStatic?: boolean): number;
 }
 /**
- * Module used to log messages to Inner Core log and android log
+ * Module used to log messages to Inner Core and internal log.
  */
 export namespace Logger {
     /**
-     * Writes message to the log, using specified log prefix
+     * Writes message to the log, using specified log prefix.
      * @param message message to be logged
      * @param prefix prefix of the message, can be used to filter log
      */
     function Log(message: string, prefix: string): void;
     /**
-     * Logs java Throwable with full stack trace to
+     * Logs java Throwable with full stack trace to.
      * @param error java Throwable to be logged
      */
     function LogError(error: java.lang.Throwable): void;
     /**
-     * Writes logger content to file and clears all buffers
+     * Writes logger content to file and clears all buffers.
      */
     function Flush(): void;
 }
 /**
- * Module used to share mods' APIs
+ * Module used to share mods' APIs.
  */
 export namespace ModAPI {
     /**
-     * Registers new API for the mod and invokes mod API callback
+     * Registers new API for the mod and invokes mod API callback.
      * @param name API name used to import it in the other mods
      * @param api object that is shared with the other mods. May contain other
      * objects, methods, variables, etc. Sometimes it is useful to provide the
@@ -11782,130 +12192,142 @@ export namespace ModAPI {
      */
     function registerAPI(name: string, api: object, descr?: { name?: string, props?: object }): void;
     /**
-     * Gets API by its name. The best approach is to call this method in the
-     * function passed as the second parameter of [[ModAPI.addAPICallback]].
-     *
-     * Example:
-     * ```ts
-     * // importing API registered by IndustrialCraft PE
-     * var ICore;
-     * ModAPI.addAPICallback("ICore", function(api){
-     *     ICore = api;
-     * });
-     * ```
-     *
-     * When using ICore variable from the example, be sure to check it for null
-     * because Industrial Craft PE may not be installed on the user's phone
+     * Gets API by it's name. The best approach is to call this method in the
+     * function passed as the second parameter of {@link ModAPI.addAPICallback}.
      * @param name API name
      * @returns API object if an API with specified was previously registered,
-     * null otherwise
+     * `null` otherwise.
+     * @example
+     * Importing API registered by IndustrialCraft PE:
+     * ```ts
+     * let ICore = null;
+     * ModAPI.addAPICallback("ICore", api => (ICore = api));
+     * ```
+     * When using ICore variable from the example, be sure to check it for `null`
+     * because Industrial Craft PE may not be installed on the user's phone.
      */
     function requireAPI(name: string): Nullable<object>;
     /**
      * Executes string in Core Engine's global context. Can be used to get
-     * functions and objects directly from AdaptedScriptAPI.
+     * functions and objects directly from Adapted Script.
      * @param name string to be executed in Core Engine's global context
      */
     function requireGlobal(name: string): any;
     /**
      * @param name API name
-     * @returns documentation for the specified mod API
+     * @returns Documentation for the specified mod API.
+     * @deprecated Writing documentation that way is not better.
      */
     function requireAPIdoc(name: string): ModDocumentation;
     /**
-     * Fetches information about the method or property of mod API
+     * Fetches information about the method or property of mod API.
      * @param name API name
      * @param prop property or method name
-     * @returns string description of the method or null if no description was
-     * provided by API vendor
+     * @returns String description of the method or null if no description was
+     * provided by API vendor.
+     * @deprecated Writing documentation that way is not better.
      */
     function requireAPIPropertyDoc(name: string, prop: string): Nullable<string>;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function getModByName(modName: string): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function isModLoaded(modName: string): void;
     /**
-     * Adds callback for the specified mod API
+     * Adds callback for the specified mod API.
      * @param apiName API name
      * @param func callback that is called when API is loaded
      */
-    function addAPICallback(apiName: string, func:
+    function addAPICallback(apiName: string, func: (
         /**
          * @param api shared mod API
          */
-        (api: object) => void): void;
+        api: object
+    ) => void): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function addModCallback(modName: string, func: any): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function getModList(): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function getModPEList(): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated No longer supported.
      */
     function addTexturePack(path: any): void;
     /**
-     * Recursively copies (duplicates) the object to the new one
+     * Recursively copies (duplicates) the value to the new one.
      * @param api an object to be copied
-     * @param deep if true, copies the object recursively
-     * @returns a copy of the object
+     * @param deep if `true`, copies the object recursively
+     * @returns A copy of the object.
      */
-    function cloneAPI(api: object, deep: boolean): object;
+    function cloneAPI<T>(api: T, deep?: boolean): T;
     /**
      * Ensures target object has all the properties the source object has, if
      * not, copies them from source to target object.
      * @param source object to copy missing values from
      * @param target object to copy missing values to
      */
-    function inheritPrototypes(source: object, target: object): object;
+    function inheritPrototypes<K extends object, T extends object>
+        (source: K, target: T): K & T;
     /**
      * Recursively clones object to the new one counting call depth and
-     * interrupting copying after 7th recursion call
+     * interrupting copying after 7th recursion call.
      * @param source an object to be cloned
-     * @param deep if true, copies the object recursively
-     * @param rec current recursion state, if > 6, recursion stops. Default
+     * @param deep if `true`, copies the object recursively
+     * @param rec current recursion state, if > 6, recursion stops; default
      * value is 0
-     * @returns cloned object, all the properties that are less then then 8 in
-     * depth, get copied
+     * @returns Cloned object, all the properties that are less then then 8 in
+     * depth, get copied.
      */
-    function cloneObject(source: any, deep: any, rec?: number): object;
+    function cloneObject<T extends object>(source: T, deep?: boolean, rec?: number): T;
     /**
-     * @returns same as [[ModAPI.cloneObject]], but if call depth is more then
-     * 6, returns "stackoverflow" string value
+     * Same as {@link ModAPI.cloneObject}, but if call depth is more then
+     * 6, returns `"stackoverflow"` string value.
      */
-    function debugCloneObject(source: any, deep: any, rec?: number): object | string;
+    function debugCloneObject<T>(source: T, deep?: boolean, rec?: number): T | string;
     /**
-     * Objects used to represent mod API documentation
+     * Objects used to represent mod API documentation.
+     * @deprecated Writing documentation that way is not better.
      */
     interface ModDocumentation {
         /**
-         * full name of the API
+         * Full name of the API.
          */
         name: string,
         /**
-         * object containing descriptions of methods and properties of the API,
-         * where keys are methods and properties names and
-         * values are their descriptions
+         * Object containing descriptions of methods and properties of the API,
+         * where keys are methods and properties names and values are their descriptions.
          */
         props: object
     }
 }
 export namespace Mod {
-    /** 0 - RELEASE, 1 - DEVELOP */
+    /**
+     * + 0 - RELEASE
+     * + 1 - DEVELOP
+     */
     type BuildType = number;
-    /** 0 - RESOURCE, 1 - GUI */
+    /**
+     * + 0 - RESOURCE
+     * + 1 - GUI
+     */
     type ResourceDirType = number;
-    /** 0 - PRELOADER, 1 - LAUNCHER, 2 - MOD, 3 - CUSTOM, 4 - LIBRARY */
+    /**
+     * + 0 - PRELOADER
+     * + 1 - LAUNCHER
+     * + 2 - MOD
+     * + 3 - CUSTOM
+     * + 4 - LIBRARY
+     */
     type SourceType = number;
     interface BuildConfig {
         buildableDirs: java.util.ArrayList<BuildConfig.BuildableDir>;
@@ -12009,39 +12431,39 @@ export namespace Mod {
         getMultiplayerName(): string;
         getMultiplayerVersion(): string;
         getFormattedAPIName(): string;
-        getInfoProperty(name: string): java.lang.Object;
+        getInfoProperty(name: string): string;
         RunPreloaderScripts(): void;
         RunLauncherScripts(): void;
         RunMod(additionalScope: any): void;
         configureMultiplayer(name: string, version: string, isClientOnly: boolean): void;
         runCustomSource(name: string, additionalScope: any): void;
         /**
-         * Other methods and properties
+         * Other methods and properties.
          */
         [key: string]: any
     }
 }
 export namespace ModPack {
     /**
-     * Crutch to replace ModPackManifest.DeclaredDirectoryType enum
-     * 0 - RESOURCE,
-     * 1 - USER_DATA,
-     * 2 - CONFIG,
-     * 3 - CACHE,
-     * 4 - INVALID
+     * Crutch to replace ModPackManifest.DeclaredDirectoryType enum:
+     * + 0 - RESOURCE
+     * + 1 - USER_DATA
+     * + 2 - CONFIG
+     * + 3 - CACHE
+     * + 4 - INVALID
      */
     type ModPackDeclaredDirectoryType = number;
     /**
-     * Crutch to replace ModPackDirectory.DirectoryType enum
-     * 0 - MODS,
-     * 1 - MOD_ASSETS,
-     * 2 - ENGINE,
-     * 3 - CONFIG,
-     * 4 - CACHE,
-     * 5 - RESOURCE_PACKS,
-     * 6 - BEHAVIOR_PACKS,
-     * 7 - TEXTURE_PACKS,
-     * 8 - CUSTOM
+     * Crutch to replace ModPackDirectory.DirectoryType enum:
+     * + 0 - MODS
+     * + 1 - MOD_ASSETS
+     * + 2 - ENGINE
+     * + 3 - CONFIG
+     * + 4 - CACHE
+     * + 5 - RESOURCE_PACKS
+     * + 6 - BEHAVIOR_PACKS
+     * + 7 - TEXTURE_PACKS
+     * + 8 - CUSTOM
      */
     type ModPackDirectoryType = number;
     interface ModPack {
@@ -12149,7 +12571,7 @@ export namespace ModPack {
         getFullEntryName(file: java.io.File): string;
     }
     /**
-     * Interface representing ModPack
+     * Interface representing ModPack.
      */
     interface ModPackJsAdapter {
         getModPack(): ModPack;
@@ -12165,31 +12587,35 @@ export namespace ModPack {
     }
 }
 /**
- * Module containing enums that can make user code more readable
- * @deprecated 2.2.1b89, use enums instead
+ * Module containing enums that can make user code more readable.
+ * @deprecated Consider specified sub-enum to determine which
+ * rellocation must be used.
  */
 export namespace Native {
     /**
-     * Defines armor type and armor slot index in player's inventory
+     * Defines armor type and armor slot index in player's inventory.
+     * @deprecated Use {@link EArmorType} instead.
      */
     enum ArmorType {
         boots = 3,
         chestplate = 1,
         helmet = 0,
-        leggings = 2,
+        leggings = 2
     }
     /**
-     * Defines item category in creative inventory
+     * Defines item category in creative inventory.
+     * @deprecated Use {@link EItemCategory} instead.
      */
     enum ItemCategory {
         DECORATION = 2,
         FOOD = 4,
         INTERNAL = 0,
         MATERIAL = 1,
-        TOOL = 3,
+        TOOL = 3
     }
     /**
-     * Defines all existing vanilla particles
+     * Defines all existing vanilla particles.
+     * @deprecated Use {@link EParticleType} instead.
      */
     enum ParticleType {
         angryVillager = 32,
@@ -12224,10 +12650,11 @@ export namespace Native {
         splash = 22,
         suspendedTown = 19,
         terrain = 16,
-        waterWake = 31,
+        waterWake = 31
     }
     /**
-     * Defines text colors and font styles for chat and tip messages
+     * Defines text colors and font styles for chat and tip messages.
+     * @deprecated Use {@link EColor} instead.
      */
     enum Color {
         AQUA = "§b",
@@ -12252,10 +12679,11 @@ export namespace Native {
         STRIKETHROUGH = "§m",
         UNDERLINE = "§n",
         WHITE = "§f",
-        YELLOW = "§e",
+        YELLOW = "§e"
     }
     /**
-     * Defines all vanilla entity type ids
+     * Defines all vanilla entity type IDs.
+     * @deprecated Use {@link EEntityType} instead.
      */
     enum EntityType {
         AREA_EFFECT_CLOUD = 95,
@@ -12358,10 +12786,11 @@ export namespace Native {
         ZOMBIE = 32,
         ZOMBIE_HORSE = 27,
         ZOMBIE_VILLAGER = 44,
-        ZOMBIE_VILLAGE_V2 = 116,
+        ZOMBIE_VILLAGE_V2 = 116
     }
     /**
-     * Defines vanilla mob render types
+     * Defines vanilla mob render types.
+     * @deprecated Use {@link EMobRenderType} instead.
      */
     enum MobRenderType {
         arrow = 25,
@@ -12410,10 +12839,11 @@ export namespace Native {
         witch = 47,
         wolf = 11,
         zombie = 14,
-        zombiePigman = 15,
+        zombiePigman = 15
     }
     /**
-     * Defines vanilla potion effects
+     * Defines vanilla potion effects.
+     * @deprecated Use {@link EPotionEffect} instead.
      */
     enum PotionEffect {
         absorption = 22,
@@ -12444,25 +12874,28 @@ export namespace Native {
         village_hero = 29,
         waterBreathing = 13,
         weakness = 18,
-        wither = 20,
+        wither = 20
     }
     /**
-     * Defines the three dimensions currently available for player
+     * Defines the three dimensions currently available for player.
+     * @deprecated Use {@link EDimension} instead.
      */
     enum Dimension {
         END = 2,
         NETHER = 1,
-        NORMAL = 0,
+        NORMAL = 0
     }
     /**
-     * Defines item animation types
+     * Defines item animation types.
+     * @deprecated Use {@link EItemAnimation} instead.
      */
     enum ItemAnimation {
         bow = 4,
-        normal = 0,
+        normal = 0
     }
     /**
-     * Defines numeric representation for each block side
+     * Defines numeric representation for each block side.
+     * @deprecated Use {@link EBlockSide} instead.
      */
     enum BlockSide {
         DOWN = 0,
@@ -12470,10 +12903,11 @@ export namespace Native {
         NORTH = 2,
         SOUTH = 3,
         UP = 1,
-        WEST = 4,
+        WEST = 4
     }
     /**
-     * Defines numeric ids of all vanilla enchantments
+     * Defines numeric IDs of all vanilla enchantments.
+     * @deprecated Use {@link EEnchantment} instead.
      */
     enum Enchantment {
         AQUA_AFFINITY = 7,
@@ -12508,11 +12942,12 @@ export namespace Native {
         SMITE = 10,
         THORNS = 5,
         UNBREAKING = 17,
-        VANISHING_CURSE = 28,
+        VANISHING_CURSE = 28
     }
     /**
-     * Defines what enchantments can or cannot be applied to every instrument
-     * type
+     * Defines what enchantments can or cannot be applied to every
+     * instrument type.
+     * @deprecated Use {@link EEnchantType} instead.
      */
     enum EnchantType {
         all = 16383,
@@ -12529,10 +12964,11 @@ export namespace Native {
         pickaxe = 1024,
         shears = 128,
         shovel = 2048,
-        weapon = 16,
+        weapon = 16
     }
     /**
-     * Defines possible render layers (display methods) for blocks
+     * Defines possible render layers (display methods) for blocks.
+     * @deprecated Use {@link EBlockRenderLayer} instead.
      */
     enum BlockRenderLayer {
         alpha = 4099,
@@ -12545,28 +12981,31 @@ export namespace Native {
         opaque_seasons = 1,
         seasons_far = 10,
         seasons_far_alpha = 11,
-        water = 7,
+        water = 7
     }
     /**
-     * Defines possible game difficulty
+     * Defines possible game difficulty.
+     * @deprecated Use {@link EGameDifficulty} instead.
      */
     enum GameDifficulty {
         PEACEFUL = 0,
         EASY = 1,
         NORMAL = 2,
-        HARD = 3,
+        HARD = 3
     }
     /**
-     * Defines possible game modes
+     * Defines possible game modes.
+     * @deprecated Use {@link EGameMode} instead.
      */
     enum GameMode {
         SURVIVAL = 0,
         CREATIVE = 1,
         ADVENTURE = 2,
-        SPECTATOR = 3,
+        SPECTATOR = 3
     }
     /**
-     * Defines player's abilities. See {@page Abilities} for details
+     * Defines player's abilities.
+     * @deprecated Use {@link EPlayerAbility} instead.
      */
     enum PlayerAbility {
         INVULNERABLE = "invulnerable",
@@ -12588,6 +13027,9 @@ export namespace Native {
         OPERATOR_COMMANDS = "op",
         TELEPORT = "teleport"
     }
+    /**
+     * @deprecated Use {@link ETileEntityType} instead.
+     */
     enum TileEntityType {
         NONE = -1,
         BEACON = 21,
@@ -12600,6 +13042,9 @@ export namespace Native {
         JUKEBOX = 33,
         LECTERN = 37
     }
+    /**
+     * @deprecated Use {@link ENbtDataType} instead.
+     */
     enum NbtDataType {
         END_TAG = 0,
         BYTE = 1,
@@ -12618,397 +13063,398 @@ export namespace Native {
 /**
  * Interface providing access to native tile entities - chests, hoppers, furnaces,
  * smelters, etc. See full lists of supported native tile entities in the
- * [[Native.TileEntityType]] enum
+ * {@link ETileEntityType} enum.
  */
 export interface NativeTileEntity {
     /**
-     * @returns native tile entity type constant, one of the [[Native.TileEntityType]]
-     * constants
+     * @returns NativeTileEntity type constant, one of the {@link ETileEntityType}
+     * constants.
      */
     getType(): number,
     /**
-     * @returns slots count for the specified native tile entity
+     * @returns Slots count for the specified NativeTileEntity.
      */
     getSize(): number,
     /**
      * @param slot slot number
-     * @returns item instance in the specified slot of item TE
+     * @returns Item instance in the specified slot of item TE.
      */
     getSlot(slot: number): ItemInstance,
     /**
-     * Sets the contents of a native tile entity's slot
+     * Sets the contents of a native tile entity's slot.
      * @param slot slot number
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra data
      */
     setSlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * Sets the contents of a native tile entity's slot
+     * Sets the contents of a native tile entity's slot.
      * @param slot slot number
      * @param item item information
      */
     setSlot(slot: number, item: ItemInstance): void;
     /**
-     * @returns compound tag associated with specified native tile entity
+     * @returns CompoundTag associated with specified native tile entity.
      */
     getCompoundTag(): NBT.CompoundTag;
     /**
-     * Sets compound tag for the specified tile entity
+     * Sets compound tag for the specified tile entity.
      */
     setCompoundTag(tag: NBT.CompoundTag): void;
 }
 /**
  * NBT (Named Binary Tag) is a tag based binary format designed to carry large
  * amounts of binary data with smaller amounts of additional data. You can get
- * or set nbt tags of [[Entity]] (entities), [[NativeTileEntity]]
- * (native tile entities, such as chests or beacons) and [[ItemExtraData]]
- * (items). To get more information about these data structures,
- * see [this page](http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt)
+ * or set nbt tags of {@link Entity|entities},
+ * {@link NativeTileEntity|native tile entities, such as chests or beacons} and
+ * {@link ItemExtraData|items}. To get more information about these data structures,
+ * see {@link http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt this page}.
  */
 export namespace NBT {
     /**
-     * List tags represent NBT map-like data structure (key-value pairs). Its values may
-     * be of any type, so check the type before calling the appropriate getter
+     * List tags represent NBT map-like data structure (key-value pairs). it's values may
+     * be of any type, so check the type before calling the appropriate getter.
      */
     class CompoundTag {
         /**
-         * Creates a new compound tag
+         * Creates a new compound tag.
          */
         constructor();
         /**
-         * Creates a copy of specified compound tag
+         * Creates a copy of specified compound tag.
          */
         constructor(tag: CompoundTag);
         /**
-         * Converts compound tag to JavaScript object for easier reading
-         * @returns valid JavaScript representation of compound tag
+         * Converts compound tag to JavaScript object for easier reading.
+         * @returns Valid JavaScript representation of compound tag.
          */
         toScriptable(): { [key: string]: any };
         /**
-         * @returns Java-array containing all the keys of the compound tag
+         * @returns Java-array containing all the keys of the compound tag.
          */
         getAllKeys(): native.Array<string>;
         /**
-         * @returns true if specified key exists in compound tag
+         * @returns `true` if specified key exists in compound tag.
          */
         contains(key: string): boolean;
         /**
          * @param key key to verify for the type
-         * @param type tag type to verify for, one of the [[Native.NbtDataType]] constants
-         * @returns true if specified key exists in compound tag and its value is
-         * of specified type
+         * @param type tag type to verify for, one of the {@link ENbtDataType} constants
+         * @returns `true` if specified key exists in compound tag and it's value is
+         * of specified type.
          */
         containsValueOfType(key: string, type: number): boolean;
         /**
-         * @returns value type for the specified key. One of the [[Native.NbtDataType]]
-         * constants
+         * @returns Value type for the specified key. One of the {@link ENbtDataType}
+         * constants.
          */
         getValueType(key: string): number;
         /**
-         * @returns NBT tag of byte type by its key
+         * @returns NBT tag of byte type by it's key.
          */
         getByte(key: string): number;
         /**
-         * @returns NBT tag of short type by its key
+         * @returns NBT tag of short type by it's key.
          */
         getShort(key: string): number;
         /**
-         * @returns NBT tag of 32-bit integer type by its key
+         * @returns NBT tag of 32-bit integer type by it's key.
          */
         getInt(key: string): number;
         /**
-         * @returns NBT tag of 64-bit integer type by its key
+         * @returns NBT tag of 64-bit integer type by it's key.
          */
         getInt64(key: string): number;
         /**
-         * @returns NBT tag of float type by its key
+         * @returns NBT tag of float type by it's key.
          */
         getFloat(key: string): number;
         /**
-         * @returns NBT tag of double type by its key
+         * @returns NBT tag of double type by it's key.
          */
         getDouble(key: string): number;
         /**
-         * @returns NBT tag of string type by its key
+         * @returns NBT tag of string type by it's key.
          */
         getString(key: string): string;
         /**
-         * @returns NBT tag of compound type by its key. Note that a copy of
+         * @returns NBT tag of compound type by it's key. Note that a copy of
          * existing compound tag is created so you cannot edit it directly. Use
          * setCompoundTag method to apply changes or use
-         * [[CompoundTag.getCompoundTagNoClone]] to edit it directly
+         * {@link NBT.CompoundTag.getCompoundTagNoClone|getCompoundTagNoClone} to edit it directly.
          */
         getCompoundTag(key: string): NBT.CompoundTag;
         /**
-         * @returns directly editable NBT tag of byte type by its key. Don't save
+         * @returns Directly editable NBT tag of byte type by it's key. Don't save
          * reference for future usage since they get destroyed when the parent
-         * object is destroyed
+         * object is destroyed.
          */
         getCompoundTagNoClone(key: string): NBT.CompoundTag;
         /**
-         * @returns NBT tag of list type by its key. Note that a copy of
+         * @returns NBT tag of list type by it's key. Note that a copy of
          * existing list tag is created so you cannot edit it directly. Use
          * setCompoundTag method to apply changes or use
-         * [[CompoundTag.getListTagNoClone]] to edit it directly
+         * {@link NBT.CompoundTag.getListTagNoClone|getListTagNoClone} to edit it directly.
          */
         getListTag(key: string): NBT.ListTag;
         /**
-         * @returns directly editable NBT tag of byte type by its key. Don't save
+         * @returns Directly editable NBT tag of byte type by it's key. Don't save
          * reference for future usage since they get destroyed when the parent
-         * object is destroyed
+         * object is destroyed.
          */
         getListTagNoClone(key: string): NBT.ListTag;
         /**
-         * Puts value of byte type into compound tag
+         * Puts value of byte type into compound tag.
          */
         putByte(key: string, value: number): void;
         /**
-         * Puts value of short type into compound tag
+         * Puts value of short type into compound tag.
          */
         putShort(key: string, value: number): void;
         /**
-         * Puts value of 32-bit integer type into compound tag
+         * Puts value of 32-bit integer type into compound tag.
          */
         putInt(key: string, value: number): void;
         /**
-         * Puts value of 64-bit integer type into compound tag
+         * Puts value of 64-bit integer type into compound tag.
          */
         putInt64(key: string, value: number): void;
         /**
-         * Puts value of float type into compound tag
+         * Puts value of float type into compound tag.
          */
         putFloat(key: string, value: number): void;
         /**
-         * Puts value of double type into compound tag
+         * Puts value of double type into compound tag.
          */
         putDouble(key: string, value: number): void;
         /**
-         * Puts value of string type into compound tag
+         * Puts value of string type into compound tag.
          */
         putString(key: string, value: string): void;
         /**
-         * Puts value of compound type into compound tag
+         * Puts value of compound type into compound tag.
          */
         putCompoundTag(key: string, value: CompoundTag): void;
         /**
-         * Puts value of list type into compound tag
+         * Puts value of list type into compound tag.
          */
         putListTag(key: string, value: ListTag): void;
         /**
-         * Removes tag by its key
+         * Removes tag by it's key.
          */
         remove(key: string): void;
         /**
-         * Removes all the tags from the compound tags
+         * Removes all the tags from the compound tags.
          */
         clear(): void;
     }
     /**
-     * List tags represent NBT array-like indexed data structure. Its values may
-     * be of any type, so check the type before calling the appropriate getter
+     * List tags represent NBT array-like indexed data structure. it's values may
+     * be of any type, so check the type before calling the appropriate getter.
      */
     class ListTag {
         /**
-         * Creates a new list tag
+         * Creates a new list tag.
          */
         constructor();
         /**
-         * Creates a copy of specified list tag
+         * Creates a copy of specified list tag.
          */
         constructor(tag: CompoundTag);
         /**
-         * Converts list tag to JavaScript object for easier reading
-         * @returns valid JavaScript representation of list tag
+         * Converts list tag to JavaScript object for easier reading.
+         * @returns Valid JavaScript representation of list tag.
          */
         toScriptable(): any[];
         /**
-         * @returns count of the tags in the list tag
+         * @returns Count of the tags in the list tag.
          */
         length(): number;
         /**
-         * @returns value type for the specified index. One of the [[Native.NbtDataType]]
-         * constants
+         * @returns Value type for the specified index. One of the {@link ENbtDataType}
+         * constants.
          */
         getValueType(index: number): number;
         /**
-         * @returns NBT tag of byte type by its index
+         * @returns NBT tag of byte type by it's index.
          */
         getByte(index: number): number;
         /**
-         * @returns NBT tag of short type by its index
+         * @returns NBT tag of short type by it's index.
          */
         getShort(index: number): number;
         /**
-         * @returns NBT tag of 32-bit integer type by its index
+         * @returns NBT tag of 32-bit integer type by it's index.
          */
         getInt(index: number): number;
         /**
-         * @returns NBT tag of 64-bit integer type by its index
+         * @returns NBT tag of 64-bit integer type by it's index.
          */
         getInt64(index: number): number;
         /**
-         * @returns NBT tag of float type by its index
+         * @returns NBT tag of float type by it's index.
          */
         getFloat(index: number): number;
         /**
-         * @returns NBT tag of double type by its index
+         * @returns NBT tag of double type by it's index.
          */
         getDouble(index: number): number;
         /**
-         * @returns NBT tag of string type by its index
+         * @returns NBT tag of string type by it's index.
          */
         getString(index: number): string;
         /**
-         * @returns NBT tag of compound type by its index. Note that a copy of
+         * @returns NBT tag of compound type by it's index. Note that a copy of
          * existing compound tag is created so you cannot edit it directly. Use
          * setCompoundTag method to apply changes or use
-         * [[CompoundTag.getCompoundTagNoClone]] to edit it directly
+         * {@link NBT.CompoundTag.getCompoundTagNoClone|getCompoundTagNoClone} to edit it directly.
          */
         getCompoundTag(index: number): NBT.CompoundTag;
         /**
-         * @returns directly editable NBT tag of byte type by its index. Don't save
+         * @returns Directly editable NBT tag of byte type by it's index. Don't save
          * reference for future usage since they get destroyed when the parent
-         * object is destroyed
+         * object is destroyed.
          */
         getCompoundTagNoClone(index: number): NBT.CompoundTag;
         /**
-         * @returns NBT tag of list type by its index. Note that a copy of
+         * @returns NBT tag of list type by it's index. Note that a copy of
          * existing list tag is created so you cannot edit it directly. Use
          * setCompoundTag method to apply changes or use
-         * [[CompoundTag.getListTagNoClone]] to edit it directly
+         * {@link NBT.CompoundTag.getListTagNoClone|getListTagNoClone} to edit it directly.
          */
         getListTag(index: number): NBT.ListTag;
         /**
-         * @returns directly editable NBT tag of byte type by its index. Don't save
+         * @returns Directly editable NBT tag of byte type by it's index. Don't save
          * reference for future usage since they get destroyed when the parent
-         * object is destroyed
+         * object is destroyed.
          */
         getListTagNoClone(index: number): NBT.ListTag;
         /**
-         * Puts value of byte type into list tag
+         * Puts value of byte type into list tag.
          */
         putByte(index: number, value: number): void;
         /**
-         * Puts value of short type into list tag
+         * Puts value of short type into list tag.
          */
         putShort(index: number, value: number): void;
         /**
-         * Puts value of 32-bit integer type into list tag
+         * Puts value of 32-bit integer type into list tag.
          */
         putInt(index: number, value: number): void;
         /**
-         * Puts value of 64-bit integer type into list tag
+         * Puts value of 64-bit integer type into list tag.
          */
         putInt64(index: number, value: number): void;
         /**
-         * Puts value of float type into list tag
+         * Puts value of float type into list tag.
          */
         putFloat(index: number, value: number): void;
         /**
-         * Puts value of double type into list tag
+         * Puts value of double type into list tag.
          */
         putDouble(index: number, value: number): void;
         /**
-         * Puts value of string type into list tag
+         * Puts value of string type into list tag.
          */
         putString(index: number, value: string): void;
         /**
-         * Puts value of compound type into list tag
+         * Puts value of compound type into list tag.
          */
         putCompoundTag(index: number, value: CompoundTag): void;
         /**
-         * Puts value of list type into list tag
+         * Puts value of list type into list tag.
          */
         putListTag(index: number, value: ListTag): void;
         /**
-         * Removes all the tags from the compound tags
+         * Removes all the tags from the compound tags.
          */
         clear(): void;
     }
 }
 /**
- * New module to work with client and server packets in multiplayer.
+ * Working with client and server packets in multiplayer
+ * and also determine stuff.
  */
 export namespace Network {
     /**
-     * @returns array containing connected clients
+     * @returns Array containing connected clients.
      */
     function getConnectedClients(): native.Array<NetworkClient>;
     /**
-     * @returns array containing connected players uids
+     * @returns Array containing connected players UIDs.
      */
     function getConnectedPlayers(): native.Array<number>;
     /**
-     * @returns Client object for player by player's entity id
+     * @returns Client object for player by player's entity ID.
      */
     function getClientForPlayer(player: number): NetworkClient;
     /**
-     * Event that is called when a client receives a packet with given name
+     * Event that is called when a client receives a packet with given name.
      * @param name name of the packet
      */
     function addClientPacket<T extends object>(name: string, func: (packetData: T) => void): void;
     /**
-     * Event that is called when server receives a packet with the specified name from client
+     * Event that is called when server receives a packet with the specified name from client.
      * @param name name of the packet
      */
     function addServerPacket<T extends object>(name: string, func: (client: NetworkClient, data: T) => void): void;
     /**
-     * Sends packet object with specified name to all clients
+     * Sends packet object with specified name to all clients.
      */
     function sendToAllClients(name: string, packetData: object): void;
     /**
-     * Sends packet object with the specified name from client to server
+     * Sends packet object with the specified name from client to server.
      */
     function sendToServer(name: string, packetData: object): void;
     /**
-     * Sends message to all players
+     * Sends message to all players.
      * @param message text of the message
      */
     function sendServerMessage(message: string): void;
     /**
-     * Converts item or block id from server to local value
+     * Converts item or block ID from server to local value.
      */
     function serverToLocalId(id: string | number): number;
     /**
-     * Converts item or block id from local to server value
+     * Converts item or block ID from local to server value.
      */
     function localToServerId(id: string | number): number;
     function inRemoteWorld(): boolean;
 }
 /**
- * Class that represents network client
+ * Class that represents network client.
  */
 export class NetworkClient {
     /**
-     * Sends given packet to the following client
+     * Sends given packet to the following client.
      * @param name name of the packet to send
      * @param packetData packet data object
      */
     send(name: string, packetData: object): void;
     /**
-     * @returns unique numeric entity ID of the player
+     * @returns Unique numeric entity ID of the player.
      */
     getPlayerUid(): number;
     getDisconnectCause(): java.io.IOException;
     getDisconnectPacket(): string;
     /**
-     * Sends a packet to the client with a text like a system message
+     * Sends a packet to the client with a text like a system message.
      */
     sendMessage(message: string): void;
     /**
-     * Disconnects player from the server and sends a packet with given reason
+     * Disconnects player from the server and sends a packet with given reason.
      */
     disconnect(reason: string): void;
     /**
-     * Disconnects player from the server with no further information
+     * Disconnects player from the server with no further information.
      */
     disconnect(): void;
 }
 /**
  * Class to work with definite couple of clients,
- * bound by certain conditions
+ * bound by certain conditions.
  */
 export class NetworkConnectedClientList {
     /**
@@ -13019,13 +13465,14 @@ export class NetworkConnectedClientList {
     constructor();
     /**
      * Condition to bound clients to the list.
-     * All clients in a given dimension at a distance of no more than maxDistance from x, y, z
+     * All clients in a given dimension at a distance
+     * of no more than maxDistance from x, y, z.
      * @param x X coord of the conditional centre point of the area where clients are located
      * @param y Y coord of the conditional centre point of the area where clients are located
      * @param z Z coord of the conditional centre point of the area where clients are located
-     * @param dimensionID numeric id of the dimension where clients are located
+     * @param dimensionID numeric ID of the dimension where clients are located
      * @param maxDistance max distance from the client to the conditional centre, to bound the client to the list
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupDistancePolicy(x: number, y: number, z: number, dimensionID: number, maxDistance: number): NetworkConnectedClientList;
     /**
@@ -13035,48 +13482,48 @@ export class NetworkConnectedClientList {
      */
     send(packetName: string, packetData: object): void;
     /**
-     * Adds given client to the list
+     * Adds given client to the list.
      */
     add(client: NetworkClient): void;
     /**
-     * Removes given client from the list
+     * Removes given client from the list.
      */
     remove(client: NetworkClient): void;
     /**
-     * @returns whether the list contains given client
+     * @returns Whether the list contains given client.
      */
     contains(client: NetworkClient): boolean;
     /**
-     * Sets up policy to add all players to the list
-     * @returns the client list itself
+     * Sets up policy to add all players to the list.
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllPlayersPolicy(): NetworkConnectedClientList;
     /**
-     * Sets up policy to add all players to the list
+     * Sets up policy to add all players to the list.
      * @param updateRate how many milliseconds will have to pass between list updates
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllPlayersPolicy(updateRate: number): NetworkConnectedClientList;
     /**
-     * Sets up policy to add players from the same given dimension to the list
-     * @param dimensionID numeric id of the dimension where the clients have to be located to be included into the list
+     * Sets up policy to add players from the same given dimension to the list.
+     * @param dimensionID numeric ID of the dimension where the clients have to be located to be included into the list
      * @param updateRate how many milliseconds will have to pass between list updates
-     * @returns the client list itself
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllInDimensionPolicy(dimensionID: number, updateRate: number): NetworkConnectedClientList;
     /**
-     * Sets up policy to add players from the same given dimension to the list
-     * @param dimensionID numeric id of the dimension where the clients have to be located to be included into the list
-     * @returns the client list itself
+     * Sets up policy to add players from the same given dimension to the list.
+     * @param dimensionID numeric ID of the dimension where the clients have to be located to be included into the list
+     * @returns Reference to itself to be used in sequential calls.
      */
     setupAllInDimensionPolicy(dimensionID: number): NetworkConnectedClientList;
     /**
-     * @returns the iterator across clients' objects that the list consists of
+     * @returns Iterator across clients' objects that the list consists of.
      */
     iterator(): java.util.Iterator<NetworkClient>
 }
 /**
- * Class that represents network entity of the block, currently is not learned
+ * Class that represents network entity of the block, currently is not learned.
  */
 export class NetworkEntity {
 	constructor(type: NetworkEntityType, context: any);
@@ -13085,7 +13532,7 @@ export class NetworkEntity {
 	getClients(): NetworkConnectedClientList;
 }
 /**
- * Class that represents network entity type
+ * Class that represents network entity type.
  */
 export class NetworkEntityType {
 	constructor(name: string);
@@ -13096,11 +13543,11 @@ export class NetworkEntityType {
 	addClientPacketListener(name: string, action: (target: any, entity: number, packetData: any) => void): this;
 }
 /**
- * Module to work with vanilla and custom particles
+ * Module to work with vanilla and custom particles.
  */
 export namespace Particles {
     /**
-     * Custom particle's animator params object
+     * Custom particle's animator params object.
      */
     interface AnimatorDescription {
         /**
@@ -13109,98 +13556,109 @@ export namespace Particles {
          */
         period?: number;
         /**
-         * Appearance moment in the proportions of the period, default is 0
+         * Appearance moment in the proportions of the period.
+         * @default 0
          */
         fadeIn?: number;
         /**
-         * Disappearance moment in the proportions of the period, default is 0
+         * Disappearance moment in the proportions of the period.
+         * @default 0
          */
         fadeOut?: number;
         /**
-         * Initial value, default is 0
+         * Initial value.
+         * @default 0
          */
         start?: number;
         /**
-         * Ending value, default is 0
+         * Ending value.
+         * @default 0
          */
         end?: number;
     }
     /**
-     * Custom particle's sub-emitter params object
+     * Custom particle's sub-emitter params object.
      */
     interface SubEmitterDescription {
         /**
-         * Emitted particle's type numeric id
+         * Emitted particle's type numeric ID.
          */
         type: number;
         /**
-         * Additional data of the emitted particle, default is 0
+         * Additional data of the emitted particle.
+         * @default 0
          */
         data?: number;
         /**
-         * Triggering chance from 0 to 1, default is 1
+         * Triggering float chance from 0 to 1.
+         * @default 1
          */
         chance?: number;
         /**
-         * Particles count for the single time, default is 1
+         * Particles count for the single emit time.
+         * @default 1
          */
         count?: number;
         /**
-         * If true, the new particle will have the velocity of the particle,
-         * that calls the sub-emitter, at the time of invocation, default is false
+         * If `true`, the new particle will have the velocity of the particle,
+         * that calls the sub-emitter, at the time of invocation.
+         * @default false
          */
         keepVelocity?: boolean;
         /**
-         * If true, the new particle will save the emitter that was used for its creation if it had been.
-         * Note: in this case we are talking about emitters, not about sub-emitters.
+         * If true, the new particle will save the emitter that was used for it's creation if it had been.
+         * @remarks
+         * In this case we are talking about emitters, not about sub-emitters.
          */
         keepEmitter?: boolean;
         /**
          * If this value is listed, emitted particles will receive random initial speed,
-         * that isn't more than value * sqrt(3)
+         * that isn't more than `value * sqrt(3)`.
          */
         randomize?: number;
     }
     /**
-     * Custom particle type params object
+     * Custom particle type params object.
      */
     interface ParticleDescription {
         /**
-         * Particle's texture name from 'particle-atlas' resource directory
+         * Particle's texture name from *\/particle-atlas* resource directory.
          */
         texture: string;
         /**
-         * Minimum and maximum size of the particle
+         * Minimum and maximum size of the particle.
          */
         size: [number, number];
         /**
-         * Minimum and maximum particle's lifetime in ticks
+         * Minimum and maximum particle's lifetime in ticks.
          */
         lifetime: [number, number];
         /**
          * Particle's render type:
-         * 0 - additive,
-         * 1 - without blending,
-         * 2 - with blending.
+         * + 0 - additive
+         * + 1 - without blending
+         * + 2 - with blending
          */
-        render?: 0 | 1 | 2;
+        render?: number;
         /**
-         * Four component color of the particle (RGBA), default is [1, 1, 1, 1]
+         * Four component color of the particle (RGBA).
+         * @default [1, 1, 1, 1]
          */
         color?: [number, number, number, number];
         /**
-         * If true, particle won't go through blocks. It reduces performance if
-         * there are lots of these particles, default is false.
+         * If `true`, particle won't go through blocks. It reduces performance if
+         * there are lots of these particles.
+         * @default false.
          */
         collision?: boolean;
         /**
          * Particle's initial velocity, if it's spawned without initial speed parameter.
-         * Default is [0, 0, 0]
+         * @default [0, 0, 0]
          */
         velocity?: [number, number, number];
         /**
          * Particle's acceleration, if it's spawned without this parameter.
-         * Default is [0, 0, 0]
+         * @default [0, 0, 0]
          */
         acceleration?: [number, number, number];
         /**
@@ -13211,24 +13669,30 @@ export namespace Particles {
         friction?: {
             air?: number;
             /**
-             * Note: this value makes sense only if collision param is true
+             * @remarks
+             * This value makes sense only if collision param is `true`.
              */
             block?: number;
         }
         /**
-         * If false, particle's speed will be set to zero when touching a block.
-         * If true, the speed will be saved. This value makes sense only if collision param is true
+         * If `false`, particle's speed will be set to zero when touching a block.
+         * If `true`, the speed will be saved.
+         * @remarks
+         * This value makes sense only if collision param is `true`.
          */
         keepVelocityAfterImpact?: boolean;
         /**
-         * Particle will lose given number of ticks from its maximum lifetime, when touching a block.
-         * This value makes sense only if collision param is true. Default is 0
+         * Particle will lose given number of ticks from it's maximum lifetime, when touching a block.
+         * @remarks
+         * This value makes sense only if collision param is `true`.
+         * @default 0
          */
         addLifetimeAfterImpact?: number;
         /**
-         * If true, the particle will be exposed to the world's lighting.
-         * If false, the particle will always have maximum brightness.
-         * Enabling this parameter may reduce the performance when having lots of particles. Default is false.
+         * If `true`, the particle will be exposed to the world's lighting.
+         * If `false`, the particle will always have maximum brightness.
+         * Enabling this parameter may reduce the performance when having lots of particles.
+         * @default false.
          */
         isUsingBlockLight?: boolean;
         /**
@@ -13249,31 +13713,32 @@ export namespace Particles {
             /**
              * Describes the animation frame, if particle supports it.
              * Must have the value between 0 and 1
-             * @deprecated use icon instead
+             * @deprecated Use `icon` instead.
              */
             texture?: AnimatorDescription;
             /**
              * Describes the animation frame, if particle supports it.
-             * Must have the value between 0 and 1
+             * Must have the value between 0 and 1.
              */
             icon?: AnimatorDescription;
         }
         /**
-         * Sub-emitters (don't confuse with emitters) describe how specific particle can emit other particles,
-         * according to some events, that may happen to it. Each sub-emitter is described as an object of definite format
-         * and can be not described if it's not needed.
+         * Sub-emitters (don't confuse with emitters) describe how specific particle
+         * can emit other particles, according to some events, that may happen to it.
+         * Each sub-emitter is described as an object of definite format and
+         * can be not described if it's not needed.
          */
         emitters?: {
             /**
-             * Called every tick
+             * Called every tick.
              */
             idle?: SubEmitterDescription;
             /**
-             * Called when touching a block, makes sense only if collision parameter is true
+             * Called when touching a block, makes sense only if collision parameter is `true`.
              */
             impact?: SubEmitterDescription;
             /**
-             * Called at the end of particle's life
+             * Called at the end of particle's life.
              */
             death?: SubEmitterDescription;
         }
@@ -13281,48 +13746,51 @@ export namespace Particles {
     /**
      * Spawns particle of given type on given coords
      * with given velocity and additional parameters in the world.
-     * Note: called only on the client side! Use packets to spawn particles for multiple players.
-     * @param type particle type's numeric id. If you want to spawn vanilla particles,
-     * see [[EParticleType]] and [[Native.ParticleType]] enums.
+     * @param type particle type's numeric ID. If you want to spawn vanilla particles,
+     * see {@link EParticleType} enums.
      * @param vx velocity for the particle by X-axis
      * @param vy velocity for the particle by Y-axis
      * @param vz velocity for the particle by Z-axis
      * @param data additional params, currently don't know how to use, just put 0
+     * @remarks
+     * Called only on the client side! Use packets to spawn particles for multiple players.
      */
     function addParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
     /**
-     * Same as [[Particles.addParticle]], but applies 'far' shader to the particle
+     * Same as {@link Particles.addParticle}, but applies `far` shader to the particle.
      */
     function addFarParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
     /**
-     * Registers new custom particle type of given params object
-     * @returns created particle type's numeric id
+     * Registers new custom particle type of given params object.
+     * @returns Created particle type's numeric ID.
      */
     function registerParticleType(descriptor: ParticleDescription): number;
     /**
-     * @returns [[Particles.ParticleType]] object of the particle by given id, if it exists
+     * @returns Object {@link Particles.ParticleType} of the particle by given ID, if it exists.
      */
     function getParticleTypeById(id: number): ParticleType;
     /**
      * Class to create custom particle types.
-     * Mostly for internal use, you can use [[Particles.registerParticleType]] instead
+     * Mostly for internal use, you can use {@link Particles.registerParticleType} instead.
      */
     class ParticleType {
         /**
-         * Constructs new [[Particles.ParticleType]] object from given needed params
+         * Constructs new {@link Particles.ParticleType}
+         * object from given needed params.
          */
         constructor(textureName: string, minU: number, minV: number, maxU: number, maxV: number, textureCountHorizontal: number, textureCountVertical: number, isUsingBlockLight: boolean);
         /**
-         * Constructs new [[Particles.ParticleType]] object from given needed params
-         * (unfinished documentation)
+         * Constructs new {@link Particles.ParticleType}
+         * object from given needed params (unfinished documentation).
          */
         constructor(locationName: string, isUsingBlockLight: boolean, uv: number[], textureCountHorizontal: number, textureCountVertical: number);
         /**
-         * Constructs new [[Particles.ParticleType]] object from given descriptor object
+         * Constructs new {@link Particles.ParticleType}
+         * object from given descriptor object.
          */
         constructor(descriptor: ParticleDescription);
         /**
-         * @returns following particle type's numeric id
+         * @returns Following particle type's numeric ID.
          */
         getId(): number;
         setRenderType(renderType: 0 | 1 | 2): void;
@@ -13342,62 +13810,63 @@ export namespace Particles {
      * Particle emitter allows to change their position after spawn.
      * It represents a coordinate system, where created particles are located
      * and which you can move however you want.
-     * Note: emitter can be moved only while being in world,
+     * @remarks
+     * Emitter can be moved only while being in world,
      * and it works ONLY for custom particles, not for vanilla!
      */
     class ParticleEmitter {
         /**
-         * Constructs new particle emitter with origin in given coords
+         * Constructs new particle emitter with origin in given coords.
          */
         constructor(x: number, y: number, z: number);
         /**
          * Moves the coordinate system to given coords,
-         * it will cause all particles' transfer
+         * it will cause all particles' transfer.
          */
         move(x: number, y: number, z: number): void;
         /**
-         * Moves the ORIGIN of the coordinate system to given coords,
+         * Moves the ORIGIN of the coordinate system to given coords.
          */
         moveTo(x: number, y: number, z: number): void;
         /**
          * Sets the speed of the coordinate system by each axis in blocks per tick,
-         * it can be stopped with `emitter.stop()` or `emitter.setVelocity(0, 0, 0)`
+         * it can be stopped with `emitter.stop()` or `emitter.setVelocity(0, 0, 0)`.
          */
         setVelocity(x: number, y: number, z: number): void;
         /**
          * Binds the origin to the given entity's position,
-         * resets the coordinate system's speed
+         * resets the coordinate system's speed.
          */
         attachTo(entity: number): void;
         /**
-         * Same as `attachTo(entity)`, but adds x, y and z offset to entity's coords
+         * Same as `attachTo(entity)`, but adds x, y and z offset to entity's coords.
          */
         attachTo(entity: number, x: number, y: number, z: number): void;
         /**
-         * Detaches the coords system from the entity and leaves it on the current position
+         * Detaches the coords system from the entity and leaves it on the current position.
          */
         detach(): void;
         /**
-         * Terminates any movement of the coordinate system
+         * Terminates any movement of the coordinate system.
          */
         stop(): void;
         /**
          * Performs the finalization of the native object of the following emitter.
          * It means that you will no longer be able to use the following emitter after calling this method,
          * and the object itself will be removed from the memory.
-         * Can be used for optimization purposes
+         * Can be used for optimization purposes.
          */
         release(): void;
         /**
-         * @returns the origin's coords in [[Vector]] object
+         * @returns Origin's coords in {@link Vector} object.
          */
         getPosition(): Vector;
         /**
-         * @returns the origin's coords in float array of 3 elements
+         * @returns Origin's coords in float array of 3 elements.
          */
         getPositionArray(): [number, number, number];
         /**
-         * Default is false. It means that the coords of the particles for the following emitter
+         * Default is false. It means that the coords of the particles for the following emitter.
          * will be specified in the absolute coordinate system, if enabled,
          * they will need to be set relative to the current position of the emitter.
          * This can be very convenient if you need to make a system of particles completely isolated from the movement of the emitter.
@@ -13425,74 +13894,77 @@ export namespace Particles {
      */
     class ParticleAnimator {
         /**
-         * Constructs new [[Particles.ParticleAnimator]] object from given needed params
+         * Constructs new {@link Particles.ParticleAnimator} object from given needed params.
          */
         constructor(period: number, fadeInTime: number, fadeInValue: number, fadeOutTime: number, fadeOutValue: number);
         /**
-         * Constructs new [[Particles.ParticleAnimator]] object from given descriptor object
+         * Constructs new {@link Particles.ParticleAnimator} object from given descriptor object.
          */
         constructor(descriptor: AnimatorDescription);
     }
     /**
      * Sub-emitters describe how specific particle can emit other particles,
      * according to some events, that may happen to it.
-     * Mostly for internal use, put sub-emitters' descriptors into `emitters`
+     * Mostly for internal use, put sub-emitters descriptors into `emitters`.
      */
     class ParticleSubEmitter {
         /**
-         * Constructs new [[Particles.ParticleSubEmitter]] object from given needed params
+         * Constructs new {@link Particles.ParticleSubEmitter}
+         * object from given needed params.
          */
         constructor(chance: number, count: number, type: number, data: number);
         /**
-         * Constructs new [[Particles.ParticleSubEmitter]] object from given descriptor object
+         * Constructs new {@link Particles.ParticleSubEmitter}
+         * object from given descriptor object.
          */
         constructor(descriptor: SubEmitterDescription);
         /**
-         * Emitted particles will receive random initial speed
+         * Emitted particles will receive random initial speed.
          */
         setRandomVelocity(maxRandomVelocity: number): void;
         /**
          * @param keepVelocity If true, the new particle will have the velocity of the particle,
-         * that calls the sub-emitter, at the time of invocation, default is false
+         * that calls the sub-emitter, at the time of invocation; default is false
          */
         setKeepVelocity(keepVelocity: boolean): void;
         /**
-         * @param keepEmitter If true, the new particle will save the emitter that was used for its creation if it had been.
-         * Note: in this case we are talking about emitters, not about sub-emitters.
+         * @param keepEmitter If true, the new particle will save the emitter that was used for it's creation if it had been.
+         * @remarks
+         * In this case we are talking about emitters, not about sub-emitters.
          */
         setKeepEmitter(keepEmitter: boolean): void;
     }
 }
 /**
  * Module used to manipulate player. Player is also an entity in Minecraft, so
- * you can use all the functions from [[Entity]] module as well. To get player's
- * entity id, call [[Player.get]] function
+ * you can use all the functions from {@link Entity} module as well. To get player's
+ * entity ID, call {@link Player.get} function.
  */
 export namespace Player {
     /**
-     * @returns player's entity id that can be used with most of [[Entity]]
-     * function
+     * @returns Player's entity ID that can be used with most of {@link Entity}
+     * function.
      */
     function get(): number;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes and {@link Entity.getNameTag} instead.
      */
     function getNameForEnt(ent: number): string;
     /**
-     * @deprecated No longer supported
+     * @deprecated Use attributes and {@link Entity.getNameTag} instead.
      */
     function getName(): void;
     /**
-     * @returns current dimension numeric id, one of the [[Native.Dimension]]
-     * values or custom dimension id
+     * @returns Current dimension numeric ID, one of the {@link EDimension}
+     * values or custom dimension ID.
      */
     function getDimension(): number;
     /**
-     * @returns true if specified entity is of player type, false otherwise
+     * @returns `true` if specified entity is of player type, `false` otherwise.
      */
     function isPlayer(ent: number): boolean;
     /**
-     * Fetches information about the objects player is currently pointing
+     * Fetches information about the objects player is currently pointing.
      */
     function getPointed():
     /**
@@ -13503,453 +13975,459 @@ export namespace Player {
      * @param entity pointed entity, if no entity's pointed, returns -1
      */ { pos: BlockPosition, vec: Vector, block: Tile, entity: number };
     /**
-     * @deprecated No longer supported
+     * @deprecated Consider use {@link Player.getInventorySlot} instead.
      */
     function getInventory(loadPart: any, handleEnchant: any, handleNames: any): void;
     /**
-     * Adds items to player's inventory, stacking them if possible
-     * @param id item id
+     * Adds items to player's inventory, stacking them if possible.
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
-     * @param boolean if set to false, function drops items that could not be
+     * @param preventDrop if set to false, function drops items that could not be
      * added to player's inventory, destroys them otherwise
      */
     function addItemToInventory(id: number, count: number, data: number, extra?: ItemExtraData, preventDrop?: boolean): void;
     /**
-     * @param handleEnchant No longer supported and should not be passed
-     * @param handleNames No longer supported and should not be passed
-     * @returns item in player's hand
+     * @returns Item in player's hand.
      */
     function getCarriedItem(): ItemInstance;
     /**
-     * Sets item in player's hand
-     * @param id item id
+     * @param handleEnchant No longer supported and should not be passed
+     * @param handleNames No longer supported and should not be passed
+     * @returns Item in player's hand.
+     * @deprecated Use same method without parameters.
+     */
+    function getCarriedItem(handleEnchant: boolean, handleNames: boolean): ItemInstance;
+    /**
+     * Sets item in player's hand.
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
      */
     function setCarriedItem(id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * Decreases carried item count by specified number
+     * Decreases carried item count by specified number.
      * @param count amount of items to decrease carried item by, default value
      * is 1
      */
     function decreaseCarriedItem(count?: number): void;
     /**
-     * @param slot slot id, from 0 to 36
-     * @returns information about item in the specified inventory slot
+     * @param slot slot ID, from 0 to 36
+     * @returns Information about item in the specified inventory slot.
      */
     function getInventorySlot(slot: number): ItemInstance;
     /**
-     * Sets contents of the specified inventory slot
-     * @param slot slot id, from 0 to 36
-     * @param id item id
+     * Sets contents of the specified inventory slot.
+     * @param slot slot ID, from 0 to 36
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
      */
     function setInventorySlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]]
-     * values
-     * @returns information about item in the specified armor slot
+     * @param slot armor slot ID, should be one of the {@link EArmorType}
+     * values.
+     * @returns Information about item in the specified armor slot.
      */
     function getArmorSlot(slot: number): ItemInstance;
     /**
-     * Sets contents of the specified armor slot
-     * @param slot armor slot id, should be one of the [[Native.ArmorType]]
+     * Sets contents of the specified armor slot.
+     * @param slot armor slot ID, should be one of the {@link EArmorType}
      * values
-     * @param id item id
+     * @param id item ID
      * @param count item count
      * @param data item data
      * @param extra item extra
      */
     function setArmorSlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
     /**
-     * @returns currently selected inventory slot, from 0 to 8
+     * @returns Currently selected inventory slot, from 0 to 8.
      */
     function getSelectedSlotId(): number;
     /**
-     * Selects currently selected inventory slot
-     * @param slot slot id to be selected, from 0 to 8
+     * Selects currently selected inventory slot.
+     * @param slot slot ID to be selected, from 0 to 8
      */
     function setSelectedSlotId(slot: number): void;
     /**
-     * Sets specified coordinates as player's position
+     * Sets specified coordinates as player's position.
      */
     function setPosition(x: number, y: number, z: number): void;
     /**
-     * @returns current player's position
+     * @returns Current player's position.
      */
     function getPosition(): Vector;
     /**
-     * Changes current player position by specified vector
+     * Changes current player position by specified vector.
      */
     function addPosition(x: number, y: number, z: number): void;
     /**
-     * Set player's velocity using velocity vector
+     * Set player's velocity using velocity vector.
      * @param x velocity
      * @param y velocity
      * @param z velocity
      */
     function setVelocity(x: number, y: number, z: number): void;
     /**
-     * Get player's velocity
-     * @returns [[Vector]] containing player's velocity
+     * Get player's velocity.
+     * @returns Currently {@link Vector} containing player's velocity.
      */
     function getVelocity(): Vector;
     /**
-     * Updates current entity's velocity by specified values
+     * Updates current entity's velocity by specified values.
      */
     function addVelocity(x: number, y: number, z: number): void;
     /**
-     * @returns an object that allows to manipulate player experience
-     * @deprecated Consider using [[Player.getExperience]],
-     * [[Player.setExperience]], [[Player.addExperience]]
+     * @returns An object that allows to manipulate player experience.
+     * @deprecated Consider using {@link Player.getExperience},
+     * {@link Player.setExperience}, {@link Player.addExperience}.
      */
     function experience(): PlayerExperience;
     /**
-     * @returns player's current experience
+     * @returns Player's current experience.
      */
     function getExperience(): number;
     /**
-     * Sets player's experience
+     * Sets player's experience.
      * @param exp experience value to be set
      */
     function setExperience(exp: number): void;
     /**
-     * Adds specified amount of experience to the current value
+     * Adds specified amount of experience to the current value.
      * @param exp amount to be added
      */
     function addExperience(exp: number): void;
     /**
-     * @returns an object that allows to manipulate player level
-     * @deprecated Consider using [[Player.getLevel]],
-     * [[Player.setLevel]], [[Player.addLevel]]
+     * @returns An object that allows to manipulate player level.
+     * @deprecated Consider using {@link Player.getLevel},
+     * {@link Player.setLevel}, {@link Player.addLevel}.
      */
     function level(): PlayerLevel;
     /**
-     * @returns player's current level
+     * @returns Player's current level.
      */
     function getLevel(): number;
     /**
-     * Sets player's level
+     * Sets player's level.
      * @param level level value to be set
      */
     function setLevel(level: number): void;
     /**
-     * Adds specified amount of level to the current value
+     * Adds specified amount of level to the current value.
      * @param level amount to be added
      */
     function addLevel(level: number): void;
     /**
-     * @returns an object that allows to manipulate player flying ability and
-     * state
-     * @deprecated Consider using [[Player.getFlyingEnabled]],
-     * [[Player.setFlyingEnabled]], [[Player.getFlying]], [[Player.setFlying]]
+     * @returns An object that allows to manipulate player flying ability and
+     * state.
+     * @deprecated Consider using {@link Player.getFlyingEnabled},
+     * {@link Player.setFlyingEnabled}, {@link Player.getFlying}, {@link Player.setFlying}.
      */
     function flying(): PlayerFlying;
     /**
-     * @returns true if player is allowed to fly, false otherwise
+     * @returns `true` if player is allowed to fly, `false` otherwise.
      */
     function getFlyingEnabled(): boolean;
     /**
-     * Enables or disables player's ability to fly
+     * Enables or disables player's ability to fly.
      * @param enabled whether the player can fly or not
      */
     function setFlyingEnabled(enabled: boolean): void;
     /**
-     * @returns true if player is flying, false otherwise
+     * @returns `true` if player is flying, `false` otherwise.
      */
     function getFlying(): boolean;
     /**
-     * Changes player's current flying state, call [[Player.setFlyingEnabled]]
-     * to be able to set this property to true
+     * Changes player's current flying state, call {@link Player.setFlyingEnabled}
+     * to be able to set this property to `true`.
      * @param enabled whether the player should fly or not
      */
     function setFlying(enabled: boolean): void;
     /**
-     * @returns an object that allows to manipulate player's exhaustion
-     * @deprecated Consider using [[Player.getExhaustion]] and
-     * [[Player.setExhaustion]]
+     * @returns An object that allows to manipulate player's exhaustion.
+     * @deprecated Consider using {@link Player.getExhaustion} and
+     * {@link Player.setExhaustion}.
      */
     function exhaustion(): PlayerExhaustion;
     /**
-     * @returns player's current exhaustion
+     * @returns Player's current exhaustion.
      */
     function getExhaustion(): number;
     /**
-     * Sets player's exhaustion
+     * Sets player's exhaustion.
      * @param value exhaustion value to be set
      */
     function setExhaustion(value: number): void;
     /**
-     * @returns an object that allows to manipulate player's exhaustion
-     * @deprecated Consider using [[Player.getHunger]] and
-     * [[Player.setHunger]]
+     * @returns An object that allows to manipulate player's exhaustion.
+     * @deprecated Consider using {@link Player.getHunger} and
+     * {@link Player.setHunger}.
      */
     function hunger(): PlayerHunger;
     /**
-     * @returns player's current hunger
+     * @returns Player's current hunger.
      */
     function getHunger(): number;
     /**
-     * Sets player's hunger
+     * Sets player's hunger.
      * @param value hunger value to be set
      */
     function setHunger(value: number): void;
     /**
-     * @returns an object that allows to manipulate player's saturation
-     * @deprecated Consider using [[Player.getSaturation]] and
-     * [[Player.setSaturation]]
+     * @returns An object that allows to manipulate player's saturation.
+     * @deprecated Consider using {@link Player.getSaturation} and
+     * {@link Player.setSaturation}.
      */
     function saturation(): PlayerSaturation;
     /**
-     * @returns player's current saturation
+     * @returns Player's current saturation.
      */
     function getSaturation(): number;
     /**
-     * Sets player's saturation
+     * Sets player's saturation.
      * @param value saturation value to be set
      */
     function setSaturation(value: number): void;
     /**
-     * @returns an object that allows to manipulate player's health
-     * @deprecated Consider using [[Player.getHealth]] and
-     * [[Player.setHealth]]
+     * @returns An object that allows to manipulate player's health.
+     * @deprecated Consider using {@link Player.getHealth} and
+     * {@link Player.setHealth}.
      */
     function health(): PlayerHealth;
     /**
-     * @returns player's current health
+     * @returns Player's current health.
      */
     function getHealth(): number;
     /**
-     * Sets player's health
-     * @param value health value to be set
+     * Sets player's health.
+     * @param value Health value to be set.
      */
     function setHealth(value: number): void;
     /**
-     * @returns an object that allows to manipulate player's score
-     * @deprecated Consider using [[Player.getScore]]
+     * @returns An object that allows to manipulate player's score.
+     * @deprecated Consider using {@link Player.getScore}.
      */
     function score(): PlayerScore;
     /**
-     * @returns player's current score
+     * @returns Player's current score.
      */
     function getScore(): number;
     /**
-     * Sets view zoom, to reset value call [[Player.resetFov]]
+     * Sets view zoom, to reset value call {@link Player.resetFov}.
      * @param fov view zoom, default zoom is about 70
      */
     function setFov(fov: number): void;
     /**
-     * Resets view zoom to the default value
+     * Resets view zoom to the default value.
      */
     function resetFov(): void;
     /**
-     * Sets player's camera to the specified entity
-     * @param ent entity id
+     * Sets player's camera to the specified entity.
+     * @param ent entity ID
      */
     function setCameraEntity(ent: number): void;
     /**
-     * Resets player's camera if it was previously set to another entity
+     * Resets player's camera if it was previously set to another entity.
      */
     function resetCameraEntity(): void;
     /**
-     * Sets some of the player's {@page Abilities}. If the argument is of type
-     * Boolean, sets the ability as the boolean one, otherwise as numeric one
+     * Sets some of the player's abilities. If the argument is of type
+     * boolean, sets the ability as the boolean one, otherwise as numeric one.
      * @param ability ability name constant, should be one of the
-     * [[Native.PlayerAbility]] constants
+     * {@link EPlayerAbility} constants
      * @param value the value to be set for the ability. Can be either boolean
      * or number, depending on the ability
      */
     function setAbility(ability: string, value: boolean | number): void;
     /**
-     * Gets one of the player's {@page Abilities} in a form of floating-point
-     * number
+     * Gets one of the player's abilities in a form of floating-point
+     * number.
      * @param ability ability name constant, should be one of the
-     * [[Native.PlayerAbility]] constants
-     * @returns the current value of the ability in a form of floating-point
-     * number
+     * {@link EPlayerAbility} constants
+     * @returns Current value of the ability in a form of floating-point
+     * number.
      */
     function getFloatAbility(ability: string): number;
     /**
-     * Gets one of the player's {@page Abilities} in a boolean form
+     * Gets one of the player's abilities in a boolean form.
      * @param ability ability name constant, should be one of the
-     * [[Native.PlayerAbility]] constants
-     * @returns the current value of the ability in a boolean form
+     * {@link EPlayerAbility} constants
+     * @returns Current value of the ability in a boolean form.
      */
     function getBooleanAbility(ability: string): number;
     /**
-     * Class used to manipulate player's experience
-     * @deprecated Consider using [[Player.getExperience]],
-     * [[Player.setExperience]], [[Player.addExperience]]
+     * Class used to manipulate player's experience.
+     * @deprecated Consider using {@link Player.getExperience},
+     * {@link Player.setExperience}, {@link Player.addExperience}.
      */
     class PlayerExperience {
         /**
-         * @returns player's current experience
+         * @returns Player's current experience.
          */
         public get(): number;
         /**
-         * Sets player's experience
+         * Sets player's experience.
          * @param exp experience value to be set
          */
         public set(exp: number): void;
         /**
-         * Adds specified amount of experience to the current value
+         * Adds specified amount of experience to the current value.
          * @param exp amount to be added
          */
         public add(exp: number): void;
     }
     /**
-     * Class used to manipulate player's level
-     * @deprecated Consider using [[Player.getLevel]],
-     * [[Player.setLevel]], [[Player.addLevel]]
+     * Class used to manipulate player's level.
+     * @deprecated Consider using {@link Player.getLevel},
+     * {@link Player.setLevel}, {@link Player.addLevel}.
      */
     class PlayerLevel {
         /**
-         * @returns player's current level
+         * @returns Player's current level.
          */
         public get(): number;
         /**
-         * Sets player's level
+         * Sets player's level.
          * @param level level value to be set
          */
         public set(level: number): void;
         /**
-         * Adds specified amount of level to the current value
+         * Adds specified amount of level to the current value.
          * @param level amount to be added
          */
         public add(level: number): void;
     }
     /**
-     * Class used to manipulate player's flying ability and state
-     * @deprecated Consider using [[Player.getFlyingEnabled]],
-     * [[Player.setFlyingEnabled]], [[Player.getFlying]], [[Player.setFlying]]
+     * Class used to manipulate player's flying ability and state.
+     * @deprecated Consider using {@link Player.getFlyingEnabled},
+     * {@link Player.setFlyingEnabled}, {@link Player.getFlying}
+     * and {@link Player.setFlying}.
      */
     class PlayerFlying {
         /**
-         * @returns true if player is flying, false otherwise
+         * @returns `true` if player is flying, `false` otherwise.
          */
         public get(): boolean;
         /**
-         * Changes player's current flying state, call
-         * [[Player.PlayerFlying.setEnabled]] to be able to set this property to
-         * true
+         * Changes player's current flying state, call {@link Player.PlayerFlying.setEnabled}
+         * to be able to set this property to `true`.
          * @param enabled whether the player should fly or not
          */
         public set(enabled: boolean): void;
         /**
-         * @returns true if player is allowed to fly, false otherwise
+         * @returns `true` if player is allowed to fly, `false` otherwise.
          */
         public getEnabled(): boolean;
         /**
-         * Enables or disables player's ability to fly
+         * Enables or disables player's ability to fly.
          * @param enabled whether the player can fly or not
          */
         public setEnabled(enabled: boolean): void;
     }
     /**
-     * Class used to manipulate player's exhaustion
-     * @deprecated Consider using [[Player.getExhaustion]] and
-     * [[Player.setExhaustion]]
+     * Class used to manipulate player's exhaustion.
+     * @deprecated Consider using {@link Player.getExhaustion} and
+     * {@link Player.setExhaustion}.
      */
     class PlayerExhaustion {
         /**
-         * @returns player's current exhaustion
+         * @returns Player's current exhaustion.
          */
         public get(): number;
         /**
-         * Sets player's exhaustion
+         * Sets player's exhaustion.
          * @param value exhaustion value to be set
          */
         public set(value: number): void;
     }
     /**
-     * Class used to manipulate player's hunger
-     * @deprecated Consider using [[Player.getHunger]] and
-     * [[Player.setHunger]]
+     * Class used to manipulate player's hunger.
+     * @deprecated Consider using {@link Player.getHunger} and
+     * {@link Player.setHunger}.
      */
     class PlayerHunger {
         /**
-         * @returns player's current hunger
+         * @returns Player's current hunger.
          */
         public get(): number;
         /**
-         * Sets player's hunger
+         * Sets player's hunger.
          * @param value hunger value to be set
          */
         public set(value: number): void;
     }
     /**
-     * Class used to manipulate player's saturation
-     * @deprecated Consider using [[Player.getSaturation]] and
-     * [[Player.setSaturation]]
+     * Class used to manipulate player's saturation.
+     * @deprecated Consider using {@link Player.getSaturation} and
+     * {@link Player.setSaturation}.
      */
     class PlayerSaturation {
         /**
-         * @returns player's current saturation
+         * @returns Player's current saturation.
          */
         public get(): number;
         /**
-         * Sets player's saturation
+         * Sets player's saturation.
          * @param value saturation value to be set
          */
         public set(value: number): void;
     }
     /**
-     * Class used to manipulate player's health
-     * @deprecated Consider using [[Player.getHealth]] and
-     * [[Player.setHealth]]
+     * Class used to manipulate player's health.
+     * @deprecated Consider using {@link Player.getHealth} and
+     * {@link Player.setHealth}.
      */
     class PlayerHealth {
         /**
-         * @returns player's current health
+         * @returns Player's current health.
          */
         public get(): number;
         /**
-         * Sets player's health
+         * Sets player's health.
          * @param value health value to be set
          */
         public set(value: number): void;
     }
     /**
-     * Class used to manipulate player's score
-     * @deprecated Consider using [[Player.getScore]]
+     * Class used to manipulate player's score.
+     * @deprecated Consider using {@link Player.getScore}.
      */
     class PlayerScore {
         /**
-         * @returns player's current score
+         * @returns Player's current score.
          */
         public get(): number;
     }
 }
 /**
  * Class to manipulate with separate players.
+ * @remarks
  * It is temporary! It exists only 1 server tick!
  */
 export class PlayerActor {
     constructor(playerUid: number);
     /**
-     * @returns player's unique numeric entity id
+     * @returns Player's unique numeric entity ID.
      */
     getUid(): number;
     /**
-     * @returns the id of dimension where player is.
+     * @returns ID of dimension where player is.
      */
     getDimension(): number;
     /**
-     * @returns player's gamemode.
+     * @returns Player's gamemode.
      */
     getGameMode(): number;
     /**
-     * Adds item to player's inventory
+     * Adds item to player's inventory.
      * @param dropRemaining if true, surplus will be dropped near player
      */
     addItemToInventory(id: number, count: number, data: number, extra: ItemExtraData | null, dropRemaining: boolean): void;
     /**
-     * @returns inventory slot's contents.
+     * @returns Inventory slot's contents.
      */
     getInventorySlot(slot: number): ItemInstance;
     /**
@@ -13957,7 +14435,7 @@ export class PlayerActor {
      */
     setInventorySlot(slot: number, id: number, count: number, data: number, extra: ItemExtraData | null): void;
     /**
-     * @returns armor slot's contents.
+     * @returns Armor slot's contents.
      */
     getArmor(slot: number): ItemInstance;
     /**
@@ -13974,11 +14452,11 @@ export class PlayerActor {
      */
     spawnExpOrbs(x: number, y: number, z: number, value: number): void;
     /**
-     * @returns whether the player is a valid entity.
+     * @returns Whether the player is a valid entity.
      */
     isValid(): boolean;
     /**
-     * @returns player's selected slot.
+     * @returns Player's selected slot.
      */
     getSelectedSlot(): number;
     /**
@@ -13986,7 +14464,7 @@ export class PlayerActor {
      */
     setSelectedSlot(slot: number): void;
     /**
-     * @returns player's experience.
+     * @returns Player's experience.
      */
     getExperience(): number;
     /**
@@ -13998,7 +14476,7 @@ export class PlayerActor {
      */
     addExperience(amount: number): void;
     /**
-     * @returns player's xp level.
+     * @returns Player's xp level.
      */
     getLevel(): number;
     /**
@@ -14006,7 +14484,7 @@ export class PlayerActor {
      */
     setLevel(level: number): void;
     /**
-     * @returns player's exhaustion.
+     * @returns Player's exhaustion.
      */
     getExhaustion(): number;
     /**
@@ -14014,7 +14492,7 @@ export class PlayerActor {
      */
     setExhaustion(value: number): void;
     /**
-     * @returns player's hunger.
+     * @returns Player's hunger.
      */
     getHunger(): number;
     /**
@@ -14022,7 +14500,7 @@ export class PlayerActor {
      */
     setHunger(value: number): void;
     /**
-     * @returns player's saturation.
+     * @returns Player's saturation.
      */
     getSaturation(): number;
     /**
@@ -14030,7 +14508,7 @@ export class PlayerActor {
      */
     setSaturation(value: number): void;
     /**
-     * @returns player's score.
+     * @returns Player's score.
      */
     getScore(): number;
     /**
@@ -14042,285 +14520,283 @@ export class PlayerActor {
     getItemUseStartupProgress(): number;
 }
 /**
- * Module used to manipulate crafting recipes for vanilla and custom workbenches
+ * Module used to manipulate crafting recipes for vanilla and custom workbenches.
  */
 export namespace Recipes {
     /**
-     * Adds new shaped crafting recipe. For example:
+     * Adds new shaped crafting recipe.
+     * @param result recipe result item
+     * @param mask recipe shape, up to three string corresponding to the three
+     * crafting field rows; each character means one item in the field
+     * @param data an array explaining the meaning of each character within
+     * mask. The array should contain three values for each symbol: the symbol
+     * itself, item ID and item data.
+     * @param func function to be called when the craft is processed
+     * @param prefix recipe prefix. Use a non-empty values to register recipes
+     * for custom workbenches
      *
-     * Simple example:
-     *
-     * ```ts
-     * Recipes.addShaped({id: 264, count: 1, data: 0}, [
+     * @example
+     * ```js
+     * Recipes.addShaped({ id: 264, count: 1, data: 0 }, [
      *     "ax",
      *     "xa",
      *     "ax"
      * ], ['x', 265, 0, 'a', 266, 0]);
      * ```
      *
-     * @param result recipe result item
-     * @param mask recipe shape, up to three string corresponding to the three
-     * crafting field rows. Each character means one item in the field.
-     * E.g. the pickaxe recipe should look like this:
-     *
-     * ```
+     * @remarks
+     * Pickaxe recipe should look like this:
+     * ```txt
      * "+++"
      * " | "
      * " | "
      * ```
-     *
      * Do not use empty lines or line endings, if the recipe can be placed
-     * within less then three rows or cols. E.g. to craft plates, you can use
-     * a shape like this:
-     *
-     * ```
+     * within less then three rows or cols; e.g., to craft plates, you can
+     * use a shape like this:
+     * ```txt
      * "--"
      * ```
-     *
-     * @param data an array explaining the meaning of each character within
-     * mask. The array should contain three values for each symbol: the symbol
-     * itself, item id and item data.
-     * @param func function to be called when the craft is processed
-     * @param prefix recipe prefix. Use a non-empty values to register recipes
-     * for custom workbenches
      */
     function addShaped(result: ItemInstance, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
     /**
-     * Same as [[Recipes.addShaped]], but you can specify result as three
-     * separate values corresponding to id, count and data
+     * Same as {@link Recipes.addShaped}, but you can specify result as three
+     * separate values corresponding to ID, count and data.
      */
     function addShaped2(id: number, count: number, aux: number, mask: string[], data: (string | number)[], func?: CraftingFunction, prefix?: string): WorkbenchShapedRecipe;
     /**
-     * Adds new shapeless crafting recipe. For example:
-     *
-     * ```ts
-     * Recipes.addShapeless({id: 264, count: 1, data: 0},
-     *     [{id: 265, data: 0}, {id: 265, data: 0}, {id: 265, data: 0},
-     *     {id: 266, data: 0}, {id: 266, data: 0}, {id: 266, data: 0}]);
-     * ```
-     *
+     * Adds new shapeless crafting recipe.
      * @param result recipe result item
      * @param data crafting ingredients, an array of objects representing item
-     * id and data
+     * ID and data
      * @param func function to be called when the craft is processed
-     * @param prefix recipe prefix. Use a non-empty values to register recipes
+     * @param prefix recipe prefix; use a non-empty values to register recipes
      * for custom workbenches
+     *
+     * @example
+     * ```js
+     * Recipes.addShapeless({ id: 264, count: 1, data: 0 }, [
+     *     { id: 265, data: 0 }, { id: 265, data: 0 }, { id: 265, data: 0 },
+     *     { id: 266, data: 0 }, { id: 266, data: 0 }, { id: 266, data: 0 }
+     * ]);
+     * ```
      */
     function addShapeless(result: ItemInstance, data: { id: number, data: number }[], func?: CraftingFunction, prefix?: string): WorkbenchShapelessRecipe;
     /**
-     * Deletes recipe by its result
+     * Deletes recipe by it's result.
      * @param result recipe result
      */
     function deleteRecipe(result: ItemInstance): void;
     /**
-     * Removes recipe by result id, count and data
+     * Removes recipe by result ID, count and data.
      */
     function removeWorkbenchRecipe(id: number, count: number, data: number): void;
     /**
-     * Gets all available recipes for the recipe result
-     * @returns java.util.Collection object containing [[WorkbenchRecipe]]s
+     * Gets all available recipes for the recipe result.
+     * @returns Collection object containing {@link Recipes.WorkbenchRecipe|WorkbenchRecipes}.
      */
     function getWorkbenchRecipesByResult(id: number, count: number, data: number): java.util.Collection<WorkbenchRecipe>;
     /**
-     * Gets all available recipes containing an ingredient
-     * @returns java.util.Collection object containing [[WorkbenchRecipe]]s
+     * Gets all available recipes containing an ingredient.
+     * @returns Collection object containing {@link Recipes.WorkbenchRecipe|WorkbenchRecipes}.
      */
     function getWorkbenchRecipesByIngredient(id: number, data: number): java.util.Collection<WorkbenchRecipe>;
     /**
-     * Gets recipe by the field and prefix
-     * @param field [[WorkbenchField]] object containing crafting field
+     * Gets recipe by the field and prefix.
+     * @param field {@link Recipes.WorkbenchField|WorkbenchField} object containing crafting field
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
-     * @returns [[WorkbenchRecipe]] instance, containing useful methods and
-     * recipe information
+     * @returns Recipe {@link Recipes.WorkbenchRecipe|WorkbenchRecipe} instance, containing useful methods and
+     * recipe information.
      */
     function getRecipeByField(field: WorkbenchField, prefix?: string): Nullable<WorkbenchRecipe>;
     /**
-     * Gets recipe result item by the field and recipe prefix
-     * @param field [[WorkbenchField]] object containing crafting field
+     * Gets recipe result item by the field and recipe prefix.
+     * @param field {@link Recipes.WorkbenchField|WorkbenchField} object containing crafting field
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      */
     function getRecipeResult(field: WorkbenchField, prefix?: string): Nullable<ItemInstance>;
     /**
-     * Performs crafting by the field contents and recipe prefix
-     * @param field [[WorkbenchField]] object containing crafting field
+     * Performs crafting by the field contents and recipe prefix.
+     * @param field {@link Recipes.WorkbenchField|WorkbenchField} object containing crafting field
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      */
     function provideRecipe(field: WorkbenchField, prefix?: string): Nullable<ItemInstance>;
     /**
-     * Adds new furnace recipe
-     * @param sourceId source item id
+     * Adds new furnace recipe.
+     * @param sourceId source item ID
      * @param sourceData source item data
-     * @param resultId resulting item id
+     * @param resultId resulting item ID
      * @param resultData resulting item data
      * @param prefix prefix, used to create recipes for non-vanilla furnaces
      */
     function addFurnace(sourceId: number, sourceData: number, resultId: number, resultData: number, prefix?: string): void;
     /**
      * Adds new furnace recipe with no need to manually specify input item data
-     * (it defaults to -1)
-     * @param sourceId source item id
-     * @param resultId result item id
+     * (it defaults to -1).
+     * @param sourceId source item ID
+     * @param resultId result item ID
      * @param resultData resulting item data
-     * @param prefix prefix, used to create recipes for non-vanilla furnaces. If
+     * @param prefix prefix, used to create recipes for non-vanilla furnaces; if
      * the prefix is not empty and some recipes for this source exist for
      * vanilla furnace, they are removed
      */
     function addFurnace(sourceId: number, resultId: number, resultData: number, prefix?: string): void
     /**
-     * Removes furnace recipes by source item
-     * @param sourceId source item id
+     * Removes furnace recipes by source item.
+     * @param sourceId source item ID
      * @param sourceData source item data
      */
     function removeFurnaceRecipe(sourceId: number, sourceData: number): void;
     /**
-     * Adds fuel that can be used in the furnace
-     * @param id fuel item id
+     * Adds fuel that can be used in the furnace.
+     * @param id fuel item ID
      * @param data fuel item data
      * @param time burning time in ticks
      */
     function addFurnaceFuel(id: number, data: number, time: number): void;
     /**
-     * Removes furnace fuel by fuel item id and data
+     * Removes furnace fuel by fuel item ID and data.
      */
     function removeFurnaceFuel(id: number, data: number): void;
     /**
      * @param prefix recipe prefix used for non-vanilla furnaces
-     * @returns furnace recipe resulting item
+     * @returns Furnace recipe resulting item.
      */
     function getFurnaceRecipeResult(id: number, data: number, prefix?: string): ItemInstance;
     /**
-     * @returns fuel burn duration by fuel item id and data
+     * @returns Fuel burn duration by fuel item ID and data.
      */
     function getFuelBurnDuration(id: number, data: number): number;
     /**
-     * Gets furnace recipes by result and custom prefix
-     * @param resultId result item id
+     * Gets furnace recipes by result and custom prefix.
+     * @param resultId result item ID
      * @param resultData result item data
      * @param prefix recipe prefix used for non-vanilla furnaces
-     * @returns [[java.util.Collection]] object with all furnace recipes found by given params
+     * @returns Collection object with all furnace recipes found by given params.
      */
     function getFurnaceRecipesByResult(resultId: number, resultData: number, prefix: string): java.util.Collection<FurnaceRecipe>;
     /**
-     * @returns [[java.util.Collection]] object with all registered workbench recipes
+     * @returns Collection object with all registered workbench recipes.
      */
     function getAllWorkbenchRecipes(): java.util.Collection<WorkbenchRecipe>;
     /**
-     * @returns [[java.util.Collection]] object with all registered furnace recipes
+     * @returns Collection object with all registered furnace recipes.
      */
     function getAllFurnaceRecipes(): java.util.Collection<FurnaceRecipe>;
     /**
-     * Class used to simplify creation of custom workbenches
+     * Class used to simplify creation of custom workbenches.
      */
     class WorkbenchUIHandler {
         /**
-         * Constructs a new Workbench UI handler
-         * @param target target [[WindowContent.elements]] section
+         * Constructs a new Workbench UI handler.
+         * @param target target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements|WindowContent.elements} section
          * @param targetCon target container
          * @param field workbench field
          */
         constructor(target: UI.ElementSet, targetCon: UI.Container, field: WorkbenchField);
         /**
-         * Sets custom workbench prefix
+         * Sets custom workbench prefix.
          * @param prefix custom workbench prefix
          */
         setPrefix(prefix: string): void;
         /**
-         * Refreshes all the recipes in the workbench
-         * @returns amount of recipes displayed
+         * Refreshes all the recipes in the workbench.
+         * @returns Amount of recipes displayed.
          */
         refresh(): number;
         /**
          * Runs recipes refresh in the ticking thread delaying refresh process
-         * for a tick. To get recipes count use
-         * [[WorkbenchUIHandler.setOnRefreshListener]]
+         * for a tick. To get recipes count use {@link Recipes.WorkbenchUIHandler.setOnRefreshListener|WorkbenchUIHandler.setOnRefreshListener}.
          */
         refreshAsync(): void;
         /**
-         * Registers listener to be notified when some recipe is selected
+         * Registers listener to be notified when some recipe is selected.
          * @param listener recipe selection listener
          */
         setOnSelectionListener(listener: { onRecipeSelected: (recipe: WorkbenchRecipe) => void }): void;
         /**
          * Registers listener to be notified when the workbench starts and
-         * completes refreshing
+         * completes refreshing.
          * @param listener workbench refresh listener
          */
         setOnRefreshListener(listener: { onRefreshCompleted: (count: number) => void, onRefreshStarted: () => void }): void;
         /**
-         * Deselects current recipe (asynchronously)
+         * Deselects current recipe (asynchronously).
          */
         deselectCurrentRecipe(): void;
         /**
-         * Sets workbench recipes displaying limit. By default it is 250
+         * Sets workbench recipes displaying limit.
          * @param count count of the recipes to show
+         * @default 250
          */
         setMaximumRecipesToShow(count: number): void;
     }
     /**
-     * Object representing workbench recipe
+     * Object representing workbench recipe.
      */
     interface WorkbenchRecipe extends java.lang.Object {
         /**
-         * @returns true, if the recipe is valid, false otherwise
+         * @returns `true`, if the recipe is valid, `false` otherwise.
          */
         isValid(): boolean;
         /**
          * @param c recipe entry character
-         * @returns recipe entry by entry character
+         * @returns Recipe entry by entry character.
          */
         getEntry(c: string): RecipeEntry;
         /**
-         * @returns resulting item instance
+         * @returns Resulting item instance.
          */
         getResult(): ItemInstance;
         /**
-         * @returns true if specified item is recipe's result, false otherwise
+         * @returns `true` if specified item is recipe's result, `false` otherwise.
          */
         isMatchingResult(id: number, count: number, data: number): boolean;
         /**
-         * @returns recipe unique mask identifier
+         * @returns Recipe unique mask identifier.
          */
         getRecipeMask(): string;
         /**
          * @param field workbench field to compare with
-         * @returns true if the field contains this recipe, false otherwise
+         * @returns `true` if the field contains this recipe, false` otherwise.
          */
         isMatchingField(field: WorkbenchField): boolean;
         /**
-         * @returns all recipe's entries in a java array
+         * @returns All recipe's entries in a java array.
          */
         getSortedEntries(): native.Array<RecipeEntry>;
         /**
-         * Tries to fill workbench field with current recipe
+         * Tries to fill workbench field with current recipe.
          * @param field workbench field to fill
          */
         putIntoTheField(field: WorkbenchField): void;
         /**
-         * @returns recipe prefix. Defaults to empty string
+         * @returns Recipe prefix.
+         * @default ""
          */
         getPrefix(): string;
         /**
-         * Sets prefix value for the recipe
+         * Sets prefix value for the recipe.
          * @param prefix new prefix value
          */
         setPrefix(prefix: string): void;
         /**
-         * Compares current recipe's prefix with given one
+         * Compares current recipe's prefix with given one.
          * @param prefix prefix value to compare with
-         * @returns true, if current recipe's prefix is the same as given one,
-         * false otherwise
+         * @returns `true`, if current recipe's prefix is the same as given one,
+         * `false` otherwise.
          */
         isMatchingPrefix(prefix: string): boolean;
         /**
-         * Sets craft function for the recipe
+         * Sets craft function for the recipe.
          * @param callback function to be called on item craft
          */
         setCallback(callback: CraftingFunction): void;
         /**
-         * @returns current crafting function or null if no one was specified
+         * @returns Current crafting function or null if no one was specified.
          */
         getCallback(): Nullable<CraftingFunction>;
         addToVanillaWorkbench(): void;
@@ -14334,12 +14810,12 @@ export namespace Recipes {
         putIntoTheField(field: WorkbenchField, player: number): void;
         setEntries(entries: java.util.HashMap<java.lang.Character, RecipeEntry>): void;
         /**
-         * @returns reference to itself to be used in sequential calls
+         * @returns Reference to itself to be used in sequential calls.
          */
         setVanilla(isVanilla: boolean): WorkbenchRecipe;
     }
     /**
-     * Object representing workbench shaped recipe
+     * Object representing workbench shaped recipe.
      */
     interface WorkbenchShapedRecipe extends WorkbenchRecipe {
         addVariants(variants: java.util.ArrayList<WorkbenchRecipe>): void;
@@ -14347,13 +14823,13 @@ export namespace Recipes {
         setPattern(pattern: RecipeEntry[][]): void;
     }
     /**
-     * Object representing workbench shapeless recipe
+     * Object representing workbench shapeless recipe.
      */
     interface WorkbenchShapelessRecipe extends WorkbenchRecipe {
         addVariants(variants: java.util.ArrayList<WorkbenchRecipe>): void;
     }
     /**
-     * Object representing furnace recipe
+     * Object representing furnace recipe.
      */
     interface FurnaceRecipe extends java.lang.Object {
         readonly inData: number;
@@ -14361,33 +14837,34 @@ export namespace Recipes {
         readonly resData: number;
         readonly resId: number;
         /**
-         * @returns true, if the recipe is valid, false otherwise
+         * @returns `true`, if the recipe is valid, `false` otherwise.
          */
         isValid(): boolean;
         /**
-         * @returns resulting item instance
+         * @returns Resulting item instance.
          */
         getResult(): ItemInstance;
         /**
-         * @returns recipe prefix. Defaults to empty string
+         * @returns Recipe prefix.
+         * @default ""
          */
         getPrefix(): string;
         /**
-         * Sets prefix value for the recipe
+         * Sets prefix value for the recipe.
          * @param prefix new prefix value
          */
         setPrefix(prefix: string): void;
         /**
-         * Compares current recipe's prefix with given one
+         * Compares current recipe's prefix with given one.
          * @param prefix prefix value to compare with
-         * @returns true, if current recipe's prefix is the same as given one,
-         * false otherwise
+         * @returns `true`, if current recipe's prefix is the same as given one,
+         * `false` otherwise.
          */
         isMatchingPrefix(prefix: string): boolean;
         getInputKey(): number;
     }
     /**
-     * Function called when the craft is in progress
+     * Function called when the craft is in progress.
      * @param api object used to perform simple recipe manipulations and to prevent
      * crafting
      * @param field array containing all slots of the crafting field
@@ -14397,54 +14874,54 @@ export namespace Recipes {
         (api: WorkbenchFieldAPI, field: com.zhekasmirnov.innercore.api.mod.ui.container.Slot[], result: ItemInstance, player: number): void
     }
     /**
-     * Object representing workbench field
+     * Object representing workbench field.
      */
     interface WorkbenchField {
         /**
          * @param slot slot index
-         * @returns workbench slot instance by slot index
+         * @returns Workbench slot instance by slot index.
          */
         getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.Slot,
         /**
-         * @returns js array of all slots
+         * @returns JS array of all slots.
          */
         asScriptableField(): com.zhekasmirnov.innercore.api.mod.ui.container.Slot[]
     }
     /**
-     * Object used to work with workbench field in the craft function
+     * Object used to work with workbench field in the craft function.
      */
     interface WorkbenchFieldAPI {
         /**
          * @param slot slot index
-         * @returns workbench slot instance by slot index
+         * @returns Workbench slot instance by slot index.
          */
         getFieldSlot(slot: number): com.zhekasmirnov.innercore.api.mod.ui.container.Slot;
         /**
-         * Decreases item count in the specified slot, if possible
+         * Decreases item count in the specified slot, if possible.
          * @param slot slot index
          */
         decreaseFieldSlot(slot: number): void;
         /**
-         * Prevents crafting event
+         * Prevents crafting event.
          */
         prevent(): void;
         /**
-         * @returns true, if crafting event was prevented, false otherwise
+         * @returns `true`, if crafting event was prevented, `false` otherwise.
          */
         isPrevented(): boolean;
     }
     /**
-     * Crafting recipe entry
+     * Crafting recipe entry.
      */
     interface RecipeEntry extends java.lang.Object {
         /**
          * @param slot slot to compare with
-         * @returns true if recipe entry matches the slot
+         * @returns `true` if recipe entry matches the slot.
          */
         isMatching(slot: com.zhekasmirnov.innercore.api.mod.ui.container.Slot): boolean;
         /**
          * @param entry entry to compare with
-         * @returns true if recipe entry matches another entry
+         * @returns `true` if recipe entry matches another entry.
          */
         isMatching(entry: RecipeEntry): boolean;
     }
@@ -14460,66 +14937,65 @@ export class Render {
     parts: { [key: string]: Render.ModelPart };
     renderId: number;
     /**
-     * Creates a new Render instance with specified parameters
+     * Creates a new Render instance with specified parameters.
      * @param parameters specifies all the
-     * properties of the object. If it is a number, vanilla render id is used,
-     * if it is a string, used as [[RenderParameters.name]] name property
+     * properties of the object. If it is a number, vanilla render ID is used,
+     * if it is a string, used as {@link Render["namespace"].RenderParameters.name|RenderParameters.name} name property
      */
     constructor(parameters?: Render.RenderParameters | string | number);
     /**
-     * Specifies additional params for the following [[Render]]
+     * Specifies additional params for the following {@link Render["class"]}.
      * @param params specifies all the
-     * properties of the object. If it is a number, vanilla render id is used,
-     * if it is a string, used as [[RenderParameters.name]] name property
+     * properties of the object. If it is a number, vanilla render ID is used,
+     * if it is a string, used as {@link Render["namespace"].RenderParameters.name|RenderParameters.name} name property
      */
-    init(params?: Render.RenderParameters | string | number): void;
+    init(params?: Render.RenderParameters | string | number): void
     initModel(): void;
     checkChangeable(): void;
     /**
-     * @deprecated use [[getId]] instead
+     * @deprecated Use {@link Render["class"].getId|getId} instead.
      */
     getID(): number;
     /**
-     * @returns render id that can be used to set render to the mob, animation
-     * or block
+     * @returns Render identifier that can be used to set render to the mob, animation
+     * or block.
      */
     getId(): number;
     /**
-     * @deprecated use [[getId]] instead
+     * @deprecated Use {@link Render["class"].getId|getId} instead.
      */
     getRenderType(): number;
     /**
-     * @returns render's model that defines its visual shape.
+     * @returns Render's model that defines it's visual shape.
      */
     getModel(): Render.Model;
     /**
-     * @returns [[Render.Transform]] object used to manipulate current render
+     * @returns Transform object used to manipulate current render.
      */
     transform(): Render.Transform;
     /**
-     * @returns a part of the render by its full name. By default, there are six
+     * @param partName full name of the part separated by "."
+     * @returns A part of the render by it's full name. By default, there are six
      * parts available to the user. However, you can create your own parts that
      * suit your needs and get them by their names.
-     * @param partName full name of the part separated by "."
-     * @returns part of the render with specified full name
      */
     getPart(partName: string): Render.ModelPart;
     /**
-     * Adds a part to the render by its full name. The part should be descendent
-     * of one of the six default parts, see [[ModelPart]] for details.
+     * Adds a part to the render by it's full name. The part should be descendent
+     * of one of the six default parts, see {@link Render["namespace"].ModelPart|ModelPart} for details.
      * @param partName full name of the part separated by "."
      * @param partParams specifies all the parameters of the part
-     * @returns newly created part
+     * @returns Newly created part.
      */
     addPart(partName: string, partParams?: Render.PartParameters): Render.ModelPart;
     /**
-     * Sets all the properties of the part by its full name.
+     * Sets all the properties of the part by it's full name.
      * @param partName full name of the part separated by "."
      * @param partParams specifies all the parameters of the part
      */
     setPartParams(partName: string, partParams?: Render.PartParameters): void;
     /**
-     * Sets the content and all properties of the part by its full name.
+     * Sets the content and all properties of the part by it's full name.
      * @param name full name of the part separated by "."
      * @param data array of part data objects to be applied to the part
      * @param params specifies all the parameters of the part
@@ -14534,105 +15010,106 @@ export class Render {
     loadInitialState(name: string): void;
     saveToNext(name: string, isLocal: boolean): void;
     /**
-     * @deprecated
+     * @deprecated Does nothing, not required anymore.
      */
     setTextureResolution(...params: any): void;
 }
 export namespace Render {
     /**
-     * An interface of the object that is used as [[Render.constructor]] parameter
+     * An interface of the object that is used as {@link Render["class"].constructor} parameter.
      * */
     interface RenderParameters {
         /**
-         * Name of the cached Render object to be used
+         * Name of the cached Render object to be used.
          */
         name?: string;
         /**
-         * Item ID for Item Sprite render type
+         * Item ID for Item Sprite render type.
          */
         item?: number;
         /**
-         * Relative path to the texture used by render
+         * Relative path to the texture used by render,
+         * e.g. `"textures/entity/zombie.png"`.
          */
         skin?: string;
         /**
-         * Render scale multiplier
+         * Render scale multiplier.
          */
         scale?: number;
         /**
-         * If set to true, a humanoid render is constructed, empty otherwise
+         * If set to true, a humanoid render is constructed, empty otherwise.
          */
         raw?: boolean;
     }
     /**
-     * Part's box description specified in [[Render.setPart]] method
+     * Part's box description specified in {@link Render["class"].setPart} method.
      */
     interface PartElement {
         /**
-         * Box coordinates, relative to part's coordinates
+         * Box coordinates, relative to part's coordinates.
          */
         coords: Vector,
         /**
-         * Box texture offset
+         * Box texture offset.
          */
         uv?: { x: number, y: number },
         /**
-         * Box size
-         * @param w additional size to be added from all the six sizes of the
-         * box
+         * Box size.
+         * @param w additional size to be added from all the
+         * six sizes of the box
          */
         size: { x: number, y: number, z: number, w?: number },
         /**
-         * Specifies child elements, using current box coordinates as base for the
-         * child boxes
+         * Specifies child elements, using current box coordinates
+         * as base for the child boxes.
          */
         children?: PartElement[]
     }
     /**
-     * Interface used to perform transformation on the specified render object
+     * Interface used to perform transformation on the specified render object.
      */
     interface Transform extends com.zhekasmirnov.innercore.api.NativeRenderer.Transform {
         /**
          * Scales the render along all the three axes. Applicable only to the
-         * [[Animation]]'s transformations
-         * @deprecated consider using [[Transform.scale]] instead
-         * @returns reference to itself to be used in sequential calls
+         * {@link Animation|Animation's} transformations.
+         * @returns Reference to itself to be used in sequential calls.
+         * @deprecated Consider using {@link Render["namespace"].Transform.scale|Transform.scale} instead.
          */
         scaleLegacy(scale: number): Transform;
     }
     /**
-     * An interface of the object that is used as [[Render.addPart]] parameter
+     * An interface of the object that is used as {@link Render["class"].addPart} parameter.
      */
     interface PartParameters {
         /**
-         * If false or not specified in [[Render.setPart]] call, the part is
-         * cleared, otherwise new parts and params are applied to the existing parts
+         * If false or not specified in {@link Render["class"].setPart} call, the part is
+         * cleared, otherwise new parts and params are applied to the existing parts.
          */
         add?: boolean,
         /**
          * Texture width, use the real texture file width or change it to stretch
-         * texture
+         * texture.
          */
         width?: number,
         /**
          * Texture height, use the real texture file height or change it to stretch
-         * texture
+         * texture.
          */
         height?: number,
         /**
-         * Texture horizontal offset
+         * Texture horizontal offset from left up corner.
          */
         u?: number,
         /**
-         * Texture vertical offset
+         * Texture vertical offset from left up corner.
          */
         v?: number,
         /**
-         * Part center position
+         * Part center position.
          */
         pos?: Vector | [number, number, number];
         /**
-         * Part rotation
+         * Part rotation.
          */
         rotation?: Vector | [number, number, number];
     }
@@ -14650,53 +15127,55 @@ export namespace Render {
 /**
  * Class representing a set of vertices with some other parameters required to
  * display them correctly. Used as block, entity and item models, in animations
- * and actually anywhere you need some physical shape
+ * and actually anywhere you need some physical shape.
  */
 export class RenderMesh extends com.zhekasmirnov.innercore.api.NativeRenderMesh {
     /**
-     * Creates a new [[RenderMesh]] and initializes it from file.
-     * See [[importFromFile]] method description for parameters details
+     * Creates a new {@link RenderMesh["class"]} and initializes it from file.
+     * See {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"].importFromFile|importFromFile}
+     * method description for parameters details.
      */
     constructor(path: string, type: string, params: Nullable<RenderMesh.ImportParams>);
     /**
-     * Creates a new empty [[RenderMesh]]
+     * Creates a new empty {@link RenderMesh["class"]}.
      */
     constructor();
 }
-export namespace RenderMesh { type ImportParams = com.zhekasmirnov.innercore.api.NativeRenderMesh.ImportParams }
+export namespace RenderMesh {
+    type ImportParams = com.zhekasmirnov.innercore.api.NativeRenderMesh.ImportParams;
+}
 /**
- * Module used to save data between world sessions
+ * Module used to save data between world sessions.
  */
 export namespace Saver {
     /**
      * Creates saves scope, a universal data storage container. This storage
      * container should be used whenever you need to save some data between
      * world sessions. If you want to store primitives, use an object to wrap
-     * them
-     *
-     * Example:
-     * ```ts
-     * var thirst = 20;
-     * Saver.addSavesScope("thirst",
-     *     function read(scope){
-     *         thirst = scope? scope.thirst: 20;
-     *     },
-     *
-     *     function save(){
-     *         return {"value": thirst};
-     *     }
-     * );
-     * ```
+     * them.
      * @param name saves scope name
      * @param loadFunc function used to load saved data
      * @param saveFunc function used to save data
+     *
+     * @example
+     * ```js
+     * let thirst = 20;
+     * Saver.addSavesScope("thirst",
+     *     function read(scope) {
+     *         thirst = scope ? scope.thirst : 20;
+     *     },
+     *     function save() {
+     *         return { "thirst": thirst };
+     *     }
+     * );
+     * ```
      */
     function addSavesScope(name: string, loadFunc: LoadScopeFunc, saveFunc: SaveScopeFunc): void;
     /**
-     * Registers object as scope saver
+     * Registers object as scope saver.
      * @param name saves scope name
-     * @param saver object that implements [[Saver.ScopeSaver]] interface and
-     * can be loaded and saved via its functions calls
+     * @param saver object that implements {@link Saver.ScopeSaver} interface and
+     * can be loaded and saved via it's functions calls
      */
     function registerScopeSaver(name: string, saver: any): ScopeSaver;
     function registerObjectSaver(name: string, saver: any): void;
@@ -14704,32 +15183,33 @@ export namespace Saver {
     function setObjectIgnored(obj: any, ignore: any): void;
     /**
      * Function that returns object representing created scope. No
-     * primitives are allowed as return value
+     * primitives are allowed as return value.
      */
     type SaveScopeFunc =
         /**
-         * @returns saved data
+         * @returns Data to be saved.
          */
         () => object;
     /**
-     * Function that loads data from scope
+     * Function that loads data from scope.
      */
-    type LoadScopeFunc =
+    type LoadScopeFunc = (
         /**
          * @param scope data
          */
-        (scope: Nullable<object>) => void;
+        scope: Nullable<object>
+    ) => void;
     /**
      * Interface that should be implemented to pass the object as
-     * [[Saver.registerScopeSaver]] parameter
+     * {@link Saver.registerScopeSaver} parameter.
      */
     interface ScopeSaver {
         /**
-         * Function used to load saved data
+         * Function used to load saved data.
          */
         read: LoadScopeFunc,
         /**
-         * Function used to save data
+         * Function used to save data.
          */
         save: SaveScopeFunc
     }
@@ -14741,127 +15221,134 @@ export class ShaderUniformSet {
     setUniformValue(uniformSet: string, uniformName: string, ...value: number[]): ShaderUniformSet;
 }
 /**
- * Class to work with values, synchronized between server and all clients
+ * Class to work with values, synchronized between server and all clients.
  */
 export class SyncedNetworkData {
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getInt(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getLong(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getFloat(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getDouble(key: any, fallback?: number): number;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getString(key: any, fallback?: string): string;
     /**
-     * @returns value by key
+     * @returns Requested value by key or fallback if key not found.
      */
     getBoolean(key: any, fallback?: boolean): boolean;
     /**
-     * Sets value by key
+     * Sets Integer value by key.
      */
     putInt(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets Long value by key.
      */
     putLong(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets Float value by key.
      */
     putFloat(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets Double value by key.
      */
     putDouble(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets String value by key.
      */
     putString(key: any, value: string): void;
     /**
-     * Sets value by key
+     * Sets Boolean value by key.
      */
     putBoolean(key: any, value: boolean): void;
     /**
-     * Sends changed data values
+     * Sends changed data values.
      */
     sendChanges(): void;
     /**
      * Event that catches changes of any data values.
-     * @param networkData - SyncedNetworkData object where the changes had happened;
-     * @param isExternalStorage -
-     * false, if change had happened by calling put from this object,
-     * true, if it came by network from other connected data object.
      */
-    addOnDataChangedListener(func: (networkData: SyncedNetworkData, isExternalChange: boolean) => void): void;
+    addOnDataChangedListener(func: (
+        /**
+         * @param networkData - SyncedNetworkData object where the changes had happened
+         */
+        networkData: SyncedNetworkData,
+        /**
+         * `false`, if change had happened by calling put from this object;
+         * `true`, if it came by network from other connected data object
+         */
+        isExternalChange: boolean
+    ) => void): void;
     /**
-     * Adds data validator to the object
+     * Adds data validator to the object.
      */
     addVerifier(key: any, func: (key: any, newValue: any) => void): void;
 }
 /**
- * Class representing texture that can be animated
- * @deprecated no longer supported and should not be used in new code
+ * Class representing texture that can be animated.
+ * @deprecated Represents deprecated render type, should
+ * be performed in texture packs.
  */
 export class Texture {
     /**
-     * Creates new [[Texture]] object using specified file path
+     * Creates new {@link Texture} object using specified file path.
      */
     constructor(path: string);
     /**
-     * Sets texture file path
-     * @returns reference to itself to be used in sequential calls
+     * Sets texture file path.
+     * @returns Reference to itself to be used in sequential calls.
      */
     setTexture(path: string): Texture;
     /**
      * Specifies texture resolution. If not equal to file dimensions, the image
-     * will be stretched to fit the resolution
-     * @returns reference to itself to be used in sequential calls
+     * will be stretched to fit the resolution.
+     * @returns Reference to itself to be used in sequential calls.
      */
     setResolution(w: number, h: number): Texture;
     /**
-     * Makes texture animated
+     * Makes texture animated.
      * @param animation array of paths to the animation frames. Each frame should
      * be stored in a separate file
      * @param delay specifies each frame delay in ticks
-     * @returns reference to itself to be used in sequential calls
+     * @returns Reference to itself to be used in sequential calls.
      */
     setAnimation(animation: string[], delay: number): Texture;
     /**
-     * Resets animation
-     * @returns reference to itself to be used in sequential calls
+     * Resets animation.
+     * @returns Reference to itself to be used in sequential calls.
      */
     resetAnimation(token: number): Texture;
     /**
-     * @returns current animation frame
+     * @returns Current animation frame.
      */
     getTexture(token: number): string;
     /**
-     * @returns texture resolution after recalculating it with pixel scale
+     * @returns Texture resolution after recalculating it with pixel scale.
      */
     getResolution(): { w: number, h: number };
     /**
-     * Sets pixel scale for the texture
+     * Sets pixel scale for the texture.
      */
     setPixelScale(scale: number): Texture;
 }
 /**
  * Module used to create and manipulate threads. Threads let you execute
- * time-consuming tasks without blocking current execution thread
+ * time-consuming tasks without blocking current execution thread.
  */
 export namespace Threading {
     /**
-     * Function used to format error messages in a custom way
+     * Function used to format error messages in a custom way.
      */
     type ErrorMessageFormatFunction =
         /**
@@ -14871,7 +15358,7 @@ export namespace Threading {
         (error: any, priority: number) => string;
     /**
      * Function used to create formatted error message with the full debug
-     * information about exception in one of the threads. Usually called by Core
+     * information about exception in one of the threads. Usually called by Core.
      * Engine
      * @param error java.lang.Throwable instance or javascript exception
      * @param name thread name used to localize errors if there are any
@@ -14880,7 +15367,7 @@ export namespace Threading {
      */
     function formatFatalErrorMessage(error: any, name: string, priority: number, formatFunc: ErrorMessageFormatFunction): string;
     /**
-     * Creates and runs new thread with specified function as a task
+     * Creates and runs new thread with specified function as a task.
      * @param name thread name used to localize errors if there are any
      * @param func function that runs in the new thread. Usually it is some
      * time-consuming task, that is executed in the new thread to avoid blocking
@@ -14891,13 +15378,13 @@ export namespace Threading {
      * fatal and lead to fatal error AlertDialog, formatted with *formatFunc*
      * @param formatFunc function that formats exceptions in the thread to
      * display in fatal error AlertDialog
-     * @return java.lang.Thread instance representing created thread
+     * @returns Instance representing created thread.
      */
     function initThread(name: string, func: () => void, priority?: number, isErrorFatal?: boolean, formatFunc?: ErrorMessageFormatFunction): java.lang.Thread;
     /**
-     * Gets thread by its name
+     * Gets thread by it's name.
      * @param name name of the thread
-     * @return java.lang.Thread instance representing the thread
+     * @returns Instance representing the thread.
      */
     function getThread(name: string): java.lang.Thread;
 }
@@ -14908,114 +15395,118 @@ export namespace Threading {
 export namespace TileEntity {
     /**
      * Registers block as a TileEntity
-     * @param blockID numeric block id to be used as [[TileEntity]]
-     * @param customPrototype a set of parameters defining the [[TileEntity]]'s
+     * @param blockID numeric block ID to be used
+     * @param customPrototype a set of defining parameters
      * behavior
      */
     function registerPrototype(blockID: number, customPrototype: TileEntityPrototype): void;
     /**
-     * @returns [[TileEntity]]'s prototype by its numeric block id
+     * @returns Prototype by it's numeric block ID.
      */
     function getPrototype(blockID: number): TileEntityPrototype;
     /**
-     * @param blockID numeric block id
-     * @returns true if the specified numeric block id is a [[TileEntity]]
-     * block id, false otherwise
+     * @param blockID numeric block ID
+     * @returns `true` if the specified numeric block ID is a {@link TileEntity["interface"]}
+     * block ID, `false` otherwise.
      */
     function isTileEntityBlock(blockID: number): boolean;
     /**
-     * @returns a [[TileEntity]] on the specified coordinates or null if the block on the
-     * coordinates is not a [[TileEntity]]
+     * @returns A {@link TileEntity["interface"]} on the specified coordinates or `null` if the block on the
+     * coordinates is not it.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
     /**
      * If the block on the specified coordinates is a TileEntity block and is
-     * not initialized, initializes it and returns created [[TileEntity]] object
-     * @returns [[TileEntity]] if one was created, null otherwise
+     * not initialized, initializes it and returns created {@link TileEntity["interface"]} object.
+     * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
     /**
-     * Destroys [[TileEntity]], dropping its container
-     * @returns true if the [[TileEntity]] was destroyed successfully, false
-     * otherwise
+     * Destroys {@link TileEntity["interface"]}, dropping it's container.
+     * @returns `true` if the it was destroyed successfully, `false`
+     * otherwise.
      */
     function destroyTileEntity(tileEntity: TileEntity): boolean;
     /**
-     * If the block on the specified coordinates is a [[TileEntity]], destroys
-     * it, dropping its container
-     * @returns true if the [[TileEntity]] was destroyed successfully, false
-     * otherwise
+     * If the block on the specified coordinates is a {@link TileEntity["interface"]}, destroys
+     * it, dropping it's container.
+     * @returns `true` if the it was destroyed successfully, `false`
+     * otherwise.
      */
     function destroyTileEntityAtCoords(x: number, y: number, z: number, region?: BlockSource): boolean;
     /**
-     * Checks whether the [[TileEntity]] is in the loaded chunk or not
+     * Checks whether the {@link TileEntity["interface"]} is in the loaded chunk or not.
      * @param tileEntity to be verified
-     * @returns true if the chunk with TileEntity and some of the surrounding
-     * chunks are loaded, false otherwise. The following chunks are verified:
+     * @returns `true` if the chunk with TileEntity and some of the surrounding
+     * chunks are loaded, `false` otherwise.
+     * @remarks
+     * The following chunks are verified:
+     * ```txt
      *  + +
      *   #
      *  + +
-     * Where "#"" is the chunk containing the current TileEntity and "+" are
-     * the chunks that are also verified
+     * ```
+     * Where "#" is the chunk containing the current TileEntity and "+" are
+     * the chunks that are also verified.
      */
     function isTileEntityLoaded(tileEntity: TileEntity): boolean;
     /**
-     * Interface passed to [[TileEntity.registerPrototype]] function
+     * Interface passed to {@link TileEntity["interface"].registerPrototype} function.
      */
     interface TileEntityPrototype {
 		/**
-         * Use ItemContainer that supports multiplayer
+         * Use ItemContainer that supports multiplayer.
          */
         useNetworkItemContainer?: boolean;
         /**
-         * Default data values, will be initially added to [[TileEntity.data]] field
+         * Default data values, will be initially added to {@link TileEntity["interface"].data} field.
          */
         defaultValues?: { [key: string]: any },
         /**
-         * Called when a [[TileEntity]] is created
+         * Called when a {@link TileEntity["interface"]} is created.
          */
 		created?: () => void,
 		/**
-         * Client TileEntity prototype copy
+         * Client TileEntity prototype copy.
          */
         client?: {
             /**
-             * Called when the client copy is created
+             * Called when the client copy is created.
              */
             load?: () => void,
             /**
-             * Called on destroying the client copy
+             * Called on destroying the client copy.
              */
             unload?: () => void,
             /**
-             * Called every tick on client thread
+             * Called every tick on client thread.
              */
             tick?: () => void,
             /**
-             * Events that receive packets on the client side
+             * Events that receive packets on the client side.
              */
             events?: {
                 /**
-                 * Example of the client packet event function
+                 * Example of the client packet event function.
                  */
                 [packetName: string]: (packetData: any, packetExtra: any) => void;
             },
             /**
-             * Events of the container's client copy
+             * Events of the container's client copy.
              */
             containerEvents?: {
                 /**
-                 * Example of the client container event function
+                 * Example of the client container event function.
                  */
                 [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
             }
-	    /**
-              * Any other user-defined methods and properties
+            /**
+              * Any other user-defined methods and properties.
               */
             [key: string]: any
         },
         /**
-         * Events that receive packets on the server side
+         * Events that receive packets on the server side.
          */
         events?: {
             /**
@@ -15025,145 +15516,146 @@ export namespace TileEntity {
             [packetName: string]: (packetData: any, packetExtra: any, connectedClient: NetworkClient) => void;
         },
         /**
-         * Events of the container on the server side
+         * Events of the container on the server side.
          */
         containerEvents?: {
             /**
-             * Example of the server container event function
+             * Example of the server container event function.
              */
             [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
         }
         /**
-         * Called when a [[TileEntity]] is initialised in the world
+         * Called when a {@link TileEntity["interface"]} is initialised in the world.
          */
         init?: () => void,
         /**
-         * Called every tick and should be used for all the updates of the [[TileEntity]]
+         * Called every tick and should be used for all the updates of the {@link TileEntity["interface"]}.
          */
         tick?: () => void,
         /**
-         * Called when player uses some item on a [[TileEntity]]
-         * @returns true if the event is handled and should not be propagated to
-         * the next handlers. E.g. return true if you don't want the user interface
-         * to be opened
+         * Called when player uses some item on a {@link TileEntity["interface"]}.
+         * @returns `true` if the event is handled and should not be propagated to
+         * the next handlers. Return `true` if you don't want the user interface
+         * to be opened.
          */
         click?: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: ItemExtraData) => boolean | void,
         /**
-         * Occurs when a block of the [[TileEntity]] is being destroyed. See
-         * [[Callback.DestroyBlockFunction]] for details
+         * Occurs when a block of the {@link TileEntity["interface"]} is being destroyed. See
+         * {@link Callback.DestroyBlockFunction} for details.
          */
         destroyBlock?: (coords: Callback.ItemUseCoordinates, player: number) => void,
         /**
-         * Occurs when the [[TileEntity]] should handle redstone signal. See
-         * [[Callback.RedstoneSignalFunction]] for details
+         * Occurs when the {@link TileEntity["interface"]} should handle redstone signal. See
+         * {@link Callback.RedstoneSignalFunction} for details.
          */
         redstone?: (params: { power: number, signal: number, onLoad: boolean }) => void,
         /**
-         * Occurs when a projectile entity hits the [[TileEntity]]. See
-         * [[Callback.ProjectileHitFunction]] for details
+         * Occurs when a projectile entity hits the {@link TileEntity["interface"]}. See
+         * {@link Callback.ProjectileHitFunction} for details.
          */
         projectileHit?: (coords: Callback.ItemUseCoordinates, target: Callback.ProjectileHitTarget) => void,
         /**
-         * Occurs when the [[TileEntity]] is being destroyed
-         * @returns true to prevent
-         * [[TileEntity]] object from destroying (but if the block was destroyed, returning
+         * Occurs when the {@link TileEntity["interface"]} is being destroyed.
+         * @returns `true` to prevent it.
+         * {@link TileEntity["interface"]} object from destroying (but if the block was destroyed, returning
          * true from this function doesn't replace the missing block with a new one)
          */
         destroy?: () => boolean | void;
         /**
-         * Called to get the [[UI.IWindow]] object for the current [[TileEntity]]. The
-         * window is then opened within [[TileEntity.container]] when the player clicks it
-		 * @deprecated Don't use in multiplayer
+         * Called to get the {@link UI.IWindow} object for the current {@link TileEntity["interface"]}. The
+         * window is then opened within {@link TileEntity["interface"].container} when the player clicks it.
+		 * @deprecated Client method only.
          */
 		getGuiScreen?: () => com.zhekasmirnov.innercore.api.mod.ui.window.IWindow;
 		/**
-         * Called on server side and returns UI name to open on click
+         * Called on server side and returns UI name to open on click.
          */
         getScreenName?: (player: number, coords: Vector) => string;
         /**
-         * Called on client side, returns the window to open
+         * Called on client side, returns the window to open.
          */
         getScreenByName?: (screenName?: string) => com.zhekasmirnov.innercore.api.mod.ui.window.IWindow;
         /**
-         * Called when more liquid is required
+         * Called when more liquid is required.
          */
         requireMoreLiquid?: (liquid: string, amount: number) => void;
         /**
-         * Any other user-defined methods and properties
+         * Any other user-defined methods and properties.
          */
-        [key: string]: any
+        [key: string]: any;
     }
 }
 export interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
-     * X coord of the TileEntity in its dimension
+     * X coord of the TileEntity in it's dimension.
      */
     readonly x: number,
     /**
-     * Y coord of the TileEntity in its dimension
+     * Y coord of the TileEntity in it's dimension.
      */
     readonly y: number,
     /**
-     * Z coord of the TileEntity in its dimension
+     * Z coord of the TileEntity in it's dimension.
      */
     readonly z: number,
     /**
-     * dimension where the TileEntity is located
+     * Dimension where the TileEntity is located.
      */
     readonly dimension: number,
     /**
-     * block id of TileEntity
+     * Block ID of TileEntity.
      */
     readonly blockID: number,
     /**
-     * TileEntity data values object
+     * TileEntity data values object.
      */
     data: {[key: string]: any},
     /**
-     * TileEntity's item container
+     * TileEntity's item container.
      */
     container: ItemContainer | UI.Container,
     /**
-     * TileEntity's liquid storage
+     * TileEntity's liquid storage.
      */
     liquidStorage: LiquidRegistry.Storage,
     /**
-     * True if TileEntity is loaded in the world
+     * `true` if TileEntity is loaded in the world.
      */
     isLoaded: boolean;
     /**
-     * True if TileEntity was destroyed
+     * `true` if TileEntity was destroyed.
      */
     remove: boolean;
     /**
-     * Destroys the TileEntity prototype
+     * Destroys the TileEntity prototype.
      */
     selfDestroy: () => void;
     /**
-     * Sends the packet from server to all clients
+     * Sends the packet from server to all clients.
      */
     sendPacket: (name: string, data: object) => void;
     /**
-     * BlockSource object to manipulate TileEntity's position in world
+     * BlockSource object to manipulate TileEntity's position in world.
      */
     blockSource: BlockSource;
     /**
-     * SyncedNetworkData object of the TileEntity
+     * SyncedNetworkData object of the TileEntity.
      */
     networkData: SyncedNetworkData;
     /**
-     * NetworkEntity object of the TileEntity
+     * NetworkEntity object of the TileEntity.
      */
     networkEntity: NetworkEntity;
     /**
      * Sends packet to specified client.
-     * AVAILABLE ONLY IN SERVER EVENT FUNCTIONS!
+     * @remarks
+     * Availabled only in server-side methods!
      */
     sendResponse: (packetName: string, someData: object) => void;
 }
 /**
  * Module used to manage block and tools material and create tools with all
- * required properties
+ * required properties.
  */
 export namespace ToolAPI {
     /**
@@ -15208,8 +15700,8 @@ export namespace ToolAPI {
      */
     function addToolMaterial(name: string, material: ToolMaterial): void;
     /**
-     * Registers item as a tool
-     * @param id numeric item id
+     * Registers item as a tool.
+     * @param id numeric item ID
      * @param toolMaterial registered tool material name or tool material object
      * used to register the tool
      * @param blockMaterials block material names that can be broken by this
@@ -15218,16 +15710,16 @@ export namespace ToolAPI {
      */
     function registerTool(id: number, toolMaterial: string | ToolMaterial, blockMaterials: string[], params?: ToolParams): void;
     /**
-     * Registers item as a sword
-     * @param id numeric item id
+     * Registers item as a sword.
+     * @param id numeric item ID
      * @param toolMaterial registered tool material name or tool material object
      * used to register the sword
      * @param params additional tool parameters
      */
     function registerSword(id: number, toolMaterial: string | ToolMaterial, params?: ToolParams): void;
     /**
-     * Registers material and digging level for the specified block
-     * @param uid numeric tile id
+     * Registers material and digging level for the specified block.
+     * @param uid numeric tile ID
      * @param materialName material name
      * @param level block's digging level
      * @param isNative used to mark vanilla blocks data. Generally used within
@@ -15237,175 +15729,175 @@ export namespace ToolAPI {
     function registerBlockMaterial(uid: number, materialName: string, level?: number, isNative?: boolean): void;
     /**
      * Sets digging level for block. If digging level of tool is higher then
-     * block's one, the block is dropped
-     * @param uid numeric tile id
+     * block's one, the block is dropped.
+     * @param uid numeric tile ID
      * @param level block's digging level
      */
     function registerBlockDiggingLevel(uid: number, level: number): void;
     /**
-     * Registers material and digging level for the specified blocks
+     * Registers material and digging level for the specified blocks.
      * @param materialName material name
-     * @param UIDs an array of numeric tiles ids
+     * @param UIDs an array of numeric tiles IDs
      * @param isNative used to mark vanilla blocks data. Generally used within
      * Core Engine code and should not be used within mods until you really
      * know what you're doing
      */
     function registerBlockMaterialAsArray(materialName: string, UIDs: number[], isNative: boolean): void;
     /**
-     * @deprecated No longer supported
+     * @deprecated Backwards compatibility.
      */
     function refresh(): void;
     /**
-     * @param blockID numeric tile id
-     * @returns object containing ToolAPI block data or undefined if no block
-     * data was specified for this block
+     * @param blockID numeric tile ID
+     * @returns Object containing ToolAPI block data or undefined if no block
+     * data was specified for this block.
      */
     function getBlockData(blockID: number): BlockData | undefined;
     /**
-     * @param blockID numeric tile id
-     * @returns object containing block material information or null, if no
-     * block data was specified for this block
+     * @param blockID numeric tile ID
+     * @returns Object containing block material information or `null`, if no
+     * block data was specified for this block.
      */
     function getBlockMaterial(blockID: number): Nullable<BlockMaterial>;
     /**
-     * @param blockID numeric tile id
-     * @returns destroy level of the block with specified id or 0, if no block
-     * data was specified for this block
+     * @param blockID numeric tile ID
+     * @returns Destroy level of the block with specified ID or `0`, if no block
+     * data was specified for this block.
      */
     function getBlockDestroyLevel(blockID: number): number;
     /**
      * @param extra item extra instance, if not specified, method uses carried
      * item's extra
-     * @returns enchant data object, containing enchants used for blocks
-     * destroy speed calculations
+     * @returns Enchant data object, containing enchants used for blocks
+     * destroy speed calculations.
      */
     function getEnchantExtraData(extra?: ItemExtraData): EnchantData;
     /**
-     * Applies fortune drop modifier to the drop array
+     * Applies fortune drop modifier to the drop array.
      * @param drop drop array containing number of the arrays
      * @param level enchantment level
      */
     function fortuneDropModifier(drop: ItemInstanceArray[], level: number): ItemInstanceArray[];
     /**
      * Calculates destroy time for the block that is being broken with specified
-     * tool at the specified coords. Used mostly by Core Engine to apply break
+     * tool at the specified coords. Used mostly by Core Engine to apply break.
      * time
      * @param ignoreNative if block and item are native items, and this
      * parameter is set to true, all the calculations will still be performed
      */
     function getDestroyTimeViaTool(fullBlock: Tile, toolItem: ItemInstance, coords: Callback.ItemUseCoordinates, ignoreNative?: boolean): number;
     /**
-     * @param itemID numeric item id
-     * @returns tool information stored in slightly modified
-     * [[ToolAPI.ToolParams]] object or null if no tool data was specified
+     * @param itemID numeric item ID
+     * @returns Tool information stored in slightly modified
+     * {@link ToolAPI.ToolParams} object or null if no tool data was specified.
      */
     function getToolData(itemID: number): Nullable<ToolParams>;
     /**
-     * @param itemID numeric item id
-     * @returns tool's breaking level or 0 if no tool data was provided
+     * @param itemID numeric item ID
+     * @returns Tool's breaking level or 0 if no tool data was provided.
      */
     function getToolLevel(itemID: number): number;
     /**
-     * @param itemID numeric item id
-     * @param blockID numeric tile id
-     * @returns digging level if specified tool can mine specified block, 0 if
+     * @param itemID numeric item ID
+     * @param blockID numeric tile ID
+     * @returns Digging level if specified tool can mine specified block, `0` if
      * data for the tool or for the block was not specified or if specified tool
-     * cannot mine specified block
+     * cannot mine specified block.
      */
     function getToolLevelViaBlock(itemID: number, blockID: number): number;
     /**
-     * @returns carried tool information stored in slightly modified
-     * [[ToolAPI.ToolParams]] object or null if no tool data was specified
+     * @returns Carried tool information stored in slightly modified
+     * {@link ToolAPI.ToolParams} object or null if no tool data was specified.
      */
     function getCarriedToolData(): any;
     /**
-     * @returns carried tool's breaking level or 0 if no tool data was provided
+     * @returns Carried tool's breaking level or `0` if no tool data was provided.
      */
     function getCarriedToolLevel(): number;
     /**
-     * Resets ToolAPI engine state
+     * Resets ToolAPI engine state.
+     * @internal
      */
     function resetEngine(): void;
     /**
-     * Spawns experience orbs on the specified coordinate
+     * Spawns experience orbs on the specified coordinate.
      * @param value amount of experience to spawn
      */
     function dropExpOrbs(x: number, y: number, z: number, value: number): void;
     /**
-     * Spawns random amount of experience on the specified block coordinates
+     * Spawns random amount of experience on the specified block coordinates.
      * @param coords block coordinates
      * @param minVal minimum amount of orbs to be spawned
      * @param maxVal maximum amount of orbs to be spawned
      * @param modifier additional experiences, usually passed from
-     * [[ToolAPI.EnchantData.experience]] field
+     * {@link ToolAPI.EnchantData.experience} field
      */
     function dropOreExp(coords: Vector, minVal: number, maxVal: number, modifier: number): void;
     /**
-     * @param blockID numeric tile id
-     * @returns
+     * @param blockID numeric tile ID
      */
     function getBlockMaterialName(blockID: number): Nullable<string>;
     /**
-     * Object used to describe tool material type
+     * Object used to describe tool material type.
      */
     interface ToolMaterial {
         /**
          * Divider used to calculate block breaking
          * speed. 2 is a default value for wooden instruments and 12 is a default
-         * value for golden instruments
+         * value for golden instruments.
          */
         efficiency?: number,
         /**
          * Additional damage for the instruments, this value
          * is added to the base tool damage. If damage is not integer, it is rounded
          * to the higher integer with the chance of the fractional part, e.g. if
-         * the value is *3.3*, the damage will be 4 with the chance of 30%
+         * the value is *3.3*, the damage will be 4 with the chance of 30%.
          */
         damage?: number,
         /**
          * Durability of the tool, 33 is a default value
-         * for golden tools and 1562 is a default value for diamond tools
+         * for golden tools and 1562 is a default value for diamond tools.
          */
         durability?: number,
         /**
          * Block breaking level, 1 is wooden instruments, 4 is diamond
          * instruments. If block's breaking level is less or equal to the tool's
-         * level, block will be dropped when broken
+         * level, block will be dropped when broken.
          */
         level?: number
     }
     /**
-     * Object used to describe block material
+     * Object used to describe block material.
      */
     interface BlockMaterial {
         /**
-         * Multiplier used to calculate block breaking speed
+         * Multiplier used to calculate block breaking speed.
          */
         multiplier: number,
         /**
-         * Block material name
+         * Block material name.
          */
         name: string
     }
     /**
-     * Object used to store all of the ToolAPI block data
+     * Object used to store all of the ToolAPI block data.
      */
     interface BlockData {
         /**
-         * Material data used for this block
+         * Material data used for this block.
          */
         material: BlockMaterial,
         /**
          * Digging level of the block. If digging level of tool is higher then
-         * block's one, the block is dropped
+         * block's one, the block is dropped.
          */
         level: number,
         /**
          * Specifies whether the block was added as vanilla item or as a custom
-         * block. True, if the block is vanilla, false if the block is custom.
-         * Should not generally be changed
+         * block. `true`, if the block is vanilla, `false` if the block is custom.
+         * Should not generally be changed.
          */
-        isNative: boolean
+        readonly isNative: boolean
     }
     /**
      * Object containing additional parameters and functions used by Core Engine
@@ -15413,96 +15905,185 @@ export namespace ToolAPI {
      */
     interface ToolParams {
         /**
-         * Numeric id of the item that replaces tool item when it's broken.
-         * By default it is 0 (the tool disappears)
+         * Numeric ID of the item that replaces tool item when it's broken.
+         * By default the tool disappears.
+         * @default 0
          */
         brokenId?: number,
         /**
          * Base damage of the instrument, is added to the material damage to
-         * calculate the tool's final damage. Default is 0
+         * calculate the tool's final damage.
+         * @default 0
          */
         damage?: number,
 		/**
-		 * Properties of the tool material. Defined by [[ToolAPI.registerTool]]
+		 * Properties of the tool material. Defined by {@link ToolAPI.registerTool},
 		 */
 		toolMaterial?: ToolMaterial,
 		/**
 		 * List of block material names that can be broken by this instrument.
-		 * Defined by [[ToolAPI.registerTool]]
+		 * Defined by {@link ToolAPI.registerTool},
 		 */
-		blockMaterials?: {[key: string]: boolean}
+		blockMaterials?: { [key: string]: boolean }
         /**
          * Function used to recalculate block destroy time based on some custom
-         * logic
-         * @param tool tool item
-         * @param coords coordinates where the block is being broken
-         * @param block the block that is being broken
-         * @param timeData some time properties that can be used to calculate
-         * destroy time for the tool and block
-         * @param timeData.base base destroy time of the block
-         * @param timeData.devider tool material devider
-         * @param timeData.modifier divider applied due to efficiency enchantment
-         * @param defaultTime default block destroy time, calculated as
-         * *base / divider / modifier*
-         * @param enchantData tool's enchant data
+         * logic.
          */
-        calcDestroyTime?: (tool: ItemInstance, coords: Callback.ItemUseCoordinates, block: Tile, timeData: { base: number, devider: number, modifier: number }, defaultTime: number, enchantData?: EnchantData) => number,
+        calcDestroyTime?: (
+            /**
+             * Tool item.
+             */
+            tool: ItemInstance,
+            /**
+             * Coordinates where the block is being broken.
+             */
+            coords: Callback.ItemUseCoordinates,
+            /**
+             * Block that is being broken.
+             */
+            block: Tile,
+            /**
+             * Some time properties that can be used to calculate
+             * destroy time for the tool and block.
+             */
+            timeData: {
+                /**
+                 * Base destroy time of the block.
+                 */
+                base: number,
+                /**
+                 * Tool material devider.
+                 */
+                devider: number,
+                /**
+                 * Divider applied due to efficiency enchantment.
+                 */
+                modifier: number
+            },
+            /**
+             * Default block destroy time, calculated as `base / divider / modifier`.
+             */
+            defaultTime: number,
+            /**
+             * Tool's enchant data.
+             */
+            enchantData?: EnchantData
+        ) => number,
         /**
-         * If true, the tool is vanilla Minecraft tool. Generally used within
+         * If `true`, the tool is vanilla Minecraft tool. Generally used within
          * Core Engine code and should not be used within mods until you really
-         * know what you're doing
+         * know what you're doing.
+         * @internal
          */
         isNative?: boolean,
         /**
-         * Function that is called when the block is destroyed
-         * @param item tool item
-         * @param coords coordinates where the block is destroyed
-         * @param block the block that is destroyed
-         * @returns true if default damage should not be applied to the instrument,
-         * false otherwise
+         * Function that is called when the block is destroyed.
+         * @returns `true` if default damage should not be applied to the instrument,
+         * `false` otherwise.
          */
-        onDestroy?: (item: ItemInstance, coords: Callback.ItemUseCoordinates, block: Tile, player: number) => boolean,
+        onDestroy?: (
+            /**
+             * Tool item.
+             */
+            item: ItemInstance,
+            /**
+             * Coordinates where the block is destroyed.
+             */
+            coords: Callback.ItemUseCoordinates,
+            /**
+             * Block that is destroyed.
+             */
+            block: Tile,
+            /**
+             * Entity UID of the player that destroyed the block.
+             */
+            player: number
+        ) => boolean,
         /**
-         * Function that is called when players attacks some entity with the tool
-         * @param item tool item
-         * @param victim unique numeric id of the entity that is attacked
-         * @returns true if default damage should not be applied to the instrument,
-         * false otherwise
+         * Function that is called when players attacks some entity with the tool.
+         * @returns `true` if default damage should not be applied to the instrument,
+         * `false` otherwise.
          */
-        onAttack?: (item: ItemInstance, victim: number, attacker: number) => boolean,
+        onAttack?: (
+            /**
+             * Tool item.
+             */
+            item: ItemInstance,
+            /**
+             * Unique numeric ID of the entity that is attacked.
+             */
+            victim: number,
+            /**
+             * Entity UID of the player that attacked victim.
+             */
+            attacker: number
+        ) => boolean,
         /**
          * If true, breaking blocks with this tool makes it break 2x faster,
-         * otherwise attacking mobs breaks tool 2x faster
+         * otherwise attacking mobs breaks tool 2x faster.
          */
         isWeapon?: boolean,
         /**
-         * Function that is called when the instrument is broken
-         * @param item tool item
-         * @returns true if default breaking behavior (replacing by *brokenId* item)
-         * should not be applied
+         * Function that is called when the instrument is broken.
+         * @returns `true` if default breaking behavior (replacing by `brokenId` item)
+         * should not be applied.
          */
-        onBroke?: (item: ItemInstance) => boolean,
+        onBroke?: (
+            /**
+             * Tool item.
+             */
+            item: ItemInstance
+        ) => boolean,
         /**
          * Function that is used to change enchant data object before all the
          * calculations. Can be used to add some enchantment properties, such as
-         * silk touch, efficiency, unbreaking or fortune
-         * @param enchantData tool's enchant data
-         * @param item tool item
-         * @param coords coordinates where the block is being broken. Passed only if
-         * the block is destroyed
-         * @param block destroyed block data. Passed only if the block is destroyed
+         * silk touch, efficiency, unbreaking or fortune.
          */
-        modifyEnchant?: (enchantData: EnchantData, item: ItemInstance, coords?: Callback.ItemUseCoordinates, block?: Tile) => void,
+        modifyEnchant?: (
+            /**
+             * Tool's enchant data.
+             */
+            enchantData: EnchantData,
+            /**
+             * Tool item.
+             */
+            item: ItemInstance,
+            /**
+             * Coordinates where the block is being broken. Passed only if
+             * the block is destroyed.
+             */
+            coords?: Callback.ItemUseCoordinates,
+            /**
+             * Destroyed block data. Passed only if the block is destroyed.
+             */
+            block?: Tile
+        ) => void,
         /**
          * Function that is called when the block that has a destroy function is
-         * destroyed
-         * @param coords coordinates where the block is destroyed
-         * @param carried an item in player's hand
-         * @param fullTile block that was destroyed
-         * @param blockSource [[BlockSource]] object of the world where the block was destroyed
-         * @param player entity uid of the player that destroyed the block
+         * destroyed.
          */
-        onMineBlock?: (coords: Callback.ItemUseCoordinates, carried: ItemInstance, fullTile: Tile, blockSource: BlockSource, player: number) => void,
+        onMineBlock?: (
+            /**
+             * Coordinates where the block is destroyed.
+             */
+            coords: Callback.ItemUseCoordinates,
+            /**
+             * An item in player's hand.
+             */
+            carried: ItemInstance,
+            /**
+             * Block that was destroyed.
+             */
+            fullTile: Tile,
+            /**
+             * {@link BlockSource} object of the world where the block was destroyed.
+             */
+            blockSource: BlockSource,
+            /**
+             * Entity UID of the player that destroyed the block.
+             */
+            player: number
+        ) => void,
 		/**
          * Any other user-defined methods and properties
          */
@@ -15510,31 +16091,31 @@ export namespace ToolAPI {
     }
     /**
      * Object containing some of the enchants that are used to calculate block
-     * destroy time
+     * destroy time.
      */
     interface EnchantData {
         /**
-         * If true, the item has Silk Touch enchantment
+         * If `true`, the item has Silk Touch enchantment.
          */
         silk: boolean,
         /**
-         * Specifies the level of Fortune enchantment, or 0 if the item doesn't
-         * have this enchant
+         * Specifies the level of Fortune enchantment, or `0` if the item doesn't
+         * have this enchant.
          */
         fortune: number,
         /**
-         * Specifies the level of Efficiency enchantment, or 0 if the item
-         * doesn't have this enchant
+         * Specifies the level of Efficiency enchantment, or `0` if the item
+         * doesn't have this enchant.
          */
         efficiency: number,
         /**
-         * Specifies the level of Unbreaking enchantment, or 0 if the item
-         * doesn't have this enchant
+         * Specifies the level of Unbreaking enchantment, or `0` if the item
+         * doesn't have this enchant.
          */
         unbreaking: number,
         /**
          * Specifies the amount of additional experience that is dropped when
-         * player breaks block with specified item
+         * player breaks block with specified item.
          */
         experience: number
     }
@@ -15543,37 +16124,40 @@ export namespace ToolAPI {
  * Module that can be used to localize mods
  * All default strings (e.g. item names, windows titles, etc.) in the mod should
  * be in English. Add translations to these strings using
- * [[Translation.addTranslation]]. For items and blocks translations are applied
- * automatically. For the other strings, use [[Translation.translate]]
+ * {@link Translation.addTranslation}. For items and blocks translations are applied
+ * automatically. For the other strings, use {@link Translation.translate}.
  */
 export namespace Translation {
     /**
-     * Adds translations for specified object in several languages
+     * Adds translations for specified object in several languages.
      * @param name default string in English or name key
      * @param localization object containing two-letter language codes as keys
      * and localized strings in the specified language as values
      */
-    function addTranslation(name: string, localization: object): void;
+    function addTranslation(name: string, localization: { [language: string]: string }): void;
     /**
      * Translates string from English to current game language (if available).
-     * Add translations via [[Translation.addTranslation]] to apply them
+     * Add translations via {@link Translation.addTranslation} to apply them.
      * @param name default string in English or name key
-     * @returns string in the current game language or input string if
-     * translation is not available
+     * @returns String in the current game language or input string if
+     * translation is not available.
      */
     function translate(name: string): string;
     /**
-     * @returns two-letter language code for current game language
+     * @returns Two-letter language code for current game language.
      */
     function getLanguage(): string;
 }
 /**
- * Type used to mark Java bytes
+ * Type used to mark Java bytes.
  */
 type jbyte = number;
+/**
+ * Most methods must return `null` if value is not presented.
+ */
 type Nullable<T> = T | null;
 /**
- * Object representing the set of coordinates in the three-dimensional world
+ * Object representing the set of coordinates in the three-dimensional world.
  */
 interface Vector {
     x: number,
@@ -15581,16 +16165,16 @@ interface Vector {
     z: number
 }
 /**
- * Object representing coordinate set with side data
+ * Object representing coordinate set with side data.
  */
 interface BlockPosition extends Vector {
     /**
-     * Side of the block, one of the [[Native.BlockSide]] constants
+     * Side of the block, one of the {@link EBlockSide} constants.
      */
     side: number
 }
 /**
- * Object representing RGB color
+ * Object representing RGB color.
  */
 interface Color {
     r: number,
@@ -15598,99 +16182,194 @@ interface Color {
     b: number
 }
 /**
- * Object representing pitch/yaw angle set (in radians)
+ * Object representing pitch/yaw angle set (in radians).
  */
 interface LookAngle {
     pitch: number,
     yaw: number
 }
 /**
- * Object representing item instance in the inventory
+ * Object representing item instance in the inventory.
  */
 interface ItemInstance {
     /**
-     * Item id
+     * Item ID.
      */
     id: number,
     /**
-     * Amount of items of the specified id
+     * Amount of items of the specified ID.
      */
     count: number,
     /**
      * Item data value. Generally specifies some property of the item, e.g.
-     * color, material, etc. Defaults to 0, in many cases -1 means "any data
-     * value"
+     * color, material, etc. In many cases `-1` means "any data value".
+     * @default 0
      */
     data: number,
     /**
      * Item extra data. Contains some additional item data such as enchants,
-     * custom item name or some additional properties
+     * custom item name or some additional properties.
      */
     extra?: ItemExtraData
 }
 /**
- * Array of three or four elements representing item id, count, data and extra respectively.
- * Uses in block drop functions
+ * Array of three or four elements representing item ID, count, data and extra respectively.
+ * Uses in block drop functions.
  */
 type ItemInstanceArray = [number, number, number, ItemExtraData?];
 /**
- * Object representing block in the world
+ * Object representing block in the world.
  */
 interface Tile {
     id: number,
     data: number
 }
 /**
- * Object representing current weather in the world
+ * Object representing current weather in the world.
  */
 interface Weather {
     /**
-     * Current rain level, from 0 (no rain) to 10 (heavy rain)
+     * Current rain level, from 0 (no rain) to 10 (heavy rain).
      */
     rain: number,
     /**
-     * Current lightning level, from 0 (no lightning) to 10
+     * Current lightning level, from 0 (no lightning) to 10.
      */
     thunder: number
 }
-export class CustomEntity {
-}
+/**
+ * @deprecated Use behavior packs instead.
+ */
+export class CustomEntity {}
 export module UI {
     type ElementName = string | number | symbol;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent["interface"]}
+	 */
 	export type WindowContent = com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowContent["interface"]}
+	 */
 	export type StandardWindowContent = com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowContent;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription["interface"]}
+	 */
 	export type FontDescription = com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription["interface"]}
+	 */
     export type FontParams = com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription["interface"]}
+	 */
     export type WindowLocationParams = com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet["type"]}
+	 */
 	export type BindingsSet = com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle["class"]}
+	 */
 	export type Style = com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.UIClickEvent["interface"]}
+	 */
 	export type UIClickEvent = com.zhekasmirnov.innercore.api.mod.ui.elements.UIClickEvent;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.ColorDrawingDescription["interface"]}
+	 */
     export type ColorDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.ColorDrawingDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.CustomDrawingDescription["interface"]}
+	 */
     export type CustomDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.CustomDrawingDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.FrameDrawingDescription["interface"]}
+	 */
     export type FrameDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.FrameDrawingDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.ImageDrawingDescription["interface"]}
+	 */
     export type ImageDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.ImageDrawingDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.LineDrawingDescription["interface"]}
+	 */
     export type LineDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.LineDrawingDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.TextDrawingDescription["interface"]}
+	 */
     export type TextDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.TextDrawingDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.BasicElementDescription["interface"]}
+	 */
     export type UIElement = com.zhekasmirnov.innercore.api.mod.ui.elements.BasicElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.CustomElementDescription["interface"]}
+	 */
     export type UICustomElement = com.zhekasmirnov.innercore.api.mod.ui.elements.CustomElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription["interface"]}
+	 */
     export type UIButtonElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription["interface"]}
+	 */
     export type UICloseButtonElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.FrameElementDescription["interface"]}
+	 */
     export type UIFrameElement = com.zhekasmirnov.innercore.api.mod.ui.elements.FrameElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ImageElementDescription["interface"]}
+	 */
     export type UIImageElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ImageElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ScaleElementDescription["interface"]}
+	 */
     export type UIScaleElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ScaleElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ScrollElementDescription["interface"]}
+	 */
     export type UIScrollElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ScrollElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.SlotElementDescription["interface"]}
+	 */
     export type UISlotElement = com.zhekasmirnov.innercore.api.mod.ui.elements.SlotElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.SwitchElementDescription["interface"]}
+	 */
     export type UISwitchElement = com.zhekasmirnov.innercore.api.mod.ui.elements.SwitchElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.TabElementDescription["interface"]}
+	 */
     export type UITabElement = com.zhekasmirnov.innercore.api.mod.ui.elements.TabElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.TextElementDescription["interface"]}
+	 */
     export type UITextElement = com.zhekasmirnov.innercore.api.mod.ui.elements.TextElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.FPSTextElementDescription["interface"]}
+	 */
     export type UIFPSTextElement = com.zhekasmirnov.innercore.api.mod.ui.elements.FPSTextElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.InvSlotElementDescription["interface"]}
+	 */
     export type UIInvSlotElement = com.zhekasmirnov.innercore.api.mod.ui.elements.InvSlotElementDescription;
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.IWindow["class"]}
+	 */
 	export interface IWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.IWindow {}
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.container.Slot["Slot"]}
+	 */
 	export interface Slot extends com.zhekasmirnov.innercore.api.mod.ui.container.Slot {}
+	/**
+	 * {@inheritDoc UI.UIElement["type"]}
+	 */
 	export type Element = UIElement;
     /**
 	 * Object containing ui elements with key as the name and value as the
-	 * [[UIElement]] instance to be used
+	 * {@link UI.UIElement} instance to be used.
 	 */
 	export type Elements = (
 		UICustomElement
@@ -15720,74 +16399,77 @@ export module UI {
 	}
 	export type DrawingSet = DrawingElements[];
     /**
-	 * Object used to handle windows opening and closing events
+	 * Object used to handle windows opening and closing events.
 	 */
 	export interface WindowEventListener {
 		/**
-		 * Called when the window is opened
-		 * @param window current [[Window]] object
+		 * Called when the window is opened.
+		 * @param window current {@link UI.Window} object
 		 */
 		onOpen: (window: Window) => void,
 		/**
-		 * Called when the window is closed
-		 * @param window current [[Window]] object
+		 * Called when the window is closed.
+		 * @param window current {@link UI.Window} object
 		 */
 		onClose: (window: Window) => void
 	}
     /**
 	 * Class representing several windows opened at the same. For example,
-	 * [[StandardWindow]] is a window group that consists of several separate
-	 * windows
+	 * {@link UI.StandardWindow} is a window group that consists of several separate
+	 * windows.
 	 */
     export class WindowGroup extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowGroup {
         static class: java.lang.Class<WindowGroup>;
         /**
-		 * Constructs new [[WindowGroup]] instance
+		 * Constructs new {@link UI.WindowGroup} instance.
 		 */
         constructor();
     }
     /**
 	 * Containers are used to properly manipulate windows and save slots
-	 * contents and windows state between window opens. Every [[TileEntity]] has
-	 * a built-in container that can be accessed as [[TileEntity.container]]
-	 * @deprecated
+	 * contents and windows state between window opens. Every {@link TileEntity["interface"]} has
+	 * a built-in container that can be accessed as {@link TileEntity["interface"].container}.
+	 * @deprecated Client class only.
 	 */
     export class Container extends com.zhekasmirnov.innercore.api.mod.ui.container.Container {
         static class: java.lang.Class<Container>;
         /**
-		 * Creates a new instance of [[Container]]
+		 * Creates a new instance of {@link UI.Container}.
 		 */
         constructor();
         /**
-		 * Creates a new instance of [[Container]] and initializes its parent.
-		 * See [[Container.setParent]] for details
+		 * Creates a new instance of {@link UI.Container} and initializes it's parent.
+		 *
+		 * See {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].setParent|UI.Container.setParent} for details.
 		 */
         constructor(parent: Nullable<TileEntity> | any);
     }
     /**
 	 * Represents window of required size that can be opened in container to
-	 * provide any required UI facilities
+	 * provide any required UI facilities.
 	 */
     export class Window extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindow {
         static class: java.lang.Class<Window>;
         /**
-		 * Constructs new [[Window]] object with specified bounds
+		 * Constructs new {@link UI.Window} object with specified bounds.
 		 * @param location object containing window's bounds. Note that the
 		 * bounds change the width of the window, but the full width of the
 		 * window becomes 1000 units.
 		 */
-        constructor(loc: com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation);
+        constructor(location: com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation);
         /**
-		 * Constructs new [[Window]] object with specified content
+		 * Constructs new {@link UI.Window} object with specified content.
 		 * @param content window's content
 		 */
         constructor(content: WindowContent);
         /**
-         * Constructs new empty [[Window]] object
+         * Constructs new empty {@link UI.Window} object.
          */
         constructor();
     }
-    /** @deprecated use [[StandardWindow]] instead */
+    /**
+	 * @deprecated Use {@link UI.StandardWindow} instead.
+	 */
     export class StandartWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandartWindow>;
         constructor(content: StandardWindowContent);
@@ -15795,79 +16477,83 @@ export module UI {
     }
     /**
 	 * Class used to create standard ui for the mod's machines.
-	 * [[StandardWindow]] is a [[WindowGroup]] that has three windows with names
-	 * *"main"*, *"inventory"* and *"header"*. They represent custom window
-	 * contents, player's inventory and window's header respectively
+	 * {@link UI.StandardWindow} is a {@link UI.WindowGroup} that has three windows with names
+	 * `"main"`, `"inventory"` and `"header"`. They represent custom window
+	 * contents, player's inventory and window's header respectively.
 	 */
     export class StandardWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandardWindow>;
         /**
-		 * Constructs new [[StandardWindow]] with specified content.
+		 * Constructs new {@link UI.StandardWindow} with specified content.
 		 * Content is applied to the main window, header and inventory remain
-		 * the same
+		 * the same.
 		 * @param content object containing window description
 		 */
         constructor(content: StandardWindowContent);
         /**
-         * Constructs new empty [[StandardWindow]] object
+         * Constructs new empty {@link UI.StandardWindow} object.
          */
         constructor();
     }
+	/**
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.UIAdaptiveWindow["class"]}
+	 */
     export class AdaptiveWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIAdaptiveWindow {
         static class: java.lang.Class<AdaptiveWindow>;
         /**
-	     * Constructs new [[AdaptiveWindow]] with specified content
+	     * Constructs new {@link UI.AdaptiveWindow} with specified content.
 	     * @param content object containing window description
 	     */
         constructor(content: WindowContent);
         /**
-	     * Constructs a new empty [[AdaptiveWindow]]
+	     * Constructs a new empty {@link UI.AdaptiveWindow}.
 	     */
         constructor();
     }
     /**
-	 * Class used to create windows with multiple tabs
+	 * Class used to create windows with multiple tabs.
 	 */
     export class TabbedWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow {
         static class: java.lang.Class<TabbedWindow>;
         /**
-		 * Constructs new [[TabbedWindow]] with specified location
+		 * Constructs new {@link UI.TabbedWindow} with specified location.
 		 * @param loc location to be used for the tabbed window
 		 */
         constructor(loc: com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation);
         /**
-		 * Constructs new [[TabbedWindow]] with specified content
+		 * Constructs new {@link UI.TabbedWindow} with specified content.
 		 * @param content object containing window description
 		 */
         constructor(content: WindowContent);
         /**
-         * Constructs new empty [[TabbedWindow]] object
+         * Constructs new empty {@link UI.TabbedWindow} object.
          */
         constructor();
     }
     /**
 	 * Class representing window's location. All coordinates are defined in
-	 * units (given screen's width is 1000 units)
+	 * units (given screen's width is 1000 units).
 	 */
     export class WindowLocation extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation {
         static class: java.lang.Class<WindowLocation>;
         /**
-		 * Constructs new [[WindowLocation]] instance with default position and
-		 * size (fullscreen window)
+		 * Constructs new {@link UI.WindowLocation} instance with default position and
+		 * size (fullscreen window).
 		 */
         constructor();
         /**
-		 * Constructs new [[WindowLocation]] instance with specified parameters
-		 * @param params
+		 * Constructs new {@link UI.WindowLocation} instance with specified parameters.
 		 */
         constructor(desc: com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription);
     }
     /**
-	 * Class representing static or animated texture
+	 * Class representing static or animated texture.
 	 */
-    export class Texture extends com.zhekasmirnov.innercore.api.mod.ui.types.Texture { static class: java.lang.Class<Texture> }
+    export class Texture extends com.zhekasmirnov.innercore.api.mod.ui.types.Texture {
+		static class: java.lang.Class<Texture>;
+	}
     /**
-	 * Class representing font used in the UI
+	 * Class representing font used in the UI.
 	 */
     export class Font extends com.zhekasmirnov.innercore.api.mod.ui.types.Font {
         static class: java.lang.Class<Font>;
@@ -15875,26 +16561,26 @@ export module UI {
         constructor(desc: FontDescription);
     }
 	/**
-	 * Class used to visualize configuration file contents in a simple way
+	 * Class used to visualize configuration file contents in a simple way.
 	 */
     export class ConfigVisualizer extends com.zhekasmirnov.innercore.api.mod.util.ConfigVisualizer {
         static class: java.lang.Class<ConfigVisualizer>;
 		/**
-		 * Constructs new [[ConfigVisualizer]] instance with specified elements
-		 * names prefix
+		 * Constructs new {@link UI.ConfigVisualizer} instance with specified elements
+		 * names prefix.
 		 * @param config configuration file to be loaded
 		 * @param prefix elements names prefix used for this visualizer
 		 */
         constructor(config: com.zhekasmirnov.innercore.mod.build.Config, prefix: string);
 		/**
-		 * Constructs new [[ConfigVisualizer]] instance with default elements
-		 * names prefix (*config_vis*)
+		 * Constructs new {@link UI.ConfigVisualizer} instance with default elements
+		 * names prefix (*config_vis*).
 		 * @param config configuration file to be loaded
 		 */
         constructor(config: com.zhekasmirnov.innercore.mod.build.Config);
     }
     /**
-	 * Namespace containing method to get [[FrameTexture]] instances
+	 * Namespace containing method to get {@link com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture|FrameTexture} instances.
 	 */
     export class FrameTextureSource extends java.lang.Object {
         static class: java.lang.Class<FrameTextureSource>;
@@ -15904,42 +16590,42 @@ export module UI {
         static get(name: string): com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture;
     }
     /**
-	 * Namespace containing methods used to get and add gui textures
+	 * Namespace containing methods used to get and add gui textures.
 	 */
     export class TextureSource extends java.lang.Object {
         static class: java.lang.Class<TextureSource>;
         /**
 		 * @param name gui texture name
-		 * @returns [[android.graphics.Bitmap]] instance with the ui texture, if it
-		 * was loaded, with "*missing_texture*" texture otherwise
+		 * @returns Bitmap instance with the ui texture, if it
+		 * was loaded, with `"missing_texture"` texture otherwise.
 		 */
         static get(name: string): android.graphics.Bitmap;
         /**
 		 *
 		 * @param name gui texture name
-		 * @returns [[android.graphics.Bitmap]] instance with the ui texture, if it
-		 * was loaded, null otherwise
+		 * @returns Bitmap instance with the ui texture, if it
+		 * was loaded, `null` otherwise.
 		 */
         static getNullable(name: string): Nullable<android.graphics.Bitmap>;
         /**
-		 * Adds any bitmap as a gui texture with specified name
+		 * Adds any bitmap as a gui texture with specified name.
 		 * @param name gui texture name
-		 * @param bitmap [[android.graphics.Bitmap]] instance to be used as
+		 * @param bitmap {@link android.graphics.Bitmap} instance to be used as
 		 * gui texture
 		 */
         static put(name: string, bitmap: android.graphics.Bitmap): void;
     }
     /**
-	 * Same as [[UI.getScreenHeight]]
+	 * Same as {@link UI.getScreenHeight}.
 	 */
     export function getScreenRelativeHeight(): number;
     /**
-	 * @returns screen height in units
+	 * @returns Screen height in units.
 	 */
     export function getScreenHeight(): number;
     /**
-	 * @returns current [[android.app.Activity]] instance that can be used as
-	 * [[android.content.Context]] wherever required
+	 * @returns Current {@link android.app.Activity} instance that can be used as
+	 * {@link android.content.Context} wherever required.
 	 */
     export function getContext(): android.app.Activity;
 }
@@ -15947,50 +16633,50 @@ export module UI {
  * Module used to create and manage Updatables. Updatables provide the proper
  * way to manage objects that update their state every tick. Updatables may not
  * be notified every tick, if there are too many, to avoid user interface
- * freezes
+ * freezes.
  */
 export namespace Updatable {
     /**
-     * Adds object to updatables list
+     * Adds object to updatables list.
      * @param obj object to be added to updatables list
      */
 	function addUpdatable(obj: Updatable): any;
 	/**
-     * Adds object to updatables list
+     * Adds object to updatables list.
      * @param obj object to be added to updatables list
      */
     function addLocalUpdatable(obj: Updatable): any;
     /**
-     * @returns java.util.ArrayList instance containing all defined
-     * [[Updatable]] objects
+     * @returns ArrayList instance containing all defined
+     * {@link Updatable["interface"]} objects.
      */
     function getAll(): java.util.ArrayList<Updatable>;
     /**
-     * @returns current thread tick number
+     * @returns Current thread tick number.
      */
     function getSyncTime(): number;
 }
 /**
- * Updatable is an object that is notified every tick via its
- * [[Updatable.update]] method call
+ * Updatable is an object that is notified every tick via it's
+ * {@link Updatable["interface"].update} method call.
  */
 interface Updatable {
     /**
-     * Called every tick
+     * Called every tick.
      */
     update: () => void;
     /**
-     * Once true, the object will be removed from updatables list and will no
-     * longer receive update calls
+     * Once `true`, the object will be removed from updatables list and will no
+     * longer receive update calls.
      */
     remove?: boolean;
     /**
-     * Any other user-defined properties
+     * Any other user-defined properties.
      */
     [key: string]: any;
 }
 /**
- * Numeric IDs of vanilla blocks in the inventory
+ * Numeric IDs of vanilla blocks in the inventory.
  */
 export enum VanillaBlockID {
     element_117 = -128,
@@ -16544,7 +17230,7 @@ export enum VanillaBlockID {
     wither_rose = -308
 }
 /**
- * Numeric IDs of vanilla items
+ * Numeric IDs of vanilla items.
  */
 export enum VanillaItemID {
     record_11 = 510,
@@ -16947,7 +17633,7 @@ export enum VanillaItemID {
     vindicator_spawn_egg = 904
 }
 /**
- * Numeric IDs of vanilla blocks placed in the world
+ * Numeric IDs of vanilla blocks placed in the world.
  */
 export enum VanillaTileID {
     lit_blast_furnace = 469,
@@ -17506,296 +18192,300 @@ export enum VanillaTileID {
     wither_rose = 563
 }
 /**
- * Java object of the mod, contains some useful values and methods
+ * Mostly internal variable determined to be useful for control
+ * mod lifecycle, configuration and executables.
  */
 export let __mod__: Mod.ModJsAdapter;
 /**
- * Mod name
+ * Name property, generally loaded from *mod.info*.
  */
 export let __name__: string;
 /**
- * Full path to the mod's directory, ends with "/"
+ * Full path to the mod's directory, ends with "/".
  */
 export let __dir__: string;
 /**
- * Main mod configuration manager, settings are stored in config.json file. For
- * more information about config.json, see {@page Mod Configuration Files}
+ * Main mod configuration manager, settings are stored in *config.json* file.
  */
 export let __config__: Config;
 /**
- * Full path to current Horizon pack directory
+ * Full path to current selected pack (like Inner Core) directory.
  */
 export let __packdir__: string;
 /**
- * Full path to current Inner Core modpack directory
+ * Full path to current modpack (like *innercore*) directory.
  */
 export let __modpack__: ModPack.ModPackJsAdapter;
 /**
- * Module that allows to work with current Minecraft world
- * Most of the methods are out of date in multiplayer, use BlockSource instead
+ * Module that allows to work with current Minecraft world.
+ * Most of the methods are client, use BlockSource instead.
  */
 export namespace World {
     /**
      * Setups the module to work properly with the world. Usually called by
-     * Core Engine, so you generally shouldn't call it yourself
+     * Core Engine, so you generally shouldn't call it yourself.
      * @param isLoaded whether the world is loaded or not
+     * @internal
      */
     function setLoaded(isLoaded: boolean): boolean;
     /**
-     * @returns whether the world is loaded or not
+     * @returns Whether the world is loaded or not.
      */
     function isWorldLoaded(): boolean;
     /**
-     * @returns current tick number since the player joined the world
+     * @returns Tick number since the player joined the world.
      */
 	function getThreadTime(): number;
 	/**
 	 * @param side number from 0 to 6 (exclusive)
-     * @returns opposite side to argument
+     * @returns Opposite side to argument.
      */
     function getInverseBlockSide(side: number): number;
     /**
      * @param side block side
-     * @returns normal vector for this side
+     * @returns Normalized vector for this side.
      */
     function getVectorByBlockSide(side: number): Vector;
     /**
-     * Retrieves coordinates relative to the block. For example, the following code
-     * will return coordinates of the block above the specified:
-     * ```ts
-     * World.getRelativeCoords(x, y, z, Native.BlockSide.UP);
-     * ```
+     * Retrieves coordinates relative to the block.
      * @param side block side
-     * @returns relative coordinates
+     * @returns Relative coordinates.
+     * @example
+     * Return coordinates of the block above the specified:
+     * ```js
+     * World.getRelativeCoords(x, y, z, EBlockSide.UP);
+     * ```
      */
     function getRelativeCoords(x: number, y: number, z: number, side: number): Vector;
     /**
-     * Sets block in the world using its tile id and data
-     * @param id block tile id
+     * Sets block in the world using it's tile ID and data.
+     * @param id block tile ID
      * @param data block data
-     * @deprecated Consider using [[World.setBlock]] instead
+     * @deprecated Consider using {@link World.setBlock} instead.
      */
     function nativeSetBlock(x: number, y: number, z: number, id: number, data: number): void;
     /**
-     * @returns tile id of the block located on the specified coordinates
-     * @deprecated Consider using [[World.getBlockID]] instead
+     * @returns Tile ID of the block located on the specified coordinates.
+     * @deprecated Consider using {@link World.getBlockID} instead.
      */
     function nativeGetBlockID(x: number, y: number, z: number): number;
     /**
-     * @returns data of the block located on the specified coordinates
-     * @deprecated Consider using [[World.getBlockData]] instead
+     * @returns Data of the block located on the specified coordinates.
+     * @deprecated Consider using {@link World.getBlockData} instead.
      */
     function nativeGetBlockData(x: number, y: number, z: number): number;
     /**
-     * Sets block in the world using its tile id and data
-     * @param id block tile id
+     * Sets block in the world using it's tile ID and data.
+     * @param id block tile ID
      * @param data block data
      */
     function setBlock(x: number, y: number, z: number, id: number, data: number): void;
     /**
-     * Sets block in the world using specified [[Tile]] object
-     * @param fullTile object containing id and data of the tile
+     * Sets block in the world using specified {@link Tile} object.
+     * @param fullTile object containing ID and data of the tile
      */
     function setFullBlock(x: number, y: number, z: number, fullTile: Tile): void;
     /**
-     * @returns [[Tile]] object containing tile id and data of the block located
+     * @returns Tile object containing tile ID and data of the block located.
      * on the specified coordinates
      */
     function getBlock(x: number, y: number, z: number): Tile;
     /**
-     * @returns tile id of the block located on the specified coordinates
+     * @returns Tile ID of the block located on the specified coordinates.
      */
     function getBlockID(x: number, y: number, z: number): number;
     /**
-     * @returns data of the block located on the specified coordinates
+     * @returns Data of the block located on the specified coordinates.
      */
     function getBlockData(x: number, y: number, z: number): number;
     /**
      * Destroys block on the specified coordinates producing appropriate drop
      * and particles. Do not use for massive tasks due to particles being
-     * produced
+     * produced.
      * @param drop whether to provide drop for the block or not
      */
     function destroyBlock(x: number, y: number, z: number, drop?: boolean): void;
     /**
-     * @returns light level on the specified coordinates, from 0 to 15
-     * @deprecated Out of date in multiplayer
+     * @returns Light level on the specified coordinates, from 0 to 15.
+     * @deprecated Client method only.
      */
     function getLightLevel(x: number, y: number, z: number): number;
     /**
      * @param x chunk coordinate
      * @param z chunk coordinate
-     * @returns whether the chunk with specified coordinates is loaded or not
+     * @returns Whether the chunk with specified coordinates is loaded or not.
      */
     function isChunkLoaded(x: number, z: number): boolean;
     /**
      * @param x block coordinate
      * @param y block coordinate
      * @param z block coordinate
-     * @returns whether the chunk containing specified block coordinates is
-     * loaded or not
+     * @returns Whether the chunk containing specified block coordinates is
+     * loaded or not.
      */
     function isChunkLoadedAt(x: number, y: number, z: number): boolean;
     /**
-     * @returns [[TileEntity]] located on the specified coordinates
+     * @returns Requested {@link TileEntity["interface"]} located on the specified coordinates
+     * or `null` if it doesn't.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
     /**
      * If the block on the specified coordinates is a TileEntity block and is
-     * not initialized, initializes it and returns created [[TileEntity]] object
-     * @returns [[TileEntity]] if one was created, null otherwise
+     * not initialized, initializes it and returns created {@link TileEntity["interface"]} object.
+     * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
     /**
-     * If the block on the specified coordinates is a [[TileEntity]], destroys
-     * it, dropping its container
-     * @returns true if the [[TileEntity]] was destroyed successfully, false
-     * otherwise
+     * If the block on the specified coordinates is a {@link TileEntity["interface"]}, destroys
+     * it, dropping it's container.
+     * @returns `true` if the tile was destroyed successfully, `false`
+     * otherwise.
      */
     function removeTileEntity(x: number, y: number, z: number, region?: BlockSource): boolean;
     /**
-     * @returns if the block on the specified coordinates is a [[TileEntity]], returns
-     * its container, if the block is a [[NativeTileEntity]], returns it, if
-     * none of above, returns null
 	 * @param region BlockSource
+     * @returns If the block on the specified coordinates is a {@link TileEntity["interface"]}, returns
+     * it's container, if the block is a {@link NativeTileEntity}, returns it, if
+     * none of above, returns `null`.
      */
     function getContainer(x: number, y: number, z: number, region?: BlockSource): Nullable<NativeTileEntity | UI.Container | ItemContainer>;
     /**
-     * @returns current world's time in ticks
+     * @returns Current client world's time in ticks.
      */
     function getWorldTime(): number;
     /**
-     * Sets current world time
+     * Sets current world time, does actually nothing
+     * useful to game itself, changes thread time.
      * @param time time in ticks
      */
     function setWorldTime(time: number): number;
     /**
-     * Sets current time to day or night
+     * Sets current time to day or night.
      * @param day if true, sets time to 10000 (day), else to 13000 (night)
-     * @deprecated Consider using [[World.setWorldTime]] instead
+     * @deprecated Consider using {@link World.setWorldTime} instead.
      */
     function setDayMode(day: boolean): void;
     /**
-     * Sets current time to day or night
-     * @param day if true, sets time to 13000 (night), else to 10000 (day)
-     * @deprecated Consider using [[World.setWorldTime]] instead
+     * Sets current time to day or night.
+     * @param night if true, sets time to 13000 (night), else to 10000 (day)
+     * @deprecated Consider using {@link World.setWorldTime} instead.
      */
     function setNightMode(night: boolean): void;
     /**
-     * @returns current weather object. This value should not be edited, call
-     * [[World.setWeather]] to change current weather
+     * @returns Current weather object. This value should not be edited, call
+     * {@link World.setWeather} to change current weather.
      */
     function getWeather(): Weather;
     /**
-     * Sets current weather in the world
-     * @param weather [[Weather]] object to be used as current weather value
+     * Sets current weather in the world.
+     * @param weather {@link Weather} object to be used as current weather value
      */
     function setWeather(weather: Weather): void;
     /**
-     * Drops item or block with specified id, count, data and extra on the
-     * specified coordinates. For blocks, be sure to use block id, not the tile
-     * id
-     * @returns created drop entity id
+     * Drops item or block with specified ID, count, data and
+     * extra on the specified coordinates. For blocks, be sure
+     * to use block ID, not the tile ID.
+     * @returns Spawned drop entity ID.
      */
     function drop(x: number, y: number, z: number, id: number, count: number, data: number, extra?: ItemExtraData): number;
     /**
-     * Creates an explosion on the specified coordinates
+     * Creates an explosion on the specified coordinates.
      * @param power defines how many blocks can the explosion destroy and what
      * blocks can or cannot be destroyed
      * @param fire if true, puts the crater on fire
      */
     function explode(x: number, y: number, z: number, power: number, fire: boolean): void;
     /**
-     * @returns biome id on the specified coordinates
+     * @returns Biome ID on the specified coordinates.
      */
     function getBiome(x: number, z: number): number;
     /**
-     * @returns biome name on the specified coordinates
-     * @deprecated This method will return "Unknown" for all the biomes
+     * @returns Biome name on the specified coordinates.
+     * @deprecated This method will return `"Unknown"` for all the biomes.
      */
     function getBiomeName(x: number, z: number): string;
     /**
-     * @returns grass color for specified coordinates, uses android integer
-     * color model
+     * @returns Grass color for specified coordinates, uses android integer
+     * color model.
      */
     function getGrassColor(x: number, z: number): number;
     /**
-     * Sets grass color on the specified coordinates, uses android integer color
-     * model
+     * Sets grass color on the specified coordinates, uses android-like
+     * integer color model.
      * @param color grass color to be set for the specified coordinates
      */
     function setGrassColor(x: number, z: number, color: number): void;
     /**
-     * @returns grass color for specified coordinates, uses rgb color model
+     * @returns Grass color for specified coordinates, uses rgb color model.
      */
     function getGrassColorRGB(x: number, z: number): Color;
     /**
-     * Sets grass color on the specified coordinates, uses rgb color model
-     * @param color grass color to be set for the specified coordinates
+     * Sets grass color on the specified coordinates, uses rgb color model.
+     * @param rgb grass color to be set for the specified coordinates
      */
     function setGrassColorRGB(x: number, z: number, rgb: Color): void;
     /**
-     * @returns true, if one can see sky from the specified position, false
-     * otherwise
-	 * @deprecated Out of date in multiplayer
+     * @returns `true`, if one can see sky from the specified position, `false`
+     * otherwise.
+	 * @deprecated Client only method.
      */
     function canSeeSky(x: number, y: number, z: number): boolean;
     /**
-     * @returns true, if tile can be replaced (for example, grass and water can be replaced), false otherwise
+     * @returns `true`, if tile can be replaced (for example, grass (not block) and
+     * water can be replaced), `false` otherwise
      */
     function canTileBeReplaced(id: number, data: number): boolean;
     /**
-     * Plays standart Minecraft sound on the specified coordinates
+     * Plays standart Minecraft sound on the specified coordinates.
      * @param name sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
     function playSound(x: number, y: number, z: number, name: string, volume: number, pitch?: number): void;
     /**
-     * Plays standart Minecraft sound from the specified entity
+     * Plays standart Minecraft sound from the specified entity.
      * @param name sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
     function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
     /**
-     * Enables "BlockChanged" event for the block id. Event occurs when either
-     * old block or new block is registered using this method
-     * @param id numeric tile id
+     * Enables "BlockChanged" event for the block ID. Event occurs when either
+     * old block or new block is registered using this method.
+     * @param id numeric tile ID
      * @param enabled if true, the block will be watched
      */
     function setBlockChangeCallbackEnabled(id: number, enabled: boolean): void;
     /**
-     * Enables "BlockChanged" event for specified block ids and registers
-     * callback function for the ids
-     * @param ids string or numeric tile id, or an array of string and/or
-     * numeric tile ids
+     * Enables "BlockChanged" event for specified block IDs and registers
+     * callback function for the IDs.
+     * @param ids string or numeric tile ID, or an array of string and/or
+     * numeric tile IDs
      * @param callback function that will be called when "BlockChanged" callback
      * occurs involving one of the blocks. **Warning!** If both old and new
-     * blocks are in the ids list, callback function will be called twice.
+     * blocks are in the IDs list, callback function will be called twice.
      */
     function registerBlockChangeCallback(ids: number | string | (string | number)[], callback: Callback.BlockChangedFunction): void;
     /**
      * Gets biome on the specified coordinates when generating biome map.
-     * Should be called only in *GenerateBiomeMap* callback
+     * Should be called only in *GenerateBiomeMap* callback.
      * @param x block x coordinate
      * @param z block y coordinate
-     * @returns biome's numeric id
+     * @returns Biome's numeric ID.
      */
     function getBiomeMap(x: number, z: number): number;
     /**
      * Sets biome on the specified coordinates when generating biome map.
-     * Should be called only in *GenerateBiomeMap* callback
+     * Should be called only in *GenerateBiomeMap* callback.
      * @param x block x coordinate
      * @param z block y coordinate
-     * @param id biome id to be set on the specified coordinates
+     * @param id biome ID to be set on the specified coordinates
      */
     function setBiomeMap(x: number, z: number, id: number): void;
     /**
      * Adds a new generation callback using string hash to generate a unique
-     * random seed for the chunk generator
-     * @param callbackName one of the generation callbacks, see {@page Callbacks}
-     * for details
+     * random seed for the chunk generator.
+     * @param callbackName one of the generation callbacks
      * @param callback callback function
      * @param uniqueHashStr if specified, will be used as string hash for seed
      * generation, otherwise default hash string will be used
