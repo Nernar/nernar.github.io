@@ -21,12 +21,13 @@
 		"prebuild:types": {
 			"command": "tsx tools/rebuild_types.ts core-engine",
 			"files": [
+				"tsconfig*.json",
 				"tools/rebuild_types.ts",
 				"core-engine/**/*.d.ts"
 			],
 			"output": [
 				"declarations/core-engine.d.ts",
-				"declarations/core-engine.es6.d.ts"
+				"declarations/*.es6.d.ts"
 			]
 		},
 		"build:extract": {
@@ -46,7 +47,7 @@
 			"command": "tsx tools/generate_docs.ts core-engine www",
 			"files": [
 				"tools/generate_docs.ts",
-				"tools/markdown/**/*.ts",
+				"tools/*/**/*.ts",
 				"temp/core-engine.api.json"
 			],
 			"dependencies": [

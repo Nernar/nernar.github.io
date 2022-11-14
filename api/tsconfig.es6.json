@@ -5,7 +5,7 @@
 		"lib": ["ES2015"]
 	},
 	"include": [
-		"declarations/android.d.ts"
+		"declarations/android.es6.d.ts"
 	],
 	"exclude": [
 		"dom",

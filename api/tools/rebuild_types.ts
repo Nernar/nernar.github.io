@@ -22,7 +22,7 @@
 
 import { join } from 'path';
 import { sync as glob } from 'glob';
-import { writeFile } from 'fs/promises';
+import { writeFile, readdir, rm } from 'fs/promises';
 import * as readline from 'readline';
 import * as events from 'events';
 import * as fs from 'fs';
@@ -69,10 +69,10 @@ async function concernModules(input: fs.PathLike, output: fs.PathLike) {
 	stream.end();
 }
 
-const typesRollup = join(__dirname, '..', 'declarations', `${ process.argv[2] }.d.ts`);
-const typesRollupES6 = join(__dirname, '..', 'declarations', `${ process.argv[2] }.es6.d.ts`);
+const types = join(__dirname, '..', 'declarations');
+const typesRollup = join(types, `${ process.argv[2] }.d.ts`);
 
-(async () => {
+(async (now) => {
 	let content = '/// <reference path=\'./android.d.ts\' />\n';
 	for (const input of glob(
 		'com/zhekasmirnov/**/*.d.ts', { cwd: join(__dirname, '..', process.argv[2]) }
@@ -82,5 +82,23 @@ const typesRollupES6 = join(__dirname, '..', 'declarations', `${ process.argv[2]
 		content += await trimDeclaration(join(__dirname, '..', process.argv[2], input));
 	}
 	await writeFile(typesRollup, content);
-	await concernModules(typesRollup, typesRollupES6);
-})();
+	console.log(`Merging declarations of ${ process.argv[2] } successfully completed in ${ Math.floor((Date.now() - now) / 100) / 10 }s`);
+
+	const resolvedTypes: string[] = [];
+	for (const filename of await readdir(types)) {
+		if (filename.endsWith('.d.ts')) {
+			if (filename.includes('.es6.')) {
+				await rm(join(types, filename));
+			} else {
+				resolvedTypes.push(filename);
+			}
+		}
+	}
+	for (const filename of resolvedTypes) {
+		console.log(`Concerning ${ filename } to ES6 syntax`);
+		await concernModules(
+			join(types, filename),
+			join(types, `${ filename.substring(0, filename.length - 5) }.es6.d.ts`)
+		);
+	}
+})(Date.now());
