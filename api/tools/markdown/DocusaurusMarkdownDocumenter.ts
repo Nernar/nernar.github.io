@@ -63,7 +63,8 @@ import {
 	ApiReadonlyMixin,
 	ApiStaticMixin,
 	ApiInitializerMixin,
-	ApiVariable
+	ApiVariable,
+	ApiItemContainerMixin
 } from '@microsoft/api-extractor-model';
 import {
 	IMarkdownDocumenterFeatureOnBeforeWritePageArgs,
@@ -91,11 +92,16 @@ import {
 import * as path from 'path';
 import * as fs from 'fs';
 
+import {
+	DocCautionAdmonition, 
+	DocDangerAdmonition,
+	DocInfoAdmonition
+} from './nodes/DocAdmonition';
 import { DocusaurusDocNodes } from './DocusaurusDocNodes';
 import { DocusaurusMarkdownEmitter } from './DocusaurusMarkdownEmitter';
-import { DocCautionAdmonition, DocDangerAdmonition, DocInfoAdmonition } from './nodes/DocAdmonition';
 import { DocExpression } from './nodes/DocExpression';
 import { DocExpressionHeading } from './nodes/DocExpressionHeading';
+import { AbsoluteApiItem } from '../extractor-model/AbsoluteApiModel';
 
 function getSafeFilename(name: string) {
 	try {
@@ -315,7 +321,7 @@ export class DocusaurusMarkdownDocumenter {
 					);
 				}
 
-				this._appendSection(output, tsdocComment.summarySection);
+				output.appendNodes(tsdocComment.summarySection.nodes);
 			}
 		}
 
@@ -436,6 +442,7 @@ export class DocusaurusMarkdownDocumenter {
 			pageContent = eventArgs.pageContent;
 		}
 
+		// TODO: Move to markdown features?
 		pageContent = pageContent.replace('##', '#');
 		pageContent = pageContent.replace(/<!-- -->/g, '');
 		pageContent = pageContent.replace(/\\\*\\\*/g, '**');
@@ -454,8 +461,7 @@ import Translate from "@docusaurus/Translate";
 ` + pageContent;
 			if (relpath == 'index') {
 				pageContent = pageContent.replace('---', `---
-displayed_sidebar: defaultSidebar
-slug: /`)
+displayed_sidebar: defaultSidebar`)
 			} else if (relpath.indexOf('/') != -1) {
 				// Preserves Docusaurus "docId" routes duplication.
 				const slug = relpath.toLowerCase().split('/');
@@ -602,9 +608,7 @@ slug: ${ path.basename(relpath) }`);
 					output.appendNode(new DocInfoAdmonition({
 						configuration: this._tsdocConfiguration,
 						title: this._constructTranslation('api.section.remarks', 'Remarks')
-					}, [
-						tsdocComment.remarksBlock.content
-					]));
+					}, tsdocComment.remarksBlock.content.nodes));
 				}
 
 				// Write the @example blocks
@@ -618,17 +622,16 @@ slug: ${ path.basename(relpath) }`);
 				);
 
 				for (const exampleBlock of exampleBlocks) {
-					output.appendNode(
+					output.appendNodes([
 						new DocExpressionHeading({
 							configuration: this._tsdocConfiguration,
 							expression: exampleBlocks.length > 1
-								? this._constructTranslation('api.section.example', 'Example')
-								: this._constructTranslation('api.section.examples', 'Examples'),
+								? this._constructTranslation('api.section.examples', 'Examples')
+								: this._constructTranslation('api.section.example', 'Example'),
 							level: 2
-						})
-					);
-
-					this._appendSection(output, exampleBlock.content);
+						}),
+						...exampleBlock.content.nodes
+					]);
 				}
 			}
 		}
@@ -657,7 +660,7 @@ slug: ${ path.basename(relpath) }`);
 					);
 
 					for (const throwsBlock of throwsBlocks) {
-						this._appendSection(output, throwsBlock.content);
+						output.appendNodes(throwsBlock.content.nodes);
 					}
 				}
 			}
@@ -940,14 +943,16 @@ slug: ${ path.basename(relpath) }`);
 			]
 		});
 
-		for (const apiMember of apiClass.members) {
+		const apiMembers = this._getMembersAndWriteIncompleteWarning(apiClass, output);
+		for (const apiMember of apiMembers) {
+			const isInherited = apiMember.parent !== apiClass;
 			switch (apiMember.kind) {
 				case ApiItemKind.Constructor: {
 					constructorsTable.addRow(
 						new DocTableRow({ configuration }, [
 							this._createTitleCell(apiMember),
 							this._createModifiersCell(apiMember),
-							this._createDescriptionCell(apiMember)
+							this._createDescriptionCell(apiMember, isInherited)
 						])
 					);
 
@@ -959,7 +964,7 @@ slug: ${ path.basename(relpath) }`);
 						new DocTableRow({ configuration }, [
 							this._createTitleCell(apiMember),
 							this._createModifiersCell(apiMember),
-							this._createDescriptionCell(apiMember)
+							this._createDescriptionCell(apiMember, isInherited)
 						])
 					);
 
@@ -973,7 +978,7 @@ slug: ${ path.basename(relpath) }`);
 								this._createTitleCell(apiMember),
 								this._createModifiersCell(apiMember),
 								this._createPropertyTypeCell(apiMember),
-								this._createDescriptionCell(apiMember)
+								this._createDescriptionCell(apiMember, isInherited)
 							])
 						);
 					} else {
@@ -982,7 +987,7 @@ slug: ${ path.basename(relpath) }`);
 								this._createTitleCell(apiMember),
 								this._createModifiersCell(apiMember),
 								this._createPropertyTypeCell(apiMember),
-								this._createDescriptionCell(apiMember)
+								this._createDescriptionCell(apiMember, isInherited)
 							])
 						);
 					}
@@ -1087,7 +1092,7 @@ slug: ${ path.basename(relpath) }`);
 	 */
 	private _writeInterfaceTables(
 		output: DocSection,
-		apiClass: ApiInterface
+		apiInterface: ApiInterface
 	): void {
 		const configuration: TSDocConfiguration = this._tsdocConfiguration;
 
@@ -1119,14 +1124,16 @@ slug: ${ path.basename(relpath) }`);
 			]
 		});
 
-		for (const apiMember of apiClass.members) {
+        const apiMembers = this._getMembersAndWriteIncompleteWarning(apiInterface, output);
+		for (const apiMember of apiMembers) {
+            const isInherited = apiMember.parent !== apiInterface;
 			switch (apiMember.kind) {
 				case ApiItemKind.ConstructSignature:
 				case ApiItemKind.MethodSignature: {
 					methodsTable.addRow(
 						new DocTableRow({ configuration }, [
 							this._createTitleCell(apiMember),
-							this._createDescriptionCell(apiMember)
+							this._createDescriptionCell(apiMember, isInherited)
 						])
 					);
 
@@ -1140,7 +1147,7 @@ slug: ${ path.basename(relpath) }`);
 								this._createTitleCell(apiMember),
 								this._createModifiersCell(apiMember),
 								this._createPropertyTypeCell(apiMember),
-								this._createDescriptionCell(apiMember)
+								this._createDescriptionCell(apiMember, isInherited)
 							])
 						);
 					} else {
@@ -1149,7 +1156,7 @@ slug: ${ path.basename(relpath) }`);
 								this._createTitleCell(apiMember),
 								this._createModifiersCell(apiMember),
 								this._createPropertyTypeCell(apiMember),
-								this._createDescriptionCell(apiMember)
+								this._createDescriptionCell(apiMember, isInherited)
 							])
 						);
 					}
@@ -1274,9 +1281,8 @@ slug: ${ path.basename(relpath) }`);
 					apiParameterListMixin.tsdocComment &&
 					apiParameterListMixin.tsdocComment.returnsBlock
 				) {
-					this._appendSection(
-						output,
-						apiParameterListMixin.tsdocComment.returnsBlock.content
+					output.appendNodes(
+						apiParameterListMixin.tsdocComment.returnsBlock.content.nodes
 					);
 				}
 			}
@@ -1383,14 +1389,14 @@ slug: ${ path.basename(relpath) }`);
 
 	/**
 	 * This generates a DocTableCell for an ApiItem including the summary section
-	 * and unstable "!!!" annotation.
+	 * and unstable "(experimental)" annotation.
 	 *
 	 * @remarks
 	 * We mostly assume that the input is an ApiDocumentedItem, but it's easier to
 	 * perform this as a runtime check than to have each caller perform a type
 	 * cast.
 	 */
-	private _createDescriptionCell(apiItem: ApiItem): DocTableCell {
+	private _createDescriptionCell(apiItem: ApiItem, isInherited?: boolean): DocTableCell {
 		const configuration: TSDocConfiguration = this._tsdocConfiguration;
 
 		const section: DocSection = new DocSection({ configuration });
@@ -1399,7 +1405,7 @@ slug: ${ path.basename(relpath) }`);
 			if (apiItem.releaseTag !== ReleaseTag.Public) {
 				section.appendNodesInParagraph([
 					new DocEmphasisSpan({ configuration, bold: true, italic: true }, [
-						new DocPlainText({ configuration, text: '!!!' })
+						this._constructTranslation('api.block.experimental', '(experimental)')
 					]),
 					new DocPlainText({ configuration, text: ' ' })
 				]);
@@ -1422,6 +1428,20 @@ slug: ${ path.basename(relpath) }`);
 					apiItem.tsdocComment.summarySection
 				);
 			}
+		}
+
+		if (isInherited && apiItem.parent) {
+			section.appendNode(new DocParagraph({ configuration }, [
+				new DocPlainText({ configuration, text: '(' }),
+				this._constructTranslation('api.block.inherited', 'inherited from {scopedName}', { scopedName: '' }),
+				new DocLinkTag({
+					configuration,
+					tagName: '@link',
+					linkText: apiItem.parent.displayName,
+					urlDestination: this._getSlugForApiItem(apiItem.parent)
+				}),
+				new DocPlainText({ configuration, text: ')' })
+			]));
 		}
 
 		return new DocTableCell({ configuration }, section.nodes);
@@ -1511,10 +1531,30 @@ slug: ${ path.basename(relpath) }`);
 		);
 	}
 
-	private _appendSection(output: DocSection, docSection: DocSection): void {
-		for (const node of docSection.nodes) {
-			output.appendNode(node);
+	private _getMembersAndWriteIncompleteWarning(apiClassOrInterface: ApiItemContainerMixin, output: DocSection) {
+		const configuration = this._tsdocConfiguration;
+
+		const showInheritedMembers = this._documenterConfig?.configFile.showInheritedMembers;
+		if (!showInheritedMembers) {
+			return apiClassOrInterface.members;
 		}
+
+		const result = apiClassOrInterface.findMembersWithInheritance();
+		// If the result is potentially incomplete, write a short warning communicating this.
+		if (result.maybeIncompleteResult) {
+			output.appendNode(new DocParagraph({ configuration }, [
+				new DocEmphasisSpan({ configuration, italic: true }, [
+					this._constructTranslation('api.incompleteResult', 'Some inherited members may not be shown because they are not represented in the documentation.')
+				])
+			]));
+		}
+
+		// Log the messages for diagnostic purposes.
+		for (const message of result.messages) {
+			console.log(`Diagnostic message for findMembersWithInheritance: ${message.text}`);
+		}
+
+		return result.items;
 	}
 
 	private _appendAndMergeSection(
@@ -1624,6 +1664,10 @@ slug: ${ path.basename(relpath) }`);
 	}
 
 	private _getSlugForApiItem(apiItem: ApiItem): string {
-		return this._routeBasePath + this._getSchemeForApiItem(apiItem).replace(/(\/index|^index)$/i, '');
+		const scheme = this._getSchemeForApiItem(apiItem).replace(/(\/index|^index)$/i, '');
+		if (apiItem instanceof AbsoluteApiItem) {
+			return `https://developer.android.com/reference/${ scheme.replace(/\./g, '/') }`;
+		}
+		return this._routeBasePath + scheme;
 	}
 }

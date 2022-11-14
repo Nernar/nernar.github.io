@@ -20,8 +20,11 @@
 
 */
 
+import {
+	IMarkdownEmitterContext,
+	IMarkdownEmitterOptions
+} from '@microsoft/api-documenter/lib/markdown/MarkdownEmitter';
 import { CustomMarkdownEmitter } from '@microsoft/api-documenter/lib/markdown/CustomMarkdownEmitter';
-import { IMarkdownEmitterContext, IMarkdownEmitterOptions } from '@microsoft/api-documenter/lib/markdown/MarkdownEmitter';
 import { DocNode } from '@microsoft/tsdoc';
 
 import { DocusaurusDocNodeKind } from './DocusaurusDocNodes';
@@ -30,7 +33,11 @@ import { DocExpression } from './nodes/DocExpression';
 import { DocExpressionHeading } from './nodes/DocExpressionHeading';
 
 export class DocusaurusMarkdownEmitter extends CustomMarkdownEmitter {
-	protected writeNode(docNode: DocNode, context: IMarkdownEmitterContext<IMarkdownEmitterOptions>, docNodeSiblings: boolean): void {
+	protected writeNode(
+		docNode: DocNode,
+		context: IMarkdownEmitterContext<IMarkdownEmitterOptions>,
+		docNodeSiblings: boolean
+	): void {
 		const { writer } = context;
 		switch (docNode.kind) {
 			case DocusaurusDocNodeKind.NoteAdmonition:
@@ -60,6 +67,7 @@ export class DocusaurusMarkdownEmitter extends CustomMarkdownEmitter {
 				writer.writeLine(':::');
 				writer.writeLine();
 				break;
+
 			case DocusaurusDocNodeKind.ExpressionHeading:
 				const header = docNode as DocExpressionHeading;
 				writer.ensureSkippedLine();
@@ -68,6 +76,7 @@ export class DocusaurusMarkdownEmitter extends CustomMarkdownEmitter {
 				writer.write(`</h${ header.level + 1 }>`)
 				writer.ensureSkippedLine();
 				break;
+
 			case DocusaurusDocNodeKind.Expression:
 				const expression = docNode as DocExpression;
 				expression.inline || writer.ensureSkippedLine();
@@ -87,6 +96,7 @@ export class DocusaurusMarkdownEmitter extends CustomMarkdownEmitter {
 				}
 				expression.inline || writer.ensureSkippedLine();
 				break;
+
 			default:
 				super.writeNode(docNode, context, docNodeSiblings);
 		}

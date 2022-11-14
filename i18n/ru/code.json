@@ -430,6 +430,12 @@
   "api.block.excerptNotFound": {
     "message": "(не объявлено)"
   },
+  "api.block.experimental": {
+    "message": "(экспериментально)"
+  },
+  "api.block.inherited": {
+    "message": "получено из {scopedName}"
+  },
   "api.deprecatedNotice.title": {
     "message": "Устарело"
   },
@@ -441,5 +447,8 @@
   },
   "api.nearlyFeature.message": {
     "message": "Эта возможность представлена для разработчиков как предварительная и может измениться на основе полученного фидбека."
+  },
+  "api.incompleteResult": {
+    "message": "Некоторые полученные методы могут быть не показаны, так как они не задокументированы."
   }
 }

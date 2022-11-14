@@ -1,3 +1,4 @@
 {
-	"outputTarget": "markdown"
+	"outputTarget": "markdown",
+	"showInheritedMembers": true
 }

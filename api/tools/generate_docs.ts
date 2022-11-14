@@ -21,13 +21,13 @@
 */
 
 import { DocumenterConfig } from '@microsoft/api-documenter/lib/documenters/DocumenterConfig';
-import { ApiModel } from '@microsoft/api-extractor-model';
 import { join, normalize } from 'path';
 
+import { AbsoluteApiModel } from './extractor-model/AbsoluteApiModel';
 import { DocusaurusMarkdownDocumenter } from './markdown/DocusaurusMarkdownDocumenter';
 
 (async () => {
-	const apiModel = new ApiModel();
+	const apiModel = new AbsoluteApiModel(['android', 'androidx', 'dalvik', 'java', 'javax', 'org']);
 	apiModel.loadPackage(join(__dirname, '..', 'temp', `${ process.argv[2] }.api.json`));
 
     const output = process.argv[3] || join('www', process.argv[2]);
