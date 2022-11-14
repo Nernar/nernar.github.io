@@ -1,13 +1,13 @@
 /**
- * Namespace used to create and manipulate custom dimensions
+ * Namespace used to create and manipulate custom dimensions.
  */
 declare namespace Dimensions {
     /**
-     * Class representing custom dimension
+     * Class representing custom dimension.
      */
     class CustomDimension {
         /**
-         * Constructs a new dimension with specified name and preferred ID
+         * Constructs a new dimension with specified name and preferred ID.
          * @param name dimension name, can be used to get dimension via 
          * {@link Dimensions.getDimensionByName} call
          * @param preferredId preferred dimension ID. If ID is already occupied
@@ -17,12 +17,12 @@ declare namespace Dimensions {
         constructor(name: string, preferredId: number);
 
         /**
-         * Custom dimension ID
+         * Custom dimension ID.
          */
         id: number;
 
         /**
-         * Sets custom landscape generator
+         * Sets custom landscape generator.
          * @param generator custom landscape generator used for current 
          * dimension
          * @returns Reference to itself to be used in sequential calls.
@@ -31,9 +31,10 @@ declare namespace Dimensions {
 
         /**
          * Specifies whether the sky produces light (like in overworld) or not 
-         * (like in the End or Nether). By default this value is true
+         * (like in the End or Nether).
          * @param hasSkyLight if true, the sky produces light in the dimension
          * @returns Reference to itself to be used in sequential calls.
+         * @default true
          */
         setHasSkyLight(hasSkyLight: boolean): CustomDimension;
 
@@ -43,7 +44,7 @@ declare namespace Dimensions {
         hasSkyLight(): boolean;
 
         /**
-         * Sets sky color for the dimension in the RGB format. Default 
+         * Sets sky color for the dimension in the RGB format. Default
          * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
@@ -59,7 +60,7 @@ declare namespace Dimensions {
         resetSkyColor(): CustomDimension;
 
         /**
-         * Sets fog color for the dimension in the RGB format. Default 
+         * Sets fog color for the dimension in the RGB format. Default
          * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
@@ -75,7 +76,7 @@ declare namespace Dimensions {
         resetFogColor(): CustomDimension;
 
         /**
-         * Sets clouds color for the dimension in the RGB format. Default 
+         * Sets clouds color for the dimension in the RGB format. Default
          * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
@@ -91,7 +92,7 @@ declare namespace Dimensions {
         resetCloudColor(): CustomDimension;
 
         /**
-         * Sets sunset sky color for the dimension in the RGB format. Default 
+         * Sets sunset sky color for the dimension in the RGB format. Default
          * color is as in the Overworld.
          * @param r red color component, value from 0 to 1
          * @param g green color component, value from 0 to 1
@@ -115,18 +116,18 @@ declare namespace Dimensions {
         setFogDistance(start: number, end: number): CustomDimension;
 
         /**
-         * Resets fog displaying distance
+         * Resets fog displaying distance.
          * @returns Reference to itself to be used in sequential calls.
          */
         resetFogDistance(): CustomDimension;
     }
 
     /**
-     * Class representing landscape generator used for the dimension
+     * Class representing landscape generator used for the dimension.
      */
     class CustomGenerator {
         /**
-         * Creates a new {@link CustomGenerator} instance using specified base type.
+         * Creates a new {@link Dimensions.CustomGenerator} instance using specified base type.
          * @param baseType base generator type constant, can be from 0 to 4. 0 
          * and 1 represent overworld generator, 2 represents flat world 
          * generator, 3 represents nether generator and 4 represents end 
@@ -135,14 +136,14 @@ declare namespace Dimensions {
         constructor(baseType: number);
 
         /**
-         * Creates a new {@link CustomGenerator} instance using specified base type.
+         * Creates a new {@link Dimensions.CustomGenerator} instance using specified base type.
          * @param baseType base generator type constant, can be one of the 
          * following: "overworld", "overworld1", "flat", "nether", "end"
          */
         constructor(baseType: string);
 
         /**
-         * Specifies whether to use vanilla biome surface cover blocks (grass, 
+         * Specifies whether to use vanilla biome surface cover blocks (grass,
          * sand, podzol, etc.).
          * @param value if `true`, vanilla surface will be generated
          * @default false
@@ -151,7 +152,7 @@ declare namespace Dimensions {
         setBuildVanillaSurfaces(value: boolean): CustomGenerator;
 
         /**
-         * Specifies whether to generate minecraft vanilla structures
+         * Specifies whether to generate minecraft vanilla structures.
          * @param value if `true`, vanilla structures will be generated
          * @default false
          * @returns Reference to itself to be used in sequential calls.
@@ -159,7 +160,7 @@ declare namespace Dimensions {
         setGenerateVanillaStructures(value: boolean): CustomGenerator;
 
         /**
-         * Specifies whether to use mod's generation callbacks
+         * Specifies whether to use mod's generation callbacks.
          * @param value if `true`, mod generation will be used
          * @default true
          * @returns Reference to itself to be used in sequential calls.
@@ -167,7 +168,7 @@ declare namespace Dimensions {
         setGenerateModStructures(value: boolean): CustomGenerator;
 
         /**
-         * Sets terrain generator object used for the landscape generation
+         * Sets terrain generator object used for the landscape generation.
          * @param generator terrain generator to be used with current landscape 
          * generator or removes terrain generator, if the value is null
          * @returns Reference to itself to be used in sequential calls.
@@ -175,9 +176,9 @@ declare namespace Dimensions {
         setTerrainGenerator(generator: Nullable<AbstractTerrainGenerator>): CustomGenerator;
 
         /**
-         * Specifies which of the generation {@link Callback|Callbacks} to call, -1 to call 
-         * no mods generation, 0 to call overworld generation callback, 1 for nether, 
-         * 2 for end generation callbacks.
+         * Specifies which of the generation {@link Callback|Callbacks} to call, `-1` to call
+         * no mods generation, `0` to call overworld generation callback, `1` for nether,
+         * `2` for end generation callbacks.
          * @param id generation callback to call
          * @returns Reference to itself to be used in sequential calls.
          */
@@ -192,24 +193,24 @@ declare namespace Dimensions {
 
     /**
      * Interface representing terrain generator. All terrain generators found
-     * in Inner Core API implement this interface
+     * in Inner Core API implement this interface.
      */
     interface AbstractTerrainGenerator {}
 
     /**
-     * Class representing terrain that consists of single biome
+     * Class representing terrain that consists of single biome.
      */
     class MonoBiomeTerrainGenerator implements AbstractTerrainGenerator {
         /**
-         * Constructs new {@link MonoBiomeTerrainGenerator} instance with no terrain
-         * layers
+         * Constructs new {@link Dimensions.MonoBiomeTerrainGenerator|MonoBiomeTerrainGenerator}
+         * instance with no terrain layers.
          */
         constructor();
 
         addTerrainLayer(minY: number, maxY: number): TerrainLayer;
 
         /**
-         * Sets base biome for the current terrain 
+         * Sets base biome for the current terrain.
          * @param id ID of the biome to be used as a single biome of the terrain
          * layer
          */
@@ -217,8 +218,8 @@ declare namespace Dimensions {
     }
 
     /**
-     * Class representing single terrain layer that may consist of several noise 
-     * layers
+     * Class representing single terrain layer that may consist of several noise
+     * layers.
      */
     interface TerrainLayer {
         addNewMaterial(generator: NoiseGenerator, priority: number): TerrainMaterial;
@@ -233,7 +234,7 @@ declare namespace Dimensions {
     }
 
     /**
-     * Class representing material that is used to generate terrain layer
+     * Class representing material that is used to generate terrain layer.
      */
     interface TerrainMaterial {
 
@@ -250,14 +251,14 @@ declare namespace Dimensions {
 
     /**
      * Class representing noise conversion function. Used to define "density" of
-     * the landscape at a given height. Values between nodes are interpolated 
-     * linearly
+     * the landscape at a given height. Values between nodes are interpolated
+     * linearly.
      */
     class NoiseConversion {
         constructor();
 
         /**
-         * Adds a new node to the noise conversion function
+         * Adds a new node to the noise conversion function.
          * @param x value from 0 to 1 representing the height of the block in the
          * terrain layer
          * @param y landscape density at a given height, generally can be between
@@ -267,7 +268,7 @@ declare namespace Dimensions {
     }
 
     /**
-     * Class representing multi-layer noise generator
+     * Class representing multi-layer noise generator.
      */
     class NoiseGenerator {
         constructor();
@@ -278,7 +279,7 @@ declare namespace Dimensions {
     }
 
     /**
-     * Class representing single noise layer
+     * Class representing single noise layer.
      */
     class NoiseLayer {
         constructor();
@@ -291,11 +292,11 @@ declare namespace Dimensions {
     type NoiseOctaveStringType = "perlin" | "gray" | "chess" | "sine_x" | "sine_y" | "sine_z" | "sine_xy" | "sine_yz" | "sine_xz" | "sine_xyz";
     /**
      * Class representing noise octave. Each noise layer consists of multiple
-     * noise octaves of different scale and weight
+     * noise octaves of different scale and weight.
      */
     class NoiseOctave {
         /**
-         * Creates a new noise octave of specified type
+         * Creates a new noise octave of specified type.
          * @param type numeric type constant or one of the following strings:
          * 
          * **"perlin"** (0) is a general-purpose noise generator.
@@ -329,7 +330,7 @@ declare namespace Dimensions {
     }
 
     /**
-     * Overrides default generator of vanilla dimension
+     * Overrides default generator of vanilla dimension.
      * @param id vanilla dimension ID, one of the {@link EDimension} 
      * values
      * @param generator custom landscape generator used for vanilla 
@@ -339,8 +340,8 @@ declare namespace Dimensions {
 
     /**
      * @param name dimension name
-     * @returns Dimension by it's string name specified in.
-     * {@link CustomDimension.constructor}
+     * @returns Dimension by it's string name specified in
+     * {@link Dimensions.CustomDimension|CustomDimension} constructor.
      */
     function getDimensionByName(name: string): CustomDimension;
 
@@ -359,7 +360,7 @@ declare namespace Dimensions {
     function isLimboId(id: number): boolean;
 
     /**
-     * Transfers specified entity to the dimension with specified ID
+     * Transfers specified entity to the dimension with specified ID.
      * @param entity numeric ID of the 
      * @param dimensionId numeric ID of the dimension to transfer the entity to
      */
@@ -371,54 +372,57 @@ declare namespace Dimensions {
     function getAllRegisteredCustomBiomes(): { [key: string]: CustomBiome };
 
     /**
-     * Function used to simplify the creation of terrain generator by passing 
-     * a json-like structure as a single generator parameter. For detailed 
-     * explanations see {@See Custom Dimensions} page.
+     * Function used to simplify the creation of terrain generator by passing
+     * a json-like structure as a single generator parameter.
      * @param description object containing all the required generator information
      */
     function newGenerator(description: {
         /**
-         * Specifies base generator, see {@link CustomGenerator.constructor} for 
-         * details.
+         * Specifies base generator, see {@link Dimensions.CustomGenerator|CustomGenerator}
+         * constructor for details.
          */
         base?: number | string,
 
         /**
-         * Specifies whether to use vanilla biome surface cover blocks (grass, 
-         * sand, podzol, etc.).
-         * @see {@link CustomGenerator.setBuildVanillaSurfaces} for details
+         * Specifies whether to use vanilla biome surface cover blocks
+         * (grass, sand, podzol, etc.).
+         * 
+         * See {@link Dimensions.CustomGenerator.setBuildVanillaSurfaces|setBuildVanillaSurfaces} for details.
          */
         buildVanillaSurfaces?: boolean,
 
         /**
          * Specifies whether to generate minecraft vanilla structures.
-         * @see {@link CustomGenerator.setGenerateVanillaStructures} for details
+         * 
+         * See {@link Dimensions.CustomGenerator.setGenerateVanillaStructures|setGenerateVanillaStructures} for details.
          */
         generateVanillaStructures?: boolean,
 
         /**
-         * Can be either string for an existing dimensions ("overworld", 
-         * "nether", "end") or -1 to disable mods generation. 
-         * @see {@link CustomGenerator.setModGenerationBaseDimension} for details
+         * Can be either string for an existing dimensions (**"overworld"**,
+         * **"nether"**, **"end"**) or -1 to disable mods generation.
+         * 
+         * See {@link Dimensions.CustomGenerator.setModGenerationBaseDimension|setModGenerationBaseDimension} for details.
          */
         modWorldgenDimension?: number | string,
 
         /**
          * Specifies what generator type to use. Default and the only currently
-         * available option is "mono", that is equivalent to creating a 
-         * {@link MonoBiomeTerrainGenerator}
+         * available option is "mono", that is equivalent to creating a
+         * {@link MonoBiomeTerrainGenerator}.
          */
         type?: string,
 
         /**
-         * Sets base biome for the current terrain, applicable only to "mono"
+         * Sets base biome for the current terrain, applicable only to **"mono"**.
          */
         biome?: number,
 
         /**
-         * An array of terrain layers descriptions, each one representing it's 
+         * An array of terrain layers descriptions, each one representing it's
          * own terrain layer.
-         * @see {@link MonoBiomeTerrainGenerator.addTerrainLayer} for details
+         * 
+         * See {@link Dimensions.MonoBiomeTerrainGenerator.addTerrainLayer|MonoBiomeTerrainGenerator.addTerrainLayer} for details.
          */
         layers?: TerrainLayerParams[]
 
@@ -462,8 +466,8 @@ declare namespace Dimensions {
 
     interface NoiseOctaveParams {
         /**
-         * Noise octave type, **"perlin"** is default one.
-         * @see {@link NoiseOctave.constructor} for details
+         * Noise octave type, see {@link Dimensions.NoiseOctave["constructor"]} for details.
+         * @default "perlin"
          */
         type?: number | string,
         scale?: Vec3Data,

@@ -1,5 +1,5 @@
 /**
- * Class used to attach attachables to entities
+ * Class used to attach attachables to entities.
  */
 declare class AttachableRender {
 
@@ -8,7 +8,7 @@ declare class AttachableRender {
     static detachRendererFromItem(id: number): void;
 
     /**
-     * Constructs new {@link AttachableRender} object bind to given entity
+     * Constructs new {@link AttachableRender} object bind to given entity.
      */
     constructor(actorUid: number);
 
@@ -17,7 +17,7 @@ declare class AttachableRender {
     /**
      * Sets the render, root render parts will be drawing
      * together with mob's render parts with same names
-     * (names can be seen in json description of the model in resources)
+     * (names can be seen in json description of the model in resources).
      */
     setRenderer(actorRenderer: ActorRenderer): AttachableRender;
 

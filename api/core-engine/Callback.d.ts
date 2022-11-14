@@ -1,6 +1,6 @@
 /**
- * Module used to handle callbacks. See {@page Callbacks} for details about the 
- * callback mechanism and the list of pre-defined callbacks
+ * Module used to handle callbacks. Investigate details about the 
+ * callback mechanism and the list of pre-defined callbacks.
  */
 declare namespace Callback {
 
@@ -167,14 +167,14 @@ declare namespace Callback {
      * Invokes callback with any name and up to 10 additional parameters. You
      * should not generally call pre-defined callbacks until you really need to 
      * do so. If you want to trigger some event in your mod, use your own 
-     * callback names
+     * callback names.
      * @param name callback name
      */
     function invokeCallback(name: string, o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any): void;
 
 
     /**
-     * Function used in "CraftRecipePreProvided" callback
+     * Function used in "CraftRecipePreProvided" callback.
      * @param recipe object containing recipe information
      * @param field object containing crafting field information
      */
@@ -183,7 +183,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "CraftRecipeProvided" callback
+     * Function used in "CraftRecipeProvided" callback.
      * @param recipe object containing recipe information
      * @param field object containing crafting field information
      * @param isPrevented if true, recipe was prevented by craft function
@@ -193,8 +193,8 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "VanillaWorkbenchCraft" and "VanillaWorkbenchPostCraft" 
-     * callbacks
+     * Function used in "VanillaWorkbenchCraft" and "VanillaWorkbenchPostCraft"
+     * callbacks.
      * @param result recipe result item
      * @param workbenchContainer workbench container instance
      */
@@ -203,7 +203,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "VanillaWorkbenchRecipeSelected" callback
+     * Function used in "VanillaWorkbenchRecipeSelected" callback.
      * @param recipe object containing recipe information
      * @param result recipe result item
      * @param workbenchContainer workbench container instance
@@ -213,7 +213,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ContainerClosed" callback
+     * Function used in "ContainerClosed" callback.
      * @param container container that was closed
      * @param window window that was loaded in the container
      * @param byUser if true, container was closed by user, from the code 
@@ -224,7 +224,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ContainerOpened" callback
+     * Function used in "ContainerOpened" callback.
      * @param container container that was opened
      * @param window window that was loaded in the container
      */
@@ -233,7 +233,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "CustomWindowOpened" callback
+     * Function used in "CustomWindowOpened" callback.
      * @param window window that was opened
      */
     interface CustomWindowOpenedFunction {
@@ -241,7 +241,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "CustomWindowClosed" callback
+     * Function used in "CustomWindowClosed" callback.
      * @param window window that was closed
      */
     interface CustomWindowClosedFunction {
@@ -249,7 +249,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "CoreConfigured" callback
+     * Function used in "CoreConfigured" callback.
      * @param config Inner Core default config instance
      */
     interface CoreConfiguredFunction {
@@ -257,7 +257,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "LevelSelected" callback
+     * Function used in "LevelSelected" callback.
      * @param worldName name of the selected world
      * @param worldDir name of the directory where the world is stored. Worlds
      * directories are located at games/horizon/minecraftWorlds/
@@ -267,7 +267,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "DimensionLoaded" callback
+     * Function used in "DimensionLoaded" callback.
      * @param dimension vanilla dimension ID, one of the {@link EDimension}
      * values, or custom dimension ID
      */
@@ -276,7 +276,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "DestroyBlock" and "DestroyBlockStart" callbacks
+     * Function used in "DestroyBlock" and "DestroyBlockStart" callbacks.
      * @param coords coordinates where the block is destroyed and side from
      * where it is destroyed
      * @param block block that is destroyed
@@ -287,7 +287,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "DestroyBlockContinue" callback 
+     * Function used in "DestroyBlockContinue" callback.
      * @param coords coordinates where the block is destroyed and side from
      * where it is destroyed
      * @param block block that is destroyed
@@ -298,7 +298,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "BuildBlock" callback
+     * Function used in "BuildBlock" callback.
      * @param coords coordinates where the block is placed and side from
      * where it is placed
      * @param block block that is placed
@@ -309,7 +309,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "BlockChanged" callback
+     * Function used in "BlockChanged" callback.
      * @param coords coordinates where block change occurred
      * @param oldBlock the block that is being replaced 
      * @param newBlock replacement block
@@ -320,7 +320,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemUse" and "ItemUseLocalServer" callbacks
+     * Function used in "ItemUse" and "ItemUseLocalServer" callbacks.
      * @param coords set of all coordinate values that can be useful to write 
      * custom use logics
      * @param item item that was in the player's hand when he touched the block
@@ -333,8 +333,8 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemUseLocal" callback,
-     * and also in {@link Item.registerUseFunction} and {@link Item.registerUseFunctionForID} methods
+     * Function used in "ItemUseLocal" callback, and also in
+     * {@link Item.registerUseFunction} and {@link Item.registerUseFunctionForID} methods.
      * @param coords set of all coordinate values that can be useful to write 
      * custom use logics
      * @param item item that was in the player's hand when he touched the block
@@ -346,7 +346,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "Explosion" callback
+     * Function used in "Explosion" callback.
      * @param coords coordinates of the explosion
      * @param params additional explosion data
      * @param params.power explosion power
@@ -361,8 +361,8 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in the "FoodEaten" callback. You can use 
-     * {@link Entity.getCarriedItem} to get info about food item
+     * Function used in the "FoodEaten" callback. You can use
+     * {@link Entity.getCarriedItem#1} to get info about food item.
      * @param food food amount produced by eaten food
      * @param ratio saturation ratio produced by food
      * @param player player entity uID
@@ -372,7 +372,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ExpAdd" callback
+     * Function used in "ExpAdd" callback.
      * @param exp amount of experience to be added
      * @param player player's uID
      */
@@ -381,7 +381,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ExpLevelAdd" callback
+     * Function used in "ExpLevelAdd" callback.
      * @param level amount of levels to be added 
      * @param player player's uID
      */
@@ -390,7 +390,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "NativeCommand" callback
+     * Function used in "NativeCommand" callback.
      * @param command command that was entered or null if no command was 
      * provided
      */
@@ -399,7 +399,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "PlayerAttack" callback
+     * Function used in "PlayerAttack" callback.
      * @param attacker player entity unique ID
      * @param victim attacked entity unique ID
      */
@@ -408,7 +408,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "EntityAdded" callback
+     * Function used in "EntityAdded" callback.
      * @param entity entity unique ID
      */
     interface EntityAddedFunction {
@@ -416,7 +416,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "EntityRemoved" callback
+     * Function used in "EntityRemoved" callback.
      * @param entity entity unique ID
      */
     interface EntityRemovedFunction {
@@ -424,7 +424,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "EntityDeath" callback
+     * Function used in "EntityDeath" callback.
      * @param entity entity that is dead
      * @param attacker if the entity was killed by another entity, attacker's 
      * entity unique ID, -1 otherwise
@@ -435,7 +435,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "EntityHurt" callback
+     * Function used in "EntityHurt" callback.
      * @param attacker if an entity was hurt by another entity, attacker's 
      * unique ID, -1 otherwise
      * @param entity entity that is hurt
@@ -449,7 +449,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "EntityInteract" callback
+     * Function used in "EntityInteract" callback.
      * @param entity entity unique ID
      * @param player player entity unique ID
      */
@@ -458,7 +458,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ProjectileHit" callback
+     * Function used in "ProjectileHit" callback.
      * @param projectile projectile entity unique ID
      * @param item projectile item
      * @param target object containing hit coordinates and information about 
@@ -469,7 +469,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "RedstoneSignal" callback
+     * Function used in "RedstoneSignal" callback.
      * @param coords coordinates where redstone signal changed
      * @param params information about redstone signal
      * @param params.power redstone signal power
@@ -482,7 +482,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "PopBlockResources" callback
+     * Function used in "PopBlockResources" callback.
      * @param coords coordinates of the block that was broken
      * @param block information about the block that was broken
      * @param i unknown parameter, supposed to always be zero
@@ -492,7 +492,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemIconOverride" callback
+     * Function used in "ItemIconOverride" callback.
      * @param item information about item that is used in override function
      * @param isModUi whether icon override is working in mod ui or in vanilla one
      * @returns Nothing if used in callback, {@link Item.TextureData} if used in item 
@@ -503,7 +503,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemNameOverride" callback
+     * Function used in "ItemNameOverride" callback.
      * @param item information about item that is used in override function
      * @param translation translated item name
      * @param name original item name
@@ -515,7 +515,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemUseNoTarget" callback
+     * Function used in "ItemUseNoTarget" callback.
      * @param item item that was in the player's hand when the event occurred
      * @param ticks amount of ticks player kept touching screen
      */
@@ -524,7 +524,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemUsingReleased" callback
+     * Function used in "ItemUsingReleased" callback.
      * @param item item that was in the player's hand when the event occurred
      * @param ticks amount of ticks left to the specified max use duration value
      */
@@ -533,7 +533,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemUsingComplete" callback
+     * Function used in "ItemUsingComplete" callback.
      * @param item item that was in the player's hand when the event occurred
      */
     interface ItemUsingCompleteFunction {
@@ -541,7 +541,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ItemDispensed" callback
+     * Function used in "ItemDispensed" callback.
      * @param coords full coords object, where the main coords are the position of the dispenser block,
      * `relative` ones are the position of the block to which the dispenser is pointed,
      * and `vec` are the coords for the item to be dropped at
@@ -554,7 +554,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "NativeGuiChanged" callback
+     * Function used in "NativeGuiChanged" callback.
      * @param screenName current screen name
      * @param lastScreenName previous screen name
      * @param isPushEvent if true, the new screen was pushed on the Minecraft 
@@ -565,7 +565,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in all generation callbacks
+     * Function used in all generation callbacks.
      * @param chunkX chunk X coordinate. Multiply by 16 to receive corner block 
      * coordinates
      * @param chunkY chunk Y coordinate. Multiply by 16 to receive corner block 
@@ -583,15 +583,15 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ReadSaves" and "WriteSaves" callbacks
-     * Avoid modifying values directly, consider using {@link Saver} instead
+     * Function used in "ReadSaves" and "WriteSaves" callbacks.
+     * Avoid modifying values directly, consider using {@link Saver} instead.
      */
     interface SavesFunction {
         (globalScope: object): void
     }
 
     /**
-     * Function used in "CustomBlockTessellation" callback
+     * Function used in "CustomBlockTessellation" callback.
      * @param api object used to manipulate block rendering process
      * @param coords rendering block coordinates
      * @param block block information
@@ -602,7 +602,7 @@ declare namespace Callback {
     }
 
 	/**
-     * Function used in "ServerPlayerTick" callback
+     * Function used in "ServerPlayerTick" callback.
      * @param playerUid player entity unique ID
      * @param isPlayerDead is following player dead
      */
@@ -611,7 +611,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "CustomDimensionTransfer" callback
+     * Function used in "CustomDimensionTransfer" callback.
      * @param entity entity that was transferred between dimensions
      * @param from ID of the dimension the entity was transferred from
      * @param to ID of the dimension the entity was transferred to
@@ -621,21 +621,21 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ConnectingToHost" callback
+     * Function used in "ConnectingToHost" callback.
      */
     interface ConnectingToHostFunction {
         (host: string, someInt: number, port: number): void
     }
 
     /**
-     * Function used in "DimensionUnloaded" callback
+     * Function used in "DimensionUnloaded" callback.
      */
     interface DimensionUnloadedFunction {
         (dimensionId: number): void
     }
 
     /**
-     * Function used in "SystemKeyEventDispatched" callback
+     * Function used in "SystemKeyEventDispatched" callback.
      * @todo understand the meaning of the params
      */
     interface SystemKeyEventDispatchedFunction {
@@ -643,7 +643,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "LevelLoaded" and "LevelPreLoaded" callbacks
+     * Function used in "LevelLoaded" and "LevelPreLoaded" callbacks.
      * @todo understand param's meaning
      */
     interface LevelLoadedFunction {
@@ -651,7 +651,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "EntityPickUpDrop" callback
+     * Function used in "EntityPickUpDrop" callback.
      * @param entity entity that picked up the item
      * (this callback is currently called only for players)
      * @param dropEntity dropped item's entity
@@ -663,7 +663,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ServerPlayerLoaded" and "ServerPlayerLeft" callback
+     * Function used in "ServerPlayerLoaded" and "ServerPlayerLeft" callback.
      * @param player unique ID of the player entity, that has been connected to server
      */
     interface PlayerFunction {
@@ -671,51 +671,51 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "GenerateCustomDimensionChunk" callback
+     * Function used in "GenerateCustomDimensionChunk" callback.
      */
     interface GenerateCustomDimensionChunkFunction {
         (chunkX: number, chunkZ: number, random: java.util.Random, dimensionId: number): void
     }
 
     /**
-     * Object containing hit coordinates and information about hit entity/block
+     * Object containing hit coordinates and information about hit entity/block.
      */
     interface ProjectileHitTarget {
         /**
-         * Exact hit position x 
+         * Exact hit position x.
          */
         x: number,
         /**
-         * Exact hit position y
+         * Exact hit position y.
          */
         y: number,
         /**
-         * Exact hit position z
+         * Exact hit position z.
          */
         z: number,
         /**
-         * If an entity was hit, entity unique ID, `-1` otherwise
+         * If an entity was hit, entity unique ID, `-1` otherwise.
          */
         entity: number,
         /**
-         * Coordinates and side of the hit block or null if an entity was hit
+         * Coordinates and side of the hit block or null if an entity was hit.
          */
         coords: Nullable<ItemUseCoordinates>
     }
 
     /**
-     * Object used in some callbacks for coordinate set with side information 
-     * and relative coordinates set
+     * Object used in some callbacks for coordinate set with side information
+     * and relative coordinates set.
      */
     interface ItemUseCoordinates extends BlockPosition {
         /**
-         * Relative coordinates, coordinates of the block to the specified side 
-         * of current block
+         * Relative coordinates, coordinates of the block to the specified side
+         * of current block.
          */
         relative: Vector,
         /**
          * Exact touch point, absolute point coordinates. Used only in "ItemUse"
-         * callback
+         * callback.
          */
         vec?: Vector
     }

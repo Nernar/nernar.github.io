@@ -12,28 +12,28 @@ declare module com {
                                 delay: number;
                                 isAnimation: boolean;
                                 /**
-                                 * Constructs new static {@link Texture} with specified bitmap
+                                 * Constructs new static {@link Texture} with specified bitmap.
                                  * @param bitmap {@link android.graphics.Bitmap} instance
                                  */
                                 constructor(bitmap: android.graphics.Bitmap);
                                 /**
-                                 * Constructs new animated {@link Texture} with specified frames
+                                 * Constructs new animated {@link Texture} with specified frames.
                                  * @param bitmaps an array of {@link android.graphics.Bitmap} instances to be 
                                  * used as animation frames
                                  */
                                 constructor(bitmaps: android.graphics.Bitmap[]);
                                 /**
-                                 * Constructs new static or animated {@link Texture} with specified frames
+                                 * Constructs new static or animated {@link Texture} with specified frames.
                                  * @param obj texture name or array of texture names for animated 
                                  * textures. Accepts raw gui textures names and style bindings
                                  * (formatted as "style:binding_name"). 
-                                 * @param style {@link Style} object to look for style bindings. If not 
+                                 * @param style {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object to look for style bindings. If not 
                                  * specified, default style is used
                                  */
                                 constructor(obj: string | {[key: string]: string}, style?: UIStyle);
                                 isAnimated(): boolean;
                                 /**
-                                 * Sets texture offsets in pixels from the upper left bound of the bitmap
+                                 * Sets texture offsets in pixels from the upper left bound of the bitmap.
                                  */
                                 readOffset(obj: { x?: number, y?: number }): void;
                                 /**
@@ -58,21 +58,21 @@ declare module com {
                                  */
                                 getHeight(): number;
                                 /**
-                                 * Resizes all the frames of the texture to the specified size
+                                 * Resizes all the frames of the texture to the specified size.
                                  */
                                 resizeAll(width: number, height: number): void;
                                 /**
-                                 * Resizes all the frames by constant scale multiplier
+                                 * Resizes all the frames by constant scale multiplier.
                                  * @param scale scale to modify the frames by
                                  */
                                 rescaleAll(scale: number): void;
                                 /**
-                                 * Resizes all the frames to match the first one
+                                 * Resizes all the frames to match the first one.
                                  */
                                 fitAllToOneSize(): void;
                                 /**
-                                 * Releases all allocated resources, should be called when the texture 
-                                 * is not longer needed 
+                                 * Releases all allocated resources, should be called when the texture
+                                 * is not longer needed.
                                  */
                                 release(): void;
                             }

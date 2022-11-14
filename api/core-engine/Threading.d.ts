@@ -1,10 +1,10 @@
 /**
- * Module used to create and manipulate threads. Threads let you execute 
- * time-consuming tasks without blocking current execution thread
+ * Module used to create and manipulate threads. Threads let you execute
+ * time-consuming tasks without blocking current execution thread.
  */
 declare namespace Threading {
     /**
-     * Function used to format error messages in a custom way
+     * Function used to format error messages in a custom way.
      */
     type ErrorMessageFormatFunction =
         /**
@@ -16,7 +16,7 @@ declare namespace Threading {
 
     /**
      * Function used to create formatted error message with the full debug
-     * information about exception in one of the threads. Usually called by Core 
+     * information about exception in one of the threads. Usually called by Core.
      * Engine
      * @param error java.lang.Throwable instance or javascript exception
      * @param name thread name used to localize errors if there are any
@@ -26,7 +26,7 @@ declare namespace Threading {
     function formatFatalErrorMessage(error: any, name: string, priority: number, formatFunc: ErrorMessageFormatFunction): string;
 
     /**
-     * Creates and runs new thread with specified function as a task
+     * Creates and runs new thread with specified function as a task.
      * @param name thread name used to localize errors if there are any
      * @param func function that runs in the new thread. Usually it is some 
      * time-consuming task, that is executed in the new thread to avoid blocking
@@ -42,7 +42,7 @@ declare namespace Threading {
     function initThread(name: string, func: () => void, priority?: number, isErrorFatal?: boolean, formatFunc?: ErrorMessageFormatFunction): java.lang.Thread;
 
     /**
-     * Gets thread by it's name
+     * Gets thread by it's name.
      * @param name name of the thread
      * @returns Instance representing the thread.
      */

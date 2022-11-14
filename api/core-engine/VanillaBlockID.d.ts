@@ -1,5 +1,5 @@
 /**
- * Numeric IDs of vanilla blocks in the inventory
+ * Numeric IDs of vanilla blocks in the inventory.
  */
 declare enum VanillaBlockID {
     element_117 = -128,

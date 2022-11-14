@@ -12,7 +12,7 @@
 			"syntaxKind": "modifier"
 		},
 		{
-			"tagName": "@defaultValue",
+			"tagName": "@default",
 			"syntaxKind": "block"
 		},
 		{
@@ -92,10 +92,6 @@
 			"syntaxKind": "modifier"
 		},
 		{
-			"tagName": "@see",
-			"syntaxKind": "block"
-		},
-		{
 			"tagName": "@since",
 			"syntaxKind": "block"
 		},
@@ -109,42 +105,8 @@
 			"syntaxKind": "modifier"
 		},
 		{
-			"tagName": "@typeParam",
-			"syntaxKind": "block",
-			"allowMultiple": true
-		},
-		{
 			"tagName": "@virtual",
 			"syntaxKind": "modifier"
 		}
-	],
-	"supportForTags": {
-		"@beta": true,
-		"@clientside": true,
-		"@defaultValue": true,
-		"@decorator": true,
-		"@deprecated": true,
-		"@eventProperty": true,
-		"@example": true,
-		"@experimental": true,
-		"@inheritDoc": true,
-		"@internal": true,
-		"@internalRemarks": true,
-		"@label": true,
-		"@link": true,
-		"@override": true,
-		"@packageDocumentation": true,
-		"@param": true,
-		"@privateRemarks": true,
-		"@readonly": true,
-		"@remarks": true,
-		"@returns": true,
-		"@sealed": true,
-		"@see": true,
-		"@since": true,
-		"@throws": true,
-		"@todo": true,
-		"@typeParam": true,
-		"@virtual": true
-	}
+	]
 }

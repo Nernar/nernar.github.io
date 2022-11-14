@@ -528,7 +528,7 @@ declare enum EParticleType {
 }
 
 /**
- * Defines player's abilities. See {@page Abilities} for details.
+ * Defines player's abilities.
  * @since 2.2.1b89
  */
 declare enum EPlayerAbility {

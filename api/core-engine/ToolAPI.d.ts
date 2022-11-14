@@ -1,12 +1,12 @@
 /**
  * Module used to manage block and tools material and create tools with all
- * required properties
+ * required properties.
  */
 declare namespace ToolAPI {
 
     /**
-     * Creates new material with specified breaking speed multiplier. Some of 
-     * the materials are already registered: 
+     * Creates new material with specified breaking speed multiplier. Some of
+     * the materials are already registered:
      * 
      * *stone* - used for pickaxes
      * 
@@ -29,7 +29,7 @@ declare namespace ToolAPI {
     function addBlockMaterial(name: string, breakingMultiplier: number): void;
 
     /**
-     * Creates new tool material with specified parameters. Some of the tool 
+     * Creates new tool material with specified parameters. Some of the tool
      * materials are already registered:
      * 
      * *wood* - used for wooden instruments
@@ -48,7 +48,7 @@ declare namespace ToolAPI {
     function addToolMaterial(name: string, material: ToolMaterial): void;
 
     /**
-     * Registers item as a tool
+     * Registers item as a tool.
      * @param id numeric item ID
      * @param toolMaterial registered tool material name or tool material object
      * used to register the tool
@@ -59,7 +59,7 @@ declare namespace ToolAPI {
     function registerTool(id: number, toolMaterial: string | ToolMaterial, blockMaterials: string[], params?: ToolParams): void;
 
     /**
-     * Registers item as a sword
+     * Registers item as a sword.
      * @param id numeric item ID
      * @param toolMaterial registered tool material name or tool material object
      * used to register the sword
@@ -68,7 +68,7 @@ declare namespace ToolAPI {
     function registerSword(id: number, toolMaterial: string | ToolMaterial, params?: ToolParams): void;
 
     /**
-     * Registers material and digging level for the specified block
+     * Registers material and digging level for the specified block.
      * @param uid numeric tile ID
      * @param materialName material name
      * @param level block's digging level
@@ -79,15 +79,15 @@ declare namespace ToolAPI {
     function registerBlockMaterial(uid: number, materialName: string, level?: number, isNative?: boolean): void;
 
     /**
-     * Sets digging level for block. If digging level of tool is higher then 
-     * block's one, the block is dropped
+     * Sets digging level for block. If digging level of tool is higher then
+     * block's one, the block is dropped.
      * @param uid numeric tile ID
      * @param level block's digging level
      */
     function registerBlockDiggingLevel(uid: number, level: number): void;
 
     /**
-     * Registers material and digging level for the specified blocks
+     * Registers material and digging level for the specified blocks.
      * @param materialName material name
      * @param UIDs an array of numeric tiles IDs 
      * @param isNative used to mark vanilla blocks data. Generally used within 
@@ -96,7 +96,7 @@ declare namespace ToolAPI {
      */
     function registerBlockMaterialAsArray(materialName: string, UIDs: number[], isNative: boolean): void;
 
-    /** 
+    /**
      * @deprecated Backwards compatibility.
      */
     function refresh(): void;
@@ -131,7 +131,7 @@ declare namespace ToolAPI {
     function getEnchantExtraData(extra?: ItemExtraData): EnchantData;
 
     /**
-     * Applies fortune drop modifier to the drop array
+     * Applies fortune drop modifier to the drop array.
      * @param drop drop array containing number of the arrays
      * @param level enchantment level
      */
@@ -139,7 +139,7 @@ declare namespace ToolAPI {
 
     /**
      * Calculates destroy time for the block that is being broken with specified
-     * tool at the specified coords. Used mostly by Core Engine to apply break
+     * tool at the specified coords. Used mostly by Core Engine to apply break.
      * time
      * @param ignoreNative if block and item are native items, and this 
      * parameter is set to true, all the calculations will still be performed
@@ -180,18 +180,19 @@ declare namespace ToolAPI {
     function getCarriedToolLevel(): number;
 
     /**
-     * Resets ToolAPI engine state
+     * Resets ToolAPI engine state.
+     * @internal
      */
     function resetEngine(): void;
 
     /**
-     * Spawns experience orbs on the specified coordinate
+     * Spawns experience orbs on the specified coordinate.
      * @param value amount of experience to spawn
      */
     function dropExpOrbs(x: number, y: number, z: number, value: number): void;
 
     /**
-     * Spawns random amount of experience on the specified block coordinates
+     * Spawns random amount of experience on the specified block coordinates.
      * @param coords block coordinates
      * @param minVal minimum amount of orbs to be spawned
      * @param maxVal maximum amount of orbs to be spawned
@@ -207,186 +208,264 @@ declare namespace ToolAPI {
 
 
     /**
-     * Object used to describe tool material type
+     * Object used to describe tool material type.
      */
     interface ToolMaterial {
         /**
          * Divider used to calculate block breaking
          * speed. 2 is a default value for wooden instruments and 12 is a default 
-         * value for golden instruments
+         * value for golden instruments.
          */
         efficiency?: number,
-
         /**
          * Additional damage for the instruments, this value
          * is added to the base tool damage. If damage is not integer, it is rounded
          * to the higher integer with the chance of the fractional part, e.g. if 
-         * the value is *3.3*, the damage will be 4 with the chance of 30%
+         * the value is *3.3*, the damage will be 4 with the chance of 30%.
          */
         damage?: number,
-
         /**
          * Durability of the tool, 33 is a default value 
-         * for golden tools and 1562 is a default value for diamond tools
+         * for golden tools and 1562 is a default value for diamond tools.
          */
         durability?: number,
-
         /**
-         * Block breaking level, 1 is wooden instruments, 4 is diamond 
+         * Block breaking level, 1 is wooden instruments, 4 is diamond
          * instruments. If block's breaking level is less or equal to the tool's
-         * level, block will be dropped when broken
+         * level, block will be dropped when broken.
          */
         level?: number
     }
 
-
     /**
-     * Object used to describe block material
+     * Object used to describe block material.
      */
     interface BlockMaterial {
         /**
-         * Multiplier used to calculate block breaking speed
+         * Multiplier used to calculate block breaking speed.
          */
         multiplier: number,
-
         /**
-         * Block material name
+         * Block material name.
          */
         name: string
     }
 
 
     /**
-     * Object used to store all of the ToolAPI block data
+     * Object used to store all of the ToolAPI block data.
      */
     interface BlockData {
         /**
-         * Material data used for this block
+         * Material data used for this block.
          */
         material: BlockMaterial,
-
         /**
-         * Digging level of the block. If digging level of tool is higher then 
-         * block's one, the block is dropped
+         * Digging level of the block. If digging level of tool is higher then
+         * block's one, the block is dropped.
          */
         level: number,
-
         /**
          * Specifies whether the block was added as vanilla item or as a custom
-         * block. True, if the block is vanilla, false if the block is custom. 
-         * Should not generally be changed
+         * block. `true`, if the block is vanilla, `false` if the block is custom.
+         * Should not generally be changed.
          */
-        isNative: boolean
+        readonly isNative: boolean
     }
 
-
     /**
-     * Object containing additional parameters and functions used by Core Engine 
+     * Object containing additional parameters and functions used by Core Engine
      * to work with the tool
      */
     interface ToolParams {
         /**
-         * Numeric ID of the item that replaces tool item when it's broken. 
-         * By default it is 0 (the tool disappears)
+         * Numeric ID of the item that replaces tool item when it's broken.
+         * By default the tool disappears.
+         * @default 0
          */
         brokenId?: number,
-
         /**
-         * Base damage of the instrument, is added to the material damage to 
-         * calculate the tool's final damage. Default is 0
+         * Base damage of the instrument, is added to the material damage to
+         * calculate the tool's final damage.
+         * @default 0
          */
         damage?: number,
-
 		/**
-		 * Properties of the tool material. Defined by {@link ToolAPI.registerTool}
+		 * Properties of the tool material. Defined by {@link ToolAPI.registerTool},
 		 */
 		toolMaterial?: ToolMaterial,
-
 		/**
 		 * List of block material names that can be broken by this instrument.
-		 * Defined by {@link ToolAPI.registerTool}
+		 * Defined by {@link ToolAPI.registerTool},
 		 */
-		blockMaterials?: {[key: string]: boolean}
+		blockMaterials?: { [key: string]: boolean }
 
         /**
          * Function used to recalculate block destroy time based on some custom 
-         * logic
-         * @param tool tool item
-         * @param coords coordinates where the block is being broken
-         * @param block the block that is being broken
-         * @param timeData some time properties that can be used to calculate 
-         * destroy time for the tool and block
-         * @param timeData.base base destroy time of the block
-         * @param timeData.devider tool material devider
-         * @param timeData.modifier divider applied due to efficiency enchantment
-         * @param defaultTime default block destroy time, calculated as 
-         * *base / divider / modifier*
-         * @param enchantData tool's enchant data
+         * logic.
          */
-        calcDestroyTime?: (tool: ItemInstance, coords: Callback.ItemUseCoordinates, block: Tile, timeData: { base: number, devider: number, modifier: number }, defaultTime: number, enchantData?: EnchantData) => number,
+        calcDestroyTime?: (
+            /**
+             * Tool item.
+             */
+            tool: ItemInstance,
+            /**
+             * Coordinates where the block is being broken.
+             */
+            coords: Callback.ItemUseCoordinates,
+            /**
+             * Block that is being broken.
+             */
+            block: Tile,
+            /**
+             * Some time properties that can be used to calculate 
+             * destroy time for the tool and block.
+             */
+            timeData: {
+                /**
+                 * Base destroy time of the block.
+                 */
+                base: number,
+                /**
+                 * Tool material devider.
+                 */
+                devider: number,
+                /**
+                 * Divider applied due to efficiency enchantment.
+                 */
+                modifier: number
+            },
+            /**
+             * Default block destroy time, calculated as `base / divider / modifier`.
+             */
+            defaultTime: number,
+            /**
+             * Tool's enchant data.
+             */
+            enchantData?: EnchantData
+        ) => number,
 
         /**
-         * If true, the tool is vanilla Minecraft tool. Generally used within 
-         * Core Engine code and should not be used within mods until you really 
-         * know what you're doing
+         * If `true`, the tool is vanilla Minecraft tool. Generally used within
+         * Core Engine code and should not be used within mods until you really
+         * know what you're doing.
+         * @internal
          */
         isNative?: boolean,
 
         /**
-         * Function that is called when the block is destroyed
-         * @param item tool item
-         * @param coords coordinates where the block is destroyed
-         * @param block the block that is destroyed
+         * Function that is called when the block is destroyed.
          * @returns `true` if default damage should not be applied to the instrument,
          * `false` otherwise.
          */
-        onDestroy?: (item: ItemInstance, coords: Callback.ItemUseCoordinates, block: Tile, player: number) => boolean,
+        onDestroy?: (
+            /**
+             * Tool item.
+             */
+            item: ItemInstance,
+            /**
+             * Coordinates where the block is destroyed.
+             */
+            coords: Callback.ItemUseCoordinates,
+            /**
+             * Block that is destroyed.
+             */
+            block: Tile,
+            /**
+             * Entity UID of the player that destroyed the block.
+             */
+            player: number
+        ) => boolean,
 
         /**
-         * Function that is called when players attacks some entity with the tool
-         * @param item tool item
-         * @param victim unique numeric ID of the entity that is attacked
+         * Function that is called when players attacks some entity with the tool.
          * @returns `true` if default damage should not be applied to the instrument,
          * `false` otherwise.
          */
-        onAttack?: (item: ItemInstance, victim: number, attacker: number) => boolean,
+        onAttack?: (
+            /**
+             * Tool item.
+             */
+            item: ItemInstance,
+            /**
+             * Unique numeric ID of the entity that is attacked.
+             */
+            victim: number,
+            /**
+             * Entity UID of the player that attacked victim.
+             */
+            attacker: number
+        ) => boolean,
 
         /**
          * If true, breaking blocks with this tool makes it break 2x faster,
-         * otherwise attacking mobs breaks tool 2x faster
+         * otherwise attacking mobs breaks tool 2x faster.
          */
         isWeapon?: boolean,
 
         /**
-         * Function that is called when the instrument is broken
-         * @param item tool item
+         * Function that is called when the instrument is broken.
          * @returns `true` if default breaking behavior (replacing by `brokenId` item) 
          * should not be applied.
          */
-        onBroke?: (item: ItemInstance) => boolean,
+        onBroke?: (
+            /**
+             * Tool item.
+             */
+            item: ItemInstance
+        ) => boolean,
 
         /**
-         * Function that is used to change enchant data object before all the 
-         * calculations. Can be used to add some enchantment properties, such as 
-         * silk touch, efficiency, unbreaking or fortune
-         * @param enchantData tool's enchant data
-         * @param item tool item
-         * @param coords coordinates where the block is being broken. Passed only if
-         * the block is destroyed
-         * @param block destroyed block data. Passed only if the block is destroyed
+         * Function that is used to change enchant data object before all the
+         * calculations. Can be used to add some enchantment properties, such as
+         * silk touch, efficiency, unbreaking or fortune.
          */
-        modifyEnchant?: (enchantData: EnchantData, item: ItemInstance, coords?: Callback.ItemUseCoordinates, block?: Tile) => void,
+        modifyEnchant?: (
+            /**
+             * Tool's enchant data.
+             */
+            enchantData: EnchantData,
+            /**
+             * Tool item.
+             */
+            item: ItemInstance,
+            /**
+             * Coordinates where the block is being broken. Passed only if
+             * the block is destroyed.
+             */
+            coords?: Callback.ItemUseCoordinates,
+            /**
+             * Destroyed block data. Passed only if the block is destroyed.
+             */
+            block?: Tile
+        ) => void,
 
         /**
          * Function that is called when the block that has a destroy function is 
-         * destroyed
-         * @param coords coordinates where the block is destroyed
-         * @param carried an item in player's hand
-         * @param fullTile block that was destroyed
-         * @param blockSource {@link BlockSource} object of the world where the block was destroyed
-         * @param player entity uid of the player that destroyed the block
+         * destroyed.
          */
-        onMineBlock?: (coords: Callback.ItemUseCoordinates, carried: ItemInstance, fullTile: Tile, blockSource: BlockSource, player: number) => void,
+        onMineBlock?: (
+            /**
+             * Coordinates where the block is destroyed.
+             */
+            coords: Callback.ItemUseCoordinates,
+            /**
+             * An item in player's hand.
+             */
+            carried: ItemInstance,
+            /**
+             * Block that was destroyed.
+             */
+            fullTile: Tile,
+            /**
+             * {@link BlockSource} object of the world where the block was destroyed.
+             */
+            blockSource: BlockSource,
+            /**
+             * Entity UID of the player that destroyed the block.
+             */
+            player: number
+        ) => void,
 
 		/**
          * Any other user-defined methods and properties
@@ -396,35 +475,31 @@ declare namespace ToolAPI {
 
     /**
      * Object containing some of the enchants that are used to calculate block 
-     * destroy time
+     * destroy time.
      */
     interface EnchantData {
         /**
-         * If true, the item has Silk Touch enchantment
+         * If `true`, the item has Silk Touch enchantment.
          */
         silk: boolean,
-
         /**
-         * Specifies the level of Fortune enchantment, or 0 if the item doesn't
-         * have this enchant
+         * Specifies the level of Fortune enchantment, or `0` if the item doesn't
+         * have this enchant.
          */
         fortune: number,
-
         /**
-         * Specifies the level of Efficiency enchantment, or 0 if the item 
-         * doesn't have this enchant
+         * Specifies the level of Efficiency enchantment, or `0` if the item
+         * doesn't have this enchant.
          */
         efficiency: number,
-
         /**
-         * Specifies the level of Unbreaking enchantment, or 0 if the item 
-         * doesn't have this enchant
+         * Specifies the level of Unbreaking enchantment, or `0` if the item
+         * doesn't have this enchant.
          */
         unbreaking: number,
-
         /**
-         * Specifies the amount of additional experience that is dropped when 
-         * player breaks block with specified item
+         * Specifies the amount of additional experience that is dropped when
+         * player breaks block with specified item.
          */
         experience: number
     }

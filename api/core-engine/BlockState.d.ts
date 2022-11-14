@@ -1,23 +1,27 @@
 /**
- * Class to work with vanilla blocks parameters
+ * Class to work with vanilla blocks parameters.
  */
 declare class BlockState implements Tile {
 
-    /**Data of the block */
+    /**
+     * Data of the block.
+     */
     readonly data: number;
 
-    /**Numeric ID of the block */
+    /**
+     * Numeric ID of the block.
+     */
     readonly id: number;
 
     /**
      * Constructs new BlockState object
-     * from given ID and data
+     * from given ID and data.
      */
     constructor(id: number, data: number);
 
     /**
      * Constructs new BlockState object
-     * from given ID and states object
+     * from given ID and states object.
      */
     constructor(id: number, scriptable: {[key: number]: number});
 
@@ -54,21 +58,21 @@ declare class BlockState implements Tile {
     hasState(state: number): boolean;
 
     /**
-     * Adds state to the following object
+     * Adds state to the following object.
      * @returns BlockState object itself.
      */
     addState(state: number, value: number): BlockState;
 
     /**
      * Adds states to the following object
-     * from given java.util.Map instance
+     * from given map instance.
      * @returns BlockState object itself.
      */
     addStates(states: java.util.Map<unknown, number>): BlockState;
 
     /**
      * Adds states to the following object
-     * from given JS object instance
+     * from given JS object instance.
      * @returns BlockState object itself.
      */
     addStates(states: object): BlockState;

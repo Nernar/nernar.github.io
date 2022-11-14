@@ -3,8 +3,9 @@
  * Most of the methods are client, use BlockSource instead.
  */
 declare namespace World {
+
     /**
-     * Setups the module to work properly with the world. Usually called by 
+     * Setups the module to work properly with the world. Usually called by
      * Core Engine, so you generally shouldn't call it yourself.
      * @param isLoaded whether the world is loaded or not
      * @internal
@@ -38,13 +39,15 @@ declare namespace World {
      * @param side block side
      * @returns Relative coordinates.
      * @example
-     * // return coordinates of the block above the specified
+     * Return coordinates of the block above the specified:
+     * ```js
      * World.getRelativeCoords(x, y, z, EBlockSide.UP);
+     * ```
      */
     function getRelativeCoords(x: number, y: number, z: number, side: number): Vector;
 
     /**
-     * Sets block in the world using it's tile ID and data
+     * Sets block in the world using it's tile ID and data.
      * @param id block tile ID
      * @param data block data
      * @deprecated Consider using {@link World.setBlock} instead.
@@ -64,14 +67,14 @@ declare namespace World {
     function nativeGetBlockData(x: number, y: number, z: number): number;
 
     /**
-     * Sets block in the world using it's tile ID and data
+     * Sets block in the world using it's tile ID and data.
      * @param id block tile ID
      * @param data block data
      */
     function setBlock(x: number, y: number, z: number, id: number, data: number): void;
 
     /**
-     * Sets block in the world using specified {@link Tile} object
+     * Sets block in the world using specified {@link Tile} object.
      * @param fullTile object containing ID and data of the tile
      */
     function setFullBlock(x: number, y: number, z: number, fullTile: Tile): void;
@@ -94,8 +97,8 @@ declare namespace World {
 
     /**
      * Destroys block on the specified coordinates producing appropriate drop
-     * and particles. Do not use for massive tasks due to particles being 
-     * produced
+     * and particles. Do not use for massive tasks due to particles being
+     * produced.
      * @param drop whether to provide drop for the block or not
      */
     function destroyBlock(x: number, y: number, z: number, drop?: boolean): void;
@@ -123,21 +126,21 @@ declare namespace World {
     function isChunkLoadedAt(x: number, y: number, z: number): boolean;
 
     /**
-     * @returns Requested {@link TileEntity} located on the specified coordinates
+     * @returns Requested {@link TileEntity["interface"]} located on the specified coordinates
      * or `null` if it doesn't.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
-     * If the block on the specified coordinates is a TileEntity block and is 
-     * not initialized, initializes it and returns created {@link TileEntity} object
+     * If the block on the specified coordinates is a TileEntity block and is
+     * not initialized, initializes it and returns created {@link TileEntity["interface"]} object.
      * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
-     * If the block on the specified coordinates is a {@link TileEntity}, destroys 
-     * it, dropping it's container
+     * If the block on the specified coordinates is a {@link TileEntity["interface"]}, destroys
+     * it, dropping it's container.
      * @returns `true` if the tile was destroyed successfully, `false` 
      * otherwise.
      */
@@ -145,7 +148,7 @@ declare namespace World {
 
     /**
 	 * @param region BlockSource
-     * @returns If the block on the specified coordinates is a {@link TileEntity}, returns
+     * @returns If the block on the specified coordinates is a {@link TileEntity["interface"]}, returns
      * it's container, if the block is a {@link NativeTileEntity}, returns it, if 
      * none of above, returns `null`.
      */
@@ -164,14 +167,14 @@ declare namespace World {
     function setWorldTime(time: number): number;
 
     /**
-     * Sets current time to day or night
+     * Sets current time to day or night.
      * @param day if true, sets time to 10000 (day), else to 13000 (night)
      * @deprecated Consider using {@link World.setWorldTime} instead.
      */
     function setDayMode(day: boolean): void;
 
     /**
-     * Sets current time to day or night
+     * Sets current time to day or night.
      * @param night if true, sets time to 13000 (night), else to 10000 (day)
      * @deprecated Consider using {@link World.setWorldTime} instead.
      */
@@ -190,15 +193,15 @@ declare namespace World {
     function setWeather(weather: Weather): void;
 
     /**
-     * Drops item or block with specified ID, count, data and extra on the
-     * specified coordinates. For blocks, be sure to use block ID, not the tile
-     * ID
+     * Drops item or block with specified ID, count, data and
+     * extra on the specified coordinates. For blocks, be sure
+     * to use block ID, not the tile ID.
      * @returns Spawned drop entity ID.
      */
     function drop(x: number, y: number, z: number, id: number, count: number, data: number, extra?: ItemExtraData): number;
 
     /**
-     * Creates an explosion on the specified coordinates
+     * Creates an explosion on the specified coordinates.
      * @param power defines how many blocks can the explosion destroy and what
      * blocks can or cannot be destroyed
      * @param fire if true, puts the crater on fire
@@ -223,8 +226,8 @@ declare namespace World {
     function getGrassColor(x: number, z: number): number;
 
     /**
-     * Sets grass color on the specified coordinates, uses android integer color
-     * model.
+     * Sets grass color on the specified coordinates, uses android-like
+     * integer color model.
      * @param color grass color to be set for the specified coordinates
      */
     function setGrassColor(x: number, z: number, color: number): void;
@@ -262,7 +265,7 @@ declare namespace World {
     function playSound(x: number, y: number, z: number, name: string, volume: number, pitch?: number): void;
 
     /**
-     * Plays standart Minecraft sound from the specified entity
+     * Plays standart Minecraft sound from the specified entity.
      * @param name sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
@@ -271,15 +274,15 @@ declare namespace World {
 
     /**
      * Enables "BlockChanged" event for the block ID. Event occurs when either
-     * old block or new block is registered using this method
+     * old block or new block is registered using this method.
      * @param id numeric tile ID
      * @param enabled if true, the block will be watched
      */
     function setBlockChangeCallbackEnabled(id: number, enabled: boolean): void;
 
     /**
-     * Enables "BlockChanged" event for specified block IDs and registers 
-     * callback function for the IDs
+     * Enables "BlockChanged" event for specified block IDs and registers
+     * callback function for the IDs.
      * @param ids string or numeric tile ID, or an array of string and/or 
      * numeric tile IDs
      * @param callback function that will be called when "BlockChanged" callback 
@@ -289,8 +292,8 @@ declare namespace World {
     function registerBlockChangeCallback(ids: number | string | (string | number)[], callback: Callback.BlockChangedFunction): void;
 
     /**
-     * Gets biome on the specified coordinates when generating biome map. 
-     * Should be called only in *GenerateBiomeMap* callback
+     * Gets biome on the specified coordinates when generating biome map.
+     * Should be called only in *GenerateBiomeMap* callback.
      * @param x block x coordinate
      * @param z block y coordinate
      * @returns Biome's numeric ID.
@@ -298,8 +301,8 @@ declare namespace World {
     function getBiomeMap(x: number, z: number): number;
 
     /**
-     * Sets biome on the specified coordinates when generating biome map. 
-     * Should be called only in *GenerateBiomeMap* callback
+     * Sets biome on the specified coordinates when generating biome map.
+     * Should be called only in *GenerateBiomeMap* callback.
      * @param x block x coordinate
      * @param z block y coordinate
      * @param id biome ID to be set on the specified coordinates
@@ -307,13 +310,13 @@ declare namespace World {
     function setBiomeMap(x: number, z: number, id: number): void;
 
     /**
-     * Adds a new generation callback using string hash to generate a unique 
-     * random seed for the chunk generator
-     * @param callbackName one of the generation callbacks, see {@page Callbacks}
-     * for details
+     * Adds a new generation callback using string hash to generate a unique
+     * random seed for the chunk generator.
+     * @param callbackName one of the generation callbacks
      * @param callback callback function
      * @param uniqueHashStr if specified, will be used as string hash for seed
      * generation, otherwise default hash string will be used
      */
     function addGenerationCallback(callbackName: string, callback: Callback.GenerateChunkFunction, uniqueHashStr?: string): void;
+
 }

@@ -1,13 +1,16 @@
 
 /**
- * Type used to mark Java bytes
+ * Type used to mark Java bytes.
  */
 type jbyte = number;
 
+/**
+ * Most methods must return `null` if value is not presented.
+ */
 type Nullable<T> = T | null;
 
 /**
- * Object representing the set of coordinates in the three-dimensional world
+ * Object representing the set of coordinates in the three-dimensional world.
  */
 interface Vector {
     x: number,
@@ -16,17 +19,17 @@ interface Vector {
 }
 
 /**
- * Object representing coordinate set with side data
+ * Object representing coordinate set with side data.
  */
 interface BlockPosition extends Vector {
     /**
-     * Side of the block, one of the {@link EBlockSide} constants
+     * Side of the block, one of the {@link EBlockSide} constants.
      */
     side: number
 }
 
 /**
- * Object representing RGB color
+ * Object representing RGB color.
  */
 interface Color {
     r: number,
@@ -35,7 +38,7 @@ interface Color {
 }
 
 /**
- * Object representing pitch/yaw angle set (in radians)
+ * Object representing pitch/yaw angle set (in radians).
  */
 interface LookAngle {
     pitch: number,
@@ -43,41 +46,38 @@ interface LookAngle {
 }
 
 /**
- * Object representing item instance in the inventory
+ * Object representing item instance in the inventory.
  */
 interface ItemInstance {
     /**
-     * Item ID
+     * Item ID.
      */
     id: number,
-
     /**
-     * Amount of items of the specified ID
+     * Amount of items of the specified ID.
      */
     count: number,
-
     /**
-     * Item data value. Generally specifies some property of the item, e.g. 
-     * color, material, etc. Defaults to 0, in many cases -1 means "any data 
-     * value"
+     * Item data value. Generally specifies some property of the item, e.g.
+     * color, material, etc. In many cases `-1` means "any data value".
+     * @default 0
      */
     data: number,
-
     /**
-     * Item extra data. Contains some additional item data such as enchants, 
-     * custom item name or some additional properties
+     * Item extra data. Contains some additional item data such as enchants,
+     * custom item name or some additional properties.
      */
     extra?: ItemExtraData
 }
 
 /**
- * Array of three or four elements representing item ID, count, data and extra respectively. 
- * Uses in block drop functions
+ * Array of three or four elements representing item ID, count, data and extra respectively.
+ * Uses in block drop functions.
  */
 type ItemInstanceArray = [number, number, number, ItemExtraData?];
 
 /**
- * Object representing block in the world
+ * Object representing block in the world.
  */
 interface Tile {
     id: number,
@@ -85,19 +85,20 @@ interface Tile {
 }
 
 /**
- * Object representing current weather in the world
+ * Object representing current weather in the world.
  */
 interface Weather {
     /**
-     * Current rain level, from 0 (no rain) to 10 (heavy rain)
+     * Current rain level, from 0 (no rain) to 10 (heavy rain).
      */
     rain: number,
     /**
-     * Current lightning level, from 0 (no lightning) to 10
+     * Current lightning level, from 0 (no lightning) to 10.
      */
     thunder: number
 }
 
-declare class CustomEntity {
-
-}
+/**
+ * @deprecated Use behavior packs instead.
+ */
+declare class CustomEntity {}

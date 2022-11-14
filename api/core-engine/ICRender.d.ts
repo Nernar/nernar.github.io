@@ -1,15 +1,15 @@
 /**
- * Class used to define block models that depend on surrounding blocks. Some 
+ * Class used to define block models that depend on surrounding blocks. Some
  * examples of such blocks are wires, pipes, block structure parts, etc.
  */
 declare namespace ICRender {
 	/**
-	 * Used to specify that the block should be present to satisfy condition
+	 * Used to specify that the block should be present to satisfy condition.
 	 */
 	const MODE_INCLUDE = 0;
 
 	/**
-	 * Used to specify that the block should be absent to satisfy condition
+	 * Used to specify that the block should be absent to satisfy condition.
 	 */
 	const MODE_EXCLUDE = 1;
 
@@ -21,14 +21,14 @@ declare namespace ICRender {
 	function getGroup(name: string): ICRender.Group;
 
 	/**
-	 * Creates a new group with a unique name
+	 * Creates a new group with a unique name.
 	 */
 	function getUnnamedGroup(): ICRender.Group;
 
 	/**
-	 * Groups (of blocks) are used to determine some render conditions. E.g. 
-	 * if a block exists on some relative coordinates, display some part of the 
-	 * model
+	 * Groups (of blocks) are used to determine some render conditions; e.g.,
+	 * if a block exists on some relative coordinates, display some part of the
+	 * model.
 	 */
 	interface Group {
 		/**
@@ -39,7 +39,7 @@ declare namespace ICRender {
 		name: string;
 
 		/**
-		 * Adds a block to the group
+		 * Adds a block to the group.
 		 * @param id block ID
 		 * @param data block data or -1 to use with all registered data values
 		 */
@@ -48,51 +48,51 @@ declare namespace ICRender {
 
 	class Model {
 		/**
-		 * Constructs a base model that will be displayed 
+		 * Constructs a base model that will be displayed.
 		 * @param model optional model to be added without additional conditions
 		 */
 		constructor(model?: BlockRenderer.Model);
 
 		/**
-		 * Adds block model as an entry to the {@link ICRender}. You can then call 
-		 * {@link RenderEntry.asCondition} to specify when to display the entry
-		 * @returns Created {@link RenderEntry} object.
+		 * Adds block model as an entry to the {@link ICRender}. You can then call
+		 * {@link ICRender.RenderEntry.asCondition#1|RenderEntry.asCondition} to specify when to display the entry.
+		 * @returns Created {@link ICRender.RenderEntry|RenderEntry} object.
 		 */
 		addEntry(model?: BlockRenderer.Model): RenderEntry;
 
 		/**
-		 * Adds render mesh as an entry to the {@link ICRender}. You can then call 
-		 * {@link RenderEntry.asCondition} to specify when to display the entry
-		 * @returns Created {@link RenderEntry} object.
+		 * Adds render mesh as an entry to the {@link ICRender}. You can then call
+		 * {@link ICRender.RenderEntry.asCondition#1|RenderEntry.asCondition} to specify when to display the entry.
+		 * @returns Created {@link ICRender.RenderEntry|RenderEntry} object.
 		 */
 		addEntry(mesh?: RenderMesh): RenderEntry;
 	}
 
 	/**
-	 * Object representing render entry with it's displaying condition
+	 * Object representing render entry with it's displaying condition.
 	 */
 	interface RenderEntry {
 		/**
-		 * @returns Parent {@link Model} object this entry belongs to.
+		 * @returns Parent {@link ICRender.Model|Model} object this entry belongs to.
 		 */
 		getParent(): Model;
 
 		/**
-		 * Sets {@link BLOCK} condition with specified parameters. Uses coordinates 
+		 * Sets {@link ICRender.BLOCK} condition with specified parameters. Uses coordinates
 		 * that are relative to current block's ones.
 		 * @param group group name or object
-		 * @param mode one of the {@link MODE_INCLUDE} and {@link MODE_EXCLUDE} constants
+		 * @param mode one of the {@link ICRender.MODE_INCLUDE} and {@link ICRender.MODE_EXCLUDE} constants
 		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		asCondition(x: number, y: number, z: number, group: Group | string, mode: number): RenderEntry;
 
 		/**
-		 * Sets {@link BLOCK} condition with specified parameters. Uses coordinates 
+		 * Sets {@link ICRender.BLOCK} condition with specified parameters. Uses coordinates
 		 * that are relative to current block's ones. Creates a new anonymous
 		 * group with single block.
 		 * @param id condition block ID
 		 * @param data condition block data
-		 * @param mode one of the {@link MODE_INCLUDE} and {@link MODE_EXCLUDE} constants
+		 * @param mode one of the {@link ICRender.MODE_INCLUDE} and {@link ICRender.MODE_EXCLUDE} constants
 		 * @returns Reference to itself to be used in sequential calls.
 		 */
 		asCondition(x: number, y: number, z: number, id: number, data: number, mode: number): RenderEntry;
@@ -123,18 +123,18 @@ declare namespace ICRender {
 	}
 
 	/**
-	 * Class representing custom collision shapes used for block
+	 * Class representing custom collision shapes used for block.
 	 */
 	class CollisionShape {
 		/**
-		 * Adds new entry to the collision shape. You can then call 
-		 * {@link CollisionEntry.setCondition} to specify when to display the entry.
+		 * Adds new entry to the collision shape. You can then call
+		 * {@link ICRender.CollisionEntry.setCondition|CollisionEntry.setCondition} to specify when to display the entry.
 		 */
 		addEntry(): CollisionEntry;
 	}
 
 	/**
-	 * Object representing collision shape entry with it's displaying condition
+	 * Object representing collision shape entry with it's displaying condition.
 	 */
 	interface CollisionEntry {
 		/**
@@ -151,40 +151,40 @@ declare namespace ICRender {
 	}
 
 	/**
-	 * Common superclass for all condition classes
+	 * Common superclass for all condition classes.
 	 */
 	abstract class CONDITION { }
 
 	/**
-	 * Condition depending on random value
+	 * Condition depending on random value.
 	 */
 	class RANDOM_CONDITION implements CONDITION {
 		/**
 		 * Forces engine to treat blocks along some axis in same way if enabled
-		 * parameter value is false
+		 * parameter value is `false.`
 		 * @param axis 0 fpr x, 1 for y, 2 for z axis
 		 */
 		setAxisEnabled(axis: number, enabled: boolean): RANDOM_CONDITION;
 	}
 
 	/**
-	 * Constructs new {@link RANDOM} condition
+	 * Constructs new {@link ICRender.RANDOM_CONDITION} condition.
 	 * @param value value that a generated random integer number should be for the 
 	 * condition to evaluate as true
 	 * @param max maximum value for the generator
 	 * @param seed seed to be used for random numbers generation
 	 */
-	function RANDOM(value: number, max: number, seed?: number): CONDITION;
+	function RANDOM(value: number, max: number, seed?: number): RANDOM_CONDITION;
 
 	/**
-	 * Constructs new {@link RANDOM} condition with default seed and 0 as 
-	 * desired random value
+	 * Constructs new {@link ICRender.RANDOM#1} condition with default seed and `0` as
+	 * desired random value.
 	 * @param max maximum value for the generator
 	 */
 	function RANDOM(max: number): CONDITION;
 
 	/**
-	 * Constructs new {@link BLOCK} condition
+	 * Constructs new {@link ICRender.BLOCK} condition.
 	 * @param x is relative x coordinate
 	 * @param y is relative y coordinate
 	 * @param z is relative z coordinate
@@ -195,18 +195,18 @@ declare namespace ICRender {
 	function BLOCK(x: number, y: number, z: number, group: ICRender.Group, exclude: boolean): CONDITION;
 
 	/**
-	 * Constructs new {@link NOT} condition
+	 * Constructs new {@link ICRender.NOT} condition.
 	 * @param condition condition to be inverted
 	 */
 	function NOT(condition: CONDITION): CONDITION;
 
 	/**
-	 * Constructs new {@link OR} condition
+	 * Constructs new {@link ICRender.OR} condition.
 	 */
 	function OR(...conditions: CONDITION[]): CONDITION;
 
 	/**
-	 * Constructs new {@link AND} condition
+	 * Constructs new {@link ICRender.AND} condition.
 	 */
 	function AND(...conditions: CONDITION[]): CONDITION;
 }

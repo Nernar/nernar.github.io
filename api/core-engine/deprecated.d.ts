@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use behavior packs to creating entities.
+ */
 declare namespace MobRegistry {
     namespace customEntities { }
     namespace loadedEntities { }
@@ -17,6 +20,10 @@ declare namespace MobRegistry {
     function resetEngine(): any;
 }
 
+/**
+ * @deprecated Use behavior packs to register spawning
+ * entities in server or use callbacks.
+ */
 declare namespace MobSpawnRegistry {
     namespace spawnData { }
 
@@ -34,6 +41,14 @@ declare namespace MobSpawnRegistry {
     function onChunkGenerated(x: number, z: number): any;
 }
 
+/**
+ * @deprecated Use resource packs to customize entities
+ * appereance nor {@link Render["class"]} with {@link AttachableRender}.
+ */
 declare function EntityModelWatcher(entity: number, model: any): any;
-declare function EntityAIWatcher(customPrototype: any): any;
 
+/**
+ * @deprecated Use behavior packs to customize entities
+ * intellect nor consider to use {@link Entity.getPathNavigation}.
+ */
+declare function EntityAIWatcher(customPrototype: any): any;

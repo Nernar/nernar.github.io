@@ -1,7 +1,7 @@
 /**
  * Interface providing access to native tile entities - chests, hoppers, furnaces,
  * smelters, etc. See full lists of supported native tile entities in the 
- * {@link ETileEntityType} enum
+ * {@link ETileEntityType} enum.
  */
 declare interface NativeTileEntity {
     /**
@@ -22,7 +22,7 @@ declare interface NativeTileEntity {
     getSlot(slot: number): ItemInstance,
 
     /**
-     * Sets the contents of a native tile entity's slot
+     * Sets the contents of a native tile entity's slot.
      * @param slot slot number
      * @param id item ID
      * @param count item count
@@ -32,7 +32,7 @@ declare interface NativeTileEntity {
     setSlot(slot: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
-     * Sets the contents of a native tile entity's slot
+     * Sets the contents of a native tile entity's slot.
      * @param slot slot number
      * @param item item information
      */
@@ -44,7 +44,7 @@ declare interface NativeTileEntity {
     getCompoundTag(): NBT.CompoundTag;
 
     /**
-     * Sets compound tag for the specified tile entity
+     * Sets compound tag for the specified tile entity.
      */
     setCompoundTag(tag: NBT.CompoundTag): void;
 }

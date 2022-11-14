@@ -1,5 +1,5 @@
 /**
- * Class to work with values, synchronized between server and all clients
+ * Class to work with values, synchronized between server and all clients.
  */
 declare class SyncedNetworkData {
     /**
@@ -27,46 +27,52 @@ declare class SyncedNetworkData {
      */
     getBoolean(key: any, fallback?: boolean): boolean;
     /**
-     * Sets value by key
+     * Sets Integer value by key.
      */
     putInt(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets Long value by key.
      */
     putLong(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets Float value by key.
      */
     putFloat(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets Double value by key.
      */
     putDouble(key: any, value: number): void;
     /**
-     * Sets value by key
+     * Sets String value by key.
      */
     putString(key: any, value: string): void;
     /**
-     * Sets value by key
+     * Sets Boolean value by key.
      */
     putBoolean(key: any, value: boolean): void;
 
     /**
-     * Sends changed data values
+     * Sends changed data values.
      */
     sendChanges(): void;
 
     /**
      * Event that catches changes of any data values.
-     * @param networkData - SyncedNetworkData object where the changes had happened;
-     * @param isExternalStorage - 
-     * false, if change had happened by calling put from this object, 
-     * true, if it came by network from other connected data object.
      */
-    addOnDataChangedListener(func: (networkData: SyncedNetworkData, isExternalChange: boolean) => void): void;
+    addOnDataChangedListener(func: (
+        /**
+         * @param networkData - SyncedNetworkData object where the changes had happened
+         */
+        networkData: SyncedNetworkData,
+        /**
+         * `false`, if change had happened by calling put from this object;
+         * `true`, if it came by network from other connected data object
+         */
+        isExternalChange: boolean
+    ) => void): void;
 
     /**
-     * Adds data validator to the object
+     * Adds data validator to the object.
      */
     addVerifier(key: any, func: (key: any, newValue: any) => void): void;
 }

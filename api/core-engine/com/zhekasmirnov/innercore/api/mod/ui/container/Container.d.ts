@@ -28,42 +28,42 @@ declare module com {
                                 static class: java.lang.Class<Container>;
                                 static readonly isContainer: boolean;
                                 /**
-                                 * If container is a part of {@link TileEntity}, this field stores reference 
+                                 * If container is a part of {@link TileEntity["interface"]}, this field stores reference
                                  * to it, otherwise null. You can also assign any value of any type to
-                                 * it using {@link UI.Container.setParent} method or using constructor 
-                                 * parameter. Consider using {@link UI.Container.getParent} instead of direct 
-                                 * field access
+                                 * it using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].setParent|UI.Container.setParent} method or using constructor 
+                                 * parameter. Consider using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getParent|UI.Container.getParent} instead of direct
+                                 * field access.
                                  */
                                 parent: Nullable<TileEntity> | any;
                                 slots: {[slotName: string]: container.Slot}
                                 /**
-                                 * Same as {@link UI.Container.parent}
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].parent|UI.Container.parent}.
                                  */
                                 tileEntity: Nullable<TileEntity> | any;
                                 constructor();
                                 constructor(parent: any);
                                 /**
-                                 * Sets container's parent object, for {@link TileEntity}'s container it 
-                                 * should be a {@link TileEntity} reference, otherwise you can pass any 
-                                 * value to be used in your code later
+                                 * Sets container's parent object, for {@link TileEntity["interface"]}'s container it
+                                 * should be a {@link TileEntity["interface"]} reference, otherwise you can pass any
+                                 * value to be used in your code later.
                                  * @param parent an object to be set as container's parent
                                  */
                                 setParent(parent: Nullable<TileEntity> | any): void;
                                 /**
-                                 * Getter for {@link UI.Container.parent} field
+                                 * Getter for {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].parent|UI.Container.parent} field.
                                  */
                                 getParent(): Nullable<TileEntity> | any;
                                 /**
-                                 * Gets the slot by it's name. If a slot with specified name doesn't 
-                                 * exists, creates an empty one with specified name
+                                 * Gets the slot by it's name. If a slot with specified name doesn't
+                                 * exists, creates an empty one with specified name.
                                  * @param name slot name
                                  * @returns Contents of the slot in a {@link UI.Slot} object.
                                  * You can modify it to change the contents of the slot.
                                  */
                                 getSlot(name: string): Slot;
                                 /**
-                                 * Gets the slot by it's name. If a slot with specified name doesn't 
-                                 * exists, creates an empty one with specified name
+                                 * Gets the slot by it's name. If a slot with specified name doesn't
+                                 * exists, creates an empty one with specified name.
                                  * @param name slot name
                                  * @returns Contents of the slot in a FullSlot object containing 
                                  * more useful methods for slot manipulation.
@@ -74,46 +74,46 @@ declare module com {
                                 handleSlotToSlotTransaction(from: string, to: string, amount: number): void;
                                 handleSlotToInventoryTransaction(slotName: string, amount: number): void;
                                 /**
-                                 * Set slot's content by it's name. If a slot with specified name doesn't 
-                                 * exists, creates an empty one with specified name and item
+                                 * Set slot's content by it's name. If a slot with specified name doesn't
+                                 * exists, creates an empty one with specified name and item.
                                  * @param name slot name
                                  */
                                 setSlot(name: string, id: number, count: number, data: number): void;
                                 /**
-                                 * Set slot's content by it's name. If a slot with specified name doesn't 
-                                 * exists, creates new with specified name and item
+                                 * Set slot's content by it's name. If a slot with specified name doesn't
+                                 * exists, creates new with specified name and item.
                                  * @param name slot name
                                  * @param extra item extra value. Note that it should be an instance of
                                  * {@link ItemExtraData} and not it's numeric ID
                                  */
                                 setSlot(name: string, id: number, count: number, data: number, extra: Nullable<NativeItemInstanceExtra>): void;
                                 /**
-                                 * Validates slot contents. If the data value is less then 0, it becomes
-                                 * 0, if ID is 0 or count is less then or equals to zero, slot is reset 
-                                 * to an empty one
+                                 * Validates slot contents. If the data value is less then `0`, it becomes
+                                 * `0`, if ID is `0` or count is less then or equals to zero, slot is reset
+                                 * to an empty one.
                                  * @param name slot name
                                  */
                                 validateSlot(name: string): void;
                                 /**
-                                 * Clears slot's contents
+                                 * Clears slot's contents.
                                  * @param name slot name
                                  */
                                 clearSlot(name: string): void;
                                 /**
                                  * Drops slot's contents on the specified coordinates
-                                 * and clears the slot
+                                 * and clears the slot.
                                  * @param name slot name
                                  * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
                                  */
                                 dropSlot(name: string, x: number, y: number, z: number): void;
                                 /**
                                  * Drops the contents of all the slots in the container on the specified
-                                 * coordinates and clears them
+                                 * coordinates and clears them.
                                  * @deprecated Client only, use {@link BlockSource.spawnDroppedItem} instead.
                                  */
                                 dropAt(x: number, y: number, z: number): void;
                                 /**
-                                 * Validates all the slots in the container
+                                 * Validates all the slots in the container.
                                  */
                                 validateAll(): void;
                                 /**
@@ -125,21 +125,21 @@ declare module com {
                                 addElementInstance(element: elements.UIElement, name: string): void;
                                 _removeElement(name: string): void;
                                 /**
-                                 * Opens {@link UI.IWindow} object in the container
+                                 * Opens {@link UI.IWindow} object in the container.
                                  * @param win {@link UI.IWindow} object to be opened
                                  */
                                 openAs(win: window.IWindow): void;
                                 /**
-                                 * Closes currently opened window 
+                                 * Closes currently opened window.
                                  */
                                 close(): void;
                                 /**
-                                 * Sets an object to be notified when the window is opened
+                                 * Sets an object to be notified when the window is opened.
                                  * @param listener object to be notified when the window is opened
                                  */
                                 setOnOpenListener(listener: Container.OnOpenListener | OnOpenCloseListenerJS): void;
                                 /**
-                                 * Sets an object to be notified when the window is closed
+                                 * Sets an object to be notified when the window is closed.
                                  * @param listener object to be notified when the window is closed
                                  */
                                 setOnCloseListener(listener: Container.OnCloseListener | OnOpenCloseListenerJS): void;
@@ -149,11 +149,11 @@ declare module com {
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * Same as {@link UI.Container.getWindow}
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getWindow|UI.Container.getWindow}.
                                  */
                                 getGuiScreen(): window.IWindow;
                                 /**
-                                 * @returns Window's content object (usually specified in the window's 
+                                 * @returns Window's content object (usually specified in the window's
                                  * constructor) if a window was opened in the container, `null` otherwise.
                                  */
                                 getGuiContent(): Nullable<window.WindowContent>;
@@ -163,7 +163,7 @@ declare module com {
                                  */
                                 getElement(name: string): Nullable<elements.UIElement>;
                                 /**
-                                 * Passes any value to the element
+                                 * Passes any value to the element.
                                  * @param elementName element name
                                  * @param bindingName binding name, you can access the value from the 
                                  * element by this name
@@ -171,7 +171,7 @@ declare module com {
                                  */
                                 setBinding<T=any>(elementName: string, bindingName: string, val: T): void;
                                 /**
-                                 * Gets any value from the element
+                                 * Gets any value from the element.
                                  * @param elementName element name
                                  * @param bindingName binding name, you can access the value from the 
                                  * element by this name. Some binding names are reserved for additional
@@ -185,7 +185,7 @@ declare module com {
                                 handleBindingDirty(): void;
                                 sendChanges(): void;
                                 /**
-                                 * Sets "value" binding value for the element. Used to set scales values
+                                 * Sets "value" binding value for the element. Used to set scales values.
                                  * @param name element name
                                  * @param value value to be set for the element
                                  */
@@ -215,31 +215,37 @@ declare module com {
                                  */
                                 isElementTouched(name: string): boolean;
                                 /**
-                                 * Forces ui elements of the window to refresh
-                                 * @param onCurrentThread if true, the elements will be refreshed 
-                                 * immediately, otherwise refresh event will be posted. Default value 
-                                 * if false. Ensure you are in the UI thread if you pass true as the 
-                                 * parameter
+                                 * Forces ui elements of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed 
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateUIElements(onCurrentThread: boolean): void;
+                                /**
+                                 * Forces ui elements of the window to refresh.
+                                 */
                                 invalidateUIElements(): void;
                                 /**
-                                 * Forces ui drawables of the window to refresh
-                                 * @param onCurrentThread if true, the drawables will be refreshed 
-                                 * immediately, otherwise refresh event will be posted. Default value 
-                                 * if false. Ensure you are in the UI thread if you pass true as the 
-                                 * parameter
+                                 * Forces ui drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed 
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateUIDrawing(onCurrentThread: boolean): void;
                                 invalidateUIDrawing(): void;
                                 /**
-                                 * Forces ui elements and drawables of the window to refresh
-                                 * @param onCurrentThread if true, the elements drawables will be refreshed 
-                                 * immediately, otherwise refresh event will be posted. Default value 
-                                 * if false. Ensure you are in the UI thread if you pass true as the 
-                                 * parameter
+                                 * Forces ui elements and drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed 
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateUI(onCurrentThread: boolean): void;
+                                /**
+                                 * Forces ui elements and drawables of the window to refresh.
+                                 */
                                 invalidateUI(): void;
                                 /**
                                  * @deprecated Backwards compatibility.
@@ -251,8 +257,8 @@ declare module com {
                                 applyChanges(): void;
                                 /**
                                  * If the container is a custom workbench, you can set the slot prefix
-                                 * via this method call. {@link UI.Container.getFieldSlot}
-                                 * will get field slot by *prefix + slot* name
+                                 * via this method call. {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getFieldSlot|UI.Container.getFieldSlot}
+                                 * will get field slot by `prefix + slot` name.
                                  * @param wbsnp custom workbench slot prefix
                                  */
                                 setWbSlotNamePrefix(wbsnp: string): void;

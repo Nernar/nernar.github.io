@@ -1,9 +1,9 @@
 /**
- * Module used to share mods' APIs
+ * Module used to share mods' APIs.
  */
 declare namespace ModAPI {
     /**
-     * Registers new API for the mod and invokes mod API callback
+     * Registers new API for the mod and invokes mod API callback.
      * @param name API name used to import it in the other mods
      * @param api object that is shared with the other mods. May contain other 
      * objects, methods, variables, etc. Sometimes it is useful to provide the 
@@ -26,27 +26,23 @@ declare namespace ModAPI {
     /**
      * Gets API by it's name. The best approach is to call this method in the
      * function passed as the second parameter of {@link ModAPI.addAPICallback}.
-     * 
-     * Example:
-     * ```ts
-     * // importing API registered by IndustrialCraft PE
-     * var ICore;
-     * ModAPI.addAPICallback("ICore", function(api){
-     *     ICore = api;
-     * });
-     * ```
-     * 
-     * When using ICore variable from the example, be sure to check it for null
-     * because Industrial Craft PE may not be installed on the user's phone
      * @param name API name
      * @returns API object if an API with specified was previously registered,
      * `null` otherwise.
+     * @example
+     * Importing API registered by IndustrialCraft PE:
+     * ```ts
+     * let ICore = null;
+     * ModAPI.addAPICallback("ICore", api => (ICore = api));
+     * ```
+     * When using ICore variable from the example, be sure to check it for `null`
+     * because Industrial Craft PE may not be installed on the user's phone.
      */
     function requireAPI(name: string): Nullable<object>;
 
     /**
-     * Executes string in Core Engine's global context. Can be used to get 
-     * functions and objects directly from AdaptedScriptAPI.
+     * Executes string in Core Engine's global context. Can be used to get
+     * functions and objects directly from Adapted Script.
      * @param name string to be executed in Core Engine's global context
      */
     function requireGlobal(name: string): any;
@@ -59,7 +55,7 @@ declare namespace ModAPI {
     function requireAPIdoc(name: string): ModDocumentation;
 
     /**
-     * Fetches information about the method or property of mod API
+     * Fetches information about the method or property of mod API.
      * @param name API name
      * @param prop property or method name
      * @returns String description of the method or null if no description was
@@ -79,15 +75,16 @@ declare namespace ModAPI {
     function isModLoaded(modName: string): void;
 
     /**
-     * Adds callback for the specified mod API
+     * Adds callback for the specified mod API.
      * @param apiName API name
      * @param func callback that is called when API is loaded
      */
-    function addAPICallback(apiName: string, func:
+    function addAPICallback(apiName: string, func: (
         /**
          * @param api shared mod API
          */
-        (api: object) => void): void;
+        api: object
+    ) => void): void;
 
     /**
      * @deprecated No longer supported.
@@ -110,53 +107,52 @@ declare namespace ModAPI {
     function addTexturePack(path: any): void;
 
     /**
-     * Recursively copies (duplicates) the object to the new one
+     * Recursively copies (duplicates) the value to the new one.
      * @param api an object to be copied
-     * @param deep if true, copies the object recursively
+     * @param deep if `true`, copies the object recursively
      * @returns A copy of the object.
      */
-    function cloneAPI(api: object, deep: boolean): object;
+    function cloneAPI<T>(api: T, deep?: boolean): T;
 
     /**
-     * Ensures target object has all the properties the source object has, if 
-     * not, copies them from source to target object. 
+     * Ensures target object has all the properties the source object has, if
+     * not, copies them from source to target object.
      * @param source object to copy missing values from
      * @param target object to copy missing values to
      */
-    function inheritPrototypes(source: object, target: object): object;
+    function inheritPrototypes<K extends object, T extends object>
+        (source: K, target: T): K & T;
 
     /**
-     * Recursively clones object to the new one counting call depth and 
+     * Recursively clones object to the new one counting call depth and
      * interrupting copying after 7th recursion call.
      * @param source an object to be cloned
-     * @param deep if true, copies the object recursively
-     * @param rec current recursion state, if > 6, recursion stops. Default 
+     * @param deep if `true`, copies the object recursively
+     * @param rec current recursion state, if > 6, recursion stops; default 
      * value is 0
      * @returns Cloned object, all the properties that are less then then 8 in
      * depth, get copied.
      */
-    function cloneObject(source: any, deep: any, rec?: number): object;
+    function cloneObject<T extends object>(source: T, deep?: boolean, rec?: number): T;
 
     /**
      * Same as {@link ModAPI.cloneObject}, but if call depth is more then
-     * 6, returns "stackoverflow" string value.
+     * 6, returns `"stackoverflow"` string value.
      */
-    function debugCloneObject(source: any, deep: any, rec?: number): object | string;
+    function debugCloneObject<T>(source: T, deep?: boolean, rec?: number): T | string;
 
     /**
-     * Objects used to represent mod API documentation
+     * Objects used to represent mod API documentation.
      * @deprecated Writing documentation that way is not better.
      */
     interface ModDocumentation {
         /**
-         * full name of the API
+         * Full name of the API.
          */
         name: string,
-
         /**
-         * object containing descriptions of methods and properties of the API, 
-         * where keys are methods and properties names and 
-         * values are their descriptions
+         * Object containing descriptions of methods and properties of the API, 
+         * where keys are methods and properties names and values are their descriptions.
          */
         props: object
     }

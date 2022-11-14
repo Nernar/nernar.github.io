@@ -1,26 +1,26 @@
 declare namespace ModPack {
 
     /**
-     * Crutch to replace ModPackManifest.DeclaredDirectoryType enum
-     * 0 - RESOURCE,
-     * 1 - USER_DATA,
-     * 2 - CONFIG,
-     * 3 - CACHE,
-     * 4 - INVALID 
+     * Crutch to replace ModPackManifest.DeclaredDirectoryType enum:
+     * + 0 - RESOURCE
+     * + 1 - USER_DATA
+     * + 2 - CONFIG
+     * + 3 - CACHE
+     * + 4 - INVALID
      */
     type ModPackDeclaredDirectoryType = number;
 
     /**
-     * Crutch to replace ModPackDirectory.DirectoryType enum
-     * 0 - MODS,
-     * 1 - MOD_ASSETS,
-     * 2 - ENGINE,
-     * 3 - CONFIG,
-     * 4 - CACHE,
-     * 5 - RESOURCE_PACKS,
-     * 6 - BEHAVIOR_PACKS,
-     * 7 - TEXTURE_PACKS,
-     * 8 - CUSTOM
+     * Crutch to replace ModPackDirectory.DirectoryType enum:
+     * + 0 - MODS
+     * + 1 - MOD_ASSETS
+     * + 2 - ENGINE
+     * + 3 - CONFIG
+     * + 4 - CACHE
+     * + 5 - RESOURCE_PACKS
+     * + 6 - BEHAVIOR_PACKS
+     * + 7 - TEXTURE_PACKS
+     * + 8 - CUSTOM
      */
     type ModPackDirectoryType = number;
 
@@ -232,7 +232,7 @@ declare namespace ModPack {
     }
 
     /**
-     * Interface representing ModPack
+     * Interface representing ModPack.
      */
     interface ModPackJsAdapter {
 

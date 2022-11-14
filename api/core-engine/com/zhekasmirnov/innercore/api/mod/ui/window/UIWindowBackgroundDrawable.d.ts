@@ -16,10 +16,14 @@ declare module com {
                                 prepareCache(): void;
                                 releaseCache(): void;
                                 setAlpha(alpha: number): void;
-                                /* Just for TS not to be angry */
+                                /**
+                                 * Just for TS not to be angry.
+                                 */
                                 setColorFilter(par1: number, par2: android.graphics.PorterDuff.Mode): void;
                                 setColorFilter(filter: Nullable<android.graphics.ColorFilter>): void;
-                                /** @default -3 */
+                                /**
+                                 * @default -3
+                                 */
                                 getOpacity(): number;
                             }
                         }

@@ -1,17 +1,17 @@
 /**
- * Module used to manage armor's behavior
+ * Module used to manage armor's behavior.
  */
 declare namespace Armor {
     /**
-     * Registers armor's hurt and tick functions
+     * Registers armor's hurt and tick functions.
      * @param id armor item string or numeric ID
      * @param funcs 
-     * @deprecated Use multiplayer {@link registerOnHurtListener} and
+     * @deprecated Use multiplayer {@link Armor.registerOnHurtListener} and
      * anothers or callbacks.
      */
     function registerFuncs(id: number | string, funcs: {
         /**
-         * Called every tick if player wears the armor
+         * Called every tick if player wears the armor.
          * @param item current armor item instance
          * @param index armor slot, one of the {@link EArmorType} values
          * @param maxDamage maximum damage the armor 
@@ -21,7 +21,7 @@ declare namespace Armor {
         tick: (item: ItemInstance, index: number, maxDamage: number) => boolean,
 
         /**
-         * Called when player deals damage if player wears the armor
+         * Called when player deals damage if player wears the armor.
          * @param params additional data about damage
          * @param item current armor item instance
          * @param index armor slot, one of the {@link EArmorType} values
@@ -31,31 +31,31 @@ declare namespace Armor {
          */
         hurt: (params: {
             /**
-             * attacker entity or -1 if the damage was not 
-             * caused by an entity
+             * Attacker entity or -1 if the damage was not 
+             * caused by an entity.
              */
             attacker: number,
             /**
-             * damage amount that was applied to the player
+             * Damage amount that was applied to the player.
              */
             damage: number,
             /**
-             * damage type
+             * Damage type.
              */
             type: number,
             /**
-             * TODO: unknown param
+             * TODO: Unknown param!
              */
             b1: boolean,
             /**
-             * TODO: unknown param
+             * TODO: Unknown param!
              */
             b2: boolean
         }, item: ItemInstance, index: number, maxDamage: number) => boolean
     }): void;
 
     /**
-     * Prevents armor from being damaged
+     * Prevents armor from being damaged.
      * @param id armor item string or numeric ID
      */
 	function preventDamaging(id: number | string): void;

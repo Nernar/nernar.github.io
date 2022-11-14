@@ -1,70 +1,70 @@
 /**
- * Class used to create new entity AI types
+ * Class used to create new entity AI types.
  */
 declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     /**
-     * Creates new entity AI type
+     * Creates new entity AI type.
      * @param customPrototype AI type prototype
      */
     constructor(customPrototype: EntityAIClass.EntityAIPrototype);
 
     /**
-     * Sets execution timer time in ticks. AI will be executed specified 
-     * number of ticks
+     * Sets execution timer time in ticks. AI will be executed specified
+     * number of ticks.
      * @param timer execution time in ticks
      */
     setExecutionTimer(timer: number): void;
 
     /**
-     * Resets execution timer so that AI is executed with no time limits
+     * Resets execution timer so that AI is executed with no time limits.
      */
     removeExecutionTimer(): void;
 
     /**
-     * If set to true, it is an instance of AI type, else the pattern 
-     * (pattern should not be modified directly, AI controller calls 
-     * instantiate to create instances of AI type)
+     * If set to true, it is an instance of AI type, else the pattern
+     * (pattern should not be modified directly, AI controller calls
+     * instantiate to create instances of AI type).
      * 
-     * TODO: add link to AI controller type
+     * @todo Add link to AI controller type.
      */
     isInstance: boolean;
 
     /**
-     * TODO: determine type
+     * @todo Determine type.
      */
     parent: any;
 
     /**
-     * Id of the entity that uses this AI type instance or null if it is 
-     * the pattern
+     * Id of the entity that uses this AI type instance or `null` if it is
+     * the pattern.
      */
     entity?: number;
 
     /**
-     * Method that is called to create AI type instance using current 
-     * instance as pattern
+     * Method that is called to create AI type instance using current
+     * instance as pattern.
      */
     instantiate(parent: any, name: string): EntityAIClass;
 
     /**
-     * Occurs when entity this instance is assigned to this AI type 
-     * instance, if you override this method, be sure to assign entity 
-     * to {@link EntityAIClass.EntityAIPrototype}
+     * Occurs when entity this instance is assigned to this AI type
+     * instance, if you override this method, be sure to assign entity
+     * to {@link EntityAIClass["namespace"].EntityAIPrototype}.
      */
     aiEntityChanged(entity: number): void;
 
     /**
-     * Finishes AI execution and disables it in parent controller
+     * Finishes AI execution and disables it in parent controller.
      */
     finishExecution(): void;
 
     /**
-     * Changes own priority in parent's controller
+     * Changes own priority in parent's controller.
      */
     changeSelfPriority(priority: number): void;
 
     /**
-     * Enables any AI by it's name in the controller
+     * Enables any AI by it's name in the controller.
      * @param name AI name to be enables
      * @param priority priority to be set to the enabled AI
      * @param extra some extra data passed to 
@@ -72,26 +72,26 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     enableAI(name: string, priority: number, extra: any): void;
 
     /**
-     * Disables any AI by it's name in the controller
+     * Disables any AI by it's name in the controller.
      * @param name AI name to be disabled
      */
     disableAI(name: string): void;
 
     /**
-     * Sets any AI priority by it's name in the controller
+     * Sets any AI priority by it's name in the controller.
      * @param name AI name to change priority
      * @param priority priority to be set to the AI
      */
     setPriority(name: string, priority: number): void;
 
     /**
-     * Gets any AI object by it's name from the current controller
+     * Gets any AI object by it's name from the current controller.
      * @param name AI name
      */
     getAI(name: string): EntityAIClass;
 
     /**
-     * Gets any AI priority from the current controller by AI name
+     * Gets any AI priority from the current controller by AI name.
      * @param name AI name
      */
     getPriority(name: string): number;
@@ -102,19 +102,19 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     setParams(params: object): void;
 
     /**
-     * All the parameters of the AI instance
+     * All the parameters of the AI instance.
      */
     params: object;
 
     /**
-     * Object containing the state of the AI type
+     * Object containing the state of the AI type.
      */
     data: object;
 }
 
 declare namespace EntityAIClass {
     /**
-     * Object used to register entity AI prototypes
+     * Object used to register entity AI prototypes.
      */
     interface EntityAIPrototype {
         /**
@@ -128,50 +128,50 @@ declare namespace EntityAIClass {
         getDefaultName?(): string,
 
         /**
-         * Default parameters set
+         * Default parameters set.
          */
         params?: object,
 
         /**
-         * Called when AI type execution starts
-         * @param extra additional data passed from {@link EntityAIClass.enableAI} 
+         * Called when AI type execution starts.
+         * @param extra additional data passed from {@link EntityAIClass["class"].enableAI} 
          * method 
          */
         executionStarted?(extra?: any): void,
 
         /**
-         * Called when AI type execution ends
+         * Called when AI type execution ends.
          */
         executionEnded?(): void,
 
         /**
-         * Called when AI type execution is paused
+         * Called when AI type execution is paused.
          */
         executionPaused?(): void,
 
         /**
-         * Called when AI type execution is resumed
+         * Called when AI type execution is resumed.
          */
         executionResumed?(): void,
 
         /**
-         * Defines main logic of the AI type
+         * Defines main logic of the AI type.
          */
         execute?(): void,
 
         /**
-         * Object containing the state of the AI type
+         * Object containing the state of the AI type.
          */
         data?: object,
 
         /**
-         * Called when entity is attacked by player
+         * Called when entity is attacked by player.
          * @param attacker player that attacked this entity
          */
         attackedBy?(attacker: number): void;
 
         /**
-         * Called when entity gets hurt
+         * Called when entity gets hurt.
          * @param attacker entity that damaged this entity, or -1 if damage 
          * source is not an entity
          * @param damage amount of damage
@@ -179,13 +179,13 @@ declare namespace EntityAIClass {
         hurtBy?(attacker: number, damage: number): void;
 
         /**
-         * Called when a projectile hits the entity
+         * Called when a projectile hits the entity.
          * @param projectile projectile entity ID
          */
         projectileHit?(projectile: number): void;
 
         /**
-         * Called when entity is dead
+         * Called when entity is dead.
          * @param attacker entity that damaged this entity, or -1 if damage 
          * source is not an entity
          */
@@ -193,15 +193,15 @@ declare namespace EntityAIClass {
     }
 
     /**
-     * Object used to register entity AI prototypes
+     * Object used to register entity AI prototypes.
      */
     interface WanderLikeAIPrototype extends EntityAIPrototype {
         /**
-         * entity movement speed when AI is executed
+         * Entity movement speed when AI is executed.
          */
         speed?: number;
         /**
-         * entity speed when turning
+         * Entity speed when turning.
          */
         angular_speed?: number;
     }
@@ -209,160 +209,160 @@ declare namespace EntityAIClass {
 }
 
 /**
- * A set of predefined entity AI types
+ * A set of predefined entity AI types.
  */
 declare namespace EntityAI {
     /**
-     * Simple IDle AI type, entity just does nothing
+     * Simple Idle AI type, entity just does nothing.
      */
     class Idle extends EntityAIClass {
         /**
-         * Creates IDle entity AI type
+         * Creates Idle entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.EntityAIPrototype);
     }
 
     /**
-     * Follow AI type, entity follows it's target. Use another AI type to set 
-     * target for this AI type
+     * Follow AI type, entity follows it's target. Use another AI type to set
+     * target for this AI type.
      */
     class Follow extends EntityAIClass {
         /**
-         * Creates follow entity AI type
+         * Creates follow entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
-             * entity movement speed when AI is executed
+             * Entity movement speed when AI is executed.
              */
             speed?: number;
             /**
-             * jump (y) velocity
+             * Jump (y) velocity.
              */
             jumpVel?: number;
             /**
-             * entity rotation speed
+             * Entity rotation speed.
              */
             rotateSpeed?: number;
             /**
-             * how long will be the rotation path
+             * How long will be the rotation path.
              */
             rotateRatio?: number;
             /**
-             * if true, entity turns it's head to the target
+             * If `true`, entity turns it's head to the target.
              */
             rotateHead?: boolean;
             /**
-             * if true, entity won't change it's Y velocity
+             * If `true`, entity won't change it's Y velocity.
              */
             denyY?: boolean;
             /**
-             * coordinates used as a target
+             * Coordinates used as a target.
              */
             target?: Vector;
             /**
-             * entity used as a target; when specified, target data is ignored
+             * Entity used as a target; when specified, target data is ignored.
              */
             targetEntity?: number;
         });
     }
 
     /**
-     * Panic AI type, entity just rushes around
+     * Panic AI type, entity just rushes around.
      */
     class Panic extends EntityAIClass {
         /**
-         * Creates panic entity AI type
+         * Creates panic entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype);
     }
 
     /**
-     * Wander AI type, entity walks around making pauses
+     * Wander AI type, entity walks around making pauses.
      */
     class Wander extends EntityAIClass {
         /**
-         * Creates wander entity AI type
+         * Creates wander entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype & {
             /**
-             * part of the time entity is making pause
+             * Part of the time entity is making pause.
              */
             delay_weight?: number;
         });
     }
 
     /**
-     * Attack AI type, entity causes damage to the target entity
+     * Attack AI type, entity causes damage to the target entity.
      */
     class Attack extends EntityAIClass {
         /**
-         * Creates attack entity AI type
+         * Creates attack entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
-             * damage amount
+             * Damage amount.
              */
             attack_damage?: number;
             /**
-             * damage radius
+             * Damage radius.
              */
             attack_range?: number;
             /**
-             * time between to attacks in ticks
+             * Time between to attacks in ticks.
              */
             attack_rate?: number;
             /**
-             * target entity
+             * Target entity.
              */
             target?: number;
         });
     }
 
     /**
-     * Swim AI type, if the entity is in water, it swims
+     * Swim AI type, if the entity is in water, it swims.
      */
     class Swim extends EntityAIClass {
         /**
-         * Creates swim entity AI type
+         * Creates swim entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
-             * swimming speed
+             * Swimming speed.
              */
             velocity?: number;
         });
     }
 
     /**
-     * Panic AI watcher type, controls entity panic behavior after getting hurt
+     * Panic AI watcher type, controls entity panic behavior after getting hurt.
      */
     class PanicWatcher extends EntityAIClass {
         /**
-         * Creates panic watcher entity AI type
+         * Creates panic watcher entity AI type.
          * @param customPrototype AI type prototype
          */
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
-             * time the entity will be in panic
+             * Time the entity will be in panic.
              */
             panic_time?: number;
             /**
-             * panic AI priority when entity should be in panic
+             * Panic AI priority when entity should be in panic.
              */
             priority_panic?: number;
             /**
-             * panic AI priority when entity should not be in panic
+             * Panic AI priority when entity should not be in panic.
              */
             priority_default?: number;
             /**
-             * panic AI priority when entity should not be in panic
-             * TODO: Which type must be used here, recently number.
+             * Panic AI priority when entity should not be in panic
+             * @todo Which type must be used here, recently number.
              */
             name?: string;
         });

@@ -1,5 +1,5 @@
 /**
- * Class that represents network entity type
+ * Class that represents network entity type.
  */
 declare class NetworkEntityType {
 	constructor(name: string);

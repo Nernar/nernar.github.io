@@ -30,12 +30,12 @@ declare module com {
                                     setDebugEnabled(debug: boolean): void;
                                 });
                                 /**
-                                 * Closes window without container. Use only if the window was opened 
-                                 * without container
+                                 * Closes window without container. Use only if the window was opened
+                                 * without container.
                                  */
                                 close(): void;
                                 /**
-                                 * Called up to 66 times a second to update window's content
+                                 * Called up to 66 times a second to update window's content.
                                  * @param time current time in milliseconds
                                  */
                                 frame(time: number): void;
@@ -51,7 +51,7 @@ declare module com {
                                  */
                                 getContent(): WindowContent;
                                 /**
-                                 * Gets all the elements in the window
+                                 * Gets all the elements in the window.
                                  * @returns HashMap containing string element name as keys and
                                  * element instances as values.
                                  */
@@ -61,19 +61,19 @@ declare module com {
                                  */
                                 getStyle(): types.UIStyle;
                                 /**
-                                 * Forces ui drawables of the window to refresh
-                                 * @param onCurrentThread if true, the drawables will be refreshed 
-                                 * immediately, otherwise refresh event will be posted. Default value 
-                                 * if false. Ensure you are in the UI thread if you pass true as the 
-                                 * parameter
+                                 * Forces ui drawables of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed 
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateDrawing(onCurrentThread: boolean): void;
                                 /**
-                                 * Forces ui elements of the window to refresh
-                                 * @param onCurrentThread if true, the elements will be refreshed 
-                                 * immediately, otherwise refresh event will be posted. Default value 
-                                 * if false. Ensure you are in the UI thread if you pass true as the 
-                                 * parameter
+                                 * Forces ui elements of the window to refresh.
+                                 * @param onCurrentThread if `true`, the drawables will be refreshed 
+                                 * immediately, otherwise refresh event will be posted; ensure you are
+                                 * in the UI thread if you pass `true` as the parameter
+                                 * @default onCurrentThread: false
                                  */
                                 invalidateElements(onCurrentThread: boolean): void;
                                 /**
@@ -93,20 +93,20 @@ declare module com {
                                  */
                                 onBackPressed(): boolean;
                                 /**
-                                 * Opens window without container. It is usually mor
+                                 * Opens window without container.
                                  */
                                 open(): void;
                                 /**
-                                 * Sets container for the current window. Be careful when calling it 
-                                 * manually. You should prefer opening the window via 
-                                 * {@link UI.Container.openAs} call
+                                 * Sets container for the current window. Be careful when calling it
+                                 * manually. You should prefer opening the window via
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call.
                                  * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */
                                 setContainer(container: Nullable<container.UiAbstractContainer>): void;
                                 /**
-                                 * Turns debug mode for the window on and off
-                                 * @param debug if true, additional debug information will be drawn on
+                                 * Turns debug mode for the window on and off.
+                                 * @param debug if `true`, additional debug information will be drawn on
                                  * the window canvas
                                  */
                                 setDebugEnabled(debug: boolean): void;

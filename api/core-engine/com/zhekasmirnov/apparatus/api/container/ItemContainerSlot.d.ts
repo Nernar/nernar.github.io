@@ -35,23 +35,23 @@ declare module com {
                          */
                         isEmpty(): boolean;
                         /**
-                         * Refreshes slot in UI
+                         * Refreshes slot in UI.
                          */
                         markDirty(): void;
                         /**
-                         * Clears slot contents
+                         * Clears slot contents.
                          */
                         clear(): void;
                         /**
-                         * Resets slot if it's ID or count equals 0
+                         * Resets slot if it's ID or count equals `0`.
                          */
                         validate(): void;
                         /**
-                         * Drops slot contents in given world at given coords
+                         * Drops slot contents in given world at given coords.
                          */
                         dropAt(region: BlockSource, x: number, y: number, z: number): void;
                         /**
-                         * Sets slot contents 
+                         * Sets slot contents.
                          */
                         setSlot(id: number, count: number, data: number): void;
                         setSlot(id: number, count: number, data: number, extra: Nullable<innercore.api.NativeItemInstanceExtra>): void;

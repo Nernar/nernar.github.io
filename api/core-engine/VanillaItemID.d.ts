@@ -1,5 +1,5 @@
 /**
- * Numeric IDs of vanilla items
+ * Numeric IDs of vanilla items.
  */
 declare enum VanillaItemID {
     record_11 = 510,

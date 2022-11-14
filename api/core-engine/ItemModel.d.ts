@@ -1,28 +1,28 @@
 
 /**
- * Namespace used to change item models in player's hand and/or inventory. 
- * By default, if the block has an {@link ICRender}, it is automatically applied as item's model
+ * Namespace used to change item models in player's hand and/or inventory.
+ * By default, if the block has an {@link ICRender}, it is automatically applied as item's model.
  */
 declare namespace ItemModel {
     /**
-     * Gets {@link ItemModel} object for the specified ID and data
+     * Gets {@link ItemModel["interface"]} object for the specified ID and data.
      * @param id item or block ID
      * @param data item or block data
-     * @returns Exist {@link ItemModel} object used to manipulate item's model.
+     * @returns Exist {@link ItemModel["interface"]} object used to manipulate item's model.
      */
 	function getFor(id: number, data: number): ItemModel;
 	
 	function setCurrentCacheGroup(mod: string, version: string): void;
 
     /**
-     * Gets {@link ItemModel} object for the specified ID and data. If no {@link ItemModel} for
-     * specified data exist, uses default data (0)
-     * @returns Any {@link ItemModel} object used to manipulate item's model.
+     * Gets {@link ItemModel["interface"]} object for the specified ID and data. If no {@link ItemModel["interface"]} for
+     * specified data exist, uses default data `0`.
+     * @returns Any {@link ItemModel["interface"]} object used to manipulate item's model.
      */
     function getForWithFallback(id: number, data: number): ItemModel;
 
     /**
-     * Creates a new standalone item model that is not connected with any item or block
+     * Creates a new standalone item model that is not connected with any item or block.
      */
     function newStandalone(): ItemModel;
 
@@ -33,6 +33,7 @@ declare namespace ItemModel {
 
     /**
      * Releases some of the bitmaps to free up memory
+     * by run garbage cleaner.
      * @param bytes bytes count to be released
      */
     function tryReleaseModelBitmapsOnLowMemory(bytes: number): void;
@@ -46,20 +47,20 @@ declare namespace ItemModel {
     }
 
     /**
-     * @returns Empty {@link RenderMesh} from the pool or creates an empty one. Used 
+     * @returns Empty {@link RenderMesh["class"]} from the pool or creates an empty one. Used 
      * to reduce constructors/destructors calls.
      */
     function getEmptyMeshFromPool(): RenderMesh;
 
     /**
-     * Releases {@link RenderMesh} and returns it to the pool. Used to reduce
-     * constructors/destructors calls
+     * Releases {@link RenderMesh["class"]} and returns it to the pool. Used to reduce
+     * constructors/destructors calls.
      */
     function releaseMesh(mesh: RenderMesh): void;
 
     /**
      * @param randomize if true, item mesh position is randomized
-     * @returns New {@link RenderMesh} generated for specified item.
+     * @returns New {@link RenderMesh["class"]} generated for specified item.
      */
     function getItemRenderMeshFor(id: number, count: number, data: number, randomize: boolean): RenderMesh;
 
@@ -73,18 +74,20 @@ declare namespace ItemModel {
 
 /**
  * Class representing item model in player's hand and/or inventory. To get an instance of this
- * class from your code, use {@link ItemModel.getFor} static function. The coordinates of the full block in
- * player's hand or inventory is (0, 0, 0), (1, 1, 1), so it is generally recommended to use the models 
- * that fit that bound at least for the inventory 
+ * class from your code, use {@link ItemModel["namespace"].getFor} static function.
+ * @remarks
+ * The coordinates of the full block in player's hand or inventory is
+ * (0, 0, 0), (1, 1, 1), so it is generally recommended to use the models 
+ * that fit that bound at least for the inventory.
  */
 declare interface ItemModel {
     /**
-     * Item or block ID current {@link ItemModel} relates to
+     * Item or block ID current {@link ItemModel["interface"]} relates to.
      */
     readonly id: number;
 
     /**
-     * Item or block data current {@link ItemModel} relates to
+     * Item or block data current {@link ItemModel["interface"]} relates to.
      */
     readonly data: number;
 
@@ -121,62 +124,61 @@ declare interface ItemModel {
 
 
     /**
-     * Sets item's model to display both in the inventory and in hand
-     * @param model {@link RenderMesh}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item's model to display both in the inventory and in hand.
+     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
     setModel(model: RenderMesh | ICRender.Model | BlockRenderer.Model, texture?: string, material?: string): ItemModel;
 
     /**
-     * Sets item's model to display only in player's hand
-     * @param model {@link RenderMesh}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item's model to display only in player's hand.
+     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
     setHandModel(model: RenderMesh | ICRender.Model | BlockRenderer.Model, texture?: string, material?: string): ItemModel;
 
     /**
-     * Sets item's model to display only in player's inventory
-     * @param model {@link RenderMesh}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item's model to display only in player's inventory.
+     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
     setUiModel(model: RenderMesh | ICRender.Model | BlockRenderer.Model, texture?: string, material?: string): ItemModel;
 
     /**
-     * Sets item model's texture in both player's inventory and in hand
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item model's texture in both player's inventory and in hand.
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      */
     setTexture(texture: string): ItemModel;
 
     /**
-     * Sets item model's texture only in player's hand
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item model's texture only in player's hand.
+     * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      */
     setHandTexture(texture: string): ItemModel;
 
     /**
-     * Sets item model's texture only in player's inventory
-     * @param texture texture name to be used for the model (use "atlas::terrain" for block textures)
+     * Sets item model's texture only in player's inventory.
+     * @param texture texture name to be used for the model (use `"atlas::terrain" `for block textures)
      */
     setUiTexture(texture: string): ItemModel;
 
     /**
-     * Sets item model's material in both player's inventory and in hand
-     * @param texture material name to be used for the model. See 
-     * {@page Materials and Shaders} for more information
+     * Sets item model's material in both player's inventory and in hand.
+     * @param texture material name to be used for the model.
      */
     setMaterial(texture: string): ItemModel;
 
     /**
-     * Sets item model's material only in player's hand
+     * Sets item model's material only in player's hand.
      * @param texture material name to be used for the model
      */
     setHandMaterial(texture: string): ItemModel;
 
     /**
-     * Sets item model's material only in player's inventory
+     * Sets item model's material only in player's inventory.
      * @param texture material name to be used for the model
      */
     setUiMaterial(texture: string): ItemModel;

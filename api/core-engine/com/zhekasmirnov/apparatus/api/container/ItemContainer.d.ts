@@ -52,11 +52,12 @@ declare module com {
                         static addClientCloseListener(typeName: string, listener: ItemContainerFuncs.ClientOnCloseListener): void;
                         static getClientContainerInstance(name: string): Nullable<ItemContainer>;
                         /**
-                         * Constructs a new {@link ItemContainer} object
+                         * Constructs a new {@link ItemContainer} object.
                          */
                         constructor();
                         /**
-                         * Constructs a new {@link ItemContainer} object from given deprecated {@link innercore.api.mod.ui.container.Container} object
+                         * Constructs a new {@link ItemContainer} object from given deprecated
+                         * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"]|Container} object.
                          */
                         constructor(legacyContainer: innercore.api.mod.ui.container.Container);
                         getNetworkEntity(): NetworkEntity;
@@ -66,9 +67,9 @@ declare module com {
                         getWindowContent(): innercore.api.mod.ui.window.WindowContent;
                         removeEntity(): void;
                         /**
-                         * Sets container's parent object, for {@link TileEntity|TileEntity's} container it 
-                         * should be it reference, otherwise you can pass any 
-                         * value to be used in your code later
+                         * Sets container's parent object, for {@link TileEntity["interface"]|TileEntity's}
+                         * container it should be it reference, otherwise you can pass any
+                         * value to be used in your code later.
                          * @param parent an object to be set as container's parent
                          */
                         setParent(parent: Nullable<TileEntity> | any): void;
@@ -93,15 +94,15 @@ declare module com {
                         getBindingValidator(composedBindingName: string): ItemContainerFuncs.BindingValidator;
                         runTransaction(transaction: ItemContainerFuncs.Transaction): void;
                         /**
-                         * Gets the slot by it's name. If a slot with specified name doesn't 
-                         * exists, creates an empty one with specified name
+                         * Gets the slot by it's name. If a slot with specified name doesn't
+                         * exists, creates an empty one with specified name.
                          * @param name slot name
                          * @returns Contents of the slot in a {@link ItemContainerSlot} object.
                          * You can modify it to change the contents of the slot.
                          */
                         getSlot(name: string): ItemContainerSlot;
                         /**
-                         * @deprecated Use {@link getSlot} instead.
+                         * @deprecated Use {@link com.zhekasmirnov.apparatus.api.container.ItemContainer.getSlot|getSlot} instead.
                          */
                         getFullSlot(name: string): ItemContainerSlot;
                         markSlotDirty(name: string): void;
@@ -110,12 +111,12 @@ declare module com {
                          * Sets slot's content by it's name from given slot object. If a slot with specified
                          * name doesn't exist, a new slot with specified name and item will be created.
                          * @param name slot name
-                         * @param slot {@link ItemContainerSlot} object to specify slot contents
+                         * @param slot {@link com.zhekasmirnov.apparatus.api.container.ItemContainerSlot|ItemContainerSlot} object to specify slot contents
                          */
                         setSlot(name: string, slot: ItemContainerSlot): void;
                         /**
-                         * Set slot's content by it's name. If a slot with specified name doesn't 
-                         * exists, creates new with specified name and item
+                         * Set slot's content by it's name. If a slot with specified name doesn't
+                         * exists, creates new with specified name and item.
                          * @param name slot name
                          * @param extra item extra data.
                          */
@@ -130,31 +131,31 @@ declare module com {
                         sendChanges(): void;
                         dropAt(region: BlockSource, x: number, y: number, z: number): void;
                         /**
-                         * Validates all the slots in the container
+                         * Validates all the slots in the container.
                          */
                         validateAll(): void;
                         /**
                          * Validates slot contents. If the data value is less then 0, it becomes
-                         * 0, if ID is 0 or count is less then or equals to zero, slot is reset 
-                         * to an empty one
+                         * 0, if ID is 0 or count is less then or equals to zero, slot is reset
+                         * to an empty one.
                          * @param name slot name
                          */
                         validateSlot(name: string): void;
                         /**
-                         * Clears slot's contents
+                         * Clears slot's contents.
                          * @param name slot name
                          */
                         clearSlot(name: string): void;
                         /**
-                         * Drops slot's contents on the specified coordinates and clears the 
-                         * slot
+                         * Drops slot's contents on the specified coordinates and clears the
+                         * slot.
                          * @param name slot name
                          */
                         dropSlot(region: BlockSource, name: string, x: number, y: number, z: number): void;
                         /**
                          * Sends event to move specified amount of items from the player inventory slot by given index
                          * to container slot by given name. This event is sent from client to server,
-                         * so you should use it only on the client side, for example, in custom slot element touch events etc.
+                         * so you should use it only on the client side, for example, in custom slot element touch events, etc.
                          * @param inventorySlot numeric index of the inventory slot, from where to retrieve the item
                          * @param slotName string name of the container slot, where to put taken item
                          * @param amount item count to be retrieved from inventory slot
@@ -165,7 +166,7 @@ declare module com {
                         /**
                          * Sends event to move specified amount of items from one container slot to another by given names.
                          * This event is sent from client to server, so you should use it only on the client side,
-                         * for example, in custom slot element touch events etc.
+                         * for example, in custom slot element touch events, etc.
                          * @param slot1 string name of the container slot, from where to retrieve item
                          * @param slot2 string name of the container slot, where to put taken item
                          * @param amount item count to be retrieved from container slot
@@ -178,7 +179,7 @@ declare module com {
                          * to player's inventory. The index of the inventory slot, where to put item, can't be specified,
                          * because it's decided by {@link ItemContainer} automatically, and you just don't need to do this.
                          * This event is sent from client to server, so you should use it only on the client side,
-                         * for example, in custom slot element touch events etc.
+                         * for example, in custom slot element touch events, etc.
                          * @param slot string name of the container slot, from where to retrieve item
                          * @param amount item count to be retrieved from container slot
                          * @clientside
@@ -194,7 +195,7 @@ declare module com {
                         setClientBinding(elementName: string, bindingName: string, value: PrimitiveTypes): void;
                         getBinding(elementName: string, bindingName: string): PrimitiveTypes;
                         /**
-                         * Sets "value" binding value for the element. Used to set scales values
+                         * Sets "value" binding value for the element. Used to set scales values.
                          * @param elementName element name
                          * @param value value to be set for the element
                          */
@@ -202,12 +203,12 @@ declare module com {
                         setClientScale(elementName: string, value: number): void;
                         /**
                          * @param elementName element name
-                         * @returns Value with "value" binding, e.g. scale value, or `null` if no 
+                         * @returns Value with "value" binding, e.g. scale value, or `null` if no
                          * element with specified name exist.
                          */
                         getValue(elementName: string, value: number): Nullable<number>;
                         /**
-                         * Sets "text" binding value for the element. Used to set element's text
+                         * Sets "text" binding value for the element. Used to set element's text.
                          * @param elementName element name
                          * @param text value to be set for the element
                          */
@@ -215,7 +216,7 @@ declare module com {
                         setClientText(elementName: string, text: string): void;
                         /**
                          * @param elementName element name
-                         * @returns Value "text" binding, usually the text displayed on the 
+                         * @returns Value "text" binding, usually the text displayed on the
                          * element, or `null` if no element with specified name exist.
                          */
                         getText(elementName: string): Nullable<string>;
@@ -233,18 +234,19 @@ declare module com {
                          */
                         sendEvent(client: NetworkClient, name: string, data: PacketData | string): void;
                         /**
-                         * Sends packet from server container. 
-                         * ONLY AVAILABLE IN SERVER CONTAINER EVENTS
+                         * Sends packet from server container.
+                         * @remarks
+                         * Available only in server container events!
                          */
                         sendResponseEvent(name: string, data: PacketData | string): void;
                         /**
-                         * Opens UI for client
+                         * Opens UI for client.
                          * @param client client in which UI will be open
                          * @param screenName name of the screen to open
                          */
                         openFor(client: NetworkClient, screenName: string): void;
                         /**
-                         * Closes UI for client
+                         * Closes UI for client.
                          * @param client client in which UI will be open
                          */
                         closeFor(client: NetworkClient): void;

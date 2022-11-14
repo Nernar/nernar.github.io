@@ -1,13 +1,15 @@
-// Backward compatibility
+/**
+ * Backward compatibility.
+ */
 declare type TransferPolicy = com.zhekasmirnov.apparatus.api.container.ItemContainerFuncs.TransferPolicy;
 
 /**
- * New type of TileEntity container that supports multiplayer
+ * Type of TileEntity container that supports multiplayer.
  */
 declare class ItemContainer extends com.zhekasmirnov.apparatus.api.container.ItemContainer {
 	static class: java.lang.Class<ItemContainer>;
 	/**
-	 * Constructs a new {@link ItemContainer} object
+	 * Constructs a new {@link ItemContainer} object.
 	 */
 	constructor();
 	/**

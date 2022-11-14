@@ -1,29 +1,29 @@
 /**
- * NBT (Named Binary Tag) is a tag based binary format designed to carry large 
+ * NBT (Named Binary Tag) is a tag based binary format designed to carry large
  * amounts of binary data with smaller amounts of additional data. You can get
  * or set nbt tags of {@link Entity|entities},
  * {@link NativeTileEntity|native tile entities, such as chests or beacons} and
- * {@link ItemExtraData|items}. To get more information about these data structures, 
- * see [this page](http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt)
+ * {@link ItemExtraData|items}. To get more information about these data structures,
+ * see {@link http://web.archive.org/web/20110723210920/http://www.minecraft.net/docs/NBT.txt this page}.
  */
 declare namespace NBT {
     /**
      * List tags represent NBT map-like data structure (key-value pairs). it's values may
-     * be of any type, so check the type before calling the appropriate getter
+     * be of any type, so check the type before calling the appropriate getter.
      */
     class CompoundTag {
         /**
-         * Creates a new compound tag
+         * Creates a new compound tag.
          */
         constructor();
 
         /**
-         * Creates a copy of specified compound tag
+         * Creates a copy of specified compound tag.
          */
         constructor(tag: CompoundTag);
 
         /**
-         * Converts compound tag to JavaScript object for easier reading
+         * Converts compound tag to JavaScript object for easier reading.
          * @returns Valid JavaScript representation of compound tag.
          */
         toScriptable(): { [key: string]: any };
@@ -91,7 +91,7 @@ declare namespace NBT {
          * @returns NBT tag of compound type by it's key. Note that a copy of 
          * existing compound tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly.
+         * {@link NBT.CompoundTag.getCompoundTagNoClone|getCompoundTagNoClone} to edit it directly.
          */
         getCompoundTag(key: string): NBT.CompoundTag;
 
@@ -106,7 +106,7 @@ declare namespace NBT {
          * @returns NBT tag of list type by it's key. Note that a copy of 
          * existing list tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getListTagNoClone} to edit it directly.
+         * {@link NBT.CompoundTag.getListTagNoClone|getListTagNoClone} to edit it directly.
          */
         getListTag(key: string): NBT.ListTag;
 
@@ -118,57 +118,57 @@ declare namespace NBT {
         getListTagNoClone(key: string): NBT.ListTag;
 
         /**
-         * Puts value of byte type into compound tag
+         * Puts value of byte type into compound tag.
          */
         putByte(key: string, value: number): void;
 
         /**
-         * Puts value of short type into compound tag
+         * Puts value of short type into compound tag.
          */
         putShort(key: string, value: number): void;
 
         /**
-         * Puts value of 32-bit integer type into compound tag
+         * Puts value of 32-bit integer type into compound tag.
          */
         putInt(key: string, value: number): void;
 
         /**
-         * Puts value of 64-bit integer type into compound tag
+         * Puts value of 64-bit integer type into compound tag.
          */
         putInt64(key: string, value: number): void;
 
         /**
-         * Puts value of float type into compound tag
+         * Puts value of float type into compound tag.
          */
         putFloat(key: string, value: number): void;
 
         /**
-         * Puts value of double type into compound tag
+         * Puts value of double type into compound tag.
          */
         putDouble(key: string, value: number): void;
 
         /**
-         * Puts value of string type into compound tag
+         * Puts value of string type into compound tag.
          */
         putString(key: string, value: string): void;
 
         /**
-         * Puts value of compound type into compound tag
+         * Puts value of compound type into compound tag.
          */
         putCompoundTag(key: string, value: CompoundTag): void;
 
         /**
-         * Puts value of list type into compound tag
+         * Puts value of list type into compound tag.
          */
         putListTag(key: string, value: ListTag): void;
 
         /**
-         * Removes tag by it's key
+         * Removes tag by it's key.
          */
         remove(key: string): void;
 
         /**
-         * Removes all the tags from the compound tags
+         * Removes all the tags from the compound tags.
          */
         clear(): void;
     }
@@ -176,21 +176,21 @@ declare namespace NBT {
 
     /**
      * List tags represent NBT array-like indexed data structure. it's values may
-     * be of any type, so check the type before calling the appropriate getter
+     * be of any type, so check the type before calling the appropriate getter.
      */
     class ListTag {
         /**
-         * Creates a new list tag
+         * Creates a new list tag.
          */
         constructor();
 
         /**
-         * Creates a copy of specified list tag
+         * Creates a copy of specified list tag.
          */
         constructor(tag: CompoundTag);
 
         /**
-         * Converts list tag to JavaScript object for easier reading
+         * Converts list tag to JavaScript object for easier reading.
          * @returns Valid JavaScript representation of list tag.
          */
         toScriptable(): any[];
@@ -245,7 +245,7 @@ declare namespace NBT {
          * @returns NBT tag of compound type by it's index. Note that a copy of 
          * existing compound tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getCompoundTagNoClone} to edit it directly.
+         * {@link NBT.CompoundTag.getCompoundTagNoClone|getCompoundTagNoClone} to edit it directly.
          */
         getCompoundTag(index: number): NBT.CompoundTag;
 
@@ -260,7 +260,7 @@ declare namespace NBT {
          * @returns NBT tag of list type by it's index. Note that a copy of 
          * existing list tag is created so you cannot edit it directly. Use 
          * setCompoundTag method to apply changes or use 
-         * {@link CompoundTag.getListTagNoClone} to edit it directly.
+         * {@link NBT.CompoundTag.getListTagNoClone|getListTagNoClone} to edit it directly.
          */
         getListTag(index: number): NBT.ListTag;
 
@@ -272,52 +272,52 @@ declare namespace NBT {
         getListTagNoClone(index: number): NBT.ListTag;
 
         /**
-         * Puts value of byte type into list tag
+         * Puts value of byte type into list tag.
          */
         putByte(index: number, value: number): void;
 
         /**
-         * Puts value of short type into list tag
+         * Puts value of short type into list tag.
          */
         putShort(index: number, value: number): void;
 
         /**
-         * Puts value of 32-bit integer type into list tag
+         * Puts value of 32-bit integer type into list tag.
          */
         putInt(index: number, value: number): void;
 
         /**
-         * Puts value of 64-bit integer type into list tag
+         * Puts value of 64-bit integer type into list tag.
          */
         putInt64(index: number, value: number): void;
 
         /**
-         * Puts value of float type into list tag
+         * Puts value of float type into list tag.
          */
         putFloat(index: number, value: number): void;
 
         /**
-         * Puts value of double type into list tag
+         * Puts value of double type into list tag.
          */
         putDouble(index: number, value: number): void;
 
         /**
-         * Puts value of string type into list tag
+         * Puts value of string type into list tag.
          */
         putString(index: number, value: string): void;
 
         /**
-         * Puts value of compound type into list tag
+         * Puts value of compound type into list tag.
          */
         putCompoundTag(index: number, value: CompoundTag): void;
 
         /**
-         * Puts value of list type into list tag
+         * Puts value of list type into list tag.
          */
         putListTag(index: number, value: ListTag): void;
 
         /**
-         * Removes all the tags from the compound tags
+         * Removes all the tags from the compound tags.
          */
         clear(): void;
     }

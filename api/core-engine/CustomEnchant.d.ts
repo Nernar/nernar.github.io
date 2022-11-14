@@ -6,7 +6,7 @@ declare namespace CustomEnchant {
 
     /**
      * Object returned by {@link CustomEnchant.newEnchant} method.
-     * Used to configure different custom enchantment behaviors
+     * Used to configure different custom enchantment behaviors.
      */
     interface EnchantSetupInterface {
 
@@ -26,7 +26,7 @@ declare namespace CustomEnchant {
         setFrequency(freq: number): EnchantSetupInterface;
 
         /**
-         * Sets whether the following enchantment will be able 
+         * Sets whether the following enchantment will be able
          * to be found in dungeon chests or not.
          * @default true
          * @returns Reference to itself to be used in sequential calls.
@@ -50,9 +50,10 @@ declare namespace CustomEnchant {
         setIsTreasure(treasure: boolean): EnchantSetupInterface;
 
         /**
-         * Sets the mask of items, that the following enchantment can be applied to, 
-         * paired parameter for item is enchant slot, default is -1 = 0xFFFFFFFF - all
+         * Sets the mask of items, that the following enchantment can be applied to,
+         * paired parameter for item is enchant slot.
          * @returns Reference to itself to be used in sequential calls.
+         * @default -1 = 0xFFFFFFFF // all
          */
         setMask(mask: number): EnchantSetupInterface;
 
@@ -66,7 +67,7 @@ declare namespace CustomEnchant {
 
         /**
          * Sets linear dependency of enchant cost by level,
-         * the formula is `level * b + c`
+         * the formula is `level * b + c`.
          * @returns Reference to itself to be used in sequential calls.
          */
         setMinMaxCost(bMin: number, cMin: number, bMax: number, cMax: number): EnchantSetupInterface;
@@ -106,7 +107,7 @@ declare namespace CustomEnchant {
     }
 
     /**
-     * Registers new custom enchantment from given name ID and displayed name
+     * Registers new custom enchantment from given name ID and displayed name.
      * @param nameID internal string ID of the enchantment
      * @param displayedName enchantment name that will be displayed in the
      * tooltips of the items having this enchant.
@@ -116,7 +117,8 @@ declare namespace CustomEnchant {
     function newEnchant(nameID: string, displayedName: string): EnchantSetupInterface;
 
     /**
-     * Function interface used in {@link EnchantSetupInterface.setAttackDamageBonusProvider} method
+     * Function interface used in
+     * {@link CustomEnchant.EnchantSetupInterface.setAttackDamageBonusProvider|EnchantSetupInterface.setAttackDamageBonusProvider} method.
      */
     interface AttackDamageBonusProvider {
         (damage: number, entity: number): number;
@@ -124,15 +126,16 @@ declare namespace CustomEnchant {
 
     /**
      * Function interface used in
-     * {@link EnchantSetupInterface.setPostAttackCallback} and
-     * {@link EnchantSetupInterface.setPostHurtCallback} methods.
+     * {@link CustomEnchant.EnchantSetupInterface.setPostAttackCallback|EnchantSetupInterface.setPostAttackCallback} and
+     * {@link CustomEnchant.EnchantSetupInterface.setPostHurtCallback|EnchantSetupInterface.setPostHurtCallback} methods.
      */
     interface DamageCallback {
         (item: ItemInstance, damage: number, entity1: number, entity2: number): void;
     }
 
     /**
-     * Function interface used in {@link EnchantSetupInterface.setProtectionBonusProvider} method
+     * Function interface used in
+     * {@link CustomEnchant.EnchantSetupInterface.setProtectionBonusProvider|EnchantSetupInterface.setProtectionBonusProvider} method.
      */
     interface ProtectionBonusProvider {
         (damage: number, damageType: number, entity: number): number;

@@ -18,7 +18,7 @@ declare module com {
                     export class Model extends java.lang.Object {
                         static class: java.lang.Class<Model>;
                         /**
-                         * Clears all parts of the model
+                         * Clears all parts of the model.
                          */
                         clearAllParts(): void;
                         /**
@@ -40,70 +40,70 @@ declare module com {
                     export class ModelPart extends java.lang.Object {
                         static class: java.lang.Class<ModelPart>;
                         /**
-                         * Adds a new box to the part on the specified coordinates (relative to 
-                         * the part's coordinates) of the specified size (width, height, length)
+                         * Adds a new box to the part on the specified coordinates (relative to
+                         * the part's coordinates) of the specified size (width, height, length).
                          */
                         addBox(x: number, y: number, z: number, w: number, h: number, l: number): void;
                         /**
-                         * Adds a new box to the part on the specified coordinates (relative to 
-                         * the part's coordinates) of the specified size (width, height, length)
+                         * Adds a new box to the part on the specified coordinates (relative to
+                         * the part's coordinates) of the specified size (width, height, length).
                          * @param add additional size to be added from all the six sizes of the 
                          * box
                          */
                         addBox(x: number, y: number, z: number, w: number, h: number, l: number, add: number): void;
                         /**
                          * Creates a new part with specified name. If a part with specified name
-                         * already exists, returns the existing part
+                         * already exists, returns the existing part.
                          * @param name name of the part to create or return
                          */
                         addPart(name: string): ModelPart;
                         /**
-                         * Clears the contents of the part
+                         * Clears the contents of the part.
                          */
                         clear(): void;
                         /**
-                         * @returns Mesh specified via {@link setMesh} call or `null`, if 
+                         * @returns Mesh specified via {@link com.zhekasmirnov.innercore.api.NativeRenderer["namespace"].ModelPart.setMesh|setMesh} call or `null`, if 
                          * this part doesn't contain mesh.
                          */
                         getMesh(): Nullable<NativeRenderMesh>;
                         /**
-                         * Specifies {@link NativeRenderMesh} to be used as a part
+                         * Specifies {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} to be used as a part.
                          */
                         setMesh(mesh: Nullable<NativeRenderMesh>): void;
-                        /**s
-                         * Specifies part default offset
+                        /**
+                         * Specifies part default offset.
                          */
                         setOffset(offsetX: number, offsetY: number, offsetZ: number): void;
                         /**
-                         * Specifies part rotation
+                         * Specifies part rotation.
                          */
                         setRotation(rotationX: number, rotationY: number, rotationZ: number): void;
                         /**
-                         * Specifies texture uv offset
+                         * Specifies texture UV offset.
                          */
                         setTextureOffset(u: number, v: number): void;
                         /**
-                         * Specifies texture uv offset
+                         * Specifies texture UV offset.
                          */
                         setTextureOffset(u: number, v: number): void;
                         /**
-                         * Specifies texture uv offset
+                         * Specifies texture UV offset.
                          * @param placeholder deprecated boolean parameter
                          * @deprecated Use same method without last parameter.
                          */
                         setTextureOffset(u: number, v: number, placeholder: boolean): void;
                         /**
-                         * Specifies texture size size, use the real texture file size or change 
-                         * it to stretch texture
-                         */
-                        setTextureSize(w: number, h: number): void;
-                        /**
-                         * Specifies texture size size, use the real texture file size or change 
+                         * Specifies texture size size, use the real texture file size or change
                          * it to stretch texture.
                          */
                         setTextureSize(w: number, h: number): void;
                         /**
-                         * Specifies texture size size, use the real texture file size or change 
+                         * Specifies texture size size, use the real texture file size or change
+                         * it to stretch texture.
+                         */
+                        setTextureSize(w: number, h: number): void;
+                        /**
+                         * Specifies texture size size, use the real texture file size or change
                          * it to stretch texture.
                          * @param placeholder deprecated boolean parameter
                          * @deprecated Use same method without last parameter.

@@ -1,5 +1,5 @@
 /**
- * Numeric IDs of vanilla blocks placed in the world
+ * Numeric IDs of vanilla blocks placed in the world.
  */
 declare enum VanillaTileID {
     lit_blast_furnace = 469,

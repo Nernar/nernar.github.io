@@ -40,17 +40,17 @@ declare class BlockSource {
 	setBlock(x: number, y: number, z: number, id: number, data: number): void;
 
 	/**
-	 * Sets block by given {@link BlockState} on coords
+	 * Sets block by given {@link BlockState} on coords.
 	 */
 	setBlock(x: number, y: number, z: number, state: BlockState): void;
 
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given ID and data
+	 * Sets extra block (for example, water inside another blocks), on given coords by given ID and data.
 	 */
 	setExtraBlock(x: number, y: number, z: number, id: number, data: number): void;
 
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given {@link BlockState}
+	 * Sets extra block (for example, water inside another blocks), on given coords by given {@link BlockState}.
 	 */
 	setExtraBlock(x: number, y: number, z: number, state: BlockState): void;
 
@@ -60,7 +60,7 @@ declare class BlockSource {
 	getExtraBlock(x: number, y: number, z: number): BlockState;
 
 	 /**
-	  * Creates an explosion on coords
+	  * Creates an explosion on coords.
 	  * @param power defines how many blocks can the explosion destroy and what
 	  * blocks can or cannot be destroyed
 	  * @param fire if true, puts the crater on fire
@@ -70,7 +70,7 @@ declare class BlockSource {
 	/**
 	 * Destroys block on coords producing appropriate drop
 	 * and particles. Do not use for massive tasks due to particles being 
-	 * produced
+	 * produced.
 	 * @param drop whether to provide drop for the block or not
 	 */
 	destroyBlock(x: number, y: number, z: number, drop?: boolean): void;
@@ -104,7 +104,7 @@ declare class BlockSource {
 	getBiome(x: number, z: number): number;
 
 	/**
-	 * Sets biome ID by coords
+	 * Sets biome ID by coords.
 	 * @param biomeID ID of the biome to set
 	 */
 	setBiome(x: number, z: number, biomeID: number): void;
@@ -163,7 +163,7 @@ declare class BlockSource {
 	getGrassColor(x: number, y: number, z: number): number;
 
 	/**
-	 * Creates dropped item and returns entity ID
+	 * Creates dropped item and returns entity ID.
 	 * @param id ID of the item to drop
 	 * @param count count of the item to drop
 	 * @param data data of the item to drop
@@ -175,8 +175,10 @@ declare class BlockSource {
 	/**
 	  * Spawns entity of given numeric or namespaced type on coords.
 	  * @example
+	  * ```ts
 	  * Callback.addCallback("ItemUse", (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, player: number) =>
 	  * 	BlockSource.getDefaultForActor(player)?.spawnEntity(coords.relative.x, coords.relative.y, coords.relative.z, EEntityType.CHICKEN));
+	  * ```
 	  */
 	spawnEntity(x: number, y: number, z: number, type: number | string): number;
 
@@ -184,13 +186,15 @@ declare class BlockSource {
 	  * Spawns entity of given namespace by string type on coords
 	  * with optional spawn events data.
 	  * @example
+	  * ```ts
 	  * Callback.addCallback("ItemUse", (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, player: number) =>
 	  * 	BlockSource.getDefaultForActor(player)?.spawnEntity(coords.relative.x, coords.relative.y, coords.relative.z, "minecraft", "chicken", "<>"));
+	  * ```
 	  */
 	spawnEntity(x: number, y: number, z: number, namespace: string, type: string, init_data?: string): number;
 
 	/**
-	  * Spawns experience orbs on coords
+	  * Spawns experience orbs on coords.
 	  * @param amount experience amount
 	  */
 	spawnExpOrbs(x: number, y: number, z: number, amount: number): void;

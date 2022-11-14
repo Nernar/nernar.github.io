@@ -1,17 +1,18 @@
 /**
  * Class, upon which armor and attachments render is based
- * It is a model that consists of parts, same as in {@link Render},
+ * It is a model that consists of parts, same as in {@link Render["class"]},
  * but more abstract, allows creating root parts instead of
- * inheritance from old humanoid model
+ * inheritance from old humanoid model.
  */
 declare class ActorRenderer {
     /**
-     * Constructs new {@link ActorRenderer} object without parts
+     * Constructs new {@link ActorRenderer["class"]} object without parts.
      */
     constructor();
+
     /**
-     * Constructs new {@link ActorRenderer} object,
-     * based on one of default Minecraft render templates
+     * Constructs new {@link ActorRenderer["class"]} object,
+     * based on one of default Minecraft render templates.
      * @param templateName default template name
      */
     constructor(templateName: DefaultRenderTemplate);
@@ -25,14 +26,14 @@ declare class ActorRenderer {
     getPart(name: string): ActorRenderer.ModelPart;
 
     /**
-     * Adds a child model part of an existing one
+     * Adds a child model part of an existing one.
      * @param name child model name
      * @param parentName parent model name
      */
     addPart(name: string, parentName: string, mesh?: RenderMesh): ActorRenderer.ModelPart;
 
     /**
-     * Adds a root model part
+     * Adds a root model part.
      */
     addPart(name: string, mesh?: RenderMesh): ActorRenderer.ModelPart;
 
@@ -43,10 +44,14 @@ declare namespace ActorRenderer {
     class ModelPart {
 
         /**
-         * All methods of {@link ActorRenderer.ModelPart} build in such a way,
-         * that you can create full render in one chain of calls
+         * All methods of {@link ActorRenderer["namespace"].ModelPart} build in such a way,
+         * that you can create full render in one chain of calls.
+         * @example
          * ```js
-         * new ActorRenderer().addPart("Child", "Parent").addPart("Grandchild", "Child").endPart();
+         * new ActorRenderer()
+         *     .addPart("child", "parent")
+         *     .addPart("grandChild", "child")
+         *     .endPart();
          * ```
          */
         endPart(): ActorRenderer;

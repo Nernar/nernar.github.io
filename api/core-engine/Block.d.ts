@@ -14,13 +14,13 @@ declare namespace Block {
 	function getNumericId(id: string | number): number;
 
 	/**
-	 * Creates new block using specified params
+	 * Creates new block using specified params.
 	 * @param nameID string ID of the block. You should register it via 
 	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData array containing all variations of the block. Each 
 	 * variation corresponds to block data value, data values are assigned 
 	 * according to variations order
-	 * @param blockType {@link SpecialType} object, either java-object returned by
+	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties, 
 	 * you can also pass special type name, if the type was previously 
 	 * registered
@@ -31,13 +31,13 @@ declare namespace Block {
 	 * Creates new block using specified params, creating four variations for 
 	 * each of the specified variations to be able to place it facing flayer 
 	 * with the front side and defines the appropriate behavior. Useful for 
-	 * different machines and mechanisms
+	 * different machines and mechanisms.
 	 * @param nameID string ID of the block. You should register it via 
 	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData array containing all variations of the block. Each 
 	 * variation corresponds to four block data values, data values are assigned 
 	 * according to variations order
-	 * @param blockType {@link SpecialType} object, either java-object returned by
+	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties, 
 	 * you can also pass special type name, if the type was previously 
 	 * registered
@@ -45,14 +45,14 @@ declare namespace Block {
 	function createBlockWithRotation(nameID: string, defineData: BlockVariation[], blockType?: SpecialType | string): void;
 
 	/**
-	 * Creates new liquid block using specified params
+	 * Creates new liquid block using specified params.
 	 * @param nameID string ID of the block. You should register it via
 	 * {@link IDRegistry.genBlockID} call first
 	 * @param defineData object containing all needed params to describe your custom liquid block.
 	 * There you can specify custom name IDs for static and dynamic liquid blocks separately,
 	 * and if you do this, you have to register those name IDs
 	 * via {@link IDRegistry.genBlockID} before using them
-	 * @param blockType {@link SpecialType} object, either java-object returned by
+	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously registered
 	 */
@@ -65,14 +65,14 @@ declare namespace Block {
 	function isNativeTile(id: number): boolean;
 
 	/**
-	 * Converts tile ID to the block ID
+	 * Converts tile ID to the block ID.
 	 * @param id numeric tile ID
 	 * @returns Numeric block ID corresponding to the given tile ID.
 	 */
 	function convertBlockToItemId(id: number): number;
 
 	/**
-	 * Converts block ID to the tile ID
+	 * Converts block ID to the tile ID.
 	 * @param id numeric tile ID
 	 * @returns Numeric tile ID corresponding to the given block ID.
 	 */
@@ -80,13 +80,13 @@ declare namespace Block {
 
 	/**
 	 * Same as {@link Block.registerDropFunction} but accepts only numeric 
-	 * tile ID as the first param
+	 * tile ID as the first param.
 	 */
 	function registerDropFunctionForID(numericID: number, dropFunc: DropFunction, level?: number): boolean;
 
 	/**
 	 * Registers function used by Core Engine to determine block drop for the 
-	 * specified block ID
+	 * specified block ID.
 	 * @param nameID tile string or numeric ID
 	 * @param dropFunc function to be called to determine what will be dropped 
 	 * when the block is broken
@@ -99,13 +99,13 @@ declare namespace Block {
 
 	/**
 	 * Same as {@link Block.registerPopResourcesFunction} but accepts only numeric 
-	 * tile ID as the first param
+	 * tile ID as the first param.
 	 */
 	function registerPopResourcesFunctionForID(numericID: number, func: PopResourcesFunction): boolean;
 
 	/**
 	 * Registered function used by Core Engine to determine block drop for the
-	 * specified block ID
+	 * specified block ID.
 	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when a block in the world is broken by
 	 * environment (explosions, pistons, etc.)
@@ -116,13 +116,13 @@ declare namespace Block {
 
 	/**
 	 * Same as {@link Block.setDestroyLevel} but accepts only numeric 
-	 * tile ID as the first param
+	 * tile ID as the first param.
 	 */
 	function setDestroyLevelForID(id: number, level: number, resetData?: boolean): void;
 
 	/**
 	 * Registers a default destroy function for the specified block, considering
-	 * it's digging level
+	 * it's digging level.
 	 * @param nameID tile string ID
 	 * @param level digging level of the block
 	 * @param resetData if true, the block is dropped with data equals to 0
@@ -130,7 +130,7 @@ declare namespace Block {
 	function setDestroyLevel(nameID: string | number, level: number, resetData?: boolean): void;
 
 	/**
-	 * Sets destroy time for the block with specified ID
+	 * Sets destroy time for the block with specified ID.
 	 * @param nameID string or numeric block ID
 	 * @param time destroy time for the block, in ticks
 	 */
@@ -192,14 +192,14 @@ declare namespace Block {
 
 	/**
 	 * Temporarily sets destroy time for block, saving the old value for the 
-	 * further usage
+	 * further usage.
 	 * @param numericID numeric block ID
 	 * @param time new destroy time in ticks
 	 */
 	function setTempDestroyTime(numericID: number, time: number): void;
 
 	/**
-	 * Registers material and digging level for the specified block
+	 * Registers material and digging level for the specified block.
 	 * @param nameID block numeric or string ID
 	 * @param material material name
 	 * @param level block's digging level
@@ -208,7 +208,7 @@ declare namespace Block {
 	function setBlockMaterial(nameID: string | number, material: string, level: number): boolean;
 
 	/**
-	 * Makes block accept redstone signal
+	 * Makes block accept redstone signal.
 	 * @param nameID block numeric or string ID
 	 * @param data block data, currently not used
 	 * @param isRedstone if true, the redstone changes at the block will notify
@@ -220,7 +220,7 @@ declare namespace Block {
 
 	/**
 	 * Gets drop for the specified block. Used mostly by Core Engine's 
-	 * {@link ToolAPI}, though, can be useful in the mods, too
+	 * {@link ToolAPI}, though, can be useful in the mods, too.
 	 * @param block block info
 	 * @param item item that was (or is going to be) used to break the block
 	 * @param coords coordinates where the block was (or is going to be) broken 
@@ -270,7 +270,7 @@ declare namespace Block {
 
 	/**
 	 * @deprecated Better performance should be inherited by manually
-	 * manipulation with properties and {@link SpecialType}.
+	 * manipulation with properties and {@link Block.SpecialType|SpecialType}.
 	 */
 	function setPrototype(nameID: string | number, Prototype: any): number;
 
@@ -281,7 +281,7 @@ declare namespace Block {
 	function getMapColor(id: number): number;
 
 	/**
-	 * Makes block invoke callback randomly depending on game speed
+	 * Makes block invoke callback randomly depending on game speed.
 	 * @param id block ID to register for random ticks
 	 * @param callback function to be called on random block tick
 	 */
@@ -290,34 +290,34 @@ declare namespace Block {
 	/**
 	 * Makes block invoke callback randomly depending on game speed. Occurs more 
 	 * often then {@link Block.setRandomTickCallback} and only if the block is not
-	 * far away from player
+	 * far away from player.
 	 * @param id block ID to register
 	 * @param callback function to be called 
 	 */
 	function setAnimateTickCallback(id: number, callback: AnimateTickFunction): void;
 
 	/**
-	 * Makes block receive redstone signals via "RedstoneSignal" callback
+	 * Makes block receive redstone signals via "RedstoneSignal" callback.
 	 * @param nameID block numeric or string ID
 	 * @param connectToRedstone if true, redstone wires will connect to the block
 	 */
 	function setupAsRedstoneReceiver(nameID: number | string, connectToRedstone: boolean): void;
 
 	/**
-	 * Makes block emit redstone signal
+	 * Makes block emit redstone signal.
 	 * @param nameID block numeric or string ID
 	 * @param connectToRedstone if true, redstone wires will connect to the block
 	 */
 	function setupAsRedstoneEmitter(nameID: number | string, connectToRedstone: boolean): void;
 
 	/**
-	 * Removes all the redstone functionality from the block
+	 * Removes all the redstone functionality from the block.
 	 * @param nameID block numeric or string ID
 	 */
 	function setupAsNonRedstoneTile(nameID: number | string): void;
 
 	/**
-	 * Registers function on neighbour blocks updates
+	 * Registers function on neighbour blocks updates.
 	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when neighbour block updates
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
@@ -326,7 +326,7 @@ declare namespace Block {
 
 	/**
 	 * Same as {@link Block.registerNeighbourChangeFunction} but accepts only numeric
-	 * tile ID as the first param
+	 * tile ID as the first param.
 	 */
 	function registerNeighbourChangeFunctionForID(id: number, func: NeighbourChangeFunction): boolean;
 
@@ -354,19 +354,19 @@ declare namespace Block {
 
 	/**
 	 * Same as {@link Block.registerEntityStepOnFunction} but accepts only numeric
-	 * tile ID as the first param
+	 * tile ID as the first param.
 	 */
 	function registerEntityStepOnFunctionForID(id: number, func: EntityStepOnFunction): boolean;
 
 	/**
-	 * Defines custom behavior when the player clicks on the block with definite ID
+	 * Defines custom behavior when the player clicks on the block with definite ID.
 	 * @param nameId block's numeric or string ID
 	 * @param func function that will be called when the player clicks the block with given ID
 	 */
 	function registerClickFunction(nameId: string | number, func: ClickFunction): void;
 
 	/**
-	 * Same as {@link Block.registerClickFunction}, but only numeric block ID can be passed
+	 * Same as {@link Block.registerClickFunction}, but only numeric block ID can be passed.
 	 */
 	function registerClickFunctionForID(id: number, func: ClickFunction): void;
 
@@ -409,11 +409,11 @@ declare namespace Block {
 	/**
 	 * Special types are used to set properties to the block. Unlike items, 
 	 * blocks properties are defined using special types, due to old Inner 
-	 * Core's block IDs limitations 
+	 * Core's block IDs limitations.
 	 */
 	interface SpecialType {
 		/**
-		 * Unique string identifier of the SpecialType
+		 * Unique string identifier of the SpecialType.
 		 */
 		name?: string,
 		/**
@@ -427,12 +427,12 @@ declare namespace Block {
 		 */
 		material?: number,
 		/**
-		 * If true, the block is not transparent.
+		 * If `true`, the block is not transparent.
 		 * @default false
 		 */
 		solid?: boolean,
 		/**
-		 * If true, all block faces are rendered, otherwise back faces are not
+		 * If `true`, all block faces are rendered, otherwise back faces are not
 		 * rendered, like for glass.
 		 * @default false
 		 */
@@ -456,7 +456,7 @@ declare namespace Block {
 		lightlevel?: number,
 		/**
 		 * Specifies how opaque the block is. Default is transparent, use values 
-		 * from 1 to 15 to make the block opaque
+		 * from 1 to 15 to make the block opaque.
 		 * @default 0
 		 */
 		lightopacity?: number,
@@ -496,7 +496,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Object used to represent single block variation
+	 * Object used to represent single block variation.
 	 */
 	interface BlockVariation {
 		/**
@@ -507,40 +507,37 @@ declare namespace Block {
 		/**
 		 * Variation textures, array containing pairs of texture name and data.
 		 * Texture file should be located in items-opaque folder and it's name
-		 * should be in the format: *name_data*, e.g. if the file name is 
-		 * *ingot_copper_0*, you should specify an array
-		 * ```js 
-		 * ["ingot_copper", 0]
-		 * ```
-		 * There should be from one to six texture 
-		 * pairs in the array, if less then six variations are specified, the 
-		 * last texture is used for missing textures. The sides go in the 
-		 * following order:
+		 * should be in the format: `"name_data"`, e.g. if the file name is 
+		 * `"ingot_copper_0"`, you should specify an array `["ingot_copper", 0]`.
+		 * @remarks
+		 * There should be from one to six texture pairs in the array,
+		 * if less then six variations are specified, the last texture is used
+		 * for missing textures. The sides go in the following order:
 		 * ```js 
 		 * texture: [
-		 *   ["name1", index1], // bottom (Y: -1)
-		 *   ["name2", index2], // top (Y: +1)
-		 *   ["name3", index3], // back (X: -1)
-		 *   ["name4", index4], // front (X: +1)
-		 *   ["name5", index5], // left (Z: -1)
-		 *   ["name6", index6]  // right (Z: +1)
+		 * 	["name1", index1], // bottom (Y: -1)
+		 * 	["name2", index2], // top (Y: +1)
+		 * 	["name3", index3], // back (X: -1)
+		 * 	["name4", index4], // front (X: +1)
+		 * 	["name5", index5], // left (Z: -1)
+		 * 	["name6", index6]  // right (Z: +1)
 		 * ]
 		 * ```
 		 */
 		texture: [string, number][],
 		/**
-		 * If true, block variation will be added to creative inventory.
+		 * If `true`, block variation will be added to creative inventory.
 		 * @default false
 		 */
 		inCreative?: boolean
 	}
 
 	/**
-	 * Object to specify needed params for custom liquid block
+	 * Object to specify needed params for custom liquid block.
 	 */
 	interface LiquidDescriptor {
 		/**
-		 * Name of the block to be displayed 
+		 * Name of the block to be displayed.
 		 */
 		name: string,
 		/**
@@ -582,7 +579,7 @@ declare namespace Block {
 			/**
 			 * Unlike static liquid blocks,
 			 * for dynamic ones, texture must look like
-			 * `texture.liquid.png` (with no index)
+			 * `"texture.liquid.png"` (with no index).
 			 */
 			texture: [string, number]
 		},
@@ -599,8 +596,8 @@ declare namespace Block {
 			texture: { name: string, meta?: number }
 		},
 		/**
-		 * Whether to add liquid block to creative inventory,
-		 * default is false
+		 * Whether to add liquid block to creative inventory.
+		 * @default false
 		 */
 		inCreative?: boolean,
 		uiTextures?: string,
@@ -608,7 +605,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Function used to determine block drop
+	 * Function used to determine block drop.
 	 * @param blockCoords coordinates where the block is destroyed and side from
 	 * where it is destroyed
 	 * @param blockID numeric tile ID
@@ -634,7 +631,7 @@ declare namespace Block {
 
 	/**
 	 * Function used to determine when block is broken by
-	 * environment (explosions, pistons, etc.)
+	 * environment (explosions, pistons, etc.).
 	 * @param blockCoords coordinates where the block is destroyed and side from
 	 * where it is destroyed
 	 * @param block information about block that is broken
@@ -646,7 +643,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Function used to determine when block is placed in the world
+	 * Function used to determine when block is placed in the world.
 	 * @param coords set of all coordinate values that can be useful to write 
 	 * custom use logics
 	 * @param item item that was in the player's hand when he touched the block
@@ -661,7 +658,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Function used to track random block ticks
+	 * Function used to track random block ticks.
 	 * @param x x coordinate of the block that ticked
 	 * @param y y coordinate of the block that ticked
 	 * @param z z coordinate of the block that ticked
@@ -674,7 +671,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Function used to track random block animation ticks
+	 * Function used to track random block animation ticks.
 	 * @param x x coordinate of the block that should be updated
 	 * @param y y coordinate of the block that should be updated
 	 * @param z z coordinate of the block that should be updated
@@ -686,7 +683,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Function used to check block's neighbours changes
+	 * Function used to check block's neighbours changes.
 	 * @param coords coords vector of the block
 	 * @param block Tile object of the block
 	 * @param changedCoords coords vector of the neighbour block that was changed
@@ -697,7 +694,7 @@ declare namespace Block {
 	}
 
 	/**
-	 * Function used to define how the block will behave when the player clicks on it
+	 * Function used to define how the block will behave when the player clicks on it.
 	 * @param coords set of all coordinate values that can be useful to write 
 	 * custom logics on click
 	 * @param item item that was in the player's hand when he touched the block

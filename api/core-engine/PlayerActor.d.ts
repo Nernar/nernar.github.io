@@ -1,6 +1,7 @@
 
 /**
  * Class to manipulate with separate players.
+ * @remarks
  * It is temporary! It exists only 1 server tick!
  */
 declare class PlayerActor {
@@ -22,7 +23,7 @@ declare class PlayerActor {
     getGameMode(): number;
 
     /**
-     * Adds item to player's inventory
+     * Adds item to player's inventory.
      * @param dropRemaining if true, surplus will be dropped near player
      */
     addItemToInventory(id: number, count: number, data: number, extra: ItemExtraData | null, dropRemaining: boolean): void;

@@ -13,7 +13,7 @@ declare module com {
                                 closeOnBackPressed: boolean;
                                 currentTab: number;
                                 /**
-                                 * Sets window location (bounds) to draw window within
+                                 * Sets window location (bounds) to draw window within.
                                  * @param location location to be used for the tabbed window
                                  */
                                 setLocation(location: UIWindowLocation): void;
@@ -34,20 +34,26 @@ declare module com {
                                  */
                                 getGlobalTabSize(): number;
                                 /**
-                                 * Constructs new {@link UI.TabbedWindow} with specified location
+                                 * Constructs new {@link UI.TabbedWindow} with specified location.
                                  * @param loc location to be used for the tabbed window
                                  */
                                 constructor(loc: UIWindowLocation);
                                 /**
-                                 * Constructs new {@link UI.TabbedWindow} with specified content
+                                 * Constructs new {@link UI.TabbedWindow} with specified content.
                                  * @param content object containing window description
                                  */
                                 constructor(content: TabbedWindowContent);
                                 /**
-                                 * Sets content of the tab
-                                 * @param index index of the tab. There are 12 tabs available, from 0 to
-                                 * 11. The location of the tabs is as follows:
-                                 * ```
+                                 * Sets content of the tab.
+                                 * @param index index of the tab; there are 12 tabs available, from 0 to
+                                 * 11
+                                 * @param tabOverlay content of the tab selector
+                                 * @param tabContent content of the window to be created for the tab
+                                 * @param isAlwaysSelected if `true`, tab is always displayed as selected;
+                                 * default value is `false`
+                                 * @remarks
+                                 * The location of the tabs is as follows:
+                                 * ```txt
                                  * 0    6
                                  * 1    7
                                  * 2    8
@@ -55,16 +61,29 @@ declare module com {
                                  * 4    10
                                  * 5    11
                                  * ```
-                                 * @param tabOverlay content of the tab selector
-                                 * @param tabContent content of the window to be created for the tab
-                                 * @param isAlwaysSelected if true, tab is always displayed as selected.
-                                 * Default value is false
                                  */
                                 setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent, isAlwaysSelected: boolean): void;
+                                /**
+                                 * Sets content of the tab.
+                                 * @param index index of the tab; there are 12 tabs available, from 0 to
+                                 * 11
+                                 * @param tabOverlay content of the tab selector
+                                 * @param tabContent content of the window to be created for the tab
+                                 * @remarks
+                                 * The location of the tabs is as follows:
+                                 * ```txt
+                                 * 0    6
+                                 * 1    7
+                                 * 2    8
+                                 * 3    9
+                                 * 4    10
+                                 * 5    11
+                                 * ```
+                                 */
                                 setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent): void;
                                 /**
-                                 * Creates fake tab with no content
-                                 * @param index index of the tab, see {@link TabbedWindow.setTab} for 
+                                 * Creates fake tab with no content.
+                                 * @param index index of the tab, see {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setTab#1|UI.TabbedWindow.setTab} for 
                                  * details
                                  * @param tabOverlay content of the tab selector
                                  */
@@ -87,38 +106,38 @@ declare module com {
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
                                 getContent(): Nullable<TabbedWindowContent>;
                                 getContainer(): Nullable<container.UiAbstractContainer>;
-                                setContainer(con: container.UiAbstractContainer): void;
+                                setContainer(container: container.UiAbstractContainer): void;
                                 setDebugEnabled(debug: boolean): void;
                                 setEventListener(listener: IWindowEventListener): void;
                                 setTabEventListener(index: number, listener: IWindowEventListener): void;
                                 onTabSelected(index: number): void;
                                 /**
-                                 * Specifies whether the window should darken and block background. 
-                                 * Default value is false
-                                 * @param b pass true if you want the window to block 
+                                 * Specifies whether the window should darken and block background.
+                                 * @param enabled pass `true` if you want the window to block 
                                  * background
+                                 * @default false
                                  */
-                                setBlockingBackground(b: boolean): void;
+                                setBlockingBackground(enabled: boolean): void;
                                 /**
-                                 * @returns Current default tab index. If no default tab was specified 
-                                 * via {@link UI.TabbedWindow.setDefaultTab},
+                                 * @returns Current default tab index. If no default tab was specified
+                                 * via {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setDefaultTab|UI.TabbedWindow.setDefaultTab},
                                  * the first tab added becomes default.
                                  */
                                 getDefaultTab(): number;
                                 /**
-                                 * Sets default tab index
+                                 * Sets default tab index.
                                  * @param tab index of the tab to be opened by default
                                  */
                                 setDefaultTab(tab: number): void;
                                 /**
                                  * Sets new style object as current window's style. If the new style is
-                                 * a different object then an old one, forces window invalidation
+                                 * a different object then an old one, forces window invalidation.
                                  * @param style {@link UI.Style} object to be used as style for the window
                                  */
                                 setStyle(style: types.UIStyle): void;
                                 /**
-                                 * Overrides style properties of the current style by the values 
-                                 * specified in the style parameter
+                                 * Overrides style properties of the current style by the values
+                                 * specified in the style parameter.
                                  * @param style js object where keys represent binding names and values
                                  * represent texture gui names
                                  */

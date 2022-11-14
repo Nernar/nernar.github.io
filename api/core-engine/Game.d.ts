@@ -4,7 +4,7 @@
 declare namespace Game {
     /**
      * Prevents current callback function from being called in Minecraft.
-     * For most callbacks it prevents default game behaviour
+     * For most callbacks it prevents default game behavior.
      */
     function prevent(): void;
 
@@ -16,28 +16,28 @@ declare namespace Game {
     function isActionPrevented(): boolean;
 
     /**
-     * Writes message to the chat. Message can be formatted using 
+     * Writes message to the chat. Message can be formatted using
      * {@link EColor} values.
      * @param msg message to be displayed
      */
     function message(msg: string): void;
 
     /**
-     * Writes message above the hot bar. Message can be formatted using 
-     * {@link EColor} values
+     * Writes message above the hot bar. Message can be formatted using
+     * {@link EColor} values.
      * @param msg message to be displayed
      */
     function tipMessage(msg: string): void;
 
     /**
-     * Displays android AlertDialog with given message and dialog title
+     * Displays android AlertDialog with given message and dialog title.
      * @param message message to be displayed
      * @param title title of the AlertDialog
      */
     function dialogMessage(message: string, title: string): void;
 
     /**
-     * Sets game difficulty, one of {@link EGameDifficulty} values
+     * Sets game difficulty, one of {@link EGameDifficulty} values.
      * @param difficulty game difficulty to be set
      */
     function setDifficulty(difficulty: number): void;
@@ -49,7 +49,7 @@ declare namespace Game {
     function getDifficulty(): number;
 
     /**
-     * Sets current level game mode
+     * Sets current level game mode.
      * @param gameMode new game mode, should be one of the {@link EGameMode}
      * values
      */
@@ -76,7 +76,7 @@ declare namespace Game {
     function isItemSpendingAllowed(player?: number): boolean;
 
     /**
-     * true if developer mode was enabled in Inner Core config, false otherwise
+     * `true` if developer mode was enabled in Inner Core config, `false` otherwise.
      */
     const isDeveloperMode: boolean;
 }

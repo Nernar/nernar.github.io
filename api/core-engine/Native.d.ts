@@ -1,5 +1,5 @@
 /**
- * Module containing enums that can make user code more readable
+ * Module containing enums that can make user code more readable.
  * @deprecated Consider specified sub-enum to determine which
  * rellocation must be used.
  */
@@ -368,8 +368,8 @@ declare namespace Native {
     }
 
     /**
-     * Defines what enchantments can or cannot be applied to every instrument 
-     * type.
+     * Defines what enchantments can or cannot be applied to every
+     * instrument type.
      * @deprecated Use {@link EEnchantType} instead.
      */
     enum EnchantType {
@@ -431,7 +431,7 @@ declare namespace Native {
     }
 
     /**
-     * Defines player's abilities. See {@page Abilities} for details.
+     * Defines player's abilities.
      * @deprecated Use {@link EPlayerAbility} instead.
      */
     enum PlayerAbility {
