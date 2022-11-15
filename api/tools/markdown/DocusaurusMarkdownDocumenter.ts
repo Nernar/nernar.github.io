@@ -470,6 +470,15 @@ displayed_sidebar: defaultSidebar`)
 slug: ${ path.basename(relpath) }`);
 				}
 			}
+			if (apiItem instanceof ApiDocumentedItem) {
+				const section = apiItem.tsdocComment?.customBlocks
+					.find(value => value.blockTag.tagName == '@since')?.content;
+				section && (pageContent = pageContent.replace(
+					'---',
+					`---
+since: ${ this._markdownEmitter.emit(new StringBuilder(), section, null).trim() }`
+				));
+			}
 		} else {
 			pageContent = '---' + pageContent.substring(pageContent.indexOf('\n', pageContent.indexOf('\n') + 1));
 		}

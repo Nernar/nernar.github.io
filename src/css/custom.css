@@ -72,6 +72,10 @@ button.clean-btn.navbar-sidebar__back {
 	margin-top: 0;
 }
 
+.div > .badge:not(:last-child) {
+  margin-right: var(--ifm-toc-padding-horizontal);
+}
+
 /* Navigation to GitHub repository */
 /* TODO: Make responsive to better in-mobile experience */
 .header-github-link:hover {
