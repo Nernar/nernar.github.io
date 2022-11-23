@@ -34,8 +34,25 @@ declare namespace Callback {
 
     function addCallback(name: "CoreConfigured", func: CoreConfiguredFunction, priority?: number): void;
 
+    function addCallback(name: "PreLoaded", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "APILoaded", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "ModsLoaded", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "PostLoaded", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "PreBlocksDefined", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "BlocksDefined", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "AddRuntimePacks", func: { (): void }, priority?: number): void;
+
     function addCallback(name: "LevelSelected", func: LevelSelectedFunction, priority?: number): void;
 
+    /**
+     * @since 2.0.4b37
+     */
     function addCallback(name: "DimensionLoaded", func: DimensionLoadedFunction, priority?: number): void;
 
     function addCallback(name: "DestroyBlock", func: DestroyBlockFunction, priority?: number): void;
@@ -47,6 +64,11 @@ declare namespace Callback {
     function addCallback(name: "BuildBlock", func: BuildBlockFunction, priority?: number): void;
 
     function addCallback(name: "BlockChanged", func: BlockChangedFunction, priority?: number): void;
+
+    /**
+     * @since 2.2.0b83
+     */
+    function addCallback(name: "BreakBlock", func: BreakBlockFunction, priority?: number): void;
 
     function addCallback(name: "ItemUse", func: ItemUseFunction, priority?: number): void;
 
@@ -68,11 +90,23 @@ declare namespace Callback {
 
     function addCallback(name: "EntityRemoved", func: EntityRemovedFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b93
+     */
+    function addCallback(name: "EntityAddedLocal", func: EntityAddedFunction, priority?: number): void;
+
+    /**
+     * @since 2.2.1b93
+     */
+    function addCallback(name: "EntityRemovedLocal", func: EntityRemovedFunction, priority?: number): void;
+
     function addCallback(name: "EntityDeath", func: EntityDeathFunction, priority?: number): void;
 
     function addCallback(name: "EntityHurt", func: EntityHurtFunction, priority?: number): void;
 
     function addCallback(name: "EntityInteract", func: EntityInteractFunction, priority?: number): void;
+
+    function addCallback(name: "ExpOrbsSpawned", func: ExpOrbsSpawnedFunction, priority?: number): void;
 
     function addCallback(name: "ProjectileHit", func: ProjectileHitFunction, priority?: number): void;
 
@@ -94,6 +128,26 @@ declare namespace Callback {
 
     function addCallback(name: "NativeGuiChanged", func: NativeGuiChangedFunction, priority?: number): void;
 
+    /**
+     * @since 2.2.1b105
+     */
+    function addCallback(name: "EnchantPostAttack", func: CustomEnchant.DamageCallback, priority?: number): void;
+
+    /**
+     * @since 2.2.1b105
+     */
+    function addCallback(name: "EnchantGetProtectionBonus", func: CustomEnchant.ProtectionBonusProvider, priority?: number): void;
+
+    /**
+     * @since 2.2.1b105
+     */
+    function addCallback(name: "EnchantGetDamageBonus", func: CustomEnchant.AttackDamageBonusProvider, priority?: number): void;
+
+    /**
+     * @since 2.2.1b105
+     */
+    function addCallback(name: "EnchantPostHurt", func: CustomEnchant.DamageCallback, priority?: number): void;
+
     function addCallback(name: "GenerateChunk", func: GenerateChunkFunction, priority?: number): void;
 
     /**
@@ -107,7 +161,20 @@ declare namespace Callback {
 
     function addCallback(name: "GenerateChunkUniversal", func: GenerateChunkFunction, priority?: number): void;
 
+    /**
+     * @since 2.0.1b11
+     */
     function addCallback(name: "GenerateBiomeMap", func: GenerateChunkFunction, priority?: number): void;
+
+    /**
+     * @since 2.2.0b84
+     */
+    function addCallback(name: "PreProcessChunk", func: GenerateChunkFunction, priority?: number): void;
+
+    /**
+     * @since 2.2.0b84
+     */
+    function addCallback(name: "PostProcessChunk", func: GenerateChunkFunction, priority?: number): void;
 
     function addCallback(name: "ReadSaves", func: SavesFunction, priority?: number): void;
 
@@ -115,7 +182,9 @@ declare namespace Callback {
 
     function addCallback(name: "CustomBlockTessellation", func: CustomBlockTessellationFunction, priority?: number): void;
 
-    function addCallback(name: "ServerPlayerTick", func: ServerPlayerTickFunction, priority?: number): void;
+    function addCallback(name: "LocalPlayerTick", func: PlayerTickFunction, priority?: number): void;
+
+    function addCallback(name: "ServerPlayerTick", func: PlayerTickFunction, priority?: number): void;
 
     function addCallback(name: "CustomDimensionTransfer", func: CustomDimensionTransferFunction, priority?: number): void;
 
@@ -127,41 +196,87 @@ declare namespace Callback {
 
     function addCallback(name: "PopBlockResources", func: PopBlockResourcesFunction, priority?: number): void;
 
+    /**
+     * @since 2.1.0b57
+     */
     function addCallback(name: "ConnectingToHost", func: ConnectingToHostFunction, priority?: number): void;
 
+    /**
+     * @since 2.0.4b37
+     */
     function addCallback(name: "DimensionUnloaded", func: DimensionUnloadedFunction, priority?: number): void;
 
-    function addCallback(name: "LevelPreLeft", func: {(): void}, priority?: number): void;
+    function addCallback(name: "LevelPreLeft", func: { (): void }, priority?: number): void;
 
-    function addCallback(name: "LevelLeft", func: {(): void}, priority?: number): void;
+    function addCallback(name: "GameLeft", func: { (): void }, priority?: number): void;
 
+    function addCallback(name: "LevelLeft", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "LocalLevelLeft", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "LocalLevelPreLeft", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "ServerLevelLeft", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "ServerLevelPreLeft", func: { (): void }, priority?: number): void;
+
+    /**
+     * @since 2.1.0b57
+     */
     function addCallback(name: "ItemUseLocal", func: ItemUseLocalFunction, priority?: number): void;
 
     function addCallback(name: "SystemKeyEventDispatched", func: SystemKeyEventDispatchedFunction, priority?: number): void;
 
-    function addCallback(name: "NavigationBackPressed", func: {(): void}, priority?: number): void;
+    function addCallback(name: "NavigationBackPressed", func: { (): void }, priority?: number): void;
 
-    function addCallback(name: "LevelCreated", func: {(): void}, priority?: number): void;
+    function addCallback(name: "LevelCreated", func: { (): void }, priority?: number): void;
 
-    function addCallback(name: "LevelDisplayed", func: {(): void}, priority?: number): void;
+    function addCallback(name: "LevelDisplayed", func: { (): void }, priority?: number): void;
 
     function addCallback(name: "LevelPreLoaded", func: LevelLoadedFunction, priority?: number): void;
 
     function addCallback(name: "LevelLoaded", func: LevelLoadedFunction, priority?: number): void;
 
-    function addCallback(name: "LocalLevelLoaded", func: {(): void}, priority?: number): void;
+    function addCallback(name: "LocalLevelLoaded", func: { (): void }, priority?: number): void;
 
-    function addCallback(name: "LocalTick", func: {(): void}, priority?: number): void;
+    function addCallback(name: "RemoteLevelLoaded", func: { (): void }, priority?: number): void;
 
-    function addCallback(name: "AppSuspended", func: {(): void}, priority?: number): void;
+    function addCallback(name: "RemoteLevelPreLoaded", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "ServerLevelLoaded", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "ServerLevelPreLoaded", func: { (): void }, priority?: number): void;
+
+    /**
+     * @deprecated Use `LocalTick` instead.
+     */
+    function addCallback(name: "tick", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "LocalTick", func: { (): void }, priority?: number): void;
+
+    function addCallback(name: "AppSuspended", func: { (): void }, priority?: number): void;
 
     function addCallback(name: "EntityPickUpDrop", func: EntityPickUpDropFunction, priority?: number): void;
 
+    function addCallback(name: "LocalPlayerLoaded", func: PlayerFunction, priority?: number): void;
+
     function addCallback(name: "ServerPlayerLoaded", func: PlayerFunction, priority?: number): void;
-    
+
     function addCallback(name: "ServerPlayerLeft", func: PlayerFunction, priority?: number): void;
 
+    function addCallback(name: "LocalPlayerChangedDimension", func: PlayerChangedDimensionFunction, priority?: number): void;
+
+    function addCallback(name: "PlayerChangedDimension", func: PlayerChangedDimensionFunction, priority?: number): void;
+
+    function addCallback(name: "LocalPlayerEat", func: PlayerEatFunction, priority?: number): void;
+
+    function addCallback(name: "ServerPlayerEat", func: PlayerEatFunction, priority?: number): void;
+
     function addCallback(name: "GenerateCustomDimensionChunk", func: GenerateCustomDimensionChunkFunction, priority?: number): void;
+
+    function addCallback(name: "TileEntityAdded", func: TileEntityAddedFunction, priority?: number): void;
+
+    function addCallback(name: "TileEntityRemoved", func: TileEntityRemovedFunction, priority?: number): void;
 
     /**
      * Invokes callback with any name and up to 10 additional parameters. You
@@ -268,11 +383,23 @@ declare namespace Callback {
 
     /**
      * Function used in "DimensionLoaded" callback.
-     * @param dimension vanilla dimension ID, one of the {@link EDimension}
+     * @param currentId vanilla dimension ID, one of the {@link EDimension}
      * values, or custom dimension ID
+     * @param lastId previous unloaded dimension ID
      */
     interface DimensionLoadedFunction {
-        (dimension: number): void
+        (currentId: number, lastId: number): void
+    }
+
+    /**
+     * Function used in "LocalPlayerChangedDimension" and "PlayerChangedDimension" callback.
+     * @param player player entity unique numeric ID
+     * @param currentId vanilla dimension ID, one of the {@link EDimension}
+     * values, or custom dimension ID
+     * @param lastId previous unloaded dimension ID
+     */
+    interface PlayerChangedDimensionFunction {
+        (player: number, currentId: number, lastId: number): void
     }
 
     /**
@@ -320,13 +447,26 @@ declare namespace Callback {
     }
 
     /**
+     * Function used in "BreakBlock" callback.
+     * @param region BlockSource object
+     * @param coords coordinates where the block is placed and side from
+     * where it is placed
+     * @param block block that is placed
+     * @param player player entity unique numeric ID
+     * @param item item that was in the player's hand when it breaked the block
+     */
+    interface BreakBlockFunction {
+        (region: BlockSource, coords: ItemUseCoordinates, block: Tile, dropAllowed: boolean, player: number, item: ItemInstance): void
+    }
+
+    /**
      * Function used in "ItemUse" and "ItemUseLocalServer" callbacks.
      * @param coords set of all coordinate values that can be useful to write 
      * custom use logics
-     * @param item item that was in the player's hand when he touched the block
+     * @param item item that was in the player's hand when it touched the block
      * @param block block that was touched
      * @param isExternal
-     * @param player player entity uID
+     * @param player player entity UID
      */
     interface ItemUseFunction {
         (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, player: number): void
@@ -337,9 +477,9 @@ declare namespace Callback {
      * {@link Item.registerUseFunction} and {@link Item.registerUseFunctionForID} methods.
      * @param coords set of all coordinate values that can be useful to write 
      * custom use logics
-     * @param item item that was in the player's hand when he touched the block
+     * @param item item that was in the player's hand when it touched the block
      * @param block block that was touched
-     * @param player player entity uID
+     * @param player player entity UID
      */
     interface ItemUseLocalFunction {
         (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, player: number): void
@@ -365,10 +505,21 @@ declare namespace Callback {
      * {@link Entity.getCarriedItem#1} to get info about food item.
      * @param food food amount produced by eaten food
      * @param ratio saturation ratio produced by food
-     * @param player player entity uID
+     * @param player player entity UID
      */
     interface FoodEatenFunction {
         (food: number, ratio: number, player: number): void
+    }
+
+    /**
+     * Function used in the "LocalPlayerEat" and "ServerPlayerEat" callback.
+     * You can use {@link Entity.getCarriedItem#1} to get info about food item.
+     * @param player player entity UID
+     * @param food food amount produced by eaten food
+     * @param ratio saturation ratio produced by food
+     */
+    interface PlayerEatFunction {
+        (player: number, food: number, ratio: number): void
     }
 
     /**
@@ -390,12 +541,37 @@ declare namespace Callback {
     }
 
     /**
+     * Function used in "ExpOrbsSpawned" callback.
+     * @param region BlockSource object
+     * @param amount amount of experience to be added
+     * @param coords dropped orbs entity coordinates
+     * @param player player entity unique numeric ID
+     */
+    interface ExpOrbsSpawnedFunction {
+        (region: BlockSource, amount: number, coords: Vector, player: number): void
+    }
+
+    /**
      * Function used in "NativeCommand" callback.
      * @param command command that was entered or null if no command was 
      * provided
      */
     interface NativeCommandFunction {
         (command: Nullable<string>): void
+    }
+
+    /**
+     * Function used in "TileEntityAdded" callback.
+     */
+     interface TileEntityAddedFunction {
+        (updatable: Updatable | TileEntity, isTileEntity: boolean): void
+    }
+
+    /**
+     * Function used in "TileEntityRemoved" callback.
+     */
+     interface TileEntityRemovedFunction {
+        (updatable: Updatable | TileEntity): void
     }
 
     /**
@@ -602,11 +778,11 @@ declare namespace Callback {
     }
 
 	/**
-     * Function used in "ServerPlayerTick" callback.
+     * Function used in "LocalPlayerTick" and "ServerPlayerTick" callback.
      * @param playerUid player entity unique ID
      * @param isPlayerDead is following player dead
      */
-    interface ServerPlayerTickFunction {
+    interface PlayerTickFunction {
         (playerUid: number, isPlayerDead?: boolean): void
     }
 
@@ -624,7 +800,7 @@ declare namespace Callback {
      * Function used in "ConnectingToHost" callback.
      */
     interface ConnectingToHostFunction {
-        (host: string, someInt: number, port: number): void
+        (host: string, minecraftPort: number, moddedPort: number): void
     }
 
     /**
@@ -636,10 +812,10 @@ declare namespace Callback {
 
     /**
      * Function used in "SystemKeyEventDispatched" callback.
-     * @todo understand the meaning of the params
+     * @param key key code in Java
      */
     interface SystemKeyEventDispatchedFunction {
-        (someInt: number, someInt2: number): void
+        (key: number, state: number): void
     }
 
     /**
@@ -647,7 +823,7 @@ declare namespace Callback {
      * @todo understand param's meaning
      */
     interface LevelLoadedFunction {
-        (someBool: boolean): void
+        (isServer: boolean): void
     }
 
     /**
@@ -663,7 +839,7 @@ declare namespace Callback {
     }
 
     /**
-     * Function used in "ServerPlayerLoaded" and "ServerPlayerLeft" callback.
+     * Function used in "LocalPlayerLoaded", "ServerPlayerLoaded" and "ServerPlayerLeft" callback.
      * @param player unique ID of the player entity, that has been connected to server
      */
     interface PlayerFunction {
