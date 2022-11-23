@@ -1,13 +1,13 @@
 // @ts-check
-import React from "react";
-import DocCardList from "@theme/DocCardList";
+import React from 'react';
+import DocCardList from '@theme/DocCardList';
 // @ts-ignore
-import { useDocsSidebar } from "@docusaurus/theme-common/internal";
+import { useDocsSidebar } from '@docusaurus/theme-common/internal';
 
 export default function DocMap({ exploreCategories, includeCategories }) {
 	const sidebarItems = [];
-	useDocsSidebar()?.items?.forEach(element => {
-		if (exploreCategories && element.type == "category") {
+	useDocsSidebar()?.items?.forEach((/** @type {{ type: string; items: any[]; }} */ element) => {
+		if (exploreCategories && element.type == 'category') {
 			if (includeCategories) {
 				sidebarItems.push(element);
 			}
@@ -19,7 +19,7 @@ export default function DocMap({ exploreCategories, includeCategories }) {
 		}
 	});
 	return (
-		<article className="margin-top--lg">
+		<article className='margin-top--lg'>
 			<DocCardList items={ sidebarItems } />
 		</article>
 	);

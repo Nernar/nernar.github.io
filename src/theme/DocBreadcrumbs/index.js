@@ -20,14 +20,14 @@ function BreadcrumbsItemLink({ children, href, isLast }) {
 	const className = 'breadcrumbs__link';
 	if (isLast) {
 		return (
-			<span className={ className } itemProp="name">
+			<span className={ className } itemProp='name'>
 				{ children }
 			</span>
 		);
 	}
 	return href ? (
-		<Link className={ className } href={ href } itemProp="item">
-			<span itemProp="name">{ children }</span>
+		<Link className={ className } href={ href } itemProp='item'>
+			<span itemProp='name'>{ children }</span>
 		</Link>
 	) : (
 		<span className={ className }>{ children }</span>
@@ -46,7 +46,7 @@ function BreadcrumbsItem({ children, active, index, addMicrodata }) {
 				'breadcrumbs__item--active': active,
 			}) }>
 			{ children }
-			<meta itemProp="position" content={ String(index + 1) } />
+			<meta itemProp='position' content={ String(index + 1) } />
 		</li>
 	);
 }
@@ -54,7 +54,7 @@ function BreadcrumbsItem({ children, active, index, addMicrodata }) {
 function HomeBreadcrumbItem({ href, docs }) {
 	const homeHref = docs.find((doc) => doc.id === href)?.path || useBaseUrl('/');
 	return (
-		<li className="breadcrumbs__item">
+		<li className='breadcrumbs__item'>
 			<Link
 				aria-label={ translate({
 					id: 'theme.docs.breadcrumbs.home',
@@ -89,9 +89,9 @@ export default function DocBreadcrumbs() {
 				description: 'The ARIA label for the breadcrumbs',
 			}) }>
 			<ul
-				className="breadcrumbs"
+				className='breadcrumbs'
 				itemScope
-				itemType="https://schema.org/BreadcrumbList">
+				itemType='https://schema.org/BreadcrumbList'>
 				{ homePageRoute && <HomeBreadcrumbItem href={ homePageRoute } docs={ activeRoutes } /> }
 				{ breadcrumbs.map((item, idx) => {
 					const isLast = idx === breadcrumbs.length - 1;

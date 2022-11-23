@@ -1,4 +1,3 @@
-// @ts-check
 /*
 
     Inner Core Docs: Inner Core, Core Engine and Horizon documentation
@@ -20,6 +19,7 @@
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
 */
+// @ts-check
 
 module.exports = {
 	presets: [

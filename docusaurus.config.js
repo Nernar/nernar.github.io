@@ -1,4 +1,3 @@
-// @ts-check
 /*
 
     Inner Core Docs: Inner Core, Core Engine and Horizon documentation
@@ -20,9 +19,11 @@
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
 */
+// @ts-check
 
 const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const webpack = require('webpack');
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -93,7 +94,65 @@ module.exports =
 						});
 					}
 				})
-			]
+			],
+			function() {
+				// Required mostly by playground.
+				return {
+					name: 'resolve-webpack-polyfills',
+					configureWebpack: function() {
+						return {
+							resolve: {
+
+								fallback: {
+									assert: require.resolve('assert'),
+									buffer: require.resolve('buffer/'),
+									child_process: false,
+									constants: require.resolve('constants-browserify'),
+									crypto: require.resolve('crypto-browserify'),
+									fs: false,
+									'fs-extra': false,
+									'graceful-fs': false,
+									module: false,
+									os: require.resolve('os-browserify/browser'),
+									path: require.resolve('path-browserify'),
+									stream: require.resolve('stream-browserify'),
+									url: require.resolve('url/')
+								}
+							},
+							plugins: [
+								new webpack.ProvidePlugin({
+									Buffer: ['buffer', 'Buffer'],
+									process: 'process/browser'
+								}),
+								new webpack.DefinePlugin({
+									// node_modules/@docusaurus/utils/src/constants.ts
+									'process.versions.node': JSON.stringify(process.versions.node),
+									// TODO: I misery doesn't know why it's not working
+									'typeof fs.realpath.native': JSON.stringify('undefined')
+								}),
+								/* new webpack.IgnorePlugin({
+									checkResource: function(resource, context) {
+										if (resource == 'fs-extra') {
+											console.log('!');
+										}
+										return resource == 'fs-extra';
+									}
+								}) */
+							],
+							module: {
+								rules: [
+									{
+										test: /\.m?js$/,
+										resolve: {
+											fullySpecified: false
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
 		],
 
 		themeConfig:

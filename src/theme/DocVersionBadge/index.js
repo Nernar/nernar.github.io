@@ -8,8 +8,8 @@ import { useDoc, useDocsVersion } from '@docusaurus/theme-common/internal';
 
 export default function DocVersionBadge({ className }) {
   const versionMetadata = useDocsVersion();
-  const { frontMatter } = useDoc();
-  if (!(versionMetadata.badge || frontMatter.since)) {
+  const doc = (() => { try { return useDoc() } catch (e) {} })();
+  if (!(versionMetadata.badge || doc?.frontMatter?.since)) {
     return null;
   }
   return (
@@ -22,22 +22,22 @@ export default function DocVersionBadge({ className }) {
             'badge badge--secondary',
           )}>
           <Translate
-            id="theme.docs.versionBadge.label"
+            id='theme.docs.versionBadge.label'
             values={{ versionLabel: versionMetadata.label }}>
             {'Version: {versionLabel}'}
           </Translate>
         </span>)
       }
       {
-        frontMatter.since && (<span
+        doc?.frontMatter?.since && (<span
           className={clsx(
             className,
             ThemeClassNames.docs.docVersionBadge,
             'badge badge--primary',
           )}>
           <Translate
-            id="theme.api.sinceBadge.label"
-            values={{ versionLabel: frontMatter.since }}>
+            id='theme.api.sinceBadge.label'
+            values={{ versionLabel: doc.frontMatter.since }}>
             {'Since: {versionLabel}'}
           </Translate>
         </span>)
