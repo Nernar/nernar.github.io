@@ -5,22 +5,28 @@ declare namespace Particles {
     /**
      * Custom particle's animator params object.
      */
-    interface AnimatorDescription {
+    interface IAnimatorDescription {
         /**
          * Animator's period in ticks, if it's less than zero or not listed,
          * it'll be particle's lifetime.
          */
-        period?: number;
-        /**
-         * Appearance moment in the proportions of the period.
-         * @default 0
-         */
-        fadeIn?: number;
-        /**
-         * Disappearance moment in the proportions of the period.
-         * @default 0
-         */
-        fadeOut?: number;
+         period?: number;
+         /**
+          * Appearance moment in the proportions of the period.
+          * @default 0
+          */
+         fadeIn?: number;
+         /**
+          * Disappearance moment in the proportions of the period.
+          * @default 0
+          */
+         fadeOut?: number;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    interface AnimatorDescription extends IAnimatorDescription {
         /**
          * Initial value.
          * @default 0
@@ -31,6 +37,22 @@ declare namespace Particles {
          * @default 0
          */
         end?: number;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    interface ColorAnimatorDescription extends IAnimatorDescription {
+        /**
+         * Initial value.
+         * @default [1, 1, 1, 1]
+         */
+        start?: [number, number, number, number];
+        /**
+         * Ending value.
+         * @default [1, 1, 1, 1]
+         */
+         end?: [number, number, number, number];
     }
 
     /**
@@ -104,6 +126,10 @@ declare namespace Particles {
          */
         color?: [number, number, number, number];
         /**
+         * @since 2.0.4b38
+         */
+        color2?: [number, number, number, number];
+        /**
          * If `true`, particle won't go through blocks. It reduces performance if
          * there are lots of these particles.
          * @default false.
@@ -154,12 +180,27 @@ declare namespace Particles {
          */
         isUsingBlockLight?: boolean;
         /**
+         * Animation frame grid size around width.
+         * @since 2.0.4b38
+         */
+        framesX?: number;
+        /**
+         * Animation frame grid size around height.
+         * @since 2.0.4b38
+         */
+        framesY?: number;
+        /**
+         * Time in ticks between particle mesh updates.
+         * @since 2.0.4b38
+         */
+        rebuildDelay?: number;
+        /**
          * Animators allow to change some properties of the specific particle depending on the time,
          * each animator is described as an object of definite format and can be not described, if it's not needed.
          */
         animators?: {
             /**
-             * Describes the behaviour of particle's size,
+             * Describes the behavior of particle's size,
              * for the unit size the size from the type's description is taken.
              */
             size?: AnimatorDescription;
@@ -170,7 +211,7 @@ declare namespace Particles {
             alpha?: AnimatorDescription;
             /**
              * Describes the animation frame, if particle supports it.
-             * Must have the value between 0 and 1
+             * Must have the value between 0 and 1.
              * @deprecated Use `icon` instead.
              */
             texture?: AnimatorDescription;
@@ -179,6 +220,12 @@ declare namespace Particles {
              * Must have the value between 0 and 1.
              */
             icon?: AnimatorDescription;
+            /**
+             * Describes the animated color value, if particle supports it.
+             * Accepts values in RGBA ranges, like `color` property in descriptor.
+             * @since 2.0.4b38
+             */
+            color?: ColorAnimatorDescription;
         }
         /**
          * Sub-emitters (don't confuse with emitters) describe how specific particle
