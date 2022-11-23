@@ -1,3 +1,6 @@
+/**
+ * @since 2.2.1b85
+ */
 declare namespace ModPack {
 
     /**

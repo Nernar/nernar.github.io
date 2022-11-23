@@ -157,8 +157,9 @@ declare namespace ICRender {
 
 	/**
 	 * Condition depending on random value.
+	 * @since 2.0.2b23
 	 */
-	class RANDOM_CONDITION implements CONDITION {
+	abstract class RANDOM_CONDITION implements CONDITION {
 		/**
 		 * Forces engine to treat blocks along some axis in same way if enabled
 		 * parameter value is `false.`
@@ -173,6 +174,7 @@ declare namespace ICRender {
 	 * condition to evaluate as true
 	 * @param max maximum value for the generator
 	 * @param seed seed to be used for random numbers generation
+	 * @since 2.0.2b23
 	 */
 	function RANDOM(value: number, max: number, seed?: number): RANDOM_CONDITION;
 
@@ -180,8 +182,9 @@ declare namespace ICRender {
 	 * Constructs new {@link ICRender.RANDOM#1} condition with default seed and `0` as
 	 * desired random value.
 	 * @param max maximum value for the generator
+	 * @since 2.0.2b23
 	 */
-	function RANDOM(max: number): CONDITION;
+	function RANDOM(max: number): RANDOM_CONDITION;
 
 	/**
 	 * Constructs new {@link ICRender.BLOCK} condition.

@@ -114,8 +114,8 @@ declare namespace GenerationUtils {
      * block IDs are used as a blacklist (only the IDs from the list canNOT be 
      * replaced with ores)
      * @param listOfIds array of block IDs to be used as whitelist or blacklist
-     * 
      * See {@link GenerationUtils.generateOre} for details.
+     * @since 2.0.1b17
      */
     function generateOreCustom(x: number, y: number, z: number, id: number, data: number, amount: number, mode: boolean, listOfIds: number[], seed?: number): void;
 
@@ -127,6 +127,7 @@ declare namespace GenerationUtils {
      * @param numOctaves number of octaves, the more octaves you use, the more 
      * detailed is the generated noise. The next octave is two times smaller then 
      * the previous one
+     * @since 2.0.1b11
      */
     function getPerlinNoise(x: number, y: number, z: number, seed?: number, scale?: number, numOctaves?: number): number;
 }

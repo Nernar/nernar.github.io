@@ -91,12 +91,12 @@ declare module com {
                     setCustomName(name: string): void;
                     /**
                      * @returns Compound tag for the specified item.
-                     * @deprecated Temporarily disabled!
+                     * @since 2.0.5b44
                      */
                     getCompoundTag(): Nullable<NBT.CompoundTag>;
                     /**
                      * Sets compound tag for the specified item.
-                     * @deprecated Temporarily disabled!
+                     * @since 2.0.5b44
                      */
                     setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
                     /**

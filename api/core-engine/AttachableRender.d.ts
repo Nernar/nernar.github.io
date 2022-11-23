@@ -1,5 +1,6 @@
 /**
  * Class used to attach attachables to entities.
+ * @since 2.2.0b75
  */
 declare class AttachableRender {
 

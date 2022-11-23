@@ -55,6 +55,7 @@ declare namespace Block {
 	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously registered
+	 * @since 2.2.1b102
 	 */
 	function createLiquidBlock(nameID: string, defineData: LiquidDescriptor, blockType?: SpecialType | string): void;
 
@@ -300,6 +301,7 @@ declare namespace Block {
 	 * Makes block receive redstone signals via "RedstoneSignal" callback.
 	 * @param nameID block numeric or string ID
 	 * @param connectToRedstone if true, redstone wires will connect to the block
+	 * @since 2.0.2b23
 	 */
 	function setupAsRedstoneReceiver(nameID: number | string, connectToRedstone: boolean): void;
 
@@ -307,12 +309,14 @@ declare namespace Block {
 	 * Makes block emit redstone signal.
 	 * @param nameID block numeric or string ID
 	 * @param connectToRedstone if true, redstone wires will connect to the block
+	 * @since 2.0.2b23
 	 */
 	function setupAsRedstoneEmitter(nameID: number | string, connectToRedstone: boolean): void;
 
 	/**
 	 * Removes all the redstone functionality from the block.
 	 * @param nameID block numeric or string ID
+	 * @since 2.0.2b23
 	 */
 	function setupAsNonRedstoneTile(nameID: number | string): void;
 
@@ -321,12 +325,14 @@ declare namespace Block {
 	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when neighbour block updates
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
+	 * @since 2.0.2b26
 	 */
 	function registerNeighbourChangeFunction(nameID: string | number, func: NeighbourChangeFunction): boolean;
 
 	/**
 	 * Same as {@link Block.registerNeighbourChangeFunction} but accepts only numeric
 	 * tile ID as the first param.
+	 * @since 2.0.2b26
 	 */
 	function registerNeighbourChangeFunctionForID(id: number, func: NeighbourChangeFunction): boolean;
 
@@ -335,12 +341,14 @@ declare namespace Block {
 	 * @param nameID tile string or numeric ID
 	 * @param func function to be called when entity is inside the block
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
+	 * @since 2.0.2b26
 	 */
 	function registerEntityInsideFunction(nameID: string | number, func: EntityInsideFunction): boolean
 
 	/**
 	 * Same as {@link Block.registerEntityInsideFunction} but accepts only numeric
 	 * tile ID as the first param.
+	 * @since 2.0.2b26
 	 */
 	function registerEntityInsideFunctionForID(numericID: number, func: EntityInsideFunction): boolean
 
@@ -349,12 +357,14 @@ declare namespace Block {
 	 * @param numericID tile string or numeric ID
 	 * @param func function to be called when entity step on the block
 	 * @returns `true`, if the function was registered correctly, `false` otherwise.
+	 * @since 2.0.2b26
 	 */
 	function registerEntityStepOnFunction(numericID: string | number, func: EntityStepOnFunction): boolean;
 
 	/**
 	 * Same as {@link Block.registerEntityStepOnFunction} but accepts only numeric
 	 * tile ID as the first param.
+	 * @since 2.0.2b26
 	 */
 	function registerEntityStepOnFunctionForID(id: number, func: EntityStepOnFunction): boolean;
 
@@ -362,11 +372,13 @@ declare namespace Block {
 	 * Defines custom behavior when the player clicks on the block with definite ID.
 	 * @param nameId block's numeric or string ID
 	 * @param func function that will be called when the player clicks the block with given ID
+	 * @since 2.2.1b104
 	 */
 	function registerClickFunction(nameId: string | number, func: ClickFunction): void;
 
 	/**
 	 * Same as {@link Block.registerClickFunction}, but only numeric block ID can be passed.
+	 * @since 2.2.1b104
 	 */
 	function registerClickFunctionForID(id: number, func: ClickFunction): void;
 
@@ -483,16 +495,33 @@ declare namespace Block {
 		translucency?: number,
 		/**
 		 * Block color when displayed on the vanilla maps.
+		 * @since 2.0.2b23
 		 */
 		mapcolor?: number,
 		/**
 		 * Makes block use biome color source when displayed on the vanilla maps.
+		 * @since 2.1.0b56
 		 */
 		color_source?: ColorSource,
 		/**
-		 * Specifies sounds of the block.
+		 * Specifies sounds of the block, one of {@link Sound}.
+		 * @since 2.0.2b25
 		 */
-		sound?: Sound
+		sound?: Sound,
+		/**
+		 * Whether or not block may filled by water bucket or
+		 * other custom fillable liquids.
+		 * @default false
+		 * @since 2.2.1b95
+		 */
+		can_contain_liquid?: boolean,
+		/**
+		 * Whether or not block may overlay different block,
+		 * like water overlapping fillable blocks.
+		 * @default false
+		 * @since 2.2.1b95
+		 */
+		can_be_extra_block?: boolean
 	}
 
 	/**
@@ -548,6 +577,7 @@ declare namespace Block {
 		/**
 		 * True if the liquid will be renewable, as water.
 		 * @default false
+		 * @since 2.2.1b103
 		 */
 		isRenewable?: boolean,
 		/**
@@ -586,6 +616,7 @@ declare namespace Block {
 		/**
 		 * Optional section, if added, this will create fully
 		 * functional (including dispensers) bucket items.
+		 * @since 2.2.1b103
 		 */
 		bucket?: {
 			/**
@@ -718,6 +749,7 @@ declare namespace Block {
 
 	/**
 	 * @returns Given block's material numeric ID.
+	 * @since 2.2.1b100
 	 */
 	function getMaterial(id: number): number;
 

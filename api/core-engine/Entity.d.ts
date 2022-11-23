@@ -72,6 +72,7 @@ declare namespace Entity {
     /**
      * @returns Current dimension numeric ID, one of the {@link EDimension} 
      * values or custom dimension ID.
+     * @since 2.0.4b35
      */
     function getDimension(ent: number): number;
 
@@ -99,11 +100,13 @@ declare namespace Entity {
 
     /**
      * @returns Compound tag for the specified entity.
+     * @since 2.0.5b44
      */
     function getCompoundTag(ent: number): NBT.CompoundTag;
 
     /**
      * Sets compound tag for the specified entity.
+     * @since 2.0.5b44
      */
     function setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
 
@@ -446,10 +449,18 @@ declare namespace Entity {
      * Returns array of all entities numeric IDs in given range in blocks.
      * @param coords search range center coordinates
      * @param maxRange determines search radius
-     * @param type entity type ID. Parameter is no longer supported and should 
-     * not be used
+     * @param type entity type ID
      */
     function getAllInRange(coords: Vector, maxRange: number, type?: number): number[];
+
+    /**
+     * Returns array of all entities numeric IDs in given range in blocks.
+     * @param coords1 start search range coordinates
+     * @param coords2 end search range coordinates
+     * @param type entity type ID
+     * @since 2.0.4b35
+     */
+    function getAllInsideBox(coords1: Vector, coords2: Vector, type?: number, flag?: number): number[];
 
     /**
      * @deprecated Consider use {@link Player.getInventorySlot} instead.
@@ -519,6 +530,7 @@ declare namespace Entity {
     /**
      * Creates an object used to change entity's attributes.
      * @returns Object used to manipulate entity's attributes.
+     * @since 2.0.3b33
      */
     function getAttribute(ent: number, attribute: string): AttributeInstance;
 
@@ -526,6 +538,7 @@ declare namespace Entity {
      * Creates or gets an existing {@link Entity.PathNavigation} instance for the specified mob
      * @returns Navigation used to control entity's target position and
      * the way to get there.
+     * @since 2.0.3b33
      */
     function getPathNavigation(ent: number): PathNavigation;
 
@@ -533,6 +546,7 @@ declare namespace Entity {
      * @param effectId numeric ID of the potion effect,
      * one of {@link EPotionEffect} values
      * @returns Whether the given entity is affected by the potion effect with given numeric ID.
+     * @since 2.2.1b102
      */
     function hasEffect(entity: number, effectId: number): boolean;
 
@@ -542,6 +556,7 @@ declare namespace Entity {
      * @returns Object with duration and level of the potion effect with given numeric ID
      * on the given entity. These fields are set to 0, if the given effect doesn't affect
      * the given entity at the moment.
+     * @since 2.2.1b102
      */
     function getEffect(entity: number, effectId: number): EffectInstance;
 
@@ -549,6 +564,7 @@ declare namespace Entity {
      * Object used to build path and move mobs to the required coordinates using
      * specified parameters. All the setters return current {@link Entity.PathNavigation} 
      * instance to be able to produce chained calls.
+     * @since 2.0.3b33
      */
     interface PathNavigation {
         /**

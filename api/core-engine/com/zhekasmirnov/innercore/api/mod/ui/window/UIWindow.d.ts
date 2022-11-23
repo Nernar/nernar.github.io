@@ -421,6 +421,14 @@ declare module com {
                                  * @returns Whether the window can be closed on pressing back navigation button.
                                  */
                                 onBackPressed(): boolean;
+                                /**
+                                 * @since 2.2.1b96
+                                 */
+                                updateScrollDimensions(): void;
+                                /**
+                                 * @since 2.2.1b96
+                                 */
+                                updateWindowPositionAndSize(): void;
                             }
                         }
                     }

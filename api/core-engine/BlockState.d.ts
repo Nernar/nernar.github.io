@@ -74,6 +74,7 @@ declare class BlockState implements Tile {
      * Adds states to the following object
      * from given JS object instance.
      * @returns BlockState object itself.
+     * @since 2.2.1b102
      */
     addStates(states: object): BlockState;
 
@@ -93,7 +94,7 @@ declare class BlockState implements Tile {
      * @returns All states from following object
      * in JS object instance.
      */
-    getStatesScriptable(): {[key: string]: number};
+    getStatesScriptable(): { [key: string]: number };
 
     /**
      * @returns All NAMED states from following object

@@ -1,5 +1,6 @@
 /**
  * Module used to manage custom entities added via add-ons.
+ * @since 2.0.1b18
  */
 declare namespace AddonEntityRegistry {
     /**

@@ -26,5 +26,6 @@ declare var __packdir__: string;
 
 /**
  * Full path to current modpack (like *innercore*) directory.
+ * @since 2.2.1b85
  */
 declare var __modpack__: ModPack.ModPackJsAdapter;

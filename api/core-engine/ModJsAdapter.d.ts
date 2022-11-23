@@ -122,8 +122,17 @@ declare namespace Mod {
         isEnabled: boolean;
         isModRunning: boolean;
 
+        /**
+         * @since 2.2.1b85
+         */
         setModPackAndLocation(pack: ModPack.ModPack, locationName: string): void;
+        /**
+         * @since 2.2.1b85
+         */
         getModPack(): ModPack.ModPack;
+        /**
+         * @since 2.2.1b85
+         */
         getModPackLocationName(): string;
         getConfig(): Config;
         createCompiledSources(): CompiledSources;

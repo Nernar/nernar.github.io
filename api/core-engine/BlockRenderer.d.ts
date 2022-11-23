@@ -126,6 +126,7 @@ declare namespace BlockRenderer {
      * @param data block data
      * @param shape {@link ICRender.CollisionShape} object to be used as 
      * default collision shape for the specified block
+     * @since 2.1.0b59
      */
     function setCustomCollisionShape(id: number, data: number, shape: ICRender.CollisionShape): void;
 
@@ -135,6 +136,7 @@ declare namespace BlockRenderer {
      * @param data block data or -1 to map all the data values
      * @param shape {@link ICRender.CollisionShape} object to be used as
      * default raycast shape for the specified block
+     * @since 2.1.0b59
      */
     function setCustomRaycastShape(id: number, data: number, shape: ICRender.CollisionShape): void;
 
@@ -144,6 +146,7 @@ declare namespace BlockRenderer {
      * @param data block data or -1 to map all the data values
      * @param shape {@link ICRender.CollisionShape} object to be used as
      * default collision and raycast shape for the specified block
+     * @since 2.1.0b59
      */
     function setCustomCollisionAndRaycastShape(id: number, data: number, shape: ICRender.CollisionShape): void;
 
@@ -193,33 +196,39 @@ declare namespace BlockRenderer {
     /**
      * Changes collision shape of the block on given coords in given dimension.
      * @param shape {@link ICRender.CollisionShape} object to be used as new collision shape
+     * @since 2.1.0b59
      */
     function mapCollisionModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
 
     /**
      * Changes raycast shape of the block on given coords in given dimension.
      * @param shape {@link ICRender.CollisionShape} object to be used as new raycast shape
+     * @since 2.1.0b59
      */
     function mapRaycastModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
 
     /**
      * Changes both collision and raycast shape of the block on given coords in given dimension.
      * @param shape {@link ICRender.CollisionShape} object to be used as new collision and raycast shape
+     * @since 2.1.0b59
      */
     function mapCollisionAndRaycastModelAtCoords(dimension: number, x: number, y: number, z: number, shape: ICRender.CollisionShape): void;
 
     /**
      * Resets collision shape of the block to default on given coords in given dimension.
+     * @since 2.1.0b59
      */
     function unmapCollisionModelAtCoords(dimension: number, x: number, y: number, z: number): void;
 
     /**
      * Resets raycast shape of the block to default on given coords in given dimension.
+     * @since 2.1.0b59
      */
     function unmapRaycastModelAtCoords(dimension: number, x: number, y: number, z: number): void;
 
     /**
      * Resets both collision and raycast shape of the block to default on given coords in given dimension.
+     * @since 2.1.0b59
      */
     function unmapCollisionAndRaycastModelAtCoords(dimension: number, x: number, y: number, z: number): void;
 

@@ -73,4 +73,29 @@ declare namespace IDRegistry {
      * `"type:string_id#extra_information"`.
      */
     function getIdInfo(id: number): string;
+
+    /**
+     * Gets type of item ("block" or "item") and it's string ID in Minecraft.
+     * @param id numeric item or block ID
+     * @returns String in format `"type:string_id"`.
+     * @since 2.2.1b94
+     */
+    function getStringIdAndTypeForIntegerId(id: number): string;
+
+    /**
+     * Gets type of item ("block" or "item").
+     * @param id numeric item or block ID
+     * @returns Represent of type.
+     * @since 2.2.1b94
+     */
+    function getTypeForIntegerId(id: number): string;
+
+    /**
+     * Gets item string ID in Minecraft.
+     * @param id numeric item or block ID
+     * @returns Represent of named identifier.
+     * @since 2.2.1b94
+     */
+    function getStringIdForIntegerId(id: number): string;
+
 }

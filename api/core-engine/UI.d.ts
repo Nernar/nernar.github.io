@@ -241,7 +241,9 @@ declare module UI {
     }
 
     /**
-	 * @deprecated Use {@link UI.StandardWindow} instead.
+	 * Legacy misspelled standard UI, which is works under classic
+	 * styling, but must be used only in unsupported mods.
+	 * @deprecated In 2.0.4b40, use {@link UI.StandardWindow} instead.
 	 */
     export class StandartWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandartWindow>;
@@ -250,10 +252,11 @@ declare module UI {
     }
 
     /**
-	 * Class used to create standard ui for the mod's machines.
+	 * Class used to create standard UI for the mod's machines.
 	 * {@link UI.StandardWindow} is a {@link UI.WindowGroup} that has three windows with names
 	 * `"main"`, `"inventory"` and `"header"`. They represent custom window
 	 * contents, player's inventory and window's header respectively.
+	 * @since 2.0.4b40
 	 */
     export class StandardWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowStandard {
         static class: java.lang.Class<StandardWindow>;

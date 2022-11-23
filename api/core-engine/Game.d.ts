@@ -76,6 +76,11 @@ declare namespace Game {
     function isItemSpendingAllowed(player?: number): boolean;
 
     /**
+     * @since 2.0.4b35
+     */
+    function simulateBackPressed(): void;
+
+    /**
      * `true` if developer mode was enabled in Inner Core config, `false` otherwise.
      */
     const isDeveloperMode: boolean;

@@ -13,8 +13,9 @@ declare class BlockSource {
 	 * @param z Z coord of the block
 	 * @returns Object of the block on given coords
 	 * or {@link Tile} object in Legacy pack.
+	 * @since 2.1.0b59
 	 */
-	getBlock(x: number, y: number, z: number): BlockState;
+	getBlock(x: number, y: number, z: number): BlockState | Tile;
 
 	/**
 	 * @returns Block's ID at coords.
@@ -45,17 +46,22 @@ declare class BlockSource {
 	setBlock(x: number, y: number, z: number, state: BlockState): void;
 
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given ID and data.
+	 * Sets extra block (for example, water inside another blocks),
+	 * on given coords by given ID and data.
+	 * @since 2.2.1b95
 	 */
 	setExtraBlock(x: number, y: number, z: number, id: number, data: number): void;
 
 	/**
-	 * Sets extra block (for example, water inside another blocks), on given coords by given {@link BlockState}.
+	 * Sets extra block (for example, water inside another blocks),
+	 * on given coords by given {@link BlockState}.
+	 * @since 2.2.1b95
 	 */
 	setExtraBlock(x: number, y: number, z: number, state: BlockState): void;
 
 	/**
 	 * @returns Object of the extra block on given coords.
+	 * @since 2.2.1b95
 	 */
 	getExtraBlock(x: number, y: number, z: number): BlockState;
 
@@ -78,17 +84,19 @@ declare class BlockSource {
 	/**
 	 * Destroys block on coords by entity using specified item.
 	 * @param allowDrop whether to provide drop for the block or not
-	 * @param entity Entity ID or -1 ID if entity is not specified
-	 * @param item Tool which broke block
+	 * @param entity entity ID or -1 ID if entity is not specified
+	 * @param item tool which broke block
+	 * @since 2.2.0b83
 	 */
-	breakBlock(x: number, y: number, z: number, allowDrop: boolean, entity: number, item: ItemInstance): void;
+	breakBlock(x: number, y: number, z: number, allowDrop: boolean, entity?: number, item?: ItemInstance): void;
 
 	/**
 	 * Same as breakBlock, but returns object containing drop and experience.
-	 * @param player Player ID or -1 ID if entity is not specified
-	 * @param item Tool which broke block
+	 * @param entity entity ID or -1 ID if entity is not specified
+	 * @param item tool which broke block
+	 * @since 2.2.0b83
 	 */
-	breakBlockForJsResult(x: number, y: number, z: number, player: number, item: ItemInstance): {items: ItemInstance[], experience: number};
+	breakBlockForJsResult(x: number, y: number, z: number, entity?: number, item?: ItemInstance): { items: ItemInstance[], experience: number };
 
 	/**
 	 * @returns Interface to the vanilla TileEntity (chest, furnace, etc.) 
@@ -116,6 +124,7 @@ declare class BlockSource {
 
 	/**
 	 * @returns Downfall of the biome on coords.
+	 * @since 2.2.1b96
 	 */
 	getBiomeDownfallAt(x: number, y: number, z: number): number;
 
@@ -149,6 +158,7 @@ declare class BlockSource {
 
 	/**
      * @returns Light level on the specified coordinates, from 0 to 15.
+	 * @since 2.1.0b69
      */
 	getLightLevel(x: number, y: number, z: number): number;
 
@@ -210,13 +220,15 @@ declare class BlockSource {
 	 * @returns List of entity IDs in given box,
 	 * that are equal to the given type, if blacklist value is `false`,
 	 * and all except the entities of the given type, if blacklist value is `true`.
+	 * @since 2.2.1b100
 	 */
 	listEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, blacklist: boolean): number[];
 
 	/**
-	 * Whether or not particles must be enabled when destroying
+	 * Whether or not particles must be emitted when destroying
 	 * blocks with this source.
 	 * @default true
+	 * @since 2.2.1b102
 	 */
 	setDestroyParticlesEnabled(destroyParticlesEnabled: boolean): void;
 
@@ -241,6 +253,7 @@ declare class BlockSource {
 
 	/**
 	 * @returns BlockSource for the current client.
+	 * @since 2.1.0b57
 	 */
 	static getCurrentClientRegion(): Nullable<BlockSource>;
 

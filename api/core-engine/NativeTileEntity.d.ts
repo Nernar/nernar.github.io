@@ -40,11 +40,13 @@ declare interface NativeTileEntity {
 
     /**
      * @returns CompoundTag associated with specified native tile entity.
+     * @since 2.0.5b44
      */
     getCompoundTag(): NBT.CompoundTag;
 
     /**
      * Sets compound tag for the specified tile entity.
+     * @since 2.0.5b44
      */
     setCompoundTag(tag: NBT.CompoundTag): void;
 }

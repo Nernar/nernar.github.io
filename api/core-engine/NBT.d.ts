@@ -192,6 +192,7 @@ declare namespace NBT {
         /**
          * Converts list tag to JavaScript object for easier reading.
          * @returns Valid JavaScript representation of list tag.
+         * @since 2.0.5b45
          */
         toScriptable(): any[];
 

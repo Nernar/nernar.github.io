@@ -13,8 +13,27 @@ declare module com {
                                 visual?: boolean,
                                 darken?: boolean,
                                 isDarkenAtZero?: boolean,
+                                /**
+                                 * @since 2.0.4b42
+                                 */
                                 text?: string,
                                 source?: ItemInstance,
+                                /**
+                                 * @deprecated In 2.0.4b43, not needed anymore.
+                                 */
+                                isTransparentBackground?: boolean,
+                                /**
+                                 * @deprecated In 2.0.4b43, not needed anymore.
+                                 */
+                                needClean?: boolean,
+                                /**
+                                 * @since 2.2.1b96
+                                 */
+                                iconScale?: number,
+                                /**
+                                 * @since 2.2.1b96
+                                 */
+                                disablePixelPerfect?: boolean,
                                 onItemChanged?: (container: container.UiAbstractContainer, oldId: number, oldCount: number, oldData: number) => void,
                                 isValid?: (id: number, count: number, data: number, container: container.Container, item: ItemInstance) => boolean;
                             }

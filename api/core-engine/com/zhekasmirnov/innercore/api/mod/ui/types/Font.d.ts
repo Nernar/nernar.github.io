@@ -70,8 +70,9 @@ declare module com {
                                 static readonly ALIGN_END: number;
                                 /**
                                  * Aligns text to the center of the element horizontally.
+                                 * @since 2.2.1b96
                                  */
-                                static ALIGN_CENTER_HORIZONTAL: number;
+                                static readonly ALIGN_CENTER_HORIZONTAL: number;
                                 alignment: number;
                                 color: number;
                                 isBold: boolean;

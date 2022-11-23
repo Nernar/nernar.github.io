@@ -5,11 +5,24 @@ declare module com {
                 export class NativeRenderMesh extends java.lang.Object {
                     static class: java.lang.Class<NativeRenderMesh>;
                     /**
-                     * Adds new mesh to the current one on the specified coordinates with specified scale.
+                     * Adds new mesh to the current one on the specified coordinates.
                      * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
+                     * @since 2.0.2b23
                      */
                     addMesh(mesh: NativeRenderMesh): void;
+                    /**
+                     * Adds new mesh to the current one on the specified coordinates
+                     * with specified offset.
+                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
+                     * @since 2.0.2b23
+                     */
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number): void;
+                    /**
+                     * Adds new mesh to the current one on the specified coordinates
+                     * with specified offset and scale.
+                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
+                     * @since 2.0.2b23
+                     */
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number, scaleX: number, scaleY: number, scaleZ: number): void;
                     /**
                      * Adds a new vertex on the specified coordinates.
@@ -27,15 +40,18 @@ declare module com {
                     clear(): void;
                     /**
                      * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}.
+                     * @since 2.0.2b26
                      */
                     clone(): NativeRenderMesh;
                     /**
                      * Scales the mesh to fit into the specified box.
+                     * @since 2.0.2b26
                      */
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
                     /**
                      * Scales the mesh to fit into the specified box.
                      * @param keepRatio if `true`, the ratio of the dimensions are preserved
+                     * @since 2.0.2b26
                      */
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, keepRatio: boolean): void;
                     /**
@@ -73,6 +89,7 @@ declare module com {
                      * @param rotX rotation angle along X axis, in radians
                      * @param rotY rotation angle along Y axis, in radians
                      * @param rotZ rotation angle along Z axis, in radians
+                     * @since 2.0.2b26
                      */
                     rotate(x: number, y: number, z: number, rotX: number, rotY: number, rotZ: number): void;
                     /**
@@ -95,14 +112,24 @@ declare module com {
                      * the texture is applied to mesh, texture's colors will be affected.
                      */
                     setColor(r: number, g: number, b: number): void;
+                    /**
+                     * Specifies color to be applied to the next vertices. If the color is not white and
+                     * the texture is applied to mesh, texture's colors will be affected.
+                     */
                     setColor(r: number, g: number, b: number, a: number): void;
                     /**
                      * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} foliage tinted.
+                     * @since 2.0.2b24
                      */
                     setFoliageTinted(): void;
-                    setFoliageTinted(tintSource: number): void;
+                    /**
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} foliage tinted.
+                     * @since 2.0.2b25
+                     */
+                    setFoliageTinted(leavesType: number): void;
                     /**
                      * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} grass tinted.
+                     * @since 2.0.2b24
                      */
                     setGrassTinted(): void;
                     /**
@@ -113,10 +140,12 @@ declare module com {
                     setLightParams(float1: number, float2: number, float3: number): void;
                     /**
                      * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} light position.
+                     * @since 2.0.2b25
                      */
                     setLightPos(x: number, y: number, z: number): void;
                     /**
                      * Removes any tint from specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}.
+                     * @since 2.0.2b24
                      */
                     setNoTint(): void;
                     /**
@@ -125,6 +154,7 @@ declare module com {
                     setNormal(x: number, y: number, z: number): void;
                     /**
                      * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} water tinted.
+                     * @since 2.0.2b24
                      */
                     setWaterTinted(): void;
                     /**

@@ -112,12 +112,14 @@ declare namespace Dimensions {
          * @param start nearest fog distance
          * @param end farthest fog distance
          * @returns Reference to itself to be used in sequential calls.
+         * @since 2.0.2b20
          */
         setFogDistance(start: number, end: number): CustomDimension;
 
         /**
          * Resets fog displaying distance.
          * @returns Reference to itself to be used in sequential calls.
+         * @since 2.0.2b20
          */
         resetFogDistance(): CustomDimension;
     }
@@ -368,6 +370,7 @@ declare namespace Dimensions {
 
     /**
      * @returns JS object instance, containing all registered custom biomes.
+     * @since 2.2.1b93
      */
     function getAllRegisteredCustomBiomes(): { [key: string]: CustomBiome };
 

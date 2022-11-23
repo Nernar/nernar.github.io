@@ -68,7 +68,6 @@ declare namespace TileEntity {
      */
     function isTileEntityLoaded(tileEntity: TileEntity): boolean;
 
-
     /**
      * Interface passed to {@link TileEntity["interface"].registerPrototype} function.
      */
@@ -92,12 +91,19 @@ declare namespace TileEntity {
         client?: {
             /**
              * Called when the client copy is created.
+             * @since 2.0.2b29
              */
             load?: () => void,
             /**
              * Called on destroying the client copy.
+             * @since 2.0.2b29
              */
             unload?: () => void,
+            /**
+             * @todo It was really exists or not?
+             * @since 2.0.2b29
+             */
+            onCheckerTick?: (isInitialized: boolean, isLoaded: boolean, wasLoaded: boolean) => void,
             /**
              * Called every tick on client thread.
              */
@@ -151,10 +157,12 @@ declare namespace TileEntity {
          * Called when a {@link TileEntity["interface"]} is initialised in the world.
          */
         init?: () => void,
+
         /**
          * Called every tick and should be used for all the updates of the {@link TileEntity["interface"]}.
          */
         tick?: () => void,
+
         /**
          * Called when player uses some item on a {@link TileEntity["interface"]}.
          * @returns `true` if the event is handled and should not be propagated to
@@ -242,7 +250,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
      * TileEntity data values object.
      */
-    data: {[key: string]: any},
+    data: { [key: string]: any },
     /**
      * TileEntity's item container.
      */

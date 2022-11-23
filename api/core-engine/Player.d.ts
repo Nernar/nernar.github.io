@@ -358,6 +358,7 @@ declare namespace Player {
      * {@link EPlayerAbility} constants
      * @param value the value to be set for the ability. Can be either boolean
      * or number, depending on the ability
+     * @since 2.0.3b33
      */
     function setAbility(ability: string, value: boolean | number): void;
 
@@ -368,6 +369,7 @@ declare namespace Player {
      * {@link EPlayerAbility} constants
      * @returns Current value of the ability in a form of floating-point
      * number.
+     * @since 2.0.3b33
      */
     function getFloatAbility(ability: string): number;
 
@@ -376,6 +378,7 @@ declare namespace Player {
      * @param ability ability name constant, should be one of the 
      * {@link EPlayerAbility} constants
      * @returns Current value of the ability in a boolean form.
+     * @since 2.0.3b33
      */
     function getBooleanAbility(ability: string): number;
 

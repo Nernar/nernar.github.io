@@ -11,6 +11,14 @@ declare namespace Updatable {
      */
 	function addUpdatable(obj: Updatable): any;
 
+    /**
+     * Adds object to updatables list, that ticks on client
+     * thread and never saves.
+     * @param obj object to be added to updatables list
+     * @since 2.0.4b40
+     */
+    function addAnimator(obj: Updatable): any;
+
 	/**
      * Adds object to updatables list.
      * @param obj object to be added to updatables list

@@ -2,6 +2,7 @@
 /**
  * Namespace used to change item models in player's hand and/or inventory.
  * By default, if the block has an {@link ICRender}, it is automatically applied as item's model.
+ * @since 2.0.2b20
  */
 declare namespace ItemModel {
     /**
@@ -11,7 +12,16 @@ declare namespace ItemModel {
      * @returns Exist {@link ItemModel["interface"]} object used to manipulate item's model.
      */
 	function getFor(id: number, data: number): ItemModel;
-	
+
+    /**
+     * Run it at start of your mod to create new group, it will
+     * be applied to all models, created at the root of your mod
+     * (including default mod).
+     * @remarks
+     * If specified version does not match cache version, whole
+     * group will be re-created.
+     * @since 2.1.0b56
+     */
 	function setCurrentCacheGroup(mod: string, version: string): void;
 
     /**
@@ -22,7 +32,9 @@ declare namespace ItemModel {
     function getForWithFallback(id: number, data: number): ItemModel;
 
     /**
-     * Creates a new standalone item model that is not connected with any item or block.
+     * Creates a new standalone item model that is not connected with any item or block,
+     * should be used in {@link ItemModel["interface"].setModelOverrideCallback}.
+     * @since 2.0.5b45
      */
     function newStandalone(): ItemModel;
 
@@ -79,6 +91,7 @@ declare namespace ItemModel {
  * The coordinates of the full block in player's hand or inventory is
  * (0, 0, 0), (1, 1, 1), so it is generally recommended to use the models 
  * that fit that bound at least for the inventory.
+ * @since 2.0.2b20
  */
 declare interface ItemModel {
     /**
@@ -121,7 +134,6 @@ declare interface ItemModel {
     getShaderUniforms(): ShaderUniformSet;
 
     setSpriteUiRender(isSprite: boolean): ItemModel;
-
 
     /**
      * Sets item's model to display both in the inventory and in hand.
@@ -223,6 +235,9 @@ declare interface ItemModel {
 
     getModelForItemInstance(id: number, count: number, data: number, extra: ItemExtraData): ItemModel;
 
+    /**
+     * @since 2.0.5b45
+     */
     setModelOverrideCallback(callback: ItemModel.ModelOverrideFunction): ItemModel;
 
     isUsingOverrideCallback(): boolean;

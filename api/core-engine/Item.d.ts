@@ -32,6 +32,10 @@ declare namespace Item {
          * @default false
          */
         isTech?: boolean;
+        /**
+         * @since 2.2.0b76
+         */
+        category?: number;
     }
 
     /**
@@ -262,7 +266,7 @@ declare namespace Item {
     /**
      * Allows item to be put in offhand slot.
      * @param id string or numeric item ID
-     * @param allowed
+     * @since 2.0.4b35
      */
     function setAllowedInOffhand(id: number | string, allowed: boolean): void;
 

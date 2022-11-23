@@ -139,10 +139,19 @@ declare class PlayerActor {
      */
     setScore(value: number): void;
 
+    /**
+     * @since 2.2.1b100
+     */
     getItemUseDuration(): number;
 
+    /**
+     * @since 2.2.1b100
+     */
     getItemUseIntervalProgress(): number;
 
+    /**
+     * @since 2.2.1b100
+     */
     getItemUseStartupProgress(): number;
 
 }

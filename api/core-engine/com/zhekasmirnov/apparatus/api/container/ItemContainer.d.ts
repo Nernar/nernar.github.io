@@ -255,10 +255,25 @@ declare module com {
                          */
                         close(): void;
                         sendClosed(): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         setGlobalSlotSavingEnabled(enabled: boolean): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         isGlobalSlotSavingEnabled(): boolean;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         setSlotSavingEnabled(name: string, enabled: boolean): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         resetSlotSavingEnabled(name: string): void;
+                        /**
+                         * @since 2.2.0b82
+                         */
                         isSlotSavingEnabled(name: string): boolean;
                         /**
                          * @returns `false` if container supports multiplayer, `true` otherwise.

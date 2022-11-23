@@ -297,6 +297,7 @@ declare namespace World {
      * @param x block x coordinate
      * @param z block y coordinate
      * @returns Biome's numeric ID.
+     * @since 2.0.1b11
      */
     function getBiomeMap(x: number, z: number): number;
 
@@ -306,6 +307,7 @@ declare namespace World {
      * @param x block x coordinate
      * @param z block y coordinate
      * @param id biome ID to be set on the specified coordinates
+     * @since 2.0.1b11
      */
     function setBiomeMap(x: number, z: number, id: number): void;
 
@@ -316,7 +318,33 @@ declare namespace World {
      * @param callback callback function
      * @param uniqueHashStr if specified, will be used as string hash for seed
      * generation, otherwise default hash string will be used
+     * @since 2.0.1b11
      */
     function addGenerationCallback(callbackName: string, callback: Callback.GenerateChunkFunction, uniqueHashStr?: string): void;
+
+    /**
+     * @todo
+     * @since 2.0.2b27
+     */
+    function doesVanillaTileHasUI(id: number): boolean;
+
+    /**
+     * @todo
+     * @since 2.0.2b27
+     */
+    function setBlockUpdateAllowed(allowed: boolean): void;
+
+    /**
+     * @todo
+     * @since 2.0.2b27
+     */
+    function setBlockUpdateType(type: number): void;
+
+    /**
+     * @todo
+     * @param mode certain modes also working with actors
+     * @since 2.0.2b27
+     */
+    function clip(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, mode?: number): void;
 
 }

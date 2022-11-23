@@ -103,6 +103,7 @@ declare function runOnMainThread(func: () => void): void;
  * Runs specified function in the client thread.
  * Same as {@link runOnMainThread}, but for the client side.
  * @param func function to be run in the client thread
+ * @since 2.2.1b96
  */
 declare function runOnClientThread(func: () => void): void;
 

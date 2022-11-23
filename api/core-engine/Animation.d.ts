@@ -125,6 +125,7 @@ declare namespace Animation {
         describe(description: {
             /**
              * {@link RenderMesh["class"]} object to be displayed with animation.
+             * @since 2.0.2b20
              */
             mesh?: RenderMesh,
             /**
@@ -144,6 +145,7 @@ declare namespace Animation {
             /**
              * Animation material, can be used to apply custom materials to the 
              * animation.
+             * @since 2.0.2b20
              */
             material?: string
         }): void;
@@ -158,6 +160,11 @@ declare namespace Animation {
          * Destroys animation and releases all the resources.
          */
         destroy(): void;
+
+        /**
+         * @since 2.1.0b60
+         */
+        exists(): boolean;
     }
 
     /**
@@ -217,6 +224,7 @@ declare namespace Animation {
             skin?: string,
             /**
              * Shader material name.
+             * @since 2.0.2b20
              */
             material?: string
         }): void;

@@ -136,6 +136,7 @@ declare module com {
                                 /**
                                  * Sets an object to be notified when the window is opened.
                                  * @param listener object to be notified when the window is opened
+                                 * @since 2.0.4b43
                                  */
                                 setOnOpenListener(listener: Container.OnOpenListener | OnOpenCloseListenerJS): void;
                                 /**
@@ -169,7 +170,7 @@ declare module com {
                                  * element by this name
                                  * @param val value to be passed to the element
                                  */
-                                setBinding<T=any>(elementName: string, bindingName: string, val: T): void;
+                                setBinding(elementName: string, bindingName: string, val: any): void;
                                 /**
                                  * Gets any value from the element.
                                  * @param elementName element name

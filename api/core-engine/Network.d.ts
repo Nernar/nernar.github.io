@@ -56,5 +56,9 @@ declare namespace Network {
      */
     function localToServerId(id: string | number): number;
 
+    /**
+     * @returns `true` if player connected to remote world.
+     * @since 2.1.0b57
+     */
     function inRemoteWorld(): boolean;
 }

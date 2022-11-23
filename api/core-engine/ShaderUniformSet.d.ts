@@ -1,3 +1,6 @@
+/**
+ * @since 2.0.2b20
+ */
 declare class ShaderUniformSet {
     lock(): ShaderUniformSet;
     unlock(): ShaderUniformSet;
