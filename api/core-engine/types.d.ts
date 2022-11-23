@@ -1,4 +1,3 @@
-
 /**
  * Type used to mark Java bytes.
  */

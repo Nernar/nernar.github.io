@@ -24,7 +24,7 @@ declare namespace Particles {
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc Particles.IAnimatorDescription}
      */
     interface AnimatorDescription extends IAnimatorDescription {
         /**
@@ -40,7 +40,7 @@ declare namespace Particles {
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc Particles.IAnimatorDescription}
      */
     interface ColorAnimatorDescription extends IAnimatorDescription {
         /**

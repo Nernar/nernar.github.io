@@ -73,7 +73,13 @@ const types = join(__dirname, '..', 'declarations');
 const typesRollup = join(types, `${ process.argv[2] }.d.ts`);
 
 (async (now) => {
-	let content = '/// <reference path=\'./android.d.ts\' />\n';
+	let content = `/**
+* @packageDocumentation
+* Core Engine is the most fashion Minecraft: Bedrock Edition
+* engine determined to make game modded with minimum tons of code.
+*/
+/// <reference path=\'./android.d.ts\' />
+`;
 	for (const input of glob(
 		'com/zhekasmirnov/**/*.d.ts', { cwd: join(__dirname, '..', process.argv[2]) }
 	).concat(glob(

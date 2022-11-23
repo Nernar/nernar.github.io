@@ -504,7 +504,7 @@ declare namespace Block {
 		 */
 		color_source?: ColorSource,
 		/**
-		 * Specifies sounds of the block, one of {@link Sound}.
+		 * Specifies sounds of the block, one of {@link Block.Sound}.
 		 * @since 2.0.2b25
 		 */
 		sound?: Sound,
