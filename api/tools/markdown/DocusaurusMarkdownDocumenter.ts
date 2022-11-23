@@ -147,10 +147,8 @@ export class DocusaurusMarkdownDocumenter {
 					apiModel: this._apiModel,
 					outputFolder: this._outputFolder,
 					documenter: new MarkdownDocumenterAccessor({
-						getLinkForApiItem: (apiItem: ApiItem) => {
-							console.log(apiItem);
-							return this._getSlugForApiItem(apiItem);
-						}
+						getLinkForApiItem: (apiItem: ApiItem) =>
+							this._getSlugForApiItem(apiItem)
 					})
 				});
 			});
@@ -160,7 +158,9 @@ export class DocusaurusMarkdownDocumenter {
 		this._writeApiItemPage(this._apiModel.members[0]!);
 
 		if (this._pluginLoader.markdownDocumenterFeature) {
-			this._pluginLoader.markdownDocumenterFeature.onFinished({});
+			this._pluginLoader.markdownDocumenterFeature.onFinished({
+				apiModel: this._apiModel
+			});
 		}
 	}
 
@@ -423,9 +423,8 @@ export class DocusaurusMarkdownDocumenter {
 
 		this._markdownEmitter.emit(stringBuilder, output, {
 			contextApiItem: apiItem,
-			onGetFilenameForApiItem: (apiItemForFilename: ApiItem) => {
-				return this._getSlugForApiItem(apiItemForFilename);
-			}
+			onGetFilenameForApiItem: (apiItemForFilename: ApiItem) =>
+				this._getSlugForApiItem(apiItemForFilename)
 		});
 
 		let pageContent: string = stringBuilder.toString();
