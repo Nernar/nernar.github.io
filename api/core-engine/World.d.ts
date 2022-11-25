@@ -3,7 +3,6 @@
  * Most of the methods are client, use BlockSource instead.
  */
 declare namespace World {
-
     /**
      * Setups the module to work properly with the world. Usually called by
      * Core Engine, so you generally shouldn't call it yourself.
@@ -22,18 +21,6 @@ declare namespace World {
      */
 	function getThreadTime(): number;
 
-	/**
-	 * @param side number from 0 to 6 (exclusive)
-     * @returns Opposite side to argument.
-     */
-    function getInverseBlockSide(side: number): number;
-
-    /**
-     * @param side block side
-     * @returns Normalized vector for this side.
-     */
-    function getVectorByBlockSide(side: number): Vector;
-
     /**
      * Retrieves coordinates relative to the block.
      * @param side block side
@@ -45,6 +32,73 @@ declare namespace World {
      * ```
      */
     function getRelativeCoords(x: number, y: number, z: number, side: number): Vector;
+
+    /**
+     * @param side block side
+     * @returns Normalized vector for this side.
+     */
+    function getVectorByBlockSide(side: number): Vector;
+
+	/**
+	 * @param side number from 0 to 6 (exclusive)
+     * @returns Opposite side to argument.
+     */
+    function getInverseBlockSide(side: number): number;
+
+    /**
+     * @returns `true`, if tile can be replaced (for example, grass (not block) and
+     * water can be replaced), `false` otherwise
+     */
+    function canTileBeReplaced(id: number, data: number): boolean;
+
+    /**
+     * @since 2.0.2b27
+     */
+    function doesVanillaTileHasUI(id: number): boolean;
+
+    /**
+     * @since 2.0.2b27
+     * @remarks
+     * Client only method!
+     */
+    function setBlockUpdateType(type: number): void;
+
+    /**
+     * @since 2.0.2b27
+     * @remarks
+     * Client only method!
+     */
+    function setBlockUpdateAllowed(allowed: boolean): void;
+
+    /**
+     * Enables "BlockChanged" event for the block ID. Event occurs when either
+     * old block or new block is registered using this method.
+     * @param id numeric tile ID
+     * @param enabled if true, the block will be watched
+     */
+    function setBlockChangeCallbackEnabled(id: number, enabled: boolean): void;
+
+    /**
+     * Enables "BlockChanged" event for specified block IDs and registers
+     * callback function for the IDs.
+     * @param ids string or numeric tile ID, or an array of string and/or 
+     * numeric tile IDs
+     * @param callback function that will be called when "BlockChanged" callback 
+     * occurs involving one of the blocks. **Warning!** If both old and new 
+     * blocks are in the IDs list, callback function will be called twice.
+     */
+    function registerBlockChangeCallback(ids: number | string | (string | number)[], callback: Callback.BlockChangedFunction): void;
+
+    /**
+     * Adds a new generation callback using string hash to generate a unique
+     * random seed for the chunk generator.
+     * @param callbackName one of the generation callbacks
+     * @param callback callback function
+     * @param uniqueHashStr if specified, will be used as string hash for seed
+     * generation, otherwise default hash string will be used
+     * @since 2.0.1b11
+     */
+    function addGenerationCallback(callbackName: string, callback: Callback.GenerateChunkFunction, uniqueHashStr?: string): void;
 
     /**
      * Sets block in the world using it's tile ID and data.
@@ -105,7 +159,8 @@ declare namespace World {
 
     /**
      * @returns Light level on the specified coordinates, from 0 to 15.
-     * @deprecated Client method only.
+     * @remarks
+     * Client only method!
      */
     function getLightLevel(x: number, y: number, z: number): number;
 
@@ -124,6 +179,18 @@ declare namespace World {
      * loaded or not.
      */
     function isChunkLoadedAt(x: number, y: number, z: number): boolean;
+
+    /**
+     * Returns chunk state on specified location, like loaded,
+     * unloaded or interrupted.
+     */
+    function getChunkState(x: number, z: number): number;
+
+    /**
+     * Returns chunk state on specified coordinates, like loaded,
+     * unloaded or interrupted.
+     */
+    function getChunkStateAt(x: number, y: number, z: number): number;
 
     /**
      * @returns Requested {@link TileEntity["interface"]} located on the specified coordinates
@@ -155,13 +222,12 @@ declare namespace World {
     function getContainer(x: number, y: number, z: number, region?: BlockSource): Nullable<NativeTileEntity | UI.Container | ItemContainer>;
 
     /**
-     * @returns Current client world's time in ticks.
+     * @returns Current world's time in ticks.
      */
     function getWorldTime(): number;
 
     /**
-     * Sets current world time, does actually nothing
-     * useful to game itself, changes thread time.
+     * Sets current world time.
      * @param time time in ticks
      */
     function setWorldTime(time: number): number;
@@ -190,7 +256,14 @@ declare namespace World {
      * Sets current weather in the world.
      * @param weather {@link Weather} object to be used as current weather value
      */
-    function setWeather(weather: Weather): void;
+    function setWeather(weather: Nullable<Weather>): void;
+
+    /**
+     * @todo
+     * @param mode certain modes also working with actors
+     * @since 2.0.2b27
+     */
+    function clip(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, mode?: number): void;
 
     /**
      * Drops item or block with specified ID, count, data and
@@ -209,15 +282,52 @@ declare namespace World {
     function explode(x: number, y: number, z: number, power: number, fire: boolean): void;
 
     /**
+     * Sets biome on the specified coordinates when generating biome map.
+     * Should be called only in *GenerateBiomeMap* callback.
+     * @param x block x coordinate
+     * @param z block z coordinate
+     * @param id biome ID to be set on the specified coordinates
+     * @since 2.0.1b11
+     */
+    function setBiomeMap(x: number, z: number, id: number): void;
+
+    /**
+     * Gets biome on the specified coordinates when generating biome map.
+     * Should be called only in *GenerateBiomeMap* callback.
+     * @param x block x coordinate
+     * @param z block z coordinate
+     * @returns Biome's numeric ID.
+     * @since 2.0.1b11
+     */
+    function getBiomeMap(x: number, z: number): number;
+
+    /**
+     * Overrides currently biome on specified coordinates. Consider
+     * using {@link World.setBiomeMap} in *GenerateBiomeMap* callback.
+     */
+    function setBiome(x: number, z: number): void;
+
+    /**
      * @returns Biome ID on the specified coordinates.
      */
     function getBiome(x: number, z: number): number;
 
     /**
      * @returns Biome name on the specified coordinates.
-     * @deprecated This method will return `"Unknown"` for all the biomes.
      */
     function getBiomeName(x: number, z: number): string;
+
+    /**
+     * @returns Biome name by specified identifier.
+     */
+    function getBiomeNameById(biome: number): string;
+
+    /**
+     * @returns Biome temperature on specified coordinates.
+     * @remarks
+     * Client only method!
+     */
+    function getTemperature(x: number, y: number, z: number): number;
 
     /**
      * @returns Grass color for specified coordinates, uses android integer
@@ -246,15 +356,10 @@ declare namespace World {
     /**
      * @returns `true`, if one can see sky from the specified position, `false`
      * otherwise.
-	 * @deprecated Client only method.
+	 * @remarks
+     * Client only method!
      */
     function canSeeSky(x: number, y: number, z: number): boolean;
-
-    /**
-     * @returns `true`, if tile can be replaced (for example, grass (not block) and
-     * water can be replaced), `false` otherwise
-     */
-    function canTileBeReplaced(id: number, data: number): boolean;
 
     /**
      * Plays standart Minecraft sound on the specified coordinates.
@@ -273,78 +378,13 @@ declare namespace World {
     function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
 
     /**
-     * Enables "BlockChanged" event for the block ID. Event occurs when either
-     * old block or new block is registered using this method.
-     * @param id numeric tile ID
-     * @param enabled if true, the block will be watched
+     * @returns Loaded world directory full path.
      */
-    function setBlockChangeCallbackEnabled(id: number, enabled: boolean): void;
+    function getWorldDir(): string;
 
     /**
-     * Enables "BlockChanged" event for specified block IDs and registers
-     * callback function for the IDs.
-     * @param ids string or numeric tile ID, or an array of string and/or 
-     * numeric tile IDs
-     * @param callback function that will be called when "BlockChanged" callback 
-     * occurs involving one of the blocks. **Warning!** If both old and new 
-     * blocks are in the IDs list, callback function will be called twice.
+     * @returns Currently world seed, which is used, for example,
+     * in generation callbacks.
      */
-    function registerBlockChangeCallback(ids: number | string | (string | number)[], callback: Callback.BlockChangedFunction): void;
-
-    /**
-     * Gets biome on the specified coordinates when generating biome map.
-     * Should be called only in *GenerateBiomeMap* callback.
-     * @param x block x coordinate
-     * @param z block y coordinate
-     * @returns Biome's numeric ID.
-     * @since 2.0.1b11
-     */
-    function getBiomeMap(x: number, z: number): number;
-
-    /**
-     * Sets biome on the specified coordinates when generating biome map.
-     * Should be called only in *GenerateBiomeMap* callback.
-     * @param x block x coordinate
-     * @param z block y coordinate
-     * @param id biome ID to be set on the specified coordinates
-     * @since 2.0.1b11
-     */
-    function setBiomeMap(x: number, z: number, id: number): void;
-
-    /**
-     * Adds a new generation callback using string hash to generate a unique
-     * random seed for the chunk generator.
-     * @param callbackName one of the generation callbacks
-     * @param callback callback function
-     * @param uniqueHashStr if specified, will be used as string hash for seed
-     * generation, otherwise default hash string will be used
-     * @since 2.0.1b11
-     */
-    function addGenerationCallback(callbackName: string, callback: Callback.GenerateChunkFunction, uniqueHashStr?: string): void;
-
-    /**
-     * @todo
-     * @since 2.0.2b27
-     */
-    function doesVanillaTileHasUI(id: number): boolean;
-
-    /**
-     * @todo
-     * @since 2.0.2b27
-     */
-    function setBlockUpdateAllowed(allowed: boolean): void;
-
-    /**
-     * @todo
-     * @since 2.0.2b27
-     */
-    function setBlockUpdateType(type: number): void;
-
-    /**
-     * @todo
-     * @param mode certain modes also working with actors
-     * @since 2.0.2b27
-     */
-    function clip(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, mode?: number): void;
-
+    function getSeed(): number;
 }

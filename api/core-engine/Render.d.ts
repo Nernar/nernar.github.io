@@ -18,6 +18,22 @@ declare class Render {
     constructor(parameters?: Render.RenderParameters | string | number);
 
     /**
+     * @deprecated Use {@link Render["class"].getId|getId} instead.
+     */
+    getID(): number;
+
+    /**
+     * @deprecated Use {@link Render["class"].getId|getId} instead.
+     */
+    getRenderType(): number;
+
+    /**
+     * @returns Render identifier that can be used to set render to the mob, animation 
+     * or block.
+     */
+    getId(): number;
+
+    /**
      * Specifies additional params for the following {@link Render["class"]}.
      * @param params specifies all the 
      * properties of the object. If it is a number, vanilla render ID is used,
@@ -29,21 +45,7 @@ declare class Render {
 
     checkChangeable(): void;
 
-    /**
-     * @deprecated Use {@link Render["class"].getId|getId} instead.
-     */
-    getID(): number;
-
-    /**
-     * @returns Render identifier that can be used to set render to the mob, animation 
-     * or block.
-     */
-    getId(): number;
-
-    /**
-     * @deprecated Use {@link Render["class"].getId|getId} instead.
-     */
-    getRenderType(): number;
+    rebuild(): void;
 
     /**
      * @returns Render's model that defines it's visual shape. 
@@ -87,8 +89,10 @@ declare class Render {
      */
     setPart(name: string, data: Render.PartElement[], params: Render.PartParameters): void;
 
+    /**
+     * @internal
+     */
     _setPartRecursive(part: Render.ModelPart, data: Render.PartElement[], coords: Vector): void;
-    localCache: Render.Cache | {};
     fromCache(data: Render.Cache): void;
     toCache(): Render.Cache;
     saveState(name: string, isLocal: boolean): void;
@@ -102,6 +106,10 @@ declare class Render {
     setTextureResolution(...params: any): void;
 }
 
+/**
+ * We're meant native renderer, it's not connected with
+ * same class here.
+ */
 declare namespace Render {
     /**
      * An interface of the object that is used as {@link Render["class"].constructor} parameter.
@@ -208,6 +216,7 @@ declare namespace Render {
     interface Model extends com.zhekasmirnov.innercore.api.NativeRenderer.Model {}
     interface ModelPart extends com.zhekasmirnov.innercore.api.NativeRenderer.ModelPart {}
     interface Renderer extends com.zhekasmirnov.innercore.api.NativeRenderer.Renderer {}
+
     interface Cache {
         renderer: Nullable<Renderer>,
         renderId: number,

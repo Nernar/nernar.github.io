@@ -10,6 +10,8 @@ declare namespace AddonEntityRegistry {
     function spawn(x: number, y: number, z: number, nameID: string): number;
 
     /**
+     * Added entities stores in registry, so already spawned entity
+     * data may resolved again by requesting information by UID.
      * @returns Add-on entity information by entity ID.
      */
     function getEntityData(entity: number): AddonEntity;

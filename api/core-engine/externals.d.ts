@@ -83,7 +83,7 @@ declare function WRAP_NATIVE<T = any>(name: string): T;
 declare function WRAP_JAVA<T = any>(name: string): T;
 
 /**
- * @returns Current Core Engine API level.
+ * @returns Current Core Engine API level (12).
  */
 declare function getCoreAPILevel(): number;
 

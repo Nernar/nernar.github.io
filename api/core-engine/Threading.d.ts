@@ -13,7 +13,6 @@ declare namespace Threading {
          */
         (error: any, priority: number) => string;
 
-
     /**
      * Function used to create formatted error message with the full debug
      * information about exception in one of the threads. Usually called by Core.
@@ -46,5 +45,5 @@ declare namespace Threading {
      * @param name name of the thread
      * @returns Instance representing the thread.
      */
-    function getThread(name: string): java.lang.Thread;
+    function getThread(name: string): Nullable<java.lang.Thread>;
 }

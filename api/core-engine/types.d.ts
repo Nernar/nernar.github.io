@@ -96,8 +96,3 @@ interface Weather {
      */
     thunder: number
 }
-
-/**
- * @deprecated Use behavior packs instead.
- */
-declare class CustomEntity {}

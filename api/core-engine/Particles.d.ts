@@ -252,8 +252,8 @@ declare namespace Particles {
     /**
      * Spawns particle of given type on given coords
      * with given velocity and additional parameters in the world.
-     * @param type particle type's numeric ID. If you want to spawn vanilla particles,
-     * see {@link EParticleType} enums.
+     * @param type particle type's numeric ID; if you want to spawn vanilla particles,
+     * see {@link EParticleType} enums
      * @param vx velocity for the particle by X-axis
      * @param vy velocity for the particle by Y-axis
      * @param vz velocity for the particle by Z-axis
@@ -267,6 +267,19 @@ declare namespace Particles {
      * Same as {@link Particles.addParticle}, but applies `far` shader to the particle.
      */
     function addFarParticle(type: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data?: number): void;
+
+    /**
+     * Spawnds particles in line with specified gapness.
+     * @param type particle type's numeric ID; if you want to spawn vanilla particles,
+     * see {@link EParticleType} enums
+     * @param coords1 start location of line
+     * @param coords2 end location of line
+     * @param gap gapness means step of particles, values more than 1
+     * will increase offsets between particles; randomized
+     * @param vel velocity of spawned particles
+     * @param data variant of spawned particles or properties
+     */
+    function line(type: number, coords1: Vector, coords2: Vector, gap?: number, vel?: Vector, data?: number): void;
 
     /**
      * Registers new custom particle type of given params object.

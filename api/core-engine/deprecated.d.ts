@@ -2,22 +2,22 @@
  * @deprecated Use behavior packs to creating entities.
  */
 declare namespace MobRegistry {
-    namespace customEntities { }
-    namespace loadedEntities { }
+    function registerEntity(name: any): CustomEntity;
 
-    function registerEntity(name: any): any;
+    function registerUpdatableAsEntity(updatable: any): void;
 
-    function registerUpdatableAsEntity(updatable: any): any;
+    function spawnEntityAsPrototype(typeName: any, coords: any, extraData: any): CustomEntity;
 
-    function spawnEntityAsPrototype(typeName: any, coords: any, extraData: any): any;
+    function getEntityUpdatable(entity: number): CustomEntity;
 
-    function getEntityUpdatable(entity: number): any;
+    /**
+     * @deprecated Not implemented yet.
+     */
+    function registerNativeEntity(entity: number): undefined;
 
-    function registerNativeEntity(entity: number): any;
+    function registerEntityRemove(entity: number): void;
 
-    function registerEntityRemove(entity: number): any;
-
-    function resetEngine(): any;
+    function resetEngine(): void;
 }
 
 /**
@@ -25,30 +25,85 @@ declare namespace MobRegistry {
  * entities in server or use callbacks.
  */
 declare namespace MobSpawnRegistry {
-    namespace spawnData { }
+    function registerSpawn(entityType: number, rarity: number, condition?: () => boolean, denyNaturalDespawn?: boolean): void;
 
-    function registerSpawn(entityType: any, rarity: number, condition: any, denyNaturalDespawn: any): any;
+    interface SpawnInterface {
+        type: number, rarity: number, condition: Nullable<() => boolean>, denyNaturalDespawn: boolean;
+    }
 
-    function getRandomSpawn(rarityMultiplier: any): any;
+    function getRandomSpawn(rarityMultiplier: number): any;
 
-    function getRandPosition(): any;
+    function getRandPosition(): { x: number, z: number };
 
-    function executeSpawn(spawn: any, position: any): any;
-    var counter: number;
+    function executeSpawn(spawn: SpawnInterface, position: { x: number, z: number }): void;
+}
 
-    function tick(): any;
+/**
+ * @deprecated Use behavior packs instead.
+ */
+declare class CustomEntity {
+    readonly nameId: string;
+    readonly isInstance: boolean;
+    readonly entity: Nullable<number>;
+    addController(name: string, basicPrototype: any): CustomEntity;
+    customizeController(name: string, customPrototype: object): void;
+    /**
+     * Customizes controller "event".
+     */
+    customizeEvents(custom: object): void;
+    /**
+     * Customizes controller "description".
+     */
+    customizeDescription(custom: object): void;
+    /**
+     * Customizes controller "visual".
+     */
+    customizeVisual(custom: object): void;
+    /**
+     * Customizes controller "AI".
+     */
+    customizeAI(custom: object): void;
+    setBaseType(type: number): void;
+    callControllerEvent(event: string, ...params: any[]): void;
+    setNativeEntity(entity: number): void;
+    recreateEntity(): void;
+    getPlayerDistance(): number;
+    denyDespawn(): void;
+    allowNaturalDespawn(): void;
+    destroy(): void;
+}
 
-    function onChunkGenerated(x: number, z: number): any;
+/**
+ * @deprecated Use resource packs or {@link Render["class"]} instead.
+ */
+declare class EntityModel {
+    constructor(parentModel?: EntityModel);
+    readonly isAnimated: boolean;
+    readonly animator: any;
+    /**
+     * @internal
+     */
+    applyTextureResolution(): void;
+    setTexture(texture: Texture): EntityModel;
+    getTextureObj(): Texture;
+    getTexture(): string;
+    getTextureResolution(): number;
+    setRender(render: Render): void;
+    createAnimation(ticks: number, func: (tick: number, self: EntityModel) => Nullable<Render>, delay: number): EntityModel;
+    resetAnimation(token: number): void;
+    getTextureAndRender(token: number): { texture: Texture, render: number };
 }
 
 /**
  * @deprecated Use resource packs to customize entities
- * appereance nor {@link Render["class"]} with {@link AttachableRender}.
+ * appearance or {@link Render["class"]} with {@link AttachableRender}.
  */
-declare function EntityModelWatcher(entity: number, model: any): any;
-
-/**
- * @deprecated Use behavior packs to customize entities
- * intellect nor consider to use {@link Entity.getPathNavigation}.
- */
-declare function EntityAIWatcher(customPrototype: any): any;
+declare class EntityModelWatcher {
+    constructor(entity: number, model: EntityModel);
+    readonly model: EntityModel;
+    readonly entity: number;
+    readonly token: number;
+    update(): void;
+    resetAnimation(): void;
+    destroy(): void;
+}

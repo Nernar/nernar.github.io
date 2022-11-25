@@ -12,4 +12,5 @@ declare class ItemExtraData extends com.zhekasmirnov.innercore.api.NativeItemIns
 	 * Creates a copy of current {@link ItemExtraData} instance with the same contents.
 	 */
 	constructor(extraData?: ItemExtraData);
+
 }

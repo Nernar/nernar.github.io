@@ -235,26 +235,32 @@ declare namespace EntityAI {
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
              * Entity movement speed when AI is executed.
+             * @default 0.2
              */
             speed?: number;
             /**
              * Jump (y) velocity.
+             * @default 0.45
              */
             jumpVel?: number;
             /**
              * Entity rotation speed.
+             * @default 0.4
              */
             rotateSpeed?: number;
             /**
              * How long will be the rotation path.
+             * @default 0.5
              */
             rotateRatio?: number;
             /**
              * If `true`, entity turns it's head to the target.
+             * @default true
              */
             rotateHead?: boolean;
             /**
              * If `true`, entity won't change it's Y velocity.
+             * @default true
              */
             denyY?: boolean;
             /**
@@ -290,6 +296,7 @@ declare namespace EntityAI {
         constructor(customPrototype: EntityAIClass.WanderLikeAIPrototype & {
             /**
              * Part of the time entity is making pause.
+             * @default 0.3
              */
             delay_weight?: number;
         });
@@ -306,20 +313,24 @@ declare namespace EntityAI {
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
              * Damage amount.
+             * @default 5
              */
             attack_damage?: number;
             /**
              * Damage radius.
+             * @default 2.5
              */
             attack_range?: number;
             /**
              * Time between to attacks in ticks.
+             * @default 12
              */
             attack_rate?: number;
             /**
              * Target entity.
+             * @default null
              */
-            target?: number;
+            target?: Nullable<number>;
         });
     }
 
@@ -334,6 +345,7 @@ declare namespace EntityAI {
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
              * Swimming speed.
+             * @default 0.2
              */
             velocity?: number;
         });
@@ -342,7 +354,7 @@ declare namespace EntityAI {
     /**
      * Panic AI watcher type, controls entity panic behavior after getting hurt.
      */
-    class PanicWatcher extends EntityAIClass {
+    class PanicWatcher extends EntityAIWatcher {
         /**
          * Creates panic watcher entity AI type.
          * @param customPrototype AI type prototype
@@ -350,21 +362,36 @@ declare namespace EntityAI {
         constructor(customPrototype: EntityAIClass.EntityAIPrototype & {
             /**
              * Time the entity will be in panic.
+             * @default 200
              */
             panic_time?: number;
             /**
              * Panic AI priority when entity should be in panic.
+             * @default 5
              */
             priority_panic?: number;
             /**
              * Panic AI priority when entity should not be in panic.
+             * @default 1
              */
             priority_default?: number;
             /**
              * Panic AI priority when entity should not be in panic
-             * @todo Which type must be used here, recently number.
+             * @default "panic"
              */
             name?: string;
         });
     }
+}
+
+/**
+ * Parent class for {@link EntityAI.PanicWatcher}, does nothing
+ * like {@link EntityAI.Idle}.
+ */
+declare class EntityAIWatcher extends EntityAIClass {
+    /**
+     * Creates watcher entity AI type.
+     * @param customPrototype AI type prototype
+     */
+    constructor(customPrototype: EntityAIClass.EntityAIPrototype);
 }

@@ -51,4 +51,5 @@ declare class Texture {
      * Sets pixel scale for the texture.
      */
     setPixelScale(scale: number): Texture;
+
 }

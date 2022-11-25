@@ -40,6 +40,14 @@ declare namespace Saver {
 
     function setObjectIgnored(obj: any, ignore: any): void;
 
+    function serializeToString(obj: any): string;
+
+    function serialize<T>(obj: T): T;
+
+    function deserializeFromString(str: string): any;
+
+    function deserialize<T>(obj: T): T;
+
     /**
      * Function that returns object representing created scope. No
      * primitives are allowed as return value.

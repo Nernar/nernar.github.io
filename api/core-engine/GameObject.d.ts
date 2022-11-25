@@ -2,19 +2,30 @@
  * Class used to create and manipulate game objects. Game objects are {@link Updatable["interface"]|Updatables}
  * that are being saved between game launches.
  */
-declare class GameObject {
+declare class GameObject<T extends GameObjectPrototype> {
     /**
      * Constructs a new {@link GameObject} with given params.
      * @param type unique name for the game object type. Use package-like names to 
      * ensure your game object name is unique
      * @param prototype 
      */
-    constructor(type: string, prototype: GameObjectPrototype);
+    constructor(type: string, prototype: T);
 
     /**
      * Original value passed to {@link GameObject.constructor}.
      */
     readonly originalName: string;
+
+    readonly gameobjectName: string;
+
+    readonly isInstance: boolean;
+
+    /**
+     * `true` if current GameObject was deployed, `false` otherwise.
+     */
+    readonly isDeployed: boolean;
+
+    readonly Prototype: T;
 
     /**
      * Creates a new game object with specified params and registers it for saving
@@ -23,17 +34,12 @@ declare class GameObject {
      * function
      * @returns Instantiated game object.
      */
-    deploy(...args: any): GameObject;
+    deploy(...args: any): GameObject<T>;
 
     /**
      * Destroys current game object.
      */
     destroy(): void;
-
-    /**
-     * `true` if current GameObject was deployed, `false` otherwise.
-     */
-    readonly isInstance: boolean;
 }
 
 interface GameObjectPrototype extends Updatable {
@@ -61,7 +67,7 @@ declare namespace GameObjectRegistry {
      * @param clone if true, a new array is created to ensure the original
      * engine's data safety.
      */
-    function getAllByType(type: string, clone: boolean): GameObject[];
+    function getAllByType<T extends GameObjectPrototype>(type: string, clone: boolean): GameObject<T>[];
 
     /**
      * Calls function of the {@link GameObject} of specified type with specified

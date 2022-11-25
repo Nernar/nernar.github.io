@@ -77,6 +77,7 @@ declare namespace Item {
     /**
      * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel}
      * instead.
+     * @throws Unsupported usage.
      */
     function createFuelItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): void;
 
@@ -187,7 +188,7 @@ declare namespace Item {
      * @returns `true`, if an item with such ID exists, `false` otherwise.
      * @deprecated Use same method without last parameter.
      */
-     function isValid(id: number, data: number): boolean;
+    function isValid(id: number, data: number): boolean;
 
     /**
      * Adds item to creative inventory.
@@ -196,6 +197,14 @@ declare namespace Item {
      * @param data item data
      */
     function addToCreative(id: number | string, count: number, data: number, extra?: ItemExtraData): void;
+
+    /**
+     * Creates group of creative items.
+     * @param name name of group
+     * @param displayedName name of group in game
+     * @param ids array of items in group
+     */
+    function addCreativeGroup(name: string, displayedName: string, ids: number[]): void
 
     /**
      * Applies several properties via one method call.
@@ -221,6 +230,8 @@ declare namespace Item {
      * value is, the better enchants you get with the same level
      */
     function setEnchantType(id: number | string, enchant: number, value: number): void;
+
+    function setArmorDamageable(damageable: boolean): void;
 
     /**
      * Specifies what items can be used to repair this item in the anvil.
@@ -370,70 +381,50 @@ declare namespace Item {
     function registerDispenseFunction(nameID: string | number, func: Callback.ItemDispensedFunction): void;
 
     /**
-     * Creates group of creative items.
-     * @param name name of group
-     * @param displayedName name of group in game
-     * @param ids array of items in group
-     */
-    function addCreativeGroup(name: string, displayedName: string, ids: number[]): void
-
-    /**
-     * Invoke click on the block in world.
-     * @param coords Coords of click on the block
-     * @param item item which used on the block
-     * @param noModCallback if true, mod ItemUse callback will be not executed
-     * @param entity Player who clicked on the block
-     */
-    function invokeItemUseOn(coords: Callback.ItemUseCoordinates, item: ItemInstance, noModCallback: boolean, entity: number): void
-
-    /**
      * @deprecated Should not be used in new mods, consider using {@link Item} 
      * properties setters instead.
      */
-    function setPrototype(nameID: any, Prototype: any): void;
+    function setPrototype(nameID: any, prototype: any): void;
+
+    /**
+     * Invoke click on the block in world.
+     * @param coords coords of click on the block
+     * @param item item which used on the block
+     * @param noModCallback if `true`, mod ItemUse callback will be not executed
+     * @param entity player which clicked on the block
+     * @internal
+     */
+    function invokeItemUseOn(coords: Callback.ItemUseCoordinates, item: ItemInstance, noModCallback: boolean, entity: number): void;
+
+    /**
+     * Invoke click on the block in world without target.
+     * @param item item which used on the block
+     * @param noModCallback if `true`, mod ItemUse callback will be not executed
+     * @internal
+     */
+    function invokeItemUseNoTarget(item: ItemInstance, noModCallback: boolean): void;
 
     /**
      * Class representing item used to set it's properties.
      */
     interface NativeItem {
-
         addRepairItem(id: number): void;
-
         addRepairItems(id: number[]): void;
-
         setAllowedInOffhand(allowed: boolean): void;
-
         setArmorDamageable(damageable: boolean): void;
-
         setCreativeCategory(category: number): void;
-
         setEnchantType(type: number): void;
-
         setEnchantType(enchant: number, value: number): void;
-
         setEnchantability(enchant: number, value: number): void;
-
         setGlint(glint: boolean): void;
-
         setHandEquipped(equipped: boolean): void;
-
         setLiquidClip(clip: boolean): void;
-
         setMaxDamage(maxDamage: number): void;
-
         setMaxStackSize(maxStack: number): void;
-
         setMaxUseDuration(duration: number): void;
-
-        /**
-         * @deprecated Consider using appropriate setters instead.
-         * */
         setProperties(props: string): void;
-
         setStackedByData(stacked: boolean): void;
-
         setUseAnimation(animation: number): void;
-
     }
 
     /**

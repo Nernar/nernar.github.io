@@ -66,9 +66,19 @@ declare namespace Game {
     function getMinecraftVersion(): string;
 
     /**
-     * @returns String containing current Core Engine version.
+     * @returns String containing current Core Engine version (2.1).
      */
     function getEngineVersion(): string;
+
+    /**
+     * `true` if developer mode was enabled in Inner Core config.
+     */
+    const isDeveloperMode: boolean;
+
+    /**
+     * `true` if Inner Core config allows spending items in creative.
+     */
+    const spendItemsInCreative: boolean;
 
     /**
      * @returns `true` if item spending allowed.
@@ -80,8 +90,4 @@ declare namespace Game {
      */
     function simulateBackPressed(): void;
 
-    /**
-     * `true` if developer mode was enabled in Inner Core config, `false` otherwise.
-     */
-    const isDeveloperMode: boolean;
 }

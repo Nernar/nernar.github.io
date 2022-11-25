@@ -2,6 +2,7 @@
  * Defines some useful methods for debugging.
  */
 declare namespace Debug {
+
     /**
      * @returns Current system time in milliseconds.
      */
@@ -44,6 +45,14 @@ declare namespace Debug {
     function m(...args: any[]): void;
 
     /**
+     * Displays an AlertDialog with given title and bitmap.
+     * @param bitmap android.graphics.Bitmap object of the bitmap to be 
+     * displayed
+     * @param title title of the AlertDialog
+     */
+    function bitmap(bitmap: android.graphics.Bitmap, title: string): void;
+
+    /**
      * Writes several values in JSON format to the copyable alert window text view,
      * serializing javascript objects if possible.
      * @param args messages to be displayed
@@ -51,11 +60,4 @@ declare namespace Debug {
      */
     function big(...args: any[]): void;
 
-    /**
-     * Displays an AlertDialog with given title and bitmap.
-     * @param bitmap android.graphics.Bitmap object of the bitmap to be 
-     * displayed
-     * @param title title of the AlertDialog
-     */
-    function bitmap(bitmap: android.graphics.Bitmap, title: string): void;
 }

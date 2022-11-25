@@ -34,14 +34,25 @@ declare namespace Player {
     /**
      * Fetches information about the objects player is currently pointing.
      */
-    function getPointed():
-    /**
-     * @param pos pointed block position
-     * @param vec look vector
-     * @param block pointed block data, if player doesn't look at the block, air
-     * block is returned ({id: 0, data: 0})
-     * @param entity pointed entity, if no entity's pointed, returns -1
-     */ { pos: BlockPosition, vec: Vector, block: Tile, entity: number };
+    function getPointed(): {
+        /**
+         * Pointed block position.
+         */
+        pos: BlockPosition,
+        /**
+         * Look vector.
+         */
+        vec: Vector,
+        /**
+         * Pointed block data, if player doesn't look at the block,
+         * air block is returned.
+         */
+        block: Tile,
+        /**
+         * Pointed entity, if no entity's pointed, returns -1.
+         */
+        entity: number
+    };
 
     /**
      * @deprecated Consider use {@link Player.getInventorySlot} instead.
@@ -65,14 +76,6 @@ declare namespace Player {
     function getCarriedItem(): ItemInstance;
 
     /**
-     * @param handleEnchant No longer supported and should not be passed
-     * @param handleNames No longer supported and should not be passed
-     * @returns Item in player's hand.
-     * @deprecated Use same method without parameters.
-     */
-    function getCarriedItem(handleEnchant: boolean, handleNames: boolean): ItemInstance;
-
-    /**
      * Sets item in player's hand.
      * @param id item ID
      * @param count item count
@@ -80,6 +83,20 @@ declare namespace Player {
      * @param extra item extra
      */
     function setCarriedItem(id: number, count: number, data: number, extra?: ItemExtraData): void;
+
+    /**
+     * @returns Player's current offhand item information.
+     */
+    function getOffhandItem(): ItemInstance;
+
+    /**
+     * Sets current offhand item for the player.
+     * @param id item ID
+     * @param count item count
+     * @param data item data
+     * @param extra item extra
+     */
+    function setOffhandItem(id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * Decreases carried item count by specified number.

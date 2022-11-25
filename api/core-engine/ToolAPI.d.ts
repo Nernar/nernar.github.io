@@ -180,7 +180,6 @@ declare namespace ToolAPI {
     function getCarriedToolLevel(): number;
 
     /**
-     * Resets ToolAPI engine state.
      * @internal
      */
     function resetEngine(): void;
@@ -205,7 +204,6 @@ declare namespace ToolAPI {
      * @param blockID numeric tile ID
      */
     function getBlockMaterialName(blockID: number): Nullable<string>;
-
 
     /**
      * Object used to describe tool material type.

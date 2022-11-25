@@ -63,6 +63,7 @@ declare namespace Animation {
 
         /**
          * @returns Object for current animation's render.
+         * @since 2.0.2b20
          */
         getShaderUniforms(): ShaderUniformSet;
 
@@ -151,12 +152,6 @@ declare namespace Animation {
         }): void;
 
         /**
-         * @deprecated Backwards compatibility, returned thing
-         * considered as deprecated long ago.
-         */
-        getRenderAPI(base: any): any;
-
-        /**
          * Destroys animation and releases all the resources.
          */
         destroy(): void;
@@ -235,17 +230,13 @@ declare namespace Animation {
         describeItemDefault(item: any): void;
 
         /**
-         * @deprecated Consider using {@link Animation.Item.describeItem|describeItem} instead.
-         */
-        describeItemAlternative(item: any, offset: any): void;
-
-        /**
          * Resets all the transformations made via {@link Animation.Base.transform|transform} calls.
          */
         resetTransform(): void;
 
         /**
          * Specifies item rotation along the three axes.
+         * @default x: 0, y: 0, z: 0
          */
         setItemRotation(x: number, y: number, z: number): void;
 

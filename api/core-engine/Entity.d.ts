@@ -23,7 +23,7 @@ declare namespace Entity {
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
      */
-    function putExtra(ent: number, name: string, extra?: any): void;
+    function putExtra(ent: number, name: string, extra?: object): void;
 
     /**
      * @deprecated Use attributes instead, or {@link Saver}.
@@ -45,6 +45,27 @@ declare namespace Entity {
      * @param particles if true, particles are not displayed
      */
     function addEffect(ent: number, effectId: number, effectData: number, effectTime: number, ambience?: boolean, particles?: boolean): void;
+
+    /**
+     * @param effectId numeric ID of the potion effect,
+     * one of {@link EPotionEffect} values
+     * @returns Whether the given entity is affected by the potion effect with given numeric ID.
+     * @since 2.2.1b102
+     */
+    function hasEffect(entity: number, effectId: number): boolean;
+
+    /**
+     * @returns Object with duration and level of the potion effect with given numeric ID
+     * on the given entity. These fields are set to 0, if the given effect doesn't affect
+     * the given entity at the moment.
+     * @since 2.2.1b102
+     */
+    function getEffect(entity: number, effectId: number): EffectInstance;
+
+    interface EffectInstance {
+        level: number;
+        duration: number;
+    }
 
     /**
      * Clears effect, applied to the mob.
@@ -70,13 +91,6 @@ declare namespace Entity {
     function damageEntity(ent: number, damage: number, cause?: number, params?: { attacker?: number, bool1?: boolean, bool2?: boolean }): void;
 
     /**
-     * @returns Current dimension numeric ID, one of the {@link EDimension} 
-     * values or custom dimension ID.
-     * @since 2.0.4b35
-     */
-    function getDimension(ent: number): number;
-
-    /**
      * Adds specified health amount to the entity.
      * @param heal health to be added to entity, in half-hearts
      */
@@ -88,13 +102,18 @@ declare namespace Entity {
     function getType(ent: number): number;
 
     /**
+     * @returns String entity type, like `minecraft:chicken`.
+     */
+    function getTypeName(ent: number): string;
+
+    /**
      * @returns String type for entities defined via add-ons or numeric type for
      * all the other entities.
      */
     function getTypeUniversal(ent: number): number | string;
 
     /**
-     * @returns String type for entities defined via add-ons, otherwise null.
+     * @returns String type for entities defined via add-ons, otherwise `null`.
      */
     function getTypeAddon(ent: number): Nullable<string>;
 
@@ -124,6 +143,13 @@ declare namespace Entity {
     function isExist(ent: number): boolean;
 
     /**
+     * @returns Current dimension numeric ID, one of the {@link EDimension} 
+     * values or custom dimension ID.
+     * @since 2.0.4b35
+     */
+    function getDimension(ent: number): number;
+
+    /**
      * Spawns vanilla entity on the specified coordinates.
      * @param type numeric entity type, one of the {@link EEntityType}
      * @param skin skin to set for the entity. Leave empty or null to use 
@@ -131,6 +157,12 @@ declare namespace Entity {
      * @returns Numeric ID of spawn entity or -1 if entity was not created.
      */
     function spawn(x: number, y: number, z: number, type: number, skin?: Nullable<string>): number;
+
+    /**
+     * Same as {@link Entity.spawn}, but uses {@link Vector} object to represent
+     * coordinates.
+     */
+    function spawnAtCoords(coords: Vector, type: number, skin?: string): void;
 
     /**
      * Spawns custom entity on the specified coords. Allows to pass some values
@@ -147,10 +179,23 @@ declare namespace Entity {
     function spawnCustomAtCoords(name: string, coords: Vector, extra?: any): CustomEntity;
 
     /**
-     * Same as {@link Entity.spawn}, but uses {@link Vector} object to represent
-     * coordinates.
+     * Spawns custom entity defined in behavior packs or game itself.
+     * @returns Instance to performing commands on entity.
      */
-    function spawnAtCoords(coords: Vector, type: number, skin?: string): void;
+    function spawnAddon(x: number, y: number, z: number, name: string): AddonEntityRegistry.AddonEntity;
+
+    /**
+     * Same as {@link Entity.spawnAddon}, but uses {@link Vector} object to represent
+     * coordinates.
+     * @returns Instance to performing commands on entity.
+     */
+    function spawnAddonAtCoords(coords: Vector, name: string): AddonEntityRegistry.AddonEntity;
+
+    /**
+     * @returns Instance to performing commands on requested addon
+     * entity if it spawned by Inner Core or `null` instead.
+     */
+    function getAddonEntity(entity: number): Nullable<AddonEntityRegistry.AddonEntity>;
 
     /**
      * Removes entity from the world.
@@ -286,6 +331,38 @@ declare namespace Entity {
     function health(ent: number): EntityHealth;
 
     /**
+     * Class used to manipulate entity's health.
+     * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
+     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
+     */
+    class EntityHealth {
+        /**
+         * @returns Entity's current health value.
+         * @throws No such method.
+         */
+        get(): number;
+
+        /**
+         * Sets entity's current health value.
+         * @param health health value to be set
+         * @throws No such method.
+         */
+        set(health: number): void;
+
+        /**
+         * @returns Entity's maximum health value.
+         * @throws No such method.
+         */
+        getMax(): number;
+
+        /**
+         * Sets entity's maximum health value.
+         * @throws No such method.
+         */
+        setMax(maxHealth: number): void;
+    }
+
+    /**
      * @returns Entity's current health value.
      */
     function getHealth(ent: number): number;
@@ -419,11 +496,62 @@ declare namespace Entity {
     function moveToLook(ent: number, params: MoveParams): void;
 
     /**
+     * Interface used to specify how entity should move.
+     */
+     interface MoveParams {
+        /**
+         * Movement speed.
+         */
+        speed?: number,
+
+        /**
+         * If `true`, entity won't change it's Y velocity.
+         */
+        denyY?: boolean,
+
+        /**
+         * Y velocity (jump speed).
+         */
+        jumpVel?: number
+    }
+
+    /**
      * Retrieves entity's current movement information.
      * @returns Object that contains normalized moving vector, moving speed and
      * moving xz speed (with no Y coordinate).
      */
     function getMovingVector(ent: number): MovingVector;
+
+    /**
+     * Interface used to return entity's current moving vector and some
+     * additional data.
+     */
+     interface MovingVector {
+        /**
+         * Normalized vector X coordinate.
+         */
+        x: number,
+
+        /**
+         * Normalized vector Y coordinate.
+         */
+        y: number,
+
+        /**
+         * Normalized vector Z coordinate.
+         */
+        z: number,
+
+        /**
+         * Vector real length.
+         */
+        size: number,
+
+        /**
+         * Vector real length excluding Y coordinate.
+         */
+        xzsize: number
+    }
 
     /**
      * Retrieves entity look angle in the form of pitch/yaw angle. No other
@@ -434,7 +562,7 @@ declare namespace Entity {
     /**
      * @deprecated Nothing to perform here anymore.
      */
-    function getMovingAngleByPositions(pos1: any, pos2: any): void;
+    function getMovingAngleByPositions(pos1: any, pos2: any): undefined;
 
     /**
      * Retrieves nearest to the coordinates entity of the specified entity type.
@@ -452,15 +580,6 @@ declare namespace Entity {
      * @param type entity type ID
      */
     function getAllInRange(coords: Vector, maxRange: number, type?: number): number[];
-
-    /**
-     * Returns array of all entities numeric IDs in given range in blocks.
-     * @param coords1 start search range coordinates
-     * @param coords2 end search range coordinates
-     * @param type entity type ID
-     * @since 2.0.4b35
-     */
-    function getAllInsideBox(coords1: Vector, coords2: Vector, type?: number, flag?: number): number[];
 
     /**
      * @deprecated Consider use {@link Player.getInventorySlot} instead.
@@ -491,14 +610,6 @@ declare namespace Entity {
     function getCarriedItem(ent: number): ItemInstance;
 
     /**
-     * @param bool1 parameter is no longer supported and should not be used
-     * @param bool2 parameter is no longer supported and should not be used
-     * @returns Entity's current carried item information.
-     * @deprecated Use same method without last parameters.
-     */
-    function getCarriedItem(ent: number, bool1: boolean, bool2: boolean): ItemInstance;
-
-    /**
      * Sets current carried item for the entity.
      * @param id item ID
      * @param count item count
@@ -506,6 +617,20 @@ declare namespace Entity {
      * @param extra item extra
      */
     function setCarriedItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
+
+    /**
+     * @returns Entity's current offhand item information.
+     */
+    function getOffhandItem(ent: number): ItemInstance;
+
+    /**
+     * Sets current offhand item for the entity.
+     * @param id item ID
+     * @param count item count
+     * @param data item data
+     * @param extra item extra
+     */
+    function setOffhandItem(ent: number, id: number, count: number, data: number, extra?: ItemExtraData): void;
 
     /**
      * Gets item from specified drop entity
@@ -535,30 +660,58 @@ declare namespace Entity {
     function getAttribute(ent: number, attribute: string): AttributeInstance;
 
     /**
+     * Interface used to modify attribute values.
+     */
+    interface AttributeInstance {
+
+        /**
+         * @returns Current attribute's value.
+         */
+        getValue(): number;
+
+        /**
+         * @returns Attribute's maximum value.
+         */
+        getMaxValue(): number;
+
+        /**
+         * @returns Attribute's minimum value.
+         */
+        getMinValue(): number;
+
+        /**
+         * @returns Attribute's default value
+         */
+        getDefaultValue(): number;
+
+        /**
+         * Sets current attribute's value.
+         */
+        setValue(value: number): void;
+
+        /**
+         * Sets attribute's maximum value.
+         */
+        setMaxValue(value: number): void;
+
+        /**
+         * Sets attribute's minimum value.
+         */
+        setMinValue(value: number): void;
+
+        /**
+         * Sets attribute's default value.
+         */
+        setDefaultValue(value: number): void;
+    }
+
+    /**
      * Creates or gets an existing {@link Entity.PathNavigation} instance for the specified mob
      * @returns Navigation used to control entity's target position and
      * the way to get there.
      * @since 2.0.3b33
      */
     function getPathNavigation(ent: number): PathNavigation;
-
-    /**
-     * @param effectId numeric ID of the potion effect,
-     * one of {@link EPotionEffect} values
-     * @returns Whether the given entity is affected by the potion effect with given numeric ID.
-     * @since 2.2.1b102
-     */
-    function hasEffect(entity: number, effectId: number): boolean;
-
-    interface EffectInstance { level: number, duration: number }
-
-    /**
-     * @returns Object with duration and level of the potion effect with given numeric ID
-     * on the given entity. These fields are set to 0, if the given effect doesn't affect
-     * the given entity at the moment.
-     * @since 2.2.1b102
-     */
-    function getEffect(entity: number, effectId: number): EffectInstance;
 
     /**
      * Object used to build path and move mobs to the required coordinates using
@@ -682,128 +835,13 @@ declare namespace Entity {
     }
 
     /**
-     * Class used to manipulate entity's health.
-     * @deprecated Consider using {@link Entity.getHealth}, {@link Entity.setHealth},
-     * {@link Entity.getMaxHealth} and {@link Entity.setMaxHealth} instead.
+     * Returns array of all entities numeric IDs in given range in blocks.
+     * @param coords1 start search range coordinates
+     * @param coords2 end search range coordinates
+     * @param type entity type ID
+     * @default type: 255, flag: true
+     * @since 2.0.4b35
      */
-    class EntityHealth {
-        /**
-         * @returns Entity's current health value.
-         */
-        get(): number;
+    function getAllInsideBox(coords1: Vector, coords2: Vector, type?: number, flag?: boolean): number[];
 
-        /**
-         * Sets entity's current health value.
-         * @param health health value to be set
-         */
-        set(health: number): void;
-
-        /**
-         * @returns Entity's maximum health value.
-         */
-        getMax(): number;
-
-        /**
-         * Sets entity's maximum health value.
-         * @param maxHealth 
-         */
-        setMax(maxHealth: number): void;
-    }
-
-    /**
-     * Interface used to specify how entity should move.
-     */
-    interface MoveParams {
-        /**
-         * Movement speed.
-         */
-        speed?: number,
-
-        /**
-         * If `true`, entity won't change it's Y velocity.
-         */
-        denyY?: boolean,
-
-        /**
-         * Y velocity (jump speed).
-         */
-        jumpVel?: number
-    }
-
-    /**
-     * Interface used to return entity's current moving vector and some
-     * additional data.
-     */
-    interface MovingVector {
-        /**
-         * Normalized vector X coordinate.
-         */
-        x: number,
-
-        /**
-         * Normalized vector Y coordinate.
-         */
-        y: number,
-
-        /**
-         * Normalized vector Z coordinate.
-         */
-        z: number,
-
-        /**
-         * Vector real length.
-         */
-        size: number,
-
-        /**
-         * Vector real length excluding Y coordinate.
-         */
-        xzsize: number
-    }
-
-    /**
-     * Interface used to modify attribute values.
-     */
-    interface AttributeInstance {
-
-        /**
-         * @returns Current attribute's value.
-         */
-        getValue(): number;
-
-        /**
-         * @returns Attribute's maximum value.
-         */
-        getMaxValue(): number;
-
-        /**
-         * @returns Attribute's minimum value.
-         */
-        getMinValue(): number;
-
-        /**
-         * @returns Attribute's default value
-         */
-        getDefaultValue(): number;
-
-        /**
-         * Sets current attribute's value.
-         */
-        setValue(value: number): void;
-
-        /**
-         * Sets attribute's maximum value.
-         */
-        setMaxValue(value: number): void;
-
-        /**
-         * Sets attribute's minimum value.
-         */
-        setMinValue(value: number): void;
-
-        /**
-         * Sets attribute's default value.
-         */
-        setDefaultValue(value: number): void;
-    }
 }

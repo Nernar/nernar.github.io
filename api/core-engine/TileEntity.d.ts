@@ -4,6 +4,11 @@
  */
 declare namespace TileEntity {
     /**
+     * @internal
+     */
+    function resetEngine(): void;
+
+    /**
      * Registers block as a TileEntity
      * @param blockID numeric block ID to be used
      * @param customPrototype a set of defining parameters
@@ -24,10 +29,9 @@ declare namespace TileEntity {
     function isTileEntityBlock(blockID: number): boolean;
 
     /**
-     * @returns A {@link TileEntity["interface"]} on the specified coordinates or `null` if the block on the
-     * coordinates is not it.
+     * @internal
      */
-    function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
+    function createTileEntityForPrototype(prototype: TileEntityPrototype, addToUpdate?: boolean): TileEntity;
 
     /**
      * If the block on the specified coordinates is a TileEntity block and is
@@ -37,11 +41,23 @@ declare namespace TileEntity {
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
+     * Adding attached to block updatable, which is working like ordinary
+     * tile entity, except the fact that it registers in any case.
+     */
+    function addUpdatableAsTileEntity(updatable: Updatable): void;
+
+    /**
+     * @returns A {@link TileEntity["interface"]} on the specified coordinates or `null` if the block on the
+     * coordinates is not it.
+     */
+    function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
+
+    /**
      * Destroys {@link TileEntity["interface"]}, dropping it's container.
      * @returns `true` if the it was destroyed successfully, `false`
      * otherwise.
      */
-    function destroyTileEntity(tileEntity: TileEntity): boolean;
+    function destroyTileEntity(tileEntity: TileEntity, fromDestroyBlock?: boolean, isDropAllowed?: boolean): boolean;
 
     /**
      * If the block on the specified coordinates is a {@link TileEntity["interface"]}, destroys
@@ -67,6 +83,11 @@ declare namespace TileEntity {
      * the chunks that are also verified.
      */
     function isTileEntityLoaded(tileEntity: TileEntity): boolean;
+
+    /**
+     * @internal
+     */
+    function checkTileEntityForIndex(index: number): void;
 
     /**
      * Interface passed to {@link TileEntity["interface"].registerPrototype} function.
@@ -100,7 +121,7 @@ declare namespace TileEntity {
              */
             unload?: () => void,
             /**
-             * @todo It was really exists or not?
+             * Called when every client ticking.
              * @since 2.0.2b29
              */
             onCheckerTick?: (isInitialized: boolean, isLoaded: boolean, wasLoaded: boolean) => void,
@@ -276,6 +297,12 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      */
     sendPacket: (name: string, data: object) => void;
     /**
+     * Sends packet to specified client.
+     * @remarks
+     * Availabled only in server-side methods!
+     */
+    sendResponse: (packetName: string, someData: object) => void;
+    /**
      * BlockSource object to manipulate TileEntity's position in world.
      */
     blockSource: BlockSource;
@@ -287,10 +314,4 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
      * NetworkEntity object of the TileEntity.
      */
     networkEntity: NetworkEntity;
-    /**
-     * Sends packet to specified client.
-     * @remarks
-     * Availabled only in server-side methods!
-     */
-    sendResponse: (packetName: string, someData: object) => void;
 }
