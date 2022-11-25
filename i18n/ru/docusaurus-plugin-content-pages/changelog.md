@@ -85,7 +85,7 @@
 ## 2.2.1b96
 
 - Добавлены методы [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) и [Recipes.getAllFurnaceRecipes()](/api/Recipes.getAllFurnaceRecipes)
-- Добавлен метод [BlockSource.getBiomeDownfallAt(x, y, z)](BlockSource.getBiomeDownfallAt)
+- Добавлен метод [BlockSource.getBiomeDownfallAt(x, y, z)](/api/BlockSource/getBiomeDownfallAt)
 - Добавлены настройки элемента слота: iconScale и disablePixelPerfect
 - Добавлены методы UI.Window: [updateScrollDimensions()](/api/UI/Window/updateScrollDimensions) и [updateWindowPositionAndSize()](/api/UI/Window/updateWindowPositionAndSize)
 - Добавлен новый тип расположения текста: 3 - ALIGN_CENTER_HORIZONTAL

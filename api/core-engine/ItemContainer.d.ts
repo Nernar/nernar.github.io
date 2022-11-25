@@ -1,5 +1,5 @@
 /**
- * Backward compatibility.
+ * Backwards compatibility.
  */
 declare type TransferPolicy = com.zhekasmirnov.apparatus.api.container.ItemContainerFuncs.TransferPolicy;
 

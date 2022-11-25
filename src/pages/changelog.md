@@ -85,7 +85,7 @@ For users, who have Kernel Extension installed, it must be updated to the final 
 ## 2.2.1b96
 
 - Added methods [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) and [Recipes.getAllFurnaceRecipes()](/api/Recipes.getAllFurnaceRecipes)
-- Added method [BlockSource.getBiomeDownfallAt(x, y, z)](BlockSource.getBiomeDownfallAt)
+- Added method [BlockSource.getBiomeDownfallAt(x, y, z)](/api/BlockSource/getBiomeDownfallAt)
 - Added slot element properties: iconScale and disablePixelPerfect
 - Added methods for UI.Window: [updateScrollDimensions()](/api/UI/Window/updateScrollDimensions) and [updateWindowPositionAndSize()](/api/UI/Window/updateWindowPositionAndSize)
 - Added new text alignment type: 3 - ALIGN_CENTER_HORIZONTAL

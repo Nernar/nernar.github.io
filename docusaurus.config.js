@@ -23,11 +23,12 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
-const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
-module.exports =
+const config =
 	/** @type {import('@docusaurus/types').Config} */
 	({
 		title: 'Inner Core Docs',
@@ -74,86 +75,7 @@ module.exports =
 			]
 		],
 
-		plugins: [
-			[
-				'content-docs',
-				/** @type {import('@docusaurus/plugin-content-docs').Options} */
-				({
-					id: 'api',
-					path: 'api/www',
-					routeBasePath: 'api',
-					numberPrefixParser: false,
-					exclude: [],
-					sidebarItemsGenerator: function(generatorArgs) {
-						return generatorArgs.defaultSidebarItemsGenerator({
-							...generatorArgs,
-							docs: generatorArgs.docs.filter(function(value) {
-								value.title = value.title.replace(/\\?\\_/g, '_');
-								return !(value.sourceDirName == '.' && value.unversionedId == 'index');
-							})
-						});
-					}
-				})
-			],
-			function() {
-				// Required mostly by playground.
-				return {
-					name: 'resolve-webpack-polyfills',
-					configureWebpack: function() {
-						return {
-							resolve: {
-
-								fallback: {
-									assert: require.resolve('assert'),
-									buffer: require.resolve('buffer/'),
-									child_process: false,
-									constants: require.resolve('constants-browserify'),
-									crypto: require.resolve('crypto-browserify'),
-									fs: false,
-									'fs-extra': false,
-									'graceful-fs': false,
-									module: false,
-									os: require.resolve('os-browserify/browser'),
-									path: require.resolve('path-browserify'),
-									stream: require.resolve('stream-browserify'),
-									url: require.resolve('url/')
-								}
-							},
-							plugins: [
-								new webpack.ProvidePlugin({
-									Buffer: ['buffer', 'Buffer'],
-									process: 'process/browser'
-								}),
-								new webpack.DefinePlugin({
-									// node_modules/@docusaurus/utils/src/constants.ts
-									'process.versions.node': JSON.stringify(process.versions.node),
-									// TODO: I misery doesn't know why it's not working
-									'typeof fs.realpath.native': JSON.stringify('undefined')
-								}),
-								/* new webpack.IgnorePlugin({
-									checkResource: function(resource, context) {
-										if (resource == 'fs-extra') {
-											console.log('!');
-										}
-										return resource == 'fs-extra';
-									}
-								}) */
-							],
-							module: {
-								rules: [
-									{
-										test: /\.m?js$/,
-										resolve: {
-											fullySpecified: false
-										}
-									}
-								]
-							}
-						}
-					}
-				}
-			}
-		],
+		plugins: [],
 
 		themeConfig:
 			/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -179,11 +101,6 @@ module.exports =
 							position: 'left',
 							to: 'docs',
 							label: 'Docs'
-						},
-						{
-							position: 'left',
-							to: 'api',
-							label: 'API'
 						},
 						{
 							position: 'left',
@@ -284,3 +201,38 @@ module.exports =
 				}
 			})
 	});
+
+const api = path.resolve('api/www');
+
+if (fs.existsSync(api) && fs.readdirSync(api).length > 0) {
+	config.plugins.unshift([
+		'content-docs',
+		/** @type {import('@docusaurus/plugin-content-docs').Options} */
+		({
+			id: 'api',
+			path: 'api/www',
+			routeBasePath: 'api',
+			numberPrefixParser: false,
+			exclude: [],
+			sidebarItemsGenerator: function(generatorArgs) {
+				return generatorArgs.defaultSidebarItemsGenerator({
+					...generatorArgs,
+					docs: generatorArgs.docs.filter(function(value) {
+						value.title = value.title.replace(/\\?\\_/g, '_');
+						return !(value.sourceDirName == '.' && value.unversionedId == 'index');
+					})
+				});
+			}
+		})
+	]);
+	const themeConfig = 
+		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+		(config.themeConfig);
+	themeConfig.navbar.items.unshift(themeConfig.navbar.items.shift(), {
+		position: 'left',
+		to: 'api',
+		label: 'API'
+	});
+}
+
+module.exports = config;
