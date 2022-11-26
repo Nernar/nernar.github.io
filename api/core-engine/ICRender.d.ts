@@ -162,7 +162,7 @@ declare namespace ICRender {
 	abstract class RANDOM_CONDITION implements CONDITION {
 		/**
 		 * Forces engine to treat blocks along some axis in same way if enabled
-		 * parameter value is `false.`
+		 * parameter value is `false`.
 		 * @param axis 0 fpr x, 1 for y, 2 for z axis
 		 */
 		setAxisEnabled(axis: number, enabled: boolean): RANDOM_CONDITION;

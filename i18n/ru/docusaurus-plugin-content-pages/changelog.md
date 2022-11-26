@@ -84,12 +84,12 @@
 
 ## 2.2.1b96
 
-- Добавлены методы [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) и [Recipes.getAllFurnaceRecipes()](/api/Recipes.getAllFurnaceRecipes)
+- Добавлены методы [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) и [Recipes.getAllFurnaceRecipes()](/api/Recipes/getAllFurnaceRecipes)
 - Добавлен метод [BlockSource.getBiomeDownfallAt(x, y, z)](/api/BlockSource/getBiomeDownfallAt)
 - Добавлены настройки элемента слота: iconScale и disablePixelPerfect
-- Добавлены методы UI.Window: [updateScrollDimensions()](/api/UI/Window/updateScrollDimensions) и [updateWindowPositionAndSize()](/api/UI/Window/updateWindowPositionAndSize)
+- Добавлены методы UI.Window: [updateScrollDimensions()](/api/com/zhekasmirnov/innercore/api/mod/ui/window/UIWindow/updateScrollDimensions) и [updateWindowPositionAndSize()](/api/com/zhekasmirnov/innercore/api/mod/ui/window/UIWindow/updateWindowPositionAndSize)
 - Добавлен новый тип расположения текста: 3 - ALIGN_CENTER_HORIZONTAL
-- Добавлен метод [runOnClientThread(function)](runOnClientThread), аналог [runOnMainThread](runOnMainThread), но для клиентского потока
+- Добавлен метод [runOnClientThread(function)](/api/runOnClientThread), аналог [runOnMainThread](/api/runOnMainThread), но для клиентского потока
 - Исправления числовых идентификаторов предметов и связанных рецептов - звезда ада, арбуз, пластинки, лошадиная броня, огненный шар, фейерверки
 - Исправлена модель нагрудника для брони из модов
 
@@ -107,7 +107,7 @@
 
 - Исправлен баг с выбором сборок, возникший в версии [2.2.1b93](#221b93)
 - Исправлен метод [Item.isValid(id)](/api/Item/isValid), добавлены методы [IDRegistry.getStringIdAndTypeForIntegerId(id)](/api/IDRegistry/getStringIdAndTypeForIntegerId), [IDRegistry.getTypeForIntegerId(id)](/api/IDRegistry/getTypeForIntegerId), [IDRegistry.getStringIdForIntegerId(id)](/api/IDRegistry/getStringIdForIntegerId)
-- Исправлен [getEnchantName](/api/ItemExtraData/getEnchantName) у ItemExtraData
+- Исправлен [getEnchantName](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/getEnchantName) у ItemExtraData
 
 ## 2.2.1b93
 
@@ -184,7 +184,7 @@
 
 ## 2.2.0b82
 
-- Добавлены методы контейнера [setSlotSavingEnabled(name, enabled)](/api/ItemContainer/setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/ItemContainer/setGlobalSlotSavingEnabled), которые контролируют то, какие слоты сохраняются
+- Добавлены методы контейнера [setSlotSavingEnabled(name, enabled)](/api/com/zhekasmirnov/apparatus/api/container/ItemContainer/setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/com/zhekasmirnov/apparatus/api/container/ItemContainer/setGlobalSlotSavingEnabled), которые контролируют то, какие слоты сохраняются
 - Добавлен параметр методу destroy в TileEntity, отвечающий за то, было ли уничтожение вызвано событием *DestroyBlock*
 - Оптимизированы методы редактирования инвентаря игрока
 - Исправлена установка способностей игрока, включая полет
@@ -342,7 +342,7 @@
 - Добавлен метод модели предмета [setModelOverrideCallback(function(item) { ... })](/api/ItemModel/setModelOverrideCallback), которая устанавливает модели функцию, возвращающую модель предмета для конкретного предмета в мире. Работает как item override function, но для моделей.
 - Добавлен метод [ItemModel.newStandalone()](/api/ItemModel/newStandalone), создающий пустую модель предмета, которая ни к чему не привязана, данные модели могут быть использованы, как результат функции setModelOverrideCallback
 - Теперь в функцию определения иконки предмета (item override function) может передаваться extra
-- Исправлен вылет, который мог быть вызван вызовом методом [toScriptable()](/api/NBT/toScriptable) NBT-тэгов
+- Исправлен вылет, который мог быть вызван вызовом методом [toScriptable()](/api/NBT/CompoundTag/toScriptable) NBT-тэгов
 - Для сборки java кода теперь используются другие инструменты (для построения .dex файлов используется d8, а не dx)
 
 ## 2.0.5b44
@@ -350,7 +350,7 @@
 - Возможность получения и изменения NBT мобов, ванильных TileEntity и предметов
 - Добавлены методы: [Entity.getCompoundTag(entity)](/api/Entity/getCompoundTag), [Entity.setCompoundTag(entity, tag)](/api/Entity/setCompoundTag)
 - Добавлены методы ванильных TileEntity, возвращаемых [World.getContainer()](/api/World/getContainer): [getCompoundTag()](/api/NativeTileEntity/getCompoundTag), [setCompoundTag(tag)](/api/NativeTileEntity/setCompoundTag)
-- Добавлены методы [ItemExtraData](/api/ItemExtraData): [getCompoundTag()](/api/ItemExtraData/getCompoundTag), [setCompoundTag(tag)](/api/ItemExtraData/setCompoundTag)
+- Добавлены методы [ItemExtraData](/api/ItemExtraData): [getCompoundTag()](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/getCompoundTag), [setCompoundTag(tag)](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/setCompoundTag)
 - Интерфейс модов теперь поддерживает предметы модов с анимированной иконкой
 - Функция динамичной иконки предметов теперь получает второй булевый параметр isModUi, показывающий, в ванильном интерфейсе иконка или нет
 - Добавлен метод [Debug.big](/api/Debug/big), аналогичен [Debug.m](/api/Debug/m), однако выводит все в диалог с возможностью копирования текста и форматирует JSON
@@ -362,7 +362,7 @@
 - Автоматическое удаление из миров паков ресурсов и поведения, которые были добавлены удаленными модами
 - RenderMesh теперь может принимать не только абсолютный путь к файлу, но также путь в ресурсах мода или имя файла внутри директории *models/* в ресурсах мода
 - Параметры элемента слота isTransparentBackground и его устаревшая версия needClean теперь оба являются устаревшими, теперь слот по умолчанию поддерживает прозрачный фон
-- Добавлен метод контейнера [setOnOpenListener(function(container, window) {...})](/api/Container/setOnOpenListener)
+- Добавлен метод контейнера [setOnOpenListener(function(container, window) {...})](/api/com/zhekasmirnov/innercore/api/mod/ui/container/Container/setOnOpenListener)
 - Временно убрана сборка для архитектуры x86, которая пока что не была рабочей, это снизит размер пака
 - Исправлена ошибка от двойного вызова [WRAP_JAVA](/api/WRAP_JAVA) на один и тот же класс
 
@@ -424,7 +424,7 @@
 - Добавлен метод [Item.setAllowedInOffhand(id, allowed)](/api/Item/setAllowedInOffhand)
 - Добавлен метод [Game.simulateBackPressed()](/api/Game/simulateBackPressed)
 - Исправлен и улучшен модуль навигации
-- Исправлена работа методов [Entity.setCarriedItem](/api/Entity/setCarriedItem)/[setOffhandItem](/api/Entity/setOffhandItem)/[setArmor](/api/Entity/setArmor), которые не отправляли изменения на клиент
+- Исправлена работа методов [Entity.setCarriedItem](/api/Entity/setCarriedItem)/[setOffhandItem](/api/Entity/setOffhandItem)/[setArmorSlot](/api/Entity/setArmorSlot), которые не отправляли изменения на клиент
 - Исправлены краши, которые могли происходить при переходе между измерениями
 - Исправлена работа поворота анимаций
 - Исправлена ошибка, из-за которой паки поведения не добавлялись при первом запуске
@@ -458,14 +458,14 @@
 
 ## 2.0.2b29
 
-- Улучшена система TileEntity: теперь не загруженные или не имеющие тика TileEntity не будут загружать лимит обновлений. Добавлены события [load()](/api/TileEntity/load), [unload()](/api/TileEntity/unload) и [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/TileEntity/onCheckerTick).
+- Улучшена система TileEntity: теперь не загруженные или не имеющие тика TileEntity не будут загружать лимит обновлений. Добавлены события [load()](/api/TileEntity/TileEntityPrototype/client), [unload()](/api/TileEntity/TileEntityPrototype/client) и [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/TileEntity/TileEntityPrototype/client).
 - Исправлен вылет от моделей мобов
 - Другие мелкие исправления
 
 ## 2.0.2b28
 
 - Добавлена настройка **disable_loading_screen**, отключающая загрузочный экран и загружающая моды в основном потоке
-- Исправлены методы [World.clip](/api/World/clip), [RenderMesh.clone](/api/RenderMesh/clone), [Block.setupAsRedstoneReceiver](/api/Block/setupAsRedstoneReceiver)/[Emitter](/api/Block/setupAsRedstoneEmitter)
+- Исправлены методы [World.clip](/api/World/clip), [RenderMesh.clone](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/clone), [Block.setupAsRedstoneReceiver](/api/Block/setupAsRedstoneReceiver)/[Emitter](/api/Block/setupAsRedstoneEmitter)
 - Исправления вылетов от моделей предметов
 
 ## 2.0.2b27
@@ -481,20 +481,20 @@
 - Добавлена функция [Block.registerNeighbourChangeFunction\[ForID\](id, function(coords, block, changeCoords) {})](/api/Block/registerNeighbourChangeFunction)
 - Добавлена функция [Block.registerEntityInsideFunction\[ForID\](id, function(coords, block, entity) {})](/api/Block/registerEntityInsideFunction)
 - Добавлена функция [Block.registerEntityStepOnFunction\[ForID\](id, function(coords, block, entity) {})](/api/Block/registerEntityStepOnFunction)
-- Добавлены методы RenderMesh: [rotate(x, y, z, rx, ry, rz)](/api/RenderMesh/rotate), [fitIn(x1, y1, z1, x2, y2, z2\[, keepRatio\])](/api/RenderMesh/fitIn), [clone()](/api/RenderMesh/clone)
+- Добавлены методы RenderMesh: [rotate(x, y, z, rx, ry, rz)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/rotate), [fitIn(x1, y1, z1, x2, y2, z2\[, keepRatio\])](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/fitIn), [clone()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/clone)
 - Исправлены положения и цвета RenderMesh в моделях предметов
 
 ## 2.0.2b25
 
 - Описанию блока добавлен параметр [sound](/api/Block/SpecialType/sound), устанавливает один из стандартных типов звуков
-- Добавлен метод [RenderMesh.setLightPos(x, y, z)](/api/RenderMesh/setLightPos) - устанавливает относительную позицию для получения освещения блока
-- Добавлен параметр в метод [RenderMesh.setFoliageTinted(leavesType)](/api/RenderMesh/setFoliageTinted)
+- Добавлен метод [RenderMesh.setLightPos(x, y, z)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setLightPos) - устанавливает относительную позицию для получения освещения блока
+- Добавлен параметр в метод [RenderMesh.setFoliageTinted(leavesType)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setFoliageTinted)
 - Исправлен метод [ItemModel.occupy()](/api/ItemModel/occupy), который не предотвращал установку модели ICRender предмету при установке ее блоку
 
 ## 2.0.2b24
 
 - Исправлен вылет от большого количества блоков с RenderMesh в чанке
-- Добавлены методы RenderMesh - [setNoTint()](/api/RenderMesh/setNoTint), [setGrassTinted()](/api/RenderMesh/setGrassTinted), [setFoliageTinted()](/api/RenderMesh/setFoliageTinted), [setWaterTinted()](/api/RenderMesh/setWaterTinted)
+- Добавлены методы RenderMesh - [setNoTint()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setNoTint), [setGrassTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setGrassTinted), [setFoliageTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setFoliageTinted), [setWaterTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setWaterTinted)
 - Добавлены методы скриптов предзагрузки - [Resources.getAllMatchingResources("regex")](/api/Resources/getAllMatchingResources), [Resources.getResourcePath("local path")](/api/Resources/getResourcePath), [Resources.getAllResourceDirectoriesPaths()](/api/Resources/getAllResourceDirectoriesPaths)
 
 ## 2.0.2b23
@@ -511,9 +511,9 @@
 
 ### Другие нововведения
 
-- Добавлено условие [ICRender.RANDOM(value, max\[, seed\])](/api/ICRender/RANDOM) - условие для добавление случайности, генерирует для позиции случайную величину от 0 до max - 1, и срабатывает, если она равна value. Имеет метод [setAxisEnabled(0-2, включено)](/api/ICRender/RANDOM/setAxisEnabled), позволяющая игнорировать одну (или несколько) из трех координат.
+- Добавлено условие [ICRender.RANDOM(value, max\[, seed\])](/api/ICRender/RANDOM) - условие для добавление случайности, генерирует для позиции случайную величину от 0 до max - 1, и срабатывает, если она равна value. Имеет метод [setAxisEnabled(0-2, включено)](/api/ICRender/RANDOM_CONDITION/setAxisEnabled), позволяющая игнорировать одну (или несколько) из трех координат.
 - Добавлены методы [Block.setupAsRedstoneReceiver(nameID, connectToRedstone)](/api/Block/setupAsRedstoneReceiver) - делает блок приемником редстоуна, [Block.setupAsRedstoneEmitter(nameID, connectToRedstone)](/api/Block/setupAsRedstoneEmitter) - делает блок источником редстоуна, [Block.setupAsNonRedstoneTile(nameID)](/api/Block/setupAsNonRedstoneTile) - убирает всю связь с редстоуном
-- RenderMesh: добавлен метод [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/RenderMesh/addMesh), в метод [setColor](/api/RenderMesh/setColor) добавлена поддержка прозрачности
+- RenderMesh: добавлен метод [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/addMesh), в метод [setColor](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setColor) добавлена поддержка прозрачности
 - Описанию типа блока добавлен параметр [mapcolor](/api/Block/SpecialType/mapcolor), который задает цвет блока на карте (в формате 0xRRGGBB)
 
 ## 2.0.2b22
@@ -532,9 +532,9 @@
 
 - Добавлена возможность добавления новых материалов и шейдеров (больше информации будет опубликовано в скором времени)
 - Добавлены пользовательские модели предметов в инвентаре и в руке, для доступа к ним используйте [ItemModel.getFor(id, data)](/api/ItemModel/getFor)
-- Добавлен новый режим анимации - модель с пользовательским материалом, чтобы войти в этот режим используйте [describe({ mesh: RenderMesh, skin: "имя текстуры", material: "имя материала" })](/api/RenderMesh/describe)
+- Добавлен новый режим анимации - модель с пользовательским материалом, чтобы войти в этот режим используйте [describe({ mesh: RenderMesh, skin: "имя текстуры", material: "имя материала" })](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/describe)
 - Блоки с моделями ICRender автоматически получат модели в инвентаре и в руке
-- Добавлены методы пользовательских изменений: [setFogDistance(close, far)](/api/CustomDimension/setFogDistance), [resetFogDistance()](/api/CustomDimension/resetFogDistance)
+- Добавлены методы пользовательских изменений: [setFogDistance(close, far)](/api/Dimensions/CustomDimension/setFogDistance), [resetFogDistance()](/api/Dimensions/CustomDimension/resetFogDistance)
 - Небольшие изменения и исправления
 
 ## 2.0.1b18

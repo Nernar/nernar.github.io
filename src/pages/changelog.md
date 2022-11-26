@@ -84,12 +84,12 @@ For users, who have Kernel Extension installed, it must be updated to the final 
 
 ## 2.2.1b96
 
-- Added methods [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) and [Recipes.getAllFurnaceRecipes()](/api/Recipes.getAllFurnaceRecipes)
+- Added methods [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) and [Recipes.getAllFurnaceRecipes()](/api/Recipes/getAllFurnaceRecipes)
 - Added method [BlockSource.getBiomeDownfallAt(x, y, z)](/api/BlockSource/getBiomeDownfallAt)
 - Added slot element properties: iconScale and disablePixelPerfect
-- Added methods for UI.Window: [updateScrollDimensions()](/api/UI/Window/updateScrollDimensions) and [updateWindowPositionAndSize()](/api/UI/Window/updateWindowPositionAndSize)
+- Added methods for UI.Window: [updateScrollDimensions()](/api/com/zhekasmirnov/innercore/api/mod/ui/window/UIWindow/updateScrollDimensions) and [updateWindowPositionAndSize()](/api/com/zhekasmirnov/innercore/api/mod/ui/window/UIWindow/updateWindowPositionAndSize)
 - Added new text alignment type: 3 - ALIGN_CENTER_HORIZONTAL
-- Added functon [runOnClientThread(function)](runOnClientThread), works as [runOnMainThread](runOnMainThread), but for client ticking thread
+- Added functon [runOnClientThread(function)](/api/runOnClientThread), works as [runOnMainThread](/api/runOnMainThread), but for client ticking thread
 - Fixed some item IDs compatibility and related recipes - nether start, melon, records, horse armor, fireball, fireworks
 - Fixed chestplate model for modded armor
 
@@ -107,7 +107,7 @@ For users, who have Kernel Extension installed, it must be updated to the final 
 
 - Fixed new modpack selecting bug from [2.2.1b93](#221b93)
 - Fixed [Item.isValid(id)](/api/Item/isValid), added [IDRegistry.getStringIdAndTypeForIntegerId(id)](/api/IDRegistry/getStringIdAndTypeForIntegerId), [IDRegistry.getTypeForIntegerId(id)](/api/IDRegistry/getTypeForIntegerId), [IDRegistry.getStringIdForIntegerId(id)](/api/IDRegistry/getStringIdForIntegerId)
-- Fixed [getEnchantName](/api/ItemExtraData/getEnchantName) from ItemExtraData
+- Fixed [getEnchantName](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/getEnchantName) from ItemExtraData
 
 ## 2.2.1b93
 
@@ -185,7 +185,7 @@ For users, who have Kernel Extension installed, it must be updated to the final 
 
 ## 2.2.0b82
 
-- Added ItemContainer methods [setSlotSavingEnabled(name, enabled)](/api/ItemContainer/setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/ItemContainer/setGlobalSlotSavingEnabled), they are used to control, which slots are saved
+- Added ItemContainer methods [setSlotSavingEnabled(name, enabled)](/api/com/zhekasmirnov/apparatus/api/container/ItemContainer/setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/com/zhekasmirnov/apparatus/api/container/ItemContainer/setGlobalSlotSavingEnabled), they are used to control, which slots are saved
 - Added parameter to destroy method of tile entity, that indicates, if it was destroyed in *DestroyBlock* callback
 - Optimized inventory editing methods for player
 - Fixed editing player abilities, including flying
@@ -343,7 +343,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Added item model method [setModelOverrideCallback(function(item) { ... })](/api/ItemModel/setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
 - Added method [ItemModel.newStandalone()](/api/ItemModel/newStandalone), creates empty ItemModel instance, not linked to any item, this models should be used in setModelOverrideCallback
 - Item override function now receives extra data
-- Fixed crash, caused by calling [toScriptable()](/api/NBT/toScriptable) method of NBT tags
+- Fixed crash, caused by calling [toScriptable()](/api/NBT/CompoundTag/toScriptable) method of NBT tags
 - D8 dexer, instead of old DX is now used to build dex files from java
 
 ## 2.0.5b44
@@ -351,7 +351,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Mods now can access and modify NBT of entities, tile entities and items
 - Added functions: [Entity.getCompoundTag(entity)](/api/Entity/getCompoundTag), [Entity.setCompoundTag(entity, tag)](/api/Entity/setCompoundTag)
 - Added methods to vanilla TileEntity, returned by [World.getContainer()](/api/World/getContainer): [getCompoundTag()](/api/NativeTileEntity/getCompoundTag), [setCompoundTag(tag)](/api/NativeTileEntity/setCompoundTag)
-- Added methods to [ItemExtraData](/api/ItemExtraData): [getCompoundTag()](/api/ItemExtraData/getCompoundTag), [setCompoundTag(tag)](/api/ItemExtraData/setCompoundTag)
+- Added methods to [ItemExtraData](/api/ItemExtraData): [getCompoundTag()](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/getCompoundTag), [setCompoundTag(tag)](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/setCompoundTag)
 - Mod UI now supports modded animated item icons
 - Icon override functions now receives second parameter - isModUi
 - Added function [Debug.big](/api/Debug/big), acts like [Debug.m](/api/Debug/m), but outputs dialog with selectable text and pretty JSON
@@ -363,7 +363,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Automatically deleting resource and behavior packs from uninstalled mods upon world load
 - RenderMesh now can receive not only absolute file path, but also resource path and name of file in *models/* dir in resources.
 - Deprecated slot element parameters isTransparentBackground and needClean, now slot supports transparent background by default
-- Added container method [setOnOpenListener(function(container, window) {...})](/api/Container/setOnOpenListener)
+- Added container method [setOnOpenListener(function(container, window) {...})](/api/com/zhekasmirnov/innercore/api/mod/ui/container/Container/setOnOpenListener)
 - Removed shared objects, built for x86 ABI to reduce overall weight
 - Fixed error, that occurred after second [WRAP_JAVA](/api/WRAP_JAVA) call on same class
 
@@ -425,7 +425,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Added function [Item.setAllowedInOffhand(id, allowed)](/api/Item/setAllowedInOffhand)
 - Added function [Game.simulateBackPressed()](/api/Game/simulateBackPressed)
 - PathNavigation is majorly fixed and improved
-- Fixed [Entity.setCarriedItem](/api/Entity/setCarriedItem)/[setOffhandItem](/api/Entity/setOffhandItem)/[setArmor](/api/Entity/setArmor) were not sending data to client on non-player entities
+- Fixed [Entity.setCarriedItem](/api/Entity/setCarriedItem)/[setOffhandItem](/api/Entity/setOffhandItem)/[setArmorSlot](/api/Entity/setArmorSlot) were not sending data to client on non-player entities
 - Fixed some crashes, that could occur while transferring between dimensions
 - Fixed rotation of animations
 - Fixed error, that caused mod behavior packs to be ignored on first launch
@@ -459,14 +459,14 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.2b29
 
-- Better TileEntity system: now unloaded tile entities, or ones without tick function will not be counted, when checking updatable limit. Added TileEntity functions [load()](/api/TileEntity/load), [unload()](/api/TileEntity/unload) and [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/TileEntity/onCheckerTick).
+- Better TileEntity system: now unloaded tile entities, or ones without tick function will not be counted, when checking updatable limit. Added TileEntity functions [load()](/api/TileEntity/TileEntityPrototype/client), [unload()](/api/TileEntity/TileEntityPrototype/client) and [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/TileEntity/TileEntityPrototype/client).
 - Fixed crash with mob custom models
 - Other minor fixes
 
 ## 2.0.2b28
 
 - Added option **disable_loading_screen**, that disables loading screen and loads mods on main thread
-- Fixed [World.clip](/api/World/clip), [RenderMesh.clone](/api/RenderMesh/clone), [Block.setupAsRedstoneReceiver](/api/Block/setupAsRedstoneReceiver)/[Emitter](/api/Block/setupAsRedstoneEmitter)
+- Fixed [World.clip](/api/World/clip), [RenderMesh.clone](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/clone), [Block.setupAsRedstoneReceiver](/api/Block/setupAsRedstoneReceiver)/[Emitter](/api/Block/setupAsRedstoneEmitter)
 - Fixed some crashes from item models
 
 ## 2.0.2b27
@@ -482,20 +482,20 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Added [Block.registerNeighbourChangeFunction\[ForID\](id, function(coords, block, changeCoords) {})](/api/Block/registerNeighbourChangeFunction)
 - Added [Block.registerEntityInsideFunction\[ForID\](id, function(coords, block, entity) {})](/api/Block/registerEntityInsideFunction)
 - Added [Block.registerEntityStepOnFunction\[ForID\](id, function(coords, block, entity) {})](/api/Block/registerEntityStepOnFunction)
-- Added RenderMesh methods [rotate(x, y, z, rx, ry, rz)](/api/RenderMesh/rotate), [fitIn(x1, y1, z1, x2, y2, z2\[, keepRatio\])](/api/RenderMesh/fitIn), [clone()](/api/RenderMesh/clone)
+- Added RenderMesh methods [rotate(x, y, z, rx, ry, rz)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/rotate), [fitIn(x1, y1, z1, x2, y2, z2\[, keepRatio\])](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/fitIn), [clone()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/clone)
 - Fixed colors and mesh position in item models
 
 ## 2.0.2b25
 
 - Added block description property - [sound](/api/Block/SpecialType/sound), sets one of standard block sound types
-- Added RenderMesh method [setLightPos(x, y, z)](/api/RenderMesh/setLightPos) - set relative position for block lighting
-- Added RenderMesh method parameter [setFoliageTinted(leavesType)](/api/RenderMesh/setFoliageTinted)
+- Added RenderMesh method [setLightPos(x, y, z)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setLightPos) - set relative position for block lighting
+- Added RenderMesh method parameter [setFoliageTinted(leavesType)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setFoliageTinted)
 - Fixed [ItemModel.occupy()](/api/ItemModel/occupy) method not preventing setting ICRender models
 
 ## 2.0.2b24
 
 - Fixed crash from massive amount of blocks with RenderMesh
-- Added methods to RenderMesh - [setNoTint()](/api/RenderMesh/setNoTint), [setGrassTinted()](/api/RenderMesh/setGrassTinted), [setFoliageTinted()](/api/RenderMesh/setFoliageTinted), [setWaterTinted()](/api/RenderMesh/setWaterTinted)
+- Added methods to RenderMesh - [setNoTint()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setNoTint), [setGrassTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setGrassTinted), [setFoliageTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setFoliageTinted), [setWaterTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setWaterTinted)
 - Added preloader scipt methods - [Resources.getAllMatchingResources("regex")](/api/Resources/getAllMatchingResources), [Resources.getResourcePath("local path")](/api/Resources/getResourcePath), [Resources.getAllResourceDirectoriesPaths()](/api/Resources/getAllResourceDirectoriesPaths)
 
 ## 2.0.2b23
@@ -512,9 +512,9 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ### Other improvements
 
-- Added condition [ICRender.RANDOM(value, max\[, seed\])](/api/ICRender/RANDOM) - for given block position generates random number from 0 to max - 1, and returns, if it is equal to value. Has method [setAxisEnabled(0-2, enabled)](/api/ICRender/RANDOM/setAxisEnabled) to ignore some axises.
+- Added condition [ICRender.RANDOM(value, max\[, seed\])](/api/ICRender/RANDOM) - for given block position generates random number from 0 to max - 1, and returns, if it is equal to value. Has method [setAxisEnabled(0-2, enabled)](/api/ICRender/RANDOM_CONDITION/setAxisEnabled) to ignore some axises.
 - Added functions [Block.setupAsRedstoneReceiver(nameID, connectToRedstone)](/api/Block/setupAsRedstoneReceiver), [Block.setupAsRedstoneEmitter(nameID, connectToRedstone)](/api/Block/setupAsRedstoneEmitter), [Block.setupAsNonRedstoneTile(nameID)](/api/Block/setupAsNonRedstoneTile)
-- RenderMesh: added method [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/RenderMesh/addMesh), alpha value now can be passed to [setColor](/api/RenderMesh/setColor)
+- RenderMesh: added method [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/addMesh), alpha value now can be passed to [setColor](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setColor)
 - Added block description property - [mapcolor](/api/Block/SpecialType/mapcolor), sets 0xRRGGBB map color to block
 
 ## 2.0.2b22
@@ -533,9 +533,9 @@ This update adds alot and might be unstable.
 
 - Added ability to create custom materials and shaders (more info will be provided soon)
 - Added UI and in-hand item models, to access use [ItemModel.getFor(id, data)](/api/ItemModel/getFor)
-- Added new animation mode - direct mesh render with material, to enter this mode call method [describe({ mesh: RenderMesh, skin: "texture name", material: "material name" })](/api/RenderMesh/describe)
+- Added new animation mode - direct mesh render with material, to enter this mode call method [describe({ mesh: RenderMesh, skin: "texture name", material: "material name" })](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/describe)
 - Blocks with ICRender will automatically gain inventory models
-- Added custom dimension methods: [setFogDistance(close, far)](/api/CustomDimension/setFogDistance), [resetFogDistance()](/api/CustomDimension/resetFogDistance)
+- Added custom dimension methods: [setFogDistance(close, far)](/api/Dimensions/CustomDimension/setFogDistance), [resetFogDistance()](/api/Dimensions/CustomDimension/resetFogDistance)
 - Other minor fixes
 
 ## 2.0.1b18
