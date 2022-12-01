@@ -27,17 +27,9 @@
     "message": "Окружение",
     "description": "The label for category Environment in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Generation": {
-    "message": "Генерация",
-    "description": "The label for category Generation in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Saves": {
-    "message": "Сохранения",
-    "description": "The label for category Saves in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Player": {
-    "message": "Игрок",
-    "description": "The label for category Player in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Storage": {
+    "message": "Хранилище",
+    "description": "The label for category Storage in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.UIs": {
     "message": "Интерфейсы",
@@ -47,9 +39,9 @@
     "message": "Существа",
     "description": "The label for category Entities in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Tile Entities": {
-    "message": "Тайлы",
-    "description": "The label for category Tile Entities in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Containers": {
+    "message": "Контейнеры",
+    "description": "The label for category Containers in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Renders": {
     "message": "Отрисовка",
