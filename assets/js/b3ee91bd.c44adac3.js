@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[44334],{55401:e=>{e.exports=JSON.parse('{"title":"Tile Entities","slug":"/category/tile-entities","permalink":"/docs/category/tile-entities","navigation":{"previous":{"title":"index","permalink":"/docs/entities/"},"next":{"title":"index","permalink":"/docs/block-entities/"}}}')}}]);

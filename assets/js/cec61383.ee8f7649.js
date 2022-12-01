@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[7683],{71251:e=>{e.exports=JSON.parse('{"title":"Dimensions","slug":"/category/dimensions","permalink":"/docs/category/dimensions","navigation":{"previous":{"title":"index","permalink":"/docs/renders/"},"next":{"title":"index","permalink":"/docs/dimensions/"}}}')}}]);

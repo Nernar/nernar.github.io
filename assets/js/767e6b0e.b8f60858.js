@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[87284],{20707:e=>{e.exports=JSON.parse('{"title":"Storage","slug":"/category/storage","permalink":"/docs/category/storage","navigation":{"previous":{"title":"index","permalink":"/docs/ui/"},"next":{"title":"client-and-server","permalink":"/docs/storage/client-and-server"}}}')}}]);

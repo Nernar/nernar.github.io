@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[89240],{69255:e=>{e.exports=JSON.parse('{"title":"Environment","slug":"/category/environment","permalink":"/docs/category/environment","navigation":{"previous":{"title":"index","permalink":"/docs/blocks/"},"next":{"title":"index","permalink":"/docs/environment/"}}}')}}]);
