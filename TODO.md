@@ -8,13 +8,10 @@
 
 Порядок первого упоминания в документации, все что не использовано носит лишь ориентировочный характер. Этот список служит для определения охвата отдельных отраслей движка.
 
-### Базис и подготовка
+### Базис
 
 - [ ] getCoreAPILevel
 - [x] getMCPEVersion
-- [ ] Translation _(упомянуто в предметах, но должно быть и здесь)_
-- [ ] Commands
-- [ ] Game _(GameAPI, упомянуто в событиях, но должно быть и здесь)_
 
 ### События
 
@@ -31,6 +28,8 @@
 - [ ] SyncedNetworkData
 - [x] Callback
 - [x] Updatable
+- [x] Game
+- [ ] Commands
 
 ### Предметы
 
@@ -42,6 +41,7 @@
 - [x] Armor _(ArmorRegistry)_
 - [ ] CustomEnchant
 - [ ] TagRegistry
+- [x] Translation
 
 ### Блоки
 
@@ -53,17 +53,15 @@
 - [ ] LiquidRegistry
 - [ ] NBT
 
-### Хранилище
+### Существа
 
-Клиентское и серверное:
-
-- [x] Config
-- [x] Saver _(SaverAPI)_
-
-Прочее:
-
-- [ ] Resources
-- [ ] FileTools
+- [ ] NetworkEntity
+- [ ] NetworkEntityType
+- [ ] PlayerActor
+- [ ] AttachableRender
+- [ ] ActorRenderer
+- [ ] Entity _(EntityAPI)_
+- [ ] AddonEntityRegistry
 
 ### Окружение
 
@@ -83,21 +81,23 @@
 - [ ] Dimensions
 - [ ] CustomBiome
 
+### Хранилище
+
+Клиентское и серверное:
+
+- [x] Config
+- [x] Saver _(SaverAPI)_
+
+Прочее:
+
+- [ ] Resources
+- [ ] FileTools
+
 ### Контейнеры и интерфейсы
 
 - [x] TileEntity
 - [ ] ItemContainer
 - [ ] UI
-
-### Существа
-
-- [ ] NetworkEntity
-- [ ] NetworkEntityType
-- [ ] PlayerActor
-- [ ] AttachableRender
-- [ ] ActorRenderer
-- [ ] Entity _(EntityAPI)_
-- [ ] AddonEntityRegistry
 
 ### Публикация
 
