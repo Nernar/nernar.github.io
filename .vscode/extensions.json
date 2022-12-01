@@ -1,0 +1,17 @@
+{
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+		"unifiedjs.vscode-mdx",
+		"davidanson.vscode-markdownlint",
+		"bierner.markdown-prism",
+		"bierner.markdown-mermaid",
+		"bierner.markdown-emoji",
+		"bierner.emojisense",
+		"bierner.markdown-checkbox",
+		"bierner.markdown-preview-github-styles",
+		"bierner.jsdoc-markdown-highlighting",
+		"idered.npm",
+		"google.wireit"
+	]
+}
