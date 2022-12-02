@@ -49,6 +49,8 @@ slug: /
 
 -->
 
+```mdx-code-block
 import DocMap from "@site/src/components/DocMap"
 
 <DocMap exploreCategories={ true } />
+```
