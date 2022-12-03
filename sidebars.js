@@ -180,8 +180,9 @@ module.exports = {
 			items: [
 				'ui/investigating-contents',
 				'ui/window-types',
+				'ui/drawings',
 				'ui/elements',
-				'ui/common-practices'
+				'ui/extending-components'
 			]
 		},
 		{
