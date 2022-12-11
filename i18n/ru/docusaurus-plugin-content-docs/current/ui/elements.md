@@ -107,7 +107,7 @@ new UI.Window({
 
 <div className="resource-atlas-align-box">
 
-![image.gif](/images/ui/image.gif)
+![image-comparty.gif](/images/ui/image-comparty.gif)
 
 </div>
 
