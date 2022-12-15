@@ -24,6 +24,8 @@
 Прочее:
 
 - [ ] Network _(упомянуто в блоках, но должно быть и здесь)_
+- [ ] NetworkEntity
+- [ ] NetworkEntityType
 - [ ] NetworkConnectedClientList
 - [ ] SyncedNetworkData
 - [x] Callback
@@ -36,7 +38,7 @@
 - [x] IDRegistry
 - [x] ItemID
 - [x] Item _(ItemRegistry)_
-- [ ] Recipes
+- [x] Recipes
 - [ ] ToolAPI
 - [x] Armor _(ArmorRegistry)_
 - [ ] CustomEnchant
@@ -50,13 +52,11 @@
 - [ ] ItemModel
 - [x] BlockRenderer
 - [x] ICRender
-- [ ] LiquidRegistry
+- [x] LiquidRegistry
 - [ ] NBT
 
 ### Существа
 
-- [ ] NetworkEntity
-- [ ] NetworkEntityType
 - [ ] PlayerActor
 - [ ] AttachableRender
 - [ ] ActorRenderer
@@ -154,7 +154,7 @@
   - [ ] Дополнительные данные предмета
   - [ ] Случайные обновления блоков
   - [x] TileEntity
-  - [ ] Рецепты
+  - [x] Рецепты
   - [ ] Жидкости и работа с ними
   - [x] Броня
 - [ ] Модуль World
@@ -189,3 +189,81 @@
 - [x] Модуль SaverScope
 - [x] ~~Модуль Translation~~
 - [ ] Многопоточность
+
+## Общий прогресс статей
+
+- Intro (0%)
+- Getting Started
+  - Methodology (0%)
+  - Supporting IDEs (0%)
+  - Going Forward (0%)
+- Basics
+  - Mod Structure (95%)
+  - Mod Lifecycle (100%)
+  - Building Script (100%)
+  - Evaluate Context (100%)
+  - Integrating Libraries (100%)
+  - Wrapping Packages (0%)
+- Events
+  - Where, What and Who (75%)
+  - Callbacks (75%)
+  - Updatables (25%)
+  - Threading (0%)
+  - Using Synced Data (0%)
+- Items
+  - First Item (100%)
+  - Food Armor and Throwables (100%)
+  - Recipes (100%)
+  - Tools (0%)
+  - Extra
+    - What is Extra (0%)
+    - Enchanting (0%)
+    - Using Tags (0%)
+- Blocks
+  - First Block (95%)
+  - First Liquid (50%)
+  - Renders
+    - Vanilla Shapes (100%)
+    - Block Renderer (100%)
+    - Conditioning (0%)
+    - Customizing Item (0%)
+  - Block Entities (0%)
+- Environment
+  - Modifying Region (0%)
+  - Game Objects (0%)
+  - Animation (0%)
+  - Particles (50%)
+  - Shaders and Materials (0%)
+- Dimensions
+  - Ore with Manual Generation (25%)
+  - First Dimension (0%)
+  - Creating Biomes (0%)
+  - Investigating Generators (0%)
+- Entities
+  - Actoring Entities (5%)
+  - First Entity (0%)
+  - Renders
+    - Rendering Basics (0%)
+    - Animating in Runtime (0%)
+    - Attaching Renders (0%)
+  - Path Navigation (0%)
+- UIs
+  - Investigating Contents (95%)
+  - Window Types (10%)
+  - Drawings (100%)
+  - Elements (100%)
+  - Extending Components (95%)
+- Storage
+  - Saving Basics (90%)
+  - File System (0%)
+  - Processing Resources (0%)
+- Containers
+  - Principles and Objectives (0%)
+  - Tile Entities (10%)
+- Structures: TODO
+- Publishing
+  - Connecting Integrations (0%)
+  - Debugging (0%)
+  - Packing to Publish (0%)
+  - Uploading and Community (0%)
+- Future Steps (0%)
