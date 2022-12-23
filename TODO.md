@@ -55,6 +55,18 @@
 - [x] LiquidRegistry
 - [ ] NBT
 
+### Окружение
+
+- [ ] World _(WorldAPI)_
+- [x] BlockSource
+- [x] BlockState
+- [ ] GameObject
+- [ ] GameObjectRegistry
+- [ ] Render _(RenderAPI)_
+- [ ] Animation _(AnimationBase, AnimationItem)_
+- [x] Particles _(ParticleAnimator)_
+- [ ] WorldRenderer
+
 ### Существа
 
 - [ ] PlayerActor
@@ -62,18 +74,6 @@
 - [ ] ActorRenderer
 - [ ] Entity _(EntityAPI)_
 - [ ] AddonEntityRegistry
-
-### Окружение
-
-- [ ] World _(WorldAPI)_
-- [ ] BlockSource
-- [ ] BlockState
-- [ ] GameObject
-- [ ] GameObjectRegistry
-- [ ] Render _(RenderAPI)_
-- [ ] Animation _(AnimationBase, AnimationItem)_
-- [x] Particles _(ParticleAnimator)_
-- [ ] WorldRenderer
 
 ### Измерения
 
@@ -161,7 +161,7 @@
 - Генерация
   - [x] ~~Модуль GenerationUtils~~
   - [x] Основы генерации
-- [ ] Модуль Game
+- [x] Модуль Game
 - Сущности
   - [ ] Модуль Entity
   - [x] ~~Список ванильных рендеров~~
@@ -171,7 +171,7 @@
 - [ ] Модуль Player _(устарело)_
 - GUI
   - [ ] Модуль UI
-  - [ ] Введение в GUI
+  - [x] Введение в GUI
     - [ ] Стандартный интерфейс
     - [ ] Однооконный интерфейс
     - [ ] Многооконный интерфейс
@@ -207,7 +207,7 @@
 - Events
   - Where, What and Who (75%)
   - Callbacks (75%)
-  - Updatables (25%)
+  - Updatables (100%)
   - Threading (0%)
   - Using Synced Data (0%)
 - Items
@@ -229,7 +229,7 @@
     - Customizing Item (0%)
   - Block Entities (0%)
 - Environment
-  - Modifying Region (0%)
+  - Modifying Region (90%)
   - Game Objects (0%)
   - Animation (0%)
   - Particles (50%)

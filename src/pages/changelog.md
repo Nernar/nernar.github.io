@@ -33,7 +33,7 @@ For users, who have Kernel Extension installed, it must be updated to the final 
 - Fixed last item in hend was not spending
 - Fixed animated liquid textures
 - Fixed endless custom buckets in survival
-- Now changing items in ItemUse callback are handled correctly when not prevented
+- Now changing items in *ItemUse* callback are handled correctly when not prevented
 - Added [Block.registerClickFunction[ForID](nameId/id, (coords, item, block, player) => void)](/api/Block/registerClickFunction)
 - Fixed position, passed dispense callback, added slot parameter (4th argument)
 

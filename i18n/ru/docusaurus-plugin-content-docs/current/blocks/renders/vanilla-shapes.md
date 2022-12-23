@@ -199,7 +199,7 @@ Item.createItem("oxidized_wheat", "item.oxidized_wheat.name", {
 }, { stack: 64 });
 
 Item.registerUseFunction("oxidized_wheat", function(coords, item, block, playerUid) {
-    if (block.id == VanillaBlockID.farmland && coords.side == 1) {
+    if (block.id == VanillaTileID.farmland && coords.side == 1) {
         let region = BlockSource.getDefaultForActor(playerUid);
         let block = region.getBlock(coords.relative.x, coords.relative.y, coords.relative.z);
         if (World.canTileBeReplaced(block.id, block.data)) {
@@ -208,7 +208,7 @@ Item.registerUseFunction("oxidized_wheat", function(coords, item, block, playerU
     }
 });
 Block.registerNeighbourChangeFunction("oxidized_wheat", function(coords, block, changedCoords, region) {
-    if (region.getBlockId(coords.x, coords.y - 1, coords.z) != VanillaBlockID.farmland) {
+    if (region.getBlockId(coords.x, coords.y - 1, coords.z) != VanillaTileID.farmland) {
         region.destroyBlock(coords.x, coords.y, coords.z);
     }
 });

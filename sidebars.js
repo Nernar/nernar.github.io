@@ -136,19 +136,6 @@ module.exports = {
 		},
 		{
 			type: 'category',
-			label: 'Dimensions',
-			link: {
-				type: 'generated-index'
-			},
-			items: [
-				'dimensions/ore-with-manual-generation',
-				'dimensions/first-dimension',
-				'dimensions/creating-biomes',
-				'dimensions/investigating-generators'
-			]
-		},
-		{
-			type: 'category',
 			label: 'Entities',
 			link: {
 				type: 'generated-index'
@@ -169,6 +156,19 @@ module.exports = {
 					]
 				},
 				'entities/path-navigation'
+			]
+		},
+		{
+			type: 'category',
+			label: 'Dimensions',
+			link: {
+				type: 'generated-index'
+			},
+			items: [
+				'dimensions/ore-with-manual-generation',
+				'dimensions/first-dimension',
+				'dimensions/creating-biomes',
+				'dimensions/investigating-generators'
 			]
 		},
 		{
