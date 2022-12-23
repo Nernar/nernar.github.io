@@ -188,7 +188,7 @@
 - [ ] Модуль FileTools
 - [x] Модуль SaverScope
 - [x] ~~Модуль Translation~~
-- [ ] Многопоточность
+- [x] Многопоточность
 
 ## Общий прогресс статей
 
@@ -232,7 +232,7 @@
   - Modifying Region (90%)
   - Game Objects (0%)
   - Animation (0%)
-  - Particles (50%)
+  - Particles (60%)
   - Shaders and Materials (0%)
 - Dimensions
   - Ore with Manual Generation (25%)
@@ -249,12 +249,12 @@
   - Path Navigation (0%)
 - UIs
   - Investigating Contents (95%)
-  - Window Types (10%)
+  - Window Types (15%)
   - Drawings (100%)
   - Elements (100%)
   - Extending Components (95%)
 - Storage
-  - Saving Basics (90%)
+  - Saving Basics (75%)
   - File System (0%)
   - Processing Resources (0%)
 - Containers

@@ -1,7 +1,7 @@
 # Последующие шаги
 
-```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
+## Наберитесь вдохновения
 
-<NotImplemented />
-```
+## Изучите другие языки
+
+## Копируйте и выделяйтесь
