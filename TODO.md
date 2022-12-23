@@ -208,7 +208,7 @@
   - Where, What and Who (75%)
   - Callbacks (75%)
   - Updatables (100%)
-  - Threading (0%)
+  - Threading (75%)
   - Using Synced Data (0%)
 - Items
   - First Item (100%)
