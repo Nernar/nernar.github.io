@@ -203,7 +203,6 @@
   - Building Script (100%)
   - Evaluate Context (100%)
   - Integrating Libraries (100%)
-  - Wrapping Packages (0%)
 - Events
   - Where, What and Who (75%)
   - Callbacks (75%)
@@ -255,12 +254,13 @@
   - Extending Components (95%)
 - Storage
   - Saving Basics (75%)
+  - Containers (0%)
+  - Tile Entities (10%)
   - File System (0%)
   - Processing Resources (0%)
-- Containers
-  - Principles and Objectives (0%)
-  - Tile Entities (10%)
 - Structures: TODO
+- Advanced
+  - Wrapping Packages (0%)
 - Publishing
   - Connecting Integrations (0%)
   - Debugging (0%)
