@@ -72,8 +72,7 @@
 - [ ] PlayerActor
 - [ ] AttachableRender
 - [ ] ActorRenderer
-- [ ] Entity _(EntityAPI)_
-- [ ] AddonEntityRegistry
+- [x] Entity _(EntityAPI)_
 
 ### Измерения
 
@@ -116,6 +115,7 @@
 
 - [ ] ~~MobRegistry~~
 - [ ] ~~MobSpawnRegistry _(EntitySpawnRegistry)_~~
+- [ ] ~~AddonEntityRegistry~~
 - [ ] ~~Texture~~
 - [ ] ~~EntityModel~~
 - [ ] ~~EntityModelWatcher~~
@@ -163,7 +163,7 @@
   - [x] Основы генерации
 - [x] Модуль Game
 - Сущности
-  - [ ] Модуль Entity
+  - [x] Модуль Entity
   - [x] ~~Список ванильных рендеров~~
   - [ ] Создание мобов
   - [ ] Пример создания моба
@@ -239,7 +239,7 @@
   - Creating Biomes (0%)
   - Investigating Generators (0%)
 - Entities
-  - Actoring Entities (5%)
+  - Actoring Entities (65%)
   - First Entity (0%)
   - Renders
     - Rendering Basics (0%)
