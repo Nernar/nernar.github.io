@@ -79,7 +79,6 @@ module.exports = {
 				'items/first-item',
 				'items/food-armor-and-throwables',
 				'items/recipes',
-				'items/tools',
 				{
 					type: 'category',
 					label: 'Extra',
@@ -88,10 +87,10 @@ module.exports = {
 					},
 					items: [
 						'items/extra/what-is-extra',
-						'items/extra/enchanting',
-						'items/extra/using-tags'
+						'items/extra/enchanting'
 					]
-				}
+				},
+				'items/tools'
 			]
 		},
 		{

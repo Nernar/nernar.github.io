@@ -213,11 +213,10 @@
   - First Item (100%)
   - Food Armor and Throwables (100%)
   - Recipes (100%)
-  - Tools (0%)
   - Extra
     - What is Extra (0%)
     - Enchanting (0%)
-    - Using Tags (0%)
+  - Tools (0%)
 - Blocks
   - First Block (95%)
   - First Liquid (50%)
