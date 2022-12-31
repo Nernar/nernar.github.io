@@ -222,7 +222,7 @@ Item.createArmorItem("emerald_boots", "Изумрудные ботинки", {
 </TabItem>
 </Tabs>
 
-Также как и для остальных предметов, помещайте текстуры для брони в папке *items-opaque*.
+Также как и для остальных предметов, помещайте текстуры для брони в папке __items-opaque__.
 
 <div className="resource-atlas-align-box">
 

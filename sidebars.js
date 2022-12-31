@@ -128,8 +128,7 @@ module.exports = {
 				'environment/modifying-region',
 				'environment/game-objects',
 				'environment/animation',
-				'environment/particles',
-				'environment/shaders-and-materials'
+				'environment/particles'
 			]
 		},
 		{
@@ -193,7 +192,6 @@ module.exports = {
 				'storage/saving-basics',
 				'storage/principles-and-objectives',
 				'storage/tile-entities',
-				'storage/file-system',
 				'storage/processing-resources'
 			]
 		},
@@ -217,7 +215,9 @@ module.exports = {
 				type: 'generated-index'
 			},
 			items: [
-				'advanced/wrapping-packages'
+				'advanced/named-binary-tag',
+				'advanced/wrapping-packages',
+				'advanced/shaders-and-materials'
 			]
 		},
 		{

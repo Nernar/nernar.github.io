@@ -41,8 +41,8 @@
 - [x] Recipes
 - [ ] ToolAPI
 - [x] Armor _(ArmorRegistry)_
-- [ ] CustomEnchant
 - [ ] TagRegistry
+- [ ] CustomEnchant
 - [x] Translation
 
 ### Блоки
@@ -62,17 +62,16 @@
 - [x] BlockState
 - [ ] GameObject
 - [ ] GameObjectRegistry
-- [ ] Render _(RenderAPI)_
 - [ ] Animation _(AnimationBase, AnimationItem)_
 - [x] Particles _(ParticleAnimator)_
-- [ ] WorldRenderer
 
 ### Существа
 
+- [x] Entity _(EntityAPI)_
 - [ ] PlayerActor
+- [ ] Render _(RenderAPI)_
 - [ ] AttachableRender
 - [ ] ActorRenderer
-- [x] Entity _(EntityAPI)_
 
 ### Измерения
 
@@ -87,16 +86,23 @@
 - [x] Config
 - [x] Saver _(SaverAPI)_
 
+Контейнеры и тайлы:
+
+- [ ] ItemContainer
+- [x] TileEntity
+
 Прочее:
 
-- [ ] Resources
 - [ ] FileTools
+- [ ] Resources
 
-### Контейнеры и интерфейсы
+### Интерфейсы
 
-- [x] TileEntity
-- [ ] ItemContainer
 - [ ] UI
+
+### Продвинутое
+
+- [ ] WorldRenderer
 
 ### Публикация
 
@@ -231,7 +237,6 @@
   - Game Objects (0%)
   - Animation (0%)
   - Particles (60%)
-  - Shaders and Materials (0%)
 - Dimensions
   - Ore with Manual Generation (25%)
   - First Dimension (0%)
@@ -255,11 +260,12 @@
   - Saving Basics (75%)
   - Containers (0%)
   - Tile Entities (10%)
-  - File System (0%)
   - Processing Resources (0%)
 - Structures: TODO
 - Advanced
+  - Named Binary Tag (0%)
   - Wrapping Packages (0%)
+  - Shaders and Materials (0%)
 - Publishing
   - Connecting Integrations (0%)
   - Debugging (0%)
