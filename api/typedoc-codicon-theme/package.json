@@ -1,0 +1,31 @@
+{
+  "name": "typedoc-codicon-theme",
+  "version": "1.0.0",
+  "author": "Nernar",
+  "description": "Typedoc Codicon Theme",
+  "keywords": [
+    "typedoc-theme"
+  ],
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nernar/nernar.github.io.git#master"
+  },
+  "bugs": {
+    "url": "https://github.com/Nernar/nernar.github.io/issues"
+  },
+  "homepage": "https://t.me/ntInsideChat",
+  "license": "GPL-3.0-or-later",
+  "private": true,
+  "scripts": {
+    "build": "tsc --project ."
+  },
+  "dependencies": {
+    "@microsoft/tsdoc": "^0.14.2",
+    "@vscode/codicons": "^0.0.33"
+  },
+  "devDependencies": {
+    "tsx": "^3.12.7",
+    "typescript": "^4.9.5"
+  }
+}

@@ -2,13 +2,11 @@
 node_modules/
 
 # Production
-/temp
-/www
+/docs
 
 # Generated files
-tsdoc-metadata.json
+/media/codicons
 /.wireit
 
 # Local declarations
-declarations/*.es6.d.ts
 declarations/core-engine.d.ts

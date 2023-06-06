@@ -1,7 +1,7 @@
 /*
 
     Inner Core API: Core Engine API Reference
-    Copyright (C) 2022  Nernar (https://github.com/nernar)
+    Copyright (C) 2023  Nernar (https://github.com/nernar)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,26 +20,23 @@
 
 */
 
-import { DocNode, IDocNodeParameters } from '@microsoft/tsdoc';
+import { join } from 'path';
+import { existsSync } from 'fs';
+import { symlink, mkdir } from 'fs/promises';
 
-import { DocusaurusDocNodeKind } from '../DocusaurusDocNodes'
-
-export interface IDocExpressionParameters extends IDocNodeParameters {
-	expression: string;
-	inline?: boolean;
-}
-
-export class DocExpression extends DocNode {
-	expression: string;
-	inline: boolean;
-
-	constructor(parameters: IDocExpressionParameters) {
-		super(parameters);
-		this.expression = parameters.expression;
-		this.inline = parameters.inline ?? true;
-	}
-
-	get kind(): string {
-		return DocusaurusDocNodeKind.Expression;
-	}
-}
+(async () => {
+    const website = join(__dirname, '..', 'www');
+    const codicon = join(website, 'codicons');
+    if (!existsSync(codicon))
+    {
+        const target = join(__dirname, '..', 'node_modules', '@vscode', 'codicons', 'src', 'icons');
+        if (!existsSync(target))
+        {
+            console.error("Run `npm install` before running symlinking!");
+            return;
+        }
+        await mkdir(website, { recursive: true });
+        await symlink(target, codicon, 'dir');
+        console.info("Successfully symlinked 'codicons'!");
+    }
+})();

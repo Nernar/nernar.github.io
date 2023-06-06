@@ -1,0 +1,15 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"module": "Node16",
+		"lib": ["DOM", "ESNext"],
+		"target": "ES2020",
+		"strict": true,
+		"alwaysStrict": true,
+		"outDir": "dist/",
+		"jsx": "react",
+		"jsxFactory": "JSX.createElement",
+		"jsxFragmentFactory": "JSX.Fragment"
+	},
+	"exclude": ["dist"]
+}

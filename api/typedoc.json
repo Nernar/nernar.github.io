@@ -1,0 +1,22 @@
+{
+	"name": "Core Engine",
+	"tsconfig": "tsconfig-typedoc.json",
+	"media": "media",
+	"customCss": "media/custom.css",
+	"emit": "docs",
+	"readme": "none",
+	"searchInComments": true,
+	"navigation": {
+		"fullTree": false
+	},
+	"intentionallyNotExported": [
+		"native.Array"
+	],
+	"theme": "typedoc-codicon",
+	"plugin": [
+		"typedoc-codicon-theme"
+	],
+	"navigationLinks": {
+		"Docs": "https://nernar.github.io/docs/intro"
+	}
+}

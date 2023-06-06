@@ -4,8 +4,10 @@
 		"target": "ES5",
 		"lib": ["ES2015"]
 	},
+	"files": [
+		"declarations/android.d.ts"
+	],
 	"include": [
-		"declarations/android.d.ts",
 		"core-engine/**/*.d.ts"
 	],
 	"exclude": [

@@ -22,7 +22,7 @@
 
 import { join } from 'path';
 import { sync as glob } from 'glob';
-import { writeFile, readdir, rm } from 'fs/promises';
+import { writeFile } from 'fs/promises';
 import * as readline from 'readline';
 import * as events from 'events';
 import * as fs from 'fs';
@@ -43,68 +43,26 @@ async function trimDeclaration(path: fs.PathLike) {
 	return content;
 }
 
-async function concernModules(input: fs.PathLike, output: fs.PathLike) {
-	const rl = readline.createInterface({
-		input: fs.createReadStream(input),
-		crlfDelay: Infinity
-	});
-	const stream = fs.createWriteStream(output);
-	rl.on('line', line => {
-		const trimmed = line.trimStart();
-		if (trimmed.startsWith('declare ')) {
-			const index = line.length - trimmed.length;
-			stream.write(line.substring(0, index) + 'export');
-			line = line.substring(index + 7);
-			stream.write(
-				line.trimStart().startsWith('var ')
-					? line.replace('var', 'let')
-					: line
-			);
-		} else {
-			stream.write(line);
-		}
-		stream.write('\n');
-	});
-	await events.once(rl, 'close');
-	stream.end();
-}
-
 const types = join(__dirname, '..', 'declarations');
 const typesRollup = join(types, `${ process.argv[2] }.d.ts`);
+const declarations = join(__dirname, '..', process.argv[2]);
 
 (async (now) => {
-	let content = `/**
+	let content = `\
+/**
 * @packageDocumentation
 * Core Engine is the most fashion Minecraft: Bedrock Edition
 * engine determined to make game modded with minimum tons of code.
 */
-/// <reference path=\'./android.d.ts\' />
+/// <reference path='./android.d.ts' />
 `;
 	for (const input of glob(
-		'com/zhekasmirnov/**/*.d.ts', { cwd: join(__dirname, '..', process.argv[2]) }
+		'com/zhekasmirnov/**/*.d.ts', { cwd: declarations }
 	).concat(glob(
-		'*.d.ts', { cwd: join(__dirname, '..', process.argv[2]) }
+		'*.d.ts', { cwd: declarations }
 	))) {
-		content += await trimDeclaration(join(__dirname, '..', process.argv[2], input));
+		content += await trimDeclaration(join(declarations, input));
 	}
 	await writeFile(typesRollup, content);
 	console.log(`Merging declarations of ${ process.argv[2] } successfully completed in ${ Math.floor((Date.now() - now) / 100) / 10 }s`);
-
-	const resolvedTypes: string[] = [];
-	for (const filename of await readdir(types)) {
-		if (filename.endsWith('.d.ts')) {
-			if (filename.includes('.es6.')) {
-				await rm(join(types, filename));
-			} else {
-				resolvedTypes.push(filename);
-			}
-		}
-	}
-	for (const filename of resolvedTypes) {
-		console.log(`Concerning ${ filename } to ES6 syntax`);
-		await concernModules(
-			join(types, filename),
-			join(types, `${ filename.substring(0, filename.length - 5) }.es6.d.ts`)
-		);
-	}
 })(Date.now());
