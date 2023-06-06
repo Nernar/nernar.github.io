@@ -23,216 +23,227 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const logger = require('@docusaurus/logger');
 const path = require('path');
 const fs = require('fs');
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
-const config =
-	/** @type {import('@docusaurus/types').Config} */
-	({
-		title: 'Inner Core Docs',
-		tagline: 'Inner Core, Core Engine and Horizon documentation',
-		url: 'https://nernar.github.io',
-		baseUrl,
-		onBrokenLinks: 'warn',
-		onBrokenMarkdownLinks: 'warn',
-		favicon: 'favicon/favicon.ico',
+const config = /** @type {import('@docusaurus/types').Config} */ ({
+	title: 'Inner Core Docs',
+	tagline: 'Inner Core, Core Engine and Horizon documentation',
+	url: 'https://nernar.github.io',
+	baseUrl,
+	onBrokenLinks: 'warn',
+	onBrokenMarkdownLinks: 'warn',
+	favicon: 'favicon/favicon.ico',
 
-		markdown: {
-			mermaid: true
-		},
-		themes: ['@docusaurus/theme-mermaid'],
-		staticDirectories: ['static', 'api/declarations'],
+	markdown: {
+		mermaid: true
+	},
+	themes: ['@docusaurus/theme-mermaid'],
+	staticDirectories: ['static', 'api/declarations'],
 
-		organizationName: 'nernar',
-		projectName: 'nernar.github.io',
-		deploymentBranch: 'deploy',
-		trailingSlash: false,
+	organizationName: 'nernar',
+	projectName: 'nernar.github.io',
+	deploymentBranch: 'deploy',
+	trailingSlash: false,
 
-		i18n: {
-			defaultLocale: 'en',
-			locales: ['en', 'ru']
-		},
+	i18n: {
+		defaultLocale: 'en',
+		locales: ['en', 'ru']
+	},
 
-		presets: [
-			[
-				'classic',
-				/** @type {import('@docusaurus/preset-classic').Options} */
-				({
-					docs: {
-						sidebarPath: require.resolve('./sidebars.js'),
-						breadcrumbs: false,
-						editLocalizedFiles: true,
-						editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
-						showLastUpdateTime: true
-					},
-					blog: false,
-					theme: {
-						customCss: require.resolve('./src/css/custom.css')
-					}
-				})
-			]
-		],
-
-		plugins: [],
-
-		themeConfig:
-			/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+	presets: [
+		[
+			'classic',
+			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
-				metadata: [
-					{
-						name: 'keywords',
-						content: 'nernar, minecraft, modding tools, dev editor, innercore, horizon, coreengine'
-					}
-				],
-				colorMode: {
-					defaultMode: 'dark'
+				docs: {
+					sidebarPath: require.resolve('./sidebars.js'),
+					breadcrumbs: false,
+					editLocalizedFiles: true,
+					editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
+					showLastUpdateTime: true
 				},
-				navbar: {
-					title: 'Inner Core Docs',
-					hideOnScroll: true,
-					logo: {
-						alt: '',
-						src: 'copyright/horizon.svg'
-					},
+				blog: false,
+				theme: {
+					customCss: require.resolve('./src/css/custom.css')
+				}
+			})
+		]
+	],
+
+	plugins: [],
+
+	themeConfig: /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
+		metadata: [
+			{
+				name: 'keywords',
+				content: 'nernar, minecraft, modding tools, dev editor, innercore, horizon, coreengine'
+			}
+		],
+		colorMode: {
+			defaultMode: 'dark'
+		},
+		navbar: {
+			title: 'Inner Core Docs',
+			hideOnScroll: true,
+			logo: {
+				alt: '',
+				src: 'copyright/horizon.svg'
+			},
+			items: [
+				{
+					position: 'left',
+					to: 'docs',
+					label: 'Docs'
+				},
+				{
+					position: 'left',
+					to: 'examples',
+					label: 'Examples'
+				},
+				{
+					position: 'left',
+					to: 'libraries',
+					label: 'Libraries'
+				},
+				{
+					position: 'left',
+					to: 'changelog',
+					label: 'Changelog'
+				},
+				{
+					position: 'left',
+					to: 'faq',
+					label: 'FAQ'
+				},
+				{
+					position: 'right',
+					type: 'localeDropdown'
+				},
+				{
+					position: 'right',
+					className: 'header-github-link',
+					href: 'https://github.com/nernar/nernar.github.io',
+					'aria-label': 'GitHub repository'
+				}
+			]
+		},
+		footer: {
+			links: [
+				{
+					title: 'Docs',
 					items: [
 						{
-							position: 'left',
-							to: 'docs',
-							label: 'Docs'
+							label: 'Getting Started',
+							to: '/docs/intro'
 						},
 						{
-							position: 'left',
-							to: 'examples',
-							label: 'Examples'
-						},
-						{
-							position: 'left',
-							to: 'libraries',
-							label: 'Libraries'
-						},
-						{
-							position: 'left',
-							to: 'changelog',
-							label: 'Changelog'
-						},
-						{
-							position: 'left',
-							to: 'faq',
-							label: 'FAQ'
-						},
-						{
-							position: 'right',
-							type: 'localeDropdown'
-						},
-						{
-							position: 'right',
-							className: 'header-github-link',
-							href: 'https://github.com/nernar/nernar.github.io',
-							'aria-label': 'GitHub repository'
+							label: 'Contributing',
+							to: 'https://github.com/nernar/nernar.github.io/blob/master/README.md#contribution'
 						}
 					]
 				},
-				footer: {
-					links: [
+				{
+					title: 'Community',
+					items: [
 						{
-							title: 'Docs',
-							items: [
-								{
-									label: 'Getting Started',
-									to: '/docs/intro'
-								},
-								{
-									label: 'Contributing',
-									to: 'https://github.com/nernar/nernar.github.io/blob/master/README.md#contribution'
-								}
-							]
+							label: 'Telegram',
+							href: 'https://t.me/ntInsideChat'
 						},
 						{
-							title: 'Community',
-							items: [
-								{
-									label: 'Telegram',
-									href: 'https://t.me/ntInsideChat'
-								},
-								{
-									label: 'VK',
-									href: 'https://vk.com/nernar'
-								},
-								{
-									label: 'Contact with us',
-									href: 'mailto:nernar@gmail.com'
-								}
-							]
+							label: 'VK',
+							href: 'https://vk.com/nernar'
 						},
 						{
-							title: 'More',
-							items: [
-								{
-									label: 'GitHub',
-									href: 'https://github.com/nernar'
-								}
-							]
+							label: 'Contact with us',
+							href: 'mailto:nernar@gmail.com'
 						}
-					],
-					copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
+					]
 				},
-				prism: {
-					theme: lightCodeTheme,
-					darkTheme: darkCodeTheme,
-					magicComments: [
+				{
+					title: 'More',
+					items: [
 						{
-							className: 'theme-code-block-highlighted-line',
-							line: 'highlight-next-line',
-							block: { start: 'highlight-start', end: 'highlight-end' }
-						},
-						{
-							className: 'code-block-malformed-line',
-							line: 'highlight-malformed-next-line',
-							block: { start: 'highlight-malformed-start', end: 'highlight-malformed-end' }
-						},
-						{
-							className: 'code-block-well-line',
-							line: 'highlight-well-next-line',
-							block: { start: 'highlight-well-start', end: 'highlight-well-end' }
+							label: 'GitHub',
+							href: 'https://github.com/nernar'
 						}
 					]
 				}
+			],
+			copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
+		},
+		prism: {
+			theme: lightCodeTheme,
+			darkTheme: darkCodeTheme,
+			magicComments: [
+				{
+					className: 'theme-code-block-highlighted-line',
+					line: 'highlight-next-line',
+					block: { start: 'highlight-start', end: 'highlight-end' }
+				},
+				{
+					className: 'code-block-malformed-line',
+					line: 'highlight-malformed-next-line',
+					block: { start: 'highlight-malformed-start', end: 'highlight-malformed-end' }
+				},
+				{
+					className: 'code-block-well-line',
+					line: 'highlight-well-next-line',
+					block: { start: 'highlight-well-start', end: 'highlight-well-end' }
+				}
+			]
+		}
+	})
+});
+
+const api = path.resolve('api/docs');
+
+if (fs.existsSync(api) && fs.readdirSync(api).length) {
+	if (config.plugins) {
+		config.plugins.unshift([
+			'content-docs',
+			/** @type {import('@docusaurus/plugin-content-docs').Options} */
+			({
+				id: 'api',
+				path: 'api/docs',
+				routeBasePath: 'api',
+				numberPrefixParser: false,
+				exclude: [],
+				sidebarItemsGenerator: function(generatorArgs) {
+					return generatorArgs.defaultSidebarItemsGenerator({
+						...generatorArgs,
+						docs: generatorArgs.docs.filter(function(value) {
+							value.title = value.title.replace(/\\?\\_/g, '_');
+							return !(value.sourceDirName == '.' && value.unversionedId == 'index');
+						})
+					});
+				}
 			})
-	});
-
-const api = path.resolve('api/www');
-
-if (fs.existsSync(api) && fs.readdirSync(api).length > 0) {
-	config.plugins.unshift([
-		'content-docs',
-		/** @type {import('@docusaurus/plugin-content-docs').Options} */
-		({
-			id: 'api',
-			path: 'api/www',
-			routeBasePath: 'api',
-			numberPrefixParser: false,
-			exclude: [],
-			sidebarItemsGenerator: function(generatorArgs) {
-				return generatorArgs.defaultSidebarItemsGenerator({
-					...generatorArgs,
-					docs: generatorArgs.docs.filter(function(value) {
-						value.title = value.title.replace(/\\?\\_/g, '_');
-						return !(value.sourceDirName == '.' && value.unversionedId == 'index');
-					})
-				});
-			}
-		})
-	]);
+		]);
+	} else {
+		logger.error('Unexpected `config.plugins` is undefined!');
+	} 
 	const themeConfig = 
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		(config.themeConfig);
-	themeConfig.navbar.items.unshift(themeConfig.navbar.items.shift(), {
-		position: 'left',
-		to: 'api',
-		label: 'API'
-	});
+	if (themeConfig.navbar && themeConfig.navbar.items) {
+		const partial = themeConfig.navbar.items.shift();
+		themeConfig.navbar.items.unshift({
+			position: 'left',
+			to: 'api',
+			label: 'API'
+		});
+		if (partial) {
+			themeConfig.navbar.items.unshift(partial);
+		}
+	} else {
+		logger.error('Unexpected `config.themeConfig.navbar?.items` is undefined!');
+	}
+} else {
+	logger.warn('Disabling API Reference, static folder doesn\'t exists!');
 }
 
 module.exports = config;

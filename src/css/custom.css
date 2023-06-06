@@ -162,8 +162,7 @@ details > div > div > div > :last-child {
   background-color: var(--ifm-hover-overlay);
 }
 
-.block-uv-table th,
-.block-uv-table td {
+.block-uv-table th, .block-uv-table td {
   vertical-align: middle;
   border: none;
   width: 4rem;
