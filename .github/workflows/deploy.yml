@@ -23,7 +23,7 @@ jobs:
         run: npm ci
         working-directory: ${{ env.api-directory }}
       - name: Build documentation
-        run: npm run build:docs
+        run: npm run build
         working-directory: ${{ env.api-directory }}
 
       - name: Install dependencies
