@@ -49,7 +49,7 @@ declare class EntityAIClass implements EntityAIClass.EntityAIPrototype {
     /**
      * Occurs when entity this instance is assigned to this AI type
      * instance, if you override this method, be sure to assign entity
-     * to {@link EntityAIClass["namespace"].EntityAIPrototype}.
+     * to {@link EntityAIClass.EntityAIPrototype}.
      */
     aiEntityChanged(entity: number): void;
 
@@ -134,7 +134,7 @@ declare namespace EntityAIClass {
 
         /**
          * Called when AI type execution starts.
-         * @param extra additional data passed from {@link EntityAIClass["class"].enableAI} 
+         * @param extra additional data passed from {@link EntityAIClass.enableAI} 
          * method 
          */
         executionStarted?(extra?: any): void,

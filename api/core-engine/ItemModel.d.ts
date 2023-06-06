@@ -6,10 +6,10 @@
  */
 declare namespace ItemModel {
     /**
-     * Gets {@link ItemModel["interface"]} object for the specified ID and data.
+     * Gets {@link ItemModel} object for the specified ID and data.
      * @param id item or block ID
      * @param data item or block data
-     * @returns Exist {@link ItemModel["interface"]} object used to manipulate item's model.
+     * @returns Exist {@link ItemModel} object used to manipulate item's model.
      */
 	function getFor(id: number, data: number): ItemModel;
 
@@ -25,15 +25,15 @@ declare namespace ItemModel {
 	function setCurrentCacheGroup(mod: string, version: string): void;
 
     /**
-     * Gets {@link ItemModel["interface"]} object for the specified ID and data. If no {@link ItemModel["interface"]} for
+     * Gets {@link ItemModel} object for the specified ID and data. If no {@link ItemModel} for
      * specified data exist, uses default data `0`.
-     * @returns Any {@link ItemModel["interface"]} object used to manipulate item's model.
+     * @returns Any {@link ItemModel} object used to manipulate item's model.
      */
     function getForWithFallback(id: number, data: number): ItemModel;
 
     /**
      * Creates a new standalone item model that is not connected with any item or block,
-     * should be used in {@link ItemModel["interface"].setModelOverrideCallback}.
+     * should be used in {@link ItemModel.setModelOverrideCallback}.
      * @since 2.0.5b45
      */
     function newStandalone(): ItemModel;
@@ -59,20 +59,20 @@ declare namespace ItemModel {
     }
 
     /**
-     * @returns Empty {@link RenderMesh["class"]} from the pool or creates an empty one. Used 
+     * @returns Empty {@link RenderMesh} from the pool or creates an empty one. Used 
      * to reduce constructors/destructors calls.
      */
     function getEmptyMeshFromPool(): RenderMesh;
 
     /**
-     * Releases {@link RenderMesh["class"]} and returns it to the pool. Used to reduce
+     * Releases {@link RenderMesh} and returns it to the pool. Used to reduce
      * constructors/destructors calls.
      */
     function releaseMesh(mesh: RenderMesh): void;
 
     /**
      * @param randomize if true, item mesh position is randomized
-     * @returns New {@link RenderMesh["class"]} generated for specified item.
+     * @returns New {@link RenderMesh} generated for specified item.
      */
     function getItemRenderMeshFor(id: number, count: number, data: number, randomize: boolean): RenderMesh;
 
@@ -86,7 +86,7 @@ declare namespace ItemModel {
 
 /**
  * Class representing item model in player's hand and/or inventory. To get an instance of this
- * class from your code, use {@link ItemModel["namespace"].getFor} static function.
+ * class from your code, use {@link ItemModel.getFor} static function.
  * @remarks
  * The coordinates of the full block in player's hand or inventory is
  * (0, 0, 0), (1, 1, 1), so it is generally recommended to use the models 
@@ -95,12 +95,12 @@ declare namespace ItemModel {
  */
 declare interface ItemModel {
     /**
-     * Item or block ID current {@link ItemModel["interface"]} relates to.
+     * Item or block ID current {@link ItemModel} relates to.
      */
     readonly id: number;
 
     /**
-     * Item or block data current {@link ItemModel["interface"]} relates to.
+     * Item or block data current {@link ItemModel} relates to.
      */
     readonly data: number;
 
@@ -137,7 +137,7 @@ declare interface ItemModel {
 
     /**
      * Sets item's model to display both in the inventory and in hand.
-     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param model {@link RenderMesh}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
      * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
@@ -145,7 +145,7 @@ declare interface ItemModel {
 
     /**
      * Sets item's model to display only in player's hand.
-     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param model {@link RenderMesh}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
      * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */
@@ -153,7 +153,7 @@ declare interface ItemModel {
 
     /**
      * Sets item's model to display only in player's inventory.
-     * @param model {@link RenderMesh["class"]}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
+     * @param model {@link RenderMesh}, {@link ICRender.Model} or {@link BlockRenderer.Model} to be used as item model
      * @param texture texture name to be used for the model (use `"atlas::terrain"` for block textures)
      * @param material material name to be used for the model
      */

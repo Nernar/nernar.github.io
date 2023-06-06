@@ -27,7 +27,7 @@ declare namespace Updatable {
 
     /**
      * @returns ArrayList instance containing all defined 
-     * {@link Updatable["interface"]} objects.
+     * {@link Updatable} objects.
      */
     function getAll(): java.util.ArrayList<Updatable>;
 
@@ -39,7 +39,7 @@ declare namespace Updatable {
 
 /**
  * Updatable is an object that is notified every tick via it's 
- * {@link Updatable["interface"].update} method call.
+ * {@link Updatable.update} method call.
  */
 interface Updatable {
     /**

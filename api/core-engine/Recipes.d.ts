@@ -25,7 +25,7 @@ declare namespace Recipes {
      * 
      * @remarks
      * Pickaxe recipe should look like this:
-     * ```txt
+     * ```text
      * "+++"
      * " | "
      * " | "
@@ -33,7 +33,7 @@ declare namespace Recipes {
      * Do not use empty lines or line endings, if the recipe can be placed 
      * within less then three rows or cols; e.g., to craft plates, you can
      * use a shape like this:   
-     * ```txt
+     * ```text
      * "--"
      * ```
      */
@@ -77,29 +77,29 @@ declare namespace Recipes {
 
     /**
      * Gets all available recipes for the recipe result.
-     * @returns Collection object containing {@link Recipes.WorkbenchRecipe|WorkbenchRecipes}.
+     * @returns Collection object containing {@link Recipes.WorkbenchRecipe}.
      */
     function getWorkbenchRecipesByResult(id: number, count: number, data: number): java.util.Collection<WorkbenchRecipe>;
 
     /**
      * Gets all available recipes containing an ingredient.
-     * @returns Collection object containing {@link Recipes.WorkbenchRecipe|WorkbenchRecipes}.
+     * @returns Collection object containing {@link Recipes.WorkbenchRecipe}.
      */
     function getWorkbenchRecipesByIngredient(id: number, data: number): java.util.Collection<WorkbenchRecipe>;
 
     /**
      * Gets recipe by the field and prefix.
-     * @param field {@link Recipes.WorkbenchField|WorkbenchField} object containing crafting field 
+     * @param field {@link Recipes.WorkbenchField WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
-     * @returns Recipe {@link Recipes.WorkbenchRecipe|WorkbenchRecipe} instance, containing useful methods and 
+     * @returns Recipe {@link Recipes.WorkbenchRecipe WorkbenchRecipe} instance, containing useful methods and 
      * recipe information.
      */
     function getRecipeByField(field: WorkbenchField, prefix?: string): Nullable<WorkbenchRecipe>;
 
     /**
      * Gets recipe result item by the field and recipe prefix.
-     * @param field {@link Recipes.WorkbenchField|WorkbenchField} object containing crafting field 
+     * @param field {@link Recipes.WorkbenchField WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      */
@@ -107,7 +107,7 @@ declare namespace Recipes {
 
     /**
      * Performs crafting by the field contents and recipe prefix.
-     * @param field {@link Recipes.WorkbenchField|WorkbenchField} object containing crafting field 
+     * @param field {@link Recipes.WorkbenchField WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      */
@@ -192,7 +192,7 @@ declare namespace Recipes {
 
         /**
          * Constructs a new Workbench UI handler.
-         * @param target target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements|WindowContent.elements} section
+         * @param target target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements WindowContent.elements} section
          * @param targetCon target container
          * @param field workbench field
          */
@@ -212,7 +212,7 @@ declare namespace Recipes {
 
         /**
          * Runs recipes refresh in the ticking thread delaying refresh process
-         * for a tick. To get recipes count use {@link Recipes.WorkbenchUIHandler.setOnRefreshListener|WorkbenchUIHandler.setOnRefreshListener}.
+         * for a tick. To get recipes count use {@link Recipes.WorkbenchUIHandler.setOnRefreshListener WorkbenchUIHandler.setOnRefreshListener}.
          */
         refreshAsync(): void;
 

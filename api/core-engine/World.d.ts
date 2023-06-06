@@ -193,20 +193,20 @@ declare namespace World {
     function getChunkStateAt(x: number, y: number, z: number): number;
 
     /**
-     * @returns Requested {@link TileEntity["interface"]} located on the specified coordinates
+     * @returns Requested {@link TileEntity} located on the specified coordinates
      * or `null` if it doesn't.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
      * If the block on the specified coordinates is a TileEntity block and is
-     * not initialized, initializes it and returns created {@link TileEntity["interface"]} object.
+     * not initialized, initializes it and returns created {@link TileEntity} object.
      * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
-     * If the block on the specified coordinates is a {@link TileEntity["interface"]}, destroys
+     * If the block on the specified coordinates is a {@link TileEntity}, destroys
      * it, dropping it's container.
      * @returns `true` if the tile was destroyed successfully, `false` 
      * otherwise.
@@ -215,7 +215,7 @@ declare namespace World {
 
     /**
 	 * @param region BlockSource
-     * @returns If the block on the specified coordinates is a {@link TileEntity["interface"]}, returns
+     * @returns If the block on the specified coordinates is a {@link TileEntity}, returns
      * it's container, if the block is a {@link NativeTileEntity}, returns it, if 
      * none of above, returns `null`.
      */

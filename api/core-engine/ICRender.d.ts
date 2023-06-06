@@ -55,15 +55,15 @@ declare namespace ICRender {
 
 		/**
 		 * Adds block model as an entry to the {@link ICRender}. You can then call
-		 * {@link ICRender.RenderEntry.asCondition#1|RenderEntry.asCondition} to specify when to display the entry.
-		 * @returns Created {@link ICRender.RenderEntry|RenderEntry} object.
+		 * {@link ICRender.RenderEntry.asCondition RenderEntry.asCondition} to specify when to display the entry.
+		 * @returns Created {@link ICRender.RenderEntry} object.
 		 */
 		addEntry(model?: BlockRenderer.Model): RenderEntry;
 
 		/**
 		 * Adds render mesh as an entry to the {@link ICRender}. You can then call
-		 * {@link ICRender.RenderEntry.asCondition#1|RenderEntry.asCondition} to specify when to display the entry.
-		 * @returns Created {@link ICRender.RenderEntry|RenderEntry} object.
+		 * {@link ICRender.RenderEntry.asCondition RenderEntry.asCondition} to specify when to display the entry.
+		 * @returns Created {@link ICRender.RenderEntry} object.
 		 */
 		addEntry(mesh?: RenderMesh): RenderEntry;
 	}
@@ -73,7 +73,7 @@ declare namespace ICRender {
 	 */
 	interface RenderEntry {
 		/**
-		 * @returns Parent {@link ICRender.Model|Model} object this entry belongs to.
+		 * @returns Parent {@link ICRender.Model} object this entry belongs to.
 		 */
 		getParent(): Model;
 
@@ -128,7 +128,7 @@ declare namespace ICRender {
 	class CollisionShape {
 		/**
 		 * Adds new entry to the collision shape. You can then call
-		 * {@link ICRender.CollisionEntry.setCondition|CollisionEntry.setCondition} to specify when to display the entry.
+		 * {@link ICRender.CollisionEntry.setCondition CollisionEntry.setCondition} to specify when to display the entry.
 		 */
 		addEntry(): CollisionEntry;
 	}
@@ -179,7 +179,7 @@ declare namespace ICRender {
 	function RANDOM(value: number, max: number, seed?: number): RANDOM_CONDITION;
 
 	/**
-	 * Constructs new {@link ICRender.RANDOM#1} condition with default seed and `0` as
+	 * Constructs new {@link ICRender.RANDOM} condition with default seed and `0` as
 	 * desired random value.
 	 * @param max maximum value for the generator
 	 * @since 2.0.2b23

@@ -74,7 +74,7 @@ declare class CustomEntity {
 }
 
 /**
- * @deprecated Use resource packs or {@link Render["class"]} instead.
+ * @deprecated Use resource packs or {@link Render} instead.
  */
 declare class EntityModel {
     constructor(parentModel?: EntityModel);
@@ -96,7 +96,7 @@ declare class EntityModel {
 
 /**
  * @deprecated Use resource packs to customize entities
- * appearance or {@link Render["class"]} with {@link AttachableRender}.
+ * appearance or {@link Render} with {@link AttachableRender}.
  */
 declare class EntityModelWatcher {
     constructor(entity: number, model: EntityModel);

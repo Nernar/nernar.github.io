@@ -9,12 +9,12 @@ declare module com {
                     export class Config extends java.lang.Object {
                         static class: java.lang.Class<Config>;
                         /**
-                         * Creates new {@link com.zhekasmirnov.innercore.mod.build.Config["class"]|Config} instance using specified file.
+                         * Creates new {@link com.zhekasmirnov.innercore.mod.build.Config Config} instance using specified file.
                          * @param file {@link java.io.File} instance of the file to use
                          */
                         constructor(file: java.io.File);
                         /**
-                         * Creates new {@link com.zhekasmirnov.innercore.mod.build.Config["class"]|Config} instance using specified file.
+                         * Creates new {@link com.zhekasmirnov.innercore.mod.build.Config Config} instance using specified file.
                          * @param path path to configuration file
                          */
                         constructor(path: string);
@@ -40,7 +40,7 @@ declare module com {
                          */
                         get<T=Nullable<Config | org.json.JSONArray | boolean | number | string>>(name: string): T;
                         /**
-                         * Same as {@link com.zhekasmirnov.innercore.mod.build.Config["class"].get|Config.get}.
+                         * Same as {@link com.zhekasmirnov.innercore.mod.build.Config.get Config.get}.
                          */
                         access<T=Nullable<Config | org.json.JSONArray | boolean | number | string>>(name: string): T;
                         /**
@@ -85,7 +85,7 @@ declare module com {
                         set<T = org.json.JSONObject | org.json.JSONArray | boolean | number | string>(name: string, val: T): boolean;
                         /**
                          * @param path option name, supports multi-layer calls, separated by **'.'**
-                         * @returns Editable {@link com.zhekasmirnov.innercore.mod.build.Config["module"].ConfigValue|Config.ConfigValue}
+                         * @returns Editable {@link com.zhekasmirnov.innercore.mod.build.Config.ConfigValue Config.ConfigValue}
                          * instance that can be used to manipulate this config option separately.
                          */
                         getValue(path: string): Nullable<Config.ConfigValue>;
@@ -111,7 +111,7 @@ declare module com {
                     export module Config {
                         /**
                          * Class representing config value with it's path withing
-                         * {@link com.zhekasmirnov.innercore.mod.build.Config["class"]|Config} object.
+                         * {@link com.zhekasmirnov.innercore.mod.build.Config Config} object.
                          */
                         export class ConfigValue extends java.lang.Object {
                             static class: java.lang.Class<ConfigValue>;
@@ -123,7 +123,7 @@ declare module com {
                             set<T = org.json.JSONArray | org.json.JSONObject | boolean | number | string>(value: T): void;
                             /**
                              * @returns Config value, result is the same as the result of
-                             * {@link com.zhekasmirnov.innercore.mod.build.Config["class"].get|Config.get} call.
+                             * {@link com.zhekasmirnov.innercore.mod.build.Config.get Config.get} call.
                              */
                             get<T=Nullable<Config | org.json.JSONArray | boolean | number | string>>(): T;
                             /**

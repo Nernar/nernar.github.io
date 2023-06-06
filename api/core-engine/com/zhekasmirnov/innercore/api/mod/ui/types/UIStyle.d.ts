@@ -47,13 +47,13 @@ declare module com {
                                  */
                                 addStyle(style: UIStyle): void;
                                 /**
-                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object
-                                 * with bindings from {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle.DEFAULT|UIStyle.DEFAULT}.
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle UIStyle} object
+                                 * with bindings from {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle.DEFAULT UIStyle.DEFAULT}.
                                  */
                                 constructor();
                                 /**
-                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object
-                                 * from given {@link com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet|BindingSet} object.
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle UIStyle} object
+                                 * from given {@link com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet BindingSet} object.
                                  */
                                 constructor(bindings: BindingSet);
                                 /**
@@ -67,7 +67,7 @@ declare module com {
                                  */
                                 inherit(style: UIStyle): void;
                                 /**
-                                 * Adds all values from given {@link com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet|BindingSet} object.
+                                 * Adds all values from given {@link com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet BindingSet} object.
                                  */
                                 addAllBindings(bindings: BindingSet): void;
                                 /**

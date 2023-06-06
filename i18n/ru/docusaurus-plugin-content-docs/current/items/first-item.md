@@ -37,7 +37,7 @@
 
 Так выглядит часть содержимого папки с текстурами предметов в игре:
 
-```txt
+```text
 /assets/resource_packs/vanilla/textures/items
 ├─ apple.png
 ├─ apple_golden.png

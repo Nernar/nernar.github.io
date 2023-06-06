@@ -27,7 +27,7 @@ declare module com {
                                  * @param obj texture name or array of texture names for animated 
                                  * textures. Accepts raw gui textures names and style bindings
                                  * (formatted as "style:binding_name"). 
-                                 * @param style {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle|UIStyle} object to look for style bindings. If not 
+                                 * @param style {@link com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle UIStyle} object to look for style bindings. If not 
                                  * specified, default style is used
                                  */
                                 constructor(obj: string | {[key: string]: string}, style?: UIStyle);

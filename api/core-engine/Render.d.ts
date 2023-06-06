@@ -13,17 +13,17 @@ declare class Render {
      * Creates a new Render instance with specified parameters.
      * @param parameters specifies all the 
      * properties of the object. If it is a number, vanilla render ID is used,
-     * if it is a string, used as {@link Render["namespace"].RenderParameters.name|RenderParameters.name} name property
+     * if it is a string, used as {@link Render.RenderParameters.name RenderParameters.name} name property
      */
     constructor(parameters?: Render.RenderParameters | string | number);
 
     /**
-     * @deprecated Use {@link Render["class"].getId|getId} instead.
+     * @deprecated Use {@link Render.getId getId} instead.
      */
     getID(): number;
 
     /**
-     * @deprecated Use {@link Render["class"].getId|getId} instead.
+     * @deprecated Use {@link Render.getId getId} instead.
      */
     getRenderType(): number;
 
@@ -34,10 +34,10 @@ declare class Render {
     getId(): number;
 
     /**
-     * Specifies additional params for the following {@link Render["class"]}.
+     * Specifies additional params for the following {@link Render}.
      * @param params specifies all the 
      * properties of the object. If it is a number, vanilla render ID is used,
-     * if it is a string, used as {@link Render["namespace"].RenderParameters.name|RenderParameters.name} name property
+     * if it is a string, used as {@link Render.RenderParameters.name RenderParameters.name} name property
      */
     init(params?: Render.RenderParameters | string | number): void
 
@@ -67,7 +67,7 @@ declare class Render {
 
     /**
      * Adds a part to the render by it's full name. The part should be descendent 
-     * of one of the six default parts, see {@link Render["namespace"].ModelPart|ModelPart} for details.
+     * of one of the six default parts, see {@link Render.ModelPart ModelPart} for details.
      * @param partName full name of the part separated by "."
      * @param partParams specifies all the parameters of the part
      * @returns Newly created part.
@@ -112,7 +112,7 @@ declare class Render {
  */
 declare namespace Render {
     /**
-     * An interface of the object that is used as {@link Render["class"].constructor} parameter.
+     * An interface of the object that is used as {@link Render.constructor} parameter.
      * */
     interface RenderParameters {
         /**
@@ -139,7 +139,7 @@ declare namespace Render {
     }
 
     /**
-     * Part's box description specified in {@link Render["class"].setPart} method.
+     * Part's box description specified in {@link Render.setPart} method.
      */
     interface PartElement {
         /**
@@ -169,19 +169,19 @@ declare namespace Render {
     interface Transform extends com.zhekasmirnov.innercore.api.NativeRenderer.Transform {
         /**
          * Scales the render along all the three axes. Applicable only to the
-         * {@link Animation|Animation's} transformations.
+         * {@link Animation}'s transformations.
          * @returns Reference to itself to be used in sequential calls.
-         * @deprecated Consider using {@link Render["namespace"].Transform.scale|Transform.scale} instead.
+         * @deprecated Consider using {@link Render.Transform.scale Transform.scale} instead.
          */
         scaleLegacy(scale: number): Transform;
     }
 
     /**
-     * An interface of the object that is used as {@link Render["class"].addPart} parameter.
+     * An interface of the object that is used as {@link Render.addPart} parameter.
      */
     interface PartParameters {
         /**
-         * If false or not specified in {@link Render["class"].setPart} call, the part is
+         * If false or not specified in {@link Render.setPart} call, the part is
          * cleared, otherwise new parts and params are applied to the existing parts.
          */
         add?: boolean,

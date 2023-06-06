@@ -118,7 +118,7 @@ declare namespace CustomEnchant {
 
     /**
      * Function interface used in
-     * {@link CustomEnchant.EnchantSetupInterface.setAttackDamageBonusProvider|EnchantSetupInterface.setAttackDamageBonusProvider} method.
+     * {@link CustomEnchant.EnchantSetupInterface.setAttackDamageBonusProvider EnchantSetupInterface.setAttackDamageBonusProvider} method.
      */
     interface AttackDamageBonusProvider {
         (damage: number, entity: number): number;
@@ -126,8 +126,8 @@ declare namespace CustomEnchant {
 
     /**
      * Function interface used in
-     * {@link CustomEnchant.EnchantSetupInterface.setPostAttackCallback|EnchantSetupInterface.setPostAttackCallback} and
-     * {@link CustomEnchant.EnchantSetupInterface.setPostHurtCallback|EnchantSetupInterface.setPostHurtCallback} methods.
+     * {@link CustomEnchant.EnchantSetupInterface.setPostAttackCallback EnchantSetupInterface.setPostAttackCallback} and
+     * {@link CustomEnchant.EnchantSetupInterface.setPostHurtCallback EnchantSetupInterface.setPostHurtCallback} methods.
      */
     interface DamageCallback {
         (item: ItemInstance, damage: number, entity1: number, entity2: number): void;
@@ -135,7 +135,7 @@ declare namespace CustomEnchant {
 
     /**
      * Function interface used in
-     * {@link CustomEnchant.EnchantSetupInterface.setProtectionBonusProvider|EnchantSetupInterface.setProtectionBonusProvider} method.
+     * {@link CustomEnchant.EnchantSetupInterface.setProtectionBonusProvider EnchantSetupInterface.setProtectionBonusProvider} method.
      */
     interface ProtectionBonusProvider {
         (damage: number, damageType: number, entity: number): number;

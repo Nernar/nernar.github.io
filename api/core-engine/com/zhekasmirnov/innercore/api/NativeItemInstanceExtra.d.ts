@@ -12,24 +12,24 @@ declare module com {
                     static initSaverId(): void;
                     isFinalizableInstance(): boolean;
                     /**
-                     * Creates an {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} Java object instance
+                     * Creates an {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra NativeItemInstanceExtra} Java object instance
                      * from given native item extra data object pointer,
                      * represented as 64-bit integer (long).
                      */
                     constructor(pointer: number);
                     /**
-                     * Creates an empty {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} instance.
+                     * Creates an empty {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra NativeItemInstanceExtra} instance.
                      */
                     constructor();
                     /**
-                     * Creates a new {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} instance
+                     * Creates a new {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra NativeItemInstanceExtra} instance
                      * and copies all data from another extra object given.
                      */
                     constructor(other: NativeItemInstanceExtra);
 
                     asJson(): org.json.JSONObject;
                     /**
-                     * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra|NativeItemInstanceExtra} object.
+                     * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeItemInstanceExtra NativeItemInstanceExtra} object.
                      * @returns A created copy of the data.
                      */
                     copy(): NativeItemInstanceExtra;

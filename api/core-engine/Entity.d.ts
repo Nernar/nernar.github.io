@@ -823,8 +823,8 @@ declare namespace Entity {
      * @param navigation {@link Entity.PathNavigation} that the handler is attached to
      * @param result result code, one of the following:
      * 
-     * 0 - success; you can call {@link Entity.PathNavigation.moveToCoords|Entity.PathNavigation.moveToCoords},
-     * {@link Entity.PathNavigation.moveToEntity|PathNavigation.moveToEntity} methods to resume path
+     * 0 - success; you can call {@link Entity.PathNavigation.moveToCoords},
+     * {@link Entity.PathNavigation.moveToEntity} methods to resume path
      * 
      * 2 - entity was removed from the world
      * 

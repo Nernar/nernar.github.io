@@ -57,7 +57,7 @@ declare module com {
                         constructor();
                         /**
                          * Constructs a new {@link ItemContainer} object from given deprecated
-                         * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"]|Container} object.
+                         * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container Container} object.
                          */
                         constructor(legacyContainer: innercore.api.mod.ui.container.Container);
                         getNetworkEntity(): NetworkEntity;
@@ -67,7 +67,7 @@ declare module com {
                         getWindowContent(): innercore.api.mod.ui.window.WindowContent;
                         removeEntity(): void;
                         /**
-                         * Sets container's parent object, for {@link TileEntity["interface"]|TileEntity's}
+                         * Sets container's parent object, for {@link TileEntity}'s
                          * container it should be it reference, otherwise you can pass any
                          * value to be used in your code later.
                          * @param parent an object to be set as container's parent
@@ -102,7 +102,7 @@ declare module com {
                          */
                         getSlot(name: string): ItemContainerSlot;
                         /**
-                         * @deprecated Use {@link com.zhekasmirnov.apparatus.api.container.ItemContainer.getSlot|getSlot} instead.
+                         * @deprecated Use {@link com.zhekasmirnov.apparatus.api.container.ItemContainer.getSlot getSlot} instead.
                          */
                         getFullSlot(name: string): ItemContainerSlot;
                         markSlotDirty(name: string): void;
@@ -111,7 +111,7 @@ declare module com {
                          * Sets slot's content by it's name from given slot object. If a slot with specified
                          * name doesn't exist, a new slot with specified name and item will be created.
                          * @param name slot name
-                         * @param slot {@link com.zhekasmirnov.apparatus.api.container.ItemContainerSlot|ItemContainerSlot} object to specify slot contents
+                         * @param slot {@link com.zhekasmirnov.apparatus.api.container.ItemContainerSlot ItemContainerSlot} object to specify slot contents
                          */
                         setSlot(name: string, slot: ItemContainerSlot): void;
                         /**

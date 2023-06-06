@@ -6,21 +6,21 @@ declare module com {
                     static class: java.lang.Class<NativeRenderMesh>;
                     /**
                      * Adds new mesh to the current one on the specified coordinates.
-                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
+                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} object to be added to current mesh
                      * @since 2.0.2b23
                      */
                     addMesh(mesh: NativeRenderMesh): void;
                     /**
                      * Adds new mesh to the current one on the specified coordinates
                      * with specified offset.
-                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
+                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} object to be added to current mesh
                      * @since 2.0.2b23
                      */
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number): void;
                     /**
                      * Adds new mesh to the current one on the specified coordinates
                      * with specified offset and scale.
-                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object to be added to current mesh
+                     * @param mesh {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} object to be added to current mesh
                      * @since 2.0.2b23
                      */
                     addMesh(mesh: NativeRenderMesh, addX: number, addY: number, addZ: number, scaleX: number, scaleY: number, scaleZ: number): void;
@@ -39,7 +39,7 @@ declare module com {
                      */
                     clear(): void;
                     /**
-                     * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}.
+                     * Creates a copy of current {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh}.
                      * @since 2.0.2b26
                      */
                     clone(): NativeRenderMesh;
@@ -56,7 +56,7 @@ declare module com {
                     fitIn(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, keepRatio: boolean): void;
                     /**
                      * @returns Pointer to the native object instance of the
-                     * following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}, represented as long number.
+                     * following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh}, represented as long number.
                      */
                     getPtr(): number;
                     getReadOnlyVertexData(): NativeRenderMesh.ReadOnlyVertexData;
@@ -72,7 +72,7 @@ declare module com {
                     invalidate(): void;
                     newGuiRenderMesh(): mod.ui.GuiRenderMesh;
                     /**
-                     * Forces Minecraft to rebuild specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} object.
+                     * Forces Minecraft to rebuild specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} object.
                      */
                     rebuild(): void;
                     /**
@@ -118,33 +118,33 @@ declare module com {
                      */
                     setColor(r: number, g: number, b: number, a: number): void;
                     /**
-                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} foliage tinted.
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} foliage tinted.
                      * @since 2.0.2b24
                      */
                     setFoliageTinted(): void;
                     /**
-                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} foliage tinted.
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} foliage tinted.
                      * @since 2.0.2b25
                      */
                     setFoliageTinted(leavesType: number): void;
                     /**
-                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} grass tinted.
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} grass tinted.
                      * @since 2.0.2b24
                      */
                     setGrassTinted(): void;
                     /**
-                     * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} light direction.
+                     * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} light direction.
                      */
                     setLightDir(x: number, y: number, z: number): void;
                     setLightIgnore(ignore: boolean, bool2: boolean): void;
                     setLightParams(float1: number, float2: number, float3: number): void;
                     /**
-                     * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} light position.
+                     * Sets following {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} light position.
                      * @since 2.0.2b25
                      */
                     setLightPos(x: number, y: number, z: number): void;
                     /**
-                     * Removes any tint from specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}.
+                     * Removes any tint from specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh}.
                      * @since 2.0.2b24
                      */
                     setNoTint(): void;
@@ -153,7 +153,7 @@ declare module com {
                      */
                     setNormal(x: number, y: number, z: number): void;
                     /**
-                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} water tinted.
+                     * Makes specified {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} water tinted.
                      * @since 2.0.2b24
                      */
                     setWaterTinted(): void;
@@ -173,8 +173,8 @@ declare module com {
                         private constructor(dataSize: number);
                     }
                     /**
-                     * Object used in {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"].importFromFile|NativeRenderMesh.importFromFile} and
-                     * one of {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} constructors. Here you can put
+                     * Object used in {@link com.zhekasmirnov.innercore.api.NativeRenderMesh.importFromFile NativeRenderMesh.importFromFile} and
+                     * one of {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} constructors. Here you can put
                      * some additional parameters, that will be applied to the mesh,
                      * when the file is being imported.
                      */
@@ -198,7 +198,7 @@ declare module com {
                         scale?: [number, number, number],
                         /**
                          * If `true`, Minecraft won't be forced to rebuild the following
-                         * {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh}
+                         * {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh}
                          * before the file is imported.
                          */
                         noRebuild: boolean

@@ -244,7 +244,7 @@
   - Investigating Generators (0%)
 - Entities
   - Actoring Entities (65%)
-  - First Entity (0%)
+  - First Entity (80%)
   - Renders
     - Rendering Basics (0%)
     - Animating in Runtime (0%)

@@ -502,7 +502,7 @@ declare namespace Callback {
 
     /**
      * Function used in the "FoodEaten" callback. You can use
-     * {@link Entity.getCarriedItem#1} to get info about food item.
+     * {@link Entity.getCarriedItem} to get info about food item.
      * @param food food amount produced by eaten food
      * @param ratio saturation ratio produced by food
      * @param player player entity UID
@@ -513,7 +513,7 @@ declare namespace Callback {
 
     /**
      * Function used in the "LocalPlayerEat" and "ServerPlayerEat" callback.
-     * You can use {@link Entity.getCarriedItem#1} to get info about food item.
+     * You can use {@link Entity.getCarriedItem} to get info about food item.
      * @param player player entity UID
      * @param food food amount produced by eaten food
      * @param ratio saturation ratio produced by food

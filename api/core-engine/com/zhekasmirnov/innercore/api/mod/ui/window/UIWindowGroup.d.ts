@@ -47,7 +47,7 @@ declare module com {
                                 setWindowContent(name: string, content: WindowContent): void;
                                 /**
                                  * @returns Collection object containing all the
-                                 * {@link UI.Window|UI.Windows} in the group.
+                                 * {@link UI.Window}s in the group.
                                  */
                                 getAllWindows(): java.util.Collection<UIWindow>;
                                 /**
@@ -102,7 +102,7 @@ declare module com {
                                  */
                                 getElements(): java.util.HashMap<string, elements.UIElement>;
                                 /**
-                                 * @returns `null` for {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowGroup|UIWindowGroup}.
+                                 * @returns `null` for {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowGroup UIWindowGroup}.
                                  * */
                                 getContent(): Nullable<WindowContent>;
                                 /**
@@ -113,7 +113,7 @@ declare module com {
                                 /**
                                  * Sets container for the current window. Be careful when calling it
                                  * manually. You should prefer opening the window via
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call.
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.openAs Container.openAs} call.
                                  * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */

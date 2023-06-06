@@ -53,7 +53,7 @@ declare module com {
                                  * default value is `false`
                                  * @remarks
                                  * The location of the tabs is as follows:
-                                 * ```txt
+                                 * ```text
                                  * 0    6
                                  * 1    7
                                  * 2    8
@@ -71,7 +71,7 @@ declare module com {
                                  * @param tabContent content of the window to be created for the tab
                                  * @remarks
                                  * The location of the tabs is as follows:
-                                 * ```txt
+                                 * ```text
                                  * 0    6
                                  * 1    7
                                  * 2    8
@@ -83,7 +83,7 @@ declare module com {
                                 setTab(index: number, tabOverlay: UI.ElementSet, tabContent: WindowContent): void;
                                 /**
                                  * Creates fake tab with no content.
-                                 * @param index index of the tab, see {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setTab#1|UI.TabbedWindow.setTab} for 
+                                 * @param index index of the tab, see {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setTab UI.TabbedWindow.setTab} for 
                                  * details
                                  * @param tabOverlay content of the tab selector
                                  */
@@ -120,7 +120,7 @@ declare module com {
                                 setBlockingBackground(enabled: boolean): void;
                                 /**
                                  * @returns Current default tab index. If no default tab was specified
-                                 * via {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setDefaultTab|UI.TabbedWindow.setDefaultTab},
+                                 * via {@link com.zhekasmirnov.innercore.api.mod.ui.window.UITabbedWindow.setDefaultTab UI.TabbedWindow.setDefaultTab},
                                  * the first tab added becomes default.
                                  */
                                 getDefaultTab(): number;

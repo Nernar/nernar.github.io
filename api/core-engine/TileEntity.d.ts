@@ -23,7 +23,7 @@ declare namespace TileEntity {
 
     /**
      * @param blockID numeric block ID
-     * @returns `true` if the specified numeric block ID is a {@link TileEntity["interface"]}
+     * @returns `true` if the specified numeric block ID is a {@link TileEntity}
      * block ID, `false` otherwise.
      */
     function isTileEntityBlock(blockID: number): boolean;
@@ -35,7 +35,7 @@ declare namespace TileEntity {
 
     /**
      * If the block on the specified coordinates is a TileEntity block and is
-     * not initialized, initializes it and returns created {@link TileEntity["interface"]} object.
+     * not initialized, initializes it and returns created {@link TileEntity} object.
      * @returns Tile if one was created, `null` otherwise.
      */
     function addTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
@@ -47,20 +47,20 @@ declare namespace TileEntity {
     function addUpdatableAsTileEntity(updatable: Updatable): void;
 
     /**
-     * @returns A {@link TileEntity["interface"]} on the specified coordinates or `null` if the block on the
+     * @returns A {@link TileEntity} on the specified coordinates or `null` if the block on the
      * coordinates is not it.
      */
     function getTileEntity(x: number, y: number, z: number, region?: BlockSource): Nullable<TileEntity>;
 
     /**
-     * Destroys {@link TileEntity["interface"]}, dropping it's container.
+     * Destroys {@link TileEntity}, dropping it's container.
      * @returns `true` if the it was destroyed successfully, `false`
      * otherwise.
      */
     function destroyTileEntity(tileEntity: TileEntity, fromDestroyBlock?: boolean, isDropAllowed?: boolean): boolean;
 
     /**
-     * If the block on the specified coordinates is a {@link TileEntity["interface"]}, destroys
+     * If the block on the specified coordinates is a {@link TileEntity}, destroys
      * it, dropping it's container.
      * @returns `true` if the it was destroyed successfully, `false`
      * otherwise.
@@ -68,13 +68,13 @@ declare namespace TileEntity {
     function destroyTileEntityAtCoords(x: number, y: number, z: number, region?: BlockSource): boolean;
 
     /**
-     * Checks whether the {@link TileEntity["interface"]} is in the loaded chunk or not.
+     * Checks whether the {@link TileEntity} is in the loaded chunk or not.
      * @param tileEntity to be verified
      * @returns `true` if the chunk with TileEntity and some of the surrounding
      * chunks are loaded, `false` otherwise.
      * @remarks
      * The following chunks are verified:
-     * ```txt
+     * ```text
      *  + +
      *   #
      *  + +
@@ -90,7 +90,7 @@ declare namespace TileEntity {
     function checkTileEntityForIndex(index: number): void;
 
     /**
-     * Interface passed to {@link TileEntity["interface"].registerPrototype} function.
+     * Interface passed to {@link TileEntity.registerPrototype} function.
      */
     interface TileEntityPrototype {
 		/**
@@ -98,11 +98,11 @@ declare namespace TileEntity {
          */
         useNetworkItemContainer?: boolean;
         /**
-         * Default data values, will be initially added to {@link TileEntity["interface"].data} field.
+         * Default data values, will be initially added to {@link TileEntity.data} field.
          */
         defaultValues?: { [key: string]: any },
         /**
-         * Called when a {@link TileEntity["interface"]} is created.
+         * Called when a {@link TileEntity} is created.
          */
 		created?: () => void,
 
@@ -175,17 +175,17 @@ declare namespace TileEntity {
         }
 
         /**
-         * Called when a {@link TileEntity["interface"]} is initialised in the world.
+         * Called when a {@link TileEntity} is initialised in the world.
          */
         init?: () => void,
 
         /**
-         * Called every tick and should be used for all the updates of the {@link TileEntity["interface"]}.
+         * Called every tick and should be used for all the updates of the {@link TileEntity}.
          */
         tick?: () => void,
 
         /**
-         * Called when player uses some item on a {@link TileEntity["interface"]}.
+         * Called when player uses some item on a {@link TileEntity}.
          * @returns `true` if the event is handled and should not be propagated to
          * the next handlers. Return `true` if you don't want the user interface
          * to be opened.
@@ -193,34 +193,34 @@ declare namespace TileEntity {
         click?: (id: number, count: number, data: number, coords: Callback.ItemUseCoordinates, player: number, extra: ItemExtraData) => boolean | void,
 
         /**
-         * Occurs when a block of the {@link TileEntity["interface"]} is being destroyed. See
+         * Occurs when a block of the {@link TileEntity} is being destroyed. See
          * {@link Callback.DestroyBlockFunction} for details.
          */
         destroyBlock?: (coords: Callback.ItemUseCoordinates, player: number) => void,
 
         /**
-         * Occurs when the {@link TileEntity["interface"]} should handle redstone signal. See
+         * Occurs when the {@link TileEntity} should handle redstone signal. See
          * {@link Callback.RedstoneSignalFunction} for details.
          */
         redstone?: (params: { power: number, signal: number, onLoad: boolean }) => void,
 
         /**
-         * Occurs when a projectile entity hits the {@link TileEntity["interface"]}. See
+         * Occurs when a projectile entity hits the {@link TileEntity}. See
          * {@link Callback.ProjectileHitFunction} for details.
          */
         projectileHit?: (coords: Callback.ItemUseCoordinates, target: Callback.ProjectileHitTarget) => void,
 
         /**
-         * Occurs when the {@link TileEntity["interface"]} is being destroyed.
+         * Occurs when the {@link TileEntity} is being destroyed.
          * @returns `true` to prevent it.
-         * {@link TileEntity["interface"]} object from destroying (but if the block was destroyed, returning
+         * {@link TileEntity} object from destroying (but if the block was destroyed, returning
          * true from this function doesn't replace the missing block with a new one)
          */
         destroy?: () => boolean | void;
 
         /**
-         * Called to get the {@link UI.IWindow} object for the current {@link TileEntity["interface"]}. The
-         * window is then opened within {@link TileEntity["interface"].container} when the player clicks it.
+         * Called to get the {@link UI.IWindow} object for the current {@link TileEntity}. The
+         * window is then opened within {@link TileEntity.container} when the player clicks it.
 		 * @deprecated Client method only.
          */
 		getGuiScreen?: () => com.zhekasmirnov.innercore.api.mod.ui.window.IWindow;

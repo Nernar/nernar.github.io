@@ -16,7 +16,7 @@ declare module com {
                                  */
                                 location?: WindowLocationDescription,
                                 /**
-                                 * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.style|WindowContent.style} is not specified,
+                                 * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.style WindowContent.style} is not specified,
                                  * this argument will be used instead.
                                  */
                                 params?: types.BindingSet;
@@ -78,25 +78,25 @@ declare module com {
                                     text?: string,
                                     /**
                                      * Specifies font params for the header text. Only 
-                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size|size},
-                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color|color}
-                                     * and {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow|shadow}
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size size},
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color color}
+                                     * and {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow shadow}
                                      * properties are used.
                                      */
                                     font?: types.FontDescription,
                                     /**
-                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font|font} is not specified, used as
-                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size|size} value.
+                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font font} is not specified, used as
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.size size} value.
                                      */
                                     size?: number,
                                     /**
-                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font|font} is not specified, used as
-                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color|color} value.
+                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font font} is not specified, used as
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.color color} value.
                                      */
                                     color?: number,
                                     /**
-                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font|font} is not specified, used as
-                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow|shadow} value.
+                                     * If {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.font font} is not specified, used as
+                                     * {@link com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowDescriptionTypes.StandardWindowHeaderText.shadow shadow} value.
                                      */
                                     shadow?: number,
                                 }
@@ -175,12 +175,12 @@ declare module com {
                                 }
                             }
                             /**
-                             * Extended {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent|WindowContent} object with additional params for
+                             * Extended {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent WindowContent} object with additional params for
                              * {@link UI.StandartWindow} and {@link UI.StandardWindow}.
                              */                            
                             export interface StandardWindowContent extends WindowContent {
                                 /**
-                                 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow|StandardWindows}.
+                                 * Used for {@link UI.StandartWindow}s and {@link UI.StandardWindow StandardWindows}.
                                  * Specifies additional parameters for standard windows.
                                  */
                                 standard?: StandardWindowDescriptionTypes.StandardWindowParams
@@ -361,7 +361,7 @@ declare module com {
                                  * store some values containing window's current state. Note that these
                                  * properties are not saved between Inner Core launches.
                                  * @param name custom property name
-                                 * @returns Value set by {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindow.putProperty|UI.Window.putProperty}
+                                 * @returns Value set by {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindow.putProperty Window.putProperty}
                                  * or null if no value was specified for this name.
                                  */
                                 getProperty<T>(name: string): T;
@@ -380,7 +380,7 @@ declare module com {
                                 /**
                                  * Sets container for the current window. Be careful when calling it
                                  * manually. You should prefer opening the window via it.
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.openAs Container.openAs} call
                                  * @param container {@link UI.Container}
                                  * to be associated with current window
                                  * or null to associate no container with current window

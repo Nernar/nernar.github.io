@@ -37,7 +37,7 @@ declare module com {
                             }
                             /**
                              * Object representing window location used in window content object and
-                             * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} constructor.
+                             * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation IWindowLocation} constructor.
                              */
                             export interface WindowLocationDescription extends IWindowLocation {
                                 forceScrollX?: boolean, forceScrollY?: boolean,
@@ -100,12 +100,12 @@ declare module com {
                                  */
                                 zIndex: number;
                                 /**
-                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} instance with default position and
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation UIWindowLocation} instance with default position and
                                  * size (fullscreen window).
                                  */
                                 constructor();
                                 /**
-                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} instance with specified parameters.
+                                 * Constructs new {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation UIWindowLocation} instance with specified parameters.
                                  * @param params 
                                  */
                                 constructor(params: WindowLocationDescription);
@@ -128,7 +128,7 @@ declare module com {
                                  */
                                 asScriptable(): IWindowLocation;
                                 /**
-                                 * Creates a copy of current {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} object.
+                                 * Creates a copy of current {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation UIWindowLocation} object.
                                  * @returns Newly created copy of the object.
                                  */
                                 copy(): UIWindowLocation;
@@ -141,9 +141,9 @@ declare module com {
                                  */
                                 set(x: number, y: number, width: number, height: number): void;
                                 /**
-                                 * Sets window location parameters from another {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation}.
+                                 * Sets window location parameters from another {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation UIWindowLocation}.
                                  * Note that paddings are not copied instance.
-                                 * @param location another {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation|UIWindowLocation} instance to copy 
+                                 * @param location another {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation UIWindowLocation} instance to copy 
                                  * parameters from
                                  */
                                 set(location: UIWindowLocation): void;
@@ -153,10 +153,10 @@ declare module com {
                                 removeScroll(): void;
                                 /**
                                  * Sets padding of the window.
-                                 * @param padding one of the {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_TOP|UIWindowLocation.PADDING_TOP}, 
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_BOTTOM|UIWindowLocation.PADDING_BOTTOM},
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_LEFT|UIWindowLocation.PADDING_LEFT},
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_RIGHT|UIWindowLocation.PADDING_RIGHT} constants
+                                 * @param padding one of the {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_TOP UIWindowLocation.PADDING_TOP}, 
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_BOTTOM UIWindowLocation.PADDING_BOTTOM},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_LEFT UIWindowLocation.PADDING_LEFT},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.window.UIWindowLocation.PADDING_RIGHT UIWindowLocation.PADDING_RIGHT} constants
                                  * @param value value of the padding to be assigned to appropriate 
                                  * window bound
                                  */

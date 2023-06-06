@@ -12,7 +12,7 @@ declare namespace BlockRenderer {
         constructor();
 
         /**
-         * Constructs new model using specified {@link RenderMesh["class"]}.
+         * Constructs new model using specified {@link RenderMesh}.
          */
         constructor(mesh: RenderMesh);
 
@@ -75,7 +75,7 @@ declare namespace BlockRenderer {
         addBox(id: number, data?: number): void;
 
         /**
-         * Adds new {@link RenderMesh["class"]} to the model.
+         * Adds new {@link RenderMesh} to the model.
          */
         addMesh(mesh: RenderMesh): void;
     }

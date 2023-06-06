@@ -62,12 +62,12 @@ declare module com {
                          */
                         clear(): void;
                         /**
-                         * @returns Mesh specified via {@link com.zhekasmirnov.innercore.api.NativeRenderer["namespace"].ModelPart.setMesh|setMesh} call or `null`, if 
+                         * @returns Mesh specified via {@link com.zhekasmirnov.innercore.api.NativeRenderer.ModelPart.setMesh setMesh} call or `null`, if 
                          * this part doesn't contain mesh.
                          */
                         getMesh(): Nullable<NativeRenderMesh>;
                         /**
-                         * Specifies {@link com.zhekasmirnov.innercore.api.NativeRenderMesh["class"]|NativeRenderMesh} to be used as a part.
+                         * Specifies {@link com.zhekasmirnov.innercore.api.NativeRenderMesh NativeRenderMesh} to be used as a part.
                          */
                         setMesh(mesh: Nullable<NativeRenderMesh>): void;
                         /**

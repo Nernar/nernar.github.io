@@ -77,7 +77,7 @@ declare module com {
                                  * @param color integer color value produced by {@link android.graphics.Color} 
                                  * class
                                  * @param sides array of booleans marking whether the side should be 
-                                 * expanded or not. See {@link com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture.expand#1|FrameTexture.expand} parameters for details. 
+                                 * expanded or not. See {@link com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture.expand FrameTexture.expand} parameters for details. 
                                  * Default behavior is to scale all sides
                                  * @returns Expanded and scaled {@link android.graphics.Bitmap} instance.
                                  */

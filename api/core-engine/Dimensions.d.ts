@@ -178,7 +178,7 @@ declare namespace Dimensions {
         setTerrainGenerator(generator: Nullable<AbstractTerrainGenerator>): CustomGenerator;
 
         /**
-         * Specifies which of the generation {@link Callback|Callbacks} to call, `-1` to call
+         * Specifies which of the generation {@link Callback Callbacks} to call, `-1` to call
          * no mods generation, `0` to call overworld generation callback, `1` for nether,
          * `2` for end generation callbacks.
          * @param id generation callback to call
@@ -204,7 +204,7 @@ declare namespace Dimensions {
      */
     class MonoBiomeTerrainGenerator implements AbstractTerrainGenerator {
         /**
-         * Constructs new {@link Dimensions.MonoBiomeTerrainGenerator|MonoBiomeTerrainGenerator}
+         * Constructs new {@link Dimensions.MonoBiomeTerrainGenerator MonoBiomeTerrainGenerator}
          * instance with no terrain layers.
          */
         constructor();
@@ -343,7 +343,7 @@ declare namespace Dimensions {
     /**
      * @param name dimension name
      * @returns Dimension by it's string name specified in
-     * {@link Dimensions.CustomDimension|CustomDimension} constructor.
+     * {@link Dimensions.CustomDimension CustomDimension} constructor.
      */
     function getDimensionByName(name: string): CustomDimension;
 
@@ -381,7 +381,7 @@ declare namespace Dimensions {
      */
     function newGenerator(description: {
         /**
-         * Specifies base generator, see {@link Dimensions.CustomGenerator|CustomGenerator}
+         * Specifies base generator, see {@link Dimensions.CustomGenerator CustomGenerator}
          * constructor for details.
          */
         base?: number | string,
@@ -390,14 +390,14 @@ declare namespace Dimensions {
          * Specifies whether to use vanilla biome surface cover blocks
          * (grass, sand, podzol, etc.).
          * 
-         * See {@link Dimensions.CustomGenerator.setBuildVanillaSurfaces|setBuildVanillaSurfaces} for details.
+         * See {@link Dimensions.CustomGenerator.setBuildVanillaSurfaces setBuildVanillaSurfaces} for details.
          */
         buildVanillaSurfaces?: boolean,
 
         /**
          * Specifies whether to generate minecraft vanilla structures.
          * 
-         * See {@link Dimensions.CustomGenerator.setGenerateVanillaStructures|setGenerateVanillaStructures} for details.
+         * See {@link Dimensions.CustomGenerator.setGenerateVanillaStructures setGenerateVanillaStructures} for details.
          */
         generateVanillaStructures?: boolean,
 
@@ -405,7 +405,7 @@ declare namespace Dimensions {
          * Can be either string for an existing dimensions (**"overworld"**,
          * **"nether"**, **"end"**) or -1 to disable mods generation.
          * 
-         * See {@link Dimensions.CustomGenerator.setModGenerationBaseDimension|setModGenerationBaseDimension} for details.
+         * See {@link Dimensions.CustomGenerator.setModGenerationBaseDimension setModGenerationBaseDimension} for details.
          */
         modWorldgenDimension?: number | string,
 
@@ -425,7 +425,7 @@ declare namespace Dimensions {
          * An array of terrain layers descriptions, each one representing it's
          * own terrain layer.
          * 
-         * See {@link Dimensions.MonoBiomeTerrainGenerator.addTerrainLayer|MonoBiomeTerrainGenerator.addTerrainLayer} for details.
+         * See {@link Dimensions.MonoBiomeTerrainGenerator.addTerrainLayer MonoBiomeTerrainGenerator.addTerrainLayer} for details.
          */
         layers?: TerrainLayerParams[]
 
@@ -469,7 +469,7 @@ declare namespace Dimensions {
 
     interface NoiseOctaveParams {
         /**
-         * Noise octave type, see {@link Dimensions.NoiseOctave["constructor"]} for details.
+         * Noise octave type, see {@link Dimensions.NoiseOctave} for details.
          * @default "perlin"
          */
         type?: number | string,

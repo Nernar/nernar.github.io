@@ -23,12 +23,12 @@ declare module com {
                              * Removes all elements with current element name prefix. In other
                              * words, removes all elements that were created by this.
                              * {@link UI.ConfigVisualizer} instance
-                             * @param elements target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements|WindowContent.elements} section
+                             * @param elements target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements WindowContent.elements} section
                              */
                             clearVisualContent(elements: UI.ElementSet): void;
                             /**
                              * Creates elements in the window to visualize configuration file.
-                             * @param elements target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements|WindowContent.elements} section
+                             * @param elements target {@link com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent.elements WindowContent.elements} section
                              * @param prefs top left position of the first element. Default position 
                              * is (0, 0, 0)
                              */

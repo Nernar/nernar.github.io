@@ -1,5 +1,5 @@
 /**
- * Class used to create and manipulate game objects. Game objects are {@link Updatable["interface"]|Updatables}
+ * Class used to create and manipulate game objects. Game objects are {@link Updatable Updatables}
  * that are being saved between game launches.
  */
 declare class GameObject<T extends GameObjectPrototype> {
@@ -29,7 +29,7 @@ declare class GameObject<T extends GameObjectPrototype> {
 
     /**
      * Creates a new game object with specified params and registers it for saving
-     * and as an {@link Updatable["interface"]}.
+     * and as an {@link Updatable}.
      * @param args any arguments that are passed to {@link GameObjectPrototype.init}
      * function
      * @returns Instantiated game object.
@@ -62,7 +62,7 @@ interface GameObjectPrototype extends Updatable {
 
 declare namespace GameObjectRegistry {
     /**
-     * Gets an array of {@link GameObject|GameObjects} of specified type.
+     * Gets an array of {@link GameObject GameObjects} of specified type.
      * @param type unique {@link GameObject} type to get all the instances of
      * @param clone if true, a new array is created to ensure the original
      * engine's data safety.

@@ -28,29 +28,29 @@ declare module com {
                                 static class: java.lang.Class<Container>;
                                 static readonly isContainer: boolean;
                                 /**
-                                 * If container is a part of {@link TileEntity["interface"]}, this field stores reference
+                                 * If container is a part of {@link TileEntity}, this field stores reference
                                  * to it, otherwise null. You can also assign any value of any type to
-                                 * it using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].setParent|UI.Container.setParent} method or using constructor 
-                                 * parameter. Consider using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getParent|UI.Container.getParent} instead of direct
+                                 * it using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.setParent UI.Container.setParent} method or using constructor 
+                                 * parameter. Consider using {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.getParent UI.Container.getParent} instead of direct
                                  * field access.
                                  */
                                 parent: Nullable<TileEntity> | any;
                                 slots: {[slotName: string]: container.Slot}
                                 /**
-                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].parent|UI.Container.parent}.
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.parent UI.Container.parent}.
                                  */
                                 tileEntity: Nullable<TileEntity> | any;
                                 constructor();
                                 constructor(parent: any);
                                 /**
-                                 * Sets container's parent object, for {@link TileEntity["interface"]}'s container it
-                                 * should be a {@link TileEntity["interface"]} reference, otherwise you can pass any
+                                 * Sets container's parent object, for {@link TileEntity}'s container it
+                                 * should be a {@link TileEntity} reference, otherwise you can pass any
                                  * value to be used in your code later.
                                  * @param parent an object to be set as container's parent
                                  */
                                 setParent(parent: Nullable<TileEntity> | any): void;
                                 /**
-                                 * Getter for {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].parent|UI.Container.parent} field.
+                                 * Getter for {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.parent Container.parent} field.
                                  */
                                 getParent(): Nullable<TileEntity> | any;
                                 /**
@@ -150,7 +150,7 @@ declare module com {
                                  */
                                 isOpened(): boolean;
                                 /**
-                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getWindow|UI.Container.getWindow}.
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.getWindow Container.getWindow}.
                                  */
                                 getGuiScreen(): window.IWindow;
                                 /**
@@ -258,7 +258,7 @@ declare module com {
                                 applyChanges(): void;
                                 /**
                                  * If the container is a custom workbench, you can set the slot prefix
-                                 * via this method call. {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].getFieldSlot|UI.Container.getFieldSlot}
+                                 * via this method call. {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.getFieldSlot Container.getFieldSlot}
                                  * will get field slot by `prefix + slot` name.
                                  * @param wbsnp custom workbench slot prefix
                                  */

@@ -99,7 +99,7 @@ declare module com {
                                 /**
                                  * Sets container for the current window. Be careful when calling it
                                  * manually. You should prefer opening the window via
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].openAs|UI.Container.openAs} call.
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.openAs Container.openAs} call.
                                  * @param container {@link UI.Container}
                                  * to be associated with current window or null to associate no container with current window
                                  */

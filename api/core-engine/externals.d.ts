@@ -1,7 +1,7 @@
 /**
  * Method provided to log inherited Rhino class type and
  * determine which instance is used.
- * @returns Something like {@link java.lang.Class.getName|java.lang.Class.getName()}.
+ * @returns Something like {@link java.lang.Class.getName}().
  * @internal
  */
 declare function __debug_typecheck__(obj: any): string;

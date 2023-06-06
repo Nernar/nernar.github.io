@@ -20,7 +20,7 @@ declare namespace Block {
 	 * @param defineData array containing all variations of the block. Each 
 	 * variation corresponds to block data value, data values are assigned 
 	 * according to variations order
-	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
+	 * @param blockType {@link Block.SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties, 
 	 * you can also pass special type name, if the type was previously 
 	 * registered
@@ -37,7 +37,7 @@ declare namespace Block {
 	 * @param defineData array containing all variations of the block. Each 
 	 * variation corresponds to four block data values, data values are assigned 
 	 * according to variations order
-	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
+	 * @param blockType {@link Block.SpecialType SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties, 
 	 * you can also pass special type name, if the type was previously 
 	 * registered
@@ -89,7 +89,7 @@ declare namespace Block {
 	 * There you can specify custom name IDs for static and dynamic liquid blocks separately,
 	 * and if you do this, you have to register those name IDs
 	 * via {@link IDRegistry.genBlockID} before using them
-	 * @param blockType {@link Block.SpecialType|SpecialType} object, either java-object returned by
+	 * @param blockType {@link Block.SpecialType SpecialType} object, either java-object returned by
 	 * {@link Block.createSpecialType} or js-object with the required properties,
 	 * you can also pass special type name, if the type was previously registered
 	 * @since 2.2.1b102
@@ -755,7 +755,7 @@ declare namespace Block {
 
 	/**
 	 * @deprecated Better performance should be inherited by manually
-	 * manipulation with properties and {@link Block.SpecialType|SpecialType}.
+	 * manipulation with properties and {@link Block.SpecialType SpecialType}.
 	 */
 	function setPrototype(nameID: string | number, Prototype: any): number;
 

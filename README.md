@@ -23,7 +23,7 @@ But it requires lot of time and highly recommended test local builds with `npm r
 
 I mean modding documentation for Inner Core of course, rewrited from zero to TypeScript with exclusive new features. At beginning, it located by few locations: **docs** where everything starts, **i18n** where localization performs and **static** where additional files is located.
 
-```txt
+```text
 .
 ├─ docs
 │  └─ ...

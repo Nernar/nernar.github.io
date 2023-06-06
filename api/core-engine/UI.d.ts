@@ -3,132 +3,132 @@ declare module UI {
     type ElementName = string | number | symbol;
 
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent}
 	 */
 	export type WindowContent = com.zhekasmirnov.innercore.api.mod.ui.window.WindowContent;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowContent["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowContent}
 	 */
 	export type StandardWindowContent = com.zhekasmirnov.innercore.api.mod.ui.window.StandardWindowContent;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription}
 	 */
 	export type FontDescription = com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription;
 
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription}
 	 */
     export type FontParams = com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription}
 	 */
     export type WindowLocationParams = com.zhekasmirnov.innercore.api.mod.ui.window.WindowLocationDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet["type"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet}
 	 */
 	export type BindingsSet = com.zhekasmirnov.innercore.api.mod.ui.types.BindingSet;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle["class"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle}
 	 */
 	export type Style = com.zhekasmirnov.innercore.api.mod.ui.types.UIStyle;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.UIClickEvent["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.UIClickEvent}
 	 */
 	export type UIClickEvent = com.zhekasmirnov.innercore.api.mod.ui.elements.UIClickEvent;
 
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.ColorDrawingDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.ColorDrawingDescription}
 	 */
     export type ColorDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.ColorDrawingDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.CustomDrawingDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.CustomDrawingDescription}
 	 */
     export type CustomDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.CustomDrawingDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.FrameDrawingDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.FrameDrawingDescription}
 	 */
     export type FrameDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.FrameDrawingDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.ImageDrawingDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.ImageDrawingDescription}
 	 */
     export type ImageDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.ImageDrawingDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.LineDrawingDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.LineDrawingDescription}
 	 */
     export type LineDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.LineDrawingDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.TextDrawingDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.background.TextDrawingDescription}
 	 */
     export type TextDrawing = com.zhekasmirnov.innercore.api.mod.ui.background.TextDrawingDescription;
 
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.BasicElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.BasicElementDescription}
 	 */
     export type UIElement = com.zhekasmirnov.innercore.api.mod.ui.elements.BasicElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.CustomElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.CustomElementDescription}
 	 */
     export type UICustomElement = com.zhekasmirnov.innercore.api.mod.ui.elements.CustomElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription}
 	 */
     export type UIButtonElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription}
 	 */
     export type UICloseButtonElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ButtonElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.FrameElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.FrameElementDescription}
 	 */
     export type UIFrameElement = com.zhekasmirnov.innercore.api.mod.ui.elements.FrameElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ImageElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ImageElementDescription}
 	 */
     export type UIImageElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ImageElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ScaleElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ScaleElementDescription}
 	 */
     export type UIScaleElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ScaleElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ScrollElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.ScrollElementDescription}
 	 */
     export type UIScrollElement = com.zhekasmirnov.innercore.api.mod.ui.elements.ScrollElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.SlotElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.SlotElementDescription}
 	 */
     export type UISlotElement = com.zhekasmirnov.innercore.api.mod.ui.elements.SlotElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.SwitchElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.SwitchElementDescription}
 	 */
     export type UISwitchElement = com.zhekasmirnov.innercore.api.mod.ui.elements.SwitchElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.TabElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.TabElementDescription}
 	 */
     export type UITabElement = com.zhekasmirnov.innercore.api.mod.ui.elements.TabElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.TextElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.TextElementDescription}
 	 */
     export type UITextElement = com.zhekasmirnov.innercore.api.mod.ui.elements.TextElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.FPSTextElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.FPSTextElementDescription}
 	 */
     export type UIFPSTextElement = com.zhekasmirnov.innercore.api.mod.ui.elements.FPSTextElementDescription;
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.InvSlotElementDescription["interface"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.elements.InvSlotElementDescription}
 	 */
     export type UIInvSlotElement = com.zhekasmirnov.innercore.api.mod.ui.elements.InvSlotElementDescription;
 
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.IWindow["class"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.IWindow}
 	 */
 	export interface IWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.IWindow {}
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.container.Slot["Slot"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.container.Slot}
 	 */
 	export interface Slot extends com.zhekasmirnov.innercore.api.mod.ui.container.Slot {}
 
 	/**
-	 * {@inheritDoc UI.UIElement["type"]}
+	 * {@inheritDoc UI.UIElement}
 	 */
 	export type Element = UIElement;
 
@@ -198,8 +198,8 @@ declare module UI {
 
     /**
 	 * Containers are used to properly manipulate windows and save slots 
-	 * contents and windows state between window opens. Every {@link TileEntity["interface"]} has 
-	 * a built-in container that can be accessed as {@link TileEntity["interface"].container}.
+	 * contents and windows state between window opens. Every {@link TileEntity} has 
+	 * a built-in container that can be accessed as {@link TileEntity.container}.
 	 * @deprecated Client class only.
 	 */
     export class Container extends com.zhekasmirnov.innercore.api.mod.ui.container.Container {
@@ -211,7 +211,7 @@ declare module UI {
         /**
 		 * Creates a new instance of {@link UI.Container} and initializes it's parent.
 		 * 
-		 * See {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container["class"].setParent|UI.Container.setParent} for details.
+		 * See {@link com.zhekasmirnov.innercore.api.mod.ui.container.Container.setParent UI.Container.setParent} for details.
 		 */
         constructor(parent: Nullable<TileEntity> | any);
     }
@@ -274,7 +274,7 @@ declare module UI {
     }
 
 	/**
-	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.UIAdaptiveWindow["class"]}
+	 * {@inheritDoc com.zhekasmirnov.innercore.api.mod.ui.window.UIAdaptiveWindow}
 	 */
     export class AdaptiveWindow extends com.zhekasmirnov.innercore.api.mod.ui.window.UIAdaptiveWindow {
         static class: java.lang.Class<AdaptiveWindow>;
@@ -364,7 +364,7 @@ declare module UI {
     }
 
     /**
-	 * Namespace containing method to get {@link com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture|FrameTexture} instances.
+	 * Namespace containing method to get {@link com.zhekasmirnov.innercore.api.mod.ui.types.FrameTexture FrameTexture} instances.
 	 */
     export class FrameTextureSource extends java.lang.Object {
         static class: java.lang.Class<FrameTextureSource>;

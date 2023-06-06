@@ -131,7 +131,7 @@
 <Tabs lazy>
 <TabItem value="structure" label="Структура мода">
 
-```txt
+```text
 Ancient-wonders
 ├─ assets
 │  ├─ gui

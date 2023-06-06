@@ -29,13 +29,13 @@ declare module com {
                                 shadow?: number,
                                 /**
                                  * Font alignment, one of the
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_DEFAULT|Font.ALIGN_DEFAULT},
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_CENTER|Font.ALIGN_CENTER},
-                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_END|Font.ALIGN_END} constants.
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_DEFAULT Font.ALIGN_DEFAULT},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_CENTER Font.ALIGN_CENTER},
+                                 * {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font.ALIGN_END Font.ALIGN_END} constants.
                                  */
                                 alignment?: number,
                                 /**
-                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription.alignment|FontDescription.alignment}.
+                                 * Same as {@link com.zhekasmirnov.innercore.api.mod.ui.types.FontDescription.alignment FontDescription.alignment}.
                                  */
                                 align?: number,
                                 /**
@@ -122,7 +122,7 @@ declare module com {
                                  */
                                 getTextHeight(text: string, x: number, y: number, scale: number): number;
                                 /**
-                                 * Converts current {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font|Font} object to scriptable font description.
+                                 * Converts current {@link com.zhekasmirnov.innercore.api.mod.ui.types.Font Font} object to scriptable font description.
                                  */
                                 asScriptable(): FontDescription;
 
