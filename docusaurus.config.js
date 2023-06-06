@@ -202,30 +202,6 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 const api = path.resolve('api/docs');
 
 if (fs.existsSync(api) && fs.readdirSync(api).length) {
-	if (config.plugins) {
-		config.plugins.unshift([
-			'content-docs',
-			/** @type {import('@docusaurus/plugin-content-docs').Options} */
-			({
-				id: 'api',
-				path: 'api/docs',
-				routeBasePath: 'api',
-				numberPrefixParser: false,
-				exclude: [],
-				sidebarItemsGenerator: function(generatorArgs) {
-					return generatorArgs.defaultSidebarItemsGenerator({
-						...generatorArgs,
-						docs: generatorArgs.docs.filter(function(value) {
-							value.title = value.title.replace(/\\?\\_/g, '_');
-							return !(value.sourceDirName == '.' && value.unversionedId == 'index');
-						})
-					});
-				}
-			})
-		]);
-	} else {
-		logger.error('Unexpected `config.plugins` is undefined!');
-	} 
 	const themeConfig = 
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		(config.themeConfig);
@@ -233,7 +209,7 @@ if (fs.existsSync(api) && fs.readdirSync(api).length) {
 		const partial = themeConfig.navbar.items.shift();
 		themeConfig.navbar.items.unshift({
 			position: 'left',
-			to: 'api',
+			href: `${config.url}/api/index.html`,
 			label: 'API'
 		});
 		if (partial) {

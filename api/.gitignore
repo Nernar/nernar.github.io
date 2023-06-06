@@ -7,6 +7,3 @@ node_modules/
 # Generated files
 /media/codicons
 /.wireit
-
-# Local declarations
-declarations/core-engine.d.ts
