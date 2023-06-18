@@ -589,6 +589,7 @@ declare namespace NBT {
              */
             OnGround: boolean;
             /**
+             * Projectile shooter entity UID.
              * @default -1
              */
             OwnerNew: number;

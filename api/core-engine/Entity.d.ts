@@ -220,7 +220,7 @@ declare namespace Entity {
      * @returns Compound tag for the specified entity.
      * @since 2.0.5b44
      */
-    function getCompoundTag(ent: number): NBT.CompoundTag;
+    function getCompoundTag(ent: number): Nullable<NBT.CompoundTag>;
 
     /**
      * Sets compound tag for the specified entity.
