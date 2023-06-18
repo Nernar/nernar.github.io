@@ -1,5 +1,5 @@
 /**
- * Module that provides some general game-related functions
+ * Module that provides some general game-related functions.
  */
 declare namespace Game {
     /**
@@ -16,23 +16,25 @@ declare namespace Game {
     function isActionPrevented(): boolean;
 
     /**
-     * Writes message to the chat. Message can be formatted using
-     * {@link EColor} values.
-     * @param msg message to be displayed
-     */
-    function message(msg: string): void;
-
-    /**
-     * Writes message above the hot bar. Message can be formatted using
-     * {@link EColor} values.
-     * @param msg message to be displayed
-     */
-    function tipMessage(msg: string): void;
-
-    /**
-     * Displays android AlertDialog with given message and dialog title.
+     * Writes message to the chat.
+     * Message can be formatted using {@link EColor} values.
      * @param message message to be displayed
-     * @param title title of the AlertDialog
+     */
+    function message(message: string): void;
+
+    /**
+     * Writes message above the hot bar.
+     * Message can be formatted using {@link EColor} values.
+     * @param message message to be displayed
+     */
+    function tipMessage(message: string): void;
+
+    /**
+     * Displays {@link android.app.AlertDialog} with given message and dialog title.
+     * Message can be mixed with {@link android.text.Html.fromHtml HTML-like} formatting,
+     * for example `<b>I'm a bold</b><br/><i>I'm a italic</i>`.
+     * @param message message to be displayed
+     * @param title title before message
      */
     function dialogMessage(message: string, title: string): void;
 
@@ -43,8 +45,7 @@ declare namespace Game {
     function setDifficulty(difficulty: number): void;
 
     /**
-     * @returns Current game difficulty, one of the {@link EGameDifficulty} 
-     * values.
+     * @returns Current game difficulty, one of the {@link EGameDifficulty} values.
      */
     function getDifficulty(): number;
 
@@ -72,18 +73,20 @@ declare namespace Game {
 
     /**
      * `true` if developer mode was enabled in Inner Core config.
+     * @internal
      */
-    const isDeveloperMode: boolean;
+    let isDeveloperMode: boolean;
 
     /**
      * `true` if Inner Core config allows spending items in creative.
+     * @internal
      */
-    const spendItemsInCreative: boolean;
+    let spendItemsInCreative: boolean;
 
     /**
-     * @returns `true` if item spending allowed.
+     * @returns `true` if item spending allowed (player must be in creative).
      */
-    function isItemSpendingAllowed(player?: number): boolean;
+    function isItemSpendingAllowed(playerUid?: number): boolean;
 
     /**
      * @since 2.0.4b35

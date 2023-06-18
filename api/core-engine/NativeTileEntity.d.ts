@@ -1,25 +1,25 @@
 /**
- * Interface providing access to native tile entities - chests, hoppers, furnaces,
- * smelters, etc. See full lists of supported native tile entities in the 
- * {@link ETileEntityType} enum.
+ * Interface providing access to native tile entities such as chests, hoppers, furnaces,
+ * smelters, etc.
+ * See full list of supported native tile entities in the {@link ETileEntityType} enum.
  */
 declare interface NativeTileEntity {
     /**
      * @returns NativeTileEntity type constant, one of the {@link ETileEntityType}
      * constants.
      */
-    getType(): number,
+    getType(): number;
 
     /**
      * @returns Slots count for the specified NativeTileEntity.
      */
-    getSize(): number,
+    getSize(): number;
 
     /**
      * @param slot slot number
      * @returns Item instance in the specified slot of item TE.
      */
-    getSlot(slot: number): ItemInstance,
+    getSlot(slot: number): ItemInstance;
 
     /**
      * Sets the contents of a native tile entity's slot.

@@ -19,33 +19,33 @@ declare namespace Debug {
     function addParticle(id: number, x: number, y: number, z: number, vx: number, vy: number, vz: number, data: number): void;
 
     /**
-     * Writes general debug message (in green) to the chat.
+     * Writes general debug message (in green) to local player in chat.
      * @param message message to be displayed
      */
     function message(message: string): void;
 
     /**
-     * Writes warning debug message (in gold) to the chat.
+     * Writes warning debug message (in gold) to local player in chat.
      * @param message message to be displayed
      */
     function warning(message: string): void;
 
     /**
-     * Writes error debug message (in red) to the chat.
+     * Writes error debug message (in red) to local player in chat.
      * @param message message to be displayed
      */
     function error(message: string): void;
 
     /**
-     * Writes several comma-separated values to the chat as a general debug
-     * message, serializing javascript objects if possible.
+     * Writes several comma-separated values to local player in chat as
+     * a general debug message, serializing javascript objects if possible.
      * @param args messages to be displayed
      * @since 2.0.5b44
      */
     function m(...args: any[]): void;
 
     /**
-     * Displays an AlertDialog with given title and bitmap.
+     * Displays an {@link android.app.AlertDialog} with given title and bitmap.
      * @param bitmap android.graphics.Bitmap object of the bitmap to be 
      * displayed
      * @param title title of the AlertDialog
@@ -53,8 +53,8 @@ declare namespace Debug {
     function bitmap(bitmap: android.graphics.Bitmap, title: string): void;
 
     /**
-     * Writes several values in JSON format to the copyable alert window text view,
-     * serializing javascript objects if possible.
+     * Writes several values in JSON format to the selectable
+     * alert window text view, serializing javascript objects if possible.
      * @param args messages to be displayed
      * @since 2.0.5b44
      */

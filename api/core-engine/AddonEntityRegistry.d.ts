@@ -1,6 +1,9 @@
 /**
  * Module used to manage custom entities added via add-ons.
  * @since 2.0.1b18
+ * @remarks
+ * Depends on local player dimension, highly recommended replace it
+ * with {@link BlockSource.spawnEntity} and {@link Entity.getTypeName}.
  */
 declare namespace AddonEntityRegistry {
     /**

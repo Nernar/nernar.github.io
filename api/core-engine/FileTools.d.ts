@@ -3,17 +3,17 @@
  */
 declare namespace FileTools {
     /**
-     * Defines path to android *\/mnt* directory.
+     * Defines path to mounted devices directory (e.g. *\/mnt*).
      */
     const mntdir: string;
 
     /**
-     * Defines user directory path, ends with "/".
+     * Defines external user directory path with trailing slash (e.g. *\/sdcard\/*, *\/storage\/emulated\/0\/*).
      */
     const root: string;
 
     /**
-     * Defines mods folder path, ends with "/".
+     * Defines in-pack directory where modders alives with trailing slash (e.g. *\/storage\/emulated\/0\/games\/horizon\/packs\/Inner_Core_Test\/innercore\/mods\/*, *\/storage\/emulated\/0\/Android\/data\/com.zheka.horizon\/files\/games\/horizon\/packs\/Inner_Core_Test\/innercore\/mods\/*).
      */
     const moddir: string;
 
@@ -25,8 +25,8 @@ declare namespace FileTools {
     function mkdir(dir: string): void;
 
     /**
-     * Creates CoreEngine working directories. Called by CoreEngine and should
-     * not be called by end user.
+     * Creates Core Engine working directories.
+     * @internal
      */
     function mkworkdirs(): void;
 
@@ -55,24 +55,23 @@ declare namespace FileTools {
     function WriteText(file: string, text: string, add?: boolean): void;
 
     /**
-     * Reads text from file.
+     * Reads text as-is from file, append `?.trim()` to drop trailing newlines.
      * @param file home-relative or absolute path to the file
      * @returns File contents or `null` if file does not exist or not accessible.
      */
-    function ReadText(file: any): Nullable<string>;
+    function ReadText(file: string): Nullable<string>;
 
     /**
-     * Writes bitmap to png file.
+     * Writes bitmap to PNG (lossless and transparent extension) file.
      * @param file home-relative or absolute path to the file
-     * @param bitmap android.graphics.Bitmap object of the bitmap to be written
-     * to the file
+     * @param bitmap {@link android.graphics.Bitmap} to be written to the file
      */
     function WriteImage(file: string, bitmap: android.graphics.Bitmap): void;
 
     /**
-     * Reads bitmap from file.
+     * Reads high-resolution (as-is) bitmap from file.
      * @param file home-relative or absolute path to the file
-     * @returns Bitmap object of the bitmap that was read from
+     * @returns object of the bitmap that was read from
      * file or null if file does not exist or is not accessible.
      */
     function ReadImage(file: string): Nullable<android.graphics.Bitmap>;
@@ -85,9 +84,9 @@ declare namespace FileTools {
     function ReadTextAsset(name: string): string;
 
     /**
-     * Reads bitmap from asset by it's full name.
+     * Reads high-resolution (as-is) bitmap from asset by it's full name.
      * @param name asset name
-     * @returns Bitmap object of the bitmap that was read from
+     * @returns Object of the bitmap that was read from
      * asset or null, if asset doesn't exist.
      */
     function ReadImageAsset(name: string): Nullable<android.graphics.Bitmap>;
@@ -95,39 +94,37 @@ declare namespace FileTools {
     /**
      * Reads bytes array from assets.
      * @param name asset name
-     * @returns Java array of bytes read from assets or null if asset doesn't 
-     * exist.
+     * @returns JArray of bytes read from assets or null if asset doesn't exist.
      */
     function ReadBytesAsset(name: string): native.Array<jbyte>;
 
     /**
      * Lists children directories for the specified path.
      * @param path home-relative or absolute path to the file
-     * @returns Array of {@link java.io.File} instances of listed directories.
+     * @returns JArray of {@link java.io.File} instances of listed directories.
      */
     function GetListOfDirs(path: string): java.io.File[];
 
     /**
      * Lists files in the specified directory.
      * @param path path to directory to look for files in
-     * @param ext extension of the files to include to the output. Use empty 
-     * string to include all files
-     * @returns Array of {@link java.io.File} instances that match specified extension.
+     * @param ext extension of the files to include to the output
+     * @returns JArray of {@link java.io.File} instances that match specified extension.
      */
-    function GetListOfFiles(path: string, ext: string): java.io.File[];
+    function GetListOfFiles(path: string, ext?: string): java.io.File[];
 
     /**
-     * Reads file as key:value pairs.
+     * Reads file as `<key>:<value>` pairs.
      * @param dir home-relative or absolute path to the file
      * @param specialSeparator separator between key and value, ":" by default
-     * @returns Object containing key:value pairs from file.
+     * @returns Object containing `<key>:<value>` pairs from file.
      */
     function ReadKeyValueFile(dir: string, specialSeparator?: string): {
         [key: string]: string
     };
 
     /**
-     * Writes key:value pairs to the file.
+     * Writes `<key>:<value>` pairs to the file.
      * @param dir home-relative or absolute path to the file
      * @param data object to be written to the file as a set of key:value pairs
      * @param specialSeparator separator between key and value, ":" by default
@@ -135,9 +132,9 @@ declare namespace FileTools {
     function WriteKeyValueFile(dir: string, data: object, specialSeparator?: string): void;
 
     /**
-     * Reads file as JSON.
+     * Reads JSON file without comments as object.
      * @param dir home-relative or absolute path to the file
-     * @returns JSON value read from JSON file.
+     * @returns Object represents JSON value read from JSON file.
      */
     function ReadJSON(dir: string): any;
 
@@ -145,7 +142,7 @@ declare namespace FileTools {
      * Writes object to file as JSON.
      * @param dir home-relative or absolute path to the file
      * @param obj object to be written to the file as JSON
-     * @param beautify if true, output JSON is beautified
+     * @param beautify if true, output JSON is beautified with tabs
      */
     function WriteJSON(dir: string, obj: any, beautify: boolean): void;
 }

@@ -44,6 +44,7 @@ declare namespace ModAPI {
      * Executes string in Core Engine's global context. Can be used to get
      * functions and objects directly from Adapted Script.
      * @param name string to be executed in Core Engine's global context
+     * @returns `null` if execution failed or appropriate variable same.
      */
     function requireGlobal(name: string): any;
 
@@ -137,7 +138,7 @@ declare namespace ModAPI {
 
     /**
      * Same as {@link ModAPI.cloneObject}, but if call depth is more then
-     * 6, returns `"stackoverflow"` string value.
+     * 6, inserts `"stackoverflow"` string value otherwise.
      */
     function debugCloneObject<T>(source: T, deep?: boolean, rec?: number): T | string;
 
@@ -156,4 +157,11 @@ declare namespace ModAPI {
          */
         props: object
     }
+
+    /**
+     * Collects registered APIs objects, use {@link ModAPI.requireAPI}
+     * to directly access required instance.
+     * @internal
+     */
+    let modAPIs: { [name: string]: { api: string, descr: { name: object, props: object } } }
 }

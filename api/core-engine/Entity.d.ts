@@ -5,12 +5,12 @@
  */
 declare namespace Entity {
     /**
-     * @returns An array of all loaded entities IDs.
+     * @returns An array of all loaded entities UIDs.
      */
     function getAll(): number[];
 
     /**
-     * @returns An array of all loaded entities IDs.
+     * @returns An array of all loaded entities UIDs.
      * @deprecated Consider using {@link Entity.getAll} instead.
      */
     function getAllJS(): number[];
@@ -102,7 +102,7 @@ declare namespace Entity {
     function getType(ent: number): number;
 
     /**
-     * @returns String entity type, like `minecraft:chicken`.
+     * @returns String entity type, like `minecraft:chicken<>` (`<namespace>:<identifier>[<attributes>]`).
      */
     function getTypeName(ent: number): string;
 
@@ -114,6 +114,10 @@ declare namespace Entity {
 
     /**
      * @returns String type for entities defined via add-ons, otherwise `null`.
+     * @remarks
+     * Includes only entities spawned locally (with {@link Entity.spawnAddon}),
+     * test entities manually with {@link Entity.getTypeName} or use {@link BlockSource.listEntitiesInAABB}
+     * with appropriate arguments.
      */
     function getTypeAddon(ent: number): Nullable<string>;
 
@@ -130,15 +134,16 @@ declare namespace Entity {
     function setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
 
     /**
-     * Sets hitbox to the entity. Hitboxes define entities collisions.
+     * Sets hitbox to the entity. Hitboxes defines entity collisions
+     * between terrain and themselves (e.g. physics).
      * @param w hitbox width and length
      * @param h hitbox height
      */
     function setHitbox(ent: number, w: number, h: number): void;
 
     /**
-     * @returns `true` if specified entity ID is valid and entity with this ID 
-     * exists in the world.
+     * @returns `true` if specified entity is loaded within any player chunks
+     * (not despawned or unloaded) and identifier is valid.
      */
     function isExist(ent: number): boolean;
 
@@ -155,12 +160,16 @@ declare namespace Entity {
      * @param skin skin to set for the entity. Leave empty or null to use 
      * default skin of the mob
      * @returns Numeric ID of spawn entity or -1 if entity was not created.
+     * @remarks
+     * Local method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawn(x: number, y: number, z: number, type: number, skin?: Nullable<string>): number;
 
     /**
      * Same as {@link Entity.spawn}, but uses {@link Vector} object to represent
      * coordinates.
+     * @remarks
+     * Local method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawnAtCoords(coords: Vector, type: number, skin?: string): void;
 
@@ -169,18 +178,24 @@ declare namespace Entity {
      * to controllers via extra param.
      * @param name custom entity string ID
      * @param extra object that contains some data for the controllers
+     * @deprecated You've should implement addon entity and spawn it with
+     * {@link BlockSource.spawnEntity} instead.
      */
     function spawnCustom(name: string, x: number, y: number, z: number, extra?: object): CustomEntity;
 
     /**
      * Same as {@link Entity.spawnCustom}, but uses {@link Vector} object to represent
      * coordinates.
+     * @deprecated You've should implement addon entity and spawn it with
+     * {@link BlockSource.spawnEntity} instead.
      */
     function spawnCustomAtCoords(name: string, coords: Vector, extra?: any): CustomEntity;
 
     /**
      * Spawns custom entity defined in behavior packs or game itself.
      * @returns Instance to performing commands on entity.
+     * @remarks
+     * Local method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawnAddon(x: number, y: number, z: number, name: string): AddonEntityRegistry.AddonEntity;
 
@@ -188,12 +203,16 @@ declare namespace Entity {
      * Same as {@link Entity.spawnAddon}, but uses {@link Vector} object to represent
      * coordinates.
      * @returns Instance to performing commands on entity.
+     * @remarks
+     * Local method, use {@link BlockSource.spawnEntity} instead.
      */
     function spawnAddonAtCoords(coords: Vector, name: string): AddonEntityRegistry.AddonEntity;
 
     /**
      * @returns Instance to performing commands on requested addon
      * entity if it spawned by Inner Core or `null` instead.
+     * @remarks
+     * Includes only entities spawned locally (with {@link Entity.spawnAddon}).
      */
     function getAddonEntity(entity: number): Nullable<AddonEntityRegistry.AddonEntity>;
 
@@ -203,9 +222,8 @@ declare namespace Entity {
     function remove(ent: number): void;
 
     /**
-     * @returns Custom entity object by it's numeric entity ID.
-     * @deprecated Unsupported usage, use behavior packs
-     * instead.
+     * @returns Custom entity object by it's numeric entity UID.
+     * @deprecated Not supported anymore, use behavior packs.
      */
     function getCustom(ent: number): CustomEntity;
 
@@ -570,6 +588,9 @@ declare namespace Entity {
      * @param type entity type ID. Parameter is no longer supported and should 
      * be 0 in all cases
      * @param maxRange if specified, determines search radius
+     * @remarks
+     * Overheating method, capture entities by {@link BlockSource.fetchEntitiesInAABB} \
+     * and pass over them by checking radius between coords and entity.
      */
     function findNearest(coords: Vector, type?: number, maxRange?: number): Nullable<number>;
 
@@ -578,16 +599,19 @@ declare namespace Entity {
      * @param coords search range center coordinates
      * @param maxRange determines search radius
      * @param type entity type ID
+     * @remarks
+     * Overheating method, capture entities by {@link BlockSource.fetchEntitiesInAABB} \
+     * and pass over them by checking radius between coords and entity.
      */
     function getAllInRange(coords: Vector, maxRange: number, type?: number): number[];
 
     /**
-     * @deprecated Consider use {@link Player.getInventorySlot} instead.
+     * @deprecated Consider use {@link Entity.getCarriedItem} instead.
      */
     function getInventory(ent: number, handleNames?: boolean, handleEnchant?: boolean): void;
 
     /**
-     * @param slot armor slot ID, should be one of the {@link EArmorType} 
+     * @param slot armor slot index, should be one of the {@link EArmorType} 
      * values
      * @returns Armor slot contents for entity.
      */
@@ -595,7 +619,7 @@ declare namespace Entity {
 
     /**
      * Sets armor slot contents for the entity.
-     * @param slot armor slot ID, should be one of the {@link EArmorType} 
+     * @param slot armor slot index, should be one of the {@link EArmorType} 
      * values
      * @param id item ID
      * @param count item count
@@ -841,6 +865,8 @@ declare namespace Entity {
      * @param type entity type ID
      * @default type: 255, flag: true
      * @since 2.0.4b35
+     * @remarks
+     * Local method, use {@link BlockSource.listEntitiesInAABB} instead.
      */
     function getAllInsideBox(coords1: Vector, coords2: Vector, type?: number, flag?: boolean): number[];
 

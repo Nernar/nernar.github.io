@@ -41,19 +41,22 @@ declare class ActorRenderer {
 
 declare namespace ActorRenderer {
 
+    /**
+     * All methods of {@link ActorRenderer.ModelPart} build in such a way,
+     * that you can create full render in one chain of calls.
+     * @example
+     * ```js
+     * new ActorRenderer()
+     *     .addPart("child", "parent")
+     *         .addBox(-4, -4, -4, 4, 0, 4)
+     *     .addPart("grandChild", "child")
+     *         .addBox(-4, 0, -4, 4, 4, 4)
+     *         .setOffset(0, 4, 0)
+     *     .endPart();
+     * ```
+     */
     class ModelPart {
 
-        /**
-         * All methods of {@link ActorRenderer.ModelPart} build in such a way,
-         * that you can create full render in one chain of calls.
-         * @example
-         * ```js
-         * new ActorRenderer()
-         *     .addPart("child", "parent")
-         *     .addPart("grandChild", "child")
-         *     .endPart();
-         * ```
-         */
         endPart(): ActorRenderer;
 
         setTexture(textureName: string): ModelPart;

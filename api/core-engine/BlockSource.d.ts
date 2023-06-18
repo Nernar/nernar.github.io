@@ -214,7 +214,7 @@ declare class BlockSource {
 	 * that are equal to the given type, if blacklist value is `false`,
 	 * and all except the entities of the given type, if blacklist value is `true`.
 	 */
-	fetchEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, blacklist: boolean): number[];
+	fetchEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type?: number, blacklist?: boolean): number[];
 
 	/**
 	 * @returns List of entity IDs in given box,
@@ -222,7 +222,7 @@ declare class BlockSource {
 	 * and all except the entities of the given type, if blacklist value is `true`.
 	 * @since 2.2.1b100
 	 */
-	listEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type: number, blacklist: boolean): number[];
+	listEntitiesInAABB(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, type?: number, blacklist?: boolean): number[];
 
 	/**
 	 * Whether or not particles must be emitted when destroying

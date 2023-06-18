@@ -1,6 +1,6 @@
 /**
  * Module that allows to work with current Minecraft world.
- * Most of the methods are client, use BlockSource instead.
+ * Most of the methods are client-side, use {@link BlockSource} instead.
  */
 declare namespace World {
     /**

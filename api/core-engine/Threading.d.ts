@@ -5,6 +5,7 @@
 declare namespace Threading {
     /**
      * Function used to format error messages in a custom way.
+     * @internal
      */
     type ErrorMessageFormatFunction =
         /**
@@ -15,12 +16,12 @@ declare namespace Threading {
 
     /**
      * Function used to create formatted error message with the full debug
-     * information about exception in one of the threads. Usually called by Core.
-     * Engine
+     * information about exception in one of the threads.
      * @param error java.lang.Throwable instance or javascript exception
      * @param name thread name used to localize errors if there are any
      * @param priority current thread priority
      * @param formatFunc function that formats the exception itself
+     * @internal
      */
     function formatFatalErrorMessage(error: any, name: string, priority: number, formatFunc: ErrorMessageFormatFunction): string;
 
@@ -46,4 +47,11 @@ declare namespace Threading {
      * @returns Instance representing the thread.
      */
     function getThread(name: string): Nullable<java.lang.Thread>;
+
+    /**
+     * Running threads, use {@link Threading.getThread} to directly
+     * access required thread by name.
+     * @internal
+     */
+    let threads: { [name: string]: java.lang.Thread };
 }

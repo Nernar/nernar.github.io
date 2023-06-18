@@ -1,5 +1,5 @@
 /**
- * Namespace used to manipulate minecraft commands.
+ * Namespace used to manipulate Minecraft commands.
  */
 declare namespace Commands {
     /**

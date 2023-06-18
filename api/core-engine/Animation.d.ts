@@ -1,6 +1,9 @@
 /**
  * Animations are used to display some 3d models in the world without use of 
  * entities.
+ * @remarks
+ * Rendering performs locally in client-side, use packets to transfer
+ * data between server and players.
  */
 declare namespace Animation {
     /**
