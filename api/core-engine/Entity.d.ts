@@ -78,17 +78,112 @@ declare namespace Entity {
      */
     function clearEffects(ent: number): void;
 
+    enum DamageSources {
+        /**
+         * `"death.attack.generic"`
+         * @remarks
+         * Default damage source if anything else not found.
+         */
+        GENERIC = 0,
+        /**
+         * `"death.attack.cactus"` (only when standing on cactus)
+         */
+        CACTUS = 1,
+        /**
+         * `"death.attack.mob"`
+         */
+        MOB = 2,
+        IMPACT = 3,
+        /**
+         * `"death.attack.inWall"`
+         */
+        IN_WALL = 4,
+        /**
+         * `"death.attack.fall"` and `"death.fell.accident.generic"`
+         */
+        FALL = 5,
+        /**
+         * `"death.attack.inFire"`
+         */
+        IN_FIRE = 6,
+        /**
+         * `"death.attack.onFire"`
+         */
+        ON_FIRE = 7,
+        /**
+         * `"death.attack.lava"`
+         */
+        LAVA = 8,
+        /**
+         * `"death.attack.drown"`
+         */
+        DROWN = 9,
+        /**
+         * `"death.attack.explosion"`
+         */
+        EXPLOSION = 10,
+        /**
+         * `"death.attack.explosion"`
+         */
+        EXPLOSION_PLAYER = 11,
+        /**
+         * `"death.attack.outOfWorld"`
+         */
+        OUT_OF_WORLD = 12,
+        COMMAND = 13,
+        /**
+         * `"death.attack.magic"`
+         */
+        MAGIC = 14,
+        /**
+         * `"death.attack.wither"`
+         */
+        WITHER = 15,
+        /**
+         * `"death.attack.starve"`
+         */
+        STARVE = 16,
+        /**
+         * `"death.attack.anvil"`
+         */
+        ANVIL = 17,
+        /**
+         * `"death.attack.thorns"`
+         */
+        THORNS = 18,
+        PROJECTILE = 19,
+        /**
+         * `"death.attack.fallingBlock"`
+         */
+        FALLING_BLOCK = 20,
+        /**
+         * `"death.attack.flyIntoWall"`
+         */
+        FLY_INTO_WALL = 21,
+        /**
+         * `"death.attack.magma"`
+         */
+        MAGMA = 22,
+        /**
+         * `"death.attack.fireworks"`
+         */
+        FIREWORKS = 23,
+        /**
+         * `"death.attack.lightningBolt"`
+         */
+        LIGHTNING_BOLT = 24,
+        OVER_TIME = 4294967295
+    }
+
     /**
      * Damages entity.
-     * @param damage damage value
-     * @param cause if specified, can be used as callback cause param
-     * @param params additional params for the damage
-     * @param params.attacker entity that caused damage, can be used as callback
-     * cause param
-     * @param params.bool1 if true, damage is reduced by entity armor
-     * @param params.bool2 unknown param
+     * @param damage damage value in half-hearts
+     * @param cause existing damage source or any inclusive value between 25 and 32
+     * @param properties additional damage source properties
+     * @param properties.attacker entity that caused damage, determines actor of damage source
+     * @param properties.bool1 if `true`, damage can be reduced by armor
      */
-    function damageEntity(ent: number, damage: number, cause?: number, params?: { attacker?: number, bool1?: boolean, bool2?: boolean }): void;
+    function damageEntity(ent: number, damage: number, cause?: DamageSources | number, properties?: { attacker?: number, bool1?: boolean }): void;
 
     /**
      * Adds specified health amount to the entity.
@@ -238,20 +333,20 @@ declare namespace Entity {
     function setAge(ent: number, age: number): void;
 
     /**
-     * @deprecated Use attributes instead.
+     * @deprecated Use NBT instead.
      */
     function getSkin(ent: number): string;
 
     /**
      * Sets mob skin.
      * @param skin skin name, full path in the resourcepack (mod assets)
-     * @deprecated Use attributes or resource packs instead.
+     * @deprecated Use NBT or resource packs instead.
      */
     function setSkin(ent: number, skin: string): void;
 
     /**
      * Sets mob skin, uses {@link Texture} object.
-     * @deprecated Use attributes instead.
+     * @deprecated Use NBT or resource packs instead.
      */
     function setTexture(ent: number, texture: Texture): void;
 
@@ -676,12 +771,27 @@ declare namespace Entity {
      */
     function getProjectileItem(projectile: number): ItemInstance;
 
+    enum Attributes {
+        FOLLOW_RANGE = "minecraft:follow_range",
+        LUCK = "minecraft:luck",
+        LAVA_MOVEMENT = "minecraft:lava_movement",
+        UNDERWATER_MOVEMENT = "minecraft:underwater_movement",
+        MOVEMENT = "minecraft:movement",
+        KNOCKBACK_RESISTANCE = "minecraft:knockback_resistance",
+        ABSORPTION = "minecraft:absorption",
+        HEALTH = "minecraft:health",
+        ATTACK_DAMAGE = "minecraft:attack_damage",
+        JUMP_STRENGTH = "minecraft:jump_strength"
+    }
+
     /**
      * Creates an object used to change entity's attributes.
+     * @param entity entity uid
+     * @param attribute one of {@link Attributes} or your custom one
      * @returns Object used to manipulate entity's attributes.
      * @since 2.0.3b33
      */
-    function getAttribute(ent: number, attribute: string): AttributeInstance;
+    function getAttribute(ent: number, attribute: Attributes | string): AttributeInstance;
 
     /**
      * Interface used to modify attribute values.

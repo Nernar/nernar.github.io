@@ -674,20 +674,9 @@ declare namespace NBT {
             Max: number;
             Min: number;
             /**
-             * One of {@link EntityAttributes} enum values or your custom one.
+             * One of {@link Entity.Attributes} or your custom one.
              */
-            Name: EntityAttributes | string;
-        }
-
-        enum EntityAttributes {
-            FOLLOW_RANGE = "minecraft:follow_range",
-            LUCK = "minecraft:luck",
-            LAVA_MOVEMENT = "minecraft:lava_movement",
-            UNDERWATER_MOVEMENT = "minecraft:underwater_movement",
-            MOVEMENT = "minecraft:movement",
-            KNOCKBACK_RESISTANCE = "minecraft:knockback_resistance",
-            ABSORPTION = "minecraft:absorption",
-            HEALTH = "minecraft:health"
+            Name: Entity.Attributes | string;
         }
 
         interface IBlockEntity extends Scriptable {
