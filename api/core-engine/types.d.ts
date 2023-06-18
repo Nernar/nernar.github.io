@@ -9,6 +9,13 @@ type jbyte = number;
 type Nullable<T> = T | null;
 
 /**
+ * Flattened hieracly, extendable in declarations.
+ */
+type Scriptable = {
+    [key: string]: any
+}
+
+/**
  * Object representing the set of coordinates in the three-dimensional world.
  */
 interface Vector {

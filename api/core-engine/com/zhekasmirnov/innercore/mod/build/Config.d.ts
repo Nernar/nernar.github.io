@@ -100,7 +100,7 @@ declare module com {
                          * not, puts default values to match the pattern.
                          * @param jsonobj javascript object representing the data pattern checkAndRestore
                          */
-                        checkAndRestore(jsonobj: { [key: string]: any }): void;
+                        checkAndRestore(jsonobj: Scriptable): void;
                         /**
                          * Ensures that config has all the properties the data pattern contains, if
                          * not, puts default values to match the pattern.

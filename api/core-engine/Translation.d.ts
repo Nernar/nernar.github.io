@@ -1,5 +1,5 @@
 /**
- * Module that can be used to localize mods
+ * Module that can be used to localize mods.
  * All default strings (e.g. item names, windows titles, etc.) in the mod should 
  * be in English. Add translations to these strings using
  * {@link Translation.addTranslation}. For items and blocks translations are applied 

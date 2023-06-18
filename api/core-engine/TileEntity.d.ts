@@ -100,7 +100,7 @@ declare namespace TileEntity {
         /**
          * Default data values, will be initially added to {@link TileEntity.data} field.
          */
-        defaultValues?: { [key: string]: any },
+        defaultValues?: Scriptable,
         /**
          * Called when a {@link TileEntity} is created.
          */
@@ -271,7 +271,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
      * TileEntity data values object.
      */
-    data: { [key: string]: any },
+    data: Scriptable,
     /**
      * TileEntity's item container.
      */
