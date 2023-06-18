@@ -601,27 +601,22 @@ declare namespace Callback {
 
     /**
      * Function used in "EntityDeath" callback.
-     * @param entity entity that is dead
-     * @param attacker if the entity was killed by another entity, attacker's 
-     * entity unique ID, -1 otherwise
-     * @param damageType damage source ID
+     * @param attacker entity that caused damage, determines actor of damage source, `-1` otherwise
+     * @param damageType existing damage source or any inclusive value between 25 and 32
      */
     interface EntityDeathFunction {
-        (entity: number, attacker: number, damageType: number): void
+        (entity: number, attacker: number, damageType: Entity.DamageSources | number): void
     }
 
     /**
      * Function used in "EntityHurt" callback.
-     * @param attacker if an entity was hurt by another entity, attacker's 
-     * unique ID, -1 otherwise
-     * @param entity entity that is hurt
-     * @param damageValue amount of damage produced to entity
-     * @param damageType damage source ID
-     * @param someBool1 some boolean value
-     * @param someBool2 some boolean value
+     * @param attacker entity that caused damage, determines actor of damage source, `-1` otherwise
+     * @param damageValue produced damage value in half-hearts
+     * @param damageType existing damage source or any inclusive value between 25 and 32
+     * @param armorReducesDamage if `true`, damage can be reduced by armor
      */
     interface EntityHurtFunction {
-        (attacker: number, entity: number, damageValue: number, damageType: number, someBool1: boolean, someBool2: boolean): void
+        (attacker: number, entity: number, damageValue: number, damageType: Entity.DamageSources | number, armorReducesDamage: boolean): void
     }
 
     /**

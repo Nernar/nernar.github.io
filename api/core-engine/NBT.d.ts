@@ -446,9 +446,12 @@ declare namespace NBT {
 
         interface Entity extends Scriptable {
             /**
-             * Countdown before entity become adult.
+             * Countdown in ticks before entity become adult.
              */
             Age?: number;
+            /**
+             * Countdown in ticks before entity start drowning.
+             */
             Air: number;
             /**
              * Helmet, Chestplate, Leggings, Boots. Accessible by index, not marked with `Slot` property.
@@ -498,9 +501,12 @@ declare namespace NBT {
              * Last hurt tick, determines entity panic/attack state.
              */
             HurtTime: number;
+            /**
+             * Immune to in-game damage types, such as NPCs and Agents.
+             */
             Invulnerable: boolean;
             /**
-             * Normally, entity become angry when it attacked.
+             * Normally, entity become angry when attacked.
              */
             IsAngry: boolean;
             /**
