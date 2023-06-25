@@ -238,7 +238,7 @@
   - Animation (0%)
   - Particles (60%)
 - Entities
-  - Actoring Entities (65%)
+  - Actoring Entities (100%)
   - First Entity (80%)
   - Renders
     - Rendering Basics (0%)
