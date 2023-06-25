@@ -237,11 +237,6 @@
   - Game Objects (0%)
   - Animation (0%)
   - Particles (60%)
-- Dimensions
-  - Ore with Manual Generation (25%)
-  - First Dimension (0%)
-  - Creating Biomes (0%)
-  - Investigating Generators (0%)
 - Entities
   - Actoring Entities (65%)
   - First Entity (80%)
@@ -261,6 +256,11 @@
   - Containers (0%)
   - Tile Entities (10%)
   - Processing Resources (0%)
+- Dimensions
+  - Ore with Manual Generation (25%)
+  - First Dimension (0%)
+  - Creating Biomes (0%)
+  - Investigating Generators (0%)
 - Structures: TODO
 - Advanced
   - Named Binary Tag (0%)
