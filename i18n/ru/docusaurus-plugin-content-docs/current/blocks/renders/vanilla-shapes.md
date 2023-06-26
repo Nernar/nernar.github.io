@@ -509,9 +509,10 @@ const createStairsRenderModel = function(id, startData, boxes) {
 };
 ```
 
-```js title="BlockRegistry.js
+```js title="BlockRegistry.js"
 const EntityGetPitch = ModAPI.requireGlobal("Entity.getPitch");
-const EntityGetYaw = ModAPI.requireGlobal("Entity.getYaw");\n
+const EntityGetYaw = ModAPI.requireGlobal("Entity.getYaw");
+
 const getPlacePosition = function(coords, block, region) {
     if (World.canTileBeReplaced(block.id, block.data)) {
         return coords;
