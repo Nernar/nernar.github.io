@@ -239,7 +239,7 @@
   - Particles (60%)
 - Entities
   - Actoring Entities (100%)
-  - First Entity (80%)
+  - First Entity (100%)
   - Renders
     - Rendering Basics (0%)
     - Animating in Runtime (0%)
