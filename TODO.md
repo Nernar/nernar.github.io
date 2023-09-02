@@ -68,7 +68,7 @@
 ### Существа
 
 - [x] Entity _(EntityAPI)_
-- [ ] PlayerActor
+- [x] PlayerActor
 - [ ] Render _(RenderAPI)_
 - [ ] AttachableRender
 - [ ] ActorRenderer

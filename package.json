@@ -42,7 +42,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.4.1",
     "@tsconfig/docusaurus": "^1.0.7",
-    "@types/react": "^18.2.8",
+    "@types/react": "^18.2.21",
     "mr-pdf": "^1.1.0",
     "typescript": "^4.9.5"
   },
