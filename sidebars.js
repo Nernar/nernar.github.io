@@ -37,6 +37,7 @@ module.exports = {
 			collapsed: false,
 			items: [
 				'getting-started/methodology',
+				'getting-started/installing-pack',
 				'getting-started/supporting-ides',
 				'getting-started/going-forward'
 			]

@@ -198,77 +198,83 @@
 
 ## Общий прогресс статей
 
-- Intro (0%)
-- Getting Started
-  - Methodology (0%)
-  - Supporting IDEs (0%)
-  - Going Forward (0%)
-- Basics
-  - Mod Structure (95%)
-  - Mod Lifecycle (100%)
-  - Building Script (100%)
-  - Evaluate Context (100%)
-  - Integrating Libraries (100%)
-- Events
-  - Where, What and Who (75%)
-  - Callbacks (75%)
-  - Updatables (100%)
-  - Threading (75%)
-  - Using Synced Data (0%)
-- Items
-  - First Item (100%)
-  - Food Armor and Throwables (100%)
-  - Recipes (100%)
-  - Extra
-    - What is Extra (0%)
-    - Enchanting (0%)
-  - Tools (0%)
-- Blocks
-  - First Block (95%)
-  - First Liquid (50%)
-  - Renders
-    - Vanilla Shapes (100%)
-    - Block Renderer (100%)
-    - Conditioning (0%)
-    - Customizing Item (0%)
-  - Block Entities (0%)
-- Environment
-  - Modifying Region (90%)
-  - Game Objects (0%)
-  - Animation (0%)
-  - Particles (60%)
-- Entities
-  - Actoring Entities (100%)
-  - First Entity (100%)
-  - Renders
-    - Rendering Basics (0%)
-    - Animating in Runtime (0%)
-    - Attaching Renders (0%)
-  - Path Navigation (0%)
-- UIs
-  - Investigating Contents (95%)
-  - Window Types (15%)
-  - Drawings (100%)
-  - Elements (100%)
-  - Extending Components (95%)
-- Storage
-  - Saving Basics (75%)
-  - Containers (0%)
-  - Tile Entities (10%)
-  - Processing Resources (0%)
-- Dimensions
-  - Ore with Manual Generation (25%)
-  - First Dimension (0%)
-  - Creating Biomes (0%)
-  - Investigating Generators (0%)
-- Structures: TODO
-- Advanced
-  - Named Binary Tag (0%)
-  - Wrapping Packages (0%)
-  - Shaders and Materials (0%)
-- Publishing
-  - Connecting Integrations (0%)
-  - Debugging (0%)
-  - Packing to Publish (0%)
-  - Uploading and Community (0%)
-- Future Steps (0%)
+- [ ] Intro (80%)
+- [ ] Getting Started
+  - [ ] Methodology (100%)
+  - [ ] Installing Pack (100%)
+  - [ ] Supporting IDEs (60%)
+  - [ ] Going Forward (80%)
+- [ ] Basics
+  - [ ] Mod Structure (95%)
+  - [ ] Mod Lifecycle (100%)
+  - [ ] Building Script (100%)
+  - [ ] Evaluate Context (100%)
+  - [ ] Integrating Libraries (100%)
+- [ ] Events
+  - [ ] Callbacks (75%)
+  - [ ] Where, What and Who (75%)
+  - [ ] Updatables (100%)
+  - [ ] Threading (75%)
+  - [ ] Using Synced Data (0%)
+- [ ] Items
+  - [ ] First Item (100%)
+  - [ ] Food Armor and Throwables (100%)
+  - [ ] Recipes (100%)
+  - [ ] Extra
+    - [ ] What is Extra (0%)
+    - [ ] Enchanting (0%)
+  - [ ] Tools (0%)
+- [ ] Blocks
+  - [ ] First Block (95%)
+  - [ ] First Liquid (50%)
+  - [ ] Renders
+    - [ ] Vanilla Shapes (100%)
+    - [ ] Block Renderer (100%)
+    - [ ] Conditioning (0%)
+    - [ ] Customizing Item (0%)
+  - [ ] Block Entities (0%)
+- [ ] Environment
+  - [ ] Modifying Region (90%)
+  - [ ] Game Objects (0%)
+  - [ ] Animation (0%)
+  - [ ] Particles (60%)
+- [ ] Entities
+  - [ ] Actoring Entities (100%)
+  - [ ] First Entity (100%)
+  - [ ] Renders
+    - [ ] Rendering Basics (0%)
+    - [ ] Animating in Runtime (0%)
+    - [ ] Attaching Renders (0%)
+  - [ ] Path Navigation (0%)
+- [ ] UIs
+  - [ ] Investigating Contents (95%)
+  - [ ] Window Types (15%)
+  - [ ] Drawings (100%)
+  - [ ] Elements (100%)
+  - [ ] Extending Components (95%)
+- [ ] Storage
+  - [ ] Saving Basics (100%)
+  - [ ] Containers (0%)
+  - [ ] Tile Entities (10%)
+  - [ ] Processing Resources (0%)
+- [ ] Dimensions
+  - [ ] Ore with Manual Generation (25%)
+  - [ ] First Dimension (0%)
+  - [ ] Creating Biomes (0%)
+  - [ ] Investigating Generators (0%)
+- [ ] Structures
+  - [ ] First Structure (0%)
+  - [ ] Setting Up Features (0%)
+  - [ ] Blueprinting (0%)
+  - [ ] Pools and Jigsaws (0%)
+- [ ] Advanced
+  - [ ] Named Binary Tag (0%)
+  - [ ] Wrapping Packages (0%)
+  - [ ] Shaders and Materials (0%)
+  - [ ] C++ Modding (0%)
+- [ ] Publishing
+  - [ ] Connecting Integrations (0%)
+  - [ ] Debugging (0%)
+  - [ ] Packing to Publish (0%)
+  - [ ] Uploading and Community (0%)
+- [ ] Future Steps (0%)

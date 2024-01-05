@@ -1,5 +1,8 @@
 {
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"markdown.preferredMdPathExtensionStyle": "removeExtension",
+	"markdown.validate.enabled": true,
+	"mdx.experimentalLanguageServer": true,
 	"search.exclude": {
 		"**/node_modules": true,
 		"**/package-lock.json": true,

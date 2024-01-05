@@ -55,6 +55,10 @@
     "message": "Структуры",
     "description": "The label for category Structures in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.Advanced": {
+    "message": "Техническое",
+    "description": "The label for category Advanced in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.Publishing": {
     "message": "Публикация",
     "description": "The label for category Publishing in sidebar tutorialSidebar"
