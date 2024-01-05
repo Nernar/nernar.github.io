@@ -7,11 +7,11 @@
 Пожалуй наиболее простым способом обработки данных остается конфиг, или же [\_\_config\_\_](/api/__config__). Он сохраняет сугубо клиентские настройки и может быть изменен через интерфейс браузера модов. Ранее, в статье [Конфигурация свойств](../basics/mod-structure.md#конфигурация-свойств) были рассмотрены форматы файлов *config.json* и *config.info.json*, теперь же будет рассмотрено считывание и изменение этих данных.
 
 ```js
-__config__.getBool("extensions.cropGrowth");
-__config__.getDouble("position.classic.x");
-__config__.getFloat("position.classic.y");
-__config__.getInteger("checkTime");
-__config__.getString("style");
+__config__.getBool("change_quantum_suit_recipe"); // true
+__config__.getDouble("energy_text.scale"); // 135.0
+__config__.getFloat("energy_text.y"); // 30.0
+__config__.getInteger("energy_text.scale"); // 135
+__config__.getString("energy_text.pos"); // "right"
 ```
 
 Эти базовые методы позволяют получить конкретный тип данных: булевые значения, числа с фиксированной или плавающей точкой, целочисленные и строковые значения соответственно. Если значение в конфиге отсутствует или не соответствует запрашиваему типу, будут возвращены `false`, `0.0`, `0.0`, `0` и `null` в том же порядке.
@@ -19,29 +19,30 @@ __config__.getString("style");
 Создайте отдельный файл или класс и загружайте эти данные единожды, обычно они обновляются лишь на этапе загрузке мода. Не знаете какой тип данных должен быть получен из конфига или просто хотите проверить, есть ли нужное значение? Запросите значение с помощью универсального метода:
 
 ```js
-__config__.get("style");
+__config__.get("energy_text");
 ```
 
-Вне зависимости от полученного значения, оно будет возвращено в нужном типе. Если же значения нет, будет возвращено `null` как в случае с отсутствием строкового.
+Вне зависимости от полученного значения, оно будет возвращено в нужном типе; если значение содержит в себе еще несколько, то есть является объектом, будет возвращен экземляр конфига по заданному пути. Если же значения нет, будет возвращено `null` как и в случае с отсутствием строкового.
 
 Но ведь мы же хотим не только считывать, но и изменять данные:
 
 ```js
-const DESPAWN_RANGE = Math.min(Math.max(
-    __config__.getInteger("despawn_range"), 192
-), 48);
-__config__.set("despawn_range", DESPAWN_RANGE);
+const ENERGY_OFFSET_Y = Math.min(Math.max(
+    __config__.getInteger("energy_text.y"),
+    UI.getScreenHeight() - __config__.getInteger("energy_text.scale")
+), 0);
+__config__.set("energy_text.y", ENERGY_OFFSET_Y);
 __config__.save();
 ```
 
-В этом случае мы считываем целочисленное значение `despawn_range` и проверяем, чтобы оно было в диапазоне от 48 до 192. И здесь же, сохраняем значение на случай если оно было изменено. Рассмотрите [config.info.json](../basics/mod-structure.md#configinfojson) для ограничения этих значений еще и в интерфейсе.
+В этом случае мы считываем целочисленное значение `energy_text.y`, и проверяем, чтобы оно было в диапазоне от 0 до размера экрана минус размер элемента. И здесь же, сохраняем значение на случай если оно было изменено. Рассмотрите [config.info.json](../basics/mod-structure#configinfojson) для ограничения этих значений еще и в интерфейсе.
 
 Цепочек установки значений перед сохранением может быть сколько угодно:
 
 ```js
-__config__.set("despawn_range", 64);
-__config__.set("style", "transparent");
-__config__.set("extensions.energy", true);
+__config__.set("energy_text.y", 60);
+__config__.set("energy_text.pos", "left");
+__config__.set("change_quantum_suit_recipe", false);
 __config__.save();
 ```
 
@@ -49,10 +50,11 @@ __config__.save();
 
 ```js
 __config__.checkAndRestore({
-    despawn_range: 64,
-    style: "transparent",
-    extensions: {
-        energy: true
+    change_quantum_suit_recipe: true,
+    energy_text: {
+        pos: "right",
+        scale: 135,
+        y: 30
     }
 });
 ```
@@ -89,9 +91,9 @@ __config__.checkAndRestore(FileTools.ReadText(
 Сохранения используются для хранения большого количества данных или любых других в виде объектов. Хотя само сохранение данных может быть зарегистрировано где угодно, использованы они будут лишь на стороне сервера. Хранение данных происходит с помощью [Saver](/api/Saver) и его нескольких методов.
 
 ```js
-Saver.addSavesScope("некийМод.некийКонтекст", function(data) {
+Saver.addSavesScope("Мод.Контекст", function read(data) {
     // действия с полученными вследствие загрузки данными
-}, function() {
+}, function save() {
     return {
         // некие данные для сохранения
     };
@@ -100,11 +102,35 @@ Saver.addSavesScope("некийМод.некийКонтекст", function(data
 
 Отдельные потоки данных прекрасно сохраняются здесь. Первая функция выполняется во время загрузки мира для получения прочитанных данных, а вторая выполняется неоднократно во время самой игры для их сохранения. Возвращаемый объект для сохранения может содержать неограниченное количество вложенных примитов и массивов, главное, чтобы они находились внутри объекта. По этой причине, эта функция и сохраняет "контекст".
 
-Вернемся к небольшому примеру жидкостного хранилища, созданного в статье [Маппинг и обновления](../blocks/renders/block-renderer.md#маппинг-и-обновления). У нас уже есть готовый объект `placedTanksByDimension`, содержащий все необходимые данные для сохранения. В таком случае, готовый вариант сохранения будет выглядеть так:
+:::caution Воздержитесь от встроенного калбека
+
+Раннее, сохранения на движке Core Engine реализовывались с помощью калбеков __ReadSaves__ и __WriteSaves__ соответственно, принципы схожи с модулем [Saver](/api/Saver):
 
 ```js
-Saver.addSavesScope("abstractModName.tanks", function(data) {
-    placedTanksByDimension = data;
+Translation.addTranslation("<Client> Your saves are outdated, it will be rewritten!", {
+    ru: "<Клиент> Ваши сохранения устарели, они будут перезаписаны!"
+});
+
+Callback.addCallback("ReadSaves", function(data) {
+    for (let i = data.notify_legacy_saves; i >= 0; i--) {
+        Debug.error(Translation.translate("<Client> Your saves are outdated, it will be rewritten!"));
+    }
+});
+
+Callback.addCallback("WriteSaves", function(data) {
+    data.notify_legacy_saves = Math.floor(Math.random() * 10);
+});
+```
+
+Но, поскольку указание контекста сохранений позволяет избежать целого ряда проблем, таких как уже занятое пространство другим модом, либо же ошибка в одном из калбеков, не используйте эту возможность в новых проектах.
+
+:::
+
+Вернемся к небольшому примеру жидкостного хранилища, созданного в статье [Маппинг и обновления](../blocks/renders/block-renderer#маппинг-и-обновления). У нас уже есть готовый объект `placedTanksByDimension`, содержащий все необходимые данные для сохранения. В таком случае, готовый вариант сохранения будет выглядеть так:
+
+```js
+Saver.addSavesScope("AbstractMod.Tanks", function(data) {
+    placedTanksByDimension = data || {};
 }, function() {
     return placedTanksByDimension;
 });
@@ -117,7 +143,7 @@ let despawnRange = 64;
 let style = "transparent";
 let energyExtension = true;
 
-Saver.addSavesScope("abstractModName", function(data) {
+Saver.addSavesScope("AbstractMod", function(data) {
     despawnRange = data.despawn_range || despawnRange;
     style = data.style || style;
     if (data.extensions) {
@@ -134,7 +160,13 @@ Saver.addSavesScope("abstractModName", function(data) {
 });
 ```
 
-Желательно проверять существуют ли необходимые данные перед их использованием.
+Желательно проверять существуют ли необходимые данные внутри объекта перед их использованием.
+
+:::danger Объект не может отсутствовать
+
+В любом случае, если сохранение отсутствует или не задано, в качестве входных данных в функцию чтения будет передан пустой объект. Он не привязан к скрипту, а также не имеет в себе никаких данных для использования. Будьте осторожны, так как проверка `data != null` не сработает.
+
+:::
 
 ### Экземпляры и классы
 
@@ -165,19 +197,17 @@ class LevitatingAspectItem {
 }
 ```
 
-Мы можем воспользоваться изученным ранее `Saver.addSavesScope`, так может регистрировать его каждый раз? Как только объект перестанет быть актуален, ритуал будет завершен, сохраняемый обработчик останется. Это явно не то, что здесь необходимо, да и есть вариант получше.
-
-На этот случай каждый экземпляр регулируется отдельно:
+Мы можем воспользоваться изученным ранее `Saver.addSavesScope`, так может регистрировать его каждый раз? Как только объект перестанет быть актуален, ритуал будет завершен, сохраняемый обработчик останется. Это явно не то, что здесь необходимо, да и есть вариант получше:
 
 ```ts
 class LevitatingAspectItem {
-    static saverId = Saver.registerObjectSaver("abstractModName.LevitatingAspectItem", {
+    static saverId = Saver.registerObjectSaver("AbstractMod.LevitatingAspectItem", {
         save: function(instance) {
             const { altarId, position } = instance;
             return { altarId, position };
         },
         read: function(data) {
-            const altar = Altar.resolveById(data.altarId);
+            const altar = AspectableAltar.resolve(data.altarId);
             if (!altar) return null;
             const aspect = new LevitatingAspectItem(altar);
             aspect.position = data.position;
@@ -185,37 +215,201 @@ class LevitatingAspectItem {
         }
     });
 
-    ...
-
     constructor(altar: AspectableAltar) {
         ...
         Saver.registerObject(this, LevitatingAspectItem.saverId);
     }
+
+    ...
 }
 ```
 
-Используя идентификатор созданного обработчика, классы будут восстановлены вместе со следующим входом в мир. Не забудьте позаботиться о связке созданных объектов с обработчиком, например, привязкой к алтарю. Но не менее важно "выгружать" объекты из списка сохранения, для этого реализуйте, к примеру, метод `destroy`:
+Используя идентификатор созданного обработчика, классы будут воссозданы после загрузки сохранения. Не забудьте позаботиться о связке созданных объектов с обработчиком, например, привязкой к алтарю. Чтобы экземпляр сохранился, нужно либо сделать это напрямую, либо поместить его внутрь другого объекта, подверженного сохранению:
 
 ```ts
 class LevitatingAspectItem {
-    ...
+    static aspects = [];
+
+    constructor(altar: AspectableAltar) {
+        if (aspects.indexOf(this) == -1) {
+            aspects.push(this);
+        }
+        ...
+    }
+
     destroy() {
         ...
+        let index = aspects.indexOf(this);
+        if (index != -1) {
+            aspects.splice(index, 1);
+        }
         Saver.setObjectIgnored(this, true);
+    }
+
+    ...
+}
+```
+
+Остается только добавить сохранение массива *aspects* по аналогии с прошлой частью. Не менее важно "выгружать" объекты из списка сохранения, используя, к примеру, *destroy*. Вызовите этот метод, когда класс более не требуется, к примеру после завершения ритуала. Это исключит будущие сохранения созданного экземпляра, он просто будет пропущен и его содержимое не сохранится. Свойство сохраняется и при сериализации, которая сейчас будет рассмотрена.
+
+### Сериализация
+
+Сериализация позволяет преобразовать структуры различной сложности к единому виду, к примеру, для сохранения в файл или отправки другому клиенту. Фактически, любые способы сохранения, использованные в этой статье, сериализируются при изменении и десериализируются для считывания разработчиком данных в читаемый языком вид.
+
+Возьмем один из прошлых примеров, так он будет выглядеть на разных этапах:
+
+<Tabs lazy>
+<TabItem value="code" label="Объект в коде">
+
+```js
+{
+    despawn_range: 64,
+    style: "transparent" + Math.round(Math.E),
+    // Комментарий не будет сериализован
+    extensions: {
+        energy: true
     }
 }
 ```
 
-И позаботьтесь о вызове этого метода, когда ваш класс более не требуется.
+</TabItem>
+<TabItem value="serialized" label="Сериализовано">
 
-### Сериализация
-
-```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
-<NotImplemented />
+```js
+"{\"despawn_range\":64,\"style\":\"transparent3\",\"extensions\":{\"energy\":true}}"
 ```
+
+</TabItem>
+<TabItem value="deserialized" label="Десериализовано">
+
+```js
+{
+    "despawn_range": 64,
+    "style": "transparent3",
+    "extensions": {
+        "energy": true
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+Такие данные намного легче передавать, сохранять и загружать их снова. Самым простым примером такого процесса может быть `JSON.stringify(obj)` как сериализатор, просто передайте в него объект и загрузите его обратно с помощью десериализатора `JSON.parse(str)`. Но такой способ подходит лишь если объект содержит в себе примитивы вроде булевых значений, чисел и строк.
+
+Вспомним [сохранение экземляров классов](#экземпляры-и-классы), так для чего же мы этим занимались? В первую очередь, `registerObjectSaver` создает сериализатор и десериализатор наших данных, он обрабатывает их получение и загрузку. Давайте же сохраним и загрузим их обратно, к примеру для кеширования объектов в сжатом виде, вручную:
+
+```js
+const ASPECTS_FILE = new java.io.File(__dir__, "aspects.bin");
+
+function deflateAspectItems() {
+    // Основной этап сериализации, передаем объекты для обработки
+    let serialized = Saver.serializeToString(LevitatingAspectItem.aspects);
+    // Для сжатия и многих операций нужны байты, а не сама строка
+    serialized = new java.lang.String(serialized).getBytes();
+    // Создаем файл или очищаем существующий, открывая его
+    ASPECTS_FILE.createNewFile();
+    let output = new java.io.FileOutputStream(ASPECTS_FILE);
+    // Теперь сожмем сериализированные байты, это процесс дефляции
+    output = new java.util.zip.DeflaterOutputStream(output);
+    output.write(serialized, 0, serialized.length);
+    // Закроем файл и завершим процесс дефляции, данные сохранены
+    try {
+        output.close();
+    } catch (e) {}
+}
+
+Callback.addCallback("WriteSaves", function(data) {
+    deflateAspectItems();
+});
+```
+
+Отлично, аспекты сохраняются в файл *aspects.bin* папки мода. Реализуйте их хранение в папки мира если необходимо, используя *\_\_modpack\_\_*. Осталось лишь загрузить аспекты, воспользуемся нужным калбеком, обработка экземляров и их создание уже было реализовано в самом классе:
+
+```js
+function inflateAspectItems() {
+    // Создадим расширяемый буфер для записи, поскольку данные нужно получить
+    let buffer = new java.io.ByteArrayOutputStream();
+    // Откроем файл и создадим на его основе инфляцию, или же расжатие
+    let input = new java.io.FileInputStream(ASPECTS_FILE);
+    input = new java.util.zip.InflaterInputStream(input);
+    // Подготовим буфер для подгрузки данных частями, можно прочитать и сразу все,
+    // не используя буфер впринципе, но это может вызвать большие затраты памяти
+    let bytes = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
+    let offset;
+    // Прочитаем файл до конца соответственно, записывая расжатые данные
+    while (true) {
+        if ((offset = input.read(bytes)) < 0) {
+            break;
+        }
+        buffer.write(bytes, 0, offset);
+    }
+    try {
+        input.close();
+    } catch (e) {}
+    // Восстановим, или же десериализируем, загруженные данные
+    let deserialized = new java.lang.String(buffer.toByteArray());
+    LevitatingAspectItem.aspects = Saver.deserializeFromString(deserialized);
+}
+
+Callback.addCallback("ReadSaves", function(data) {
+    if (ASPECTS_FILE.isFile()) {
+        inflateAspectItems();
+    }
+})
+```
+
+Если пример показался сложным, не волнуйтесь. Встроенной сериализации в большинстве случаев достаточно и не нужно сжимать небольшое количество данных, задача документации лишь рассмотреть как это работает и дополняется с помощью кода.
+
+<details>
+<summary>Воспользуемся сжатием, используя созданный объект.</summary>
+<div>
+
+Используя словарь из 36 символов, состоящий из нижнерегистровой латиницы и цифр, произведем сжатие посредством дефляции. Сгенерируем объект со случайными значениями используя словарь, где ключ состоит из 8 символов, а значение из 24. Выполните задание самостоятельно. Начнем с создания функции дефляции, здесь все просто:
+
+```js
+function deflateBytes(bytes, level) {
+    let buffer = new java.io.ByteArrayOutputStream();
+    let compressor = new java.util.zip.Deflater(level || -1);
+    let deflator = new java.util.zip.DeflaterOutputStream(buffer, compressor);
+    deflator.write(bytes, 0, bytes.length);
+    deflator.close();
+    compressor.end();
+    return buffer.toByteArray();
+}
+```
+
+Аргумент *level* принимает значение от 1 до 9, либо же -1. Использование компрессора можно опустить, тогда будет использован уровень сжатия устройства по умолчанию (-1). Загрузим полученные данные обратно, создадим функцию:
+
+```js
+function inflateBytes(bytes) {
+    let buffer = new java.io.ByteArrayOutputStream();
+    let inflator = new java.util.zip.InflaterOutputStream(buffer);
+    inflator.write(bytes, 0, bytes.length);
+    inflator.close();
+    return buffer.toByteArray();
+}
+```
+
+В среднем, получаем сжатие 32-36 процентов, вот один из результатов, общее количество байт должно совпадать с вашим кодом:
+
+```text
+--- Дефляция значений {"2fhlxd6l":"54fjkqp4... ---
+По умолчанию * 244544/380001 байт * 35.65 процента
+Уровень 1    * 257828/380001 байт * 32.15 процента
+Уровень 2    * 256761/380001 байт * 32.43 процента
+Уровень 3    * 255575/380001 байт * 32.74 процента
+Уровень 4    * 245735/380001 байт * 35.33 процента
+Уровень 5    * 245130/380001 байт * 35.49 процента
+Уровень 6    * 244544/380001 байт * 35.65 процента <--
+Уровень 7    * 244283/380001 байт * 35.72 процента
+Уровень 8    * 243486/380001 байт * 35.92 процента
+Уровень 9    * 243486/380001 байт * 35.92 процента
+```
+
+</div>
+</details>
 
 ## Прочие реализации
 
-Некоторые классы заведомо включают в себя сохранение данных — такие как контейнеры, игровые объекты, тайлы и прочие. Данные не обязательно должны состоять из объектов, прямая обработка файлов в большом количестве случаев не является проблемой, движок предоставляет интерфейсы и для работы с ними. Мы рассмотрим их в следующих статьях.
+Некоторые классы заведомо включают в себя сохранение данных — такие как контейнеры, игровые объекты, тайлы и прочие. Данные не обязательно должны состоять из объектов, прямая обработка файлов в большом количестве случаев не является проблемой, движок предоставляет интерфейсы и для работы с ними. Мы рассмотрим некоторые из возможностей в следующих статьях.
