@@ -72,30 +72,18 @@
 <summary>Но зачем нужен файл для одного свойства?</summary>
 <div>
 
-Что же, давайте рассмотрим реальный пример. Вот так выглядит конфигурация мода WailaPE от DDCompany:
+Что же, давайте рассмотрим реальный пример. Вот так выглядит конфигурация мода Gravitation Suite от Mine Explorer:
 
 ```json title="config.json"
 {
-  "enabled": true,
-  "checkTime": 0,
-  "style": "transparent",
-  "position": {
-    "default": {
-      "x": 700,
-      "y": 30
-    },
-    "classic": {
-      "x": 700,
-      "y": 0
+    "enabled": true,
+    "change_quantum_suit_recipe": true,
+    "change_iridium_drill_recipe": true,
+    "energy_text": {
+        "pos": "right",
+        "scale": 135,
+        "y": 30
     }
-  },
-  "extensions": {
-    "cropGrowth": true,
-    "debugTiles": false,
-    "energy": true,
-    "material": true,
-    "blockIdData": false
-  }
 }
 ```
 
@@ -126,26 +114,39 @@
 
 ## Построение и сборка
 
-Конфигурационный файл *build.config* подразделяется на иерархию объектов внутри себя. Вот комплексный пример из мода Ancient wonders от Reider ___:
+Конфигурационный файл *build.config* подразделяется на иерархию объектов внутри себя. Вот комплексный пример из мода Vampirism от redbad:
 
 <Tabs lazy>
 <TabItem value="structure" label="Структура мода">
 
 ```text
-Ancient-wonders
+Vampirism
 ├─ assets
-│  ├─ gui
+│  ├─ res
+│  │  ├─ ...
+│  │  ├─ items-opaque
+│  │  └─ terrain-atlas
+│  └─ gui
+├─ dev
 │  ├─ ...
-│  ├─ terrain-atlas
-│  └─ items-opaque
-├─ core
-│  ├─ addon
-│  │  ├─ BP
-│  │  └─ RP
-│  ├─ ...
-│  ├─ lib
-│  ├─ java
-│  └─ native
+│  ├─ translation.js
+│  └─ .includes
+├─ lib
+├─ minecraft_packs
+│  ├─ resource
+│  │  └─ vampirism
+│  │     └─ ...
+│  └─ behavior
+├─ java
+│  └─ scales
+│     ├─ classes.dex
+│     └─ manifest
+├─ native
+│  └─ scales
+│     ├─ so
+│     │  └─ armeabi-v7
+│     │     └─ libscales.so
+│     └─ manifest
 ├─ ...
 ├─ launcher.js
 └─ build.config
@@ -155,49 +156,50 @@ Ancient-wonders
 <TabItem value="config" label="build.config">
 
 ```json
-"resources":[
-    {
-      "path":"assets/",
-      "resourceType":"resource"
+{
+    "defaultConfig": {
+        "buildType": "develop",
+        "api": "CoreEngine",
+        "libraryDir": "lib/",
+        "resourcePacksDir": "minecraft_packs/resource",
+        "behaviorPacksDir": "minecraft_packs/behavior"
     },
-    {
-      "path":"assets/gui/",
-      "resourceType":"gui"
-    }
-  ],
-  "defaultConfig":{
-    "buildType":"release",
-    "api":"CoreEngine",
-    "libraryDir":"core/lib/",
-    "resourcePacksDir":"core/addon/RP/",
-    "behaviorPacksDir":"core/addon/BP/"
-  },
-  "buildDirs":[
-    {
-      "targetSource":"main.js",
-      "dir":"core/dev/"
-    }
-  ],
-  "compile":[
-    {
-      "path":"main.js",
-      "sourceType":"mod"
-    },
-    {
-      "path":"launcher.js",
-      "sourceType":"launcher"
-    }
-  ],
-  "nativeDirs":[
-    {
-      "path":"core/native"
-    }
-  ],
-  "javaDirs":[
-    {
-      "path":"core/java/"
-    }
-  ]
+    "resources": [
+        {
+            "path": "assets/res/",
+            "resourceType": "resource"
+        },
+        {
+            "path": "assets/gui/",
+            "resourceType": "gui"
+        }
+    ],
+    "buildDirs": [
+        {
+            "dir": "dev/",
+            "targetSource": "main.js"
+        }
+    ],
+    "compile": [
+        {
+            "path": "main.js",
+            "sourceType": "mod"
+        },
+        {
+            "path": "launcher.js",
+            "sourceType": "launcher"
+        }
+    ],
+    "javaDirs": [
+        {
+            "path": "java/scales"
+        }
+    ],
+    "nativeDirs": [
+        {
+            "path": "native/scales"
+        }
+    ]
 }
 ```
 
@@ -252,8 +254,8 @@ Ancient-wonders
 
 ```json
 {
-    "targetSource": "выходной файл собранного скрипта, например, main.js",
-    "dir": "относительный путь от папки, в которой расположен build.config"
+    "dir": "относительный путь от папки, в которой расположен build.config",
+    "targetSource": "выходной файл собранного скрипта, например, main.js"
 }
 ```
 
