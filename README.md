@@ -1,5 +1,7 @@
 # nernar.github.io
 
+> A huge number of articles, APIs and other things were irretrievably lost. I'm temporarily (hopefully) taking a break from working on the project.
+
 Inner Core, Core Engine and Horizon documentation implemented in one place. Make it simple, keep it clean. This site powered by GitHub Pages, built with :heart: and Docusaurus.
 
 ## Setting up
