@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@microsoft/tsdoc": "^0.14.2",
+    "@types/node": "^20.11.30",
     "@vscode/codicons": "^0.0.33"
   },
   "devDependencies": {
