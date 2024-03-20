@@ -21,6 +21,15 @@
     "build": "wireit"
   },
   "wireit": {
+    "prebuild-theme": {
+      "command": "npm run --prefix typedoc-codicon-theme build",
+      "files": [
+        "typedoc-codicon-theme/**/*"
+      ],
+      "output": [
+        "typedoc-codicon-theme/dist"
+      ]
+    },
     "prebuild-declarations": {
       "command": "tsx tools/rebuild_types.ts core-engine",
       "files": [
@@ -41,6 +50,7 @@
         "typedoc-codicon-theme/**/*"
       ],
       "dependencies": [
+        "prebuild-theme",
         "prebuild-declarations"
       ],
       "output": [
