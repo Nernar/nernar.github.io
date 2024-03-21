@@ -1,0 +1,477 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>ItemUseLocalFunction | Core Engine</title><meta name="description" content="Documentation for Core Engine"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><link rel="stylesheet" href="../assets/codicon.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base="..">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption">
+<div class="codicon codicon-search" style="font-size:16px;color:var(--color-text)"></div></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"><a href="https://nernar.github.io/docs/intro">Docs</a></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">Core Engine</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu">
+<div class="codicon codicon-menu" style="font-size:16px;color:var(--color-text)"></div></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb">
+<li><a href="../index.html">Core Engine</a></li>
+<li><a href="../modules/Callback.html">Callback</a></li>
+<li><a href="Callback.ItemUseLocalFunction.html">ItemUseLocalFunction</a></li></ul>
+<h1>Interface ItemUseLocalFunction</h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>Function used in &quot;ItemUseLocal&quot; callback, and also in
+<a href="../functions/Item.registerUseFunction.html" class="tsd-kind-function">registerUseFunction</a> and <a href="../functions/Item.registerUseFunctionForID.html" class="tsd-kind-function">registerUseFunctionForID</a> methods.</p>
+</div>
+<div class="tsd-comment tsd-typography">
+<h4>Param</h4><p>set of all coordinate values that can be useful to write
+custom use logics</p>
+
+<h4>Param</h4><p>item that was in the player&#39;s hand when it touched the block</p>
+
+<h4>Param</h4><p>block that was touched</p>
+
+<h4>Param</h4><p>player entity UID</p>
+</div></section>
+<section class="tsd-panel tsd-hierarchy">
+<h4>Hierarchy</h4>
+<ul class="tsd-hierarchy">
+<li><span class="target">ItemUseLocalFunction</span></li></ul></section>
+<section class="tsd-panel">
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="ItemUseLocalFunction"><span class="tsd-kind-call-signature">Item<wbr/>Use<wbr/>Local<wbr/>Function</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">coords</span>, <span class="tsd-kind-parameter">item</span>, <span class="tsd-kind-parameter">block</span>, <span class="tsd-kind-parameter">player</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#ItemUseLocalFunction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">coords</span>: <a href="Callback.ItemUseCoordinates.html" class="tsd-signature-type tsd-kind-interface">ItemUseCoordinates</a></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">item</span>: <a href="ItemInstance.html" class="tsd-signature-type tsd-kind-interface">ItemInstance</a></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">block</span>: <a href="Tile.html" class="tsd-signature-type tsd-kind-interface">Tile</a></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">player</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18500">core-engine.d.ts:18500</a></li></ul></aside></li></ul></section></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="../index.html">
+<div class="codicon codicon-package tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Core <wbr/>Engine</span></a>
+<ul class="tsd-small-nested-navigation">
+<li><a href="../modules/ActorRenderer.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Actor<wbr/>Renderer</span></a></li>
+<li><a href="../modules/AddonEntityRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Addon<wbr/>Entity<wbr/>Registry</span></a></li>
+<li><a href="../modules/Animation.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Animation</span></a></li>
+<li><a href="../modules/Armor.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Armor</span></a></li>
+<li><a href="../modules/Block.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Block</span></a></li>
+<li><a href="../modules/BlockRenderer.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Block<wbr/>Renderer</span></a></li>
+<li>
+<details class="tsd-index-accordion" open data-key="Callback"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/Callback.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Callback</span></a></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="Callback.BlockChangedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Block<wbr/>Changed<wbr/>Function</span></a></li>
+<li><a href="Callback.BreakBlockFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Break<wbr/>Block<wbr/>Function</span></a></li>
+<li><a href="Callback.BuildBlockFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Build<wbr/>Block<wbr/>Function</span></a></li>
+<li><a href="Callback.ConnectingToHostFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Connecting<wbr/>To<wbr/>Host<wbr/>Function</span></a></li>
+<li><a href="Callback.ContainerClosedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Container<wbr/>Closed<wbr/>Function</span></a></li>
+<li><a href="Callback.ContainerOpenedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Container<wbr/>Opened<wbr/>Function</span></a></li>
+<li><a href="Callback.CoreConfiguredFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Core<wbr/>Configured<wbr/>Function</span></a></li>
+<li><a href="Callback.CraftRecipePreProvidedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Craft<wbr/>Recipe<wbr/>Pre<wbr/>Provided<wbr/>Function</span></a></li>
+<li><a href="Callback.CraftRecipeProvidedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Craft<wbr/>Recipe<wbr/>Provided<wbr/>Function</span></a></li>
+<li><a href="Callback.CustomBlockTessellationFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Custom<wbr/>Block<wbr/>Tessellation<wbr/>Function</span></a></li>
+<li><a href="Callback.CustomDimensionTransferFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Custom<wbr/>Dimension<wbr/>Transfer<wbr/>Function</span></a></li>
+<li><a href="Callback.CustomWindowClosedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Custom<wbr/>Window<wbr/>Closed<wbr/>Function</span></a></li>
+<li><a href="Callback.CustomWindowOpenedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Custom<wbr/>Window<wbr/>Opened<wbr/>Function</span></a></li>
+<li><a href="Callback.DestroyBlockContinueFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Destroy<wbr/>Block<wbr/>Continue<wbr/>Function</span></a></li>
+<li><a href="Callback.DestroyBlockFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Destroy<wbr/>Block<wbr/>Function</span></a></li>
+<li><a href="Callback.DimensionLoadedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Dimension<wbr/>Loaded<wbr/>Function</span></a></li>
+<li><a href="Callback.DimensionUnloadedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Dimension<wbr/>Unloaded<wbr/>Function</span></a></li>
+<li><a href="Callback.EntityAddedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Entity<wbr/>Added<wbr/>Function</span></a></li>
+<li><a href="Callback.EntityDeathFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Entity<wbr/>Death<wbr/>Function</span></a></li>
+<li><a href="Callback.EntityHurtFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Entity<wbr/>Hurt<wbr/>Function</span></a></li>
+<li><a href="Callback.EntityInteractFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Entity<wbr/>Interact<wbr/>Function</span></a></li>
+<li><a href="Callback.EntityPickUpDropFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Entity<wbr/>Pick<wbr/>Up<wbr/>Drop<wbr/>Function</span></a></li>
+<li><a href="Callback.EntityRemovedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Entity<wbr/>Removed<wbr/>Function</span></a></li>
+<li><a href="Callback.ExpAddFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Exp<wbr/>Add<wbr/>Function</span></a></li>
+<li><a href="Callback.ExpLevelAddFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Exp<wbr/>Level<wbr/>Add<wbr/>Function</span></a></li>
+<li><a href="Callback.ExpOrbsSpawnedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Exp<wbr/>Orbs<wbr/>Spawned<wbr/>Function</span></a></li>
+<li><a href="Callback.ExplosionFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Explosion<wbr/>Function</span></a></li>
+<li><a href="Callback.FoodEatenFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Food<wbr/>Eaten<wbr/>Function</span></a></li>
+<li><a href="Callback.GenerateChunkFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Generate<wbr/>Chunk<wbr/>Function</span></a></li>
+<li><a href="Callback.GenerateCustomDimensionChunkFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Generate<wbr/>Custom<wbr/>Dimension<wbr/>Chunk<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemDispensedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Dispensed<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemIconOverrideFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Icon<wbr/>Override<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemNameOverrideFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Name<wbr/>Override<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemUseCoordinates.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Use<wbr/>Coordinates</span></a></li>
+<li><a href="Callback.ItemUseFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Use<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemUseLocalFunction.html" class="current">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Use<wbr/>Local<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemUseNoTargetFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Use<wbr/>No<wbr/>Target<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemUsingCompleteFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Using<wbr/>Complete<wbr/>Function</span></a></li>
+<li><a href="Callback.ItemUsingReleasedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Using<wbr/>Released<wbr/>Function</span></a></li>
+<li><a href="Callback.LevelLoadedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Level<wbr/>Loaded<wbr/>Function</span></a></li>
+<li><a href="Callback.LevelSelectedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Level<wbr/>Selected<wbr/>Function</span></a></li>
+<li><a href="Callback.NativeCommandFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Native<wbr/>Command<wbr/>Function</span></a></li>
+<li><a href="Callback.NativeGuiChangedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Native<wbr/>Gui<wbr/>Changed<wbr/>Function</span></a></li>
+<li><a href="Callback.PlayerAttackFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Attack<wbr/>Function</span></a></li>
+<li><a href="Callback.PlayerChangedDimensionFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Changed<wbr/>Dimension<wbr/>Function</span></a></li>
+<li><a href="Callback.PlayerEatFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Eat<wbr/>Function</span></a></li>
+<li><a href="Callback.PlayerFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Function</span></a></li>
+<li><a href="Callback.PlayerTickFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Player<wbr/>Tick<wbr/>Function</span></a></li>
+<li><a href="Callback.PopBlockResourcesFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Pop<wbr/>Block<wbr/>Resources<wbr/>Function</span></a></li>
+<li><a href="Callback.ProjectileHitFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Projectile<wbr/>Hit<wbr/>Function</span></a></li>
+<li><a href="Callback.ProjectileHitTarget.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Projectile<wbr/>Hit<wbr/>Target</span></a></li>
+<li><a href="Callback.RedstoneSignalFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Redstone<wbr/>Signal<wbr/>Function</span></a></li>
+<li><a href="Callback.SavesFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Saves<wbr/>Function</span></a></li>
+<li><a href="Callback.SystemKeyEventDispatchedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>System<wbr/>Key<wbr/>Event<wbr/>Dispatched<wbr/>Function</span></a></li>
+<li><a href="Callback.TileEntityAddedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile<wbr/>Entity<wbr/>Added<wbr/>Function</span></a></li>
+<li><a href="Callback.TileEntityRemovedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile<wbr/>Entity<wbr/>Removed<wbr/>Function</span></a></li>
+<li><a href="Callback.VanillaWorkbenchCraftFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Vanilla<wbr/>Workbench<wbr/>Craft<wbr/>Function</span></a></li>
+<li><a href="Callback.VanillaWorkbenchRecipeSelectedFunction.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Vanilla<wbr/>Workbench<wbr/>Recipe<wbr/>Selected<wbr/>Function</span></a></li>
+<li><a href="../functions/Callback.addCallback.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>add<wbr/>Callback</span></a></li>
+<li><a href="../functions/Callback.invokeCallback.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>invoke<wbr/>Callback</span></a></li></ul></div></details></li>
+<li><a href="../modules/Commands.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Commands</span></a></li>
+<li><a href="../modules/Config.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Config</span></a></li>
+<li><a href="../modules/CustomEnchant.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Custom<wbr/>Enchant</span></a></li>
+<li><a href="../modules/Debug.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Debug</span></a></li>
+<li><a href="../modules/Dimensions.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Dimensions</span></a></li>
+<li><a href="../modules/Entity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Entity</span></a></li>
+<li><a href="../modules/EntityAI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>EntityAI</span></a></li>
+<li><a href="../modules/EntityAIClass.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>EntityAIClass</span></a></li>
+<li><a href="../modules/FileTools.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>File<wbr/>Tools</span></a></li>
+<li><a href="../modules/Game.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game</span></a></li>
+<li><a href="../modules/GameObjectRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game<wbr/>Object<wbr/>Registry</span></a></li>
+<li><a href="../modules/GenerationUtils.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Generation<wbr/>Utils</span></a></li>
+<li><a href="../modules/ICRender.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ICRender</span></a></li>
+<li><a href="../modules/IDData.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>IDData</span></a></li>
+<li><a href="../modules/IDRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>IDRegistry</span></a></li>
+<li><a href="../modules/Item.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Item</span></a></li>
+<li><a href="../modules/ItemModel.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="../modules/LiquidRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Liquid<wbr/>Registry</span></a></li>
+<li><a href="../modules/Logger.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Logger</span></a></li>
+<li><a href="../modules/MobRegistry.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Registry</span></a></li>
+<li><a href="../modules/MobSpawnRegistry.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Spawn<wbr/>Registry</span></a></li>
+<li><a href="../modules/Mod.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mod</span></a></li>
+<li><a href="../modules/ModAPI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ModAPI</span></a></li>
+<li><a href="../modules/ModPack.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mod<wbr/>Pack</span></a></li>
+<li><a href="../modules/NBT.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>NBT</span></a></li>
+<li><a href="../modules/Native.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
+<li><a href="../modules/Network.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="../modules/Particles.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
+<li><a href="../modules/Player.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Player</span></a></li>
+<li><a href="../modules/Recipes.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Recipes</span></a></li>
+<li><a href="../modules/Render.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Render</span></a></li>
+<li><a href="../modules/RenderMesh.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Render<wbr/>Mesh</span></a></li>
+<li><a href="../modules/Resources.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Resources</span></a></li>
+<li><a href="../modules/Saver.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Saver</span></a></li>
+<li><a href="../modules/Threading.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Threading</span></a></li>
+<li><a href="../modules/TileEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Tile<wbr/>Entity</span></a></li>
+<li><a href="../modules/ToolAPI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ToolAPI</span></a></li>
+<li><a href="../modules/Translation.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Translation</span></a></li>
+<li><a href="../modules/UI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>UI</span></a></li>
+<li><a href="../modules/Updatable.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Updatable</span></a></li>
+<li><a href="../modules/World.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>World</span></a></li>
+<li><a href="../modules/com.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>com</span></a></li>
+<li><a href="../enums/EArmorType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EArmor<wbr/>Type</span></a></li>
+<li><a href="../enums/EBlockRenderLayer.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>Render<wbr/>Layer</span></a></li>
+<li><a href="../enums/EBlockSide.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>Side</span></a></li>
+<li><a href="../enums/EBlockStates.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>States</span></a></li>
+<li><a href="../enums/EColor.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EColor</span></a></li>
+<li><a href="../enums/EDimension.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EDimension</span></a></li>
+<li><a href="../enums/EEnchantType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEnchant<wbr/>Type</span></a></li>
+<li><a href="../enums/EEnchantment.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEnchantment</span></a></li>
+<li><a href="../enums/EEntityType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEntity<wbr/>Type</span></a></li>
+<li><a href="../enums/EGameDifficulty.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EGame<wbr/>Difficulty</span></a></li>
+<li><a href="../enums/EGameMode.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EGame<wbr/>Mode</span></a></li>
+<li><a href="../enums/EItemAnimation.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EItem<wbr/>Animation</span></a></li>
+<li><a href="../enums/EItemCategory.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EItem<wbr/>Category</span></a></li>
+<li><a href="../enums/EMobRenderType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EMob<wbr/>Render<wbr/>Type</span></a></li>
+<li><a href="../enums/ENbtDataType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>ENbt<wbr/>Data<wbr/>Type</span></a></li>
+<li><a href="../enums/EParticleType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EParticle<wbr/>Type</span></a></li>
+<li><a href="../enums/EPlayerAbility.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EPlayer<wbr/>Ability</span></a></li>
+<li><a href="../enums/EPotionEffect.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EPotion<wbr/>Effect</span></a></li>
+<li><a href="../enums/ETileEntityType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>ETile<wbr/>Entity<wbr/>Type</span></a></li>
+<li><a href="../enums/VanillaBlockID.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>BlockID</span></a></li>
+<li><a href="../enums/VanillaItemID.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>ItemID</span></a></li>
+<li><a href="../enums/VanillaTileID.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>TileID</span></a></li>
+<li><a href="../classes/ActorRenderer-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Actor<wbr/>Renderer</span></a></li>
+<li><a href="../classes/AttachableRender.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Attachable<wbr/>Render</span></a></li>
+<li><a href="../classes/BlockSource.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Block<wbr/>Source</span></a></li>
+<li><a href="../classes/BlockState.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Block<wbr/>State</span></a></li>
+<li><a href="../classes/Config-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Config</span></a></li>
+<li><a href="../classes/CustomBiome.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Custom<wbr/>Biome</span></a></li>
+<li><a href="../classes/CustomEntity.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Custom<wbr/>Entity</span></a></li>
+<li><a href="../classes/EntityAIClass-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>EntityAIClass</span></a></li>
+<li><a href="../classes/EntityAIWatcher.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>EntityAIWatcher</span></a></li>
+<li><a href="../classes/EntityModel.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Entity<wbr/>Model</span></a></li>
+<li><a href="../classes/EntityModelWatcher.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Entity<wbr/>Model<wbr/>Watcher</span></a></li>
+<li><a href="../classes/GameObject.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Game<wbr/>Object</span></a></li>
+<li><a href="../classes/ItemContainer.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Item<wbr/>Container</span></a></li>
+<li><a href="../classes/ItemContainerSlot.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Item<wbr/>Container<wbr/>Slot</span></a></li>
+<li><a href="../classes/ItemExtraData.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Item<wbr/>Extra<wbr/>Data</span></a></li>
+<li><a href="../classes/NetworkClient.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
+<li><a href="../classes/NetworkConnectedClientList.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
+<li><a href="../classes/NetworkEntity.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
+<li><a href="../classes/NetworkEntityType.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>
+<li><a href="../classes/PlayerActor.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Actor</span></a></li>
+<li><a href="../classes/Render-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Render</span></a></li>
+<li><a href="../classes/RenderMesh-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Render<wbr/>Mesh</span></a></li>
+<li><a href="../classes/ShaderUniformSet.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Shader<wbr/>Uniform<wbr/>Set</span></a></li>
+<li><a href="../classes/SyncedNetworkData.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Synced<wbr/>Network<wbr/>Data</span></a></li>
+<li><a href="../classes/Texture.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Texture</span></a></li>
+<li><a href="BlockPosition.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Block<wbr/>Position</span></a></li>
+<li><a href="Color.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Color</span></a></li>
+<li><a href="GameObjectPrototype.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Game<wbr/>Object<wbr/>Prototype</span></a></li>
+<li><a href="ItemInstance.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Instance</span></a></li>
+<li><a href="ItemModel-1.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="LookAngle.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Look<wbr/>Angle</span></a></li>
+<li><a href="NativeTileEntity.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Native<wbr/>Tile<wbr/>Entity</span></a></li>
+<li><a href="Tile.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile</span></a></li>
+<li><a href="TileEntity-1.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile<wbr/>Entity</span></a></li>
+<li><a href="Updatable-1.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Updatable</span></a></li>
+<li><a href="Vector.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Vector</span></a></li>
+<li><a href="Weather.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Weather</span></a></li>
+<li><a href="../types/ArmorType.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Armor<wbr/>Type</span></a></li>
+<li><a href="../types/DefaultRenderTemplate.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Default<wbr/>Render<wbr/>Template</span></a></li>
+<li><a href="../types/ItemInstanceArray.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Item<wbr/>Instance<wbr/>Array</span></a></li>
+<li><a href="../types/Nullable.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Nullable</span></a></li>
+<li><a href="../types/Scriptable.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Scriptable</span></a></li>
+<li><a href="../types/TransferPolicy.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Transfer<wbr/>Policy</span></a></li>
+<li><a href="../types/jbyte.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>jbyte</span></a></li>
+<li><a href="../variables/BlockID.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>BlockID</span></a></li>
+<li><a href="../variables/ItemID.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>ItemID</span></a></li>
+<li><a href="../variables/__config__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__config__</span></a></li>
+<li><a href="../variables/__dir__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__dir__</span></a></li>
+<li><a href="../variables/__mod__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__mod__</span></a></li>
+<li><a href="../variables/__modpack__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__modpack__</span></a></li>
+<li><a href="../variables/__name__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__name__</span></a></li>
+<li><a href="../variables/__packdir__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__packdir__</span></a></li>
+<li><a href="../functions/ConfigureMultiplayer.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>Configure<wbr/>Multiplayer</span></a></li>
+<li><a href="../functions/EXPORT.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>EXPORT</span></a></li>
+<li><a href="../functions/IMPORT.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>IMPORT</span></a></li>
+<li><a href="../functions/IMPORT_NATIVE.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>IMPORT_<wbr/>NATIVE</span></a></li>
+<li><a href="../functions/LIBRARY.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>LIBRARY</span></a></li>
+<li><a href="../functions/WRAP_JAVA.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>WRAP_<wbr/>JAVA</span></a></li>
+<li><a href="../functions/WRAP_NATIVE.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>WRAP_<wbr/>NATIVE</span></a></li>
+<li><a href="../functions/__debug_typecheck__.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>__debug_<wbr/>typecheck__</span></a></li>
+<li><a href="../functions/alert.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>alert</span></a></li>
+<li><a href="../functions/getCoreAPILevel.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>CoreAPILevel</span></a></li>
+<li><a href="../functions/getMCPEVersion.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>getMCPEVersion</span></a></li>
+<li><a href="../functions/importLib.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>import<wbr/>Lib</span></a></li>
+<li><a href="../functions/runCustomSource.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>Custom<wbr/>Source</span></a></li>
+<li><a href="../functions/runOnClientThread.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>On<wbr/>Client<wbr/>Thread</span></a></li>
+<li><a href="../functions/runOnMainThread.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>On<wbr/>Main<wbr/>Thread</span></a></li></ul></nav></div></div></div>
+<div class="container tsd-generator">
+<p>Copyright © 2024 Nernar. Built with ❤ and <a href="https://typedoc.org/" target="_blank">TypeDoc</a>.</p></div>
+<div class="overlay"></div></body></html>

@@ -1,0 +1,894 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>CustomBiome | Core Engine</title><meta name="description" content="Documentation for Core Engine"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script><link rel="stylesheet" href="../assets/codicon.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base="..">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption">
+<div class="codicon codicon-search" style="font-size:16px;color:var(--color-text)"></div></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"><a href="https://nernar.github.io/docs/intro">Docs</a></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">Core Engine</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu">
+<div class="codicon codicon-menu" style="font-size:16px;color:var(--color-text)"></div></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb">
+<li><a href="../index.html">Core Engine</a></li>
+<li><a href="CustomBiome.html">CustomBiome</a></li></ul>
+<h1>Class CustomBiome</h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>Class used to create custom biomes. Note that Minecraft has a limit of 256 biomes
+and there are already more than 100 vanilla biomes, so do not overuse
+this functionality.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></section>
+<section class="tsd-panel tsd-hierarchy">
+<h4>Hierarchy</h4>
+<ul class="tsd-hierarchy">
+<li><span class="target">CustomBiome</span></li></ul></section><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17899">core-engine.d.ts:17899</a></li></ul></aside>
+<section class="tsd-panel-group tsd-index-group">
+<section class="tsd-panel tsd-index-panel">
+<details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
+<h5 class="tsd-index-heading uppercase" role="button" aria-expanded="false" tabIndex=0><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 5.50969L8 11.6609L14.5 5.50969L12.5466 3.66086L8 7.96494L3.45341 3.66086L1.5 5.50969Z" fill="var(--color-text)"></path></svg> Index</h5></summary>
+<div class="tsd-accordion-details">
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Constructors</h3>
+<div class="tsd-index-list"><a href="CustomBiome.html#constructor" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#4D7FFF"></div><span>constructor</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Properties</h3>
+<div class="tsd-index-list"><a href="CustomBiome.html#id" class="tsd-index-link">
+<div class="codicon codicon-symbol-property tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>id</span></a>
+<a href="CustomBiome.html#name" class="tsd-index-link">
+<div class="codicon codicon-symbol-property tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>name</span></a>
+<a href="CustomBiome.html#pointer" class="tsd-index-link">
+<div class="codicon codicon-symbol-property tsd-kind-icon" style="font-size:16px;color:#FF984D"></div><span>pointer</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading">Methods</h3>
+<div class="tsd-index-list"><a href="CustomBiome.html#isInvalid" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>is<wbr/>Invalid</span></a>
+<a href="CustomBiome.html#setAdditionalBlock" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Additional<wbr/>Block</span></a>
+<a href="CustomBiome.html#setClientJson" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Client<wbr/>Json</span></a>
+<a href="CustomBiome.html#setCoverBlock" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Cover<wbr/>Block</span></a>
+<a href="CustomBiome.html#setFillingBlock" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Filling<wbr/>Block</span></a>
+<a href="CustomBiome.html#setFoliageColor" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Foliage<wbr/>Color</span></a>
+<a href="CustomBiome.html#setGrassColor" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Grass<wbr/>Color</span></a>
+<a href="CustomBiome.html#setSeaFloorBlock" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Sea<wbr/>Floor<wbr/>Block</span></a>
+<a href="CustomBiome.html#setSeaFloorDepth" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Sea<wbr/>Floor<wbr/>Depth</span></a>
+<a href="CustomBiome.html#setServerJson" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Server<wbr/>Json</span></a>
+<a href="CustomBiome.html#setSkyColor" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Sky<wbr/>Color</span></a>
+<a href="CustomBiome.html#setSurfaceBlock" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Surface<wbr/>Block</span></a>
+<a href="CustomBiome.html#setSurfaceParam" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Surface<wbr/>Param</span></a>
+<a href="CustomBiome.html#setTemperatureAndDownfall" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Temperature<wbr/>And<wbr/>Downfall</span></a>
+<a href="CustomBiome.html#setWaterColor" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>set<wbr/>Water<wbr/>Color</span></a>
+<a href="CustomBiome.html#getAllCustomBiomes" class="tsd-index-link">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:#FF4DB8"></div><span>get<wbr/>All<wbr/>Custom<wbr/>Biomes</span></a>
+</div></section></div></details></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Constructors</h2>
+<section class="tsd-panel tsd-member"><a id="constructor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="constructor.new_CustomBiome"><span class="tsd-kind-constructor-signature">new <wbr/>Custom<wbr/>Biome</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#constructor.new_CustomBiome" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Crates a new custom biome with specified string identifier.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>string identifier of the biome</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17913">core-engine.d.ts:17913</a></li></ul></aside></li></ul></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Properties</h2>
+<section class="tsd-panel tsd-member"><a id="id" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>id</span><a href="#id" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">id</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-comment tsd-typography"><p>custom biome numeric ID.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17917">core-engine.d.ts:17917</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="name" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+<div class="tsd-comment tsd-typography"><p>Custom biome name.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17921">core-engine.d.ts:17921</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="pointer" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>pointer</span><a href="#pointer" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">pointer</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+<div class="tsd-comment tsd-typography"><p>Pointer to biome&#39;s native object,
+represented as long number.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17926">core-engine.d.ts:17926</a></li></ul></aside></section></section>
+<section class="tsd-panel-group tsd-member-group">
+<h2>Methods</h2>
+<section class="tsd-panel tsd-member"><a id="isInvalid" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>is<wbr/>Invalid</span><a href="#isInvalid" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="isInvalid.isInvalid-1"><span class="tsd-kind-call-signature">is<wbr/>Invalid</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#isInvalid.isInvalid-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><p>Whether biome is invalid.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17908">core-engine.d.ts:17908</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setAdditionalBlock" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Additional<wbr/>Block</span><a href="#setAdditionalBlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setAdditionalBlock.setAdditionalBlock-1"><span class="tsd-kind-call-signature">set<wbr/>Additional<wbr/>Block</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span>, <span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setAdditionalBlock.setAdditionalBlock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Specifies the block that will cover the biome. E.g. most of the biomes
+use grass as cover block, though some of the biomes use other blocks
+(sand, ice, etc.).</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block&#39;s tile ID</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block data</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Deprecated</h4><p>Use <a href="CustomBiome.html#setSurfaceBlock" class="tsd-kind-method">setSurfaceBlock</a> instead.</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18034">core-engine.d.ts:18034</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setClientJson" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Client<wbr/>Json</span><a href="#setClientJson" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setClientJson.setClientJson-1"><span class="tsd-kind-call-signature">set<wbr/>Client<wbr/>Json</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">json</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setClientJson.setClientJson-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Defines the client-side biome params from given JSON string.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">json</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Throws</h4><p><a href="https://developer.android.com/reference/java/lang/IllegalArgumentException">java.lang.IllegalArgumentException</a> if the string cannot be parsed.</p>
+
+<h4>Example</h4><p>Many thanks to DansZbar2 for the example!</p>
+<pre><code class="language-js"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-9">CHERRY_BIOME</span><span class="hl-1"> = </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-2">CustomBiome</span><span class="hl-1">(</span><span class="hl-3">&quot;environmental_cherry&quot;</span><span class="hl-1">);</span><br/><span class="hl-9">CHERRY_BIOME</span><span class="hl-1">.</span><span class="hl-2">setClientJson</span><span class="hl-1">(</span><span class="hl-9">JSON</span><span class="hl-1">.</span><span class="hl-2">stringify</span><span class="hl-1">({</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;water_surface_color&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;#d176e1&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;water_fog_color&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;#a35dc2&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;water_surface_transparency&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">0.7</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;water_fog_distance&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">11</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-7">// custom fog defined in the addon</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;fog_identifier&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;environmental:environmental_cherry&quot;</span><br/><span class="hl-1">}));</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18112">core-engine.d.ts:18112</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setCoverBlock" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Cover<wbr/>Block</span><a href="#setCoverBlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setCoverBlock.setCoverBlock-1"><span class="tsd-kind-call-signature">set<wbr/>Cover<wbr/>Block</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span>, <span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setCoverBlock.setCoverBlock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Specifies the block that will cover the biome; e.g., most of the biomes
+use grass as cover block, though some of the biomes use other blocks
+(sand, ice, etc.).</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block&#39;s tile ID</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block data</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18000">core-engine.d.ts:18000</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setFillingBlock" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Filling<wbr/>Block</span><a href="#setFillingBlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setFillingBlock.setFillingBlock-1"><span class="tsd-kind-call-signature">set<wbr/>Filling<wbr/>Block</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span>, <span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setFillingBlock.setFillingBlock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the block that fills the terrain. Vanilla biomes use stone filling.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block&#39;s tile ID</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block data</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18016">core-engine.d.ts:18016</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setFoliageColor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Foliage<wbr/>Color</span><a href="#setFoliageColor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setFoliageColor.setFoliageColor-1"><span class="tsd-kind-call-signature">set<wbr/>Foliage<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">r</span>, <span class="tsd-kind-parameter">g</span>, <span class="tsd-kind-parameter">b</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setFoliageColor.setFoliageColor-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s foliage color.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">r</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>red color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">g</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>green color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">b</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>blue color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17964">core-engine.d.ts:17964</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="setFoliageColor.setFoliageColor-2"><span class="tsd-kind-call-signature">set<wbr/>Foliage<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">color</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setFoliageColor.setFoliageColor-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s foliage color.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">color</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>integer color value (you can specify it using hex value)</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17970">core-engine.d.ts:17970</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setGrassColor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Grass<wbr/>Color</span><a href="#setGrassColor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setGrassColor.setGrassColor-1"><span class="tsd-kind-call-signature">set<wbr/>Grass<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">r</span>, <span class="tsd-kind-parameter">g</span>, <span class="tsd-kind-parameter">b</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setGrassColor.setGrassColor-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s grass color. Grass color is interpolated on the bounds of
+the biome.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">r</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>red color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">g</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>green color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">b</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>blue color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17935">core-engine.d.ts:17935</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="setGrassColor.setGrassColor-2"><span class="tsd-kind-call-signature">set<wbr/>Grass<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">color</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setGrassColor.setGrassColor-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s grass color. Grass color is interpolated on the bounds of
+the biome.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">color</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>integer color value (you can specify it using hex value)</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17942">core-engine.d.ts:17942</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setSeaFloorBlock" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Sea<wbr/>Floor<wbr/>Block</span><a href="#setSeaFloorBlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setSeaFloorBlock.setSeaFloorBlock-1"><span class="tsd-kind-call-signature">set<wbr/>Sea<wbr/>Floor<wbr/>Block</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span>, <span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setSeaFloorBlock.setSeaFloorBlock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the block that fills the floor at the bottom of the sea or the ocean.
+Vanilla biomes use gravel or stone filling.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block&#39;s tile ID</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block data</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18024">core-engine.d.ts:18024</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setSeaFloorDepth" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Sea<wbr/>Floor<wbr/>Depth</span><a href="#setSeaFloorDepth" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setSeaFloorDepth.setSeaFloorDepth-1"><span class="tsd-kind-call-signature">set<wbr/>Sea<wbr/>Floor<wbr/>Depth</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">depth</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setSeaFloorDepth.setSeaFloorDepth-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the average depth of the sea floor in this biome.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">depth</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>depth of the see floor by Y-axis.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18040">core-engine.d.ts:18040</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setServerJson" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Server<wbr/>Json</span><a href="#setServerJson" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setServerJson.setServerJson-1"><span class="tsd-kind-call-signature">set<wbr/>Server<wbr/>Json</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">json</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setServerJson.setServerJson-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Defines the server-side biome params from given JSON string.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">json</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Throws</h4><p><a href="https://developer.android.com/reference/java/lang/IllegalArgumentException">java.lang.IllegalArgumentException</a> if the string cannot be parsed.</p>
+
+<h4>Example</h4><p>Many thanks to DansZbar2 for the example!</p>
+<pre><code class="language-js"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-9">CHERRY_BIOME</span><span class="hl-1"> = </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-2">CustomBiome</span><span class="hl-1">(</span><span class="hl-3">&quot;environmental_cherry&quot;</span><span class="hl-1">);</span><br/><span class="hl-9">CHERRY_BIOME</span><span class="hl-1">.</span><span class="hl-2">setServerJson</span><span class="hl-1">(</span><span class="hl-9">JSON</span><span class="hl-1">.</span><span class="hl-2">stringify</span><span class="hl-1">({</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;minecraft:climate&quot;</span><span class="hl-6">:</span><span class="hl-1"> {</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;downfall&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">0.0</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;snow_accumulation&quot;</span><span class="hl-6">:</span><span class="hl-1"> [ </span><span class="hl-4">0.0</span><span class="hl-1">, </span><span class="hl-4">0.0</span><span class="hl-1"> ],</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;temperature&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">2.0</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;blue_spores&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">0</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;red_spores&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">0</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;white_ash&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">0</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;ash&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">0</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;minecraft:overworld_height&quot;</span><span class="hl-6">:</span><span class="hl-1"> {</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;noise_type&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;default&quot;</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;animal&quot;</span><span class="hl-6">:</span><span class="hl-1"> {},</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;monster&quot;</span><span class="hl-6">:</span><span class="hl-1"> {},</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;overworld&quot;</span><span class="hl-6">:</span><span class="hl-1"> {},</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;environmental_cherry&quot;</span><span class="hl-6">:</span><span class="hl-1"> {},</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;minecraft:surface_parameters&quot;</span><span class="hl-6">:</span><span class="hl-1"> {</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;top_material&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;minecraft:grass&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;mid_material&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;minecraft:dirt&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;foundation_material&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;minecraft:stone&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;sea_floor_material&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;minecraft:clay&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;sea_material&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;minecraft:water&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;sea_floor_depth&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-4">7</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">    </span><span class="hl-3">&quot;minecraft:overworld_generation_rules&quot;</span><span class="hl-6">:</span><span class="hl-1"> {</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;hills_transformation&quot;</span><span class="hl-6">:</span><span class="hl-1"> </span><span class="hl-3">&quot;jungle_hills&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">       </span><span class="hl-3">&quot;generate_for_climates&quot;</span><span class="hl-6">:</span><span class="hl-1"> [</span><br/><span class="hl-1">           [ </span><span class="hl-3">&quot;cold&quot;</span><span class="hl-1">, </span><span class="hl-4">5</span><span class="hl-1"> ],</span><br/><span class="hl-1">           [ </span><span class="hl-3">&quot;medium&quot;</span><span class="hl-1">, </span><span class="hl-4">20</span><span class="hl-1"> ],</span><br/><span class="hl-1">           [ </span><span class="hl-3">&quot;warm&quot;</span><span class="hl-1">, </span><span class="hl-4">35</span><span class="hl-1"> ]</span><br/><span class="hl-1">       ]</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">}));</span>
+</code><button>Copy</button></pre>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18093">core-engine.d.ts:18093</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setSkyColor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Sky<wbr/>Color</span><a href="#setSkyColor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setSkyColor.setSkyColor-1"><span class="tsd-kind-call-signature">set<wbr/>Sky<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">r</span>, <span class="tsd-kind-parameter">g</span>, <span class="tsd-kind-parameter">b</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setSkyColor.setSkyColor-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s sky color.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">r</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>red color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">g</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>green color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">b</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>blue color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17950">core-engine.d.ts:17950</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="setSkyColor.setSkyColor-2"><span class="tsd-kind-call-signature">set<wbr/>Sky<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">color</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setSkyColor.setSkyColor-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s sky color.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">color</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>integer color value (you can specify it using hex value)</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17956">core-engine.d.ts:17956</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setSurfaceBlock" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Surface<wbr/>Block</span><a href="#setSurfaceBlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setSurfaceBlock.setSurfaceBlock-1"><span class="tsd-kind-call-signature">set<wbr/>Surface<wbr/>Block</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span>, <span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setSurfaceBlock.setSurfaceBlock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Specifies the block that will be under the covering block of the biome;
+e.g., most of the biomes use dirt as cover block,
+though some of the biomes use other blocks.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block&#39;s tile ID</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>block data</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18009">core-engine.d.ts:18009</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setSurfaceParam" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Surface<wbr/>Param</span><a href="#setSurfaceParam" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setSurfaceParam.setSurfaceParam-1"><span class="tsd-kind-call-signature">set<wbr/>Surface<wbr/>Param</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">param</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setSurfaceParam.setSurfaceParam-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets the average depth of the something in this biome.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">param</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>some integer parameter.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Default</h4><pre><code class="language-ts"><span class="hl-4">7</span>
+</code><button>Copy</button></pre>
+
+<h4>Deprecated</h4><p>Use <a href="CustomBiome.html#setSeaFloorDepth" class="tsd-kind-method">setSeaFloorDepth</a> instead.</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L18048">core-engine.d.ts:18048</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setTemperatureAndDownfall" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Temperature<wbr/>And<wbr/>Downfall</span><a href="#setTemperatureAndDownfall" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setTemperatureAndDownfall.setTemperatureAndDownfall-1"><span class="tsd-kind-call-signature">set<wbr/>Temperature<wbr/>And<wbr/>Downfall</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">temperature</span>, <span class="tsd-kind-parameter">downfall</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setTemperatureAndDownfall.setTemperatureAndDownfall-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s temperature and downfall.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">temperature</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>temperature value, from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">downfall</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>downfall value, from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17991">core-engine.d.ts:17991</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="setWaterColor" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>set<wbr/>Water<wbr/>Color</span><a href="#setWaterColor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="setWaterColor.setWaterColor-1"><span class="tsd-kind-call-signature">set<wbr/>Water<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">r</span>, <span class="tsd-kind-parameter">g</span>, <span class="tsd-kind-parameter">b</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setWaterColor.setWaterColor-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s water color.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">r</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>red color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">g</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>green color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">b</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>blue color component, value from 0 to 1</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17978">core-engine.d.ts:17978</a></li></ul></aside></li>
+<li class="tsd-signature tsd-anchor-link" id="setWaterColor.setWaterColor-2"><span class="tsd-kind-call-signature">set<wbr/>Water<wbr/>Color</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">color</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><a href="#setWaterColor.setWaterColor-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Sets biome&#39;s water color.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">color</span>: <span class="tsd-signature-type">number</span></h5>
+<div class="tsd-comment tsd-typography"><p>integer color value (you can specify it using hex value)</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a></h4><p>Reference to itself to be used in sequential calls.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17984">core-engine.d.ts:17984</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="getAllCustomBiomes" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagStatic">Static</code> <span>get<wbr/>All<wbr/>Custom<wbr/>Biomes</span><a href="#getAllCustomBiomes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="getAllCustomBiomes.getAllCustomBiomes-1"><span class="tsd-kind-call-signature">get<wbr/>All<wbr/>Custom<wbr/>Biomes</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="https://developer.android.com/reference/java/util/Map" class="tsd-signature-type external" target="_blank">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">String</span><span class="tsd-signature-symbol">, </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><span class="tsd-signature-symbol">&gt;</span><a href="#getAllCustomBiomes.getAllCustomBiomes-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="https://developer.android.com/reference/java/util/Map" class="tsd-signature-type external" target="_blank">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">String</span><span class="tsd-signature-symbol">, </span><a href="CustomBiome.html" class="tsd-signature-type tsd-kind-class">CustomBiome</a><span class="tsd-signature-symbol">&gt;</span></h4><p>Object instance, with all custom
+biomes registered by every mod.</p>
+
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/Nernar/nernar.github.io/blob/bf57250/api/declarations/core-engine.d.ts#L17904">core-engine.d.ts:17904</a></li></ul></aside></li></ul></section></section></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="../index.html">
+<div class="codicon codicon-package tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Core <wbr/>Engine</span></a>
+<ul class="tsd-small-nested-navigation">
+<li><a href="../modules/ActorRenderer.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Actor<wbr/>Renderer</span></a></li>
+<li><a href="../modules/AddonEntityRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Addon<wbr/>Entity<wbr/>Registry</span></a></li>
+<li><a href="../modules/Animation.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Animation</span></a></li>
+<li><a href="../modules/Armor.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Armor</span></a></li>
+<li><a href="../modules/Block.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Block</span></a></li>
+<li><a href="../modules/BlockRenderer.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Block<wbr/>Renderer</span></a></li>
+<li><a href="../modules/Callback.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Callback</span></a></li>
+<li><a href="../modules/Commands.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Commands</span></a></li>
+<li><a href="../modules/Config.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Config</span></a></li>
+<li><a href="../modules/CustomEnchant.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Custom<wbr/>Enchant</span></a></li>
+<li><a href="../modules/Debug.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Debug</span></a></li>
+<li><a href="../modules/Dimensions.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Dimensions</span></a></li>
+<li><a href="../modules/Entity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Entity</span></a></li>
+<li><a href="../modules/EntityAI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>EntityAI</span></a></li>
+<li><a href="../modules/EntityAIClass.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>EntityAIClass</span></a></li>
+<li><a href="../modules/FileTools.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>File<wbr/>Tools</span></a></li>
+<li><a href="../modules/Game.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game</span></a></li>
+<li><a href="../modules/GameObjectRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Game<wbr/>Object<wbr/>Registry</span></a></li>
+<li><a href="../modules/GenerationUtils.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Generation<wbr/>Utils</span></a></li>
+<li><a href="../modules/ICRender.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ICRender</span></a></li>
+<li><a href="../modules/IDData.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>IDData</span></a></li>
+<li><a href="../modules/IDRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>IDRegistry</span></a></li>
+<li><a href="../modules/Item.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Item</span></a></li>
+<li><a href="../modules/ItemModel.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="../modules/LiquidRegistry.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Liquid<wbr/>Registry</span></a></li>
+<li><a href="../modules/Logger.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Logger</span></a></li>
+<li><a href="../modules/MobRegistry.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Registry</span></a></li>
+<li><a href="../modules/MobSpawnRegistry.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mob<wbr/>Spawn<wbr/>Registry</span></a></li>
+<li><a href="../modules/Mod.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mod</span></a></li>
+<li><a href="../modules/ModAPI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ModAPI</span></a></li>
+<li><a href="../modules/ModPack.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Mod<wbr/>Pack</span></a></li>
+<li><a href="../modules/NBT.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>NBT</span></a></li>
+<li><a href="../modules/Native.html" class="deprecated">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Native</span></a></li>
+<li><a href="../modules/Network.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Network</span></a></li>
+<li><a href="../modules/Particles.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Particles</span></a></li>
+<li><a href="../modules/Player.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Player</span></a></li>
+<li><a href="../modules/Recipes.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Recipes</span></a></li>
+<li><a href="../modules/Render.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Render</span></a></li>
+<li><a href="../modules/RenderMesh.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Render<wbr/>Mesh</span></a></li>
+<li><a href="../modules/Resources.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Resources</span></a></li>
+<li><a href="../modules/Saver.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Saver</span></a></li>
+<li><a href="../modules/Threading.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Threading</span></a></li>
+<li><a href="../modules/TileEntity.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Tile<wbr/>Entity</span></a></li>
+<li><a href="../modules/ToolAPI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>ToolAPI</span></a></li>
+<li><a href="../modules/Translation.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Translation</span></a></li>
+<li><a href="../modules/UI.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>UI</span></a></li>
+<li><a href="../modules/Updatable.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>Updatable</span></a></li>
+<li><a href="../modules/World.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>World</span></a></li>
+<li><a href="../modules/com.html">
+<div class="codicon codicon-symbol-namespace tsd-kind-icon" style="font-size:16px;color:var(--color-ts-namespace)"></div><span>com</span></a></li>
+<li><a href="../enums/EArmorType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EArmor<wbr/>Type</span></a></li>
+<li><a href="../enums/EBlockRenderLayer.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>Render<wbr/>Layer</span></a></li>
+<li><a href="../enums/EBlockSide.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>Side</span></a></li>
+<li><a href="../enums/EBlockStates.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EBlock<wbr/>States</span></a></li>
+<li><a href="../enums/EColor.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EColor</span></a></li>
+<li><a href="../enums/EDimension.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EDimension</span></a></li>
+<li><a href="../enums/EEnchantType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEnchant<wbr/>Type</span></a></li>
+<li><a href="../enums/EEnchantment.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEnchantment</span></a></li>
+<li><a href="../enums/EEntityType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EEntity<wbr/>Type</span></a></li>
+<li><a href="../enums/EGameDifficulty.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EGame<wbr/>Difficulty</span></a></li>
+<li><a href="../enums/EGameMode.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EGame<wbr/>Mode</span></a></li>
+<li><a href="../enums/EItemAnimation.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EItem<wbr/>Animation</span></a></li>
+<li><a href="../enums/EItemCategory.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EItem<wbr/>Category</span></a></li>
+<li><a href="../enums/EMobRenderType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EMob<wbr/>Render<wbr/>Type</span></a></li>
+<li><a href="../enums/ENbtDataType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>ENbt<wbr/>Data<wbr/>Type</span></a></li>
+<li><a href="../enums/EParticleType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EParticle<wbr/>Type</span></a></li>
+<li><a href="../enums/EPlayerAbility.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EPlayer<wbr/>Ability</span></a></li>
+<li><a href="../enums/EPotionEffect.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>EPotion<wbr/>Effect</span></a></li>
+<li><a href="../enums/ETileEntityType.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>ETile<wbr/>Entity<wbr/>Type</span></a></li>
+<li><a href="../enums/VanillaBlockID.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>BlockID</span></a></li>
+<li><a href="../enums/VanillaItemID.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>ItemID</span></a></li>
+<li><a href="../enums/VanillaTileID.html">
+<div class="codicon codicon-symbol-enum tsd-kind-icon" style="font-size:16px;color:var(--color-ts-enum)"></div><span>Vanilla<wbr/>TileID</span></a></li>
+<li><a href="ActorRenderer-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Actor<wbr/>Renderer</span></a></li>
+<li><a href="AttachableRender.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Attachable<wbr/>Render</span></a></li>
+<li><a href="BlockSource.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Block<wbr/>Source</span></a></li>
+<li><a href="BlockState.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Block<wbr/>State</span></a></li>
+<li><a href="Config-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Config</span></a></li>
+<li><a href="CustomBiome.html" class="current">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Custom<wbr/>Biome</span></a></li>
+<li><a href="CustomEntity.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Custom<wbr/>Entity</span></a></li>
+<li><a href="EntityAIClass-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>EntityAIClass</span></a></li>
+<li><a href="EntityAIWatcher.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>EntityAIWatcher</span></a></li>
+<li><a href="EntityModel.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Entity<wbr/>Model</span></a></li>
+<li><a href="EntityModelWatcher.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Entity<wbr/>Model<wbr/>Watcher</span></a></li>
+<li><a href="GameObject.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Game<wbr/>Object</span></a></li>
+<li><a href="ItemContainer.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Item<wbr/>Container</span></a></li>
+<li><a href="ItemContainerSlot.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Item<wbr/>Container<wbr/>Slot</span></a></li>
+<li><a href="ItemExtraData.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Item<wbr/>Extra<wbr/>Data</span></a></li>
+<li><a href="NetworkClient.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Client</span></a></li>
+<li><a href="NetworkConnectedClientList.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Connected<wbr/>Client<wbr/>List</span></a></li>
+<li><a href="NetworkEntity.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity</span></a></li>
+<li><a href="NetworkEntityType.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Network<wbr/>Entity<wbr/>Type</span></a></li>
+<li><a href="PlayerActor.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Player<wbr/>Actor</span></a></li>
+<li><a href="Render-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Render</span></a></li>
+<li><a href="RenderMesh-1.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Render<wbr/>Mesh</span></a></li>
+<li><a href="ShaderUniformSet.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Shader<wbr/>Uniform<wbr/>Set</span></a></li>
+<li><a href="SyncedNetworkData.html">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Synced<wbr/>Network<wbr/>Data</span></a></li>
+<li><a href="Texture.html" class="deprecated">
+<div class="codicon codicon-symbol-class tsd-kind-icon" style="font-size:16px;color:var(--color-ts-class)"></div><span>Texture</span></a></li>
+<li><a href="../interfaces/BlockPosition.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Block<wbr/>Position</span></a></li>
+<li><a href="../interfaces/Color.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Color</span></a></li>
+<li><a href="../interfaces/GameObjectPrototype.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Game<wbr/>Object<wbr/>Prototype</span></a></li>
+<li><a href="../interfaces/ItemInstance.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Instance</span></a></li>
+<li><a href="../interfaces/ItemModel-1.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Item<wbr/>Model</span></a></li>
+<li><a href="../interfaces/LookAngle.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Look<wbr/>Angle</span></a></li>
+<li><a href="../interfaces/NativeTileEntity.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Native<wbr/>Tile<wbr/>Entity</span></a></li>
+<li><a href="../interfaces/Tile.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile</span></a></li>
+<li><a href="../interfaces/TileEntity-1.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Tile<wbr/>Entity</span></a></li>
+<li><a href="../interfaces/Updatable-1.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Updatable</span></a></li>
+<li><a href="../interfaces/Vector.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Vector</span></a></li>
+<li><a href="../interfaces/Weather.html">
+<div class="codicon codicon-symbol-interface tsd-kind-icon" style="font-size:16px;color:var(--color-ts-interface)"></div><span>Weather</span></a></li>
+<li><a href="../types/ArmorType.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Armor<wbr/>Type</span></a></li>
+<li><a href="../types/DefaultRenderTemplate.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Default<wbr/>Render<wbr/>Template</span></a></li>
+<li><a href="../types/ItemInstanceArray.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Item<wbr/>Instance<wbr/>Array</span></a></li>
+<li><a href="../types/Nullable.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Nullable</span></a></li>
+<li><a href="../types/Scriptable.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Scriptable</span></a></li>
+<li><a href="../types/TransferPolicy.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>Transfer<wbr/>Policy</span></a></li>
+<li><a href="../types/jbyte.html">
+<div class="codicon codicon-type-hierarchy-sub tsd-kind-icon" style="font-size:16px;color:var(--color-ts-type-alias)"></div><span>jbyte</span></a></li>
+<li><a href="../variables/BlockID.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>BlockID</span></a></li>
+<li><a href="../variables/ItemID.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>ItemID</span></a></li>
+<li><a href="../variables/__config__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__config__</span></a></li>
+<li><a href="../variables/__dir__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__dir__</span></a></li>
+<li><a href="../variables/__mod__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__mod__</span></a></li>
+<li><a href="../variables/__modpack__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__modpack__</span></a></li>
+<li><a href="../variables/__name__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__name__</span></a></li>
+<li><a href="../variables/__packdir__.html">
+<div class="codicon codicon-symbol-variable tsd-kind-icon" style="font-size:16px;color:var(--color-ts-variable)"></div><span>__packdir__</span></a></li>
+<li><a href="../functions/ConfigureMultiplayer.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>Configure<wbr/>Multiplayer</span></a></li>
+<li><a href="../functions/EXPORT.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>EXPORT</span></a></li>
+<li><a href="../functions/IMPORT.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>IMPORT</span></a></li>
+<li><a href="../functions/IMPORT_NATIVE.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>IMPORT_<wbr/>NATIVE</span></a></li>
+<li><a href="../functions/LIBRARY.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>LIBRARY</span></a></li>
+<li><a href="../functions/WRAP_JAVA.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>WRAP_<wbr/>JAVA</span></a></li>
+<li><a href="../functions/WRAP_NATIVE.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>WRAP_<wbr/>NATIVE</span></a></li>
+<li><a href="../functions/__debug_typecheck__.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>__debug_<wbr/>typecheck__</span></a></li>
+<li><a href="../functions/alert.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>alert</span></a></li>
+<li><a href="../functions/getCoreAPILevel.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>get<wbr/>CoreAPILevel</span></a></li>
+<li><a href="../functions/getMCPEVersion.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>getMCPEVersion</span></a></li>
+<li><a href="../functions/importLib.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>import<wbr/>Lib</span></a></li>
+<li><a href="../functions/runCustomSource.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>Custom<wbr/>Source</span></a></li>
+<li><a href="../functions/runOnClientThread.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>On<wbr/>Client<wbr/>Thread</span></a></li>
+<li><a href="../functions/runOnMainThread.html">
+<div class="codicon codicon-symbol-method tsd-kind-icon" style="font-size:16px;color:var(--color-ts-function)"></div><span>run<wbr/>On<wbr/>Main<wbr/>Thread</span></a></li></ul></nav></div></div></div>
+<div class="container tsd-generator">
+<p>Copyright © 2024 Nernar. Built with ❤ and <a href="https://typedoc.org/" target="_blank">TypeDoc</a>.</p></div>
+<div class="overlay"></div></body></html>
