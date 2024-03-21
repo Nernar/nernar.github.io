@@ -17,7 +17,9 @@
   ],
   "private": true,
   "scripts": {
+    "prebuild-theme": "wireit",
     "prebuild-declarations": "wireit",
+    "typedoc": "wireit",
     "build": "wireit"
   },
   "wireit": {
@@ -41,8 +43,8 @@
         "declarations/core-engine.d.ts"
       ]
     },
-    "build": {
-      "command": "typedoc --out ../src/pages/api declarations/core-engine.d.ts",
+    "typedoc": {
+      "command": "typedoc declarations/core-engine.d.ts",
       "files": [
         "typedoc.json",
         "tsconfig-typedoc.json",
@@ -54,7 +56,16 @@
         "prebuild-declarations"
       ],
       "output": [
-        "../src/pages/api"
+        "docs"
+      ]
+    },
+    "build": {
+      "command": "tsx tools/link_references.ts",
+      "files": [
+        "docs/**/*"
+      ],
+      "dependencies": [
+        "typedoc"
       ]
     }
   },

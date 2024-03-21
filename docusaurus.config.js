@@ -205,7 +205,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 	})
 });
 
-const api = path.resolve('src/pages/api');
+const api = path.resolve('static/api');
 
 if (fs.existsSync(api) && fs.readdirSync(api).length) {
 	const themeConfig = 
