@@ -1,9 +1,6 @@
 # Dependencies
 node_modules/
 
-# Production
-/docs
-
 # Generated files
 /media/codicons
 /.wireit

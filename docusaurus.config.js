@@ -85,6 +85,8 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 		],
 		announcementBar: {
 			content: 'A huge number of articles, APIs and other things were <a target="_blank" rel="noopener noreferrer" href="https://vk.com/wall-148880110_346">irretrievably lost</a>.',
+			backgroundColor: '#cc4444',
+			textColor: '#ffffff',
 			isCloseable: false
 		},
 		colorMode: {
@@ -203,7 +205,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 	})
 });
 
-const api = path.resolve('api/docs');
+const api = path.resolve('src/pages/api');
 
 if (fs.existsSync(api) && fs.readdirSync(api).length) {
 	const themeConfig = 

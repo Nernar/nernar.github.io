@@ -42,7 +42,7 @@
       ]
     },
     "build": {
-      "command": "typedoc declarations/core-engine.d.ts",
+      "command": "typedoc --out ../src/pages/api declarations/core-engine.d.ts",
       "files": [
         "typedoc.json",
         "tsconfig-typedoc.json",
@@ -54,7 +54,7 @@
         "prebuild-declarations"
       ],
       "output": [
-        "docs"
+        "../src/pages/api"
       ]
     }
   },
