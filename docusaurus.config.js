@@ -83,6 +83,10 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 				content: 'nernar, minecraft, modding tools, dev editor, innercore, horizon, coreengine'
 			}
 		],
+		announcementBar: {
+			content: 'A huge number of articles, APIs and other things were <a target="_blank" rel="noopener noreferrer" href="https://vk.com/wall-148880110_346">irretrievably lost</a>.',
+			isCloseable: false
+		},
 		colorMode: {
 			defaultMode: 'dark'
 		},
