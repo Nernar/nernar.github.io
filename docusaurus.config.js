@@ -97,7 +97,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 			hideOnScroll: true,
 			logo: {
 				alt: '',
-				src: 'copyright/horizon.svg'
+				src: 'copyright/innercore.svg'
 			},
 			items: [
 				{
@@ -205,27 +205,21 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 	})
 });
 
-const api = path.resolve('static/api');
-
-if (fs.existsSync(api) && fs.readdirSync(api).length) {
-	const themeConfig = 
-		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-		(config.themeConfig);
-	if (themeConfig.navbar && themeConfig.navbar.items) {
-		const partial = themeConfig.navbar.items.shift();
-		themeConfig.navbar.items.unshift({
-			position: 'left',
-			href: `${config.url}/api/index.html`,
-			label: 'API'
-		});
-		if (partial) {
-			themeConfig.navbar.items.unshift(partial);
-		}
-	} else {
-		logger.error('Unexpected `config.themeConfig.navbar?.items` is undefined!');
+const themeConfig = 
+	/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+	(config.themeConfig);
+if (themeConfig.navbar && themeConfig.navbar.items) {
+	const partial = themeConfig.navbar.items.shift();
+	themeConfig.navbar.items.unshift({
+		position: 'left',
+		href: `${config.url}/api/index.html`,
+		label: 'API'
+	});
+	if (partial) {
+		themeConfig.navbar.items.unshift(partial);
 	}
 } else {
-	logger.warn('Disabling API Reference, static folder doesn\'t exists!');
+	logger.error('Unexpected `config.themeConfig.navbar?.items` is undefined!');
 }
 
 module.exports = config;

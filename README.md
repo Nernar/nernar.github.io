@@ -1,7 +1,5 @@
 # nernar.github.io
 
-> A huge number of articles, APIs and other things were irretrievably lost. I'm temporarily (hopefully) taking a break from working on the project.
-
 Inner Core, Core Engine and Horizon documentation implemented in one place. Make it simple, keep it clean. This site powered by GitHub Pages, built with :heart: and Docusaurus.
 
 ## Setting up
@@ -12,14 +10,6 @@ Inner Core, Core Engine and Horizon documentation implemented in one place. Make
 ```shell
 npm install && npm run build-serve
 ```
-
-Additionally, API Reference also may builded with same way after running in **api**:
-
-```shell
-npm install && npm run build:docs
-```
-
-But it requires lot of time and highly recommended test local builds with `npm run start`.
 
 ## Documentation
 
@@ -44,9 +34,7 @@ Everything divided by categories, which also represents sidebar structure. Every
 
 ## API Reference
 
-New era of Core Engine documentation, generated into single webpage like everything here. Forked also in [Nernar/innercore-docs](https://github.com/Nernar/innercore-docs) from [mineprogramming/innercore-docs](https://github.com/mineprogramming/innercore-docs). See [LICENSE](./LICENSE) for licensing information about this portion of the documentation.
-
-You can also download [core-engine.d.ts](https://nernar.github.io/core-engine.d.ts) directly.
+New era of Core Engine documentation, generated into single webpage like everything here. See [Nernar/API](https://github.com/Nernar/API) repository for details.
 
 ## Modding Examples
 
@@ -58,4 +46,4 @@ Repository of external documentation, here modders alives.
 
 ## Contribution
 
-Is not availabled right now, please wait before most part will be documented. Any PRs will be rejected.
+Request PRs for `master` branch, *NEVER* commit to `deploy`. Docusaurus should be built successfully to being reviewed, your changes may also require some additional tunings before merging.
