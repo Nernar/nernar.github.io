@@ -26,7 +26,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const logger = require('@docusaurus/logger');
 const path = require('path');
 const fs = require('fs');
-const sidebars = require('./sidebars');
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
