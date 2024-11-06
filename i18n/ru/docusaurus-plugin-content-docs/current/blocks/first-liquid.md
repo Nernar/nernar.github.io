@@ -31,7 +31,7 @@ Block.createLiquidBlock("ink", {
 });
 ```
 
-Это создаст текучий и стоячий блоки жидкостей, а также добавит полнофункциональное ведро для использования игроком и разлитием с помощью раздатчиков. Для последнего задействованы функции [Item.setLiquidClip](/api/Item/setLiquidClip) и [Item.registerDispenseFunction](/api/Item/registerDispenseFunction).
+Это создаст текучий и стоячий блоки жидкостей, а также добавит полнофункциональное ведро для использования игроком и разлитием с помощью раздатчиков. Для последнего задействованы функции [Item.setLiquidClip](/api/modules/Item.html#setLiquidClip) и [Item.registerDispenseFunction](/api/modules/Item.html#registerDispenseFunction).
 
 <details>
     <summary>Стандарты для создания локализации</summary>
@@ -57,7 +57,7 @@ Translation.addTranslation("Bucket of Ink", {
 
 ## Прочие возможности
 
-Любые взаимодействия с жидкостями должны быть обработаны разработчиком, конкретных событий или рекомендаций здесь нет. Рассмотрите [LiquidRegistry](/api/LiquidRegistry) для получения подробностей.
+Любые взаимодействия с жидкостями должны быть обработаны разработчиком, конкретных событий или рекомендаций здесь нет. Рассмотрите [LiquidRegistry](/api/modules/LiquidRegistry.html) для получения подробностей.
 
 ### Дополнительные свойства
 

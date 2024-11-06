@@ -16,7 +16,7 @@ stateDiagram-v2
     end note
 ```
 
-Весь цикл сводится к обновлению (перерисовке компонента, первая отрисовка тоже вызывает ее) если таковое было запрошено. Для этого задействуются функции [invalidateDrawing](/api/com/zhekasmirnov/innercore/api/mod/ui/window/IWindow/invalidateDrawing) окна или [invalidateUIDrawing](/api/com/zhekasmirnov/innercore/api/mod/ui/container/Container/invalidateUIDrawing) контейнера.
+Весь цикл сводится к обновлению (перерисовке компонента, первая отрисовка тоже вызывает ее) если таковое было запрошено. Для этого задействуются функции [invalidateDrawing](/api/interfaces/UI.IWindow.html#invalidateDrawing) окна или [invalidateUIDrawing](/api/classes/UI.Container.html#invalidateUIDrawing) контейнера.
 
 Фоновая компоновка не имеет событий, даже расширяемые компоненты могут быть лишь отрисованы. На то это и статичные компоненты, чтобы ни с чем не взаимодействовать.
 
