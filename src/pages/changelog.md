@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
+
+- Added [World.addListenerChunkStateChanged(listener, statesList)](/api/modules/World.html#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/modules/World.html#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
+- Added ability to get game settings via [Game.getOption(key)](/api/modules/Game.html#getOption), use [Game.getOptions](/api/modules/Game.html#getOptions) to list all available keys
+- Added *OptionsChanged* callback, which is called immediately after completing game options change
+- Implemented binary data packets, pass an bytes array to send them
+- Fixed dispensers functionality with modded liquid buckets
+- Fixed player identifier transfering to *CraftRecipePreProvided* callback
+
+### Other changes ([@rislaed](https://vk.com/id268478382))
+
+- Fixed display of header translations in config
+
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 
 - Fixed mod browser proxy
