@@ -1,18 +1,74 @@
 # Список изменений
 
+## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
+
+- Исправления прокси браузера модов
+- Исправления повреждающихся сохранений в некоторых случаях, из-за коллизии
+- Исправлен текст сообщений об ошибках в модах
+- Добавлен модуль API [GameController](/api/modules/GameController.html), который позволяет эмулировать действия игрока из модов
+- Добавлен метод [Entity.getAllLocal](/api/modules/Entity.html#getAllLocal)
+- Исправлены каллбеки *EntityAddedLocal*/*EntityRemovedLocal* в мультиплеере
+- Исправлен метод [Player.localPlayerTurn](/api/modules/Player.html#localPlayerTurn)
+- Исправления крашей в мод браузере
+- Исправления некоторых крашей в игре, в частности от всплывающих сообщений на некоторых прошивках
+
+## 2.4.0b118-119 ([@reider745](https://vk.com/id500917624))
+
+- Улучшение сетевого протокола
+- Добавлены методы BlockSource для управления погодой
+- Добавлен метод [Particles.addBreakingItemParticle](/api/modules/Particles.html#addBreakingItemParticle) для создания частиц обломков предмета
+- Добавлены методы [Item.setShouldDespawn](/api/modules/Item.html#setShouldDespawn)/[setFireResistant](/api/modules/Item.html#setFireResistant)/[setExplodable](/api/modules/Item.html#setExplodable)
+- Исправлена утечка памяти при рендере моделей
+
+## 2.4.0b116-117
+
+Добавлена поддержка серверов с модами на основе [ядра ZoteCore](https://github.com/Reider745/ZoteCoreLoader) от [@reider745](https://vk.com/id500917624), что также включает в себя:
+
+- Исправления списка серверов (для модпаков список хранится в основной папке модпака)
+- Исправление не статичного uuid игрока (от параметров XUID и ника игрока), исправляет сохранения инвентаря в локальной игре
+- Добавлена функция синхронизации порта сокет-сервера
+- Добавлена синхронизация id биомов
+- Другие различные исправления для серверов
+
+### Другие изменения ([@reider745](https://vk.com/id500917624))
+
+- Добавлен прокси в мод браузере, который включается при невозможности подключиться к основной игре ([@spawnrys](https://vk.com/id549824423))
+- Исправления синхронизации [клиентской части TileEntity](/api/interfaces/TileEntity.LocalTileEntityPrototype.html), добавлены новые методы [onConnectionPlayer](/api/interfaces/TileEntity.TileEntityPrototype.html#onConnectionPlayer)/[onDisconnectionPlayer](/api/interfaces/TileEntity.TileEntityPrototype.html#onDisconnectionPlayer)
+- Теперь в сохранениях вместо ошибки будет передаваться [пустой объект](/api/interfaces/Saver.IScopeSaver.html#getDefaultSaves)
+- Добавлено условие [ICRender.BlockState(x, y, z, stateId, valueState)](/api/modules/ICRender.html#BlockState)
+- Исправлена работа интерфейсов с челкой (добавлен переключатель в настройки)
+- Оптимизация генерации моделей предметов (добавлены настройки)
+- Исправлен [loadCustom](/api/classes/Animation.Base.html#loadCustom) у статических моделей на подключенных клиентах
+- Исправлен [Entity.getMobile](/api/modules/Entity.html#getMobile)
+- [World.getWorldTime](/api/modules/World.html#getWorldTime) может возвращать время на клиенте
+
+### Другие изменения ([@zheka_smirnov](https://vk.com/id24708057))
+
+- Исправлены частые краши Inner Core при запуске
+- Обновлен до последней версии Rhino - движок javascript для модов
+- Различные оптимизации нативной части Inner Core
+- Добавлен метод [Player.localPlayerTurn(x, y)](/api/modules/Player.html#localPlayerTurn)
+- В PlayerActor добавлены методы [canFly](/api/classes/PlayerActor.html#canFly)/[setCanFly](/api/classes/PlayerActor.html#setCanFly), [setPlayerBoolean](/api/classes/PlayerActor.html#setPlayerBooleanAbility)/[FloatAbility](/api/classes/PlayerActor.html#setPlayerFloatAbility), [getPlayerBoolean](/api/classes/PlayerActor.html#getPlayerBooleanAbility)/[FloatAbility](/api/classes/PlayerActor.html#getPlayerFloatAbility)
+- Исправлено то что модуль [World](/api/modules/World.html) не работал при подключении в мультиплеере
+- Добавлена поддержка [пустых ведер](/api/interfaces/Block.LiquidDescriptor.html#bucket) для жидкостей
+- Исправлен сломанный [эвент наступания на блок](/api/modules/Block.html#registerEntityStepOnFunction)
+- Исправлено перемещение игрока с помощью [Dimensions.transfer](/api/modules/Dimensions.html#transfer) в тоже измерение где он находится
+- Небольшие исправления генератора кастомных измерений
+- Исправлена установка некоторых модов
+
 ## 2.3.1b115
 
 - Множество улучшений производительности, стабильности и небольших фиксов
-- Исправлен поиск и отсутсвие некоторых предметов в верстаке (например аккумулятор из IC2)
+- Исправлен поиск и отсутствие некоторых предметов в верстаке (например аккумулятор из IC2)
 - Поддержка приоритета загрузки модов
-- Добавлена экспериментальная встроенная ECS
-- Добавлен метод ItemModel.setSpriteHandRender
-- Добавлен метод CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater]), исправлена генерация подземных водоемов по умолчанию
-- В BlockSource добавлены методы listEntitiesOfTypeInAABB(x1, y1, z1, x2, y2, z2, stringType), исправлен listEntitiesInAABB с теми же аргументами
-- Добавлены методы Player.getLocal() и Player.getServer()
-- Добавлены методы UI.getMinecraftUiScale() и UI.getRelMinecraftUiScale()
+- Добавлена экспериментальная встроенная [ECS](/api/modules/ECS.html)
+- Добавлен метод [ItemModel.setSpriteHandRender](/api/interfaces/ItemModel-1.html#setSpriteHandRender)
+- Добавлен метод [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/classes/Dimensions.CustomGenerator.html#setGenerateCaves), исправлена генерация подземных водоемов по умолчанию
+- В BlockSource добавлен метод [listEntitiesOfTypeInAABB(x1, y1, z1, x2, y2, z2, stringType)](/api/classes/BlockSource-1.html#listEntitiesOfTypeInAABB.listEntitiesOfTypeInAABB-2), исправлен [listEntitiesInAABB](/api/classes/BlockSource-1.html#listEntitiesInAABB) с теми же аргументами
+- Добавлены методы [Player.getLocal()](/api/modules/Player.html#getLocal) и [Player.getServer()](/api/modules/Player.html#getServer)
+- Добавлены методы [UI.getMinecraftUiScale()](/api/modules/UI.html#getMinecraftUiScale) и [UI.getRelMinecraftUiScale()](/api/modules/UI.html#getRelMinecraftUiScale)
 - Исправлен краш кастомных энчантов
-- Исправлена установка сопротивления отбрасыванию броне
+- Исправлена установка [сопротивления отбрасыванию броне](/api/interfaces/Item.ArmorParams.html#knockbackResist)
 - Исправления процесса установки модов
 
 ## 2.2.1b114
@@ -21,7 +77,7 @@
 
 :::note
 
-Если у вас установлен мод Kernel Extension, для работы требуется обновить его до последней версии.
+Если у вас установлен мод [Kernel Extension](https://icmods.mineprogramming.org/mod?id=831), для работы требуется обновить его до последней версии.
 
 :::
 
@@ -34,7 +90,7 @@
 ## 2.2.1b106
 
 - Ванильный верстак теперь поддерживает полный функционал рецептов из модов. Замена интерфейса верстака теперь не используется, но ее можно включить в настройках, если возникнут проблемы.
-- Оптимизация доступа к TileEntity по координатам
+- Оптимизация [доступа к TileEntity по координатам](/api/modules/TileEntity.html#getTileEntity)
 - Оптимизация и исправления вызовов C++ -> Java
 
 ## 2.2.1b105
@@ -54,8 +110,8 @@
 
 ## 2.2.1b103
 
-- При создании жидкости теперь можно автоматически создать ведро с полным функционалом (см. документацию)
-- Добавлен параметр isRenewable для жидкостей, отвечающий за то, является ли она возобновляемой
+- При создании жидкости теперь можно автоматически создать ведро с полным функционалом [(см. документацию)](/api/interfaces/Block.LiquidDescriptor.html#bucket)
+- Добавлен параметр [isRenewable](/api/interfaces/Block.LiquidDescriptor.html#isRenewable) для жидкостей, отвечающий за то, является ли она возобновляемой
 - Исправлено взаимодействие ведер с жидкостями из модов
 
 ## 2.2.1b102
@@ -101,9 +157,9 @@
 
 - Добавлены методы [Recipes.getAllWorkbenchRecipes()](/api/modules/Recipes.html#getAllWorkbenchRecipes) и [Recipes.getAllFurnaceRecipes()](/api/modules/Recipes.html#getAllFurnaceRecipes)
 - Добавлен метод [BlockSource.getBiomeDownfallAt(x, y, z)](/api/classes/BlockSource-1.html#getBiomeDownfallAt)
-- Добавлены настройки элемента слота: iconScale и disablePixelPerfect
+- Добавлены настройки элемента слота: [iconScale](/api/interfaces/UI.UISlotElement.html#iconScale) и [disablePixelPerfect](/api/interfaces/UI.UISlotElement.html#disablePixelPerfect)
 - Добавлены методы UI.Window: [updateScrollDimensions()](/api/classes/UI.Window.html#updateScrollDimensions) и [updateWindowPositionAndSize()](/api/classes/UI.Window.html#updateWindowPositionAndSize)
-- Добавлен новый тип расположения текста: 3 - ALIGN_CENTER_HORIZONTAL
+- Добавлен новый тип расположения текста: 3 - [ALIGN_CENTER_HORIZONTAL](/api/classes/UI.Font.html#ALIGN_CENTER_HORIZONTAL)
 - Добавлен метод [runOnClientThread(function)](/api/index.html#runOnClientThread), аналог [runOnMainThread](/api/index.html#runOnMainThread), но для клиентского потока
 - Исправления числовых идентификаторов предметов и связанных рецептов - звезда ада, арбуз, пластинки, лошадиная броня, огненный шар, фейерверки
 - Исправлена модель нагрудника для брони из модов
@@ -127,7 +183,7 @@
 ## 2.2.1b93
 
 - Исправлена еда, добавляемая модами
-- Восстановлен базовый функционал PathNavigation
+- Восстановлен базовый функционал [PathNavigation](/api/modules/Entity.html#getPathNavigation)
 - Добавлены методы для изменения цвета и дистанции подводного тумана, исправлен подводный туман в кастомных измерениях
 - Добавлены события *EntityAddedLocal* и *EntityRemovedLocal* - аналоги *EntityAdded* и *EntityRemoved* на стороне клиента
 - Исправлен метод [Entity.setOffhandItem](/api/modules/Entity.html#setOffhandItem)
@@ -149,7 +205,7 @@
 ## 2.2.1b89
 
 - Исправлены ошибки, вызванные рассинхронизацией блоков в мультиплеере и работа верстака у подключенных игроков
-- Добавлена возможность работы с параметрами ванильных блоков (block states)
+- Добавлена возможность работы с [параметрами ванильных блоков (block states)](/api/classes/BlockState.html)
 - Исправлены ошибки с вызовом событий генерации
 - Улучшена стабильность сохранений
 - Исправлена вкладка ссылок
@@ -182,7 +238,7 @@
 
 ## 2.2.0b84
 
-- Добавлены события *PreProcessChunk* и *PostProcessChunk* -  универсальные события генерации, первое из которых вызывается перед генерацией ванильных структур, а второе после. Все остальные события генерации вызываются после генерации ванильных структур, но до *PostProcessChunk*.
+- Добавлены события *PreProcessChunk* и *PostProcessChunk* - универсальные события генерации, первое из которых вызывается перед генерацией ванильных структур, а второе после. Все остальные события генерации вызываются после генерации ванильных структур, но до *PostProcessChunk*.
 - Исправлены отсутствующие рецепты кровати и сундука
 - Исправлены установка мещи в ActorRenderer
 - Исправлены редкие вылеты при входе и выходе из мира
@@ -200,10 +256,10 @@
 ## 2.2.0b82
 
 - Добавлены методы контейнера [setSlotSavingEnabled(name, enabled)](/api/classes/ItemContainer-1.html#setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/classes/ItemContainer-1.html#setGlobalSlotSavingEnabled), которые контролируют то, какие слоты сохраняются
-- Добавлен параметр методу destroy в TileEntity, отвечающий за то, было ли уничтожение вызвано событием *DestroyBlock*
+- Добавлен параметр методу [destroy](/api/interfaces/TileEntity.TileEntityPrototype.html#destroy) в TileEntity, отвечающий за то, было ли уничтожение вызвано событием *DestroyBlock*
 - Оптимизированы методы редактирования инвентаря игрока
 - Исправлена установка способностей игрока, включая полет
-- Исправлен серверный каллбек открытия ItemContainer, который происходил до отправки пакета открытия
+- Исправлен серверный каллбек открытия [ItemContainer](/api/classes/ItemContainer-1.html), который происходил до отправки пакета открытия
 - Исправлены некоторые рецепты печи
 - Исправлен баг с загрузкой на старых версиях Android
 - Исправлен баг с ломанием льда
@@ -355,7 +411,7 @@
 ## 2.0.5b45
 
 - Добавлен метод модели предмета [setModelOverrideCallback(function(item) { ... })](/api/interfaces/ItemModel-1.html#setModelOverrideCallback), которая устанавливает модели функцию, возвращающую модель предмета для конкретного предмета в мире. Работает как item override function, но для моделей.
-- Добавлен метод [ItemModel.newStandalone()](/api/modules/ItemModel.html#newStandalone), создающий пустую модель предмета, которая ни к чему не привязана, данные модели могут быть использованы, как результат функции setModelOverrideCallback
+- Добавлен метод [ItemModel.newStandalone()](/api/modules/ItemModel.html#newStandalone), создающий пустую модель предмета, которая ни к чему не привязана, данные модели могут быть использованы, как результат функции [setModelOverrideCallback](/api/interfaces/ItemModel-1.html#setModelOverrideCallback)
 - Теперь в функцию определения иконки предмета (item override function) может передаваться extra
 - Исправлен вылет, который мог быть вызван вызовом методом [toScriptable()](/api/classes/NBT.CompoundTag.html#toScriptable) NBT-тэгов
 - Для сборки java кода теперь используются другие инструменты (для построения .dex файлов используется d8, а не dx)
@@ -365,18 +421,18 @@
 - Возможность получения и изменения NBT мобов, ванильных TileEntity и предметов
 - Добавлены методы: [Entity.getCompoundTag(entity)](/api/modules/Entity.html#getCompoundTag), [Entity.setCompoundTag(entity, tag)](/api/modules/Entity.html#setCompoundTag)
 - Добавлены методы ванильных TileEntity, возвращаемых [World.getContainer()](/api/modules/World.html#getContainer): [getCompoundTag()](/api/interfaces/NativeTileEntity.html#getCompoundTag), [setCompoundTag(tag)](/api/interfaces/NativeTileEntity.html#setCompoundTag)
-- Добавлены методы [ItemExtraData](/api/classes/ItemExtraData.html): [getCompoundTag()](/api/classes/ItemExtraData.html#getCompoundTag), [setCompoundTag(tag)](/api/interfaces/NativeTileEntity.html#setCompoundTag)
+- Добавлены методы ItemExtraData: [getCompoundTag()](/api/classes/ItemExtraData.html#getCompoundTag), [setCompoundTag(tag)](/api/interfaces/NativeTileEntity.html#setCompoundTag)
 - Интерфейс модов теперь поддерживает предметы модов с анимированной иконкой
-- Функция динамичной иконки предметов теперь получает второй булевый параметр isModUi, показывающий, в ванильном интерфейсе иконка или нет
+- Функция динамичной иконки предметов теперь получает второй булевый параметр [isModUi](/api/modules/Item.html#registerIconOverrideFunction), показывающий, в ванильном интерфейсе иконка или нет
 - Добавлен метод [Debug.big](/api/modules/Debug.html#big), аналогичен [Debug.m](/api/modules/Debug.html#m), однако выводит все в диалог с возможностью копирования текста и форматирует JSON
-- Событие click у TileEntity теперь получает еще один аргумент - координаты клика
+- Событие [click](/api/interfaces/TileEntity.TileEntityPrototype.html#click) у TileEntity теперь получает еще один аргумент - координаты клика
 - Исправлен краш, происходивший в некоторых условиях от аддонов
 
 ## 2.0.4b43
 
 - Автоматическое удаление из миров паков ресурсов и поведения, которые были добавлены удаленными модами
 - RenderMesh теперь может принимать не только абсолютный путь к файлу, но также путь в ресурсах мода или имя файла внутри директории *models/* в ресурсах мода
-- Параметры элемента слота isTransparentBackground и его устаревшая версия needClean теперь оба являются устаревшими, теперь слот по умолчанию поддерживает прозрачный фон
+- Параметры элемента слота [isTransparentBackground](/api/interfaces/UI.UISlotElement.html#isTransparentBackground) и его устаревшая версия [needClean](/api/interfaces/UI.UISlotElement.html#needClean) теперь оба являются устаревшими, теперь слот по умолчанию поддерживает прозрачный фон
 - Добавлен метод контейнера [setOnOpenListener(function(container, window) {...})](/api/classes/UI.Container.html#setOnOpenListener)
 - Временно убрана сборка для архитектуры x86, которая пока что не была рабочей, это снизит размер пака
 - Исправлена ошибка от двойного вызова [WRAP_JAVA](/api/index.html#WRAP_JAVA) на один и тот же класс
@@ -409,9 +465,9 @@
 ## 2.0.4b38
 
 - Добавлен экспериментальный модуль [TagRegistry](/api/modules/TagRegistry.html). Документация будет через какое-то время после его отладки.
-- Добавлены параметры частиц framesX, framesY для задания количества кадров по вертикали и горизонтали текстуры/региона текстуры
-- Добавлен параметр частиц rebuildDelay, отвечающий за время между обновлением поворота частиц
-- Добавлен параметр частиц color2 и animators.color, отвечающие за анимирование изменяющегося цвета
+- Добавлены параметры частиц [framesX](/api/interfaces/Particles.ParticleDescription.html#framesX), [framesY](/api/interfaces/Particles.ParticleDescription.html#framesY) для задания количества кадров по вертикали и горизонтали текстуры/региона текстуры
+- Добавлен параметр частиц [rebuildDelay](/api/interfaces/Particles.ParticleDescription.html#rebuildDelay), отвечающий за время между обновлением поворота частиц
+- Добавлен параметр частиц [color2](/api/interfaces/Particles.ParticleDescription.html#color2) и [animators.color](/api/interfaces/Particles.ParticleDescription.html#animators), отвечающие за анимирование изменяющегося цвета
 - Исправлен дроп полублоков
 - Исправлены некоторые текстуры в интерфейсе
 
@@ -430,7 +486,7 @@
 - Меню настроек Inner Core сильно улучшено и дополнено новыми настройками
 - Исправлена критическая ошибка, которая могла вызвать зависание серверного потока.
 - Исправлены ошибки, которые могли возникать при загрузке из-за нехватки памяти
-- Множествно исправлений ошибок, которые были выявлены через статистику GP
+- Множество исправлений ошибок, которые были выявлены через статистику GP
 - При установке мода, можно на выбор установить его зависимости
 - Система сохранений улучшена: сохранения работают стабильнее, создается резервный файл сохранений, все ошибки сохранений показываются в одном окне и не засоряют экран
 - Немного изменен вид главного меню
