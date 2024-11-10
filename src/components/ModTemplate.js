@@ -24,10 +24,14 @@ function loadUpscaledIcon(blob, then) {
 		console.error('context == null');
 		return;
 	}
-	context.imageSmoothingEnabled = false; // @ts-ignore
-	context.webkitImageSmoothingEnabled = false; // @ts-ignore
-	context.mozImageSmoothingEnabled = false; // @ts-ignore
-	context.msImageSmoothingEnabled = false; // @ts-ignore
+	context.imageSmoothingEnabled = false;
+	// @ts-ignore
+	context.webkitImageSmoothingEnabled = false;
+	// @ts-ignore
+	context.mozImageSmoothingEnabled = false;
+	// @ts-ignore
+	context.msImageSmoothingEnabled = false;
+	// @ts-ignore
 	context.oImageSmoothingEnabled = false;
 	var url = window.URL.createObjectURL(blob);
 	var img = document.createElement('img');

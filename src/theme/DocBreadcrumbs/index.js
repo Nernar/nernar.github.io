@@ -1,14 +1,10 @@
 // @ts-check
 import React from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import { ThemeClassNames } from '@docusaurus/theme-common';
 import {
+	useActivePluginAndVersion,
 	useSidebarBreadcrumbs
-	// @ts-ignore
-} from '@docusaurus/theme-common/internal';
-import {
-	useActivePluginAndVersion
-	// @ts-ignore
 } from '@docusaurus/plugin-content-docs/client'
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -71,12 +67,12 @@ function HomeBreadcrumbItem({ href, docs }) {
 
 export default function DocBreadcrumbs() {
 	const breadcrumbs = useSidebarBreadcrumbs();
-	if (!(breadcrumbs?.length > 0)) {
+	if (breadcrumbs == null || !(breadcrumbs.length > 0)) {
 		return null;
 	}
 	const activePluginAndVersion = useActivePluginAndVersion();
-	const homePageRoute = activePluginAndVersion?.activeVersion.mainDocId;
-	const activeRoutes = activePluginAndVersion?.activeVersion.docs || [];
+	const homePageRoute = activePluginAndVersion?.activeVersion?.mainDocId;
+	const activeRoutes = activePluginAndVersion?.activeVersion?.docs || [];
 	return (
 		<nav
 			className={ clsx(

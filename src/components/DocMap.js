@@ -1,12 +1,11 @@
 // @ts-check
 import React from 'react';
 import DocCardList from '@theme/DocCardList';
-// @ts-ignore
-import { useDocsSidebar } from '@docusaurus/theme-common/internal';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 
 export default function DocMap({ exploreCategories, includeCategories }) {
 	const sidebarItems = [];
-	useDocsSidebar()?.items?.forEach((/** @type {{ type: string; items: any[]; }} */ element) => {
+	useDocsSidebar()?.items?.forEach((element) => {
 		if (exploreCategories && element.type == 'category') {
 			if (includeCategories) {
 				sidebarItems.push(element);

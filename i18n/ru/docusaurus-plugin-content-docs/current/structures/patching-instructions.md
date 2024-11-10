@@ -4,8 +4,8 @@
 
 ## Без патчинга
 
-1. Получить текущий экземляр `Level` (Actor::getLevel, BlockSource::getLevel и так далее).
-2. Получить `StructureManager` (Level::getStructureManager) и `JigsawStructureRegistry` (Level::getJigsawStructureRegistry) опционально.
+1. Получить текущий экземляр `Level` (Actor\:\:getLevel, BlockSource\:\:getLevel и так далее).
+2. Получить `StructureManager` (Level\:\:getStructureManager) и `JigsawStructureRegistry` (Level::getJigsawStructureRegistry) опционально.
 3. Загрузить структуру в формате NBT (в целом, можно загружать напрямую из Java версии игры, хотя и не факт что все данные сохранятся; впрочем, все внутреигровые структуры загружаются именно так) с помощью `StructureManager::getOrCreateLegacy(structurePath)` или воспользоваться встроенным форматом MCStructure с помощью `StructureManager::getOrCreate(structurePath)`, экспортировать данные в который можно с помощью команды `/structure save` или структурного блока.
 4. Подготовить предопределенные параметры для установки структуры с помощью `LegacyStructureSettings::LegacyStructureSettings()` или `StructureSettings::StructureSettings()`.
 5. Полученный экземляр `LegacyStructureTemplate` установить в любом событии генерации с помощью `LegacyStructureTemplate::placeInWorldChunk(BlockSource&, BlockPos const&, LegacyStructureSettings&)` или `StructureTemplate` с помощью `StructureTemplate::placeInWorld(BlockSource&, BlockPalette const&, BlockPos const&, StructureSettings const&, StructureTelemetryServerData*, bool)`.
@@ -18,7 +18,7 @@
 
 :::info Настроил, загрузил и установил
 
-В целом, описание базовых условий можно совершить с помощью пакетов поведения. Вернитесь к первому шагу и получите `FeatureRegistry` (Level::getFeatureRegistry), теперь можно зарегистрировать одиночную структуру в описании обычного файла *definitions/features*. Не забудьте загрузить ее с помощью `FeatureRegistry::registerFeature<StructureTemplateFeature>(featureIdentifier)` и установить `StructureTemplateFeature::place(IBlockWorldGenAPI&, BlockPos const&, Random&, RenderParams&)`.
+В целом, описание базовых условий можно совершить с помощью пакетов поведения. Вернитесь к первому шагу и получите `FeatureRegistry` (Level\:\:getFeatureRegistry), теперь можно зарегистрировать одиночную структуру в описании обычного файла *definitions/features*. Не забудьте загрузить ее с помощью `FeatureRegistry::registerFeature<StructureTemplateFeature>(featureIdentifier)` и установить `StructureTemplateFeature::place(IBlockWorldGenAPI&, BlockPos const&, Random&, RenderParams&)`.
 
 :::
 

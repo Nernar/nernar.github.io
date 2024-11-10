@@ -21,8 +21,7 @@
 */
 // @ts-check
 
-const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
-const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const prismRenderer = require('prism-react-renderer');
 const logger = require('@docusaurus/logger');
 
 const baseUrl = process.env.BASE_URL ?? '/';
@@ -190,8 +189,8 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 			copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
 		},
 		prism: {
-			theme: lightCodeTheme,
-			darkTheme: darkCodeTheme,
+			theme: prismRenderer.themes.vsLight,
+			darkTheme: prismRenderer.themes.vsDark,
 			magicComments: [
 				{
 					className: 'theme-code-block-highlighted-line',
@@ -227,7 +226,7 @@ if (themeConfig.navbar && themeConfig.navbar.items) {
 		themeConfig.navbar.items.unshift(partial);
 	}
 } else {
-	logger.error('Unexpected `config.themeConfig.navbar?.items` is undefined!');
+	logger.default.error('Unexpected `config.themeConfig.navbar?.items` is undefined!');
 }
 
 module.exports = config;

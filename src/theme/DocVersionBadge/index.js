@@ -3,12 +3,12 @@ import React from 'react';
 import clsx from 'clsx';
 import Translate from '@docusaurus/Translate';
 import { ThemeClassNames } from '@docusaurus/theme-common';
-// @ts-ignore
-import { useDoc, useDocsVersion } from '@docusaurus/theme-common/internal';
+import { useDoc, useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 
 export default function DocVersionBadge({ className }) {
   const versionMetadata = useDocsVersion();
   const doc = (() => { try { return useDoc() } catch (e) {} })();
+  // @ts-ignore
   if (!(versionMetadata.badge || doc?.frontMatter?.since)) {
     return null;
   }
@@ -29,6 +29,7 @@ export default function DocVersionBadge({ className }) {
         </span>)
       }
       {
+        // @ts-ignore
         doc?.frontMatter?.since && (<span
           className={clsx(
             className,
@@ -37,6 +38,7 @@ export default function DocVersionBadge({ className }) {
           )}>
           <Translate
             id='theme.api.sinceBadge.label'
+            // @ts-ignore
             values={{ versionLabel: doc.frontMatter.since }}>
             {'Since: {versionLabel}'}
           </Translate>

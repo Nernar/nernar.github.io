@@ -108,7 +108,7 @@
 
 ## 2.2.1b105
 
-- Добавлена экспериментальная возможность создания зачарований, документация: <https://gist.github.com/zheka2304/188a43e9ee130c1830af6cdc308cbeff>
+- Добавлена [экспериментальная возможность](https://gist.github.com/zheka2304/188a43e9ee130c1830af6cdc308cbeff) создания зачарований
 - Небольшая оптимизация вызовов C++ -> Java
 - Исправления некоторых отсутствующих иконок в интерфейсе
 
@@ -129,7 +129,7 @@
 
 ## 2.2.1b102
 
-- Добавлен функционал для создания жидкостей, документация: <https://gist.github.com/zheka2304/a93f32f612750cbffc637a265fbf9027>
+- Добавлен [функционал](https://gist.github.com/zheka2304/a93f32f612750cbffc637a265fbf9027) для создания жидкостей
 - Исправлены различные баги менеджера модов, добавлена возможность искать мод по его идентификатору
 - Добавлены методы [Entity.hasEffect(entity, effectId)](/api/modules/Entity.html#hasEffect) и [Entity.getEffect(entity, effectId)](/api/modules/Entity.html#getEffect)
 - Добавлен метод [BlockSource.setDestroyParticlesEnabled(boolean)](/api/classes/BlockSource-1.html#setDestroyParticlesEnabled)
@@ -423,7 +423,7 @@
 
 ## 2.0.5b45
 
-- Добавлен метод модели предмета [setModelOverrideCallback(function(item) { ... })](/api/interfaces/ItemModel-1.html#setModelOverrideCallback), которая устанавливает модели функцию, возвращающую модель предмета для конкретного предмета в мире. Работает как item override function, но для моделей.
+- Добавлен метод модели предмета [setModelOverrideCallback(function(item) \{ ... })](/api/interfaces/ItemModel-1.html#setModelOverrideCallback), которая устанавливает модели функцию, возвращающую модель предмета для конкретного предмета в мире. Работает как item override function, но для моделей.
 - Добавлен метод [ItemModel.newStandalone()](/api/modules/ItemModel.html#newStandalone), создающий пустую модель предмета, которая ни к чему не привязана, данные модели могут быть использованы, как результат функции [setModelOverrideCallback](/api/interfaces/ItemModel-1.html#setModelOverrideCallback)
 - Теперь в функцию определения иконки предмета (item override function) может передаваться extra
 - Исправлен вылет, который мог быть вызван вызовом методом [toScriptable()](/api/classes/NBT.CompoundTag.html#toScriptable) NBT-тэгов
@@ -446,7 +446,7 @@
 - Автоматическое удаление из миров паков ресурсов и поведения, которые были добавлены удаленными модами
 - RenderMesh теперь может принимать не только абсолютный путь к файлу, но также путь в ресурсах мода или имя файла внутри директории *models/* в ресурсах мода
 - Параметры элемента слота [isTransparentBackground](/api/interfaces/UI.UISlotElement.html#isTransparentBackground) и его устаревшая версия [needClean](/api/interfaces/UI.UISlotElement.html#needClean) теперь оба являются устаревшими, теперь слот по умолчанию поддерживает прозрачный фон
-- Добавлен метод контейнера [setOnOpenListener(function(container, window) {...})](/api/classes/UI.Container.html#setOnOpenListener)
+- Добавлен метод контейнера [setOnOpenListener(function(container, window) \{ ... \})](/api/classes/UI.Container.html#setOnOpenListener)
 - Временно убрана сборка для архитектуры x86, которая пока что не была рабочей, это снизит размер пака
 - Исправлена ошибка от двойного вызова [WRAP_JAVA](/api/index.html#WRAP_JAVA) на один и тот же класс
 
@@ -616,7 +616,7 @@
 
 - Добавлена возможность добавления новых материалов и шейдеров (больше информации будет опубликовано в скором времени)
 - Добавлены пользовательские модели предметов в инвентаре и в руке, для доступа к ним используйте [ItemModel.getFor(id, data)](/api/modules/ItemModel.html#getFor)
-- Добавлен новый режим анимации - модель с пользовательским материалом, чтобы войти в этот режим используйте [describe({ mesh: RenderMesh, skin: "имя текстуры", material: "имя материала" })](/api/classes/Animation.Base.html#describe)
+- Добавлен новый режим анимации - модель с пользовательским материалом, чтобы войти в этот режим используйте [describe(\{ mesh: RenderMesh, skin: "имя текстуры", material: "имя материала" \})](/api/classes/Animation.Base.html#describe)
 - Блоки с моделями ICRender автоматически получат модели в инвентаре и в руке
 - Добавлены методы пользовательских изменений: [setFogDistance(close, far)](/api/classes/Dimensions.CustomDimension.html#setFogDistance), [resetFogDistance()](/api/classes/Dimensions.CustomDimension.html#resetFogDistance)
 - Небольшие изменения и исправления

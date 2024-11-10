@@ -108,7 +108,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 ## 2.2.1b105
 
-- Added experimental API for creating custom enchants: <https://gist.github.com/zheka2304/188a43e9ee130c1830af6cdc308cbeff>
+- Added [experimental API](https://gist.github.com/zheka2304/188a43e9ee130c1830af6cdc308cbeff) for creating custom enchants
 - Minor optimization for C++ to Java calls
 - Minor fixes for icons in UI
 
@@ -129,7 +129,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 ## 2.2.1b102
 
-- Added methods for creating liquid blocks, docs: <https://gist.github.com/zheka2304/a93f32f612750cbffc637a265fbf9027>
+- Added [methods](https://gist.github.com/zheka2304/a93f32f612750cbffc637a265fbf9027) for creating liquid blocks
 - Fixed some mod manager issues and crashes, added ability to search mod by it's ID
 - Added [Entity.hasEffect(entity, effectId)](/api/Entity/hasEffect) and [Entity.getEffect(entity, effectId)](/api/Entity/getEffect)
 - Added [BlockSource.setDestroyParticlesEnabled(boolean)](/api/BlockSource/setDestroyParticlesEnabled) method
@@ -424,7 +424,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.5b45
 
-- Added item model method [setModelOverrideCallback(function(item) { ... })](/api/ItemModel/setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
+- Added item model method [setModelOverrideCallback(function(item) \{ ... \})](/api/ItemModel/setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
 - Added method [ItemModel.newStandalone()](/api/ItemModel/newStandalone), creates empty ItemModel instance, not linked to any item, this models should be used in [setModelOverrideCallback](/api/interfaces/ItemModel-1.html#setModelOverrideCallback)
 - Item override function now receives extra data
 - Fixed crash, caused by calling [toScriptable()](/api/NBT/CompoundTag/toScriptable) method of NBT tags
@@ -447,7 +447,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Automatically deleting resource and behavior packs from uninstalled mods upon world load
 - RenderMesh now can receive not only absolute file path, but also resource path and name of file in *models/* dir in resources.
 - Deprecated slot element parameters [isTransparentBackground](/api/interfaces/UI.UISlotElement.html#isTransparentBackground) and [needClean](/api/interfaces/UI.UISlotElement.html#needClean), now slot supports transparent background by default
-- Added container method [setOnOpenListener(function(container, window) {...})](/api/com/zhekasmirnov/innercore/api/mod/ui/container/Container/setOnOpenListener)
+- Added container method [setOnOpenListener(function(container, window) \{ ... \})](/api/com/zhekasmirnov/innercore/api/mod/ui/container/Container/setOnOpenListener)
 - Removed shared objects, built for x86 ABI to reduce overall weight
 - Fixed error, that occurred after second [WRAP_JAVA](/api/WRAP_JAVA) call on same class
 
@@ -617,7 +617,7 @@ This update adds alot and might be unstable.
 
 - Added ability to create custom materials and shaders (more info will be provided soon)
 - Added UI and in-hand item models, to access use [ItemModel.getFor(id, data)](/api/ItemModel/getFor)
-- Added new animation mode - direct mesh render with material, to enter this mode call method [describe({ mesh: RenderMesh, skin: "texture name", material: "material name" })](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/describe)
+- Added new animation mode - direct mesh render with material, to enter this mode call method [describe(\{ mesh: RenderMesh, skin: "texture name", material: "material name" \})](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/describe)
 - Blocks with ICRender will automatically gain inventory models
 - Added custom dimension methods: [setFogDistance(close, far)](/api/Dimensions/CustomDimension/setFogDistance), [resetFogDistance()](/api/Dimensions/CustomDimension/resetFogDistance)
 - Other minor fixes
