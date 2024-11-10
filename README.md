@@ -42,7 +42,24 @@ Here represented most of legendary Core Engine mods with unique mechanics, that 
 
 ## Libraries freely to use
 
-Repository of external documentation, here modders alives.
+At beginning, it located by few locations: **libraries** where everything starts, **i18n** where localization performs and **static** where additional files is located.
+
+```text
+.
+├─ libraries
+│  └─ ...
+├─ i18n/<language>
+│  └─ docusaurus-plugin-content-docs-libraries
+│     ├─ current
+│     │  └─ ...
+│     └─ current.json
+├─ static
+│  └─ images
+│     └─ ...
+└─ libraries.js
+```
+
+Everything divided by categories, which also represents sidebar structure. Every markdown location described in **libraries.js**, you can use it for auto-generation or manually provide required routes.
 
 ## Contribution
 
