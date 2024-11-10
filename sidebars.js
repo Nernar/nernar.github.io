@@ -240,39 +240,5 @@ module.exports = {
 			type: 'doc',
 			id: 'future-steps'
 		}
-	],
-	librariesSidebar: [
-		{
-			type: 'category',
-			label: 'Dungeon Utility',
-			link: {
-				type: 'generated-index'
-			},
-			items: [
-				'libraries/DungeonUtility/getting-started',
-				{
-					type: 'category',
-					label: 'Upload Structure',
-					link: {
-						type: 'generated-index'
-					},
-					items: [
-						'libraries/DungeonUtility/loaders/StructureFormats',
-						'libraries/DungeonUtility/loaders/StructureLoader',
-					]
-				},
-				{
-					type: 'category',
-					label: 'Structure Generation',
-					link: {
-						type: 'generated-index'
-					},
-					items: [
-						'libraries/DungeonUtility/generations/ItemGeneration',
-						'libraries/DungeonUtility/generations/StructurePiece'
-					]
-				}
-			]
-		}
 	]
 };

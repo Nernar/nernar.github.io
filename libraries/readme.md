@@ -1,6 +1,6 @@
 ---
 displayed_sidebar: librariesSidebar
-slug: /libraries
+slug: /
 ---
 
 # Libraries
@@ -30,5 +30,5 @@ slug: /libraries
 ```mdx-code-block
 import DocMap from "@site/src/components/DocMap"
 
-<DocMap exploreCategories={ true } />
+<DocMap />
 ```

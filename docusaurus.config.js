@@ -24,8 +24,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const logger = require('@docusaurus/logger');
-const path = require('path');
-const fs = require('fs');
 
 const baseUrl = process.env.BASE_URL ?? '/';
 
@@ -56,7 +54,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 
 	presets: [
 		[
-			'classic',
+			'@docusaurus/preset-classic',
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			({
 				docs: {
@@ -74,7 +72,22 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 		]
 	],
 
-	plugins: [],
+	plugins: [
+		[
+			'@docusaurus/plugin-content-docs',
+			/** @type {import('@docusaurus/plugin-content-docs').Options} */
+			({
+				id: 'libraries',
+				path: 'libraries',
+				routeBasePath: 'libraries',
+				sidebarPath: require.resolve('./libraries.js'),
+				breadcrumbs: false,
+				editLocalizedFiles: true,
+				editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
+				showLastUpdateTime: true
+			})
+		]
+	],
 
 	themeConfig: /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
 		metadata: [

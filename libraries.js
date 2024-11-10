@@ -1,11 +1,4 @@
----
-displayed_sidebar: librariesSidebar
-slug: /libraries
----
-
-# Start your Journey
-
-<!--
+/*
 
     Inner Core Docs: Inner Core, Core Engine and Horizon documentation
     Copyright (C) 2022  Nernar (https://github.com/nernar)
@@ -25,10 +18,25 @@ slug: /libraries
 
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
--->
+*/
+// @ts-check
 
-```mdx-code-block
-import DocMap from "@site/src/components/DocMap"
-
-<DocMap exploreCategories={ true } />
-```
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+module.exports = {
+	librariesSidebar: [
+		{
+			type: 'category',
+			label: 'Dungeon Utility',
+			link: {
+				type: 'doc',
+				id: 'DungeonUtility/readme'
+			},
+			items: [
+				'DungeonUtility/structure-formats',
+				'DungeonUtility/structure-loader',
+				'DungeonUtility/item-generation',
+				'DungeonUtility/structure-piece'
+			]
+		}
+	]
+};

@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "Превью",
+    "description": "The label for version current"
+  },
+  "sidebar.librariesSidebar.category.Dungeon Utility": {
+    "message": "Dungeon Utility",
+    "description": "The label for category Dungeon Utility in sidebar librariesSidebar"
+  }
+}

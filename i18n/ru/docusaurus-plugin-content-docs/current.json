@@ -63,17 +63,8 @@
     "message": "Публикация",
     "description": "The label for category Publishing in sidebar tutorialSidebar"
   },
-
-  "sidebar.librariesSidebar.category.Upload Structure": {
-    "message": "Загрузка структур",
-    "description": "The label for category Upload Structure in sidebar librariesSidebar"
-  },
-  "sidebar.librariesSidebar.category.Structure Generation": {
-    "message": "Генерация структур",
-    "description": "The label for category Structure Generation in sidebar librariesSidebar"
-  },
-  "sidebar.librariesSidebar.category.Advanced": {
-    "message": "Продвинутые возможности",
-    "description": "The label for category Advanced in sidebar librariesSidebar"
+  "sidebar.tutorialSidebar.category.Extra": {
+    "message": "Экстра",
+    "description": "The label for category Extra in sidebar tutorialSidebar"
   }
 }
