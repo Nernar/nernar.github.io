@@ -21,14 +21,16 @@
   "scripts": {
     "start": "docusaurus start --no-open --no-minify",
     "start-ru": "docusaurus start --locale ru --no-open --no-minify",
+    "build": "docusaurus build",
+    "build-ci": "node --max-old-space-size=6144 ./node_modules/.bin/docusaurus build",
+    "serve": "docusaurus serve --no-open",
     "build-serve": "npm run build && npm run serve",
-    "build": "node --max-old-space-size=6144 ./node_modules/.bin/docusaurus build",
-    "serve": "node --max-old-space-size=6144 ./node_modules/.bin/docusaurus serve --no-open",
     "write-translations": "docusaurus write-translations --locale ru",
     "write-heading-ids": "docusaurus write-heading-ids",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
-    "deploy-pdf": "npx mr-pdf --initialDocURLs='https://nernar.github.io/docs' --contentSelector='article' --paginationSelector='.pagination-nav__item--next > a' --excludeSelectors='.margin-vert--xl a' --disableTOC"
+    "deploy-pdf": "npx mr-pdf --initialDocURLs='https://nernar.github.io/docs/intro' --contentSelector='article' --paginationSelector='.pagination-nav__item--next > a' --excludeSelectors='.margin-vert--xl a' --disableTOC",
+    "deploy-pdf-ru": "npx mr-pdf --initialDocURLs='https://nernar.github.io/ru/docs/intro' --contentSelector='article' --paginationSelector='.pagination-nav__item--next > a' --excludeSelectors='.margin-vert--xl a' --disableTOC"
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.1",

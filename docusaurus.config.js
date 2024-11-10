@@ -107,12 +107,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 				},
 				{
 					position: 'left',
-					to: 'examples',
-					label: 'Examples'
-				},
-				{
-					position: 'left',
-					to: 'docs/libraries',
+					to: 'libraries',
 					label: 'Libraries'
 				},
 				{

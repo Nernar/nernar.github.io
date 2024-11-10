@@ -5,7 +5,7 @@
   },
   "theme.ErrorPageContent.tryAgain": {
     "message": "Обновить страницу",
-    "description": "The label of the button to try again when the page crashed"
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
   },
   "theme.NotFound.title": {
     "message": "Страницы не существует",
@@ -273,5 +273,13 @@
   },
   "component.page.notImplemented.contributeAdvice": {
     "message": "Или просто внесите вклад в создание этой страницы, это поможет сразу всем!"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Главная",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Навигация по документации",
+    "description": "The ARIA label for the sidebar navigation"
   }
 }
