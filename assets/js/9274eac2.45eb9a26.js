@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[2278],{2271:e=>{e.exports=JSON.parse('{"title":"Extra","slug":"/category/extra","permalink":"/docs/category/extra","navigation":{"previous":{"title":"recipes","permalink":"/docs/items/recipes"},"next":{"title":"what-is-extra","permalink":"/docs/items/extra/what-is-extra"}}}')}}]);

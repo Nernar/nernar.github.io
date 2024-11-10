@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[3152],{5074:e=>{e.exports=JSON.parse('{"title":"Dungeon Utility","slug":"/category/dungeon-utility","permalink":"/ru/docs/category/dungeon-utility","navigation":{"next":{"title":"\u041d\u0430\u0447\u0430\u043b\u043e","permalink":"/ru/docs/libraries/DungeonUtility/getting-started"}}}')}}]);

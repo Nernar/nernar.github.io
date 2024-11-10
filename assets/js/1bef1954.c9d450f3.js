@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([[4458],{4390:e=>{e.exports=JSON.parse('{"title":"Items","slug":"/category/items","permalink":"/docs/category/items","navigation":{"previous":{"title":"using-synced-data","permalink":"/docs/events/using-synced-data"},"next":{"title":"first-item","permalink":"/docs/items/first-item"}}}')}}]);
