@@ -102,7 +102,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 			isCloseable: false
 		},
 		colorMode: {
-			defaultMode: 'dark'
+			respectPrefersColorScheme: true
 		},
 		navbar: {
 			title: 'Inner Core Docs',
