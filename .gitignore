@@ -4,6 +4,7 @@
 # Production
 /build
 /src/pages/api
+/innercore-docs*.pdf
 
 # Generated files
 .docusaurus

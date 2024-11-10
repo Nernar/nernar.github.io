@@ -29,8 +29,8 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
-    "deploy-pdf": "npx mr-pdf --initialDocURLs='https://nernar.github.io/docs/intro' --contentSelector='article' --paginationSelector='.pagination-nav__item--next > a' --excludeSelectors='.margin-vert--xl a' --disableTOC",
-    "deploy-pdf-ru": "npx mr-pdf --initialDocURLs='https://nernar.github.io/ru/docs/intro' --contentSelector='article' --paginationSelector='.pagination-nav__item--next > a' --excludeSelectors='.margin-vert--xl a' --disableTOC"
+    "deploy-pdf": "npx mr-pdf --initialDocURLs=https://nernar.github.io/docs/intro --outputPDFFilename=innercore-docs.pdf --contentSelector=article --paginationSelector=\"a.pagination-nav__link--next\" --excludeSelectors=\".margin-vert--xl a\" --disableTOC",
+    "deploy-pdf-ru": "npx mr-pdf --initialDocURLs=https://nernar.github.io/ru/docs/intro --outputPDFFilename=innercore-russian-docs.pdf --contentSelector=article --paginationSelector=\"a.pagination-nav__link--next\" --excludeSelectors=\".margin-vert--xl a\" --disableTOC"
   },
   "dependencies": {
     "@docusaurus/core": "^3.6.1",
