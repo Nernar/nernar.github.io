@@ -24,6 +24,9 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 module.exports = {
 	librariesSidebar: [
+		'BackpackAPI',
+		'ClassicUI',
+		'CoreUtility',
 		{
 			type: 'category',
 			label: 'Dungeon Utility',
@@ -34,9 +37,11 @@ module.exports = {
 			items: [
 				'DungeonUtility/structure-formats',
 				'DungeonUtility/structure-loader',
-				'DungeonUtility/item-generation',
-				'DungeonUtility/structure-piece'
+				'DungeonUtility/structure-piece',
+				'DungeonUtility/item-generation'
 			]
-		}
+		},
+		'FtbQuests',
+		'InfiniteDepth'
 	]
 };
