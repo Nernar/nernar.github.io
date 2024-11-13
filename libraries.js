@@ -25,6 +25,7 @@
 module.exports = {
 	librariesSidebar: [
 		'BackpackAPI',
+		'BowLib',
 		'ClassicUI',
 		'CoreUtility',
 		{
@@ -42,6 +43,9 @@ module.exports = {
 			]
 		},
 		'FtbQuests',
-		'InfiniteDepth'
+		'InfiniteDepth',
+		'Inventory',
+		'Timer',
+		'Translate'
 	]
 };
