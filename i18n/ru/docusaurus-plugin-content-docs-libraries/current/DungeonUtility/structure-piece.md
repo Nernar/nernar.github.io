@@ -1,110 +1,118 @@
 # Генерация структуры
 
-DefaultGenerationDescription - класс обеспечит качественную генерацию, которая создается очень просто
+*DefaultGenerationDescription* - класс, который обеспечит простую и качественную генерацию.
 
-:::note Какие проблемы решает генератор структур DungeonUtility?
+:::note Какие проблемы решает генератор структур Dungeon Utility?
 
-1. Частые появления структур, помимо прочего, структуры не смогут сгенерироваться друг в друге
-2. Обрезание части структур, структуры могли разделяться между чанками по разным причинам
+1. Частые появления структур, помимо прочего, структуры не смогут сгенерироваться друг в друге.
+2. Обрезание части структур: структуры могли разделяться между чанками по разным причинам.
 
 :::
 
 ## Генерация структур
 
-Начнем, пожалуй, сразу с примера:
-
 ```ts
 let examplePool = new StructurePool("example_pool");
 
-// Устанавливаем путь к папке со структурами, в данном случае папка structures в главной директории мода
-examplePool.setPathStructures(__dir__+"structures");
+// устанавливаем путь к папке со структурами, в данном случае папка structures в главной директории мода
+examplePool.setPathStructures(__dir__ + "structures");
 
-// Загружаем структуру 'test_structure.struct' из папки указаной выше, структура будет доступна по имени test_structure
+// загружаем структуру test_structure.struct из папки указаной выше, структура будет доступна по имени test_structure
 examplePool.upload("test_structure");
 
-// Добавляем событие StructureLoadOne, чтобы работать со структурой
+// добавляем событие StructureLoadOne, чтобы работать со структурами
 Callback.addCallback("StructureLoadOne", () => {
-    // Создаем DefaultGenerationDescription, даем ему структуру, которую будем генерировать с шансом 1 к 80 (примерно 1 структура на 80 чанков)
-    let example_generation = new DefaultGenerationDescription(examplePool.get("test_structure"), 80);
+    // создаем DefaultGenerationDescription, даем ему структуру, которую будем генерировать с шансом 1 к 80 (примерно 1 структура на 80 чанков)
+    let exampleGeneration = new DefaultGenerationDescription(examplePool.get("test_structure"), 80);
 
-    example_generation.setIdentifier("my_mod:test_structure");// Задаем уникальный индитификатор, для структуры
-    example_generation.setSurface(true, [VanillaBlockID.grass]);// Задаем блоки на которых будет спавниться структура
-    example_generation.setDistance(90, "my_mod_group");// Задаем минимальное расстояния между структурами my_mod_group
+    // задаем уникальный индитификатор для структуры
+    exampleGeneration.setIdentifier("my_mod:test_structure"); 
+    // задаем блоки на которых может появиться структура
+    exampleGeneration.setSurface(true, [VanillaBlockID.grass]); 
+    // задаем минимальное расстояние между структурами группы my_mod_group
+    exampleGeneration.setDistance(90, "my_mod_group"); 
 
-    // Регистрируем генерацию структур, по выше описаным параметрам
-    example_generation.register();
+    // регистрируем генерацию структур по только что описанным параметрам
+    exampleGeneration.register();
 });
 ```
 
 ### Разберем код
 
-Для регистрации генерации структуры используется класс DefaultGenerationDescription
-Он принимает структуру, которая будет генерироваться и шанс
+Для регистрации генерации структуры используется класс *DefaultGenerationDescription*. Он принимает структуру, которая будет генерироваться и шанс ее появления на один сгенерированный чанк.
 
-:::info
-В шансе спана указывается делитель для получения [**вероятности**](https://ru.wikipedia.org/wiki/Вероятность) спавна структуры
-:::
-Дальше мы устанавливаем уникальный индитификатор мода, это требуется для исправления половинчитых структур
-:::info
-Если ваша структура генерируется очень часто, не рекомендуется это делать
+:::tip
+
+В шансе спана указывается делитель для получения вероятности спавна структуры.
+
 :::
 
+Далее мы устанавливаем уникальный идентификатор мода, это необходимо для устранения разделения структур:
+
 ```ts
-example_generation.setIdentifier("my_mod:test_structure");
+exampleGeneration.setIdentifier("my_mod:test_structure");
 ```
 
-Затем мы установили поверхности на которых будет генерироваться структура, в где `true` — это переключатель между белым списком и черным, в примере белый список
+:::danger
+
+Если ваша структура генерируется очень часто, не рекомендуется указывать идентификатор мода. Это негативно скажется на производительности, поскольку во время генерации появится слишком много проверок.
+
+:::
+
+Затем мы установили поверхности на которых будет генерироваться структура, в где `true` — это переключатель между белым и черным списком (нужно ли использовать эти блоки или, наоборот, все кроме этих):
 
 ```ts
-example_generation.setSurface(true, [VanillaBlockID.grass]);
+exampleGeneration.setSurface(true, [VanillaBlockID.grass]);
 ```
 
-Дальше мы задали групу к которой принадлежит структура и минимальное растояние до ближайшей структуры данной группы(что-бы структуры не спавнились слишком часто)
+Теперь, мы задали группу к которой принадлежит структура, а также минимальное растояние до ближайшей структуры из данной группы (для того чтобы структуры не появлялись слишком часто, количество структур в группе не ограничено):
 
 ```ts
-example_generation.setDistance(90, "my_mod_group");
+exampleGeneration.setDistance(90, "my_mod_group");
 ```
 
-Ну и на последок мы зарегистрировали генерацию структуры
+И наконец, мы завершили регистрацию нашей структуры и добавили ее в генерацию:
 
 ```ts
-example_generation.register();
+exampleGeneration.register();
 ```
 
-## Пример с генерацией предметов
+## Пример с добавлением предметов
 
 ```ts
-// Помните, что имя генератора должно быть уникально!!!
+// помните, что имя генератора должно быть уникально
 ItemGeneration.newGenerator("example_generator");
 
-// Добавляем предметы
+// добавляем предметы в лут
 ItemGeneration.addItem("example_generator", VanillaItemID.iron_ingot, .5, {min: 1, max: 3});
 ItemGeneration.addItem("example_generator", VanillaItemID.diamond, .1, {min: 1, max: 1});
 
-// Создаем интеграцию с Recipe Viewer
+// создаем интеграцию с Recipe Viewer
 ItemGeneration.registerRecipeViewer("example_generator", "Title generator");
 
-
-// Создаем StructurePool, ОБРАТИТЕ ВНИМАНИЕ, что у каждого мода должно быть свое уникальное имя StructurePool!
+// создаем StructurePool; ОБРАТИТЕ ВНИМАНИЕ: у каждого мода должно быть свое уникальное имя StructurePool!
 let examplePool = new StructurePool("example_pool");
-// Устанавливаем путь к папке со структурами, в данном случае папка structures в главной директории мода
-examplePool.setPathStructures(__dir__+"structures");
-// Загружаем структуру 'test_structure.struct' из папки указаной выше, структура будет доступна по имени test_structure
+// устанавливаем путь к папке со структурами, в данном случае папка structures/ в главной директории мода
+examplePool.setPathStructures(__dir__ + "structures");
+// загружаем структуру test_structure.struct из папки указаной выше, структура будет доступна по имени test_structure
 examplePool.upload("test_structure");
 
-// Устанавливаем генерацию предметов в структуре test_structure
+// устанавливаем лут структуре test_structure
 examplePool.setGlobalPrototype("test_structure", Structure.getPrototypeDefault("example_generator"));
 
-// Добавляем событие StructureLoadOne, чтобы работать со структурой
+// добавляем событие StructureLoadOne, чтобы работать со структурой
 Callback.addCallback("StructureLoadOne", () => {
-    // Создаем DefaultGenerationDescription, даем ему структуру которую будем генерировать, с шансом 1 к 80(примерно 1 структура на 80 чанков)
-    let example_generation = new DefaultGenerationDescription(examplePool.get("test_structure"), 80);
+    // создаем DefaultGenerationDescription, даем ему структуру которую будем генерировать с шансом 1 к 80 (примерно 1 структура на 80 чанков)
+    let exampleGeneration = new DefaultGenerationDescription(examplePool.get("test_structure"), 80);
 
-    example_generation.setIdentifier("my_mod:test_structure");// Задаем уникальный индитификатор, для структуры
-    example_generation.setSurface(true, [VanillaBlockID.grass]);// Задаем блоки на которых будет спавниться структура
-    example_generation.setDistance(90, "my_mod_group");// Задаем минимальное расстояния между структурами my_mod_group
+    // задаем уникальный индитификатор для структуры
+    exampleGeneration.setIdentifier("my_mod:test_structure"); 
+    // задаем блоки на которых может появиться структура
+    exampleGeneration.setSurface(true, [VanillaBlockID.grass]); 
+    // задаем минимальное расстояние между структурами группы my_mod_group
+    exampleGeneration.setDistance(90, "my_mod_group"); 
 
-    //  Регистрируем генерацию структур, по раннее описанным параметрам
-    example_generation.register();
+    // регистрируем генерацию структур по только что описанным параметрам
+    exampleGeneration.register();
 });
 ```
