@@ -30,7 +30,9 @@
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "deploy-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/docs/intro --outputPDFFilename=innercore-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
-    "deploy-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/docs/intro --outputPDFFilename=innercore-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\""
+    "deploy-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/docs/intro --outputPDFFilename=innercore-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
+    "deploy-libraries-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
+    "deploy-libraries-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\""
   },
   "dependencies": {
     "@docusaurus/core": "^3.6.1",
