@@ -25,6 +25,7 @@
 module.exports = {
 	librariesSidebar: [
 		'BackpackAPI',
+		'BetterFoliage',
 		'BowLib',
 		'ClassicUI',
 		'CoreUtility',
