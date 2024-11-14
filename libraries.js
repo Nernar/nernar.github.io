@@ -49,6 +49,7 @@ module.exports = {
 		'RecipeViewer',
 		'Timer',
 		'Translate',
+		'TreeCapitator',
 		'VeinMiner'
 	]
 };
