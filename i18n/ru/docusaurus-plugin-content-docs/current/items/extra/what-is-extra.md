@@ -6,11 +6,9 @@
 
 Представим такую ситуацию. У вас есть магический кристалл, на котором вычерчены древние руны. Поскольку руны хранят информацию, нам нужно, чтобы разные кристаллы хранили в себе разные руны. Чтобы это реализовать, нам и понадобятся данные предметов.
 
-## Внесение данных
-
 Давайте попробуем создать механику присвоения случайных рун нашему магическому кристаллу. Но что нам для этого нужно? Нам нужно хранилище, куда будут помещены наши данные.
 
-### Класс ItemExtraData
+## Внесение данных
 
 ItemExtraData это то, в чём мы и будем хранить наши данные для последующей передачи в поле экстры.
 Создадим функцию, добавляющую в список текста наших рун, и список:
@@ -18,26 +16,26 @@ ItemExtraData это то, в чём мы и будем хранить наши 
 ```js
 const runeList = [];
 function addRune(text) {
-	runeList.push(text);
+    runeList.push(text);
 }
 ```
 
 Отлично, теперь мы имеем хранилище. Давайте зарегистрируем для нашего примера несколько текстов
 
 ```js
-addRune('magic');
-addRune('twilight');
-addRune('fire');
+addRune("magic");
+addRune("twilight");
+addRune("fire");
 ```
 
 Сделаем функцию, которая будет возвращать экземпляр класса ItemExtraData, содержащий случайную руну из списка;
 
 ```js
 function giveRandomRune() {
-	const index = Math.floor(Math.random() * runeList.length);
-	const extraData = new ItemExtraData();
-	extraData.putString('rune', runeList(index));
-	return extraData;
+    const index = Math.floor(Math.random() * runeList.length);
+    const extraData = new ItemExtraData();
+    extraData.putString("rune", runeList(index));
+    return extraData;
 }
 ```
 
@@ -45,10 +43,10 @@ function giveRandomRune() {
 
 ```js
 const extraDataOld = new ItemExtraData();
-extraDataOld.putString('old_rune', 'castle');
+extraDataOld.putString("old_rune", "castle");
 
 const extraDataNew = new ItemExtraData(extraDataOld);
-extraDataNew.putString('new_rune', 'cave');
+extraDataNew.putString("new_rune", "cave");
 ```
 
 Что такое putString? Дело в том, что ItemExtraData реализует способ передачи и получения данных класса CompoundTag.
@@ -73,78 +71,72 @@ extraData.getLong("long_key", 2147483648); // вернется большое ч
 
 ```ts
 interface ItemInstance {
-	id: int;
-	count: int;
-	data: int;
-	extra?: ItemExtraData;
+    id: int;
+    count: int;
+    data: int;
+    extra?: ItemExtraData;
 }
 ```
 
 Как мы видим, этот тип хранит в себе идентификатор предмета, его количество, прочность, и данные предмета, если они есть.
 Тоесть это описание того, какие данные хранят в себе предметы.
 А поскольку мы можем манипулировать этими данными, мы можем использовать любой метод для выдачи предмета, в который можно будет как раз таки передать наши данные.
+
 Давайте реализуем присвоение случайной руны нашему кристаллу после клика им о камень:
 
 ```js
 Item.registerUseFunctionForID(
-	ItemID['magic_crystal'],
-	function (coords, item, block, player) {
-		if (
-			(block.id === VanillaBlockID.stone && !item.extra) ||
-			(item.extra && item.extra.getString('rune') === null)
-		) {
-			Entity.setCarriedItem(item.id, item.count, item.data, giveRandomRune());
-		}
-	}
+    ItemID.magic_crystal,
+    function (coords, item, block, player) {
+        if (
+            block.id == VanillaBlockID.stone &&
+            (!item.extra || (item.extra && !item.extra.getString("rune")))
+        ) {
+            Entity.setCarriedItem(player, item.id, item.count, item.data, giveRandomRune());
+        }
+    }
 );
 ```
 
 Теперь, при клике кристаллом по камню, кристаллу присвоится случайная руна, если руна не была присвоена ранее.
 
-## Получение
+## Получение данных
 
 Мы присвоили кристаллу руну, но что, если нам понадобится получить содержимое этой руны?
 В таком случае, в классе предусмотрены методы по получению данных в зависимости от типа:
 
 ```js
 const extraData = new ItemExtraData();
-extraData.getInt('int_key', 10); //мы получаем число, и если его нет, то получим 10
-extraData.getString('string_key', 'random_rune'); //мы получаем строку, если её нет, то получим "random_rune"
-extraData.getFloat('float_key', 1.1); //мы получаем число с десятичной частью, если его нет, то получим 1.1
-extraData.getBoolean('boolean_key', true); //мы получаем булевое значение, если его нет, то получим true
-extraData.getObject('object_key', {fruit: 'apple'}); //мы получаем объект с данными, если его нет, то получим {fruit: "apple"}
-extraData.getLong('long_key', 10000); //мы получаем число вида long, если его нет, то получим 10000
+extraData.getInt("int_key", 10); //мы получаем число, и если его нет, то получим 10
+extraData.getString("string_key", "random_rune"); //мы получаем строку, если её нет, то получим "random_rune"
+extraData.getFloat("float_key", 1.1); //мы получаем число с десятичной частью, если его нет, то получим 1.1
+extraData.getBoolean("boolean_key", true); //мы получаем булевое значение, если его нет, то получим true
+extraData.getObject("object_key", { fruit: "apple" }); //мы получаем объект с данными, если его нет, то получим {fruit: "apple"}
+extraData.getLong("long_key", 10000); //мы получаем число вида long, если его нет, то получим 10000
 ```
 
 Важно заметить, что второй аргумент необязателен, и если его не будет и значения ключа тоже, то вернётся null.
 
-> Давайте улучшим нашу функцию, и если экстра уже будет присутствовать, то мы будем выводить значение в чат.
->
-> ```js
-> Item.registerUseFunctionForID(
-> 	ItemID['magic_crystal'],
-> 	function (coords, item, block, player) {
-> 		if (block.id === VanillaBlockID.stone) {
-> 			if (
-> 				!item.extra ||
-> 				(item.extra && item.extra.getString('rune') === null)
-> 			) {
-> 				Entity.setCarriedItem(
-> 					item.id,
-> 					item.count,
-> 					item.data,
-> 					giveRandomRune()
-> 				);
-> 			} else {
-> 				Game.message(
-> 					'Rune name: ' + item.extra && item.extra.getString('rune')
-> 				);
-> 			}
-> 		}
-> 	}
-> );
-> ```
+Давайте улучшим нашу функцию, и если экстра будет отсутствовать, выведем значение в чат.
 
+```js
+Item.registerUseFunctionForID(
+    ItemID.magic_crystal,
+    function (coords, item, block, player) {
+        if (block.id == VanillaBlockID.stone) {
+            if (
+                !item.extra ||
+                (item.extra && !item.extra.getString("rune"))
+            ) {
+                Entity.setCarriedItem(player, item.id, item.count, item.data, giveRandomRune());
+            } else {
+                Game.message(
+                    "Название руны: " + (item.extra ? item.extra.getString("rune") : "неизвестно")
+                );
+            }
+        }
+    }
+);
 ```
-## Использование тегов
-```
+
+<!-- TODO: Использование тегов -->
