@@ -53,7 +53,7 @@ Callback.addCallback("StructureLoadOne", () => {
 example_generation.setIdentifier("my_mod:test_structure");
 ```
 
-Затем мы установили поверхности на которых будет генерироваться структура, в где true - это переключатель между белым списком и черным, в примере белый список
+Затем мы установили поверхности на которых будет генерироваться структура, в где `true` — это переключатель между белым списком и черным, в примере белый список
 
 ```ts
 example_generation.setSurface(true, [VanillaBlockID.grass]);
