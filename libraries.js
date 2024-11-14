@@ -46,6 +46,7 @@ module.exports = {
 		'FtbQuests',
 		'InfiniteDepth',
 		'Inventory',
+		'RecipeViewer',
 		'Timer',
 		'Translate'
 	]
