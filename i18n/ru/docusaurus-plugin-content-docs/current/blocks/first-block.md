@@ -181,7 +181,17 @@ Block.createBlock("oxidized_log", [{
 }], "opaque");
 ```
 
-Теперь помимо основной, вертикальной вариации бревна, существует еще и две горизонтальных, бревна в игре могут быть размещены набок. Мы зарегистрируем автоматический разворот в следующих статьях.
+```mdx-code-block
+import RotatableMinecraftBlock from "@site/src/components/RotatableMinecraftBlock"
+
+<RotatableMinecraftBlock bottomTexture='log_oxidized_top_0' northTexture='log_oxidized_side_0' />
+<RotatableMinecraftBlock bottomTexture='log_oxidized_side_1' westTexture='log_oxidized_top_0' />
+<RotatableMinecraftBlock bottomTexture='log_oxidized_side_1' northTexture='log_oxidized_top_0' westTexture='log_oxidized_side_1' />
+```
+
+Теперь помимо основной, вертикальной вариации бревна, существует еще и две горизонтальных.
+
+Мы зарегистрируем автоматический разворот в следующих статьях, чтобы бревна в игре могли быть размещены набок.
 
 ### Дополнительные свойства
 
