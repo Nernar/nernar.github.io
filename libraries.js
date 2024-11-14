@@ -46,6 +46,20 @@ module.exports = {
 		'FtbQuests',
 		'InfiniteDepth',
 		'Inventory',
+		{
+			type: 'category',
+			label: 'Kernel Extension',
+			link: {
+				type: 'doc',
+				id: 'KernelExtension/readme'
+			},
+			items: [
+				'KernelExtension/blocks-and-items-in-java',
+				'KernelExtension/kex-config',
+				'KernelExtension/json-models',
+				'KernelExtension/custom-block-entities'
+			]
+		},
 		'RecipeViewer',
 		'Timer',
 		'Translate',
