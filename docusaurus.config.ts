@@ -19,17 +19,19 @@
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
 */
-// @ts-check
-
-const prismRenderer = require('prism-react-renderer');
-const logger = require('@docusaurus/logger');
+import { themes as prismThemes } from 'prism-react-renderer';
+import { Config } from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+import type * as Docs from '@docusaurus/plugin-content-docs';
+import type * as Redirects from '@docusaurus/plugin-client-redirects';
 
 const baseUrl = process.env.BASE_URL ?? '/';
+const configUrl = 'https://nernar.github.io';
 
-const config = /** @type {import('@docusaurus/types').Config} */ ({
+export default {
 	title: 'Inner Core Docs',
 	tagline: 'Inner Core, Core Engine and Horizon documentation',
-	url: 'https://nernar.github.io',
+	url: configUrl,
 	baseUrl,
 	onBrokenLinks: 'warn',
 	onBrokenMarkdownLinks: 'warn',
@@ -39,7 +41,7 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 		mermaid: true
 	},
 	themes: ['@docusaurus/theme-mermaid'],
-	staticDirectories: ['static', 'api/declarations'],
+	staticDirectories: ['static'],
 
 	organizationName: 'nernar',
 	projectName: 'nernar.github.io',
@@ -54,10 +56,9 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 	presets: [
 		[
 			'@docusaurus/preset-classic',
-			/** @type {import('@docusaurus/preset-classic').Options} */
-			({
+			{
 				docs: {
-					sidebarPath: require.resolve('./sidebars.js'),
+					sidebarPath: require.resolve('./sidebars.ts'),
 					breadcrumbs: false,
 					editLocalizedFiles: true,
 					editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
@@ -67,28 +68,38 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 				theme: {
 					customCss: require.resolve('./src/css/custom.css')
 				}
-			})
+			} satisfies Preset.Options
 		]
 	],
 
 	plugins: [
 		[
 			'@docusaurus/plugin-content-docs',
-			/** @type {import('@docusaurus/plugin-content-docs').Options} */
-			({
+			{
 				id: 'libraries',
 				path: 'libraries',
 				routeBasePath: 'libraries',
-				sidebarPath: require.resolve('./libraries.js'),
+				sidebarPath: require.resolve('./libraries.ts'),
 				breadcrumbs: false,
 				editLocalizedFiles: true,
 				editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
 				showLastUpdateTime: true
-			})
+			} satisfies Docs.Options
+		],
+		[
+			'@docusaurus/plugin-client-redirects',
+			{
+				redirects: [
+					{
+						from: ['/api', '/ru/api'],
+						to: `${configUrl}/api`
+					}
+				]
+			} satisfies Redirects.Options
 		]
 	],
 
-	themeConfig: /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
+	themeConfig: {
 		metadata: [
 			{
 				name: 'keywords',
@@ -116,6 +127,11 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 					position: 'left',
 					to: 'docs',
 					label: 'Docs'
+				},
+				{
+					position: 'left',
+					href: `${configUrl}/api/index.html`,
+					label: 'API'
 				},
 				{
 					position: 'left',
@@ -189,8 +205,9 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 			copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
 		},
 		prism: {
-			theme: prismRenderer.themes.vsLight,
-			darkTheme: prismRenderer.themes.vsDark,
+			theme: prismThemes.vsLight,
+			darkTheme: prismThemes.vsDark,
+			additionalLanguages: ['c', 'java'],
 			magicComments: [
 				{
 					className: 'theme-code-block-highlighted-line',
@@ -209,24 +226,5 @@ const config = /** @type {import('@docusaurus/types').Config} */ ({
 				}
 			]
 		}
-	})
-});
-
-const themeConfig = 
-	/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-	(config.themeConfig);
-if (themeConfig.navbar && themeConfig.navbar.items) {
-	const partial = themeConfig.navbar.items.shift();
-	themeConfig.navbar.items.unshift({
-		position: 'left',
-		href: `${config.url}/api/index.html`,
-		label: 'API'
-	});
-	if (partial) {
-		themeConfig.navbar.items.unshift(partial);
-	}
-} else {
-	logger.default.error('Unexpected `config.themeConfig.navbar?.items` is undefined!');
-}
-
-module.exports = config;
+	} satisfies Preset.ThemeConfig
+} satisfies Config;

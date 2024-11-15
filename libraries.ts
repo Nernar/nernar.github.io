@@ -19,10 +19,10 @@
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
 */
-// @ts-check
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-module.exports = {
+import type * as Docs from '@docusaurus/plugin-content-docs';
+
+export default {
 	librariesSidebar: [
 		'BackpackAPI',
 		'BetterFoliage',
@@ -66,4 +66,4 @@ module.exports = {
 		'TreeCapitator',
 		'VeinMiner'
 	]
-};
+} satisfies Docs.SidebarsConfig;

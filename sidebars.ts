@@ -19,10 +19,9 @@
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
 */
-// @ts-check
+import type * as Docs from '@docusaurus/plugin-content-docs';
 
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-module.exports = {
+export default {
 	tutorialSidebar: [
 		{
 			type: 'doc',
@@ -241,4 +240,4 @@ module.exports = {
 			id: 'future-steps'
 		}
 	]
-};
+} satisfies Docs.SidebarsConfig;
