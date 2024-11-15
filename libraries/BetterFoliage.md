@@ -10,7 +10,7 @@ To integrate better foliage with your mod, you need 2 things: generate leaves te
 
 To make preloader generate leaves textures, create file with extension *.rescfg* in your resources and add all leaves textures:
 
-```jsonc
+```js
 {
     "better-foliage": {
         "leaves": [

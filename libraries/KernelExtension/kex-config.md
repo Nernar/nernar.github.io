@@ -6,7 +6,7 @@ Starting from KernelExtension `RELEASE 4.0`, you can improve your KEX user exper
 
 ### _**kex-config.json**_
 
-```jsonc
+```js
 {
     "resources": [ "kex-res/" ] // KEX resource directory path relative to your mod's directory path
 }

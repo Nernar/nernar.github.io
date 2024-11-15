@@ -32,7 +32,7 @@ poolInstance.setPathStructures(__dir__ + "structures");
 poolInstance.upload(/* относительный путь файла в папке структур, например example.struct */, /* формат структуры, по умолчанию используется DungeonUtility */);
 ```
 
-:::warn
+:::warning
 
 Загрузка структур происходит НЕ сразу после вызова `upload`. Событие *StructureLoadOne* вызывается после загрузки структур, для работы со структурами необходимо использовать именно его.
 

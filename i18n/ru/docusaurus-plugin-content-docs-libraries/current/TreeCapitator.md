@@ -33,7 +33,7 @@ TreeCapitator.getTreeData({ id: BlockID.rubber_tree_log, data: 0 });
 
 Этой функцией крайне удобно пользоваться в калбеках, поскольку передаваемые блоки в них уже содержат все нужные поля. Функция возвращает массив с блоками древесины, листвы и указанный радиус листвы, либо значение по умолчанию:
 
-```jsonc
+```js
 {
     log: [[BlockID.rubber_tree_log, -1], [BlockID.rubber_tree_log_latex, -1]],
     leaves: [[BlockID.rubber_tree_leaves, -1]],

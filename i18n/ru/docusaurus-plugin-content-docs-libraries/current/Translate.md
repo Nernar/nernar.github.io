@@ -32,7 +32,7 @@ Translate("Test")
 
 ## Пример из файла (*translations.json*)
 
-```jsonc
+```js
 // assets/translations.json
 {
     "Item": { // Default

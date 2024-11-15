@@ -409,7 +409,7 @@ Following updates contain fixes for multiplayer update.
 
 This update adds experimental LAN multiplayer support, allowing players on same Wi-Fi and same set of mods play together.
 
-:::caution All mods need to be updated to support multiplayer
+:::warning All mods need to be updated to support multiplayer
 
 Playing with mods without multiplayer support (warning will appear) might cause undefined behaviour or even crash, so do it at your own risk.
 
