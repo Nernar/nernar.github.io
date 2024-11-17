@@ -23,7 +23,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
-import type * as Redirects from '@docusaurus/plugin-client-redirects';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 const configUrl = 'https://nernar.github.io';
@@ -87,15 +86,16 @@ export default {
 			} satisfies Docs.Options
 		],
 		[
-			'@docusaurus/plugin-client-redirects',
+			'docusaurus-plugin-typedoc-api',
 			{
-				redirects: [
+				projectRoot: 'api',
+				packages: [
 					{
-						from: ['/api', '/ru/api'],
-						to: `${configUrl}/api`
+						path: 'core-engine',
+						entry: '.'
 					}
 				]
-			} satisfies Redirects.Options
+			}
 		]
 	],
 
@@ -130,7 +130,8 @@ export default {
 				},
 				{
 					position: 'left',
-					href: `${configUrl}/api/index.html`,
+					// href: `${configUrl}/api/index.html`,
+					to: 'api',
 					label: 'API'
 				},
 				{
