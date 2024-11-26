@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Production
+docs/
+
+# Generated files
+/declarations/core-engine.d.ts
+/.wireit

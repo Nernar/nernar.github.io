@@ -1,0 +1,22 @@
+name: Review pull request
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-deploy:
+    name: Review deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: google/wireit@setup-github-actions-caching/v1
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Build documentation
+        run: npm run typedoc
