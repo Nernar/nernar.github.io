@@ -1,0 +1,99 @@
+{
+  "name": "innercore-api",
+  "version": "2.4.0b122",
+  "author": "Nernar",
+  "description": "Inner Core API Reference",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nernar/api.git#master"
+  },
+  "bugs": {
+    "url": "https://github.com/Nernar/api/issues"
+  },
+  "homepage": "https://t.me/ntInsideChat",
+  "license": "GPL-3.0-or-later",
+  "workspaces": [
+    "./typedoc-codicon-theme"
+  ],
+  "private": true,
+  "scripts": {
+    "prebuild-theme": "wireit",
+    "prebuild-declarations": "wireit",
+    "typedoc-core": "wireit",
+    "typedoc-libraries": "wireit",
+    "typedoc": "wireit"
+  },
+  "wireit": {
+    "prebuild-theme": {
+      "command": "npm run --prefix typedoc-codicon-theme build",
+      "files": [
+        "typedoc-codicon-theme/**/*"
+      ],
+      "output": [
+        "typedoc-codicon-theme/dist"
+      ]
+    },
+    "prebuild-declarations": {
+      "command": "npx dts-generator --project . --out declarations/core-engine.d.ts --extern ./android.d.ts --exclude **/node_modules/**/*.d.ts --exclude **/declarations/android.d.ts",
+      "files": [
+        "tsconfig.json",
+        "core-engine/**/*.d.ts"
+      ],
+      "output": [
+        "declarations/core-engine.d.ts"
+      ]
+    },
+    "typedoc-core": {
+      "command": "npx typedoc --out docs --tsconfig tsconfig.json core-engine/**/*.d.ts",
+      "files": [
+        "typedoc.json",
+        "tsconfig.json",
+        "core-engine/**/*.d.ts",
+        "typedoc-codicon-theme/**/*"
+      ],
+      "dependencies": [
+        "prebuild-theme",
+        "prebuild-declarations"
+      ],
+      "output": [
+        "docs"
+      ]
+    },
+    "typedoc-libraries": {
+      "command": "npx typedoc --out docs/libraries --options libraries/typedoc.json --tsconfig libraries/tsconfig.json libraries/**/*.d.ts",
+      "files": [
+        "typedoc.json",
+        "libraries/typedoc.json",
+        "libraries/tsconfig.json",
+        "libraries/**/*.d.ts",
+        "declarations/core-engine.d.ts",
+        "typedoc-codicon-theme/**/*"
+      ],
+      "dependencies": [
+        "prebuild-theme",
+        "prebuild-declarations"
+      ],
+      "output": [
+        "docs/libraries"
+      ]
+    },
+    "typedoc": {
+      "dependencies": [
+        "typedoc-core",
+        "typedoc-libraries"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/dts-generator": "^2.1.11",
+    "dts-generator": "^3.0.0",
+    "glob": "^10.4.5",
+    "tsx": "^4.19.2",
+    "typedoc-plugin-merge-modules": "^6.0.3",
+    "wireit": "^0.14.9"
+  },
+  "dependencies": {
+    "html-to-react": "^1.7.0",
+    "typedoc": "^0.26.11"
+  }
+}
