@@ -1,6 +1,3 @@
 {
-	"extends": "../typedoc.json",
-	"name": "Core Engine Libraries",
-	"includeVersion": false,
-	"mergeModulesMergeMode": "module"
+	"name": "Libraries"
 }

@@ -94,6 +94,10 @@ export default {
 					{
 						path: 'core-engine',
 						entry: '.'
+					},
+					{
+						path: 'libraries',
+						entry: '.'
 					}
 				],
 				typedocOptions: {
