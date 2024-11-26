@@ -644,7 +644,7 @@ declare namespace Entity {
      * be 0 in all cases
      * @param maxRange if specified, determines search radius
      * @remarks
-     * Overheating method, capture entities by {@link BlockSource.fetchEntitiesInAABB} \
+     * Overheating method, capture entities by {@link BlockSource.fetchEntitiesInAABB}
      * and pass over them by checking radius between coords and entity.
      */
     function findNearest(coords: Vector, type?: number, maxRange?: number): Nullable<number>;
@@ -655,7 +655,7 @@ declare namespace Entity {
      * @param maxRange determines search radius
      * @param type entity type ID
      * @remarks
-     * Overheating method, capture entities by {@link BlockSource.fetchEntitiesInAABB} \
+     * Overheating method, capture entities by {@link BlockSource.fetchEntitiesInAABB}
      * and pass over them by checking radius between coords and entity.
      */
     function getAllInRange(coords: Vector, maxRange: number, type?: number): number[];

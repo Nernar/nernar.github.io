@@ -89,12 +89,36 @@ export default {
 			'docusaurus-plugin-typedoc-api',
 			{
 				projectRoot: 'api',
+				packageJsonName: 'typedoc.json',
 				packages: [
 					{
 						path: 'core-engine',
 						entry: '.'
 					}
-				]
+				],
+				typedocOptions: {
+					readme: 'none',
+					intentionallyNotExported: [
+						'native.Array'
+					],
+					excludeExternals: false,
+					excludeInternal: false,
+					excludePrivate: false,
+					excludeProtected: false,
+					visibilityFilters: {
+						'inherited': true,
+						'protected': true,
+						'@internal': false,
+						'@deprecated': true
+					},
+					plugin: [
+						require.resolve('./api/typedoc-codicon-theme'),
+						// 'typedoc-plugin-merge-modules'
+						// TODO: Settings like in @mxssfd/typedoc-theme.
+						// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
+						// TODO: Page groups like in typedoc-github-theme.
+					]
+				}
 			}
 		]
 	],
