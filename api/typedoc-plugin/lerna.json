@@ -1,9 +1,0 @@
-{
-  "version": "independent",
-  "npmClient": "yarn",
-  "command": {
-    "publish": {
-      "message": "Release [ci skip]"
-    }
-  }
-}
