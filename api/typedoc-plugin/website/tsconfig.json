@@ -1,0 +1,13 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "exclude": [
+    "dts",
+    "tests"
+  ],
+  "include": [
+    "*.ts",
+    "src/**/*",
+    "types/**/*"
+  ],
+  "references": []
+}
