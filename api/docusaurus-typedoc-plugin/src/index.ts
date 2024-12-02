@@ -2,8 +2,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import type { Options as MDXLoaderOptions } from '@docusaurus/mdx-loader';
-import type { PropVersionDocs, PropVersionMetadata } from '@docusaurus/plugin-content-docs';
+import type { Options as MDXLoaderOptions, MDXPlugin } from '@docusaurus/mdx-loader';
+import type { PropVersionDocs, PropVersionMetadata, VersionOptions } from '@docusaurus/plugin-content-docs';
 import { CURRENT_VERSION_NAME } from '@docusaurus/plugin-content-docs/server';
 import type { LoadContext, Plugin, RouteConfig } from '@docusaurus/types';
 import { DEFAULT_PLUGIN_ID, normalizeUrl } from '@docusaurus/utils';
@@ -65,6 +65,13 @@ async function importFile<T>(file: string): Promise<T> {
 
 	return data as unknown as T;
 }
+
+export interface Options extends Omit<DocusaurusPluginTypeDocApiOptions, 'remarkPlugins' | 'rehypePlugins' | 'versions'> {
+	remarkPlugins?: MDXPlugin[];
+	rehypePlugins?: MDXPlugin[];
+	/** Independent customization of each version's properties. */
+    versions?: {[versionName: string]: VersionOptions};
+};
 
 export default function typedocApiPlugin(
 	context: LoadContext,
@@ -128,7 +135,7 @@ export default function typedocApiPlugin(
 	});
 
 	return {
-		name: 'docusaurus-plugin-typedoc-api',
+		name: 'docusaurus-typedoc-plugin',
 
 		extendCli(cli) {
 			const command = isDefaultPluginId ? 'api:version' : `api:version:${pluginId}`;
