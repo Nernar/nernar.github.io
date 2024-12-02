@@ -23,8 +23,8 @@
     "start-ru": "docusaurus start --locale ru --no-open --no-minify",
     "build-docs": "docusaurus build",
     "build-docs-ci": "node --max-old-space-size=6144 ./node_modules/.bin/docusaurus build",
-    "build": "npm run prebuild-theme && npm run prebuild-declarations && npm run build-docs",
-    "build-ci": "npm run prebuild-theme && npm run prebuild-declarations && npm run build-docs-ci",
+    "build": "npm run prebuild-plugin && npm run prebuild-declarations && npm run build-docs",
+    "build-ci": "npm run prebuild-plugin && npm run prebuild-declarations && npm run build-docs-ci",
     "serve": "docusaurus serve --no-open",
     "build-serve": "npm run build && npm run serve",
     "write-translations": "docusaurus write-translations --locale ru",
@@ -32,7 +32,7 @@
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "prebuild-declarations": "npx dts-generator --project api --out api/declarations/core-engine.d.ts --extern ./android.d.ts --exclude **/node_modules/**/*.d.ts --exclude **/declarations/android.d.ts",
-    "prebuild-theme": "npm run --prefix api/typedoc-codicon-theme build",
+    "prebuild-plugin": "npm run --prefix api/docusaurus-typedoc-plugin build",
     "deploy-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/docs/intro --outputPDFFilename=innercore-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
     "deploy-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/docs/intro --outputPDFFilename=innercore-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
     "deploy-libraries-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
@@ -47,8 +47,7 @@
     "fflate": "^0.8.2",
     "mermaid": "^11.4.1",
     "react": "^18.3.1",
-    "tsx": "^4.19.2",
-    "typedoc": "^0.25.13"
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.3",
@@ -57,7 +56,6 @@
     "@types/dts-generator": "^2.1.11",
     "@types/react": "^18.3.12",
     "commander": "^12.1.0",
-    "docusaurus-plugin-typedoc-api": "^4.4.0",
     "dts-generator": "^3.0.0",
     "puppeteer": "^23.9.0",
     "puppeteer-autoscroll-down": "^2.0.0"

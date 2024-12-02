@@ -23,6 +23,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
+import type * as Typedoc from './api/docusaurus-typedoc-plugin';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 const configUrl = 'https://nernar.github.io';
@@ -86,7 +87,8 @@ export default {
 			} satisfies Docs.Options
 		],
 		[
-			'docusaurus-plugin-typedoc-api',
+			// No "exports" main defined in .\api\docusaurus-typedoc-plugin\node_modules\@shikijs\vscode-textmate\package.json
+			'./api/docusaurus-typedoc-plugin',
 			{
 				projectRoot: 'api',
 				packageJsonName: 'typedoc.json',
@@ -95,10 +97,10 @@ export default {
 						path: 'core-engine',
 						entry: '.'
 					},
-					{
-						path: 'libraries',
-						entry: '.'
-					}
+					// {
+					// 	path: 'libraries',
+					// 	entry: '.'
+					// }
 				],
 				typedocOptions: {
 					readme: 'none',
@@ -114,16 +116,15 @@ export default {
 						'protected': true,
 						'@internal': false,
 						'@deprecated': true
-					},
-					plugin: [
-						require.resolve('./api/typedoc-codicon-theme'),
+					}
+					// plugin: [
 						// 'typedoc-plugin-merge-modules'
 						// TODO: Settings like in @mxssfd/typedoc-theme.
 						// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
 						// TODO: Page groups like in typedoc-github-theme.
-					]
+					// ]
 				}
-			}
+			} satisfies Typedoc.Options
 		]
 	],
 
