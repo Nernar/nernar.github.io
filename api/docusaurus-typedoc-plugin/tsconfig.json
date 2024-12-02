@@ -1,7 +1,39 @@
 {
   "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    // Emit
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "./lib",
+    // Utility libraries will have source maps on, but plugins will not.
+    "declarationMap": false,
+    "sourceMap": false,
+    "jsx": "react-jsx",
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    // Strict Type-Checking Options
+    "allowUnreachableCode": false,
+    // Too hard to turn on
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    // `process.env` is usually accessed as property
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": true,
+    // Handled by ESLint
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "importsNotUsedAsValues": "remove",
+    // Disallow inconsistently-cased references to the same file
+    "forceConsistentCasingInFileNames": true
+  },
   "include": [
     "src/**/*",
     "types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/lib/**/*"
   ]
 }
