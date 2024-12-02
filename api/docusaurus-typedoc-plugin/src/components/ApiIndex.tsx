@@ -7,7 +7,6 @@ import type { Props as DocItemProps } from '@theme/DocItem';
 import Heading from '@theme/Heading';
 import type { ApiOptions, PackageReflectionGroup } from '../types';
 import { removeScopes } from '../utils/links';
-import { Footer } from './Footer';
 import { VersionBanner } from './VersionBanner';
 
 export interface ApiIndexProps extends Pick<DocItemProps, 'route'> {
@@ -101,8 +100,6 @@ export default function ApiIndex({ options, packages, history }: ApiIndexProps) 
 								</div>
 							</section>
 						</div>
-
-						<Footer />
 					</article>
 				</div>
 			</div>
