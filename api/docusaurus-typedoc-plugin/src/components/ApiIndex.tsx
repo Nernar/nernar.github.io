@@ -4,7 +4,7 @@ import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import type { GlobalVersion } from '@docusaurus/plugin-content-docs/client';
 import { useDocsPreferredVersion, useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import type { Props as DocItemProps } from '@theme/DocItem';
-import Heading from '@theme/Heading';
+import Heading from '@theme-init/Heading';
 import type { ApiOptions, PackageReflectionGroup } from '../types';
 import { removeScopes } from '../utils/links';
 import { VersionBanner } from './VersionBanner';
