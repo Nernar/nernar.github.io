@@ -1,4 +1,4 @@
-import type { JSONOutput, TypeDocOptions } from 'typedoc';
+import type { JSONOutput, ReflectionId, TypeDocOptions } from 'typedoc';
 import type { MDXPlugin } from '@docusaurus/mdx-loader';
 import type {
 	PropSidebarItem,
@@ -121,11 +121,11 @@ export interface PackageReflectionGroup {
 }
 
 export interface ApiMetadata {
-	id: number;
+	id: ReflectionId;
 	name: string;
 	permalink: string;
-	previousId?: number;
-	nextId?: number;
+	previousId?: ReflectionId;
+	nextId?: ReflectionId;
 }
 
 // TYPEDOC COMPAT
@@ -133,7 +133,7 @@ export interface ApiMetadata {
 export interface TSDReflection extends Omit<JSONOutput.Reflection, 'signatures'>, ApiMetadata {
 	signatures: TSDSignatureReflection[];
 	// Added by us for convenience
-	parentId?: number;
+	parentId?: ReflectionId;
 }
 
 export interface TSDDeclarationReflection
@@ -143,7 +143,7 @@ export interface TSDDeclarationReflection
 	signatures: TSDSignatureReflection[];
 }
 
-export type TSDDeclarationReflectionMap = Record<number, TSDDeclarationReflection>;
+export type TSDDeclarationReflectionMap = Record<ReflectionId, TSDDeclarationReflection>;
 
 export interface TSDSignatureReflection extends JSONOutput.SignatureReflection {
 	// declaration: TSDDeclarationReflection;
