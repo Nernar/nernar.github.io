@@ -13,9 +13,6 @@
   "homepage": "https://t.me/ntInsideChat",
   "license": "GPL-3.0-or-later",
   "private": true,
-  "workspaces": [
-    "./api/typedoc-codicon-theme"
-  ],
   "browser": {
     "child_process": false,
     "fs": false,
