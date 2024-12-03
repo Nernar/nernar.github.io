@@ -28,7 +28,6 @@ const KIND_ICONS: Record<ReflectionKind, string> = {
 	1_048_576: 'symbol-field', // SetSignature
 	2_097_152: 'symbol-parameter', // TypeAlias
 	4_194_304: 'references', // Reference
-	8_388_608: 'book', // Document
 };
 
 export function getKindIcon(kind: ReflectionKind, name: string): string {

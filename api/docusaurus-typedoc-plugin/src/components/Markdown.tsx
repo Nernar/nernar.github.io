@@ -3,9 +3,9 @@
 import { Fragment, useState } from 'react';
 import { marked, type Tokens } from 'marked';
 import { markedSmartypants } from 'marked-smartypants';
-import { useDocsData , useDocsVersion } from '@docusaurus/plugin-content-docs/client';
-import CodeBlock from '@theme-init/CodeBlock';
-import MDX from '@theme-init/MDXComponents';
+import { useDocsData, useDocsVersion } from '@docusaurus/plugin-content-docs/client';
+import CodeBlock from '@theme/CodeBlock';
+import MDX from '@theme/MDXComponents';
 import { useReflectionMap } from '../hooks/useReflectionMap';
 import { replaceLinkTokens } from '../utils/markdown';
 

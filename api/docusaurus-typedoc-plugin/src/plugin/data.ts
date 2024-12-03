@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import * as TypeDoc from 'typedoc';
-import { type InlineTagDisplayPart, type JSONOutput, ReflectionId, ReflectionKind } from 'typedoc'
+import { type InlineTagDisplayPart, type JSONOutput, ReflectionKind } from 'typedoc'
 import ts from 'typescript';
 import { normalizeUrl } from '@docusaurus/utils';
 import type {
@@ -113,7 +113,7 @@ export function createReflectionMap(
 	// eslint-disable-next-line complexity
 	items.forEach((item) => {
 		// Add @reference categories to reflection.
-		const referenceCategories: Record<string, { title: string; children: ReflectionId[] }> = {};
+		const referenceCategories: Record<string, { title: string; children: number[] }> = {};
 		for (const tag of item.comment?.blockTags ?? []) {
 			if (tag.tag === '@reference' && tag.content.length >= 2 && tag.content[0].kind === 'text') {
 				const categoryName = tag.content[0].text.trim();

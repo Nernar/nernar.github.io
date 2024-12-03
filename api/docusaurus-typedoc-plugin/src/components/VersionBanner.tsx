@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import Link from '@docusaurus/Link';
-import { useDocsPreferredVersion,useDocsVersion, useDocVersionSuggestions } from '@docusaurus/plugin-content-docs/client';
+import { useDocsPreferredVersion, useDocsVersion, useDocVersionSuggestions } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 
 export function VersionBanner(): JSX.Element | null {

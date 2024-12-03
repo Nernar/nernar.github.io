@@ -6,12 +6,12 @@ import type { PropNavigation } from '@docusaurus/plugin-content-docs';
 import { ThemeClassNames, useWindowSize } from '@docusaurus/theme-common';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import type { Props as DocItemProps } from '@theme/DocItem';
-import DocPaginator from '@theme-init/DocPaginator';
-import DocVersionBadge from '@theme-init/DocVersionBadge';
-import Heading from '@theme-init/Heading';
-import MDXContent from '@theme-init/MDXContent';
-import TOC from '@theme-init/TOC';
-import TOCCollapsible from '@theme-init/TOCCollapsible';
+import DocPaginator from '@theme/DocPaginator';
+import DocVersionBadge from '@theme/DocVersionBadge';
+import Heading from '@theme/Heading';
+import MDXContent from '@theme/MDXContent';
+import TOC from '@theme/TOC';
+import TOCCollapsible from '@theme/TOCCollapsible';
 import { useBreadcrumbs } from '../hooks/useBreadcrumbs';
 import type { TOCItem } from '../types';
 import ApiOptionsLayout from './ApiOptionsLayout'

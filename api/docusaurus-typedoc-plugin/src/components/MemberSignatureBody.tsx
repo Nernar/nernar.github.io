@@ -128,7 +128,7 @@ export function MemberSignatureBody({ hideSources, sig }: MemberSignatureBodyPro
 								{param.type?.type === 'union' && (
 									(param.type as unknown as Models.UnionType).types.filter(
 										(unionType) => unionType.type === 'reflection').map(
-										(unionReflectionType) => (
+										(unionReflectionType: Models.ReflectionType) => (
 											<ul key={unionReflectionType.declaration.id}>
 												{unionReflectionType.declaration?.children?.map((unionChild) => (
 													<li key={unionChild.id}>
