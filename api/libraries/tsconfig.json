@@ -1,0 +1,23 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"target": "ES5",
+		"lib": ["ES2015"]
+	},
+	"files": [
+		"../declarations/android.d.ts"
+	],
+	"references": [
+		{
+			"path": "../core-engine"
+		}
+	],
+	"include": [
+		"**/*.d.ts"
+	],
+	"exclude": [
+		"dom",
+		"webpack",
+		"**/node_modules/**/*"
+	]
+}

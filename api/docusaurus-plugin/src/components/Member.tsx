@@ -1,0 +1,69 @@
+// https://github.com/TypeStrong/typedoc-default-themes/blob/master/src/default/partials/members.hbs
+
+import { Fragment, useContext } from 'react';
+import type { JSONOutput } from 'typedoc';
+import { useRequiredReflection } from '../hooks/useReflection';
+import { useReflectionMap } from '../hooks/useReflectionMap';
+import { escapeMdx } from '../utils/helpers';
+import { hasOwnDocument } from '../utils/visibility';
+import { AnchorLink } from './AnchorLink';
+import { ApiOptionsContext } from './ApiItem';
+import { CommentBadges, isCommentWithModifiers } from './CommentBadges';
+import { Flags } from './Flags';
+import { MemberDeclaration } from './MemberDeclaration';
+import { MemberGetterSetter } from './MemberGetterSetter';
+import { MemberReference } from './MemberReference';
+import { MemberSignatures } from './MemberSignatures';
+import { SourceLink } from './SourceLink';
+
+export interface MemberProps {
+	id: number;
+}
+
+export function Member({ id }: MemberProps) {
+	const reflections = useReflectionMap();
+	const reflection = useRequiredReflection(id);
+	const { comment } = reflection;
+	let content: React.ReactNode = null;
+
+	const apiOptions = useContext(ApiOptionsContext);
+	const shouldHideInherited = reflection.inheritedFrom ? apiOptions.hideInherited : false;
+
+	if (reflection.signatures) {
+		content = <MemberSignatures inPanel sigs={reflection.signatures} />;
+	} else if (reflection.getSignature || reflection.setSignature) {
+		content = (
+			<MemberGetterSetter
+				inPanel
+				getter={reflection.getSignature}
+				setter={reflection.setSignature}
+			/>
+		);
+	} else if ('target' in reflection && (reflection as JSONOutput.ReferenceReflection).target) {
+		content = <MemberReference reflection={reflection as JSONOutput.ReferenceReflection} />;
+	} else {
+		content = <MemberDeclaration id={id} />;
+	}
+
+	return (
+		!shouldHideInherited && <section className="tsd-panel tsd-member">
+			<h3 className="tsd-panel-header">
+				<AnchorLink id={reflection.name} />
+				<SourceLink sources={reflection.sources} />
+				<Flags flags={reflection.flags} />
+				{escapeMdx(reflection.name)}
+				{isCommentWithModifiers(comment) && <CommentBadges comment={comment} />}
+			</h3>
+
+			{content}
+
+			{reflection.groups?.map((group) => (
+				<Fragment key={group.title}>
+					{group.children?.map((child) =>
+						hasOwnDocument(child, reflections) ? null : <Member key={child} id={child} />,
+					)}
+				</Fragment>
+			))}
+		</section>
+	);
+}

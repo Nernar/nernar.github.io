@@ -1,9 +1,8 @@
 # Dependencies
-/node_modules
+node_modules/
 
 # Production
 /build
-/src/pages/api
 /innercore*-docs.pdf
 
 # Generated files

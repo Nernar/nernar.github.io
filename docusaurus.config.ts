@@ -23,7 +23,10 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
-import type * as Redirects from '@docusaurus/plugin-client-redirects';
+// import type * as Typedoc from './api/docusaurus-plugin';
+
+import { readdirSync } from 'fs';
+import path from 'path';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 const configUrl = 'https://nernar.github.io';
@@ -87,15 +90,53 @@ export default {
 			} satisfies Docs.Options
 		],
 		[
-			'@docusaurus/plugin-client-redirects',
+			'@nernar/docusaurus-plugin-typedoc',
 			{
-				redirects: [
+				projectRoot: 'api',
+				packageJsonName: 'typedoc.json',
+				sortPackages: (left, right) =>
+					left.packageName == 'Core Engine' ? -1 : right.packageName == 'Core Engine' ? 1 : 0,
+				packages: [
 					{
-						from: ['/api', '/ru/api'],
-						to: `${configUrl}/api`
+						path: 'core-engine',
+						entry: 'core-engine/**/*',
+						slug: '.'
+					},
+					...readdirSync(path.resolve('./api/libraries')).map(path => {
+						return {
+							path: 'libraries/' + path,
+							entry: 'libraries/' + path,
+							slug: path.replace('.d.ts', '')
+						};
+					})
+				],
+				typedocOptions: {
+					entryPoints: [
+						'core-engine/**/*.d.ts',
+						'libraries/**/*.d.ts'
+					],
+					readme: 'none',
+					intentionallyNotExported: [
+						'native.Array'
+					],
+					excludeExternals: false,
+					excludeInternal: false,
+					excludePrivate: false,
+					excludeProtected: false,
+					visibilityFilters: {
+						'inherited': true,
+						'protected': true,
+						'@internal': false,
+						'@deprecated': true
 					}
-				]
-			} satisfies Redirects.Options
+					// plugin: [
+						// 'typedoc-plugin-merge-modules'
+						// TODO: Settings like in @mxssfd/typedoc-theme.
+						// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
+						// TODO: Page groups like in typedoc-github-theme.
+					// ]
+				}
+			} // satisfies Typedoc.Options
 		]
 	],
 
@@ -130,7 +171,8 @@ export default {
 				},
 				{
 					position: 'left',
-					href: `${configUrl}/api/index.html`,
+					// href: `${configUrl}/api/index.html`,
+					to: 'api',
 					label: 'API'
 				},
 				{

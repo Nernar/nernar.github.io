@@ -32,14 +32,6 @@ I mean modding documentation for Inner Core of course, rewrited from zero to Typ
 
 Everything divided by categories, which also represents sidebar structure. Every markdown location described in **sidebars.js**, you can use it for auto-generation or manually provide required routes.
 
-## API Reference
-
-New era of Core Engine documentation, generated into single webpage like everything here. See [Nernar/API](https://github.com/Nernar/API) repository for details.
-
-## Modding Examples
-
-Here represented most of legendary Core Engine mods with unique mechanics, that you can freely take into your content.
-
 ## Libraries freely to use
 
 At beginning, it located by few locations: **libraries** where everything starts, **i18n** where localization performs and **static** where additional files is located.
