@@ -23,7 +23,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
-import type * as Typedoc from './api/docusaurus-typedoc-plugin';
+// import type * as Typedoc from './api/docusaurus-plugin';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 const configUrl = 'https://nernar.github.io';
@@ -87,20 +87,20 @@ export default {
 			} satisfies Docs.Options
 		],
 		[
-			// No "exports" main defined in .\api\docusaurus-typedoc-plugin\node_modules\@shikijs\vscode-textmate\package.json
-			'./api/docusaurus-typedoc-plugin',
+			'@nernar/docusaurus-plugin-typedoc',
 			{
 				projectRoot: 'api',
 				packageJsonName: 'typedoc.json',
+				// tsconfigName: 'tsconfig.typedoc.json',
 				packages: [
 					{
-						path: 'core-engine',
-						entry: '.'
+						path: '.',
+						entry: 'core-engine'
 					},
-					// {
-					// 	path: 'libraries',
-					// 	entry: '.'
-					// }
+					{
+						path: '.',
+						entry: 'libraries'
+					}
 				],
 				typedocOptions: {
 					readme: 'none',
@@ -124,7 +124,7 @@ export default {
 						// TODO: Page groups like in typedoc-github-theme.
 					// ]
 				}
-			} satisfies Typedoc.Options
+			} // satisfies Typedoc.Options
 		]
 	],
 

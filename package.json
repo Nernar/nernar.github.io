@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/Nernar/nernar.github.io/issues"
   },
+  "workspaces": [
+    "api/docusaurus-plugin/"
+  ],
   "homepage": "https://t.me/ntInsideChat",
   "license": "GPL-3.0-or-later",
   "private": true,
@@ -39,9 +42,9 @@
     "deploy-libraries-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\""
   },
   "dependencies": {
-    "@docusaurus/core": "^3.6.3",
-    "@docusaurus/preset-classic": "^3.6.3",
-    "@docusaurus/theme-mermaid": "^3.6.3",
+    "@docusaurus/core": "^3.5.2",
+    "@docusaurus/preset-classic": "^3.5.2",
+    "@docusaurus/theme-mermaid": "^3.5.2",
     "clsx": "^2.1.1",
     "docusaurus-plugin-remote-content": "^4.0.0",
     "fflate": "^0.8.2",
@@ -50,9 +53,9 @@
     "tsx": "^4.19.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.6.3",
-    "@docusaurus/tsconfig": "^3.6.3",
-    "@docusaurus/types": "^3.6.3",
+    "@docusaurus/module-type-aliases": "^3.5.2",
+    "@docusaurus/tsconfig": "^3.5.2",
+    "@docusaurus/types": "^3.5.2",
     "@types/dts-generator": "^2.1.11",
     "@types/react": "^18.3.12",
     "commander": "^12.1.0",

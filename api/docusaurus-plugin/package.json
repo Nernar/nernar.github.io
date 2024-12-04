@@ -1,5 +1,5 @@
 {
-  "name": "docusaurus-typedoc-plugin",
+  "name": "@nernar/docusaurus-plugin-typedoc",
   "version": "4.4.0",
   "description": "Docusaurus plugin that provides source code API documentation powered by TypeDoc.",
   "keywords": [
@@ -11,7 +11,7 @@
   "author": "Miles Johnson, Nernar",
   "license": "MIT",
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "./lib/docusaurus-plugin-typedoc.d.ts",
   "private": true,
   "files": [
     "assets/**/*",
@@ -26,16 +26,18 @@
     "type": "ko-fi",
     "url": "https://ko-fi.com/milesjohnson"
   },
-  "scripts": {
-    "build": "tsc --build && node tools/copyUntypedFiles.js",
-    "watch": "run-p -c copy:watch build:watch",
-    "build:watch": "tsc --build --watch",
-    "copy:watch": "node tools/copyUntypedFiles.js --watch"
+  "packemon": {
+    "format": "lib",
+    "platform": "node",
+    "externals": [
+      "@theme/*",
+      "@docusaurus/*",
+      "@vscode/*",
+      "css$"
+    ]
   },
-  "browser": {
-    "child_process": false,
-    "fs": false,
-    "module": false
+  "scripts": {
+    "build": "packemon build --addEngines --addExports"
   },
   "peerDependencies": {
     "@docusaurus/core": "^3.5.0",
@@ -43,19 +45,32 @@
     "react": ">=18.0.0"
   },
   "dependencies": {
-    "@docusaurus/plugin-content-docs": "^3.6.3",
-    "@docusaurus/types": "^3.6.3",
-    "@docusaurus/utils": "^3.6.3",
+    "@docusaurus/plugin-content-docs": "^3.5.2",
+    "@docusaurus/types": "^3.5.2",
+    "@docusaurus/utils": "^3.5.2",
     "@vscode/codicons": "^0.0.36",
     "marked": "^9.1.6",
     "marked-smartypants": "^1.1.9"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.6.3",
-    "@docusaurus/tsconfig": "^3.6.3",
+    "@docusaurus/module-type-aliases": "^3.5.2",
+    "@docusaurus/theme-classic": "^3.5.2",
+    "@docusaurus/tsconfig": "^3.5.2",
+    "packemon": "^3.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typedoc": "^0.25.13",
     "typescript": "^5.4.5"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./*": {
+      "node": "./lib/*.js",
+      "default": "./lib/*.js"
+    },
+    ".": {
+      "node": "./lib/index.js",
+      "default": "./lib/index.js"
+    }
   }
 }

@@ -135,7 +135,7 @@ export default function typedocApiPlugin(
 	});
 
 	return {
-		name: 'docusaurus-typedoc-plugin',
+		name: '@nernar/docusaurus-plugin-typedoc',
 
 		extendCli(cli) {
 			const command = isDefaultPluginId ? 'api:version' : `api:version:${pluginId}`;
@@ -221,7 +221,11 @@ export default function typedocApiPlugin(
 							);
 						}
 
-						packages.sort((a, d) => options.sortPackages(a, d));
+						if (packages.length == 0) {
+							console.warn('Not a single entry point was found, API generation skipped.');
+						} else {
+							packages.sort((a, d) => options.sortPackages(a, d));
+						}
 
 						// Generate sidebars (this runs before the main sidebar is loaded)
 						const sidebars = extractSidebar(

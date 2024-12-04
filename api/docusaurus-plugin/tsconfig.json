@@ -1,10 +1,12 @@
 {
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    // Emit
-    "noEmit": false,
-    "declaration": true,
-    "outDir": "./lib",
+    // Module Resolution
+    "types": [
+      "node",
+      "@docusaurus/module-type-aliases",
+      "@docusaurus/theme-classic"
+    ],
     // Utility libraries will have source maps on, but plugins will not.
     "declarationMap": false,
     "sourceMap": false,
