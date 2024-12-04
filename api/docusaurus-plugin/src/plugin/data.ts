@@ -83,7 +83,7 @@ export async function generateJson(
 			...options.typedocOptions,
 			// Control how config and packages are detected
 			tsconfig,
-			entryPoints: entryPoints.map((ep) => path.join(projectRoot, ep)),
+			entryPoints: (options.typedocOptions.entryPoints || entryPoints).map((ep) => path.join(projectRoot, ep)),
 			entryPointStrategy: 'expand',
 			exclude: options.exclude,
 			// We use a fake category title so that we can fallback to the parent group
@@ -158,17 +158,15 @@ export function loadPackageJsonAndDocs(
 	readmeFileName: string = 'README.md',
 	changelogFileName: string = 'CHANGELOG.md',
 ) {
-	let currentDir = initialDir;
-
-	while (!fs.existsSync(path.join(currentDir, pkgFileName))) {
-		currentDir = path.dirname(currentDir);
+	if (!fs.existsSync(path.join(initialDir, pkgFileName))) {
+		return null;
 	}
 
-	const readmePath = path.join(currentDir, readmeFileName);
-	const changelogPath = path.join(currentDir, changelogFileName);
+	const readmePath = path.join(initialDir, readmeFileName);
+	const changelogPath = path.join(initialDir, changelogFileName);
 
 	return {
-		packageJson: JSON.parse(fs.readFileSync(path.join(currentDir, pkgFileName), 'utf8')) as {
+		packageJson: JSON.parse(fs.readFileSync(path.join(initialDir, pkgFileName), 'utf8')) as {
 			name: string;
 			version: string;
 		},
@@ -408,17 +406,27 @@ export function flattenAndGroupPackages(
 			Object.entries(cfg.entryPoints).some(([importPath, entry]) => {
 				const isUsingDeepImports = !entry.path.match(/\.tsx?$/);
 
-				if (
-					!modContainsEntryPoint(mod, entry, {
-						allSourceFiles,
-						isSinglePackage,
-						isUsingDeepImports,
-						packagePath: cfg.packagePath,
-						packageRoot: cfg.packageRoot,
-					})
-				) {
-					return false;
-				}
+				// if (
+				// 	!modContainsEntryPoint(mod, entry, {
+				// 		allSourceFiles,
+				// 		isSinglePackage,
+				// 		isUsingDeepImports,
+				// 		packagePath: cfg.packagePath,
+				// 		packageRoot: cfg.packageRoot,
+				// 	})
+				// ) {
+					let globby = entry.path;
+					while (globby.endsWith('/') || globby.endsWith('*')) {
+						globby = globby.substring(0, globby.length - 1);
+					}
+					if (!(
+						entry.path == mod.name || entry.path == mod.name + '.d.ts'
+						|| (entry.path.endsWith('**/*') && mod.name.startsWith(globby + '/'))
+						|| (entry.path.endsWith('*') && globby == mod.name.substring(0, mod.name.lastIndexOf('/') + 1))
+					)) {
+						return false;
+					}
+				// }
 
 				// We have a matching entry point, so store the record
 				if (!packages[cfg.packagePath]) {
@@ -427,7 +435,13 @@ export function flattenAndGroupPackages(
 						options.packageJsonName,
 						options.readmeName,
 						options.changelogName,
-					);
+					) ?? {
+						packageJson: {
+							name: mod.name.substring(mod.name.lastIndexOf('/') + 1)
+						},
+						readmePath: '',
+						changelogPath: ''
+					};
 
 					packages[cfg.packagePath] = {
 						entryPoints: [],
