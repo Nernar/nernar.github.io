@@ -25,6 +25,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
 // import type * as Typedoc from './api/docusaurus-plugin';
 
+import { readdirSync } from 'fs';
+import path from 'path';
+
 const baseUrl = process.env.BASE_URL ?? '/';
 const configUrl = 'https://nernar.github.io';
 
@@ -91,18 +94,27 @@ export default {
 			{
 				projectRoot: 'api',
 				packageJsonName: 'typedoc.json',
-				// tsconfigName: 'tsconfig.typedoc.json',
+				sortPackages: (left, right) =>
+					left.packageName == 'Core Engine' ? -1 : right.packageName == 'Core Engine' ? 1 : 0,
 				packages: [
 					{
-						path: '.',
-						entry: 'core-engine'
+						path: 'core-engine',
+						entry: 'core-engine/**/*',
+						slug: '.'
 					},
-					{
-						path: '.',
-						entry: 'libraries'
-					}
+					...readdirSync(path.resolve('./api/libraries')).map(path => {
+						return {
+							path: 'libraries/' + path,
+							entry: 'libraries/' + path,
+							slug: path.replace('.d.ts', '')
+						};
+					})
 				],
 				typedocOptions: {
+					entryPoints: [
+						'core-engine/**/*.d.ts',
+						'libraries/**/*.d.ts'
+					],
 					readme: 'none',
 					intentionallyNotExported: [
 						'native.Array'
