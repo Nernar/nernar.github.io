@@ -2,15 +2,11 @@
 	"compileOnSave": false,
 	"compilerOptions": {
 		"target": "ES5",
-		"lib": ["ES2015"]
+		"lib": ["ES2015"],
+		"composite": true
 	},
 	"files": [
 		"../declarations/android.d.ts"
-	],
-	"references": [
-		{
-			"path": "../core-engine"
-		}
 	],
 	"include": [
 		"**/*.d.ts"
