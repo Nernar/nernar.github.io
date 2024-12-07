@@ -49,7 +49,14 @@ export function Type({ needsParens = false, type: base }: TypeProps) {
 	// https://github.com/TypeStrong/typedoc/blob/master/src/lib/output/themes/default/partials/type.tsx
 	switch (String(base.type)) {
 		case 'array': {
-			const type = base as JSONOutput.ArrayType;
+			const type = base as JSONOutput.ArrayType & { value?: JSONOutput.SomeType };
+
+			// If the array provides a non-empty "value" property, it's likely the default value of the array we want to render.
+			if (type.value) {
+				// eslint-disable-next-line
+				type.type = 'literal' as any;
+				return <Type type={type} />;
+			}
 
 			return (
 				<>
