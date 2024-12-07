@@ -172,7 +172,7 @@ export default {
 				{
 					position: 'left',
 					// href: `${configUrl}/api/index.html`,
-					to: 'api',
+					to: 'api/packages',
 					label: 'API'
 				},
 				{

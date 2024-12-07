@@ -374,7 +374,7 @@ export default function typedocApiPlugin(
 						// Only write out the ApiIndex only when we have multiple packages
 						// otherwise we will have 2 top-level entries in the route entries
 						routes.push({
-							path: indexPermalink,
+							path: normalizeUrl([loadedVersion.versionPath, 'packages']),
 							exact: true,
 							component: path.join(__dirname, `./components/ApiIndex.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
 							modules: {
