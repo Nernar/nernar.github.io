@@ -240,7 +240,7 @@ declare namespace Animation {
 
         /**
          * Specifies item rotation along the three axes.
-         * @default x: 0, y: 0, z: 0
+         * @default { x: 0, y: 0, z: 0 }
          */
         setItemRotation(x: number, y: number, z: number): void;
 

@@ -991,8 +991,8 @@ declare namespace Entity {
      * Returns array of all entities numeric IDs in given range in blocks.
      * @param coords1 start search range coordinates
      * @param coords2 end search range coordinates
-     * @param type entity type ID
-     * @default type: 255, flag: true
+     * @param type entity type ID, `255` by default
+     * @param flag white- or blacklist, `true` by default
      * @since 2.0.4b35
      * @remarks
      * Local method, use {@link BlockSource.listEntitiesInAABB} instead.
