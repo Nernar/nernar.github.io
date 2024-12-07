@@ -7,7 +7,7 @@ import { useReflectionMap } from '../hooks/useReflectionMap';
 import { escapeMdx } from '../utils/helpers';
 import { hasOwnDocument } from '../utils/visibility';
 import { AnchorLink } from './AnchorLink';
-import { ApiOptionsContext } from './ApiItem';
+import { ApiOptionsContext } from './ApiOptionsContext';
 import { CommentBadges, isCommentWithModifiers } from './CommentBadges';
 import { Flags } from './Flags';
 import { MemberDeclaration } from './MemberDeclaration';

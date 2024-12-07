@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react';
-import { ApiOptionsContext } from './ApiItem';
+import { ApiOptionsContext } from './ApiOptionsContext';
 
 export default function ApiOptionsLayout({ className }: { className: string }) {
   const { hideInherited, setHideInherited } = useContext(ApiOptionsContext);

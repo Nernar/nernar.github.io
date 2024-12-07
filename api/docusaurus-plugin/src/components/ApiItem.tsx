@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { PageMetadata } from '@docusaurus/theme-common';
 import type { Props as DocItemProps } from '@theme/DocItem';
 import { useReflection, useRequiredReflection } from '../hooks/useReflection';
@@ -11,6 +11,7 @@ import { displayPartsToMarkdown } from './Comment';
 import { Flags } from './Flags';
 import { Reflection } from './Reflection';
 import { TypeParametersGeneric } from './TypeParametersGeneric';
+import { ApiOptionsContext } from './ApiOptionsContext';
 
 function extractTOC(
 	item: TSDDeclarationReflection,
@@ -52,11 +53,6 @@ function extractTOC(
 export interface ApiItemProps extends Pick<DocItemProps, 'route'> {
 	readme?: React.ComponentType;
 }
-
-export const ApiOptionsContext = createContext({
-	hideInherited: false,
-	setHideInherited: (hideInherited: boolean) => {}
-});
 
 export default function ApiItem({ readme: Readme, route }: ApiItemProps) {
 	const [hideInherited, setHideInherited] = useState(false);
