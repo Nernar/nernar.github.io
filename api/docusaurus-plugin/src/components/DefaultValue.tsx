@@ -3,6 +3,8 @@
 import type { JSONOutput } from 'typedoc';
 import { displayPartsToMarkdown } from './Comment';
 import { Type } from './Type';
+import { marked } from 'marked';
+import { decode } from 'html-entities';
 
 export interface DefaultValueProps {
 	comment?: JSONOutput.Comment;
@@ -25,7 +27,12 @@ export function DefaultValue({ comment, value, type }: DefaultValueProps) {
 		return null;
 	}
 
-	const defaultTag = extractDefaultTag(comment);
+	let defaultTag = extractDefaultTag(comment);
+
+	if (typeof defaultTag === 'string') {
+		marked.use({ renderer: { code: (text) => text } });
+		defaultTag = decode(marked(defaultTag));
+	}
 
 	if (!defaultTag && !value) {
 		return null;
