@@ -10,8 +10,6 @@
   ],
   "author": "Miles Johnson, Nernar",
   "license": "MIT",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "private": true,
   "files": [
     "assets/**/*",
@@ -45,12 +43,13 @@
     "@docusaurus/module-type-aliases": "^3.5.2",
     "@docusaurus/theme-classic": "^3.5.2",
     "@docusaurus/tsconfig": "^3.5.2",
-    "packemon": "^3.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typedoc": "^0.25.13",
     "typescript": "^5.4.5"
   },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     "./*": {
