@@ -23,7 +23,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
-// import type * as Typedoc from './api/docusaurus-plugin';
+import type * as Typedoc from './api/docusaurus-plugin';
 
 import { readdirSync } from 'fs';
 import path from 'path';
@@ -136,7 +136,7 @@ export default {
 						// TODO: Page groups like in typedoc-github-theme.
 					// ]
 				}
-			} // satisfies Typedoc.Options
+			} satisfies Typedoc.Options
 		]
 	],
 

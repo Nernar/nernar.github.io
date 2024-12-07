@@ -11,7 +11,7 @@
   "author": "Miles Johnson, Nernar",
   "license": "MIT",
   "main": "./lib/index.js",
-  "types": "./lib/docusaurus-plugin-typedoc.d.ts",
+  "types": "./lib/index.d.ts",
   "private": true,
   "files": [
     "assets/**/*",
@@ -22,18 +22,11 @@
   "engines": {
     "node": ">=16.12.0"
   },
-  "packemon": {
-    "format": "lib",
-    "platform": "node",
-    "externals": [
-      "@theme/*",
-      "@docusaurus/*",
-      "@vscode/*",
-      "css$"
-    ]
-  },
   "scripts": {
-    "build": "packemon build --addEngines --addExports"
+    "build": "tsc --build && node tools/copyUntypedFiles.mjs",
+    "watch": "run-p -c copy:watch build:watch",
+    "build:watch": "tsc --build --watch",
+    "copy:watch": "node tools/copyUntypedFiles.mjs --watch"
   },
   "peerDependencies": {
     "@docusaurus/core": "^3.5.0",

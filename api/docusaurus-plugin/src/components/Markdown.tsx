@@ -49,6 +49,7 @@ const ADMONITION_END = '\n:::';
 marked.setOptions({
 	gfm: true,
 });
+// @ts-expect-error Incompatible extensions, maybe will be fixed someday.
 marked.use(markedSmartypants());
 marked.use({
 	extensions: [

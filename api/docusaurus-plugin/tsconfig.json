@@ -7,6 +7,9 @@
       "@docusaurus/module-type-aliases",
       "@docusaurus/theme-classic"
     ],
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "./lib",
     // Utility libraries will have source maps on, but plugins will not.
     "declarationMap": false,
     "sourceMap": false,
