@@ -301,7 +301,7 @@ function modContainsEntryPoint(
 	// They also don't use full paths like "package/src/index.ts" and simply use "index.ts",
 	// so account for those entry points also.
 	if (!relModSourceFile) {
-		const absEntryPoint = path.normalize(path.join(meta.packageRoot, entry.path));
+		const absEntryPoint = path.normalize(path.join(meta.packageRoot ?? '', entry.path ?? ''));
 		const relEntryPointName = path.basename(relEntryPoint);
 		const entryPointInSourceFiles =
 			!!meta.allSourceFiles[absEntryPoint] ||
@@ -400,7 +400,7 @@ export function flattenAndGroupPackages(
 	const packagesWithDeepImports: TSDDeclarationReflection[] = [];
 
 	modules.forEach((mod) => {
-		const allSourceFiles = buildSourceFileNameMap(project, mod.children ?? []);
+		// const allSourceFiles = buildSourceFileNameMap(project, mod.children ?? []);
 
 		packageConfigs.some((cfg) =>
 			Object.entries(cfg.entryPoints).some(([importPath, entry]) => {

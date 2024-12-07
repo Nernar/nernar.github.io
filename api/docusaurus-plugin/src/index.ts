@@ -327,7 +327,7 @@ export default function typedocApiPlugin(
 						return {
 							path: info.permalink,
 							exact: true,
-							component: path.join(__dirname, './components/ApiItem.js'),
+							component: path.join(__dirname, `./components/ApiItem.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
 							modules,
 							sidebar: 'api',
 							// Map the ID here instead of creating a JSON data file,
@@ -358,7 +358,7 @@ export default function typedocApiPlugin(
 								subRoutes.push({
 									path: normalizeUrl([entry.reflection.permalink, 'changelog']),
 									exact: true,
-									component: path.join(__dirname, './components/ApiChangelog.js'),
+									component: path.join(__dirname, `./components/ApiChangelog.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
 									modules: { changelog: pkg.changelogPath },
 									sidebar: 'api',
 								});
@@ -376,7 +376,7 @@ export default function typedocApiPlugin(
 						routes.push({
 							path: indexPermalink,
 							exact: true,
-							component: path.join(__dirname, './components/ApiIndex.js'),
+							component: path.join(__dirname, `./components/ApiIndex.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
 							modules: {
 								options: optionsData,
 								packages: packagesData,
@@ -396,7 +396,7 @@ export default function typedocApiPlugin(
 							{
 								path: indexPermalink,
 								exact: false,
-								component: path.join(__dirname, './components/ApiPage.js'),
+								component: path.join(__dirname, `./components/ApiPage.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
 								routes,
 								modules: {
 									options: optionsData,
@@ -420,6 +420,10 @@ export default function typedocApiPlugin(
 				component: '@theme/DocsRoot',
 				routes: rootRoutes,
 			});
+		},
+
+		getPathsToWatch() {
+			return [__dirname];
 		},
 
 		configureWebpack(config, isServer, utils) {
