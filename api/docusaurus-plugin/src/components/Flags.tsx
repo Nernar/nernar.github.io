@@ -16,7 +16,7 @@ export function Flags({ flags }: FlagsProps) {
 	}
 
 	return (
-		<>
+		<span className='tsd-flag-group'>
 			{Object.keys(flags)
 				.map(removePrefix)
 				.map((flag) => (
@@ -24,6 +24,6 @@ export function Flags({ flags }: FlagsProps) {
 						{flag}
 					</span>
 				))}
-		</>
+		</span>
 	);
 }

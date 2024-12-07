@@ -15,7 +15,7 @@ export function groupSidebarItems(
 	groups: JSONOutput.ReflectionGroup[],
 ): SidebarItem[] {
 	const items: SidebarItem[] = [];
-	const sortedGroups = groups.sort((a, b) => a.title.localeCompare(b.title));
+	const sortedGroups = [...groups].sort((a, b) => a.title.localeCompare(b.title));
 
 	function getLastItemInGroup(index: number) {
 		const length = sortedGroups[index]?.children?.length;
