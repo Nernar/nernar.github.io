@@ -171,8 +171,7 @@ export default {
 				},
 				{
 					position: 'left',
-					// href: `${configUrl}/api/index.html`,
-					to: 'api/packages',
+					to: 'api',
 					label: 'API'
 				},
 				{
