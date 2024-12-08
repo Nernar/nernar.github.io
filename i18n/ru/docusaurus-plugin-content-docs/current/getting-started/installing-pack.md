@@ -10,7 +10,13 @@
 
 ## Начнем с лаунчера
 
-Для использования Inner Core нужен лаунчер, он позволит производить манипуляции с играми, модифицировать их соответственно. Также понадобится любое устройство на Android, важно иметь хотя бы несколько гигабайт ОЗУ за плечами и такое же количество свободного места в хранилище, слабый процессор тоже не подойдет. Загрузите и установите приложение по [указанной ссылке](https://drive.google.com/file/d/14SBKQSYbMGRT-Z5_cowYVfYiWTKD605c/view?usp=sharing).
+Для использования Inner Core нужен лаунчер, он позволит производить манипуляции с играми, модифицировать их соответственно. Также понадобится любое устройство на Android, важно иметь хотя бы несколько гигабайт ОЗУ за плечами и такое же количество свободного места в хранилище, слабый процессор тоже не подойдет.
+
+```mdx-code-block
+import GoogleDriveFile from "@site/src/components/GoogleDriveFile"
+
+<GoogleDriveFile filename="horizon-v1.2.0-android-12.apk (31M)" href="https://drive.usercontent.google.com/download?id=14SBKQSYbMGRT-Z5_cowYVfYiWTKD605c&export=download" />
+```
 
 <details>
     <summary>Какие версии лаунчера существуют?</summary>
@@ -18,14 +24,14 @@
 
 Начните с [определения версии](https://lumpics.ru/how-find-out-version-of-android-on-phone/) вашего устройства — это нужно для установки лаунчера правильной версии. Версии для Android 11 и ниже позволяют напрямую изменять файлы паков, модификаций и прочего через папку */games/horizon/*, в то время как более новые потребуют [поиска необходимой папки](#находим-папку-с-паком). Это связано с ограничениями доступа к хранилищу на новых версиях Android.
 
-| Версия Android | Ссылка на приложение |
-| --- | --- |
-| 5.0 и выше | [Horizon для актуальных версий](https://drive.google.com/file/d/14SBKQSYbMGRT-Z5_cowYVfYiWTKD605c/view?usp=sharing) |
-| 5.0 — 11 | [Horizon для Android 11](https://drive.google.com/file/d/1-OxSOrCko1XF2eeKUCx0BVfcuagOIvrw/view?usp=sharing) |
-| 4.2 — 10 | [Horizon для эмуляторов и Huawei (без сервисов Google Play)](https://drive.google.com/file/d/1JYR3y7rYQtfuk3SGThNK3yo2mrSMAJm-/view?usp=sharing) |
-| 4.2 — 8.1 | [Inner Core — Trashbox (для слабых устройств, не поддерживается)](https://trashbox.ru/link/inner-core-android) |
+| Версия Android | Ссылка на приложение | :shield: |
+| --- | --- | :-: |
+| 5.0 и выше | [Horizon для актуальных версий](https://drive.usercontent.google.com/download?id=14SBKQSYbMGRT-Z5_cowYVfYiWTKD605c&export=download) | [:heavy_check_mark:](https://www.virustotal.com/gui/file/044c4bee6df67da9b76854f64dbc2bc0abf7081005fcadd3daa33bd57673b3d2) |
+| 5.0 — 11 | [Horizon для Android 11](https://drive.usercontent.google.com/download?id=1-OxSOrCko1XF2eeKUCx0BVfcuagOIvrw&export=download) | [:heavy_check_mark:](https://www.virustotal.com/gui/file/64332e355a8f3d5cd514e6fef8e9917399be0e4a89eaa6848a3e33fa6b4e992e) |
+| 4.2 — 10 | [Horizon для эмуляторов и Huawei](https://drive.usercontent.google.com/download?id=1JYR3y7rYQtfuk3SGThNK3yo2mrSMAJm-&export=download) (без сервисов Google Play) | [:heavy_check_mark:](https://www.virustotal.com/gui/file/8a25c16d56d6b218388a9dc1f96b0731bde5d6072dfb9858449e8f50e54ec084) |
+| 4.2 — 8.1 | [Inner Core — Trashbox](https://trashbox.ru/link/inner-core-android) (для слабых устройств, не поддерживается) | [:heavy_check_mark:](https://www.virustotal.com/gui/file/d20051db816994d020a0bc81bb692401f432b15e2256e5447921cc6da9111830) |
 
-К сожалению, недавно лаунчер был удален из [Google Play](https://play.google.com/store/apps/details?id=com.zheka.horizon), поскольку разработчик не смог обновить его до новых версий. Мы не рекомендуем загружать его со сторонних источников, поскольку версия устарела и не будет работать на Android 11 и выше.
+К сожалению, недавно лаунчер был удален из [Google Play](https://play.google.com/store/apps/details?id=com.zheka.horizon), поскольку разработчик не смог обновить его до новых версий. Мы не рекомендуем загружать его со сторонних источников, так как версия устарела и не будет работать на Android 11 и выше. Если вы хотите проверить приложение на вирусы, сравните уже загруженный хеш файла SHA-256 с представленными в таблице под значком щита.
 
 </div>
 </details>
@@ -102,7 +108,7 @@
 
 :::
 
-### Структура файлов
+## Структура файлов
 
 Установленные паки находятся в папке *packs* относительно папки лаунчера (т.е. папки *horizon*). Давайте рассмотрим содержимое стандартного пака Inner Core (файлы обычно находятся в *Inner_Core* или *Inner_Core_Test*), чтобы лучше понять какие папки и для чего могут понадобиться.
 
@@ -112,7 +118,7 @@
 
 :::
 
-#### Хорайзон
+### Horizon
 
 Здесь находится сам список паков, а также логи необходимые для отправки разработчикам для решения проблем.
 
@@ -129,7 +135,7 @@
 
 :::
 
-#### Inner Core
+### Inner Core
 
 Папки всех версий подобных паков, т.е. *Inner Core*, *Inner Core Test*/*Legacy*, обычно идентичны друг другу. Отличаться могут только файлы внутри, основная структура остается прежней.
 
@@ -141,7 +147,7 @@
 | worlds/ | Подобно игровой папке с мирами, движок использует собственный список миров, никак не передаваемый между паками. Служит для отделения папок от основной игры и модпаков. |
 | assets/ | Файлы, некогда находящиеся внутри самой игры представленной версии. Работают подобно встроенным в устройство ресурсам, за одной лишь разницей что местоположение таковых находится во внутреннем хранилище. Никогда не редактируйте содержимое этой папки напрямую! |
 
-#### Устаревшая версия Inner Core
+### Устаревшая версия Inner Core
 
 Не путайте с легаси версией, это отдельное приложения вне Хорайзона, не так давно удаленное из Google Play в силу неработоспособности и отсутствия обновлений. В целом, весь контент базируется на папках самой игры и нет особого смысла расписывать все папки подряд. Весь контент лежит в подпапке *com.mojang* все той же *games*.
 
