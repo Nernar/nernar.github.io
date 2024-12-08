@@ -48,6 +48,7 @@
     "clsx": "^2.1.1",
     "docusaurus-plugin-remote-content": "^4.0.0",
     "fflate": "^0.8.2",
+    "git-url-parse": "^16.0.0",
     "mermaid": "^11.4.1",
     "react": "^18.3.1",
     "tsx": "^4.19.2"
@@ -57,6 +58,7 @@
     "@docusaurus/tsconfig": "^3.5.2",
     "@docusaurus/types": "^3.5.2",
     "@types/dts-generator": "^2.1.11",
+    "@types/git-url-parse": "^9.0.3",
     "@types/react": "^18.3.12",
     "commander": "^12.1.0",
     "dts-generator": "^3.0.0",

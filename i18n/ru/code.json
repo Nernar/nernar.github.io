@@ -324,5 +324,8 @@
   },
   "component.googleDriveFile.download": {
     "message": "Скачать {filename}"
+  },
+  "component.footer.contributorsList": {
+    "message": "Творцы, вложившие частичку себя"
   }
 }
