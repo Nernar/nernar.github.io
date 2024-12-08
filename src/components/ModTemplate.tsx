@@ -1,4 +1,3 @@
-// @ts-check
 import React from 'react';
 import Translate, { translate } from '@docusaurus/Translate';
 import { zipSync, strToU8 } from 'fflate';
@@ -25,13 +24,13 @@ function loadUpscaledIcon(blob, then) {
 		return;
 	}
 	context.imageSmoothingEnabled = false;
-	// @ts-ignore
+	// @ts-expect-error
 	context.webkitImageSmoothingEnabled = false;
-	// @ts-ignore
+	// @ts-expect-error
 	context.mozImageSmoothingEnabled = false;
-	// @ts-ignore
+	// @ts-expect-error
 	context.msImageSmoothingEnabled = false;
-	// @ts-ignore
+	// @ts-expect-error
 	context.oImageSmoothingEnabled = false;
 	var url = window.URL.createObjectURL(blob);
 	var img = document.createElement('img');
@@ -136,12 +135,12 @@ function downloadTemplate(name, author, version, description, clientOnly, iconDa
 }
 
 export default function ModTemplate() {
-	var name = '';
-	var author = '';
-	var version = '';
-	var description = '';
-	var clientOnly = false;
-	var iconData = null;
+	let name = '';
+	let author = '';
+	let version = '';
+	let description = '';
+	let clientOnly = false;
+	let iconData = null;
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			<div className='inline-input-with-placeholder'>

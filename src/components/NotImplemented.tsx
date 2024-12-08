@@ -1,4 +1,3 @@
-// @ts-check
 import React from 'react';
 import Admonition from '@theme/Admonition';
 import Translate, { translate } from '@docusaurus/Translate';

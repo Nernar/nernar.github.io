@@ -1,4 +1,3 @@
-// @ts-check
 import React from 'react';
 import DocCardList from '@theme/DocCardList';
 import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';

@@ -1,4 +1,3 @@
-// @ts-check
 import React from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -28,7 +27,7 @@ export default function RotatableMinecraftBlock({ textures, bottomTexture, topTe
 	}
 
 	return (
-		<div className='rotatable-minecraft-block-wrapper' style={{ 'float': floatDirection }}>
+		<div className='rotatable-minecraft-block-wrapper' style={{ float: floatDirection }}>
 			<div className='rotatable-minecraft-block-container'>
 				<img className='rotatable-minecraft-block-side-north' alt='back' src={useBaseUrl(textures[2])} />
 				<img className='rotatable-minecraft-block-side-west' alt='left' src={useBaseUrl(textures[4])} />
