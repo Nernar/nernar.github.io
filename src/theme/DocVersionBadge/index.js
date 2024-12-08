@@ -37,7 +37,7 @@ export default function DocVersionBadge({ className }) {
             'badge badge--primary',
           )}>
           <Translate
-            id='theme.api.sinceBadge.label'
+            id='component.api.sinceBadge.label'
             // @ts-ignore
             values={{ versionLabel: doc.frontMatter.since }}>
             {'Since: {versionLabel}'}

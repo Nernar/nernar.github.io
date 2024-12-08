@@ -28,7 +28,7 @@
     "description": "The default label used for the Tip admonition (:::tip)"
   },
   "theme.admonition.danger": {
-    "message": "Опасность",
+    "message": "Опасно",
     "description": "The default label used for the Danger admonition (:::danger)"
   },
   "theme.admonition.info": {
@@ -36,8 +36,32 @@
     "description": "The default label used for the Info admonition (:::info)"
   },
   "theme.admonition.caution": {
-    "message": "Внимание",
+    "message": "Предупреждение",
     "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.warning": {
+    "message": "Внимание",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Главная",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Неопубликованная статья",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Эта статья не опубликована. Поисковые сайты не индексируют ее, только пользователи с прямой ссылкой могут открыть ее.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Черновик статьи",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Эта статья черновик. Она видна только писателям и скрыта после сборки сайта.",
+    "description": "The draft content banner message"
   },
   "theme.BackToTopButton.buttonAriaLabel": {
     "message": "Прокрутка вверх",
@@ -107,7 +131,7 @@
     "message": "Путь до текущей страницы",
     "description": "The ARIA label for the breadcrumbs"
   },
-  "theme.docs.DocCard.categoryDescription": {
+  "theme.docs.DocCard.categoryDescription.plurals": {
     "message": "{count} элемент|{count} элемента|{count} элементов",
     "description": "The default description for a category card in the generated index about how many items this category includes"
   },
@@ -206,9 +230,13 @@
     "message": "Переключить перенос слов",
     "description": "The title attribute for toggle word wrapping button of code block lines"
   },
-  "theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel": {
-    "message": "Свернуть/развернуть категорию '{label}'",
-    "description": "The ARIA label to toggle the collapsible sidebar category"
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Развернуть категорию '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Свернуть категорию '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.navbar.mobileLanguageDropdown.label": {
     "message": "Языки",
@@ -230,6 +258,22 @@
     "message": "{readingTime} минута чтения|{readingTime} минуты чтения|{readingTime} минут чтения",
     "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
   },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Авторы",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "Посмотреть всех авторов",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "Этот автор пока не написал ни одной статьи.",
+    "description": "The text for authors with 0 blog post"
+  },
   "theme.docs.sidebar.collapseButtonTitle": {
     "message": "Свернуть навигацию",
     "description": "The title attribute for collapse button of doc sidebar"
@@ -241,6 +285,10 @@
   "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
     "message": "← Перейти к основному меню",
     "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Навигация по документации",
+    "description": "The ARIA label for the sidebar navigation"
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
     "message": "Закрыть панель навигации",
@@ -262,7 +310,7 @@
     "message": "Теги",
     "description": "The title of the tag list page"
   },
-  "theme.api.sinceBadge.label": {
+  "component.api.sinceBadge.label": {
     "message": "Добавлено: {versionLabel}"
   },
   "component.page.notImplemented.title": {
@@ -274,12 +322,7 @@
   "component.page.notImplemented.contributeAdvice": {
     "message": "Или просто внесите вклад в создание этой страницы, это поможет сразу всем!"
   },
-  "theme.NavBar.navAriaLabel": {
-    "message": "Главная",
-    "description": "The ARIA label for the main navigation"
-  },
-  "theme.docs.sidebar.navAriaLabel": {
-    "message": "Навигация по документации",
-    "description": "The ARIA label for the sidebar navigation"
+  "component.googleDriveFile.download": {
+    "message": "Скачать {filename}"
   }
 }
