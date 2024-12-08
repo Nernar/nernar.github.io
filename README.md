@@ -1,13 +1,13 @@
 # nernar.github.io
 
-Inner Core, Core Engine and Horizon documentation implemented in one place. Make it simple, keep it clean. This site powered by GitHub Pages, built with :heart: and Docusaurus.
+Inner Core, Core Engine and Horizon documentation implemented in one place. Keep it simple, maintain it clean. This site is powered by GitHub Pages, built with :heart: and Docusaurus.
 
 ## Setting up
 
 + [Node.js](https://nodejs.org/en/download/) version 16.14 or above (which can be checked by running `node -v`). You can use [nvm](https://github.com/nvm-sh/nvm) for managing multiple Node versions on a single machine installed.
   + When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
-Once *npm* installation is complete (comes with Node), don't forget to install project dependencies by opening console in downloaded repository folder:
+Once *npm* installation (which comes with Node) is complete, don't forget to install project dependencies by opening console in downloaded repository folder:
 
 ```shell
 npm install && npm run build-serve
@@ -15,9 +15,9 @@ npm install && npm run build-serve
 
 ## File structure
 
-This site is built on Docusaurus and is completely dependent on its structure, and therefore we recommend that you start familiarizing yourself with site files using [Docusaurus guides](https://docusaurus.io/docs/category/guides).
+This site is built on Docusaurus and is completely dependent on its structure, so we recommend that you familiarise yourself with site files using [Docusaurus guides](https://docusaurus.io/docs/category/guides).
 
-If you're ready to start working on documentation without this or have already studied generator we're using, let's look at what files we'll need.
+If you're ready to start working on documentation without this or have already studied generator we use, let's look at what files we need.
 
 ### Pages, docs and libraries
 
@@ -79,6 +79,50 @@ Repeats structure of [main documentation](#documentation-structure), except for 
 
 API references contain both engine methods and library methods at same time. This is extremely convenient, because it allows you to see classes in other mods that implement this or that feature right away in generated reference. Engine methods are located in *core-engine* and are split into a large number of files, while *libraries* contains separate files for each library. New declarations can be added or updated without changing configuration, it is very convenient for modders.
 
+### Page and component structure
+
+```text
+.
+├─ src
+│  ├─ pages
+│  │  │ changelog.md
+│  │  └─ ...
+│  ├─ components
+│  │  │ NotImplemented.js
+│  │  └─ ...
+│  └─ ...
+└─ static
+   └─ images
+      └─ ...
+```
+
+Pages, just like [documentation](#documentation-structure), can have images and any other files. Main difference is way pages are added to site navigation. Usually such content is accessed through navigation bar at top, but to open some of them you need to specify an address, they cannot be found in interface.
+
+Components, on other hand, can be used in both documentation and pages without additional customization:
+
+```tsx
+import React from 'react';
+import Admonition from '@theme/Admonition';
+
+export default function NotImplemented() {
+    return (
+        <Admonition type='danger'>
+            ...
+        </Admonition>
+    );
+}
+```
+
+````md
+# Example tutorial
+
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```
+````
+
 ## Contribution
 
-Request PRs for `master` branch, *NEVER* commit to `deploy`. Docusaurus should be built successfully to being reviewed, your changes may also require some additional tunings before merging.
+Request PRs for `master` branch, *NEVER* commit to `deploy`. Docusaurus should be successfully built to be reviewed, your changes may also require some additional tuning before merging.
