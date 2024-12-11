@@ -310,9 +310,6 @@
     "message": "Теги",
     "description": "The title of the tag list page"
   },
-  "component.api.sinceBadge.label": {
-    "message": "Добавлено: {versionLabel}"
-  },
   "component.page.notImplemented.title": {
     "message": "Пока не реализовано"
   },

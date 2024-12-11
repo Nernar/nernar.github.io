@@ -21,14 +21,14 @@ export interface MemberProps {
 }
 
 export function Member({ id }: MemberProps) {
-	const reflections = useReflectionMap();
 	const reflection = useRequiredReflection(id);
-	const { comment } = reflection;
-	let content: React.ReactNode = null;
-
 	const apiOptions = useContext(ApiOptionsContext);
-	const shouldHideInherited = reflection.inheritedFrom ? apiOptions.hideInherited : false;
 
+	if (reflection.inheritedFrom && apiOptions.hideInherited) {
+		return null;
+	}
+
+	let content: React.ReactNode = null;
 	if (reflection.signatures) {
 		content = <MemberSignatures inPanel sigs={reflection.signatures} />;
 	} else if (reflection.getSignature || reflection.setSignature) {
@@ -45,14 +45,15 @@ export function Member({ id }: MemberProps) {
 		content = <MemberDeclaration id={id} />;
 	}
 
+	const reflections = useReflectionMap();
 	return (
-		!shouldHideInherited && <section className="tsd-panel tsd-member">
+		<section className="tsd-panel tsd-member">
 			<h3 className="tsd-panel-header">
 				<AnchorLink id={reflection.name} />
 				<SourceLink sources={reflection.sources} />
 				<Flags flags={reflection.flags} />
 				{escapeMdx(reflection.name)}
-				{isCommentWithModifiers(comment) && <CommentBadges comment={comment} />}
+				{isCommentWithModifiers(reflection.comment) && <CommentBadges comment={reflection.comment} />}
 			</h3>
 
 			{content}
