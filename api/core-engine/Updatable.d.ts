@@ -29,14 +29,27 @@ declare namespace Updatable {
 
     /**
      * @returns ArrayList instance containing all defined 
-     * {@link Updatable} objects.
+     * server-side {@link Updatable} objects.
      */
     function getAll(): java.util.List<Updatable>;
 
     /**
-     * @returns Current thread tick number.
+     * @returns ArrayList instance containing all defined 
+     * client-side {@link Updatable} objects.
+     * @since 2.4.0b122o1
+     */
+    function getAllLocal(): java.util.List<Updatable>;
+
+    /**
+     * @returns Current server-side thread tick number.
      */
     function getSyncTime(): number;
+
+    /**
+     * @returns Current client-side thread tick number.
+     * @since 2.4.0b122o1
+     */
+    function getLocalSyncTime(): number;
 }
 
 /**

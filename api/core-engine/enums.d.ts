@@ -196,6 +196,38 @@ declare enum EColor {
 }
 
 /**
+ * Defines numeric types of damage a mob does and can be dealt by method.
+ * @since 2.4.0b122o1
+ */
+declare enum EDamageCause {
+    GENERIC = 0,
+    CACTUS = 1,
+    MOB = 2,
+    IMPACT = 3,
+    IN_WALL = 4,
+    FALL = 5,
+    IN_FIRE = 6,
+    ON_FIRE = 7,
+    LAVA = 8,
+    DROWN = 9,
+    EXPLOSION = 10,
+    MOB_EXPLOSION = 11,
+    OUT_OF_WORLD = 12,
+    COMMAND = 13,
+    MAGIC = 14,
+    WITHER = 15,
+    STARVE = 16,
+    ANVIL = 17,
+    THORNS = 18,
+    PROJECTILE = 19,
+    FALLING_BLOCK = 20,
+    FLY_INTO_WALL = 21,
+    MAGMA = 22,
+    FIREWORKS = 23,
+    LIGHTNING_BOLT = 24
+}
+
+/**
  * Defines numeric representation for three vanilla dimensions.
  * @since 2.2.0b75
  */

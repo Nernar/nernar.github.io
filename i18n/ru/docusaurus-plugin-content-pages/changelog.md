@@ -1,17 +1,20 @@
 # Список изменений
 
-## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122-122o1 ([@reider745](https://vk.com/id500917624))
 
 - Добавлены методы [World.addListenerChunkStateChanged(listener, statesList)](/api/modules/World.html#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/modules/World.html#addLocalListenerChunkStateChanged) для отслеживания загрузки и выгрузки чанков
 - Добавлена возможность получения игровых настроек с помощью [Game.getOption(key)](/api/modules/Game.html#getOption), воспользуйтесь [Game.getOptions](/api/modules/Game.html#getOptions) для получения списка всех доступных ключей
 - Добавлен каллбек *OptionsChanged*, вызывающийся сразу после завершения изменения игровых опций
 - Реализованы пакеты с двоичными данными, передайте массив с байтами для их отправки
-- Исправлена работа раздатчиков с ведрами жидкостей из модов
-- Исправлена передача идентификатора игрока в каллбек *CraftRecipePreProvided*
+- Исправлена работа раздатчиков с ведрами жидкостей из модов, а также передача идентификатора игрока в каллбек *CraftRecipePreProvided*
+- Множественные небольшие улучшения внутренней работы движка
 
 ### Другие изменения ([@rislaed](https://vk.com/id268478382))
 
-- Исправлено отображение переводов для заголовков в конфиге
+- Добавлен [EDamageCause](/api/enum/EDamageCause) для определения типов урона мобов, стандартное значение урона для [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) установлено на 4
+- Добавлена возможность применить события клика и долгого клика на слотах инвентаря, исправлены обновления и изменение размера слотов
+- Добавлены методы для клиентской работы с Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) и [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
+- Исправлено отображение переводов для заголовков в конфиге, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) корректно перезаписывает *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) снова работает
 
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 

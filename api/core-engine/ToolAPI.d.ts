@@ -285,7 +285,7 @@ declare namespace ToolAPI {
         /**
          * Base damage of the instrument, is added to the material damage to
          * calculate the tool's final damage.
-         * @default 0
+         * @default 0 // 4 in case of sword starting with 2.4.0b122o1
          */
         damage?: number,
 		/**

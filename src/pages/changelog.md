@@ -1,17 +1,20 @@
 # Changelog
 
-## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122-122o1 ([@reider745](https://vk.com/id500917624))
 
 - Added [World.addListenerChunkStateChanged(listener, statesList)](/api/modules/World.html#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/modules/World.html#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
 - Added ability to get game settings via [Game.getOption(key)](/api/modules/Game.html#getOption), use [Game.getOptions](/api/modules/Game.html#getOptions) to list all available keys
 - Added *OptionsChanged* callback, which is called immediately after completing game options change
 - Implemented binary data packets, pass an bytes array to send them
-- Fixed dispensers functionality with modded liquid buckets
-- Fixed player identifier transfering to *CraftRecipePreProvided* callback
+- Fixed dispensers functionality with modded liquid buckets and also player identifier transfering to *CraftRecipePreProvided* callback
+- Multiple small tweaks to internal engine operation
 
 ### Other changes ([@rislaed](https://vk.com/id268478382))
 
-- Fixed display of header translations in config
+- Added [EDamageCause](/api/enum/EDamageCause) for determining entity damage type, set [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) default damage to 4
+- Added feature to apply click and long click events to inventory slots, fixed updates and slot resizing
+- Added methods for client working with Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) and [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
+- Fixed display of header translations in config, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) correctly overwrites *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) works again
 
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 
