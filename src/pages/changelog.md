@@ -2,8 +2,8 @@
 
 ## 2.4.0b122-122o1 ([@reider745](https://vk.com/id500917624))
 
-- Added [World.addListenerChunkStateChanged(listener, statesList)](/api/modules/World.html#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/modules/World.html#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
-- Added ability to get game settings via [Game.getOption(key)](/api/modules/Game.html#getOption), use [Game.getOptions](/api/modules/Game.html#getOptions) to list all available keys
+- Added [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
+- Added ability to get game settings via [Game.getOption(key)](/api/namespace/Game#getOption), use [Game.getOptions](/api/namespace/Game#getOptions) to list all available keys
 - Added *OptionsChanged* callback, which is called immediately after completing game options change
 - Implemented binary data packets, pass an bytes array to send them
 - Fixed dispensers functionality with modded liquid buckets and also player identifier transfering to *CraftRecipePreProvided* callback
@@ -21,10 +21,10 @@
 - Fixed mod browser proxy
 - Fixed broken saves bugs due to collision
 - Fixed mod error messages localization
-- Added API module [GameController](/api/modules/GameController.html), to emulate player actions from mods
-- Added [Entity.getAllLocal](/api/modules/Entity.html#getAllLocal) method
+- Added API module [GameController](/api/namespace/GameController), to emulate player actions from mods
+- Added [Entity.getAllLocal](/api/namespace/Entity#getAllLocal) method
 - Fixed *EntityAddedLocal*/*EntityRemovedLocal* callbacks in multiplayer
-- Fixed [Player.localPlayerTurn](/api/modules/Player.html#localPlayerTurn)
+- Fixed [Player.localPlayerTurn](/api/namespace/Player#localPlayerTurn)
 - Mod browser minor crash fixes
 - In-game minor crash fixes
 
@@ -32,8 +32,8 @@
 
 - Net protocol improvements
 - Added BlockSource methods for weather control
-- Added [Particles.addBreakingItemParticle](/api/modules/Particles.html#addBreakingItemParticle) method
-- Added [Item.setShouldDespawn](/api/modules/Item.html#setShouldDespawn)/[setFireResistant](/api/modules/Item.html#setFireResistant)/[setExplodable](/api/modules/Item.html#setExplodable) methods
+- Added [Particles.addBreakingItemParticle](/api/namespace/Particles#addBreakingItemParticle) method
+- Added [Item.setShouldDespawn](/api/namespace/Item#setShouldDespawn)/[setFireResistant](/api/namespace/Item#setFireResistant)/[setExplodable](/api/namespace/Item#setExplodable) methods
 - Fixed memory leaks in mesh render
 
 ## 2.4.0b116-117
@@ -49,26 +49,26 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 ### Other changes ([@reider745](https://vk.com/id500917624))
 
 - Added proxy to mod browser, which is used in case main url is not available (by [@spawnrys](https://vk.com/id549824423))
-- Fixed [client TileEntity sync](/api/interfaces/TileEntity.LocalTileEntityPrototype.html), added methods [onConnectionPlayer](/api/interfaces/TileEntity.TileEntityPrototype.html#onConnectionPlayer)/[onDisconnectionPlayer](/api/interfaces/TileEntity.TileEntityPrototype.html#onDisconnectionPlayer)
-- In case of saves failture, they will now default to [empty js object](/api/interfaces/Saver.IScopeSaver.html#getDefaultSaves)
-- Added ICRender condition [ICRender.BlockState(x, y, z, stateId, valueState)](/api/modules/ICRender.html#BlockState)
+- Fixed [client TileEntity sync](/api/namespace/TileEntity#LocalTileEntityPrototype), added methods [onConnectionPlayer](/api/namespace/TileEntity#onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#onDisconnectionPlayer)
+- In case of saves failture, they will now default to [empty js object](/api/namespace/Saver#getDefaultSaves)
+- Added ICRender condition [ICRender.BlockState(x, y, z, stateId, valueState)](/api/namespace/ICRender#BlockState)
 - Fixed UI on devices with notch (Added switch to config)
 - Optimized static item models (Added to config)
-- Fixed [loadCustom](/api/classes/Animation.Base.html#loadCustom) in remote sessions
-- Fixed [Entity.getMobile](/api/modules/Entity.html#getMobile)
-- Fixed [World.getWorldTime](/api/modules/World.html#getWorldTime) on client
+- Fixed [loadCustom](/api/namespace/Animation#loadCustom) in remote sessions
+- Fixed [Entity.getMobile](/api/namespace/Entity#getMobile)
+- Fixed [World.getWorldTime](/api/namespace/World#getWorldTime) on client
 
 ### Other changes ([@zheka_smirnov](https://vk.com/id24708057))
 
 - Fixed frequent crashes when launching Inner Core
 - Updated Rhino to latest version - javascript engine for mods
 - Many optimization in native code of the Inner Core
-- Added [Player.localPlayerTurn(x, y)](/api/modules/Player.html#localPlayerTurn)
-- Added PlayerActor methods [canFly](/api/classes/PlayerActor.html#canFly)/[setCanFly](/api/classes/PlayerActor.html#setCanFly), [setPlayerBoolean](/api/classes/PlayerActor.html#setPlayerBooleanAbility)/[FloatAbility](/api/classes/PlayerActor.html#setPlayerFloatAbility), [getPlayerBoolean](/api/classes/PlayerActor.html#getPlayerBooleanAbility)/[FloatAbility](/api/classes/PlayerActor.html#getPlayerFloatAbility)
-- Fixed [World](/api/modules/World.html) module was not working in remote sessions
-- Added support for custom [empty buckets](/api/interfaces/Block.LiquidDescriptor.html#bucket), when registering custom liquids
-- Fixed crash in [block step on event](/api/modules/Block.html#registerEntityStepOnFunction)
-- Fixed [Dimensions.transfer](/api/modules/Dimensions.html#transfer) when transfering into the same dimension
+- Added [Player.localPlayerTurn(x, y)](/api/namespace/Player#localPlayerTurn)
+- Added PlayerActor methods [canFly](/api/class/PlayerActor#canFly)/[setCanFly](/api/class/PlayerActor#setCanFly), [setPlayerBoolean](/api/class/PlayerActor#setPlayerBooleanAbility)/[FloatAbility](/api/class/PlayerActor#setPlayerFloatAbility), [getPlayerBoolean](/api/class/PlayerActor#getPlayerBooleanAbility)/[FloatAbility](/api/class/PlayerActor#getPlayerFloatAbility)
+- Fixed [World](/api/namespace/World) module was not working in remote sessions
+- Added support for custom [empty buckets](/api/namespace/Block#bucket), when registering custom liquids
+- Fixed crash in [block step on event](/api/namespace/Block#registerEntityStepOnFunction)
+- Fixed [Dimensions.transfer](/api/namespace/Dimensions#transfer) when transfering into the same dimension
 - Minor fixes to custom dimension generator
 - Fixed installation of some mods
 
@@ -77,14 +77,14 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - A lot of minor optimizations, fixes and stability improvements
 - Fixed some recipes were missing in workbench (like IC2 batteries)
 - Mod loading priority support
-- Preview built-in [ECS](/api/modules/ECS.html)
-- Added [ItemModel.setSpriteHandRender](/api/interfaces/ItemModel-1.html#setSpriteHandRender) method
-- Added CustomDimensionGenerator method [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/classes/Dimensions.CustomGenerator.html#setGenerateCaves), fixed underwater caves generated by default
-- Added BlockSource method [listEntitiesOfTypeInAABB(x1, y1, z1, x2, y2, z2, stringType)](/api/classes/BlockSource-1.html#listEntitiesOfTypeInAABB.listEntitiesOfTypeInAABB-2), fixed [listEntitiesInAABB](/api/classes/BlockSource-1.html#listEntitiesInAABB) for exact type
-- Added [Player.getLocal()](/api/modules/Player.html#getLocal) and [Player.getServer()](/api/modules/Player.html#getServer) methods
-- Added [UI.getMinecraftUiScale()](/api/modules/UI.html#getMinecraftUiScale) and [UI.getRelMinecraftUiScale()](/api/modules/UI.html#getRelMinecraftUiScale) methods
+- Preview built-in [ECS](/api/namespace/ECS)
+- Added [ItemModel.setSpriteHandRender](/api/interface/ItemModel#setSpriteHandRender) method
+- Added CustomDimensionGenerator method [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/namespace/Dimensions#setGenerateCaves), fixed underwater caves generated by default
+- Added BlockSource method [listEntitiesOfTypeInAABB(x1, y1, z1, x2, y2, z2, stringType)](/api/class/BlockSource#listEntitiesOfTypeInAABB), fixed [listEntitiesInAABB](/api/class/BlockSource#listEntitiesInAABB) for exact type
+- Added [Player.getLocal()](/api/namespace/Player#getLocal) and [Player.getServer()](/api/namespace/Player#getServer) methods
+- Added [UI.getMinecraftUiScale()](/api/namespace/UI#getMinecraftUiScale) and [UI.getRelMinecraftUiScale()](/api/namespace/UI#getRelMinecraftUiScale) methods
 - Fixed enchant custom callbacks crash
-- Fixed [knockback resistance](/api/interfaces/Item.ArmorParams.html#knockbackResist) for custom armor
+- Fixed [knockback resistance](/api/namespace/Item#knockbackResist) for custom armor
 - Fixes for mod installation
 
 ## 2.2.1b114
@@ -106,7 +106,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 ## 2.2.1b106
 
 - Vanilla Crafting Table now supports modded recipes. Crafting Table UI override was disabled, but can be enabled in settings, if something will go wrong.
-- Faster [access to modded tile entities](/api/modules/TileEntity.html#getTileEntity)
+- Faster [access to modded tile entities via coordinates](/api/namespace/TileEntity#getTileEntity)
 - Fixes and optimization for C++ to Java calls
 
 ## 2.2.1b105
@@ -121,26 +121,26 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 - Fixed animated liquid textures
 - Fixed endless custom buckets in survival
 - Now changing items in *ItemUse* callback are handled correctly when not prevented
-- Added [Block.registerClickFunction[ForID](nameId/id, (coords, item, block, player) => void)](/api/Block/registerClickFunction)
+- Added [Block.registerClickFunction[ForID](nameId/id, (coords, item, block, player) => void)](/api/namespace/Block#registerClickFunction)
 - Fixed position, passed dispense callback, added slot parameter (4th argument)
 
 ## 2.2.1b103
 
-- When creating liquids you can now automatically create buckets with full functionality [(see docs)](/api/interfaces/Block.LiquidDescriptor.html#bucket)
-- Added [isRenewable](/api/interfaces/Block.LiquidDescriptor.html#isRenewable) parameter for custom liquids
+- When creating liquids you can now automatically create buckets with full functionality [(see docs)](/api/namespace/Block#bucket)
+- Added [isRenewable](/api/namespace/Block#isRenewable) parameter for custom liquids
 - Fixed bucket interaction with custom liquids
 
 ## 2.2.1b102
 
 - Added [methods](https://gist.github.com/zheka2304/a93f32f612750cbffc637a265fbf9027) for creating liquid blocks
 - Fixed some mod manager issues and crashes, added ability to search mod by it's ID
-- Added [Entity.hasEffect(entity, effectId)](/api/Entity/hasEffect) and [Entity.getEffect(entity, effectId)](/api/Entity/getEffect)
-- Added [BlockSource.setDestroyParticlesEnabled(boolean)](/api/BlockSource/setDestroyParticlesEnabled) method
-- Fixed [Item.invokeItemUseOn](/api/Item/invokeItemUseOn) not using given entity block source
+- Added [Entity.hasEffect(entity, effectId)](/api/namespace/Entity#hasEffect) and [Entity.getEffect(entity, effectId)](/api/namespace/Entity#getEffect)
+- Added [BlockSource.setDestroyParticlesEnabled(boolean)](/api/class/BlockSource#setDestroyParticlesEnabled) method
+- Fixed [Item.invokeItemUseOn](/api/namespace/Item#invokeItemUseOn) not using given entity block source
 - Fixed vanilla swords tool data
 - Fixed destroying attachables was causing crash
 - Fixed creating block states by block ID
-- Fixed [BlockState.addStates](/api/BlockState/addStates) was not accepting JS object
+- Fixed [BlockState.addStates](/api/class/BlockState#addStates) was not accepting JS object
 - Other minor fixes
 
 ## 2.2.1b101
@@ -149,10 +149,10 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 ## 2.2.1b100
 
-- Added [Block.getMaterial(blockId)](/api/Block/getMaterial)
-- Added PlayerActor methods: [getItemUseDuration()](/api/PlayerActor/getItemUseDuration), [getItemUseIntervalProgress()](/api/PlayerActor/getItemUseIntervalProgress), [getItemUseStartupProgress()](/api/PlayerActor/getItemUseStartupProgress)
+- Added [Block.getMaterial(blockId)](/api/namespace/Block#getMaterial)
+- Added PlayerActor methods: [getItemUseDuration()](/api/class/PlayerActor#getItemUseDuration), [getItemUseIntervalProgress()](/api/class/PlayerActor#getItemUseIntervalProgress), [getItemUseStartupProgress()](/api/class/PlayerActor#getItemUseStartupProgress)
 - Fixed multiplayer mod list was built with incorrect mod list
-- Fixed [BlockSource.listEntitiesInAABB](/api/BlockSource/listEntitiesInAABB) was not returning player, when passed no filter parameters
+- Fixed [BlockSource.listEntitiesInAABB](/api/class/BlockSource#listEntitiesInAABB) was not returning player, when passed no filter parameters
 
 ## 2.2.1b99
 
@@ -162,8 +162,8 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 ## 2.2.1b98
 
-- Fixed [Commands.exec](/api/Commands/exec)
-- Fixed [Entity.getNameTag](/api/Entity/getNameTag)
+- Fixed [Commands.exec](/api/namespace/Commands#exec)
+- Fixed [Entity.getNameTag](/api/namespace/Entity#getNameTag)
 
 ## 2.2.1b97
 
@@ -171,20 +171,20 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 ## 2.2.1b96
 
-- Added methods [Recipes.getAllWorkbenchRecipes()](/api/Recipes/getAllWorkbenchRecipes) and [Recipes.getAllFurnaceRecipes()](/api/Recipes/getAllFurnaceRecipes)
-- Added method [BlockSource.getBiomeDownfallAt(x, y, z)](/api/BlockSource/getBiomeDownfallAt)
-- Added slot element properties: [iconScale](/api/interfaces/UI.UISlotElement.html#iconScale) and [disablePixelPerfect](/api/interfaces/UI.UISlotElement.html#disablePixelPerfect)
-- Added methods for UI.Window: [updateScrollDimensions()](/api/com/zhekasmirnov/innercore/api/mod/ui/window/UIWindow/updateScrollDimensions) and [updateWindowPositionAndSize()](/api/com/zhekasmirnov/innercore/api/mod/ui/window/UIWindow/updateWindowPositionAndSize)
-- Added new text alignment type: 3 - [ALIGN_CENTER_HORIZONTAL](/api/classes/UI.Font.html#ALIGN_CENTER_HORIZONTAL)
-- Added functon [runOnClientThread(function)](/api/runOnClientThread), works as [runOnMainThread](/api/runOnMainThread), but for client ticking thread
+- Added methods [Recipes.getAllWorkbenchRecipes()](/api/namespace/Recipes#getAllWorkbenchRecipes) and [Recipes.getAllFurnaceRecipes()](/api/namespace/Recipes#getAllFurnaceRecipes)
+- Added method [BlockSource.getBiomeDownfallAt(x, y, z)](/api/class/BlockSource#getBiomeDownfallAt)
+- Added slot element properties: [iconScale](/api/namespace/UI#iconScale) and [disablePixelPerfect](/api/namespace/UI#disablePixelPerfect)
+- Added methods for UI.Window: [updateScrollDimensions()](/api/namespace/UI#updateScrollDimensions) and [updateWindowPositionAndSize()](/api/namespace/UI#updateWindowPositionAndSize)
+- Added new text alignment type: 3 - [ALIGN_CENTER_HORIZONTAL](/api/namespace/UI#ALIGN_CENTER_HORIZONTAL)
+- Added functon [runOnClientThread(function)](/api/function/runOnClientThread), works as [runOnMainThread](/api/function/runOnMainThread), but for client ticking thread
 - Fixed some item IDs compatibility and related recipes - nether start, melon, records, horse armor, fireball, fireworks
 - Fixed chestplate model for modded armor
 
 ## 2.2.1b95
 
-- Added BlockSource methods [setExtraBlock(x, y, z, BlockState/\[id, data\])](/api/BlockSource/setExtraBlock) and [getExtraBlock(x, y, z) -> BlockState](/api/BlockSource/getExtraBlock) to access and modify extra blocks, such as liquids in other blocks
-- Added block description parameters [can_contain_liquid](/api/Block/SpecialType/can_contain_liquid) and [can_be_extra_block](/api/Block/SpecialType/can_be_extra_block)
-- Added methods [Block.canContainLiquid(id)](/api/Block/canContainLiquid) and [Block.canBeExtraBlock(id)](/api/Block/canBeExtraBlock)
+- Added BlockSource methods [setExtraBlock(x, y, z, BlockState/\[id, data\])](/api/class/BlockSource#setExtraBlock) and [getExtraBlock(x, y, z) -> BlockState](/api/class/BlockSource#getExtraBlock) to access and modify extra blocks, such as liquids in other blocks
+- Added block description parameters [can_contain_liquid](/api/namespace/Block#can_contain_liquid) and [can_be_extra_block](/api/namespace/Block#can_be_extra_block)
+- Added methods [Block.canContainLiquid(id)](/api/namespace/Block#canContainLiquid) and [Block.canBeExtraBlock(id)](/api/namespace/Block#canBeExtraBlock)
 - Fixed settings changes were not applied on first launch after change
 - Fixed crashes in mod config
 - Fixed language settings were not loaded correctly
@@ -193,17 +193,17 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 ## 2.2.1b94
 
 - Fixed new modpack selecting bug from [2.2.1b93](#221b93)
-- Fixed [Item.isValid(id)](/api/Item/isValid), added [IDRegistry.getStringIdAndTypeForIntegerId(id)](/api/IDRegistry/getStringIdAndTypeForIntegerId), [IDRegistry.getTypeForIntegerId(id)](/api/IDRegistry/getTypeForIntegerId), [IDRegistry.getStringIdForIntegerId(id)](/api/IDRegistry/getStringIdForIntegerId)
-- Fixed [getEnchantName](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/getEnchantName) from ItemExtraData
+- Fixed [Item.isValid(id)](/api/namespace/Item#isValid), added [IDRegistry.getStringIdAndTypeForIntegerId(id)](/api/namespace/IDRegistry#getStringIdAndTypeForIntegerId), [IDRegistry.getTypeForIntegerId(id)](/api/namespace/IDRegistry#getTypeForIntegerId), [IDRegistry.getStringIdForIntegerId(id)](/api/namespace/IDRegistry#getStringIdForIntegerId) methods
+- Fixed [getEnchantName](/api/class/ItemExtraData#getEnchantName) from ItemExtraData
 
 ## 2.2.1b93
 
 - Fixed modded food
-- Restored basic functionality of [PathNavigation](/api/modules/Entity.html#getPathNavigation)
+- Restored basic functionality of [PathNavigation](/api/namespace/Entity#getPathNavigation)
 - Added API to override underwater fog parameters and fixed underwater fog in custom dimensions
 - Added *EntityAddedLocal* and *EntityRemovedLocal* callbacks - client side variants of *EntityAdded* and *EntityRemoved*
-- Fixed [Entity.setOffhandItem](/api/Entity/setOffhandItem)
-- Added [Dimensions.getAllRegisteredCustomBiomes()](/api/Dimensions/getAllRegisteredCustomBiomes) method, returning map of all custom biomes
+- Fixed [Entity.setOffhandItem](/api/namespace/Entity#setOffhandItem)
+- Added [Dimensions.getAllRegisteredCustomBiomes()](/api/namespace/Dimensions#getAllRegisteredCustomBiomes) method, returning map of all custom biomes
 - Various possible in-game chashes fixed
 - Fixed some mod manager crashes and minor redesign
 - Fixed wrong modpack can be loaded, when multiple modpacks are installed
@@ -221,7 +221,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 ## 2.2.1b89
 
 - Fixed bug when block IDs were not synced in multiplayer
-- Added [vanilla block states API](/api/classes/BlockState.html)
+- Added [vanilla block states API](/api/class/BlockState)
 - Fixed workbench for connected players
 - Fixed generation callbacks errors
 - Improved saves stability
@@ -251,7 +251,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 - Massive update to mod manager with alot of new features, fixes and improvements
 - Added modpack support, including installation, modification and creating your own
 - Block models are now loading faster and consume less RAM
-- [BlockSource.breakBlock](/api/BlockSource/breakBlock)/[ForJsResult](/api/BlockSource/breakBlockForJsResult) methods now also invoke *DestroyBlock* callback, if actor is passed as a parameter and exists in BlockSource's dimension (and it was not prevented by *BreakBlock* callback)
+- [BlockSource.breakBlock](/api/class/BlockSource#breakBlock)/[ForJsResult](/api/class/BlockSource#breakBlockForJsResult) methods now also invoke *DestroyBlock* callback, if actor is passed as a parameter and exists in BlockSource's dimension (and it was not prevented by *BreakBlock* callback)
 
 ## 2.2.0b84
 
@@ -268,15 +268,15 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 - Rework for block drop system
 - Added callback *BreakBlock(BlockSource, position, block, isDropAllowed, player, item)* - called when block is destroyed, unlike DestroyBlock can be called not only when block is destroyed by player, but also by new BlockSource methods. This callback is used for block drops, player destroy logic must remain in *DestroyBlock*.
 - Drop functions now using *BreakBlock*
-- Added methods to BlockSource: [breakBlock(x, y, z, isDropAllowed\[, actor\]\[, item\])](/api/BlockSource/breakBlock) - destroys block, calls *BreakBlock*, [breakBlockForJsResult(x, y, z\[, actor\]\[, item\])](/api/BlockSource/breakBlockForJsResult) - same as breakBlock, but instead of dropping items and exp orbs, returns: `{ experience:, items: [{ id:, count:, data:, extra: }, ... ] }`
+- Added methods to BlockSource: [breakBlock(x, y, z, isDropAllowed\[, actor\]\[, item\])](/api/class/BlockSource#breakBlock) - destroys block, calls *BreakBlock*, [breakBlockForJsResult(x, y, z\[, actor\]\[, item\])](/api/class/BlockSource#breakBlockForJsResult) - same as breakBlock, but instead of dropping items and exp orbs, returns: `{ experience:, items: [{ id:, count:, data:, extra: }, ... ] }`
 
 ## 2.2.0b82
 
-- Added ItemContainer methods [setSlotSavingEnabled(name, enabled)](/api/com/zhekasmirnov/apparatus/api/container/ItemContainer/setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/com/zhekasmirnov/apparatus/api/container/ItemContainer/setGlobalSlotSavingEnabled), they are used to control, which slots are saved
-- Added parameter to [destroy](/api/interfaces/TileEntity.TileEntityPrototype.html#destroy) method of tile entity, that indicates, if it was destroyed in *DestroyBlock* callback
+- Added ItemContainer methods [setSlotSavingEnabled(name, enabled)](/api/class/ItemContainer#setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/class/ItemContainer#setGlobalSlotSavingEnabled), they are used to control, which slots are saved
+- Added parameter to [destroy](/api/namespace/TileEntity#destroy) method of tile entity, that indicates, if it was destroyed in *DestroyBlock* callback
 - Optimized inventory editing methods for player
 - Fixed editing player abilities, including flying
-- Fixed server open listener in [ItemContainer](/api/classes/ItemContainer-1.html) was called before open packet is sent
+- Fixed server open listener in [ItemContainer](/api/class/ItemContainer) was called before open packet is sent
 - Fixed some furnace recipes
 - Fixed loading bug on older Android versions
 - Fixed breaking ice
@@ -296,14 +296,14 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 - Fixed modded world generation was called multiple times per chunk. It will significantly reduce lag.
 - Modded world generation now called AFTER vanilla worldgen
 - Another attemt to fix loading mods on some devices
-- Added log methods: [Logger.debug(tag, message)](/api/Logger/debug), [Logger.info(tag, message)](/api/Logger/info), [Logger.error(tag, message\[, error\])](/api/Logger/error)
+- Added log methods: [Logger.debug(tag, message)](/api/namespace/Logger#debug), [Logger.info(tag, message)](/api/namespace/Logger#info), [Logger.error(tag, message\[, error\])](/api/namespace/Logger#error)
 
 ## 2.2.0b76
 
 - Fixed loading mods with resource packs
 - Fixed saves errors
 - Fixed loading mods on some devices
-- Added parameter "category" in [Item.createItem](/api/Item/createItem)
+- Added parameter "category" in [Item.createItem](/api/namespace/Item#category)
 
 ## 2.2.0b75
 
@@ -335,7 +335,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 ## 2.1.0b69
 
 - Fixed items with extra data were sometimes invisible in vanilla UI
-- Added [getLightLevel(x, y, z)](/api/BlockSource/getLightLevel) to BlockSource
+- Added [getLightLevel(x, y, z)](/api/class/BlockSource#getLightLevel) to BlockSource
 
 ## 2.1.0b68
 
@@ -367,14 +367,14 @@ You can connect to your friends from Xbox account with same mods as yours (with 
 
 ## 2.1.0b60
 
-- Added method [exists()](/api/Animation/Base/exists) to animations
+- Added method [exists()](/api/namespace/Animation#exists) to animations
 - Minor fixes
 
 ## 2.1.0b59
 
-- Added methods [BlockRenderer.setCustomRaycastShape(id, data, collisionShape)](/api/BlockRenderer/setCustomRaycastShape), [BlockRenderer.setCustomCollisionAndRaycastShape(id, data, collisionShape)](/api/BlockRenderer/setCustomCollisionAndRaycastShape)
-- Added methods [BlockRenderer.mapCollisionModelAtCoords(dimensionId, x, y, z, model)](/api/BlockRenderer/mapCollisionModelAtCoords), [BlockRenderer.mapRaycastModelAtCoords(dimensionId, x, y, z, model)](/api/BlockRenderer/mapRaycastModelAtCoords), [BlockRenderer.mapCollisionAndRaycastModelAtCoords(dimensionId, x, y, z, model)](/api/BlockRenderer/mapCollisionAndRaycastModelAtCoords), for collision and raycast shape mapping, passing null model will unmap it, mapping works on any block including air
-- Added BlockSource method [getBlock(x, y, z)](/api/BlockSource/getBlock), returning object, that contains both ID and data
+- Added methods [BlockRenderer.setCustomRaycastShape(id, data, collisionShape)](/api/namespace/BlockRenderer#setCustomRaycastShape), [BlockRenderer.setCustomCollisionAndRaycastShape(id, data, collisionShape)](/api/namespace/BlockRenderer#setCustomCollisionAndRaycastShape)
+- Added methods [BlockRenderer.mapCollisionModelAtCoords(dimensionId, x, y, z, model)](/api/namespace/BlockRenderer#mapCollisionModelAtCoords), [BlockRenderer.mapRaycastModelAtCoords(dimensionId, x, y, z, model)](/api/namespace/BlockRenderer#mapRaycastModelAtCoords), [BlockRenderer.mapCollisionAndRaycastModelAtCoords(dimensionId, x, y, z, model)](/api/namespace/BlockRenderer#mapCollisionAndRaycastModelAtCoords), for collision and raycast shape mapping, passing null model will unmap it, mapping works on any block including air
+- Added BlockSource method [getBlock(x, y, z)](/api/class/BlockSource#getBlock), returning object, that contains both ID and data
 - Clearing mapped render models (not collision ones) on local player dimension change as well as animations
 - Other minor fixes
 
@@ -384,23 +384,23 @@ You can connect to your friends from Xbox account with same mods as yours (with 
 
 ## 2.1.0b57
 
-- Added method [Network.inRemoteWorld()](/api/Network/inRemoteWorld) - returns `true`, if player connected to remote world
+- Added method [Network.inRemoteWorld()](/api/namespace/Network#inRemoteWorld) - returns `true`, if player connected to remote world
 - Added callback *ItemUseLocal(coords, item, block, player)* for client side item use
 - Added callback *ConnectingToHost(host, minecraftPort, moddedPort)*
 - Improvements for NetworkConnectedClientList
-- Added method [BlockSource.getCurrentClientRegion()](/api/BlockSource/getCurrentClientRegion)
+- Added method [BlockSource.getCurrentClientRegion()](/api/class/BlockSource#getCurrentClientRegion)
 - Other minor fixes
 
 ## 2.1.0b56
 
 - New item caching system, that caches every complex icon, not only custom models and allows creating of model cache groups
-- Call [ItemModel.setCurrentCacheGroup("groupName", "version")](/api/ItemModel/setCurrentCacheGroup) at the start of your mod to create cache group, it will be applied to all models, created at the root of your mod (including default ones). If specified version does not match cache version, whole group will be re-created.
+- Call [ItemModel.setCurrentCacheGroup("groupName", "version")](/api/namespace/ItemModel#setCurrentCacheGroup) at the start of your mod to create cache group, it will be applied to all models, created at the root of your mod (including default ones). If specified version does not match cache version, whole group will be re-created.
 - Fixed ItemContainer interaction with items with extra data
 
 ## 2.1.0b55
 
 - Fixed compatibility with Recipe Viewer
-- Added block special type parameter [color_source](/api/Block/SpecialType/color_source), can be one of **"none"**, **"leaves"**, **"grass"**, **"water"**
+- Added block special type parameter [color_source](/api/namespace/Block#color_source), can be one of **"none"**, **"leaves"**, **"grass"**, **"water"**
 - Sped up loading of item models and made it less RAM consuming
 - Minor improvements
 
@@ -427,39 +427,39 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.5b45
 
-- Added item model method [setModelOverrideCallback(function(item) \{ ... \})](/api/ItemModel/setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
-- Added method [ItemModel.newStandalone()](/api/ItemModel/newStandalone), creates empty ItemModel instance, not linked to any item, this models should be used in [setModelOverrideCallback](/api/interfaces/ItemModel-1.html#setModelOverrideCallback)
+- Added item model method [setModelOverrideCallback(function(item) \{ ... \})](/api/interface/ItemModel#setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
+- Added method [ItemModel.newStandalone()](/api/namespace/ItemModel#newStandalone), creates empty ItemModel instance, not linked to any item, this models should be used in [setModelOverrideCallback](/api/interface/ItemModel#setModelOverrideCallback)
 - Item override function now receives extra data
-- Fixed crash, caused by calling [toScriptable()](/api/NBT/CompoundTag/toScriptable) method of NBT tags
+- Fixed crash, caused by calling [toScriptable()](/api/namespace/NBT#toScriptabled) method of NBT tags
 - D8 dexer, instead of old DX is now used to build dex files from java
 
 ## 2.0.5b44
 
 - Mods now can access and modify NBT of entities, tile entities and items
-- Added functions: [Entity.getCompoundTag(entity)](/api/Entity/getCompoundTag), [Entity.setCompoundTag(entity, tag)](/api/Entity/setCompoundTag)
-- Added methods to vanilla TileEntity, returned by [World.getContainer()](/api/World/getContainer): [getCompoundTag()](/api/NativeTileEntity/getCompoundTag), [setCompoundTag(tag)](/api/NativeTileEntity/setCompoundTag)
-- Added methods to ItemExtraData: [getCompoundTag()](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/getCompoundTag), [setCompoundTag(tag)](/api/com/zhekasmirnov/innercore/api/NativeItemInstanceExtra/setCompoundTag)
+- Added functions: [Entity.getCompoundTag(entity)](/api/namespace/Entity#getCompoundTag), [Entity.setCompoundTag(entity, tag)](/api/namespace/Entity#setCompoundTag)
+- Added methods to vanilla TileEntity, returned by [World.getContainer()](/api/namespace/World#getContainer): [getCompoundTag()](/api/interface/NativeTileEntity#getCompoundTag), [setCompoundTag(tag)](/api/interface/NativeTileEntity#setCompoundTag)
+- Added methods to ItemExtraData: [getCompoundTag()](/api/class/ItemExtraData#getCompoundTag), [setCompoundTag(tag)](/api/class/ItemExtraData#setCompoundTag)
 - Mod UI now supports modded animated item icons
-- Icon override functions now receives second parameter - [isModUi](/api/modules/Item.html#registerIconOverrideFunction)
-- Added function [Debug.big](/api/Debug/big), acts like [Debug.m](/api/Debug/m), but outputs dialog with selectable text and pretty JSON
-- TileEntity function [click](/api/interfaces/TileEntity.TileEntityPrototype.html#click) now receives additional parameter - click coords
+- Icon override functions now receives second parameter - [isModUi](/api/namespace/Item#registerIconOverrideFunction)
+- Added function [Debug.big](/api/namespace/Debug#big), acts like [Debug.m](/api/namespace/Debug#m), but outputs dialog with selectable text and pretty JSON
+- TileEntity function [click](/api/namespace/TileEntity#click) now receives additional parameter - click coords
 - Fixed rare addon-related crash
 
 ## 2.0.4b43
 
 - Automatically deleting resource and behavior packs from uninstalled mods upon world load
 - RenderMesh now can receive not only absolute file path, but also resource path and name of file in *models/* dir in resources.
-- Deprecated slot element parameters [isTransparentBackground](/api/interfaces/UI.UISlotElement.html#isTransparentBackground) and [needClean](/api/interfaces/UI.UISlotElement.html#needClean), now slot supports transparent background by default
-- Added container method [setOnOpenListener(function(container, window) \{ ... \})](/api/com/zhekasmirnov/innercore/api/mod/ui/container/Container/setOnOpenListener)
+- Deprecated slot element parameters [isTransparentBackground](/api/namespace/UI#isTransparentBackground) and [needClean](/api/namespace/UI#needClean), now slot supports transparent background by default
+- Added container method [setOnOpenListener(function(container, window) \{ ... \})](/api/namespace/UI#setOnOpenListener)
 - Removed shared objects, built for x86 ABI to reduce overall weight
-- Fixed error, that occurred after second [WRAP_JAVA](/api/WRAP_JAVA) call on same class
+- Fixed error, that occurred after second [WRAP_JAVA](/api/function/WRAP_JAVA) call on same class
 
 ## 2.0.4b42
 
-- [Callback.addCallback](/api/Callback/addCallback) now has third optional parameter - priority (integer, default value is 0). Callbacks with higher priority will be called earlier.
+- [Callback.addCallback](/api/namespace/Callback#addCallback) now has third optional parameter - priority (integer, default value is 0). Callbacks with higher priority will be called earlier.
 - UI slots now support animated background (texture name array must be passed instead of single name). For other textures in UI this feature was already present.
 - UI slots now has text parameter, also container.setText work on them. If this parameter is not null, it value will be shown instead of count.
-- [World.clip](/api/World/clip) now works on actors, but only on certain mode parameter values
+- [World.clip](/api/namespace/World#clip) now works on actors, but only on certain mode parameter values
 - Fixed block icon generation for ICRender models
 
 ## 2.0.4b41
@@ -469,11 +469,11 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 ## 2.0.4b40
 
 - Optimized mod UI, making it a bit faster and consume less RAM
-- Added new mode for standard window, making all contents appear in separate window instead of background one. To use it in a new mode, use [UI.StandardWindow](/api/UI/StandardWindow) instead of misspelled [UI.StandartWindow](/api/UI/StandartWindow)
+- Added new mode for standard window, making all contents appear in separate window instead of background one. To use it in a new mode, use [UI.StandardWindow](/api/namespace/UI#StandardWindow) instead of misspelled [UI.StandartWindow](/api/namespace/UI#StandartWindow)
 - Resource and behavior packs are now injected inside each world upon enter
 - Animations (static models) are now cleaned up on dimension change
 - Animations are now garbage collected after they are destroyed in world
-- Added [Updatable.addAnimator(updatable_object)](/api/Updatable/addAnimator), which adds updatable, that ticks on client thread and never saves
+- Added [Updatable.addAnimator(updatable_object)](/api/namespace/Updatable#addAnimator), which adds updatable, that ticks on client thread and never saves
 
 ## 2.0.4b39
 
@@ -481,10 +481,10 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.4b38
 
-- Added [TagRegistry](/api/modules/TagRegistry.html) module. Docs will be available after some tests and maybe rework.
-- Added particle type properties [framesX](/api/interfaces/Particles.ParticleDescription.html#framesX) and [framesY](/api/interfaces/Particles.ParticleDescription.html#framesY), which define frame grid size
-- Added particle type property [rebuildDelay](/api/interfaces/Particles.ParticleDescription.html#rebuildDelay), which defines time in ticks between particle mesh updates
-- Added particle type properties [color2](/api/interfaces/Particles.ParticleDescription.html#color2) and [animators.color](/api/interfaces/Particles.ParticleDescription.html#animators), which allow animation of particle color
+- Added [TagRegistry](/api/namespace/TagRegistry) module. Docs will be available after some tests and maybe rework.
+- Added particle type properties [framesX](/api/namespace/Particles#framesX) and [framesY](/api/namespace/Particles#framesY), which define frame grid size
+- Added particle type property [rebuildDelay](/api/namespace/Particles#rebuildDelay), which defines time in ticks between particle mesh updates
+- Added particle type properties [color2](/api/namespace/Particles#color2) and [animators.color](/api/namespace/Particles#animators), which allow animation of particle color
 - Fixed slabs drop
 - Fixed some textures in UI
 
@@ -507,17 +507,17 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - After installing mod you can now install all it's dependencies
 - Saving system improved: overall stability increased, saves backup is created and all saves errors, if occured, are now displayed in one window instead of one window per error
 - Main menu is slightly redesigned
-- Added function [Entity.getAllInsideBox(coords1, coords2\[, type, flag\])](/api/Entity/getAllInsideBox)
-- Added function [Entity.getDimension(entity)](/api/Entity/getDimension)
-- Added function [Item.setAllowedInOffhand(id, allowed)](/api/Item/setAllowedInOffhand)
-- Added function [Game.simulateBackPressed()](/api/Game/simulateBackPressed)
+- Added function [Entity.getAllInsideBox(coords1, coords2\[, type, flag\])](/api/namespace/Entity#getAllInsideBox)
+- Added function [Entity.getDimension(entity)](/api/namespace/Entity#getDimension)
+- Added function [Item.setAllowedInOffhand(id, allowed)](/api/namespace/Item#setAllowedInOffhand)
+- Added function [Game.simulateBackPressed()](/api/namespace/Game#simulateBackPressed)
 - PathNavigation is majorly fixed and improved
-- Fixed [Entity.setCarriedItem](/api/Entity/setCarriedItem)/[setOffhandItem](/api/Entity/setOffhandItem)/[setArmorSlot](/api/Entity/setArmorSlot) were not sending data to client on non-player entities
+- Fixed [Entity.setCarriedItem](/api/namespace/Entity#setCarriedItem)/[setOffhandItem](/api/namespace/Entity#setOffhandItem)/[setArmorSlot](/api/namespace/Entity#setArmorSlot) were not sending data to client on non-player entities
 - Fixed some crashes, that could occur while transferring between dimensions
 - Fixed rotation of animations
 - Fixed error, that caused mod behavior packs to be ignored on first launch
 - Fixed duplication mod behavior packs in world folder
-- Fixed [Entity.spawn](/api/Entity/spawn) was working incorrectly with addon entities
+- Fixed [Entity.spawn](/api/namespace/Entity#spawn) was working incorrectly with addon entities
 - Fixed Translation module doing English to English translations
 - Increased item name caching capacity
 - Fixed window method setTouchable not working for game overlays
@@ -526,9 +526,9 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 ## 2.0.3b33
 
 - Added support for custom shader uniforms, that can be passed for individual models (more documentation will be released soon)
-- Added support for controlled entity navigation via [Entity.getPathNavigation(entity)](/api/Entity/getPathNavigation)
-- Added function [Entity.getAttribute(entity, name)](/api/Entity/getAttribute) to access and modify entity attributes
-- Added functions: [Player.setAbility(name, value)](/api/Player/setAbility), [Player.getFloatAbility(name)](/api/Player/getFloatAbility), [Player.getBooleanAbility(name)](/api/Player/getBooleanAbility)
+- Added support for controlled entity navigation via [Entity.getPathNavigation(entity)](/api/namespace/Entity#getPathNavigation)
+- Added function [Entity.getAttribute(entity, name)](/api/namespace/Entity#getAttribute) to access and modify entity attributes
+- Added functions: [Player.setAbility(name, value)](/api/namespace/Player#setAbility), [Player.getFloatAbility(name)](/api/namespace/Player#getFloatAbility), [Player.getBooleanAbility(name)](/api/namespace/Player#getBooleanAbility)
 - Added uniform vec3 VIEW_POS to shaders on world models (animations)
 
 ## 2.0.3b32
@@ -546,44 +546,44 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.2b29
 
-- Better TileEntity system: now unloaded tile entities, or ones without tick function will not be counted, when checking updatable limit. Added TileEntity functions [load()](/api/TileEntity/TileEntityPrototype/client), [unload()](/api/TileEntity/TileEntityPrototype/client) and [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/TileEntity/TileEntityPrototype/client).
+- Better TileEntity system: now unloaded tile entities, or ones without tick function will not be counted, when checking updatable limit. Added TileEntity functions [load()](/api/namespace/TileEntity#load), [unload()](/api/namespace/TileEntity#unload) and [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/namespace/TileEntity#onCheckerTick).
 - Fixed crash with mob custom models
 - Other minor fixes
 
 ## 2.0.2b28
 
 - Added option **disable_loading_screen**, that disables loading screen and loads mods on main thread
-- Fixed [World.clip](/api/World/clip), [RenderMesh.clone](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/clone), [Block.setupAsRedstoneReceiver](/api/Block/setupAsRedstoneReceiver)/[Emitter](/api/Block/setupAsRedstoneEmitter)
+- Fixed [World.clip](/api/namespace/World#clip), [RenderMesh.clone](/api/class/RenderMesh#clone), [Block.setupAsRedstoneReceiver](/api/namespace/Block#setupAsRedstoneReceiver)/[Emitter](/api/namespace/Block#setupAsRedstoneEmitter)
 - Fixed some crashes from item models
 
 ## 2.0.2b27
 
 - Fixed issue with spending items when tapping on block with UI
-- Added functions to World module: [clip(x1, y1, z1, x2, y2, z2)](/api/World/clip), [doesVanillaTileHasUI(id)](/api/World/doesVanillaTileHasUI), [setBlockUpdateAllowed(true, false)](/api/World/setBlockUpdateAllowed), [setBlockUpdateType(type)](/api/World/setBlockUpdateType)
+- Added functions to World module: [clip(x1, y1, z1, x2, y2, z2)](/api/namespace/World#clip), [doesVanillaTileHasUI(id)](/api/namespace/World#doesVanillaTileHasUI), [setBlockUpdateAllowed(true, false)](/api/namespace/World#setBlockUpdateAllowed), [setBlockUpdateType(type)](/api/namespace/World#setBlockUpdateType)
 - Fixed functions for player experience work
 - Fixed meshes after app was minimized
 
 ## 2.0.2b26
 
 - Added server thread priority to Inner Core config
-- Added [Block.registerNeighbourChangeFunction\[ForID\](id, function(coords, block, changeCoords) {})](/api/Block/registerNeighbourChangeFunction)
-- Added [Block.registerEntityInsideFunction\[ForID\](id, function(coords, block, entity) {})](/api/Block/registerEntityInsideFunction)
-- Added [Block.registerEntityStepOnFunction\[ForID\](id, function(coords, block, entity) {})](/api/Block/registerEntityStepOnFunction)
-- Added RenderMesh methods [rotate(x, y, z, rx, ry, rz)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/rotate), [fitIn(x1, y1, z1, x2, y2, z2\[, keepRatio\])](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/fitIn), [clone()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/clone)
+- Added [Block.registerNeighbourChangeFunction\[ForID\](id, function(coords, block, changeCoords) {})](/api/namespace/Block#registerNeighbourChangeFunction)
+- Added [Block.registerEntityInsideFunction\[ForID\](id, function(coords, block, entity) {})](/api/namespace/Block#registerEntityInsideFunction)
+- Added [Block.registerEntityStepOnFunction\[ForID\](id, function(coords, block, entity) {})](/api/namespace/Block#registerEntityStepOnFunction)
+- Added RenderMesh methods [rotate(x, y, z, rx, ry, rz)](/api/class/RenderMesh#rotate), [fitIn(x1, y1, z1, x2, y2, z2\[, keepRatio\])](/api/class/RenderMesh#fitIn), [clone()](/api/class/RenderMesh#clone)
 - Fixed colors and mesh position in item models
 
 ## 2.0.2b25
 
-- Added block description property - [sound](/api/Block/SpecialType/sound), sets one of standard block sound types
-- Added RenderMesh method [setLightPos(x, y, z)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setLightPos) - set relative position for block lighting
-- Added RenderMesh method parameter [setFoliageTinted(leavesType)](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setFoliageTinted)
-- Fixed [ItemModel.occupy()](/api/ItemModel/occupy) method not preventing setting ICRender models
+- Added block description property - [sound](/api/namespace/Block#sound), sets one of standard block sound types
+- Added RenderMesh method [setLightPos(x, y, z)](/api/class/RenderMesh#setLightPos) - set relative position for block lighting
+- Added RenderMesh method parameter [setFoliageTinted(leavesType)](/api/class/RenderMesh#setFoliageTinted)
+- Fixed [ItemModel.occupy()](/api/interface/ItemModel#occupy) method not preventing setting ICRender models
 
 ## 2.0.2b24
 
 - Fixed crash from massive amount of blocks with RenderMesh
-- Added methods to RenderMesh - [setNoTint()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setNoTint), [setGrassTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setGrassTinted), [setFoliageTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setFoliageTinted), [setWaterTinted()](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setWaterTinted)
-- Added preloader scipt methods - [Resources.getAllMatchingResources("regex")](/api/Resources/getAllMatchingResources), [Resources.getResourcePath("local path")](/api/Resources/getResourcePath), [Resources.getAllResourceDirectoriesPaths()](/api/Resources/getAllResourceDirectoriesPaths)
+- Added methods to RenderMesh - [setNoTint()](/api/class/RenderMesh#setNoTint), [setGrassTinted()](/api/class/RenderMesh#setGrassTinted), [setFoliageTinted()](/api/class/RenderMesh#setFoliageTinted), [setWaterTinted()](/api/class/RenderMesh#setWaterTinted)
+- Added preloader scipt methods - [Resources.getAllMatchingResources("regex")](/api/namespace/Resources#getAllMatchingResources), [Resources.getResourcePath("local path")](/api/namespace/Resources#getResourcePath), [Resources.getAllResourceDirectoriesPaths()](/api/namespace/Resources#getAllResourceDirectoriesPaths)
 
 ## 2.0.2b23
 
@@ -593,16 +593,16 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Item animations now based on RenderMesh and support custom item models and materials
 - Generating item models moved to new loading phase
 - Item model caching will make their generation much faster after first launch
-- [ItemModel](/api/ItemModel) API module is massively improved and allows access to all model-related stuff
+- [ItemModel](/api/namespace/ItemModel) API module is massively improved and allows access to all model-related stuff
 - Additional materials can be passed to handle glint on item models
-- Block [rendertype](/api/Block/SpecialType/rendertype) parameter is fixed and will affect block item model
+- Block [rendertype](/api/namespace/Block#rendertype) parameter is fixed and will affect block item model
 
 ### Other improvements
 
-- Added condition [ICRender.RANDOM(value, max\[, seed\])](/api/ICRender/RANDOM) - for given block position generates random number from 0 to max - 1, and returns, if it is equal to value. Has method [setAxisEnabled(0-2, enabled)](/api/ICRender/RANDOM_CONDITION/setAxisEnabled) to ignore some axises.
-- Added functions [Block.setupAsRedstoneReceiver(nameID, connectToRedstone)](/api/Block/setupAsRedstoneReceiver), [Block.setupAsRedstoneEmitter(nameID, connectToRedstone)](/api/Block/setupAsRedstoneEmitter), [Block.setupAsNonRedstoneTile(nameID)](/api/Block/setupAsNonRedstoneTile)
-- RenderMesh: added method [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/addMesh), alpha value now can be passed to [setColor](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/setColor)
-- Added block description property - [mapcolor](/api/Block/SpecialType/mapcolor), sets 0xRRGGBB map color to block
+- Added condition [ICRender.RANDOM(value, max\[, seed\])](/api/namespace/ICRender#RANDOM) - for given block position generates random number from 0 to max - 1, and returns, if it is equal to value. Has method [setAxisEnabled(0-2, enabled)](/api/namespace/ICRender#setAxisEnabled) to ignore some axises.
+- Added functions [Block.setupAsRedstoneReceiver(nameID, connectToRedstone)](/api/namespace/Block#setupAsRedstoneReceiver), [Block.setupAsRedstoneEmitter(nameID, connectToRedstone)](/api/namespace/Block#setupAsRedstoneEmitter), [Block.setupAsNonRedstoneTile(nameID)](/api/namespace/Block#setupAsNonRedstoneTile)
+- RenderMesh: added method [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/class/RenderMesh#addMesh), alpha value now can be passed to [setColor](/api/class/RenderMesh#setColor)
+- Added block description property - [mapcolor](/api/namespace/Block#mapcolor), sets 0xRRGGBB map color to block
 
 ## 2.0.2b22
 
@@ -619,24 +619,24 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 This update adds alot and might be unstable.
 
 - Added ability to create custom materials and shaders (more info will be provided soon)
-- Added UI and in-hand item models, to access use [ItemModel.getFor(id, data)](/api/ItemModel/getFor)
-- Added new animation mode - direct mesh render with material, to enter this mode call method [describe(\{ mesh: RenderMesh, skin: "texture name", material: "material name" \})](/api/com/zhekasmirnov/innercore/api/NativeRenderMesh/describe)
+- Added UI and in-hand item models, to access use [ItemModel.getFor(id, data)](/api/namespace/ItemModel#getFor)
+- Added new animation mode - direct mesh render with material, to enter this mode call method [describe(\{ mesh: RenderMesh, skin: "texture name", material: "material name" \})](/api/namespace/Animation#describe)
 - Blocks with ICRender will automatically gain inventory models
-- Added custom dimension methods: [setFogDistance(close, far)](/api/Dimensions/CustomDimension/setFogDistance), [resetFogDistance()](/api/Dimensions/CustomDimension/resetFogDistance)
+- Added custom dimension methods: [setFogDistance(close, far)](/api/namespace/Dimensions#setFogDistance), [resetFogDistance()](/api/namespace/Dimensions#resetFogDistance)
 - Other minor fixes
 
 ## 2.0.1b18
 
 - Added directories *innercore/resource_packs*, *innercore/behavior_packs* for adding resource and behavior packs
 - Local world resource and behaviour packs are now automatically forced for this world
-- Added module [AddonEntityRegistry](/api/AddonEntityRegistry) and functions to work with addon-added mobs
+- Added module [AddonEntityRegistry](/api/namespace/AddonEntityRegistry) and functions to work with addon-added mobs
 - Minor fixes
 
 ## 2.0.1b17
 
-- Added [GenerationUtils.generateOreCustom(x, y, z, id, data, amount, mode, listOfIds\[, seed\])](/api/GenerationUtils/generateOreCustom), also added optional **seed** parameter to [GenerationUtils.generateOre](/api/GenerationUtils/generateOre)
-- Fixed drops from [World.destroyBlock](/api/World/destroyBlock)
-- Fixed [Player.setHunger](/api/Player/setHunger), [Player.setSaturation](/api/Player/setSaturation), [Player.setExhaustion](/api/Player/setExhaustion)
+- Added [GenerationUtils.generateOreCustom(x, y, z, id, data, amount, mode, listOfIds\[, seed\])](/api/namespace/GenerationUtils#generateOreCustom), also added optional **seed** parameter to [GenerationUtils.generateOre](/api/namespace/GenerationUtils#generateOre)
+- Fixed drops from [World.destroyBlock](/api/namespace/World#destroyBlock)
+- Fixed [Player.setHunger](/api/namespace/Player#setHunger), [Player.setSaturation](/api/namespace/Player#setSaturation), [Player.setExhaustion](/api/namespace/Player#setExhaustion) methods
 - Fixed some block drops
 
 ## 2.0.1b16
@@ -665,10 +665,10 @@ This update adds alot and might be unstable.
 ## 2.0.1b11
 
 - Added API for custom biomes
-- Added callback *GenerateBiomeMap*, that uses [World.get](/api/World/getBiomeMap)/[setBiomeMap](/api/World/setBiomeMap) to build chunk biome map before any generation
+- Added callback *GenerateBiomeMap*, that uses [World.get](/api/namespace/World#getBiomeMap)/[setBiomeMap](/api/namespace/World#setBiomeMap) to build chunk biome map before any generation
 - Added new parameters to generation callbacks: (chunkX, chunkZ, random, dimensionId, chunkSeed, worldSeed, dimensionSeed)
-- Added [GenerationUtils.getPerlinNoise(x, y, z, seed, scale, numOctaves)](/api/GenerationUtils/getPerlinNoise)
-- Added [World.addGenerationCallback(callbackName, callback\[, hashString\])](/api/World/addGenerationCallback), that uniquely modifies chunk seed before calling callback
+- Added [GenerationUtils.getPerlinNoise(x, y, z, seed, scale, numOctaves)](/api/namespace/GenerationUtils#getPerlinNoise)
+- Added [World.addGenerationCallback(callbackName, callback\[, hashString\])](/api/namespace/World#addGenerationCallback), that uniquely modifies chunk seed before calling callback
 
 ## 2.0.1b10
 
@@ -682,7 +682,7 @@ This update adds alot and might be unstable.
 
 - Completed classic mod UI and workbench UI
 - Now mod UI will close when back is pressed or app is minimized
-- Fixed possible crashes from render mapping and [Item.getName](/api/Item/getName)
+- Fixed possible crashes from render mapping and [Item.getName](/api/namespace/Item#getName)
 - Now when all mods are stopped in case of an fatal error it is displayed as tip message
 - Applied stability fixes from build 8
 
@@ -703,7 +703,7 @@ This update adds alot and might be unstable.
 
 ## 2.0.0b5
 
-- Fixes for system versions lower than Android 9
+- Fixes [2.0.0b4](#200b4) for system versions lower than Android 9
 
 ## 2.0.0b4
 
