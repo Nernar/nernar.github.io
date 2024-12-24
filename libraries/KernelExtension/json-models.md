@@ -25,7 +25,7 @@ For you not to create base template models like cube, column, cross etc. yoursel
 
 - **Differences in `blockstates` JSON format:**
   - `variants` parameter must be an array instead of an object. Index of each variant JSON description in this array corresponds to the data value, to which this variant of the model will be assigned to. Block states support is planned to be added in future updates.
-  - In `multipart` only [ICRender groups](https://nernar.github.io/api/modules/ICRender.html#getGroup) are supported. In `north`, `south`, `west` and `east` conditions, instead of `side` or `up` you have to write the name of the ICRender group, or multiple of them separated by **`|`**. Also the `NOT` operator is additionally supported. If you add the **`!`** before the ICRender group name, it will be parsed as `NOT(group)`. The support of the rest of block states support is planned to be added in nearest updates.
+  - In `multipart` only [ICRender groups](/api/namespace/ICRender#getGroup) are supported. In `north`, `south`, `west` and `east` conditions, instead of `side` or `up` you have to write the name of the ICRender group, or multiple of them separated by **`|`**. Also the `NOT` operator is additionally supported. If you add the **`!`** before the ICRender group name, it will be parsed as `NOT(group)`. The support of the rest of block states support is planned to be added in nearest updates.
 - **Differences in `models` JSON format:**
   - `ambientocclusion` parameter is not supported
   - In `display` parameter, only `"hand"` and `"gui"` keys are supported (`"hand"` instead of `"thirdperson_righthand"`, `"thirdperson_lefthand"`, `"firstperson_righthand"` and `"firstperson_lefthand"` combined)

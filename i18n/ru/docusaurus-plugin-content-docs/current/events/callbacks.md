@@ -4,7 +4,7 @@
 
 ## Регистрация обработчика
 
-Для события производится с помощью метода [Callback.addCallback](/api/modules/Callback.html#addCallback):
+Для события производится с помощью метода [Callback.addCallback](/api/namespace/Callback#addCallback):
 
 <Tabs groupId="scripting-language">
 <TabItem value="js" label="JavaScript">
@@ -27,7 +27,7 @@ Callback.addCallback("НазваниеСобытия", (/* его аргумен
 </TabItem>
 </Tabs>
 
-Указание аргументов для события опционально, для всех действий в результате событий приходит одинаковое количество аргументов. Если событие поддерживает отмену действия, вы можете воспользоваться [Game.prevent](/api/modules/Game.html#prevent), а также проверить было ли оно уже отменено с помощью [Game.isActionPrevented](/api/modules/Game.html#isActionPrevented).
+Указание аргументов для события опционально, для всех действий в результате событий приходит одинаковое количество аргументов. Если событие поддерживает отмену действия, вы можете воспользоваться [Game.prevent](/api/namespace/Game#prevent), а также проверить было ли оно уже отменено с помощью [Game.isActionPrevented](/api/namespace/Game#isActionPrevented).
 
 Приоритет определяет порядок выполнения событий. Чем он больше, тем раньше других будет вызван ваш обработчик. Не указывайте слишком большие числа, ограничьтесь, скажем, значениями от 0 до 9. Если приоритет не указан, будет использоваться стандартный (0).
 
@@ -37,11 +37,11 @@ Callback.addCallback("НазваниеСобытия", (/* его аргумен
 
 :::
 
-Вы можете провести эксперимент с одним из существующих примеров в [Callback](/api/modules/Callback.html#addCallback), там приведен полный список игровых событий на текущий момент.
+Вы можете провести эксперимент с одним из существующих примеров в [Callback](/api/namespace/Callback#addCallback), там приведен полный список игровых событий на текущий момент.
 
 ### Вызов своих событий
 
-Производится с помощью метода [Callback.invokeCallback](/api/modules/Callback.html#invokeCallback). Общий синтаксис весьма прост:
+Производится с помощью метода [Callback.invokeCallback](/api/namespace/Callback#invokeCallback). Общий синтаксис весьма прост:
 
 ```js
 Callback.invokeCallback("НазваниеСобытия", /* аргументы, которые будут переданы в событие */); 
@@ -86,7 +86,7 @@ Callback.invokeCallback("MyMod:HelloWorld", "Мир");
 
 2. Все действия, зарегистрированные на событие, выполняются последовательно.
 
-    И в порядке добавления событий с помощью [Callback.addCallback](/api/modules/Callback.html#addCallback), включая приоритеты.
+    И в порядке добавления событий с помощью [Callback.addCallback](/api/namespace/Callback#addCallback), включая приоритеты.
 
 3. Ограничтесь одной функцией для одного события.
 

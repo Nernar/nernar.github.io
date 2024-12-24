@@ -441,7 +441,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Added item model method [setModelOverrideCallback(function(item) \{ ... \})](/api/interface/ItemModel#setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
 - Added method [ItemModel.newStandalone()](/api/namespace/ItemModel#newStandalone), creates empty ItemModel instance, not linked to any item, this models should be used in [setModelOverrideCallback](/api/interface/ItemModel#setModelOverrideCallback)
 - Item override function now receives extra data
-- Fixed crash, caused by calling [toScriptable()](/api/namespace/NBT#toScriptabled) method of NBT tags
+- Fixed crash, caused by calling [toScriptable()](/api/namespace/NBT#toScriptable) method of NBT tags
 - D8 dexer, instead of old DX is now used to build dex files from java
 
 ## 2.0.5b44

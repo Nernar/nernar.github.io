@@ -31,7 +31,7 @@ Block.createLiquidBlock("ink", {
 });
 ```
 
-Это создаст текучий и стоячий блоки жидкостей, а также добавит полнофункциональное ведро для использования игроком и разлитием с помощью раздатчиков. Для последнего задействованы функции [Item.setLiquidClip](/api/modules/Item.html#setLiquidClip) и [Item.registerDispenseFunction](/api/modules/Item.html#registerDispenseFunction).
+Это создаст текучий и стоячий блоки жидкостей, а также добавит полнофункциональное ведро для использования игроком и разлитием с помощью раздатчиков. Для последнего задействованы функции [Item.setLiquidClip](/api/namespace/Item#setLiquidClip) и [Item.registerDispenseFunction](/api/namespace/Item#registerDispenseFunction).
 
 <details>
     <summary>Стандарты для создания локализации</summary>
