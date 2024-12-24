@@ -4,7 +4,7 @@
 
 - Multiple small tweaks to internal engine operation
 
-:::tip Other changes ([@reider745](https://vk.com/id500917624))
+:::note Other changes ([@reider745](https://vk.com/id500917624))
 
 - Added [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
 - Added ability to get game settings via [Game.getOption(key)](/api/namespace/Game#getOption), use [Game.getOptions](/api/namespace/Game#getOptions) to list all available keys
@@ -14,7 +14,7 @@
 
 :::
 
-:::tip Other changes ([@rislaed](https://vk.com/id268478382))
+:::note Other changes ([@rislaed](https://vk.com/id268478382))
 
 - Added [EDamageCause](/api/enum/EDamageCause) for determining entity damage type, set [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) default damage to 4
 - Added feature to apply click and long click events to inventory slots, fixed updates and slot resizing
@@ -53,7 +53,7 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Added sync for biome ids
 - Other server-related fixes
 
-:::tip Other changes ([@reider745](https://vk.com/id500917624))
+:::note Other changes ([@reider745](https://vk.com/id500917624))
 
 - Added proxy to mod browser, which is used in case main url is not available (by [@spawnrys](https://vk.com/id549824423))
 - Fixed [client TileEntity sync](/api/namespace/TileEntity#LocalTileEntityPrototype), added methods [onConnectionPlayer](/api/namespace/TileEntity#onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#onDisconnectionPlayer)
@@ -67,7 +67,7 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 
 :::
 
-:::tip Other changes ([@zheka_smirnov](https://vk.com/id24708057))
+:::note Other changes ([@zheka_smirnov](https://vk.com/id24708057))
 
 - Fixed frequent crashes when launching Inner Core
 - Updated Rhino to latest version - javascript engine for mods
