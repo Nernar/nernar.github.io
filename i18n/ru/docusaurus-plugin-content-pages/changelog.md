@@ -1,20 +1,27 @@
 # Список изменений
 
-## 2.4.0b122-122o1 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122-122o1
+
+- Множественные небольшие улучшения внутренней работы движка
+
+:::note Другие изменения ([@reider745](https://vk.com/id500917624))
 
 - Добавлены методы [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) для отслеживания загрузки и выгрузки чанков
 - Добавлена возможность получения игровых настроек с помощью [Game.getOption(key)](/api/namespace/Game#getOption), воспользуйтесь [Game.getOptions](/api/namespace/Game#getOptions) для получения списка всех доступных ключей
 - Добавлен каллбек *OptionsChanged*, вызывающийся сразу после завершения изменения игровых опций
 - Реализованы пакеты с двоичными данными, передайте массив с байтами для их отправки
 - Исправлена работа раздатчиков с ведрами жидкостей из модов, а также передача идентификатора игрока в каллбек *CraftRecipePreProvided*
-- Множественные небольшие улучшения внутренней работы движка
 
-### Другие изменения ([@rislaed](https://vk.com/id268478382))
+:::
+
+:::note Другие изменения ([@rislaed](https://vk.com/id268478382))
 
 - Добавлен [EDamageCause](/api/enum/EDamageCause) для определения типов урона мобов, стандартное значение урона для [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) установлено на 4
 - Добавлена возможность применить события клика и долгого клика на слотах инвентаря, исправлены обновления и изменение размера слотов
 - Добавлены методы для клиентской работы с Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) и [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
 - Исправлено отображение переводов для заголовков в конфиге, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) корректно перезаписывает *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) снова работает
+
+:::
 
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 
@@ -46,7 +53,7 @@
 - Добавлена синхронизация id биомов
 - Другие различные исправления для серверов
 
-### Другие изменения ([@reider745](https://vk.com/id500917624))
+:::note Другие изменения ([@reider745](https://vk.com/id500917624))
 
 - Добавлен прокси в мод браузере, который включается при невозможности подключиться к основной игре ([@spawnrys](https://vk.com/id549824423))
 - Исправления синхронизации [клиентской части TileEntity](/api/namespace/TileEntity#LocalTileEntityPrototype), добавлены новые методы [onConnectionPlayer](/api/namespace/TileEntity#onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#onDisconnectionPlayer)
@@ -58,7 +65,9 @@
 - Исправлен [Entity.getMobile](/api/namespace/Entity#getMobile)
 - [World.getWorldTime](/api/namespace/World#getWorldTime) может возвращать время на клиенте
 
-### Другие изменения ([@zheka_smirnov](https://vk.com/id24708057))
+:::
+
+:::note Другие изменения ([@zheka_smirnov](https://vk.com/id24708057))
 
 - Исправлены частые краши Inner Core при запуске
 - Обновлен до последней версии Rhino - движок javascript для модов
@@ -71,6 +80,8 @@
 - Исправлено перемещение игрока с помощью [Dimensions.transfer](/api/namespace/Dimensions#transfer) в тоже измерение где он находится
 - Небольшие исправления генератора кастомных измерений
 - Исправлена установка некоторых модов
+
+:::
 
 ## 2.3.1b115
 

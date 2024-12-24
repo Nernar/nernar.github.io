@@ -1,20 +1,27 @@
 # Changelog
 
-## 2.4.0b122-122o1 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122-122o1
+
+- Multiple small tweaks to internal engine operation
+
+:::tip Other changes ([@reider745](https://vk.com/id500917624))
 
 - Added [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
 - Added ability to get game settings via [Game.getOption(key)](/api/namespace/Game#getOption), use [Game.getOptions](/api/namespace/Game#getOptions) to list all available keys
 - Added *OptionsChanged* callback, which is called immediately after completing game options change
 - Implemented binary data packets, pass an bytes array to send them
 - Fixed dispensers functionality with modded liquid buckets and also player identifier transfering to *CraftRecipePreProvided* callback
-- Multiple small tweaks to internal engine operation
 
-### Other changes ([@rislaed](https://vk.com/id268478382))
+:::
+
+:::tip Other changes ([@rislaed](https://vk.com/id268478382))
 
 - Added [EDamageCause](/api/enum/EDamageCause) for determining entity damage type, set [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) default damage to 4
 - Added feature to apply click and long click events to inventory slots, fixed updates and slot resizing
 - Added methods for client working with Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) and [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
 - Fixed display of header translations in config, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) correctly overwrites *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) works again
+
+:::
 
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 
@@ -46,7 +53,7 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Added sync for biome ids
 - Other server-related fixes
 
-### Other changes ([@reider745](https://vk.com/id500917624))
+:::tip Other changes ([@reider745](https://vk.com/id500917624))
 
 - Added proxy to mod browser, which is used in case main url is not available (by [@spawnrys](https://vk.com/id549824423))
 - Fixed [client TileEntity sync](/api/namespace/TileEntity#LocalTileEntityPrototype), added methods [onConnectionPlayer](/api/namespace/TileEntity#onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#onDisconnectionPlayer)
@@ -58,7 +65,9 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Fixed [Entity.getMobile](/api/namespace/Entity#getMobile)
 - Fixed [World.getWorldTime](/api/namespace/World#getWorldTime) on client
 
-### Other changes ([@zheka_smirnov](https://vk.com/id24708057))
+:::
+
+:::tip Other changes ([@zheka_smirnov](https://vk.com/id24708057))
 
 - Fixed frequent crashes when launching Inner Core
 - Updated Rhino to latest version - javascript engine for mods
@@ -71,6 +80,8 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Fixed [Dimensions.transfer](/api/namespace/Dimensions#transfer) when transfering into the same dimension
 - Minor fixes to custom dimension generator
 - Fixed installation of some mods
+
+:::
 
 ## 2.3.1b115
 

@@ -2,7 +2,8 @@
 	"markdown.preferredMdPathExtensionStyle": "removeExtension",
 	"markdown.validate.enabled": true,
 	"markdown.validate.ignoredLinks": [
-		"/images/**/*"
+		"/images/**/*",
+		"/api/**/*"
 	],
 	"search.exclude": {
 		"**/node_modules": true,
