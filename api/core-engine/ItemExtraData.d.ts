@@ -90,7 +90,7 @@ declare class ItemExtraData {
 	 * Sets compound tag for the specified item.
 	 * @since 2.0.5b44
 	 */
-	setCompoundTag(ent: number, tag: NBT.CompoundTag): void;
+	setCompoundTag(tag: NBT.CompoundTag): void;
 	/**
 	 * @returns Reference to itself to be used in sequential calls.
 	 */
