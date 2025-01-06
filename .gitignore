@@ -4,6 +4,7 @@ node_modules/
 # Production
 /build
 /innercore*-docs.pdf
+/static/declarations
 
 # Generated files
 .docusaurus

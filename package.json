@@ -34,7 +34,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
-    "prebuild-declarations": "npx dts-generator --project api/core-engine --out api/declarations/core-engine.d.ts --extern ./android.d.ts --exclude **/node_modules/**/*.d.ts --exclude **/declarations/android.d.ts",
+    "prebuild-declarations": "npx dts-generator --project api/core-engine --out static/declarations/core-engine.d.ts --extern ./android.d.ts --exclude **/node_modules/**/*.d.ts --exclude **/declarations/android.d.ts",
     "prebuild-plugin": "npm run --prefix api/docusaurus-plugin build",
     "deploy-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/docs/intro --outputPDFFilename=innercore-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
     "deploy-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/docs/intro --outputPDFFilename=innercore-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
