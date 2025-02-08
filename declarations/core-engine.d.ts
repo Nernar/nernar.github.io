@@ -4829,7 +4829,8 @@ declare namespace Entity {
     function clearEffects(entityUid: number): void;
 
     /**
-     * Damage sources, which are used to determine entity damage type:
+     * Damage sources (use {@link EDamageCause} starting with 2.4.0b122o1),
+     * which are used to determine entity damage type:
      * 
      * Type | Name | Message | Translation
      * ---|---|---|---
@@ -7900,6 +7901,9 @@ declare class ItemContainer implements Recipes.WorkbenchField {
 	setSlotGetTransferPolicy(slotName: string, policy: ItemContainer.TransferPolicy): ItemContainer;
 	setGlobalDirtySlotListener(listener: ItemContainer.DirtySlotListener): ItemContainer;
 	setDirtySlotListener(listener: ItemContainer.DirtySlotListener): void;
+	/**
+     * @since 2.4.0b122o1 (has problems with get resetter before)
+	 */
 	sealSlot(slotName: string): void;
 	sealAllSlots(): void;
 	getAddTransferPolicy(slot: string): ItemContainer.TransferPolicy;
@@ -17117,6 +17121,10 @@ declare namespace UI {
 	interface UISlotElement extends UIElement {
 		type: "slot",
 		bitmap?: string,
+		/**
+		 * Since 2.4.0b122o1 can be float, before it was rounded up,
+		 * which could not indicate much accuracy.
+		 */
 		size?: number,
 		maxStackSize?: number,
 		visual?: boolean,
