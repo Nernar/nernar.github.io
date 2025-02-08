@@ -100,6 +100,9 @@ declare class ItemContainer implements Recipes.WorkbenchField {
 	setSlotGetTransferPolicy(slotName: string, policy: ItemContainer.TransferPolicy): ItemContainer;
 	setGlobalDirtySlotListener(listener: ItemContainer.DirtySlotListener): ItemContainer;
 	setDirtySlotListener(listener: ItemContainer.DirtySlotListener): void;
+	/**
+     * @since 2.4.0b122o1 (has problems with get resetter before)
+	 */
 	sealSlot(slotName: string): void;
 	sealAllSlots(): void;
 	getAddTransferPolicy(slot: string): ItemContainer.TransferPolicy;

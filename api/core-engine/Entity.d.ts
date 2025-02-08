@@ -96,7 +96,8 @@ declare namespace Entity {
     function clearEffects(entityUid: number): void;
 
     /**
-     * Damage sources, which are used to determine entity damage type:
+     * Damage sources (use {@link EDamageCause} starting with 2.4.0b122o1),
+     * which are used to determine entity damage type:
      * 
      * Type | Name | Message | Translation
      * ---|---|---|---

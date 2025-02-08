@@ -298,6 +298,10 @@ declare namespace UI {
 	interface UISlotElement extends UIElement {
 		type: "slot",
 		bitmap?: string,
+		/**
+		 * Since 2.4.0b122o1 can be float, before it was rounded up,
+		 * which could not indicate much accuracy.
+		 */
 		size?: number,
 		maxStackSize?: number,
 		visual?: boolean,
