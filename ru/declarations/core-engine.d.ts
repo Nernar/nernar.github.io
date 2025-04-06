@@ -8689,6 +8689,7 @@ declare namespace LiquidRegistry {
      * @internal
      */
     const liquids: { [key: string]: LiquidData };
+
     function registerLiquid(key: string, name?: string, uiTextures?: string[], modelTextures?: string[]): void;
     function getLiquidData(key: string): LiquidData;
     function isExists(key: string): boolean;
@@ -8699,10 +8700,44 @@ declare namespace LiquidRegistry {
      * @since 2.2.1b102
      */
     function registerBlock(liquid: string, blockId: number, isDynamic: boolean): void;
-    function registerItem(liquid: string, empty: { id: number, data: number }, full: { id: number, data: number }): void;
-    function getEmptyItem(id: number, data: number): { id: number, data: number, liquid: string };
+
+    interface Bucket2LiquidMapping {
+        id: number,
+        data: number
+    }
+
+    /**
+     * @internal
+     */
+    const FullByEmpty: {
+        [
+            /**
+             * `"id:data:liquid"`, data could be -1.
+             */
+            bucketIdDataLiquid: string
+        ]: Bucket2LiquidMapping
+    };
+
+    interface Liquid2BucketMapping extends Bucket2LiquidMapping {
+        liquid: string
+    }
+
+    /**
+     * @internal
+     */
+    const EmptyByFull: {
+        [
+            /**
+             * `"id:data"`, data could be -1.
+             */
+            liquidIdData: string
+        ]: Liquid2BucketMapping
+    };
+
+    function registerItem(liquid: string, empty: Bucket2LiquidMapping, full: Bucket2LiquidMapping): void;
+    function getEmptyItem(id: number, data: number): Liquid2BucketMapping;
     function getItemLiquid(id: number, data: number): string;
-    function getFullItem(id: number, data: number, liquid: string): { id: number, data: number };
+    function getFullItem(id: number, data: number, liquid: string): Bucket2LiquidMapping;
 
     interface LiquidData {
         key: string,
