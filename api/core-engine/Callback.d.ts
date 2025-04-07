@@ -22,7 +22,7 @@ declare namespace Callback {
      * callback names.
      * @param name callback name
      */
-    function invokeCallback(name: string, o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any): void;
+    function invokeCallback<T extends (...args: unknown[]) => void>(name: string, ...args: Parameters<T>): void;
 
     /**
      * Function used in "DimensionLoaded" callback.
