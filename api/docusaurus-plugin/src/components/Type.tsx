@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 import type { JSONOutput } from 'typedoc';
 import Link from '@docusaurus/Link';
 import { useReflectionMap } from '../hooks/useReflectionMap';
-import type { TSDDeclarationReflection } from '../types';
+import type { TSDDeclarationReflection, TSDDeclarationReflectionMap } from '../types';
 import { MemberSignatureTitle } from './MemberSignatureTitle';
 
 export function extractDeclarationFromType(
@@ -16,6 +16,49 @@ export function extractDeclarationFromType(
 	}
 
 	return (type as unknown as { declaration?: TSDDeclarationReflection })?.declaration;
+}
+
+function extractReferenceTypeLink(
+	reflections: TSDDeclarationReflectionMap,
+	type: JSONOutput.ReferenceType
+): JSX.Element {
+	const ref = typeof type.target === 'number' ? reflections[type.target] : null;
+	const genericClass = ref?.id && !ref.sources ? ' tsd-signature-type-generic' : '';
+
+	if (ref?.permalink) {
+		return (
+			<Link
+				className={`tsd-signature-type${genericClass}`}
+				data-tsd-kind={ref.kind}
+				to={ref.permalink}
+			>
+				{type.name}
+			</Link>
+		);
+	}
+
+	if (typeof type.target !== 'number' && type.target?.sourceFileName?.includes('android.d.ts')) {
+		const qualifiedName = type.target.qualifiedName?.split('.');
+
+		if (qualifiedName[0] !== 'native') {
+			return (
+				<Link
+					className={`tsd-signature-type${genericClass}`}
+					to={`https://developer.android.com/reference/${qualifiedName.join('/')}`}
+				>
+					{type.name}
+				</Link>
+			);
+		}
+	}
+
+	if (typeof type.target !== 'number' && type.target?.sourceFileName) {
+		console.warn(`Reference source ${type.target?.sourceFileName} is unresolved, please consider to include it in entryPoints!`);
+	}
+
+	return (
+		<span className={`tsd-signature-type${genericClass}`}>{type.name}</span>
+	);
 }
 
 function parens(element: JSX.Element, needsParens: boolean): JSX.Element {
@@ -210,22 +253,10 @@ export function Type({ needsParens = false, type: base }: TypeProps) {
 
 		case 'reference': {
 			const type = base as JSONOutput.ReferenceType;
-			const ref = type.target ? reflections[Number(type.target)] : null;
-			const genericClass = ref?.id && !ref.sources ? 'tsd-signature-type-generic' : '';
 
 			return (
 				<>
-					{ref?.permalink ? (
-						<Link
-							className={`tsd-signature-type ${genericClass}`}
-							data-tsd-kind={ref.kind}
-							to={ref.permalink}
-						>
-							{type.name}
-						</Link>
-					) : (
-						<span className={`tsd-signature-type ${genericClass}`}>{type.name}</span>
-					)}
+					{extractReferenceTypeLink(reflections, type)}
 					{type.typeArguments && type.typeArguments.length > 0 && (
 						<>
 							<span className="tsd-signature-symbol">&lt;</span>
