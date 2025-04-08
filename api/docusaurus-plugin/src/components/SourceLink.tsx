@@ -21,7 +21,7 @@ export function SourceLink({ sources = [] }: SourceLinkProps) {
 
 	return (
 		<>
-			{sources.map((source) => (
+			{sources.slice(0, 3).map((source) => (
 				<a
 					key={source.fileName}
 					className="tsd-anchor"
