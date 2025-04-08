@@ -83,6 +83,7 @@ export function extractSidebar(
 	const items: SidebarItem[] = packages.map((pkg) => {
 		let subItems: SidebarItem[] = [];
 
+		const indexHref = pkg.entryPoints.find((entry) => entry.index)?.reflection.permalink ?? '';
 		pkg.entryPoints.forEach((entry) => {
 			// Index entry point should always bubble up reflection groups
 			if (entry.index) {
@@ -99,18 +100,9 @@ export function extractSidebar(
 			}
 		});
 
-		// Always include the overview as the 1st item
-		const indexHref = pkg.entryPoints.find((entry) => entry.index)?.reflection.permalink ?? '';
-
 		subItems = subItems.sort((a, d) =>
 			sortSidebar('label' in a ? a.label : '', 'label' in d ? d.label : ''),
 		);
-
-		subItems.unshift({
-			href: indexHref,
-			label: 'Overview',
-			type: 'link',
-		});
 
 		if (pkg.changelogPath && changelogs) {
 			subItems.push({
@@ -123,6 +115,7 @@ export function extractSidebar(
 		return {
 			collapsed: true,
 			collapsible: true,
+			href: indexHref,
 			items: subItems,
 			label: removeScopes(pkg.packageName, scopes),
 			type: 'category',
