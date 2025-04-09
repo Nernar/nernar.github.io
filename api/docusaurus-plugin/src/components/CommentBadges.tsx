@@ -9,6 +9,8 @@ function getModifierClassName(tag: string) {
 		case '@alpha':
 		case '@deprecated':
 			return 'danger';
+		case '@since':
+			return 'secondary';
 		default:
 			return 'info';
 	}
@@ -20,7 +22,7 @@ export type CommentWithModifiers = Pick<JSONOutput.Comment, 'blockTags' | 'summa
 export function isCommentWithModifiers(
 	comment?: JSONOutput.Comment,
 ): comment is CommentWithModifiers {
-	return !!comment && !!comment.modifierTags && comment.modifierTags.length > 0;
+	return comment?.modifierTags?.length > 0 || !!comment?.blockTags?.find((tag) => tag.tag === '@since');
 }
 
 interface CommentBadgesProps {
@@ -28,10 +30,17 @@ interface CommentBadgesProps {
 }
 
 export function CommentBadges({ comment }: CommentBadgesProps) {
-	const { modifierTags } = comment;
+	const { blockTags, modifierTags } = comment;
+	const sinceTag = blockTags?.find((tag) => tag.tag === '@since');
+
 	return (
 		<div className="badge-group">
-			{modifierTags.map((tag) => (
+			{sinceTag && (
+				<span key={sinceTag.tag} className={`badge badge--${getModifierClassName(sinceTag.tag)}`}>
+					{sinceTag.tag.slice(1)}: {sinceTag.content[0]?.text ?? '?'}
+				</span>
+			)}
+			{modifierTags && modifierTags.map((tag) => (
 				<span key={tag} className={`badge badge--${getModifierClassName(tag)}`}>
 					{tag.slice(1)}
 				</span>

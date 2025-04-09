@@ -185,6 +185,19 @@ html[data-theme='light'] .tsd-panel-content {
 	margin-bottom: 0;
 }
 
+.tsd-comment > .theme-admonition:nth-child(1) {
+	margin-top: var(--tsd-spacing-vertical);
+	margin-bottom: var(--tsd-spacing-vertical);
+}
+
+.tsd-comment > .theme-admonition:first-child {
+	margin-top: 0;
+}
+
+.tsd-comment > .theme-admonition:last-child {
+	margin-bottom: 0;
+}
+
 .tsd-comment-root {
 	margin-top: 0;
 	margin-bottom: var(--tsd-spacing-vertical-full);
@@ -261,7 +274,7 @@ html[data-theme='light'] .tsd-panel-content {
 
 .tsd-panel-header .badge-group {
 	display: inline-block;
-	margin-left: 0.25em;
+	margin-left: 0.5em;
 }
 
 .badge-group > span {

@@ -2,6 +2,7 @@
 import { Fragment } from 'react';
 import type { JSONOutput } from 'typedoc';
 import { Markdown } from './Markdown';
+import Admonition from '@theme/Admonition';
 
 export interface CommentProps {
 	comment?: JSONOutput.Comment;
@@ -38,7 +39,10 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 	}
 
 	// Hide custom tags.
+	hideTags.push('@deprecated');
 	hideTags.push('@reference');
+	hideTags.push('@remarks');
+	hideTags.push('@since');
 
 	const blockTags =
 		comment.blockTags?.filter((tag) => {
@@ -49,12 +53,27 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 			return tag.tag !== '@default';
 		}) ?? [];
 
+	const deprecatedTag = comment.blockTags?.find((tag) => tag.tag === '@deprecated');
+	const remarksTag = comment.blockTags?.find((tag) => tag.tag === '@remarks');
+
 	return (
-		<div className={`tsd-comment tsd-typography ${root ? 'tsd-comment-root' : ''}`}>
+		<div className={`tsd-comment tsd-typography${root ? ' tsd-comment-root' : ''}`}>
 			{!!comment.summary && (
 				<div className="lead">
 					<Markdown content={displayPartsToMarkdown(comment.summary)} />
 				</div>
+			)}
+
+			{deprecatedTag && (
+				<Admonition type="danger" title="That feature is obsolete">
+					<Markdown content={displayPartsToMarkdown(deprecatedTag.content)} />
+				</Admonition>
+			)}
+
+			{remarksTag && (
+				<Admonition type="note" title="More about capabilities">
+					<Markdown content={displayPartsToMarkdown(remarksTag.content)} />
+				</Admonition>
 			)}
 
 			{blockTags.length > 0 && (
