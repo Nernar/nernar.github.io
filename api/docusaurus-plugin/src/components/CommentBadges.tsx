@@ -4,8 +4,10 @@ function getModifierClassName(tag: string) {
 	switch (tag) {
 		case '@beta':
 		case '@experimental':
+		case "@internal":
 			return 'warning';
 		case '@alpha':
+		case '@deprecated':
 			return 'danger';
 		default:
 			return 'info';

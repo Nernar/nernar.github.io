@@ -9,6 +9,7 @@ import type {
 } from '../types';
 import { removeScopes } from '../utils/links';
 import { createReflectionMap } from './data';
+import { allGroupChildrenHaveOwnDocument } from '../utils/visibility';
 
 export function groupSidebarItems(
 	map: TSDDeclarationReflectionMap,
@@ -26,7 +27,7 @@ export function groupSidebarItems(
 	sortedGroups.forEach((group, groupIndex) => {
 		const { children } = group;
 
-		if (!children || children.length === 0) {
+		if (!children || children.length === 0 || !allGroupChildrenHaveOwnDocument(group, map)) {
 			return;
 		}
 

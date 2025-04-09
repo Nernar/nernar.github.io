@@ -19,8 +19,8 @@ export function extractDeclarationFromType(
 }
 
 function extractReferenceTypeLink(
+	type: JSONOutput.ReferenceType,
 	reflections: TSDDeclarationReflectionMap,
-	type: JSONOutput.ReferenceType
 ): JSX.Element {
 	const ref = typeof type.target === 'number' ? reflections[type.target] : null;
 	const genericClass = ref?.id && !ref.sources ? ' tsd-signature-type-generic' : '';
@@ -53,7 +53,7 @@ function extractReferenceTypeLink(
 	}
 
 	if (typeof type.target !== 'number' && type.target?.sourceFileName) {
-		console.warn(`Reference source ${type.target?.sourceFileName} is unresolved, please consider to include it in entryPoints!`);
+		console.warn(`Unresolved reference source ${type.target?.sourceFileName}, please consider include it to your entryPoints!`);
 	}
 
 	return (
@@ -256,7 +256,7 @@ export function Type({ needsParens = false, type: base }: TypeProps) {
 
 			return (
 				<>
-					{extractReferenceTypeLink(reflections, type)}
+					{extractReferenceTypeLink(type, reflections)}
 					{type.typeArguments && type.typeArguments.length > 0 && (
 						<>
 							<span className="tsd-signature-symbol">&lt;</span>
