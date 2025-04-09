@@ -21,8 +21,32 @@ declare namespace Callback {
      * do so. If you want to trigger some event in your mod, use your own 
      * callback names.
      * @param name callback name
+     * @deprecated Avoid untyped callbacks, use generic function to pass argument types and more convenient calls.
      */
     function invokeCallback(name: string, o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any): void;
+
+    type InferCallbackFunction<T extends any[]> = T extends [
+        infer A1, infer A2, infer A3, infer A4, infer A5,
+        infer A6, infer A7, infer A8, infer A9, infer A10, ...any[]
+    ] ? [A1, A2, A3, A4, A5, A6, A7, A8, A9, A10] : T;
+
+    /**
+     * Invokes callback with any name and up to 10 additional parameters. You
+     * should not generally call pre-defined callbacks until you really need to 
+     * do so. If you want to trigger some event in your mod, use your own 
+     * callback names. Parameters inferred from generic callback function.
+     * @param name callback name
+     * @param args inferred callback function arguments
+     * 
+     * @example
+     * ```ts
+     * Callback.invokeCallback<Callback.ItemUseFunction>("ItemUseServer", coords, item, block, playerUid);
+     * ```
+     */
+    function invokeCallback<T extends (o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any) => void>(
+        name: string,
+        ...args: InferCallbackFunction<Parameters<T>>
+    ): void;
 
     /**
      * Function used in "DimensionLoaded" callback.
