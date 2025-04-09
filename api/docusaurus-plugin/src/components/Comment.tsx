@@ -40,6 +40,7 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 
 	// Hide custom tags.
 	hideTags.push('@deprecated');
+	hideTags.push('@example');
 	hideTags.push('@reference');
 	hideTags.push('@remarks');
 	hideTags.push('@since');
@@ -54,11 +55,12 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 		}) ?? [];
 
 	const deprecatedTag = comment.blockTags?.find((tag) => tag.tag === '@deprecated');
+	const exampleTags = comment.blockTags?.filter((tag) => tag.tag === '@example');
 	const remarksTag = comment.blockTags?.find((tag) => tag.tag === '@remarks');
 
 	return (
 		<div className={`tsd-comment tsd-typography${root ? ' tsd-comment-root' : ''}`}>
-			{!!comment.summary && (
+			{comment.summary?.length > 0 && (
 				<div className="lead">
 					<Markdown content={displayPartsToMarkdown(comment.summary)} />
 				</div>
@@ -69,6 +71,12 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 					<Markdown content={displayPartsToMarkdown(deprecatedTag.content)} />
 				</Admonition>
 			)}
+
+			{exampleTags?.length > 0 && exampleTags.map((tag) => (
+				<Admonition type="tip" title={tag.name || 'Learn how to use'}>
+					<Markdown content={displayPartsToMarkdown(tag.content)} />
+				</Admonition>
+			))}
 
 			{remarksTag && (
 				<Admonition type="note" title="More about capabilities">
