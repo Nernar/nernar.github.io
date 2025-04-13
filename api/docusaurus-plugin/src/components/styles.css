@@ -191,11 +191,11 @@ html[data-theme='light'] .tsd-panel-content {
 }
 
 .tsd-comment > .theme-admonition:first-child {
-	margin-top: 0.25em;
+	margin-top: 0em;
 }
 
 .tsd-comment > .theme-admonition:last-child {
-	margin-bottom: 1em;
+	margin-bottom: 0.25em;
 }
 
 .tsd-comment-root {
