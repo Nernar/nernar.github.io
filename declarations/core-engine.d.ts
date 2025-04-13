@@ -748,6 +748,33 @@ declare namespace Block {
 	}
 
 	/**
+	 * Adds ability to apply numeric state to a block in runtime by using
+	 * {@link BlockSource.setBlock} and passing desired state via {@link BlockState.addState}.
+	 * Each state can be requested by getting a block using {@link BlockSource.getBlock}
+	 * and then calling {@link BlockState.hasState}/{@link BlockState.getState}
+	 * states can be used in {@link ICRender.BlockState} conditions,
+	 * by game itself and manually by developer.
+	 * @param id numeric block ID
+	 * @param state numeric state that will be added for block
+     * @since 2.4.0b122-4 arm64
+	 */
+	function addBlockStateId(id: number, state: EBlockStates | number): void;
+
+	/**
+	 * Adds ability to apply named state to a block in runtime by using
+	 * {@link BlockSource.setBlock} and passing desired state via {@link BlockState.addState}.
+	 * Each state can be requested by getting a block using {@link BlockSource.getBlock}
+	 * and then calling {@link BlockState.hasState}/{@link BlockState.getState},
+	 * states can be used in {@link ICRender.BlockState} conditions,
+	 * by game itself and manually by developer.
+	 * @param id numeric block ID
+	 * @param key named state that will be added for block,
+	 * usually key of {@link EBlockStates}
+     * @since 2.4.0b122-4 arm64
+	 */
+	function addBlockState(id: number, key: string): void;
+
+	/**
 	 * @param id numeric block ID
 	 * @returns `true`, if the specified block ID is a vanilla block.
 	 */
@@ -792,7 +819,7 @@ declare namespace Block {
 	 * @param player unique ID of the player entity
 	 */
 	interface ClickFunction {
-		(coords: Callback.ItemUseCoordinates, item: ItemInstance, block: Tile, player: number): void;
+		(coords: Callback.ItemUseCoordinates, item: ItemInstance, block: Tile, playerUid: number): void;
 	}
 
 	/**
@@ -1313,7 +1340,16 @@ declare namespace Block {
 		 * @default false
 		 * @since 2.2.1b95
 		 */
-		can_be_extra_block?: boolean
+		can_be_extra_block?: boolean,
+		/**
+		 * Adds ability to apply states to this block, preferably using
+		 * vanilla ones from {@link EBlockStates}, but if they are not enough,
+		 * you can always add your own using {@link BlockState.registerBlockState}.
+		 * Inexistent states are ignored.
+		 * @default ["color"] // this state always has been here
+		 * @since 2.4.0b122-4 arm64
+		 */
+		states?: [EBlockStates | number | string][];
 	}
 
 	/**
@@ -2003,6 +2039,15 @@ declare class BlockSource {
 	getGrassColor(x: number, z: number): number;
 
 	/**
+	 * @param material numeric identifier of block material, which is specified when
+	 * it is registered in {@link Block.SpecialType}, e.g. 5 for liquids and 3 by default
+	 * @returns Is requested material available in that bounds,
+	 * preferably for a quick check of block pile.
+     * @since 2.4.0b122-4 arm64
+	 */
+	containsMaterial(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, material: number): boolean;
+
+	/**
 	 * @param chunkX X coord of the chunk
 	 * @param chunkZ Z coord of the chunk
 	 * @returns `true` if chunk is loaded, `false` otherwise.
@@ -2132,11 +2177,97 @@ declare class BlockSource {
 	spawnExpOrbs(x: number, y: number, z: number, amount: number): void;
 
 }
+declare namespace BlockState {
+    interface KeyStateScriptable {
+        [key: number]: number
+    }
+}
+
 /**
- * Class to work with vanilla blocks parameters.
+ * A block state is a set of parameters applicable to any blocks in world,
+ * created to store data permanently.
+ * Each state can be requested by getting a block using {@link BlockSource.getBlock}
+ * and then calling {@link BlockState.hasState}/{@link BlockState.getState},
+ * states can be used in {@link ICRender.BlockState} conditions,
+ * by game itself and manually by developer.
+ * @remarks
+ * Do not use numeric identifiers to save inside containers, convert them to
+ * named identifiers before, numeric ones may change with each world entrance.
  * @since 2.2.1b89
  */
 declare class BlockState implements Tile {
+
+    /**
+     * Creates a state that can be applied to any block via
+     * {@link Block.addBlockState} or {@link Block.SpecialType.states SpecialType.states}.
+     * Accepts any integer numeric value from 0 to capacity (exclusive).
+     * When called on existing state if new capacity is larger,
+     * it will be incremented for existing state.
+     * @param key a unique name by which state can be retrieved from other mods,
+     * must not overlap with vanilla {@link EBlockStates}; if identifier is intended
+     * for your mod only, add a prefix (e.g., for "handle_type", "tcon_handle_type")
+     * @param capacity number of states that may be applicable to block,
+     * it is recommended to use powers of two
+     * (2 for boolean values, 8 for 5-8 states inclusive, and so on)
+     * @example
+     * ```ts
+     * // store numeric identifier in variable, as alternative BlockState.getIdByName comes handy
+     * const HANDLE_TYPE_STATE = BlockState.registerBlockState("tcon_handle_type", 8);
+     * 
+     * IDRegistry.genBlockID("tcon_workbench");
+     * Block.createBlock("tcon_workbench", [{ ... }], {
+     *     // state key can be passed as alternative, vanilla EBlockStates too
+     *     states: [HANDLE_TYPE_STATE]
+     * });
+     * 
+     * Block.registerClickFunction("tcon_workbench", (coords, item, tile, playerUid) => {
+     *     if (item.id !== VanillaItemID.stick) {
+     *         return;
+     *     }
+     *     const region = BlockSource.getDefaultForActor(playerUid);
+     *     const block = region.getBlock(coords.x, coords.y, coords.z);
+     *     // increment to existing state, 0-5 values are applicable
+     *     if (block.hasState(HANDLE_TYPE_STATE)) {
+     *         const handleType = block.getState(HANDLE_TYPE_STATE) + 1;
+     *         block.addState(HANDLE_TYPE_STATE, handleType < 6 ? handleType : 0);
+     *     } else {
+     *         // if state does not exist, assume that it has a default value of 0 and increment it
+     *         block.addState(HANDLE_TYPE_STATE, 1);
+     *     }
+     *     region.setBlock(coords.x, coords.y, coords.z, block);
+     * });
+     * ```
+     * @since 2.4.0b122-4 arm64
+     */
+    static registerBlockState(key: string, capacity: number): number;
+
+    /**
+     * @returns Numeric state identifier that can be used for most
+     * block operations. Works for both new and vanilla states.
+     * @since 2.4.0b122-4 arm64
+     */
+    static getIdByName(key: string): EBlockStates | number;
+
+    /**
+     * @returns Named state identifier, stable for saving in tiles and
+     * other objects in mods. Works for both new and vanilla states.
+     * @since 2.4.0b122-4 arm64
+     */
+    static getNameById(state: number): string;
+
+    /**
+     * @returns List of all state keys, including vanilla ones
+     * from {@link EBlockStates}. Order is randomized.
+     * @since 2.4.0b122-4 arm64
+     */
+    static getAllStates(): string[];
+
+    /**
+     * @returns Maximum capacity of state, state takes
+     * values from 0 to capacity (exclusive).
+     * @since 2.4.0b122-4 arm64
+     */
+    static getBlockStateCapacity(state: EBlockStates | number): number;
 
     /**
      * Data of the block.
@@ -2158,7 +2289,7 @@ declare class BlockState implements Tile {
      * Constructs new BlockState object
      * from given ID and states object.
      */
-    constructor(id: number, scriptable: {[key: number]: number});
+    constructor(id: number, scriptable: BlockState.KeyStateScriptable);
 
     /**
      * @returns ID of the block.
@@ -2230,13 +2361,13 @@ declare class BlockState implements Tile {
      * @returns All states from following object
      * in JS object instance.
      */
-    getStatesScriptable(): { [key: string]: number };
+    getStatesScriptable(): BlockState.KeyStateScriptable;
 
     /**
      * @returns All named states from following object
      * in JS object instance.
      */
-    getNamedStatesScriptable(): { [key: string]: number };
+    getNamedStatesScriptable(): BlockState.KeyStateScriptable;
 
     /**
      * @returns Whether the following object is equal to given,
@@ -4947,6 +5078,13 @@ declare namespace Entity {
     function setCompoundTag(entityUid: number, tag: NBT.CompoundTag): void;
 
     /**
+     * @returns Start and end physical bounds in that entity will take
+     * damage when hit and will also push entities on contact.
+     * @since 2.4.0b122-4 arm64
+     */
+    function getAABB(entityUid: number): AxisAlignedBoundingBox;
+
+    /**
      * Sets hitbox to the entity. Hitboxes defines entity collisions
      * between terrain and themselves (e.g. physics).
      * @param w hitbox width and length
@@ -5213,6 +5351,13 @@ declare namespace Entity {
      * Sets entity's maximum health value.
      */
     function setMaxHealth(entityUid: number, health: number): void;
+
+    /**
+     * @returns Whether a entity is in a sleeping state, sleeping is defined
+     * as player or villagers being on a bed, as well as foxes napping.
+     * @since 2.4.0b122-4 arm64
+     */
+    function isSleeping(entityUid: number): boolean;
 
     /**
      * Sets the specified coordinates as a new position for the entity.
@@ -7135,7 +7280,7 @@ declare namespace ICRender {
 	 * @param x is relative x coordinate
 	 * @param y is relative y coordinate
 	 * @param z is relative z coordinate
-	 * @param state one of {@link EBlockStates} values of relative block
+	 * @param state one of {@link EBlockStates} values or custom one of relative block
 	 * @param value value to match selected state
 	 * @since 2.3.1b116
 	 */
@@ -7144,7 +7289,7 @@ declare namespace ICRender {
 	/**
 	 * Constructs new {@link ICRender.BlockState} condition that uses
 	 * block state data (it must match the value) to display.
-	 * @param state one of {@link EBlockStates} values
+	 * @param state one of {@link EBlockStates} values or custom one
 	 * @param value value to match selected state
 	 * @since 2.3.1b116
 	 */
@@ -7660,7 +7805,8 @@ declare namespace Item {
     function registerIconOverrideFunction(nameID: string | number, func: Callback.ItemIconOverrideFunction): void;
 
     /**
-     * Registers function to perform item name override.
+     * Registers function to perform item name overrides.
+     * Since 2.4.0b122-4 arm64 also supports vanilla items and blocks.
      * @param nameID string or numeric ID of the item
      * @param func function that is called to override item name. Should return 
      * string to be used as new item name
@@ -15832,7 +15978,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
      * Sends packet to specified client.
      * @remarks
-     * Availabled only in server-side methods!
+     * Available only in server-side methods!
      */
     sendResponse: (packetName: string, someData: object) => void;
     /**
@@ -22229,6 +22375,19 @@ interface BlockPosition extends Vector {
      * Side of the block, one of the {@link EBlockSide} constants.
      */
     side: number;
+}
+
+/**
+ * Abstract two points in space between which a region,
+ * usually parallelepipedic, is formed.
+ */
+interface AxisAlignedBoundingBox {
+    x1: number,
+    y1: number,
+    z1: number,
+    x2: number,
+    y2: number,
+    z2: number;
 }
 
 /**
