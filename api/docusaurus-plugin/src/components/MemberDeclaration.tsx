@@ -6,7 +6,7 @@ import { escapeMdx } from '../utils/helpers';
 import { Comment, hasComment } from './Comment';
 import { DefaultValue } from './DefaultValue';
 import { Icon } from './Icon';
-import { MemberSources } from './MemberSources';
+import { hasSources, MemberSources } from './MemberSources';
 import { Parameter } from './Parameter';
 import { extractDeclarationFromType, Type } from './Type';
 import { TypeParameters } from './TypeParameters';
@@ -39,29 +39,31 @@ export function MemberDeclaration({ id }: MemberDeclarationProps) {
 				</div>
 			</div>
 
-			<div className="tsd-panel-content">
-				<MemberSources reflection={reflection} />
+			{(hasSources(reflection) || hasComment(reflection.comment) || showTypes || showDeclaration) && (
+				<div className="tsd-panel-content">
+					<MemberSources reflection={reflection} />
 
-				<Comment comment={reflection.comment} />
+					<Comment comment={reflection.comment} />
 
-				{hasComment(reflection.comment) && (showTypes || showDeclaration) && (
-					<hr className="tsd-divider" />
-				)}
+					{hasComment(reflection.comment) && (showTypes || showDeclaration) && (
+						<hr className="tsd-divider" />
+					)}
 
-				{showTypes && (
-					<div className="tds-type-parameters">
-						<h4 className="tsd-type-parameters-title">Type parameters</h4>
-						<TypeParameters params={reflection.typeParameters} />
-					</div>
-				)}
+					{showTypes && (
+						<div className="tds-type-parameters">
+							<h4 className="tsd-type-parameters-title">Type parameters</h4>
+							<TypeParameters params={reflection.typeParameters} />
+						</div>
+					)}
 
-				{showDeclaration && (
-					<div className="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<Parameter param={extractDeclarationFromType(reflection.type)} />
-					</div>
-				)}
-			</div>
+					{showDeclaration && (
+						<div className="tsd-type-declaration">
+							<h4>Type declaration</h4>
+							<Parameter param={extractDeclarationFromType(reflection.type)} />
+						</div>
+					)}
+				</div>
+			)}
 		</>
 	);
 }

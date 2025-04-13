@@ -69,7 +69,7 @@ export function MemberSignatureBody({ hideSources, sig }: MemberSignatureBodyPro
 
 			<Comment comment={sig.comment} hideTags={HIDE_TAGS} />
 
-			{hasComment(sig.comment) && (showTypes || showParams || showReturn) && (
+			{hasComment(sig.comment, HIDE_TAGS) && (showTypes || showParams || showReturn) && (
 				<hr className="tsd-divider" />
 			)}
 

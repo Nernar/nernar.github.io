@@ -10,14 +10,16 @@ export interface CommentProps {
 	hideTags?: string[];
 }
 
-export function hasComment(comment?: JSONOutput.Comment): boolean {
+export function hasComment(comment?: JSONOutput.Comment, hideTags: string[] = []): boolean {
 	if (!comment) {
 		return false;
 	}
 
 	return Boolean(
-		comment.summary?.some((x) => x.kind !== 'text' || x.text !== '') ||
-			(comment.blockTags && comment.blockTags?.length > 0),
+		(comment.summary?.length > 0 && comment.summary.some((x) => x.kind !== 'text' || x.text !== '')) ||
+			(comment.blockTags?.length > 0 && comment.blockTags.some(
+				(tag) => tag.tag !== '@reference' && tag.tag !== '@default' && tag.tag !== '@since' && !hideTags?.includes(tag.tag)
+			)),
 	);
 }
 
@@ -34,7 +36,7 @@ export function displayPartsToMarkdown(parts: JSONOutput.CommentDisplayPart[]): 
 }
 
 export function Comment({ comment, root, hideTags = [] }: CommentProps) {
-	if (!comment || !hasComment(comment)) {
+	if (!comment || !hasComment(comment, hideTags)) {
 		return null;
 	}
 
@@ -51,13 +53,13 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 				return false;
 			}
 
-			return tag.tag !== '@default';
+			return tag.tag !== '@default' && tag.tag !== '@since';
 		}) ?? [];
 
 	const deprecatedTag = comment.blockTags?.find((tag) => tag.tag === '@deprecated');
 	const exampleTags = comment.blockTags?.filter((tag) => tag.tag === '@example');
 	const remarksTag = comment.blockTags?.find((tag) => tag.tag === '@remarks');
-const throwsTags = comment.blockTags?.filter((tag) => tag.tag === '@throws');
+	const throwsTags = comment.blockTags?.filter((tag) => tag.tag === '@throws');
 
 	return (
 		<div className={`tsd-comment tsd-typography${root ? ' tsd-comment-root' : ''}`}>
