@@ -297,6 +297,15 @@ declare class BlockSource {
 	getGrassColor(x: number, z: number): number;
 
 	/**
+	 * @param material numeric identifier of block material, which is specified when
+	 * it is registered in {@link Block.SpecialType}, e.g. 5 for liquids and 3 by default
+	 * @returns Is requested material available in that bounds,
+	 * preferably for a quick check of block pile.
+     * @since 2.4.0b122-4 arm64
+	 */
+	containsMaterial(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, material: number): boolean;
+
+	/**
 	 * @param chunkX X coord of the chunk
 	 * @param chunkZ Z coord of the chunk
 	 * @returns `true` if chunk is loaded, `false` otherwise.

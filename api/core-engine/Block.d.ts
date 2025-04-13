@@ -195,6 +195,33 @@ declare namespace Block {
 	}
 
 	/**
+	 * Adds ability to apply numeric state to a block in runtime by using
+	 * {@link BlockSource.setBlock} and passing desired state via {@link BlockState.addState}.
+	 * Each state can be requested by getting a block using {@link BlockSource.getBlock}
+	 * and then calling {@link BlockState.hasState}/{@link BlockState.getState}
+	 * states can be used in {@link ICRender.BlockState} conditions,
+	 * by game itself and manually by developer.
+	 * @param id numeric block ID
+	 * @param state numeric state that will be added for block
+     * @since 2.4.0b122-4 arm64
+	 */
+	function addBlockStateId(id: number, state: EBlockStates | number): void;
+
+	/**
+	 * Adds ability to apply named state to a block in runtime by using
+	 * {@link BlockSource.setBlock} and passing desired state via {@link BlockState.addState}.
+	 * Each state can be requested by getting a block using {@link BlockSource.getBlock}
+	 * and then calling {@link BlockState.hasState}/{@link BlockState.getState},
+	 * states can be used in {@link ICRender.BlockState} conditions,
+	 * by game itself and manually by developer.
+	 * @param id numeric block ID
+	 * @param key named state that will be added for block,
+	 * usually key of {@link EBlockStates}
+     * @since 2.4.0b122-4 arm64
+	 */
+	function addBlockState(id: number, key: string): void;
+
+	/**
 	 * @param id numeric block ID
 	 * @returns `true`, if the specified block ID is a vanilla block.
 	 */
@@ -239,7 +266,7 @@ declare namespace Block {
 	 * @param player unique ID of the player entity
 	 */
 	interface ClickFunction {
-		(coords: Callback.ItemUseCoordinates, item: ItemInstance, block: Tile, player: number): void;
+		(coords: Callback.ItemUseCoordinates, item: ItemInstance, block: Tile, playerUid: number): void;
 	}
 
 	/**
@@ -760,7 +787,16 @@ declare namespace Block {
 		 * @default false
 		 * @since 2.2.1b95
 		 */
-		can_be_extra_block?: boolean
+		can_be_extra_block?: boolean,
+		/**
+		 * Adds ability to apply states to this block, preferably using
+		 * vanilla ones from {@link EBlockStates}, but if they are not enough,
+		 * you can always add your own using {@link BlockState.registerBlockState}.
+		 * Inexistent states are ignored.
+		 * @default ["color"] // this state always has been here
+		 * @since 2.4.0b122-4 arm64
+		 */
+		states?: [EBlockStates | number | string][];
 	}
 
 	/**

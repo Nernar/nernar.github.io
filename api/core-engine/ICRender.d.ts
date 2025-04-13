@@ -244,7 +244,7 @@ declare namespace ICRender {
 	 * @param x is relative x coordinate
 	 * @param y is relative y coordinate
 	 * @param z is relative z coordinate
-	 * @param state one of {@link EBlockStates} values of relative block
+	 * @param state one of {@link EBlockStates} values or custom one of relative block
 	 * @param value value to match selected state
 	 * @since 2.3.1b116
 	 */
@@ -253,7 +253,7 @@ declare namespace ICRender {
 	/**
 	 * Constructs new {@link ICRender.BlockState} condition that uses
 	 * block state data (it must match the value) to display.
-	 * @param state one of {@link EBlockStates} values
+	 * @param state one of {@link EBlockStates} values or custom one
 	 * @param value value to match selected state
 	 * @since 2.3.1b116
 	 */

@@ -1,3 +1,9 @@
+declare namespace BlockState {
+    interface KeyStateScriptable {
+        [key: number]: number
+    }
+}
+
 /**
  * Class to work with vanilla blocks parameters.
  * @since 2.2.1b89
@@ -24,7 +30,7 @@ declare class BlockState implements Tile {
      * Constructs new BlockState object
      * from given ID and states object.
      */
-    constructor(id: number, scriptable: {[key: number]: number});
+    constructor(id: number, scriptable: BlockState.KeyStateScriptable);
 
     /**
      * @returns ID of the block.
@@ -96,13 +102,13 @@ declare class BlockState implements Tile {
      * @returns All states from following object
      * in JS object instance.
      */
-    getStatesScriptable(): { [key: string]: number };
+    getStatesScriptable(): BlockState.KeyStateScriptable;
 
     /**
      * @returns All named states from following object
      * in JS object instance.
      */
-    getNamedStatesScriptable(): { [key: string]: number };
+    getNamedStatesScriptable(): BlockState.KeyStateScriptable;
 
     /**
      * @returns Whether the following object is equal to given,
