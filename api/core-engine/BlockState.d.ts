@@ -58,7 +58,7 @@ declare class BlockState implements Tile {
      *     region.setBlock(coords.x, coords.y, coords.z, block);
      * });
      * ```
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4 arm64 (until 2.4.0b123-2 arm64 identifiers could be mismatched)
      */
     static registerBlockState(key: string, capacity: number): number;
 
