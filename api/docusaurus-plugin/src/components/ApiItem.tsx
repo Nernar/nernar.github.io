@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { PageMetadata } from '@docusaurus/theme-common';
 import type { Props as DocItemProps } from '@theme/DocItem';
 import { useReflection, useRequiredReflection } from '../hooks/useReflection';
@@ -54,14 +54,27 @@ export interface ApiItemProps extends Pick<DocItemProps, 'route'> {
 }
 
 export default function ApiItem({ readme: Readme, route }: ApiItemProps) {
-	const [hideInherited, setHideInherited] = useState(false);
-	const [hideInternal, setHideInternal] = useState(true);
-	const [hideDeprecated, setHideDeprecated] = useState(false);
+	const [hideInherited, setHideInherited] = useState(() => {
+		const hideInherited = localStorage.getItem('api.hide-inherited');
+		return hideInherited ? Boolean(hideInherited) : false;
+	});
+	const [hideInternal, setHideInternal] = useState(() => {
+		const hideInternal = localStorage.getItem('api.hide-internal');
+		return hideInternal ? Boolean(hideInternal) : true;
+	});
+	const [hideDeprecated, setHideDeprecated] = useState(() => {
+		const hideDeprecated = localStorage.getItem('api.hide-deprecated');
+		return hideDeprecated ? Boolean(hideDeprecated) : false;
+	});
 	const apiOptions = useMemo(() => ({
 		hideInherited, setHideInherited,
 		hideInternal, setHideInternal,
 		hideDeprecated, setHideDeprecated,
-	}), [hideInherited, hideInternal, hideDeprecated, setHideInherited, setHideInternal, setHideDeprecated]);
+	}), [hideInherited, hideInternal, hideDeprecated]);
+
+	useEffect(() => localStorage.setItem('api.hide-inherited', `${hideInherited}`), [hideInherited]);
+	useEffect(() => localStorage.setItem('api.hide-internal', `${hideInternal}`), [hideInternal]);
+	useEffect(() => localStorage.setItem('api.hide-deprecated', `${hideDeprecated}`), [hideDeprecated]);
 
 	const item = useRequiredReflection((route as unknown as { id: number }).id);
 	const reflections = useReflectionMap();
