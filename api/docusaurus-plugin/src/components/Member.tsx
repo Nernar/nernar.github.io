@@ -7,7 +7,7 @@ import { useReflectionMap } from '../hooks/useReflectionMap';
 import { escapeMdx } from '../utils/helpers';
 import { hasOwnDocument } from '../utils/visibility';
 import { AnchorLink } from './AnchorLink';
-import { ApiOptionsContext } from './ApiOptionsContext';
+import { ApiOptionsContext, shouldHideReflection } from './ApiOptionsContext';
 import { CommentBadges, isCommentWithModifiers } from './CommentBadges';
 import { Flags } from './Flags';
 import { MemberDeclaration } from './MemberDeclaration';
@@ -24,7 +24,7 @@ export function Member({ id }: MemberProps) {
 	const reflection = useRequiredReflection(id);
 	const apiOptions = useContext(ApiOptionsContext);
 
-	if (reflection.inheritedFrom && apiOptions.hideInherited) {
+	if (shouldHideReflection(reflection, apiOptions)) {
 		return null;
 	}
 

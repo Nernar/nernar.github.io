@@ -11,12 +11,12 @@ import { displayPartsToMarkdown } from './Comment';
 import { Flags } from './Flags';
 import { Reflection } from './Reflection';
 import { TypeParametersGeneric } from './TypeParametersGeneric';
-import { ApiOptionsContext } from './ApiOptionsContext';
+import { ApiOptionsContext, IApiOptions, shouldHideReflection } from './ApiOptionsContext';
 
 function extractTOC(
 	item: TSDDeclarationReflection,
 	map: TSDDeclarationReflectionMap,
-	hideInherited: boolean,
+	options: IApiOptions,
 ): TOCItem[] {
 	const toc: TOCItem[] = [];
 	const mapped = new Set<string>();
@@ -24,9 +24,8 @@ function extractTOC(
 	item.groups?.forEach((group) => {
 		group.children?.forEach((childId) => {
 			const child = map[childId];
-			const shouldShow = child.inheritedFrom ? !hideInherited : true;
 
-			if (!shouldShow || mapped.has(child.name)) {
+			if (shouldHideReflection(child, options) || mapped.has(child.name)) {
 				return;
 			}
 
@@ -56,14 +55,19 @@ export interface ApiItemProps extends Pick<DocItemProps, 'route'> {
 
 export default function ApiItem({ readme: Readme, route }: ApiItemProps) {
 	const [hideInherited, setHideInherited] = useState(false);
+	const [hideInternal, setHideInternal] = useState(true);
+	const [hideDeprecated, setHideDeprecated] = useState(false);
 	const apiOptions = useMemo(() => ({
-		hideInherited,
-		setHideInherited,
-	}), [hideInherited, setHideInherited]);
+		hideInherited, setHideInherited,
+		hideInternal, setHideInternal,
+		hideDeprecated, setHideDeprecated,
+	}), [hideInherited, hideInternal, hideDeprecated, setHideInherited, setHideInternal, setHideDeprecated]);
 
 	const item = useRequiredReflection((route as unknown as { id: number }).id);
 	const reflections = useReflectionMap();
-	const toc = useMemo(() => extractTOC(item, reflections, hideInherited), [item, reflections, hideInherited]);
+	const toc = useMemo(() => extractTOC(item, reflections, apiOptions),
+		[item, reflections, hideInherited, hideInternal, hideDeprecated]
+	);
 
 	// Pagination
 	const prevItem = useReflection(item.previousId);
