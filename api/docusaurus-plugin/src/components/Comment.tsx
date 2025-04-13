@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import type { JSONOutput } from 'typedoc';
 import { Markdown } from './Markdown';
 import Admonition from '@theme/Admonition';
+import { separateArrays } from '../utils/helpers';
 
 export interface CommentProps {
 	comment?: JSONOutput.Comment;
@@ -10,7 +11,7 @@ export interface CommentProps {
 	hideTags?: string[];
 }
 
-export function hasComment(comment?: JSONOutput.Comment, hideTags: string[] = []): boolean {
+export function hasComment(comment?: JSONOutput.Comment, hideTags?: string[]): boolean {
 	if (!comment) {
 		return false;
 	}
@@ -40,26 +41,19 @@ export function Comment({ comment, root, hideTags = [] }: CommentProps) {
 		return null;
 	}
 
-	// Hide custom tags.
-	hideTags.push('@deprecated');
-	hideTags.push('@example');
-	hideTags.push('@reference');
-	hideTags.push('@remarks');
-	hideTags.push('@throws');
-
 	const blockTags =
 		comment.blockTags?.filter((tag) => {
 			if (hideTags.includes(tag.tag)) {
 				return false;
 			}
 
-			return tag.tag !== '@default' && tag.tag !== '@since';
+			return tag.tag !== '@reference' && tag.tag !== '@default' && tag.tag !== '@since';
 		}) ?? [];
 
-	const deprecatedTag = comment.blockTags?.find((tag) => tag.tag === '@deprecated');
-	const exampleTags = comment.blockTags?.filter((tag) => tag.tag === '@example');
-	const remarksTag = comment.blockTags?.find((tag) => tag.tag === '@remarks');
-	const throwsTags = comment.blockTags?.filter((tag) => tag.tag === '@throws');
+	const deprecatedTag = separateArrays(blockTags, (tag) => tag.tag === '@deprecated').shift();
+	const exampleTags = separateArrays(blockTags, (tag) => tag.tag === '@example');
+	const remarksTag = separateArrays(blockTags, (tag) => tag.tag === '@remarks').shift();
+	const throwsTags = separateArrays(blockTags, (tag) => tag.tag === '@throws');
 
 	return (
 		<div className={`tsd-comment tsd-typography${root ? ' tsd-comment-root' : ''}`}>
