@@ -190,6 +190,13 @@ declare namespace Entity {
     function setCompoundTag(entityUid: number, tag: NBT.CompoundTag): void;
 
     /**
+     * @returns Start and end physical bounds in that entity will take
+     * damage when hit and will also push entities on contact.
+     * @since 2.4.0b122-4 arm64
+     */
+    function getAABB(entityUid: number): AxisAlignedBoundingBox;
+
+    /**
      * Sets hitbox to the entity. Hitboxes defines entity collisions
      * between terrain and themselves (e.g. physics).
      * @param w hitbox width and length
@@ -456,6 +463,13 @@ declare namespace Entity {
      * Sets entity's maximum health value.
      */
     function setMaxHealth(entityUid: number, health: number): void;
+
+    /**
+     * @returns Whether a entity is in a sleeping state, sleeping is defined
+     * as player or villagers being on a bed, as well as foxes napping.
+     * @since 2.4.0b122-4 arm64
+     */
+    function isSleeping(entityUid: number): boolean;
 
     /**
      * Sets the specified coordinates as a new position for the entity.

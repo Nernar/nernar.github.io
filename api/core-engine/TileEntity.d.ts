@@ -459,7 +459,7 @@ declare interface TileEntity extends TileEntity.TileEntityPrototype {
     /**
      * Sends packet to specified client.
      * @remarks
-     * Availabled only in server-side methods!
+     * Available only in server-side methods!
      */
     sendResponse: (packetName: string, someData: object) => void;
     /**

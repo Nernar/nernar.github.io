@@ -35,6 +35,19 @@ interface BlockPosition extends Vector {
 }
 
 /**
+ * Abstract two points in space between which a region,
+ * usually parallelepipedic, is formed.
+ */
+interface AxisAlignedBoundingBox {
+    x1: number,
+    y1: number,
+    z1: number,
+    x2: number,
+    y2: number,
+    z2: number;
+}
+
+/**
  * Object representing RGB color.
  */
 interface Color {

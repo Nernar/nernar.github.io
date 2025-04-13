@@ -382,7 +382,8 @@ declare namespace Item {
     function registerIconOverrideFunction(nameID: string | number, func: Callback.ItemIconOverrideFunction): void;
 
     /**
-     * Registers function to perform item name override.
+     * Registers function to perform item name overrides.
+     * Since 2.4.0b122-4 arm64 also supports vanilla items and blocks.
      * @param nameID string or numeric ID of the item
      * @param func function that is called to override item name. Should return 
      * string to be used as new item name
