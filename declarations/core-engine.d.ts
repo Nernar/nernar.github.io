@@ -2237,7 +2237,7 @@ declare class BlockState implements Tile {
      *     region.setBlock(coords.x, coords.y, coords.z, block);
      * });
      * ```
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4 arm64 (until 2.4.0b123-2 arm64 identifiers could be mismatched)
      */
     static registerBlockState(key: string, capacity: number): number;
 
@@ -4353,7 +4353,7 @@ declare namespace Dimensions {
          * Determines whether the generator should generate underground
          * and/or underwater caves as part of its result.
          * Wworks only with the "overworld"1" and "flat" base types.
-         * @param caves generate caves
+         * @param caves generate caves (until 2.4.0b123-2 arm64 inverted)
          * @param underwaterCaves generate large caves and canyons
 	     * @since 2.3.1b115
          */
