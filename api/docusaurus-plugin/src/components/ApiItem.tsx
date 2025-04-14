@@ -12,6 +12,7 @@ import { Flags } from './Flags';
 import { Reflection } from './Reflection';
 import { TypeParametersGeneric } from './TypeParametersGeneric';
 import { ApiOptionsContext, IApiOptions, shouldHideReflection } from './ApiOptionsContext';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 function extractTOC(
 	item: TSDDeclarationReflection,
@@ -55,26 +56,35 @@ export interface ApiItemProps extends Pick<DocItemProps, 'route'> {
 
 export default function ApiItem({ readme: Readme, route }: ApiItemProps) {
 	const [hideInherited, setHideInherited] = useState(() => {
-		const hideInherited = localStorage.getItem('api.hide-inherited');
-		return hideInherited ? Boolean(hideInherited) : false;
+		if (ExecutionEnvironment.canUseDOM) {
+			const hideInherited = localStorage.getItem('api.hide-inherited');
+			return hideInherited !== null ? Boolean(hideInherited) : false;
+		}
+		return false;
 	});
+	useEffect(() => localStorage.setItem('api.hide-inherited', `${hideInherited}`), [hideInherited]);
 	const [hideInternal, setHideInternal] = useState(() => {
-		const hideInternal = localStorage.getItem('api.hide-internal');
-		return hideInternal ? Boolean(hideInternal) : true;
+		if (ExecutionEnvironment.canUseDOM) {
+			const hideInternal = localStorage.getItem('api.hide-internal');
+			return hideInternal !== null ? Boolean(hideInternal) : true;
+		}
+		return true;
 	});
+	useEffect(() => localStorage.setItem('api.hide-internal', `${hideInternal}`), [hideInternal]);
 	const [hideDeprecated, setHideDeprecated] = useState(() => {
-		const hideDeprecated = localStorage.getItem('api.hide-deprecated');
-		return hideDeprecated ? Boolean(hideDeprecated) : false;
+		if (ExecutionEnvironment.canUseDOM) {
+			const hideDeprecated = localStorage.getItem('api.hide-deprecated');
+			return hideDeprecated !== null ? Boolean(hideDeprecated) : false;
+		}
+		return false;
 	});
+	useEffect(() => localStorage.setItem('api.hide-deprecated', `${hideDeprecated}`), [hideDeprecated]);
+
 	const apiOptions = useMemo(() => ({
 		hideInherited, setHideInherited,
 		hideInternal, setHideInternal,
 		hideDeprecated, setHideDeprecated,
 	}), [hideInherited, hideInternal, hideDeprecated]);
-
-	useEffect(() => localStorage.setItem('api.hide-inherited', `${hideInherited}`), [hideInherited]);
-	useEffect(() => localStorage.setItem('api.hide-internal', `${hideInternal}`), [hideInternal]);
-	useEffect(() => localStorage.setItem('api.hide-deprecated', `${hideDeprecated}`), [hideDeprecated]);
 
 	const item = useRequiredReflection((route as unknown as { id: number }).id);
 	const reflections = useReflectionMap();
