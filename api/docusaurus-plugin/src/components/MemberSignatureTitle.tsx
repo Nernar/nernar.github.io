@@ -3,9 +3,9 @@
 
 import { Fragment } from 'react';
 import type { TSDSignatureReflection } from '../types';
-import { escapeMdx } from '../utils/helpers';
 import { Type } from './Type';
 import { TypeParametersGeneric } from './TypeParametersGeneric';
+import { Name } from './Name';
 
 export interface MemberSignatureTitleProps {
 	useArrow?: boolean;
@@ -17,7 +17,7 @@ export function MemberSignatureTitle({ useArrow, hideName, sig }: MemberSignatur
 	return (
 		<>
 			{!hideName && sig.name !== '__type' ? (
-				escapeMdx(sig.name)
+				<Name reflection={sig} />
 			) : // Constructor signature
 			sig.kind === 16_384 ? (
 				<>

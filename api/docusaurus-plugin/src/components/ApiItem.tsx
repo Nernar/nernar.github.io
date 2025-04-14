@@ -4,7 +4,7 @@ import type { Props as DocItemProps } from '@theme/DocItem';
 import { useReflection, useRequiredReflection } from '../hooks/useReflection';
 import { useReflectionMap } from '../hooks/useReflectionMap';
 import type { TOCItem, TSDDeclarationReflection, TSDDeclarationReflectionMap } from '../types';
-import { escapeMdx } from '../utils/helpers';
+import { escapeMdx, getReflectionHtml } from '../utils/helpers';
 import { getKindIconHtml } from '../utils/icons';
 import ApiItemLayout from './ApiItemLayout';
 import { displayPartsToMarkdown } from './Comment';
@@ -32,7 +32,7 @@ function extractTOC(
 
 			if (!child.permalink || child.permalink.includes('#')) {
 				const iconHtml = getKindIconHtml(child.kind, child.name);
-				const value = escapeMdx(child.name);
+				const value = getReflectionHtml(child, true);
 
 				toc.push({
 					// @ts-expect-error Not typed upstream

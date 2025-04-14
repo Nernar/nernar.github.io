@@ -3,6 +3,7 @@
 import Link from '@docusaurus/Link';
 import { useReflection } from '../hooks/useReflection';
 import type { TSDReflection } from '../types';
+import { Name } from './Name';
 
 export interface BreadcrumbProps {
 	reflection: TSDReflection;
@@ -21,7 +22,7 @@ export function Breadcrumb({ reflection, root = true }: BreadcrumbProps) {
 					{reflection.permalink ? (
 						<Link to={reflection.permalink}>{reflection.name}</Link>
 					) : (
-						<span>{reflection.name}</span>
+						<Name reflection={reflection} />
 					)}
 				</li>
 			</>

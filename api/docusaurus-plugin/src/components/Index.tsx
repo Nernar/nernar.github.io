@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import Link from '@docusaurus/Link';
 import { useRequiredReflection } from '../hooks/useReflection';
 import type { TSDDeclarationReflection } from '../types';
-import { escapeMdx } from '../utils/helpers';
 import { AnchorLink } from './AnchorLink';
 import { Icon } from './Icon';
+import { Name } from './Name';
 
 export interface IndexChildProps {
 	id: number;
@@ -17,7 +17,7 @@ function IndexChild({ id }: IndexChildProps) {
 		<li>
 			<Link className="tsd-kind-icon" to={reflection.permalink ?? `#${reflection.name}`}>
 				<Icon reflection={reflection} />
-				{escapeMdx(reflection.name)}
+				<Name reflection={reflection} colorful={true} />
 			</Link>
 		</li>
 	);

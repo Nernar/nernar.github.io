@@ -265,6 +265,14 @@ html[data-theme='light'] .tsd-panel-content {
 	vertical-align: middle;
 }
 
+.tsd-is-internal {
+	opacity: 50%;
+}
+
+.tsd-is-deprecated {
+	text-decoration: line-through;
+}
+
 /* MODIFIERS */
 
 .badge-group {

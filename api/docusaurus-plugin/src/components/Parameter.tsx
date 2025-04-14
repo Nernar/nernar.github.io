@@ -9,6 +9,7 @@ import { Icon } from './Icon';
 import { hasSigBody, MemberSignatureBody } from './MemberSignatureBody';
 import { MemberSignatures } from './MemberSignatures';
 import { MemberSignatureTitle } from './MemberSignatureTitle';
+import { Name } from './Name';
 import { extractDeclarationFromType, Type } from './Type';
 
 export interface ParameterProps {
@@ -25,7 +26,7 @@ function ParameterChild({ param }: ParameterProps) {
 			<li className="tsd-parameter">
 				<h5>
 					{param.flags?.isRest && <span className="tsd-signature-symbol">...</span>}
-					{param.name}
+					<Name reflection={param} />
 					<span className="tsd-signature-symbol">{param.flags?.isOptional && '?'}: </span>
 					function
 				</h5>
@@ -41,7 +42,7 @@ function ParameterChild({ param }: ParameterProps) {
 				<h5>
 					<Flags flags={param.flags} />
 					{param.flags?.isRest && <span className="tsd-signature-symbol">...</span>}
-					{param.name}
+					<Name reflection={param} />
 					<span className="tsd-signature-symbol">{param.flags?.isOptional && '?'}: </span>
 					<Type type={param.type} />
 				</h5>

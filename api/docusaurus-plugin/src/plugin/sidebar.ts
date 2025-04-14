@@ -55,7 +55,7 @@ export function groupSidebarItems(
 
 				return {
 					href: child.permalink,
-					label: child.name,
+					label: child.name, // TODO: Find a way to make it html with styles.
 					type: 'link',
 				};
 			}),

@@ -13,7 +13,8 @@ export function Icon({ reflection }: IconProps) {
 	}
 
 	const color = getKindIconColor(reflection.kind);
+	const isInternal = reflection.comment?.modifierTags?.includes('@internal');
 
 	// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-	return <i className={`codicon codicon-${icon}`} style={{ color }} />;
+	return <i className={`codicon codicon-${icon} ${isInternal ? 'tsd-is-internal' : ''}`} style={{ color }} />;
 }

@@ -4,6 +4,7 @@ import type { JSONOutput } from 'typedoc';
 import Link from '@docusaurus/Link';
 import { useReflection } from '../hooks/useReflection';
 import { escapeMdx } from '../utils/helpers';
+import { Name } from './Name';
 
 export interface MemberReferenceProps {
 	reflection: JSONOutput.ReferenceReflection;
@@ -24,7 +25,7 @@ export function MemberReference({ reflection }: MemberReferenceProps) {
 			<>
 				Re-exports{' '}
 				<Link className="tsd-signature-type" to={target.permalink}>
-					{escapeMdx(target.name)}
+					<Name reflection={target} />
 				</Link>
 			</>
 		);
@@ -33,7 +34,7 @@ export function MemberReference({ reflection }: MemberReferenceProps) {
 			<>
 				Renames and re-exports{' '}
 				<Link className="tsd-signature-type" to={target.permalink}>
-					{escapeMdx(target.name)}
+					<Name reflection={target} />
 				</Link>
 			</>
 		);

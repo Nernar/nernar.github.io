@@ -2,10 +2,11 @@
 
 import { useMinimalLayout } from '../hooks/useMinimalLayout';
 import type { TSDDeclarationReflection } from '../types';
-import { escapeMdx } from '../utils/helpers';
+import { getKindIconColor } from '../utils/icons';
 import { Icon } from './Icon';
 import { hasSigBody, MemberSignatureBody } from './MemberSignatureBody';
 import { MemberSignatureTitle } from './MemberSignatureTitle';
+import { Name } from './Name';
 
 export interface MemberGetterSetterProps {
 	inPanel?: boolean;
@@ -29,8 +30,8 @@ export function MemberGetterSetter({ inPanel, getter, setter }: MemberGetterSett
 						{getter && (
 							<li className="tsd-signature tsd-kind-icon">
 								<Icon reflection={getter} />
-								<span className="tsd-signature-symbol">get </span>
-								{escapeMdx(getter.name)}
+								<span className="tsd-signature-symbol" style={{ color: getKindIconColor(getter.kind) }}>get </span>
+								<Name reflection={getter} />
 								<MemberSignatureTitle hideName sig={getter} />
 							</li>
 						)}
@@ -38,8 +39,8 @@ export function MemberGetterSetter({ inPanel, getter, setter }: MemberGetterSett
 						{setter && (
 							<li className="tsd-signature tsd-kind-icon">
 								<Icon reflection={setter} />
-								<span className="tsd-signature-symbol">set </span>
-								{escapeMdx(setter.name)}
+								<span className="tsd-signature-symbol" style={{ color: getKindIconColor(setter.kind) }}>set </span>
+								<Name reflection={setter} />
 								<MemberSignatureTitle hideName sig={setter} />
 							</li>
 						)}

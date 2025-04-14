@@ -4,7 +4,6 @@ import { Fragment, useContext } from 'react';
 import type { JSONOutput } from 'typedoc';
 import { useRequiredReflection } from '../hooks/useReflection';
 import { useReflectionMap } from '../hooks/useReflectionMap';
-import { escapeMdx } from '../utils/helpers';
 import { hasOwnDocument } from '../utils/visibility';
 import { AnchorLink } from './AnchorLink';
 import { ApiOptionsContext, shouldHideReflection } from './ApiOptionsContext';
@@ -15,6 +14,7 @@ import { MemberGetterSetter } from './MemberGetterSetter';
 import { MemberReference } from './MemberReference';
 import { MemberSignatures } from './MemberSignatures';
 import { SourceLink } from './SourceLink';
+import { Name } from './Name';
 
 export interface MemberProps {
 	id: number;
@@ -52,7 +52,7 @@ export function Member({ id }: MemberProps) {
 				<AnchorLink id={reflection.name} />
 				<SourceLink sources={reflection.sources} />
 				<Flags flags={reflection.flags} />
-				{escapeMdx(reflection.name)}
+				<Name reflection={reflection} />
 				{isCommentWithModifiers(reflection.comment) && <CommentBadges comment={reflection.comment} />}
 			</h3>
 
