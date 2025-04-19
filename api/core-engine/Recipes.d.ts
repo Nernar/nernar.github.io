@@ -152,7 +152,7 @@ declare namespace Recipes {
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
      * @param player player uid
      */
-    function provideRecipeForPlayer(field: WorkbenchField, prefix: string, player: number): Nullable<ItemInstance>;
+    function provideRecipeForPlayer(field: WorkbenchField, prefix: string, playerUid: number): Nullable<ItemInstance>;
 
     /**
      * Adds new furnace recipe.
