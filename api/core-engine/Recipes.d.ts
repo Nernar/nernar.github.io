@@ -150,9 +150,9 @@ declare namespace Recipes {
      * @param field {@link Recipes.WorkbenchField WorkbenchField} object containing crafting field 
      * information
      * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
-     * @param player player uid
+     * @param playerUid player which performs crafting
      */
-    function provideRecipeForPlayer(field: WorkbenchField, prefix: string, player: number): Nullable<ItemInstance>;
+    function provideRecipeForPlayer(field: WorkbenchField, prefix: string, playerUid: number): Nullable<ItemInstance>;
 
     /**
      * Adds new furnace recipe.
