@@ -13698,6 +13698,15 @@ declare namespace Recipes {
     function provideRecipe(field: WorkbenchField, prefix?: string): Nullable<ItemInstance>;
 
     /**
+     * Performs crafting by the field contents and recipe prefix for a player.
+     * @param field {@link Recipes.WorkbenchField WorkbenchField} object containing crafting field 
+     * information
+     * @param prefix recipe prefix, defaults to empty string (vanilla workbench)
+     * @param player player uid
+     */
+    function provideRecipeForPlayer(field: WorkbenchField, prefix: string, playerUid: number): Nullable<ItemInstance>;
+
+    /**
      * Adds new furnace recipe.
      * @param sourceId source item ID
      * @param sourceData source item data
@@ -15719,7 +15728,7 @@ declare namespace TileEntity {
             /**
              * Example of the server container event function.
              */
-            [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
+            [eventName: string]: (packetData: any, connectedClient: NetworkClient) => void;
         };
 
         /**
