@@ -200,7 +200,7 @@ declare namespace TileEntity {
             /**
              * Example of the server container event function.
              */
-            [eventName: string]: (container: ItemContainer, window: UI.Window | UI.StandartWindow | UI.StandardWindow | UI.TabbedWindow | null, windowContent: UI.WindowContent | null, eventData: any) => void;
+            [eventName: string]: (packetData: any, connectedClient: NetworkClient) => void;
         };
 
         /**
