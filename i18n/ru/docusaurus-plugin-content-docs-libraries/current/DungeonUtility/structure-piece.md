@@ -25,7 +25,7 @@ Callback.addCallback("StructureLoadOne", () => {
     // создаем DefaultGenerationDescription, даем ему структуру, которую будем генерировать с шансом 1 к 80 (примерно 1 структура на 80 чанков)
     let exampleGeneration = new DefaultGenerationDescription(examplePool.get("test_structure"), 80);
 
-    // задаем уникальный индитификатор для структуры
+    // задаем уникальный идентификатор для структуры
     exampleGeneration.setIdentifier("my_mod:test_structure"); 
     // задаем блоки на которых может появиться структура
     exampleGeneration.setSurface(true, [VanillaBlockID.grass]); 
@@ -43,7 +43,7 @@ Callback.addCallback("StructureLoadOne", () => {
 
 :::tip
 
-В шансе спана указывается делитель для получения вероятности спавна структуры.
+В шансе спавна указывается делитель для получения вероятности спавна структуры.
 
 :::
 
@@ -59,13 +59,13 @@ exampleGeneration.setIdentifier("my_mod:test_structure");
 
 :::
 
-Затем мы установили поверхности на которых будет генерироваться структура, в где `true` — это переключатель между белым и черным списком (нужно ли использовать эти блоки или, наоборот, все кроме этих):
+Затем мы установили поверхности на которых будет генерироваться структура, где `true` — это переключатель между белым и черным списком (нужно ли использовать эти блоки или, наоборот, все кроме этих):
 
 ```ts
 exampleGeneration.setSurface(true, [VanillaBlockID.grass]);
 ```
 
-Теперь, мы задали группу к которой принадлежит структура, а также минимальное растояние до ближайшей структуры из данной группы (для того чтобы структуры не появлялись слишком часто, количество структур в группе не ограничено):
+Теперь, мы задали группу к которой принадлежит структура, а также минимальное расстояние до ближайшей структуры из данной группы (для того чтобы структуры не появлялись слишком часто, количество структур в группе не ограничено):
 
 ```ts
 exampleGeneration.setDistance(90, "my_mod_group");
@@ -105,7 +105,7 @@ Callback.addCallback("StructureLoadOne", () => {
     // создаем DefaultGenerationDescription, даем ему структуру которую будем генерировать с шансом 1 к 80 (примерно 1 структура на 80 чанков)
     let exampleGeneration = new DefaultGenerationDescription(examplePool.get("test_structure"), 80);
 
-    // задаем уникальный индитификатор для структуры
+    // задаем уникальный идентификатор для структуры
     exampleGeneration.setIdentifier("my_mod:test_structure"); 
     // задаем блоки на которых может появиться структура
     exampleGeneration.setSurface(true, [VanillaBlockID.grass]); 

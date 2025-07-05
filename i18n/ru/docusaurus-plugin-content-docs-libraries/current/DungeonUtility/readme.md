@@ -93,5 +93,6 @@ Dungeon Utility — это мод-библиотека, для создания 
 - [AppliedEnergistics 2](https://icmods.mineprogramming.org/mod?id=906)
 - [Example Structure](https://icmods.mineprogramming.org/mod?id=992)
 - [Galacticraft 4 PE](https://icmods.mineprogramming.org/mod?id=8556)
+- [Infinite Forest](https://icmods.mineprogramming.org/mod?id=159)
 - [Ancient wonders](https://icmods.mineprogramming.org/mod?id=682)
 - [Aether 2 BE](https://icmods.mineprogramming.org/mod?id=195)
