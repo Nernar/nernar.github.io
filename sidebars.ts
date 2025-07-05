@@ -166,7 +166,8 @@ export default {
 				'ui/window-types',
 				'ui/drawings',
 				'ui/elements',
-				'ui/extending-components'
+				'ui/extending-components',
+                'ui/animation'
 			]
 		},
 		{
