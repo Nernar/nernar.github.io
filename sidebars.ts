@@ -183,6 +183,19 @@ export default {
 				'storage/processing-resources'
 			]
 		},
+        {
+            type: 'category',
+            label: 'Multiplayer',
+            link: {
+                type: 'generated-index'
+            },
+            items: [
+                'multiplayer/start',
+                'multiplayer/client-packets',
+                'multiplayer/server-packets',
+                'multiplayer/network-entity-type'
+            ]
+        },
 		{
 			type: 'category',
 			label: 'Dimensions',

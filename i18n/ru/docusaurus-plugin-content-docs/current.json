@@ -43,6 +43,10 @@
     "message": "Контейнеры",
     "description": "The label for category Containers in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.Multiplayer": {
+    "message": "Мультиплеер",
+    "description": "The label for category Multiplayer in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.Renders": {
     "message": "Отрисовка",
     "description": "The label for category Renders in sidebar tutorialSidebar"
