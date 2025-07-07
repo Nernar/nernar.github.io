@@ -196,7 +196,7 @@ animator.start = function() {
 
 На этом всё. Теперь при вызове ``animator.init(число)`` у нас появится справа анимация, которая пролетит вниз и плавно исчезнет.
 ```js
-Callback.addCallback("ItemUse", () => {
+Callback.addCallback("ItemUseLocal", () => {
     animator.init(10);
 });
 ```
