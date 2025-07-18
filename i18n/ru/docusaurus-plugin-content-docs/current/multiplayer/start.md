@@ -1,6 +1,6 @@
 # Начало
 
-Мультиплеер — одна из важнейших частей любого **не клиентского мода**, которую создателю нужно поддерживать для того, чтобы игроки могли играть в мод вместе. А вместе с тем, одна из сложнейших для новичков.
+Мультиплеер — одна из важнейших частей любого **не-клиентского мода**, которую создателю нужно поддерживать для того, чтобы игроки могли играть в мод вместе. А вместе с тем, одна из сложнейших для новичков.
 
 Попробуем за одну статью разобрать, как разграничивать клиент и сервер и в чём их отличие, для чего нужны пакеты и определим, какие [события](../events/callbacks) относятся к клиентским, а какие к серверным.
 Перед чтением статьи настоятельно рекомендую ознакомиться со следующими статьями, ведь материалы из них будут рассмотрены в данном разделе:
@@ -33,7 +33,7 @@ graph TD
 
 Клиенты знают только ту информацию, которая им нужна. Например это данные о мобах и блоках в загруженных им чанках, погоде и времени.
 
-Давайте представим, что мы пишем мод и в качестве простого игрока на сервере пытаемся получить данные о подключённых игроках при помощи [``Network.getConnectedPlayers()``](/api/core-engine/Network.d.ts). Поскольку клиент этой информации не знает, мы не получим нужный нам список. Однако мы можем создать серверный пакет, который мы отправим на него и он сделает нужные нам действия со списком игроков сам. Почему бы просто не отправить серверу нам список игроков? Это может быть опасно, и о безопасности пакетов мы поговорим в будущем.
+Давайте представим, что мы пишем мод и в качестве простого игрока на сервере пытаемся получить данные о подключённых игроках при помощи [`Network.getConnectedPlayers()`](/api/namespace/Network#getConnectedPlayers). Поскольку клиент этой информации не знает, мы не получим нужный нам список. Однако мы можем создать серверный пакет, который мы отправим на него и он сделает нужные нам действия со списком игроков сам. Почему бы просто не отправить серверу нам список игроков? Это может быть опасно, и о безопасности пакетов мы поговорим в будущем.
 
 Распределяйте нагрузку так, чтобы вся визуальная информация вычислялась на клиенте.
 
@@ -61,8 +61,8 @@ graph TD
 Рассмотрим хорошие и плохие примеры реализации мультиплеера:
 
 1. Плохие примеры
-   1. Тайл энтити спавнит частицы не внутри [client.onTick](/api/core-engine/TileEntity.d.ts), а отправляет пакет на клиент с запуском частиц.
-   2. Один пакет используется на много действий, например для загрузки, разрушения, смены позиции и текстуры для [анимации](/api/core-engine/Animation.d.ts).
+   1. Тайл энтити спавнит частицы не внутри [client.onTick](/api/namespace/TileEntity#LocalTileEntityPrototype), а отправляет пакет на клиент с запуском частиц.
+   2. Один пакет используется на много действий, например для загрузки, разрушения, смены позиции и текстуры для [анимации](/api/namespace/Animation).
    3. Вместо создания пакета для запуска фигуры из частиц ([кстати, их мы рассматривали тут](../environment/particles)), отправляется один и тот же пакет для спавна одной частицы много раз, чтобы отрисовать эту же фигуру.
 2. Хорошие примеры
    1. Клиентская часть тайл энтити отделена от сервера и данные поставляются при помощи SyncedNetworkData.
@@ -76,70 +76,119 @@ graph TD
 
 ## Клиентские и серверные события
 
-Классификация событий по клиентским и серверным.
+Классификация событий по клиентским и серверным, если событие есть в обоих колонках, значит оно вызывается и для серверной, и для клиентской части:
+
+### Ежетиковые события
 
 | Клиентские | Серверные |
-| ---------- | --------- |
-| LocalPlayerChangedDimension | PlayerChangedDimension |
-| tick |  PlayerChangedDimension |
-| LocalTick | CustomDimensionTransfer |
+|---|---|
+| tick | |
+| LocalTick | |
 | LocalPlayerTick | ServerPlayerTick |
+
+### Появление моба в мире
+
+| Клиентские | Серверные |
+|---|---|
+| EntityAddedLocal | EntityAdded |
+| EntityRemovedLocal | EntityRemoved |
+| LocalPlayerLoaded | ServerPlayerLoaded |
+
+### Игрок сменил измерение
+
+| Клиентские | Серверные |
+|---|---|
+| LocalPlayerChangedDimension | PlayerChangedDimension |
+| | CustomDimensionTransfer |
+| DimensionLoaded/Unloaded | |
+
+### Изменение блоков
+
+| Клиентские | Серверные |
+|---|---|
+| DestroyBlockStart | DestroyBlock |
+| DestroyBlockContinue | |
+| | BuildBlock |
+| | BlockChanged |
+| | BreakBlock |
+| | PopBlockResources |
+| | BlockEventEntityInside |
+| | BlockEventEntityStepOn |
+| | BlockEventNeighbourChange |
+| | RedstoneSignal |
+| | TileEntityAdded/Removed |
+
+### Использование предметов
+
+| Клиентские | Серверные |
+|---|---|
 | ItemUseLocal | ItemUse |
-| ItemUseLocalServer | ItemUseLocalServer |
-| ItemIconOverride | ItemUseNoTarget |
-| ItemNameOverride | ItemUseServer |
-| DestroyBlockContinue | ItemUsingReleased |
-| CustomBlockTessellation | ItemUsingComplete |
-| LocalPlayerEat | ItemDispensed |
-| EntityAddedLocal | DestroyBlock |
-| EntityRemovedLocal | DestroyBlockStart |
-| LocalChunkLoadingStateChanged? | BuildBlock |
-| NativeCommand | BlockChanged |
-| VanillaWorkbenchRecipeSelected | BreakBlock |
-| ContainerClosed | RedstoneSignal |
-| ContainerOpened | BlockEventEntityInside |
-| NativeGuiChanged | BlockEventEntityStepOn |
-| CustomWindowOpened | BlockEventNeighbourChange |
-| CustomWindowClosed | PopBlockResources |
-| AddRuntimePacks | Explosion |
-| PreBlocksDefined | ServerPlayerEat |
-| BlocksDefined | FoodEaten |
-| CoreConfigured | EntityAdded |
-| PreLoaded | EntityRemoved |
-| APILoaded | PlayerAttack |
-| ModsLoaded | EntityHurt |
-| PostLoaded | EntityDeath |
-| OptionsChanged | EntityInteract |
-| LevelSelected | EntityPickUpDrop |
-| ConnectingToHost | ExpAdd |
-| LevelCreated | ExpLevelAdd |
-| LocalLevelLoaded | ChunkLoadingStateChanged? |
-| LocalPlayerLoaded | ExpOrbsSpawned |
-| RemoteLevelLoaded | ProjectileHit |
-| RemoteLevelPreLoaded| GenerateChunk |
-| LevelPreLoaded | GenerateChunkUnderground |
-| LevelLoaded | GenerateNetherChunk |
-| LevelDisplayed | GenerateEndChunk |
-| SystemKeyEventDispatched | GenerateChunkUniversal |
-| NavigationBackPressed | GenerateCustomDimensionChunk |
-| GameLeft | GenerateBiomeMap |
-| LevelPreLeft | PreProcessChunk |
-| LevelLeft | PostProcessChunk |
-| LocalLevelPreLeft | EnchantPostAttack |
-| LocalLevelLeft | EnchantGetProtectionBonus |
-| AppSuspended | EnchantGetDamageBonus |
-| | EnchantPostHurt |
-| | CraftRecipePreProvided |
-| | CraftRecipeProvidedFunction |
-| | VanillaWorkbenchCraft |
-| | VanillaWorkbenchPostCraft |
-| | TileEntityAdded |
-| | TileEntityRemoved |
-| | ServerLevelLoaded |
-| | ServerLevelPreLoaded |
-| | ServerPlayerLoaded |
-| | ReadSaves |
-| | WriteSaves |
-| | ServerLevelPreLeft |
-| | ServerLevelLeft |
-| | ServerPlayerLeft |
+| ItemUseLocalServer | ItemUseServer |
+| | ItemUsingReleased |
+| | ItemUsingComplete |
+| ItemUseNoTarget | |
+| LocalPlayerEat | ServerPlayerEat |
+| FoodEaten | FoodEaten |
+| | ItemDispensed |
+
+### Действия мобов
+
+| Клиентские | Серверные |
+|---|---|
+| EntityHurt | EntityHurt |
+| | PlayerAttack |
+| | EntityInteract |
+| | Exp(Level)Add |
+| | ExpOrbsSpawned |
+| | EntityPickUpDrop |
+| | Explosion |
+| | EntityDeath |
+| | ProjectileHit |
+
+### Генерация мира
+
+| Клиентские | Серверные |
+|---|---|
+| | GenerateChunk и прочие |
+| | Pre/PostProcessChunk |
+| | GenerateBiomeMap |
+
+### Действия в интерфейсе
+
+| Клиентские | Серверные |
+|---|---|
+| CustomWindowOpened/Closed | ContainerOpened/Closed |
+| NativeGuiChanged | |
+| SystemKeyEventDispatched | |
+| NavigationBackPressed | |
+| AppSuspended | |
+| OptionsChanged | |
+| Все этапы загрузки игры | |
+
+### Прочие события в мире
+
+| Клиентские | Серверные |
+|---|---|
+| NativeCommand | |
+| ItemName/IconOverride | |
+| CustomBlockTessellation | |
+| VanillaWorkbenchRecipeSelected | |
+| | CraftRecipe(Pre)Provided |
+| | VanillaWorkbench(Post)Craft |
+| | EnchantPostAttack/Hurt |
+| | EnchantGetDamage/ProtectionBonus |
+| | Read/WriteSaves |
+
+### Этапы загрузки/подключения к миру
+
+| Клиентские | Серверные |
+|---|---|
+| LevelSelected | |
+| ConnectingToHost | |
+| LevelCreated | |
+| RemoteLevel(Pre)Loaded | ServerLevel(Pre)Loaded |
+| Level(Pre)Loaded | Level(Pre)Loaded |
+| LevelDisplayed | |
+| LocalLevel(Pre)Left | ServerLevel(Pre)Left |
+| Level(Pre)Left | Level(Pre)Left |
+| GameLeft | GameLeft |
