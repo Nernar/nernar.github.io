@@ -1,19 +1,26 @@
 # Начало
+
 Мультиплеер — одна из важнейших частей любого **не клиентского мода**, которую создателю нужно поддерживать для того, чтобы игроки могли играть в мод вместе. А вместе с тем, одна из сложнейших для новичков.
 
 Попробуем за одну статью разобрать, как разграничивать клиент и сервер и в чём их отличие, для чего нужны пакеты и определим, какие [события](../events/callbacks) относятся к клиентским, а какие к серверным.
-Перед чтением статьи настоятельно рекомендую ознакомиться со следующими статьями, ведь материалы из них будут рассмотрены в данном разделе: 
+Перед чтением статьи настоятельно рекомендую ознакомиться со следующими статьями, ведь материалы из них будут рассмотрены в данном разделе:
+
 1. [Калбеки](../events/callbacks)
-2. [Контейнеры](../storage/containers) 
+2. [Контейнеры](../storage/containers)
 3. [Тайлы](../storage/tile-entities)
 4. [Сохраняем данные](../storage/saving-basics)
+
 ## Клиент
+
 Давайте попробуем понять сразу на примере игры. Представим, что мы находимся на сервере. Все игроки — это клиенты. Они не могут влиять на сервер напрямую, но они могут отправлять запросы (пакеты), а сервер может либо сделать какие-то действия, например отправить ответный пакет, либо проигнорировать или предпринять какие-то действия против клиента, если посчитает это нужным.
+
 ```mermaid
 flowchart TB
 Клиент-->|серверный пакет|Сервер
 ```
+
 В случае, если сервер захочет отправить какие-то данные клиенту, он отправит ответный пакет, и такой пакет будет называться [клиентским](client-packets).
+
 ```mermaid
 graph TD
     A[Сервер]
@@ -23,6 +30,7 @@ graph TD
     A--->B
     A--->C
 ```
+
 Клиенты знают только ту информацию, которая им нужна. Например это данные о мобах и блоках в загруженных им чанках, погоде и времени.
 
 Давайте представим, что мы пишем мод и в качестве простого игрока на сервере пытаемся получить данные о подключённых игроках при помощи [``Network.getConnectedPlayers()``](/api/core-engine/Network.d.ts). Поскольку клиент этой информации не знает, мы не получим нужный нам список. Однако мы можем создать серверный пакет, который мы отправим на него и он сделает нужные нам действия со списком игроков сам. Почему бы просто не отправить серверу нам список игроков? Это может быть опасно, и о безопасности пакетов мы поговорим в будущем.
@@ -34,6 +42,7 @@ graph TD
 Клиент не может использовать серверные методы, например ломать и ставить блоки при помощи [BlockSource](/api/core-engine/BlockSource.d.ts).
 
 ### Различие данных
+
 Как мы и говорили ранее, игра не выдаёт те данные, которые клиент не должен знать.  Когда мы изменяем данные внутри нашего мода на хосте (игрок, которому принадлежит мир или серверное ПО), они и меняются только на сервере. Но на клиенте остаются прежними. Обычно сервер выдаёт необходимую клиентам информацию при помощи пакетов или [SyncedNetworkData](../events/using-synced-data).
 
 :::danger Не храните важную для игры информацию на клиенте
@@ -41,12 +50,14 @@ graph TD
 :::
 
 ## Сервер
+
 Сервер представляет из себя компьютер, где запущен мир Minecraft. Он может напрямую взаимодействовать на мир и на данные, которые на нём хранятся, менять данные игроков из модов, к примеру такие, как: изучения, магический уровень и прочее. Сервер не знает информацию с клиента, если он не отправляет её при помощи [серверных пакетов](server-packets).
 Вся нагрузка, которая не касается визуала, должна ложиться на сервер. Это разные системы, добавляемые модами, функционал блоков и прочее.
 
 Пакеты, которые сервер принимает, называются [серверными](server-packets). Очень важно понимать, что на сервер не всегда могут поступать честные пакеты, некоторые моды могут отправлять пакеты с произвольными данными от недобросовестного разработчика, что конечно нужно учитывать. О безопасности поговорим в статье про серверные пакеты, но пока что просто запомните это.
 
 ## Хорошие и плохие примеры
+
 Рассмотрим хорошие и плохие примеры реализации мультиплеера:
 
 1. Плохие примеры
@@ -64,70 +75,71 @@ graph TD
 :::
 
 ## Клиентские и серверные события
+
 Классификация событий по клиентским и серверным.
 
 | Клиентские | Серверные |
 | ---------- | --------- |
-| LocalPlayerChangedDimension | PlayerChangedDimension 
-| tick |  PlayerChangedDimension
-| LocalTick | CustomDimensionTransfer
-| LocalPlayerTick | ServerPlayerTick
-| ItemUseLocal | ItemUse
-| ItemUseLocalServer | ItemUseLocalServer
-| ItemIconOverride | ItemUseNoTarget
-| ItemNameOverride | ItemUseServer
-| DestroyBlockContinue | ItemUsingReleased
-| CustomBlockTessellation | ItemUsingComplete
-| LocalPlayerEat | ItemDispensed
-| EntityAddedLocal | DestroyBlock
-| EntityRemovedLocal | DestroyBlockStart
-| LocalChunkLoadingStateChanged? | BuildBlock
-| NativeCommand | BlockChanged
-| VanillaWorkbenchRecipeSelected | BreakBlock
-| ContainerClosed | RedstoneSignal
-| ContainerOpened | BlockEventEntityInside
-| NativeGuiChanged | BlockEventEntityStepOn
-| CustomWindowOpened | BlockEventNeighbourChange
-| CustomWindowClosed | PopBlockResources
-| AddRuntimePacks | Explosion
-| PreBlocksDefined | ServerPlayerEat
-| BlocksDefined | FoodEaten
-| CoreConfigured | EntityAdded
-| PreLoaded | EntityRemoved
-| APILoaded | PlayerAttack
-| ModsLoaded | EntityHurt
-| PostLoaded | EntityDeath
-| OptionsChanged | EntityInteract
-| LevelSelected | EntityPickUpDrop
-| ConnectingToHost | ExpAdd
-| LevelCreated | ExpLevelAdd
-| LocalLevelLoaded | ChunkLoadingStateChanged?
-| LocalPlayerLoaded | ExpOrbsSpawned
-| RemoteLevelLoaded | ProjectileHit
-| RemoteLevelPreLoaded| GenerateChunk
-| LevelPreLoaded | GenerateChunkUnderground
-| LevelLoaded | GenerateNetherChunk
-| LevelDisplayed | GenerateEndChunk
-| SystemKeyEventDispatched | GenerateChunkUniversal
-| NavigationBackPressed | GenerateCustomDimensionChunk
-| GameLeft | GenerateBiomeMap
-| LevelPreLeft | PreProcessChunk
-| LevelLeft | PostProcessChunk
-| LocalLevelPreLeft | EnchantPostAttack
-| LocalLevelLeft | EnchantGetProtectionBonus
-| AppSuspended | EnchantGetDamageBonus
-| | EnchantPostHurt
-| | CraftRecipePreProvided
-| | CraftRecipeProvidedFunction
-| | VanillaWorkbenchCraft
-| | VanillaWorkbenchPostCraft
-| | TileEntityAdded
-| | TileEntityRemoved
-| | ServerLevelLoaded
-| | ServerLevelPreLoaded
-| | ServerPlayerLoaded
-| | ReadSaves
-| | WriteSaves
-| | ServerLevelPreLeft
-| | ServerLevelLeft
-| | ServerPlayerLeft
+| LocalPlayerChangedDimension | PlayerChangedDimension |
+| tick |  PlayerChangedDimension |
+| LocalTick | CustomDimensionTransfer |
+| LocalPlayerTick | ServerPlayerTick |
+| ItemUseLocal | ItemUse |
+| ItemUseLocalServer | ItemUseLocalServer |
+| ItemIconOverride | ItemUseNoTarget |
+| ItemNameOverride | ItemUseServer |
+| DestroyBlockContinue | ItemUsingReleased |
+| CustomBlockTessellation | ItemUsingComplete |
+| LocalPlayerEat | ItemDispensed |
+| EntityAddedLocal | DestroyBlock |
+| EntityRemovedLocal | DestroyBlockStart |
+| LocalChunkLoadingStateChanged? | BuildBlock |
+| NativeCommand | BlockChanged |
+| VanillaWorkbenchRecipeSelected | BreakBlock |
+| ContainerClosed | RedstoneSignal |
+| ContainerOpened | BlockEventEntityInside |
+| NativeGuiChanged | BlockEventEntityStepOn |
+| CustomWindowOpened | BlockEventNeighbourChange |
+| CustomWindowClosed | PopBlockResources |
+| AddRuntimePacks | Explosion |
+| PreBlocksDefined | ServerPlayerEat |
+| BlocksDefined | FoodEaten |
+| CoreConfigured | EntityAdded |
+| PreLoaded | EntityRemoved |
+| APILoaded | PlayerAttack |
+| ModsLoaded | EntityHurt |
+| PostLoaded | EntityDeath |
+| OptionsChanged | EntityInteract |
+| LevelSelected | EntityPickUpDrop |
+| ConnectingToHost | ExpAdd |
+| LevelCreated | ExpLevelAdd |
+| LocalLevelLoaded | ChunkLoadingStateChanged? |
+| LocalPlayerLoaded | ExpOrbsSpawned |
+| RemoteLevelLoaded | ProjectileHit |
+| RemoteLevelPreLoaded| GenerateChunk |
+| LevelPreLoaded | GenerateChunkUnderground |
+| LevelLoaded | GenerateNetherChunk |
+| LevelDisplayed | GenerateEndChunk |
+| SystemKeyEventDispatched | GenerateChunkUniversal |
+| NavigationBackPressed | GenerateCustomDimensionChunk |
+| GameLeft | GenerateBiomeMap |
+| LevelPreLeft | PreProcessChunk |
+| LevelLeft | PostProcessChunk |
+| LocalLevelPreLeft | EnchantPostAttack |
+| LocalLevelLeft | EnchantGetProtectionBonus |
+| AppSuspended | EnchantGetDamageBonus |
+| | EnchantPostHurt |
+| | CraftRecipePreProvided |
+| | CraftRecipeProvidedFunction |
+| | VanillaWorkbenchCraft |
+| | VanillaWorkbenchPostCraft |
+| | TileEntityAdded |
+| | TileEntityRemoved |
+| | ServerLevelLoaded |
+| | ServerLevelPreLoaded |
+| | ServerPlayerLoaded |
+| | ReadSaves |
+| | WriteSaves |
+| | ServerLevelPreLeft |
+| | ServerLevelLeft |
+| | ServerPlayerLeft |
