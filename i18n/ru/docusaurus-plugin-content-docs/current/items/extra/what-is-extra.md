@@ -139,4 +139,10 @@ Item.registerUseFunctionForID(
 );
 ```
 
-<!-- TODO: Использование тегов -->
+## Использование тегов
+
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```

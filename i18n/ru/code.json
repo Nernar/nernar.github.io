@@ -324,5 +324,11 @@
   },
   "component.footer.contributorsList": {
     "message": "Творцы, вложившие частичку себя"
+  },
+  "component.page.notLocalized.title": {
+    "message": "Мы не можем понять вас"
+  },
+  "component.page.notLocalized.visitLater": {
+    "message": "К сожалению, туториал пока недоступен на этом языке, попробуйте сменить его."
   }
 }

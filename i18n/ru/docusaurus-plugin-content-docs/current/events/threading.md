@@ -125,3 +125,9 @@ if (thread) { // процесс уже мог быть завершен
 ## Интерфейс системы
 
 Помимо внутреигрового интерфейса, контейнеров и окон движка, существует возможность использования Android API для разработки интерфейсов, созданных на его основе.
+
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```

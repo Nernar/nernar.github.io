@@ -126,3 +126,9 @@ const effectEllipse = function(type, x, y, z, xDiameter, zDiameter, step, velX, 
 Большинство модов так или иначе взаимодействуют с частицами, еще несколько подобных примеров можно найти, к примеру, в Ancient Wonders. Там задействуется чуть больше геометрии, позволяя более тонко настроить поведение частиц. Пока мы остановимся лишь на использовании вариантов выше.
 
 ## Привязываем к объектам
+
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```

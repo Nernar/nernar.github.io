@@ -13,6 +13,12 @@
 Для использования Inner Core нужен лаунчер, он позволит производить манипуляции с играми, модифицировать их соответственно. Также понадобится любое устройство на Android, важно иметь хотя бы несколько гигабайт ОЗУ за плечами и такое же количество свободного места в хранилище, слабый процессор тоже не подойдет.
 
 ```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```
+
+```mdx-code-block
 import GoogleDriveFile from "@site/src/components/GoogleDriveFile"
 
 <GoogleDriveFile filename="horizon-v1.2.0-android-12.apk (31M)" href="https://drive.usercontent.google.com/download?id=14SBKQSYbMGRT-Z5_cowYVfYiWTKD605c&export=download" />

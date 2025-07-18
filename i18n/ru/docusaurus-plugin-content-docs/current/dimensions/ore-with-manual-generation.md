@@ -39,3 +39,9 @@ import NotImplemented from "@site/src/components/NotImplemented"
 ## Дополнительные условия
 
 Независимо от способа генерации, кастомизация условий для генерации остается на ваших плечах. Важно знать, что генератор не должен создавать чрезмерные нагрузки и использовать максимально эффективные для этого способы.
+
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```
