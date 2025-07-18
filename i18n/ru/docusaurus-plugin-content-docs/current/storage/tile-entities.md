@@ -21,8 +21,6 @@ import NotImplemented from "@site/src/components/NotImplemented"
 Для обработки интерфейсов, отрисовки различных партиклей, или любой чисто клиентской части, задействуются клиентские событие, которые, также как и серверные, вызываются для каждого загруженного тайла.
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
@@ -31,8 +29,6 @@ import NotImplemented from "@site/src/components/NotImplemented"
 Если определенный блок зарегистрирован как тайл, большинство стандартных событий блока обрабатываются тайлом так, что для нас частично или полностью отпадает необходимость использования калбеков.
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
@@ -41,8 +37,6 @@ import NotImplemented from "@site/src/components/NotImplemented"
 По умолчанию, любой тайл вызывает интерфейс, если его имя было возвращено функцией [getScreenName](/api/namespace/TileEntity#getScreenName) и он есть у клиента в методе [getScreenByName](/api/namespace/TileEntity#getScreenByName) прототипа.
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
@@ -51,8 +45,6 @@ import NotImplemented from "@site/src/components/NotImplemented"
 Тайлы привязаны к личному контейнеру, который задействуется как для интерфейса, так и для возможного хранения данных.
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
@@ -61,7 +53,5 @@ import NotImplemented from "@site/src/components/NotImplemented"
 В первую очередь тайлы состоят из прототипов, события которых могут вызываться из других модов и библиотек.
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```

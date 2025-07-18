@@ -19,31 +19,23 @@ import NotImplemented from "@site/src/components/NotImplemented"
 ## Стандартное окно
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
 ## Адаптивное окно
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
 ## Группа окон
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
 ## Окно с вкладками
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```

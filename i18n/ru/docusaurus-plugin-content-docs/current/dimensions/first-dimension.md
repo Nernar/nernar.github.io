@@ -9,16 +9,12 @@ import NotImplemented from "@site/src/components/NotImplemented"
 ## Состав любого измерения
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
 ## Настраиваем свойства
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
@@ -31,7 +27,5 @@ import NotImplemented from "@site/src/components/NotImplemented"
 ## Некоторые события
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```

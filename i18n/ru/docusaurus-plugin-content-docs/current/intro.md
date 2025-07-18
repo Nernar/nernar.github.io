@@ -67,8 +67,6 @@ import NotImplemented from "@site/src/components/NotImplemented"
 <!-- TODO: Эта информация подвластна лишь GPT. -->
 
 ```mdx-code-block
-import NotImplemented from "@site/src/components/NotImplemented"
-
 <NotImplemented />
 ```
 
