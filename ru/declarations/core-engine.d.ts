@@ -1119,7 +1119,7 @@ declare namespace Block {
 	/**
 	 * Makes block receive redstone signals via "RedstoneSignal" callback.
 	 * @param nameID block numeric or string ID
-	 * @param connectToRedstone if true, redstone wires will connect to the block
+	 * @param connectToRedstone if `true`, redstone wires will connect to the block
 	 * @since 2.0.2b23
 	 */
 	function setupAsRedstoneReceiver(nameID: number | string, connectToRedstone: boolean): void;
@@ -1127,7 +1127,7 @@ declare namespace Block {
 	/**
 	 * Makes block emit redstone signal.
 	 * @param nameID block numeric or string ID
-	 * @param connectToRedstone if true, redstone wires will connect to the block
+	 * @param connectToRedstone if `true`, redstone wires will connect to the block
 	 * @since 2.0.2b23
 	 */
 	function setupAsRedstoneEmitter(nameID: number | string, connectToRedstone: boolean): void;
@@ -1349,7 +1349,26 @@ declare namespace Block {
 		 * @default ["color"] // this state always has been here
 		 * @since 2.4.0b122-4 arm64
 		 */
-		states?: [EBlockStates | number | string][];
+		states?: [EBlockStates | number | string][],
+		/**
+		 * Alternatively catch on fire chance modifier,
+		 * values between 0 and 100, with a higher number
+		 * meaning more likely to catch on fire.
+		 * For a "flame_odds" greater than 0, the fire will
+		 * continue to burn until the block is destroyed
+		 * (or it will burn forever if the "burn_odds" is 0).
+		 * @default 0 // 5 for planks
+		 * @since 3.1.0b125
+		 */
+		flame_odds?: number,
+		/**
+		 * Alternatively destroy by fire chance modifier,
+		 * values between 0 and 100, with a higher number
+		 * meaning more likely to be destroyed by fire.
+		 * @default 0 // 20 for planks
+		 * @since 3.1.0b125
+		 */
+		burn_odds?: number;
 	}
 
 	/**
@@ -2175,6 +2194,36 @@ declare class BlockSource {
 	  * @param amount experience amount
 	  */
 	spawnExpOrbs(x: number, y: number, z: number, amount: number): void;
+
+	/**
+	 * Gets signal strength at specified coordinates
+	 * that consumers can receive.
+	 * @since 3.1.0b125
+	 */
+	getRedstoneSignal(x: number, y: number, z: number): number;
+
+	/**
+	 * Sets signal with specified strength to block, it is
+	 * recommended to call {@link Block.setupAsRedstoneEmitter}
+	 * to be able to add a source. Once block is destroyed,
+	 * signal will be reset.
+	 * @param strength level between 0-15 (inclusive)
+	 * @param delay time in ticks after which signal strength
+	 * will be reset, should be more than zero, updated depending
+	 * on redstone tick (1 redstone tick = 2 regular ticks), default is `4`
+	 * @param facing world side of {@link EBlockSide} to which signal
+	 * from source will be applied, use -1 to apply it to all sides
+	 * (as from redstone block), default is `-1`
+	 * @since 3.1.0b125
+	 */
+	setRedstoneSignal(x: number, y: number, z: number, strength: number, delay?: number, facing?: number): void;
+
+	/**
+	 * Causes a random tick event, usually affecting rate of
+	 * plant growth or grass spread and leaf disappearings.
+	 * @since 3.1.0b125
+	 */
+	randomTick(x: number, y: number, z: number): void;
 
 }
 declare namespace BlockState {
@@ -3052,14 +3101,52 @@ declare namespace Callback {
     function addCallback(name: "ProjectileHit", func: ProjectileHitFunction, priority?: number): void;
 
     /**
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addCallback(name: "ChunkLoadingStateChanged", func: World.ChunkStateChangedFunction, priority?: number): void;
 
     /**
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addCallback(name: "LocalChunkLoadingStateChanged", func: World.ChunkStateChangedFunction, priority?: number): void;
+
+    /**
+     * Function used in "ChunkLoaded" and "ChunkDiscarded" callbacks
+     * (including local client alternatives).
+     * @since 3.1.0b125
+     */
+    interface DimensionChunkFunction {
+        /**
+         * @param dimensionId current dimension's numeric ID
+         * @param chunkX chunk X coordinate; multiply by 16 to receive
+         * corner block coordinates
+         * @param chunkZ chunk Z coordinate; multiply by 16 to receive
+         * corner block coordinates
+         */
+        (dimensionId: number, chunkX: number, chunkZ: number): void
+    }
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "LocalChunkLoaded", func: DimensionChunkFunction, priority?: number): void;
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "ChunkLoaded", func: DimensionChunkFunction, priority?: number): void;
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "LocalChunkDiscarded", func: DimensionChunkFunction, priority?: number): void;
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "ChunkDiscarded", func: DimensionChunkFunction, priority?: number): void;
 
     /**
      * Function used in all generation callbacks.
@@ -4114,6 +4201,153 @@ declare class EntityModelWatcher {
     update(): void;
     resetAnimation(): void;
     destroy(): void;
+}
+/**
+ * Interface for registering and customizing custom scales,
+ * including getting and modifying them from other mods.
+ * Vanilla scales cannot be obtained in this way.
+ * @since 3.1.0b125
+ */
+declare class CustomScale {
+	/**
+	 * Returns scale by unique named identifier,
+	 * or `null` if it does not exist, vanilla
+	 * in-game scales is not counted.
+	 */
+	static getScaleByName(id: string): Nullable<CustomScale>;
+
+	/**
+	 * Returns all custom scales ever registered,
+	 * vanilla in-game scales are not counted.
+	 */
+	static getAllScales(): CustomScale[];
+
+	/**
+	 * Registers a new scale according to given identifier
+	 * (also quantifies as name) and textures for hotbar.
+	 * @param id unique identifier, should include project
+	 * definition, such as `insomnia.thirst`
+	 * @param fullTexture relative texture path
+	 * to single part filled state (2, full part)
+	 * @param halfTexture relative texture path
+	 * to single part half state (1, half part)
+	 * @param emptyTexture relative texture path
+	 * to single part empty state (0, empty part)
+	 */
+	constructor(id: string, fullTexture: string, halfTexture: string, emptyTexture: string);
+
+	getPointer(): number;
+
+	/**
+	 * Returns unique named identifier used when registering scale.
+	 */
+	getScaleId(): string;
+
+	/**
+	 * Gets a maximum value that scale can reach,
+	 * scale cannot get a value above maximum
+	 * or below zero, default is `20`.
+	 */
+	getMaxValue(): number;
+
+	/**
+	 * Sets a maximum value that scale can reach,
+	 * scale cannot get a value above maximum
+	 * or below zero, default is `20`.
+	 * @remarks
+	 * Remember to change {@link CustomScale.setDefaultValue}.
+	 */
+	setMaxValue(value: number): void;
+
+	/**
+	 * Gets a default value that scale will get after
+	 * first entry to world, or death if such options are
+	 * enabled. Cannot be less than zero or greater than
+	 * {@link CustomScale.getMaxValue}, default value is `20`.
+	 */
+	getDefaultValue(): number;
+
+	/**
+	 * Sets a default value that scale will get after
+	 * first entry to world, or death if such options are
+	 * enabled. Cannot be less than zero or greater than
+	 * {@link CustomScale.getMaxValue}, default value is `20`.
+	 */
+	setDefaultValue(value: number): void;
+
+	/**
+	 * Gets whether scale is inverted, minimum value will
+	 * visually become maximum and maximum value will
+	 * become minimum, disabled by default.
+	 */
+	hasLeft(): boolean;
+
+	/**
+	 * If scale is inverted, minimum value will visually
+	 * become maximum and maximum value will visually
+	 * become minimum, disabled by default.
+	 */
+	setLeft(inverse: boolean): void;
+
+	/**
+	 * Whether scale is reset after player
+	 * death, enabled by default.
+	 */
+	hasResetAfterDeath(): boolean;
+
+	/**
+	 * Enables or disables resetting scale after player
+	 * death, enabled by default.
+	 */
+	setResetAfterDeath(reset: boolean): void;
+
+	/**
+	 * Whether scale display is enabled on local
+	 * player's screen, enabled by default.
+	 */
+	hasDisplay(): boolean;
+
+	/**
+	 * Enables or disables displaying scale on local
+	 * player's screen, enabled by default.
+	 */
+	setDisplay(displayed: boolean): void;
+
+	/**
+	 * Gets relative texture path to single part
+	 * filled state for local player (2, full part).
+	 */
+	getTextureFull(): string;
+
+	/**
+	 * Sets relative texture path to single part
+	 * filled state for local player (2, full part).
+	 */
+	setTextureFull(texture: string): void;
+
+	/**
+	 * Gets relative texture path to single part
+	 * half state for local player (1, half part).
+	 */
+	getTextureHalf(): string;
+
+	/**
+	 * Sets relative texture path to single part
+	 * half state for local player (1, half part).
+	 */
+	setTextureHalf(texture: string): void;
+
+	/**
+	 * Gets relative texture path to single part
+	 * empty state for local player (0, empty part).
+	 */
+	getTextureEmpty(): string;
+
+	/**
+	 * Sets relative texture path to single part
+	 * empty state for local player (0, empty part).
+	 */
+	setTextureEmpty(texture: string): void;
 }
 /**
  * Defines some useful methods for debugging.
@@ -5902,6 +6136,22 @@ declare namespace Entity {
      */
     function getAllInsideBox(coords1: Vector, coords2: Vector, type?: number, flag?: boolean): number[];
 
+    /**
+     * Plays an animation on a given entity as soon
+     * as conditions are met to display it.
+     * @param time interval in seconds that animation will
+     * be played, floating point number
+     * @param controller name of entity animation controller,
+     * which will be used to determine a way in which it
+     * will be played, default is `__runtime_controller`
+     * @param query molang script statement, which validates
+     * when animation can be played safely, default is
+     * `query.any_animation_finished`
+     * @param state pretty unknown parameter, possibly
+     * controller state, default is `default`
+	 * @since 3.1.0b125
+     */
+    function playAnimation(entityUid: number, animation: string, time: number, controller: string, query: string, state: string): void;
 }
 /**
  * Class used to create new entity AI types.
@@ -6651,6 +6901,29 @@ declare namespace Game {
      * @since 2.0.4b35
      */
     function simulateBackPressed(): void;
+
+    /**
+     * Appends a world to list displayed in selection interface,
+     * use when opening game main menu, then update interface
+     * itself with {@link Game.updateWorlds}.
+     * @param path absolute path to world directory
+     * @since 3.1.0b125
+     */
+    function addWorldToCache(path: string): void;
+
+    /**
+     * Updates worlds list in selection interface, use after
+     * modifying folders or world descriptions.
+     * @since 3.1.0b125
+     */
+    function updateWorlds(): void;
+
+    /**
+     * Returns amount of selectable worlds in interface, may
+     * differ from pack if some worlds are corrupted.
+     * @since 3.1.0b125
+     */
+    function getWorldsCount(): number;
 }
 /**
  * Methods for manipulating player with world,
@@ -11985,6 +12258,13 @@ declare interface NativeTileEntity {
      * @since 2.0.5b44
      */
     setCompoundTag(tag: NBT.CompoundTag): void;
+
+    /**
+     * Causes a tick event on requested tile,
+     * can be used to speed it up.
+     * @since 3.1.0b125
+     */
+    tick(region: BlockSource): void;
 }
 /**
  * Working with client and server packets in multiplayer
@@ -13311,9 +13591,15 @@ declare class PlayerActor {
     constructor(playerUid: number);
 
     /**
+     * @since 3.1.0b125
      * @returns Player's unique numeric entity ID.
      */
     getUid(): number;
+
+    /**
+     * @since 2.2.1b102
+     */
+    getPointer(): number;
 
     /**
      * @returns ID of dimension where player is.
@@ -13361,11 +13647,6 @@ declare class PlayerActor {
      * @param value experience points value
      */
     spawnExpOrbs(x: number, y: number, z: number, value: number): void;
-
-    /**
-     * @since 2.2.1b102
-     */
-    getPointer(): number;
 
     /**
      * @returns Whether the player is a valid entity.
@@ -13549,6 +13830,33 @@ declare class PlayerActor {
      * Server-side analogue of {@link Player.setFlying}.
      */
     setFlying(enabled: boolean): void;
+
+    /**
+     * Gets value of a custom scale registered by a unique
+     * identifier. Returns a floating point number, non-ceilinged
+     * values are given only for convenience of storage.
+     * @param scale unique named identifier or scale
+     * @since 3.1.0b125
+     */
+    getScale(scale: string | CustomScale): number;
+
+    /**
+     * Sets value of a custom scale registered by a unique identifier.
+     * @param scale unique named identifier or scale
+     * @param value floating point number, non-ceilinged
+     * values are given only for convenience of storage
+     * @since 3.1.0b125
+     */
+    setScale(scale: string | CustomScale, value: number): void;
+
+    /**
+     * Adds value of a custom scale registered by a unique identifier.
+     * @param scale unique named identifier or scale
+     * @param value floating point number, non-ceilinged
+     * values are given only for convenience of storage
+     * @since 3.1.0b125
+     */
+    addScale(scale: string | CustomScale, value: number): void;
 }
 /**
  * Module used to manipulate crafting recipes for vanilla and custom workbenches.
@@ -21107,6 +21415,8 @@ declare namespace World {
 
     /**
      * Function that is used in {@link World.addListenerChunkStateChanged} and {@link World.addLocalListenerChunkStateChanged}.
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     interface ChunkStateChangedFunction {
         /**
@@ -21127,7 +21437,8 @@ declare namespace World {
      * Listens for chunk loading state changes.
      * @param listener chunk state function watcher
      * @param states chunk states that should be received by watcher
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addListenerChunkStateChanged(listener: ChunkStateChangedFunction, states: number[]): void;
 
@@ -21135,7 +21446,8 @@ declare namespace World {
      * Listens for local chunk loading state changes.
      * @param listener chunk state function watcher
      * @param states chunk states that should be received by watcher
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addLocalListenerChunkStateChanged(listener: ChunkStateChangedFunction, states: number[]): void;
 
