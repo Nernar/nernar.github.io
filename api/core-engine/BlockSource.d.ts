@@ -434,4 +434,34 @@ declare class BlockSource {
 	  */
 	spawnExpOrbs(x: number, y: number, z: number, amount: number): void;
 
+	/**
+	 * Gets signal strength at specified coordinates
+	 * that consumers can receive.
+	 * @since 3.1.0b125
+	 */
+	getRedstoneSignal(x: number, y: number, z: number): number;
+
+	/**
+	 * Sets signal with specified strength to block, it is
+	 * recommended to call {@link Block.setupAsRedstoneEmitter}
+	 * to be able to add a source. Once block is destroyed,
+	 * signal will be reset.
+	 * @param strength level between 0-15 (inclusive)
+	 * @param delay time in ticks after which signal strength
+	 * will be reset, should be more than zero, updated depending
+	 * on redstone tick (1 redstone tick = 2 regular ticks), default is `4`
+	 * @param facing world side of {@link EBlockSide} to which signal
+	 * from source will be applied, use -1 to apply it to all sides
+	 * (as from redstone block), default is `-1`
+	 * @since 3.1.0b125
+	 */
+	setRedstoneSignal(x: number, y: number, z: number, strength: number, delay?: number, facing?: number): void;
+
+	/**
+	 * Causes a random tick event, usually affecting rate of
+	 * plant growth or grass spread and leaf disappearings.
+	 * @since 3.1.0b125
+	 */
+	randomTick(x: number, y: number, z: number): void;
+
 }

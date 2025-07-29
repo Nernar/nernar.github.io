@@ -1014,4 +1014,20 @@ declare namespace Entity {
      */
     function getAllInsideBox(coords1: Vector, coords2: Vector, type?: number, flag?: boolean): number[];
 
+    /**
+     * Plays an animation on a given entity as soon
+     * as conditions are met to display it.
+     * @param time interval in seconds that animation will
+     * be played, floating point number
+     * @param controller name of entity animation controller,
+     * which will be used to determine a way in which it
+     * will be played, default is `__runtime_controller`
+     * @param query molang script statement, which validates
+     * when animation can be played safely, default is
+     * `query.any_animation_finished`
+     * @param state pretty unknown parameter, possibly
+     * controller state, default is `default`
+	 * @since 3.1.0b125
+     */
+    function playAnimation(entityUid: number, animation: string, time: number, controller: string, query: string, state: string): void;
 }

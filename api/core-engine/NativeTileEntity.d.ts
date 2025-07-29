@@ -49,4 +49,11 @@ declare interface NativeTileEntity {
      * @since 2.0.5b44
      */
     setCompoundTag(tag: NBT.CompoundTag): void;
+
+    /**
+     * Causes a tick event on requested tile,
+     * can be used to speed it up.
+     * @since 3.1.0b125
+     */
+    tick(region: BlockSource): void;
 }

@@ -674,14 +674,52 @@ declare namespace Callback {
     function addCallback(name: "ProjectileHit", func: ProjectileHitFunction, priority?: number): void;
 
     /**
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addCallback(name: "ChunkLoadingStateChanged", func: World.ChunkStateChangedFunction, priority?: number): void;
 
     /**
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addCallback(name: "LocalChunkLoadingStateChanged", func: World.ChunkStateChangedFunction, priority?: number): void;
+
+    /**
+     * Function used in "ChunkLoaded" and "ChunkDiscarded" callbacks
+     * (including local client alternatives).
+     * @since 3.1.0b125
+     */
+    interface DimensionChunkFunction {
+        /**
+         * @param dimensionId current dimension's numeric ID
+         * @param chunkX chunk X coordinate; multiply by 16 to receive
+         * corner block coordinates
+         * @param chunkZ chunk Z coordinate; multiply by 16 to receive
+         * corner block coordinates
+         */
+        (dimensionId: number, chunkX: number, chunkZ: number): void
+    }
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "LocalChunkLoaded", func: DimensionChunkFunction, priority?: number): void;
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "ChunkLoaded", func: DimensionChunkFunction, priority?: number): void;
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "LocalChunkDiscarded", func: DimensionChunkFunction, priority?: number): void;
+
+    /**
+     * @since 3.1.0b125
+     */
+    function addCallback(name: "ChunkDiscarded", func: DimensionChunkFunction, priority?: number): void;
 
     /**
      * Function used in all generation callbacks.

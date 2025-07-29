@@ -8,9 +8,15 @@ declare class PlayerActor {
     constructor(playerUid: number);
 
     /**
+     * @since 3.1.0b125
      * @returns Player's unique numeric entity ID.
      */
     getUid(): number;
+
+    /**
+     * @since 2.2.1b102
+     */
+    getPointer(): number;
 
     /**
      * @returns ID of dimension where player is.
@@ -58,11 +64,6 @@ declare class PlayerActor {
      * @param value experience points value
      */
     spawnExpOrbs(x: number, y: number, z: number, value: number): void;
-
-    /**
-     * @since 2.2.1b102
-     */
-    getPointer(): number;
 
     /**
      * @returns Whether the player is a valid entity.
@@ -246,4 +247,31 @@ declare class PlayerActor {
      * Server-side analogue of {@link Player.setFlying}.
      */
     setFlying(enabled: boolean): void;
+
+    /**
+     * Gets value of a custom scale registered by a unique
+     * identifier. Returns a floating point number, non-ceilinged
+     * values are given only for convenience of storage.
+     * @param scale unique named identifier or scale
+     * @since 3.1.0b125
+     */
+    getScale(scale: string | CustomScale): number;
+
+    /**
+     * Sets value of a custom scale registered by a unique identifier.
+     * @param scale unique named identifier or scale
+     * @param value floating point number, non-ceilinged
+     * values are given only for convenience of storage
+     * @since 3.1.0b125
+     */
+    setScale(scale: string | CustomScale, value: number): void;
+
+    /**
+     * Adds value of a custom scale registered by a unique identifier.
+     * @param scale unique named identifier or scale
+     * @param value floating point number, non-ceilinged
+     * values are given only for convenience of storage
+     * @since 3.1.0b125
+     */
+    addScale(scale: string | CustomScale, value: number): void;
 }

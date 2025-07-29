@@ -196,4 +196,27 @@ declare namespace Game {
      * @since 2.0.4b35
      */
     function simulateBackPressed(): void;
+
+    /**
+     * Appends a world to list displayed in selection interface,
+     * use when opening game main menu, then update interface
+     * itself with {@link Game.updateWorlds}.
+     * @param path absolute path to world directory
+     * @since 3.1.0b125
+     */
+    function addWorldToCache(path: string): void;
+
+    /**
+     * Updates worlds list in selection interface, use after
+     * modifying folders or world descriptions.
+     * @since 3.1.0b125
+     */
+    function updateWorlds(): void;
+
+    /**
+     * Returns amount of selectable worlds in interface, may
+     * differ from pack if some worlds are corrupted.
+     * @since 3.1.0b125
+     */
+    function getWorldsCount(): number;
 }

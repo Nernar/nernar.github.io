@@ -566,7 +566,7 @@ declare namespace Block {
 	/**
 	 * Makes block receive redstone signals via "RedstoneSignal" callback.
 	 * @param nameID block numeric or string ID
-	 * @param connectToRedstone if true, redstone wires will connect to the block
+	 * @param connectToRedstone if `true`, redstone wires will connect to the block
 	 * @since 2.0.2b23
 	 */
 	function setupAsRedstoneReceiver(nameID: number | string, connectToRedstone: boolean): void;
@@ -574,7 +574,7 @@ declare namespace Block {
 	/**
 	 * Makes block emit redstone signal.
 	 * @param nameID block numeric or string ID
-	 * @param connectToRedstone if true, redstone wires will connect to the block
+	 * @param connectToRedstone if `true`, redstone wires will connect to the block
 	 * @since 2.0.2b23
 	 */
 	function setupAsRedstoneEmitter(nameID: number | string, connectToRedstone: boolean): void;
@@ -796,7 +796,26 @@ declare namespace Block {
 		 * @default ["color"] // this state always has been here
 		 * @since 2.4.0b122-4 arm64
 		 */
-		states?: [EBlockStates | number | string][];
+		states?: [EBlockStates | number | string][],
+		/**
+		 * Alternatively catch on fire chance modifier,
+		 * values between 0 and 100, with a higher number
+		 * meaning more likely to catch on fire.
+		 * For a "flame_odds" greater than 0, the fire will
+		 * continue to burn until the block is destroyed
+		 * (or it will burn forever if the "burn_odds" is 0).
+		 * @default 0 // 5 for planks
+		 * @since 3.1.0b125
+		 */
+		flame_odds?: number,
+		/**
+		 * Alternatively destroy by fire chance modifier,
+		 * values between 0 and 100, with a higher number
+		 * meaning more likely to be destroyed by fire.
+		 * @default 0 // 20 for planks
+		 * @since 3.1.0b125
+		 */
+		burn_odds?: number;
 	}
 
 	/**

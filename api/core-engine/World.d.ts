@@ -283,6 +283,8 @@ declare namespace World {
 
     /**
      * Function that is used in {@link World.addListenerChunkStateChanged} and {@link World.addLocalListenerChunkStateChanged}.
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     interface ChunkStateChangedFunction {
         /**
@@ -303,7 +305,8 @@ declare namespace World {
      * Listens for chunk loading state changes.
      * @param listener chunk state function watcher
      * @param states chunk states that should be received by watcher
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addListenerChunkStateChanged(listener: ChunkStateChangedFunction, states: number[]): void;
 
@@ -311,7 +314,8 @@ declare namespace World {
      * Listens for local chunk loading state changes.
      * @param listener chunk state function watcher
      * @param states chunk states that should be received by watcher
-     * @since 2.4.0b122
+     * @since 2.4.0b122 (only on 32-bit devices)
+     * @deprecated In 2.4.0b123, replaced with "ChunkLoaded/Discarded" callbacks in 3.1.0b125.
      */
     function addLocalListenerChunkStateChanged(listener: ChunkStateChangedFunction, states: number[]): void;
 
