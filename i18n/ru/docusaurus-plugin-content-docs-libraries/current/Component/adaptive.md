@@ -96,7 +96,7 @@ const elementSet = (
 const Text = (properties, children) => (
     <text marginBottom="10" name={children}>Пример</text>
 )
-const UI = new UI.Window({
+const window = new UI.Window({
     content: (
         <> 
             <Text>1</Text>
@@ -105,9 +105,9 @@ const UI = new UI.Window({
 });
 
 //Давайте добавим новый элемент:
-UI.content.elements.text2 = <Text>2</Text>;
+window.content.elements.text2 = <Text>2</Text>;
 
 //Перестроим:
-UI.content.elements = UI.JSX.rebuildElementSet(UI.content.elements);
+window.content.elements = UI.JSX.rebuildElementSet(window.content.elements);
 ```
 После этого позиции адаптируются.
