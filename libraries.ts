@@ -26,7 +26,6 @@ export default {
 	librariesSidebar: [
 		'BackpackAPI',
 		'BetterFoliage',
-		'BowLib',
 		'ClassicUI',
 		'CoreUtility',
 		{
@@ -43,9 +42,6 @@ export default {
 				'DungeonUtility/item-generation'
 			]
 		},
-		'FtbQuests',
-		'InfiniteDepth',
-		'Inventory',
 		{
 			type: 'category',
 			label: 'Kernel Extension',
@@ -60,10 +56,30 @@ export default {
 				'KernelExtension/custom-block-entities'
 			]
 		},
+        {
+            type: 'category',
+            label: 'Component',
+            link: {
+                type: 'doc',
+                id: 'Component/readme'
+            },
+            items: [
+                'Component/components',
+                'Component/fragments',
+                'Component/adaptive',
+                'Component/stylization',
+                'Component/windows',
+                'Component/practice'
+            ]
+        },
+        'FtbQuests',
+		'InfiniteDepth',
 		'RecipeViewer',
+        'TreeCapitator',
+		'VeinMiner',
+        'Inventory',
+        'BowLib',
 		'Timer',
-		'Translate',
-		'TreeCapitator',
-		'VeinMiner'
+		'Translate'
 	]
 } satisfies Docs.SidebarsConfig;

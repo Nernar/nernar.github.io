@@ -10,5 +10,9 @@
   "sidebar.librariesSidebar.category.Kernel Extension": {
     "message": "Kernel Extension",
     "description": "The label for category Kernel Extension in sidebar librariesSidebar"
+  },
+  "sidebar.librariesSidebar.category.Component": {
+    "message": "Component",
+    "description": "The label for category Component in sidebar librariesSidebar"
   }
 }
