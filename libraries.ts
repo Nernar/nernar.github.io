@@ -58,6 +58,24 @@ export default {
 		},
         {
             type: 'category',
+            label: 'Fireflies',
+            link: {
+                type: 'doc',
+                id: 'Fireflies/readme'
+            },
+            items: [
+                {
+                    type: 'category',
+                    label: 'Block',
+                    items: [
+                        'Fireflies/blocks/BasicBlock'
+                    ]
+                },
+                'Fireflies/runtime-data',
+            ]
+        },
+        {
+            type: 'category',
             label: 'Component',
             link: {
                 type: 'doc',

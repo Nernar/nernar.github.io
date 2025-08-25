@@ -14,5 +14,13 @@
   "sidebar.librariesSidebar.category.Component": {
     "message": "Component",
     "description": "The label for category Component in sidebar librariesSidebar"
+  },
+  "sidebar.librariesSidebar.category.Fireflies": {
+    "message": "Fireflies",
+    "description": "The label for category Fireflies in sidebar librariesSidebar"
+  },
+  "sidebar.librariesSidebar.category.Block": {
+    "message": "Блоки",
+    "description": "The label for category Block in sidebar librariesSidebar"
   }
 }
