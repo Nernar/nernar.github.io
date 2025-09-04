@@ -1,0 +1,632 @@
+body {
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  overflow: hidden; /* Hide overflow for explosion animation */
+  position: relative; /* For z-index context of background-effects-layer */
+}
+
+#background-effects-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(/dirt.png);
+  background-repeat: repeat; /* Ensure dirt texture repeats */
+  z-index: -1; /* Place it behind all other content */
+}
+
+#container {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0; /* Sharp corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid #333; /* Add a border for a more blocky look */
+  position: relative; /* For animation */
+  z-index: 1; /* Ensure it's above explosion particles */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #333; /* Sharp corners and border */
+  border-radius: 0; /* Sharp corners */
+  margin-top: 10px;
+  box-shadow: 2px 2px 0px #333; /* Pixel art button shadow */
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #333;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #333;
+}
+
+#code {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0; /* Sharp corners */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  white-space: pre-wrap;
+  word-break: break-all;
+  background-color: #f9f9f9;
+}
+#code-container {
+  margin-top: 20px;
+  text-align: left;
+  max-height: 300px; /* Add max-height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.code-item {
+    margin-bottom: 5px;
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space between code and button */
+    padding-right: 10px; /* Add some padding on the right for the button */
+}
+
+.code-text {
+    flex-grow: 1; /* Allow the text to take up available space */
+    font-family: 'Press Start 2P', cursive; /* Pixelated font */
+    font-size: 14px; /* Slightly decreased code text size */
+    display: flex; /* Use flex to center text vertically */
+    align-items: center; /* Vertically center the text */
+    min-height: 38px; /* Ensure sufficient height for vertical alignment */
+}
+
+.copy-code-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #333; /* Sharp corners and border */
+  border-radius: 0; /* Sharp corners */
+  margin-left: 10px; /* Space between code and button */
+  box-shadow: 2px 2px 0px #333;
+  transition: all 0.1s ease-in-out;
+}
+
+.copy-code-button:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #333;
+}
+
+.copy-code-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #333;
+}
+
+.copy-code-button.copied {
+    background-color: #28a745; /* Green for copied */
+    animation: flash 0.5s ease-in-out;
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Styles for the alert */
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+  border-radius: 0; /* Sharp corners */
+  border: 2px solid #333; /* Add a border */
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+#copy-container {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    display: none; /* Changed to none as it's controlled by JS now */
+    align-items: center; 
+}
+
+#copy-container > * {
+    margin-right: 10px; 
+}
+
+#copyCodeInput {
+    font-size: 16px;
+    padding: 8px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 0; /* Sharp corners */
+    font-family: 'Press Start 2P', cursive; /* Pixelated font */
+}
+
+/* Chat button styles */
+#chat-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #333; /* Sharp corners and border */
+  border-radius: 0; /* Sharp corners */
+  z-index: 1000; /* Ensure it's on top of other elements */
+  box-shadow: 2px 2px 0px #333;
+}
+
+#chat-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* Make chat container wider */
+  height: 500px;
+  background-color: white;
+  border-radius: 0; /* Sharp corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+  border: 2px solid #333; /* Add a border */
+}
+
+#chat-header {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border-top-left-radius: 0; /* Sharp corners */
+  border-top-right-radius: 0; /* Sharp corners */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  border-bottom: 2px solid #333; /* Add a border */
+}
+
+#chat-messages {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+#chat-input-area {
+  display: flex;
+  padding: 10px;
+  border-top: 2px solid #333; /* Sharp corners */
+}
+
+#chat-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 0; /* Sharp corners */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  font-size: 14px; /* Slightly decreased chat input font size */
+}
+
+#chat-send {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #333; /* Sharp corners and border */
+  border-radius: 0; /* Sharp corners */
+  cursor: pointer;
+  margin-left: 5px;
+  box-shadow: 2px 2px 0px #333;
+}
+
+#close-chat {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.message {
+  padding: 6px; /* Slightly decreased message padding */
+  margin-bottom: 6px; /* Slightly decreased message margin */
+  border-radius: 0; /* Sharp corners */
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc; /* Add a border */
+  font-size: 12px; /* Slightly decreased message font size */
+}
+
+.user-message {
+  background-color: #e2f0cb;
+  justify-content: flex-end; /* Align user messages to the right */
+}
+
+.message .avatar {
+  width: 25px; /* Slightly decreased avatar size */
+  height: 25px; /* Slightly decreased avatar size */
+  border-radius: 50%;
+  margin-right: 6px; /* Adjusted margin */
+  object-fit: cover; /* prevent image distortion */
+  border: 1px solid #333; /* Add a border to avatars */
+}
+
+.user-message .avatar {
+  margin-left: 6px; /* Adjusted margin */
+  margin-right: 0; /* Ensure avatar is on the left for user messages */
+}
+.delete-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px; /* Slightly decreased delete button font size */
+}
+
+#title-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  image-rendering: pixelated; /* Ensure pixel art remains sharp */
+}
+
+.input-card {
+  background-color: #f9f9f9;
+  border: 2px solid #333; /* Sharp corners and border */
+  border-radius: 0; /* Sharp corners */
+  padding: 15px;
+  margin-bottom: 0; /* Remove bottom margin */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  gap: 15px; /* Space between elements */
+}
+
+.input-card label {
+  font-weight: bold;
+  margin-bottom: 0; /* Remove bottom margin */
+  color: #333;
+}
+
+.input-card input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0; /* Sharp corners */
+  font-size: 16px;
+  text-align: center;
+  width: 80px;
+  margin-bottom: 0; /* Remove bottom margin */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+}
+
+.input-card button {
+  background-color: #28a745;
+  color: white;
+  border: 2px solid #333; /* Sharp corners and border */
+  padding: 10px 20px;
+  border-radius: 0; /* Sharp corners */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 0px #333;
+  margin-top: 0; /* Remove top margin */
+}
+
+.input-card button:hover {
+  background-color: #218838;
+}
+
+/* Explosion animation */
+.explosion-particle {
+  position: absolute;
+  background-color: yellow;
+  border-radius: 50%;
+  opacity: 0;
+  animation: explode 0.8s forwards;
+  z-index: 0;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+.smoke-particle {
+    position: absolute;
+    background-color: rgba(100, 100, 100, 0.5); /* Greyish smoke */
+    border-radius: 50%;
+    opacity: 0;
+    animation: smoke-explode 1.5s forwards;
+    z-index: 0;
+}
+
+@keyframes smoke-explode {
+  0% {
+    transform: translate(0, 0) scale(0.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(2); /* Huge smoke */
+    opacity: 0;
+  }
+}
+
+.container-shattered {
+    animation: shatter 0.5s forwards;
+    opacity: 0; /* Hide the original container after shatter */
+}
+
+@keyframes shatter {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; } /* Make the container disappear */
+}
+
+.container-piece {
+    position: absolute;
+    background-color: white; /* Or some other color representing card piece */
+    border: 2px solid #333;
+    transform-origin: center;
+    animation: piece-explode 0.8s forwards;
+    z-index: 2; /* Above other particles but below the main card if it's still there */
+}
+
+@keyframes piece-explode {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) rotate(var(--rotate)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.container-slide-in {
+  animation: container-slide-in 0.5s ease-out forwards;
+  animation-delay: 0.7s; /* Start after the old one drops */
+  opacity: 0;
+  transform: translateY(100vh);
+}
+
+@keyframes container-slide-in {
+  0% { transform: translateY(100vh); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Styles for dancing raccoon frames */
+.dancing-raccoon-frame {
+  position: fixed;
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 200px; 
+  height: 200px; 
+  image-rendering: pixelated;
+  z-index: 100; /* Lowered z-index so smoke can appear on top */
+  display: none; /* Hidden by default, JS will show/hide specific frames */
+}
+
+#dancing-raccoon {
+  position: fixed;
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 200px; 
+  height: 200px; 
+  image-rendering: pixelated;
+  z-index: 10000; /* Increased to ensure it's on top of everything including smoke */
+}
+
+.page-explosion-particle {
+  position: fixed;
+  background-color: orange;
+  border-radius: 50%;
+  opacity: 0;
+  animation: page-explode 1.5s forwards;
+  z-index: 2000; /* Ensure it's on top of everything */
+}
+
+@keyframes page-explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Shake animation for the background element */
+#background-effects-layer.shake {
+  animation: shake 0.1s infinite; /* Continuous, fast shake */
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Glitch animation for the background element */
+#background-effects-layer.glitch {
+  animation: glitch-animation 0.1s infinite; /* Faster, alternating glitch */
+  filter: url('#glitch-filter-light'); /* Apply SVG filter for a stronger glitch effect */
+}
+
+@keyframes glitch-animation {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: translate(-5px, 5px);
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    transform: translate(5px, -5px);
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    transform: translate(-5px, -5px);
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    transform: translate(5px, 5px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Mobile specific styles for chat container */
+@media (max-width: 768px) {
+  #chat-container {
+    width: 90%;
+    height: 80%;
+  }
+}
+
+/* New smoke overlay for transition */
+#smoke-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent; /* No background, just the smoke clouds */
+  z-index: 9999; /* Ensure it's on top of dancing raccoon initially */
+  pointer-events: none; /* Allow interaction through it initially */
+  display: block; /* Change to block for multiple smoke elements */
+  overflow: hidden; /* Hide any overflow from the smoke cloud sprite */
+  opacity: 1; /* Default to visible after being displayed */
+  transition: opacity 0.5s ease-out; /* Smooth fade out, changed to 0.5s */
+}
+
+#smoke-overlay.active {
+  pointer-events: auto; /* Block interaction when active */
+}
+
+/* New class to trigger fade out for the overlay itself */
+#smoke-overlay.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out; /* Smooth fade out duration, changed to 0.5s */
+}
+
+/* New class for shaking the entire smoke overlay */
+#smoke-overlay.shake {
+  animation: shake 0.1s infinite; /* Re-use existing shake keyframes */
+}
+
+.smoke-dragger {
+    position: fixed;
+    width: 150px; /* Smallest smoke cloud size */
+    height: 150px;
+    background-image: url('/smoke_cloud.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    opacity: 0;
+    z-index: 2000;
+    animation: smoke-drift 5s forwards infinite; /* Drifting animation */
+}
+
+@keyframes smoke-drift {
+    0% {
+        transform: translate(var(--startX), var(--startY)) scale(0.1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--endX), var(--endY)) scale(2); /* Grow as it drifts */
+        opacity: 0;
+    }
+}
+
+/* New styles for center smoke clouds */
+.center-smoke-cloud {
+  position: absolute; /* Changed to absolute for placement within overlay */
+  background-image: url('/smoke_cloud.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  z-index: 2000;
+  opacity: 0;
+  /* Only apply growAndRotateSmoke for individual cloud movement, shake is handled by parent overlay */
+  animation: growAndRotateSmoke var(--animation-duration) forwards; 
+  transform-origin: center center; /* Rotate around its own center */
+}
+
+@keyframes growAndRotateSmoke {
+  0% {
+    transform: translate(-50%, -50%) translate(var(--start-move-x, 0px), var(--start-move-y, 0px)) scale(0.1) rotate(var(--initial-rotation, 0deg));
+    opacity: 0; /* Start invisible */
+  }
+  10% { /* Fade in over 10% of animation duration for a slightly slower fade-in */
+    opacity: 0.9; 
+  }
+  30% { /* Mid-point: significantly grown and moved to cover screen */
+    opacity: 0.95; /* Maintain high opacity */
+    transform: translate(-50%, -50%) translate(calc(var(--start-move-x, 0px) * 0.4 + var(--end-move-x, 0px) * 0.6), calc(var(--start-move-y, 0px) * 0.4 + var(--end-move-y, 0px) * 0.6)) scale(calc(var(--final-scale, 10) * 0.6)) rotate(calc(var(--initial-rotation, 0deg) + (var(--final-rotation, 360deg) - var(--initial-rotation, 0deg)) * 0.4)); /* Adjusted scale factor from 0.8 to 0.6 for slightly slower growth */
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--end-move-x, 0px), var(--end-move-y, 0px)) scale(var(--final-scale, 10)) rotate(var(--final-rotation, 360deg)); /* Grow and move */
+    opacity: 0.95; /* Stay opaque, parent overlay handles the fade-out */
+  }
+}
+
+/* Add these styles for title image specific animations */
+#title-image.shaking {
+  animation: shake 0.1s infinite; /* Re-use existing shake keyframes */
+}
+
+#title-image.glitching {
+  animation: glitch-animation 0.1s infinite; /* Re-use existing glitch keyframes */
+  /* Remove filter: url() here, it's set by JS dynamically for stages */
+}
