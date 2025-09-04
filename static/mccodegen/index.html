@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minecraft Gift Codegen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- SVG filter for glitch effect -->
+  <svg style="display: none;">
+    <filter id="glitch-filter-light">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="glitch-filter-medium">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="40" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="glitch-filter-heavy">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="60" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+</head>
+<body>
+  <div id="background-effects-layer"></div>
+  <button id="chat-button" class="action-button">💬 Share Code</button>
+
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none'; playSound('bubblePopBuffer');">&times;</span>
+    <strong>Disclaimer!</strong> NOT EVERY CODE WORKS BUT A FEW CAN WORK!
+  </div>
+  <div id="container">
+    <img id="title-image" src="/minecraft_logo.png" alt="Minecraft Logo">
+    <div class="input-card">
+      <label for="numCodes">Number of Codes:</label>
+      <input type="number" id="numCodes" value="1" min="1">
+      <button id="generate" class="action-button">Generate</button>
+    </div>
+    <div id="code-container">
+      <!-- Generated codes will be appended here -->
+    </div>
+  </div>
+  <div id="copy-container" style="display:none;">
+      <label for="copyCodeInput">Enter code number to copy:</label>
+      <input type="number" id="copyCodeInput" min="1">
+      <button id="copy" class="action-button">Copy Code</button>
+  </div>
+
+  <div id="chat-container">
+    <div id="chat-header">
+      💬 Share Code
+      <span id="close-chat">&times;</span>
+    </div>
+    <div id="chat-messages">
+      <!-- Chat messages will be displayed here -->
+    </div>
+    <div id="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Type your code! (#####-#####-#####-#####-#####)">
+      <button id="chat-send" class="action-button">Send</button>
+    </div>
+  </div>
+  <!-- Raccoon dance frames, initially hidden by CSS -->
+  <img class="dancing-raccoon-frame" id="raccoon-frame-1" src="/raccoon_dance_1.png" alt="Dancing Raccoon Frame 1">
+  <img class="dancing-raccoon-frame" id="raccoon-frame-2" src="/raccoon_dance_2.png" alt="Dancing Raccoon Frame 2">
+  <img class="dancing-raccoon-frame" id="raccoon-frame-3" src="/raccoon_dance_3.png" alt="Dancing Raccoon Frame 3">
+  <img class="dancing-raccoon-frame" id="raccoon-frame-4" src="/raccoon_dance_4.png" alt="Dancing Raccoon Frame 4">
+  <div id="smoke-overlay" style="display: none;">
+  </div>
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/sounds.js"></script>
+  <script type="module" src="/animations.js"></script>
+  <script type="module" src="/chat.js"></script>
+</body>
+</html>
