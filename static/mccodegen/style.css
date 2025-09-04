@@ -17,7 +17,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(/dirt.png);
+  background-image: url(dirt.png);
   background-repeat: repeat; /* Ensure dirt texture repeats */
   z-index: -1; /* Place it behind all other content */
 }
@@ -566,7 +566,7 @@ button:active {
     position: fixed;
     width: 150px; /* Smallest smoke cloud size */
     height: 150px;
-    background-image: url('/smoke_cloud.png');
+    background-image: url('smoke_cloud.png');
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -592,7 +592,7 @@ button:active {
 /* New styles for center smoke clouds */
 .center-smoke-cloud {
   position: absolute; /* Changed to absolute for placement within overlay */
-  background-image: url('/smoke_cloud.png');
+  background-image: url('smoke_cloud.png');
   background-size: contain;
   background-repeat: no-repeat;
   image-rendering: pixelated;
