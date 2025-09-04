@@ -51,7 +51,7 @@ export function playSound(bufferName, volume = 1, loop = false) {
   heyBuddyBuffer = await loadSound('hey_buddy.mp3');
   bubblePopBuffer = await loadSound('bubble_pop.mp3'); // Load new bubble pop sound
   sillySoundBuffer = await loadSound('silly_sound.mp3'); // Load silly sound
-  explosionLongBuffer = await loadSound('eWxplosion_long.mp3'); // Load new long explosion sound
+  explosionLongBuffer = await loadSound('explosion_long.mp3'); // Load new long explosion sound
 
   window.fingerClickBuffer = fingerClickBuffer; // Make globally accessible for direct use in HTML
   window.explosionBuffer = explosionBuffer;
