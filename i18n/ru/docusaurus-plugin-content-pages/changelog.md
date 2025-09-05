@@ -204,7 +204,7 @@
 ## 2.2.1b94
 
 - Исправлен баг с выбором сборок, возникший в версии [2.2.1b93](#221b93)
-- Исправлен метод [Item.isValid(id)](/api/namespace/Item#isValid), добавлены методы [IDRegistry.getStringIdAndTypeForIntegerId(id)](/api/namespace/IDRegistry#getStringIdAndTypeForIntegerId), [IDRegistry.getTypeForIntegerId(id)](/api/namespace/IDRegistry#getTypeForIntegerId), [IDRegistry.getStringIdForIntegerId(id)](/api/namespace/IDRegistry#getStringIdForIntegerId)
+- Исправлен метод [Item.isValid(id)](/api/namespace/Item#isValid), добавлены методы [IDRegistry.getStringIdAndTypeForItemId(id)](/api/namespace/IDRegistry#getStringIdAndTypeForItemId), [IDRegistry.getTypeForItemId(id)](/api/namespace/IDRegistry#getTypeForItemId), [IDRegistry.getStringIdForItemId(id)](/api/namespace/IDRegistry#getStringIdForItemId)
 - Исправлен [getEnchantName](/api/class/ItemExtraData#getEnchantName) у ItemExtraData
 
 ## 2.2.1b93

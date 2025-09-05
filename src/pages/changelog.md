@@ -204,7 +204,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 ## 2.2.1b94
 
 - Fixed new modpack selecting bug from [2.2.1b93](#221b93)
-- Fixed [Item.isValid(id)](/api/namespace/Item#isValid), added [IDRegistry.getStringIdAndTypeForIntegerId(id)](/api/namespace/IDRegistry#getStringIdAndTypeForIntegerId), [IDRegistry.getTypeForIntegerId(id)](/api/namespace/IDRegistry#getTypeForIntegerId), [IDRegistry.getStringIdForIntegerId(id)](/api/namespace/IDRegistry#getStringIdForIntegerId) methods
+- Fixed [Item.isValid(id)](/api/namespace/Item#isValid), added [IDRegistry.getStringIdAndTypeForItemId(id)](/api/namespace/IDRegistry#getStringIdAndTypeForItemId), [IDRegistry.getTypeForItemId(id)](/api/namespace/IDRegistry#getTypeForItemId), [IDRegistry.getStringIdForItemId(id)](/api/namespace/IDRegistry#getStringIdForItemId) methods
 - Fixed [getEnchantName](/api/class/ItemExtraData#getEnchantName) from ItemExtraData
 
 ## 2.2.1b93
