@@ -67,6 +67,13 @@ button.clean-btn.navbar-sidebar__back {
 
 * {
   --ifm-toc-border-color: #0000;
+  --ifm-table-cell-padding: 0.375rem;
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: -webkit-fill-available;
+  }
 }
 
 /* Overflow prevention */
