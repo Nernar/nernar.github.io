@@ -22,5 +22,9 @@
   "item.label.FAQ": {
     "message": "ЧаВО",
     "description": "Navbar item with label FAQ"
+  },
+  "item.label.Archive": {
+    "message": "Архив",
+    "description": "Navbar item with label Archive"
   }
 }

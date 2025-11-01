@@ -1,6 +1,5 @@
 ---
 displayed_sidebar: librariesSidebar
-slug: /
 ---
 
 # Libraries

@@ -90,6 +90,21 @@ export default {
 			} satisfies Docs.Options
 		],
 		[
+			'@docusaurus/plugin-content-docs',
+			{
+				id: 'archive',
+				path: 'archive',
+				routeBasePath: 'archive',
+				sidebarPath: require.resolve('./archive.ts'),
+				breadcrumbs: false,
+				editLocalizedFiles: true,
+				editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
+				showLastUpdateTime: true,
+				sidebarCollapsed: true,
+				sidebarCollapsible: true
+			} satisfies Docs.Options
+		],
+		[
 			'@nernar/docusaurus-plugin-typedoc',
 			{
 				projectRoot: 'api',
@@ -178,6 +193,11 @@ export default {
 					position: 'left',
 					to: 'libraries',
 					label: 'Libraries'
+				},
+				{
+					position: 'left',
+					to: 'archive',
+					label: 'Archive'
 				},
 				{
 					position: 'left',
