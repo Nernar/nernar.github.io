@@ -207,6 +207,7 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+        getStyleSafe(): Style;
 		/**
 		 * Overrides style properties of the current style by the values
 		 * specified in the style parameter.

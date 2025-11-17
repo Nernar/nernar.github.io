@@ -132,6 +132,7 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+        getStyleSafe(): Style;
 		setBlockingBackground(bb: boolean): void;
 		/**
 		 * Forces ui elements of the window to refresh.

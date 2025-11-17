@@ -14,6 +14,7 @@ declare namespace Item {
      * item.
      * @param id string ID of the item
      * @returns NativeItem instance associated with this item.
+     * @deprecated
      */
     function getItemById(id: string): NativeItem;
 
@@ -345,6 +346,33 @@ declare namespace Item {
      */
     function setMaxUseDuration(id: number | string, duration: number): void;
 
+    function isGlint(id: number | string, data?: number, extra?: ItemExtraData): void;
+    function isFood(id: number | string): void;
+    function isArmor(id: number | string): void;
+    function isThrowable(id: number | string): void;
+    function getNutrition(id: number | string): number;
+    function getArmorValue(id: number | string): number;
+    function isArmorDamageable(id: number | string): boolean;
+    function isRequiresIconOverride(id: number | string): boolean;
+    function isToolRender(id: number | string): boolean;
+    function isHandEquipped(id: number | string): boolean;
+    function getUseAnimation(id: number | string): EItemAnimation;
+    function isStackedByData(id: number | string): boolean;
+    function isAllowedInOffhand(id: number | string): boolean;
+    function isShouldDespawn(id: number | string): boolean;
+    function isFireResistant(id: number | string): boolean;
+    function isExplodable(id: number | string): boolean;
+    function isMirroredSprite(id: number | string): boolean;
+    function getEnchantSlot(id: number | string): number;
+    function getEnchantValue(id: number | string): number;
+    function getCategory(id: number | string): EItemCategory;
+    function getCreativeCategory(id: number | string): EItemCategory;
+    function isLiquidClip(id: number | string): boolean;
+    function setMirroredSprite(id: number | string, enabled: boolean): void;
+    function setRequiresIconOverride(id: number | string, enabled: boolean): void;
+    function setEnchantType(id: number | string, type: number, value: number): void;
+    function setEnchantibility(id: number | string, type: number, value: number): void;
+    
     /**
      * Same as {@link Item.registerUseFunction}, but supports numeric IDs only.
      */

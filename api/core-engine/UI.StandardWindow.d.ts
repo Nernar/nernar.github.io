@@ -181,7 +181,6 @@ declare namespace UI {
          */
         constructor();
 		getContent(): StandardWindowContent;
-		getStyleSafe(): Style;
 		setContent(content: StandardWindowContent): void;
 	}
 

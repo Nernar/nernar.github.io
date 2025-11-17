@@ -464,4 +464,13 @@ declare class BlockSource {
 	 */
 	randomTick(x: number, y: number, z: number): void;
 
+    /**
+     * Plays sound to entity by radius 16 blocks from source, if volume bigger than 1.0, radius multiplies on max radius.
+     * @param entity entity uid
+     * @param sound registered sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
+     * @param players 
+     */
+    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, players?: number[]): void;
 }

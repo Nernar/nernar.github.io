@@ -7,7 +7,12 @@ declare namespace UI {
 		[key: string]: string
 	};
 
-	/**
+    /**
+     * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
+     */
+    type FontColor = string | [r: number, g: number, b: number, a?: number] | number;
+	
+    /**
 	 * Object containing font parameters. If no color, size and shadow are
 	 * specified, default values are ignored and white font with text size 20,
 	 * white color and 0.45 shadow is created.
@@ -18,7 +23,7 @@ declare namespace UI {
 		 * {@link android.graphics.Color}).
 		 * @default 0x000 // black
 		 */
-		color?: number,
+		color?: FontColor,
 		/**
 		 * Font size.
 		 * @default 20
@@ -82,7 +87,7 @@ declare namespace UI {
 		 */
 		static readonly ALIGN_CENTER_HORIZONTAL: number;
 		alignment: number;
-		color: number;
+		color: FontColor;
 		isBold: boolean;
 		isCursive: boolean;
 		isUnderlined: boolean;
@@ -95,7 +100,7 @@ declare namespace UI {
 		 * @param size font size
 		 * @param shadow shadow offset
 		 */
-		constructor(color: number, size: number, shadow: number);
+		constructor(color: FontColor, size: number, shadow: number);
 		/**
 		 * Constructs new instance of the font with specified parameters.
 		 * @param params parameters of the font
@@ -169,4 +174,11 @@ declare namespace UI {
 	 * a replacement in the presented Inner Core API.
 	 */
     function getContext(): android.app.Activity;
+
+    /**
+     * 
+     * @param value hex-string, rgba array or names of color in a string format.
+     * @param defaultValue returns if result is wrong
+     */
+    function parseColor(value: FontColor, defaultValue: number): number;
 }

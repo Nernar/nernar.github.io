@@ -10,14 +10,14 @@ declare namespace Dimensions {
          * Constructs a new dimension with specified name and preferred ID.
          * @param name dimension name, can be used to get dimension via 
          * {@link Dimensions.getDimensionByName} call
-         * @param preferredId preferred dimension ID. If ID is already occupied
+         * @param preferredId preferred dimension ID, can't be smaller than 4. If ID is already occupied
          * by some another dimension, constructor will look for the next empty
          * dimension ID and assign it to the current dimension
          */
         constructor(name: string, preferredId: number);
 
         /**
-         * Custom dimension ID.
+         * Custom dimension ID. Can't be smaller than 4.
          */
         id: number;
 
@@ -122,6 +122,64 @@ declare namespace Dimensions {
          * @since 2.0.2b20
          */
         resetFogDistance(): CustomDimension;
+
+        /**
+         * Sets, can liquid evaporate or not.
+         * @param evaporates if true water will evaporate just like nether
+         */
+        setEvaporatesLiquids(evaporates: boolean): CustomDimension;
+
+        /**
+         * Sets, has world tick of weather seasons or not. 
+         * @param seasons if true weather will work
+         */
+        setWeatherSeasons(seasons: boolean): CustomDimension;
+
+        /**
+         * Sets behavior with interacting between player and bed like a nether or end.
+         * @param explode if true player can't sleep on beds
+         */
+        setBedExplodesOnSleep(explode: boolean): CustomDimension;
+
+        /**
+         * Sets visualization of sky like overworld.
+         * @param enabled 
+         */
+        setSkyAtmosphereEnabled(enabled: boolean): CustomDimension;
+
+        /**
+         * Sets height of clouds.
+         * @param height height by "y" angle 
+         */
+        setCloudHeight(height: number): CustomDimension;
+
+        /**
+         * Sets time of day by interval.
+         * @param interval number between 0 and 1
+         */
+        setTimeOfDay(interval: number): CustomDimension;
+
+        /**
+         * Sets time of day by amplifier.
+         * @param amplifier any number
+         */
+        setTimeOfDayAmplifier(amplifier: number): CustomDimension;
+
+        /**
+         * Resets custom time of day.
+         */
+        resetTimeOfDay(): CustomDimension;
+
+        /**
+         * Sets star brightness.
+         * @param interval number between 0 and 1
+         */
+        setStarBrightness(interval: number): CustomDimension;
+
+        /**
+         * Resets star brightness.
+         */
+        resetStarBrightness(): CustomDimension;
     }
 
     /**
@@ -505,4 +563,57 @@ declare namespace Dimensions {
         [number, number] |
         { x: number, y: number } |
         number
+
+    /**
+     * Function to enable or disable stars by nights.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderStars(dimensionId: number, enabled: boolean): void;
+    
+    /**
+     * Function to enable or disable sun by days.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderSun(dimensionId: number, enabled: boolean): void;
+
+    /**
+     * Function to enable or disable moon by nights.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderMoon(dimensionId: number, enabled: boolean): void;
+
+    /**
+     * Function to enable or disable clouds.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderClouds(dimensionId: number, enabled: boolean): void;
+
+    /**
+     * Function to set, can liquid evaporate or not.
+     * @param dimensionId numeric id of the dimension
+     * @param evaporates if true water will evaporate just like nether
+     */
+    function setEvaporatesLiquids(dimensionId: number,evaporates: boolean): void;
+
+    /**
+     * Function to set, has world tick of weather seasons or not. 
+     * @param dimensionId numeric id of the dimension
+     * @param seasons if true weather will work
+     */
+    function setWeatherSeasons(dimensionId: number, seasons: boolean): void;
+
+    /**
+     * Function specifies whether the sky produces light (like in overworld) or not 
+     * (like in the End or Nether).
+     * @param dimensionId numeric id of the dimension
+     * @param hasSkyLight if true, the sky produces light in the dimension
+     */
+    function setHasSkyLight(dimensionId: number, hasSkyLight: boolean): void;
+
+    function getMoonPhase(): number;
+    function getMoonBrightness(): number;
 }

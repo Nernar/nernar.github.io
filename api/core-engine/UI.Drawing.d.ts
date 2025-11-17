@@ -6,7 +6,7 @@ declare namespace UI {
 
 	interface ColorDrawing {
 		type: "background",
-		color?: number,
+		color?: UI.FontColor,
 		mode?: number,
 		colorMode?: number;
 	}

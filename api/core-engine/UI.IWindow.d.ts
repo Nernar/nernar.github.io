@@ -64,6 +64,8 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+        getStyleSafe(): Style;
+        
 		/**
 		 * Forces ui drawables of the window to refresh.
 		 * @param onCurrentThread if `true`, the drawables will be refreshed 
@@ -449,6 +451,7 @@ declare namespace UI {
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
 		setProperty(name: string, value: any): void;
-		static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
+        getColorProperty(valueOrProperty: number | string, defaultValue: number): number
+        static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
 	}
 }
