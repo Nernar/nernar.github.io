@@ -470,6 +470,7 @@ declare namespace Item {
 
     /**
      * Class representing item used to set it's properties.
+     @deprecated Use {@link Item} methods instead.
      */
     interface NativeItem {
         addRepairItem(id: number): void;
