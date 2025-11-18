@@ -2225,6 +2225,15 @@ declare class BlockSource {
 	 */
 	randomTick(x: number, y: number, z: number): void;
 
+    /**
+     * Plays sound to entity by radius 16 blocks from source, if volume bigger than 1.0, radius multiplies on max radius.
+     * @param entity entity uid
+     * @param sound registered sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
+     * @param players 
+     */
+    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, players?: number[]): void;
 }
 declare namespace BlockState {
     interface KeyStateScriptable {
@@ -4424,14 +4433,14 @@ declare namespace Dimensions {
          * Constructs a new dimension with specified name and preferred ID.
          * @param name dimension name, can be used to get dimension via 
          * {@link Dimensions.getDimensionByName} call
-         * @param preferredId preferred dimension ID. If ID is already occupied
+         * @param preferredId preferred dimension ID, can't be smaller than 4. If ID is already occupied
          * by some another dimension, constructor will look for the next empty
          * dimension ID and assign it to the current dimension
          */
         constructor(name: string, preferredId: number);
 
         /**
-         * Custom dimension ID.
+         * Custom dimension ID. Can't be smaller than 4.
          */
         id: number;
 
@@ -4536,6 +4545,64 @@ declare namespace Dimensions {
          * @since 2.0.2b20
          */
         resetFogDistance(): CustomDimension;
+
+        /**
+         * Sets, can liquid evaporate or not.
+         * @param evaporates if true water will evaporate just like nether
+         */
+        setEvaporatesLiquids(evaporates: boolean): CustomDimension;
+
+        /**
+         * Sets, has world tick of weather seasons or not. 
+         * @param seasons if true weather will work
+         */
+        setWeatherSeasons(seasons: boolean): CustomDimension;
+
+        /**
+         * Sets behavior with interacting between player and bed like a nether or end.
+         * @param explode if true player can't sleep on beds
+         */
+        setBedExplodesOnSleep(explode: boolean): CustomDimension;
+
+        /**
+         * Sets visualization of sky like overworld.
+         * @param enabled 
+         */
+        setSkyAtmosphereEnabled(enabled: boolean): CustomDimension;
+
+        /**
+         * Sets height of clouds.
+         * @param height height by "y" angle 
+         */
+        setCloudHeight(height: number): CustomDimension;
+
+        /**
+         * Sets time of day by interval.
+         * @param interval number between 0 and 1
+         */
+        setTimeOfDay(interval: number): CustomDimension;
+
+        /**
+         * Sets time of day by amplifier.
+         * @param amplifier any number
+         */
+        setTimeOfDayAmplifier(amplifier: number): CustomDimension;
+
+        /**
+         * Resets custom time of day.
+         */
+        resetTimeOfDay(): CustomDimension;
+
+        /**
+         * Sets star brightness.
+         * @param interval number between 0 and 1
+         */
+        setStarBrightness(interval: number): CustomDimension;
+
+        /**
+         * Resets star brightness.
+         */
+        resetStarBrightness(): CustomDimension;
     }
 
     /**
@@ -4919,6 +4986,59 @@ declare namespace Dimensions {
         [number, number] |
         { x: number, y: number } |
         number
+
+    /**
+     * Function to enable or disable stars by nights.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderStars(dimensionId: number, enabled: boolean): void;
+    
+    /**
+     * Function to enable or disable sun by days.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderSun(dimensionId: number, enabled: boolean): void;
+
+    /**
+     * Function to enable or disable moon by nights.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderMoon(dimensionId: number, enabled: boolean): void;
+
+    /**
+     * Function to enable or disable clouds.
+     * @param dimensionId numeric id of the dimension
+     * @param enabled 
+     */
+    function setShouldRenderClouds(dimensionId: number, enabled: boolean): void;
+
+    /**
+     * Function to set, can liquid evaporate or not.
+     * @param dimensionId numeric id of the dimension
+     * @param evaporates if true water will evaporate just like nether
+     */
+    function setEvaporatesLiquids(dimensionId: number,evaporates: boolean): void;
+
+    /**
+     * Function to set, has world tick of weather seasons or not. 
+     * @param dimensionId numeric id of the dimension
+     * @param seasons if true weather will work
+     */
+    function setWeatherSeasons(dimensionId: number, seasons: boolean): void;
+
+    /**
+     * Function specifies whether the sky produces light (like in overworld) or not 
+     * (like in the End or Nether).
+     * @param dimensionId numeric id of the dimension
+     * @param hasSkyLight if true, the sky produces light in the dimension
+     */
+    function setHasSkyLight(dimensionId: number, hasSkyLight: boolean): void;
+
+    function getMoonPhase(): number;
+    function getMoonBrightness(): number;
 }
 /**
  * @since 2.3.1b115
@@ -7686,6 +7806,7 @@ declare namespace Item {
      * item.
      * @param id string ID of the item
      * @returns NativeItem instance associated with this item.
+     * @deprecated
      */
     function getItemById(id: string): NativeItem;
 
@@ -8017,6 +8138,33 @@ declare namespace Item {
      */
     function setMaxUseDuration(id: number | string, duration: number): void;
 
+    function isGlint(id: number | string, data?: number, extra?: ItemExtraData): void;
+    function isFood(id: number | string): void;
+    function isArmor(id: number | string): void;
+    function isThrowable(id: number | string): void;
+    function getNutrition(id: number | string): number;
+    function getArmorValue(id: number | string): number;
+    function isArmorDamageable(id: number | string): boolean;
+    function isRequiresIconOverride(id: number | string): boolean;
+    function isToolRender(id: number | string): boolean;
+    function isHandEquipped(id: number | string): boolean;
+    function getUseAnimation(id: number | string): EItemAnimation;
+    function isStackedByData(id: number | string): boolean;
+    function isAllowedInOffhand(id: number | string): boolean;
+    function isShouldDespawn(id: number | string): boolean;
+    function isFireResistant(id: number | string): boolean;
+    function isExplodable(id: number | string): boolean;
+    function isMirroredSprite(id: number | string): boolean;
+    function getEnchantSlot(id: number | string): number;
+    function getEnchantValue(id: number | string): number;
+    function getCategory(id: number | string): EItemCategory;
+    function getCreativeCategory(id: number | string): EItemCategory;
+    function isLiquidClip(id: number | string): boolean;
+    function setMirroredSprite(id: number | string, enabled: boolean): void;
+    function setRequiresIconOverride(id: number | string, enabled: boolean): void;
+    function setEnchantType(id: number | string, type: number, value: number): void;
+    function setEnchantibility(id: number | string, type: number, value: number): void;
+    
     /**
      * Same as {@link Item.registerUseFunction}, but supports numeric IDs only.
      */
@@ -8114,6 +8262,7 @@ declare namespace Item {
 
     /**
      * Class representing item used to set it's properties.
+     @deprecated Use {@link Item} methods instead.
      */
     interface NativeItem {
         addRepairItem(id: number): void;
@@ -17235,7 +17384,7 @@ declare namespace UI {
 
 	interface ColorDrawing {
 		type: "background",
-		color?: number,
+		color?: UI.FontColor,
 		mode?: number,
 		colorMode?: number;
 	}
@@ -17877,6 +18026,8 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+        getStyleSafe(): Style;
+        
 		/**
 		 * Forces ui drawables of the window to refresh.
 		 * @param onCurrentThread if `true`, the drawables will be refreshed 
@@ -18262,7 +18413,8 @@ declare namespace UI {
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
 		setProperty(name: string, value: any): void;
-		static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
+        getColorProperty(valueOrProperty: number | string, defaultValue: number): number
+        static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
 	}
 }
 declare namespace UI {
@@ -18448,7 +18600,6 @@ declare namespace UI {
          */
         constructor();
 		getContent(): StandardWindowContent;
-		getStyleSafe(): Style;
 		setContent(content: StandardWindowContent): void;
 	}
 
@@ -19089,6 +19240,7 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+        getStyleSafe(): Style;
 		/**
 		 * Overrides style properties of the current style by the values
 		 * specified in the style parameter.
@@ -19317,6 +19469,7 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+        getStyleSafe(): Style;
 		setBlockingBackground(bb: boolean): void;
 		/**
 		 * Forces ui elements of the window to refresh.
@@ -19353,7 +19506,12 @@ declare namespace UI {
 		[key: string]: string
 	};
 
-	/**
+    /**
+     * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
+     */
+    type FontColor = string | [r: number, g: number, b: number, a?: number] | number;
+	
+    /**
 	 * Object containing font parameters. If no color, size and shadow are
 	 * specified, default values are ignored and white font with text size 20,
 	 * white color and 0.45 shadow is created.
@@ -19364,7 +19522,7 @@ declare namespace UI {
 		 * {@link android.graphics.Color}).
 		 * @default 0x000 // black
 		 */
-		color?: number,
+		color?: FontColor,
 		/**
 		 * Font size.
 		 * @default 20
@@ -19428,7 +19586,7 @@ declare namespace UI {
 		 */
 		static readonly ALIGN_CENTER_HORIZONTAL: number;
 		alignment: number;
-		color: number;
+		color: FontColor;
 		isBold: boolean;
 		isCursive: boolean;
 		isUnderlined: boolean;
@@ -19441,7 +19599,7 @@ declare namespace UI {
 		 * @param size font size
 		 * @param shadow shadow offset
 		 */
-		constructor(color: number, size: number, shadow: number);
+		constructor(color: FontColor, size: number, shadow: number);
 		/**
 		 * Constructs new instance of the font with specified parameters.
 		 * @param params parameters of the font
@@ -19515,6 +19673,13 @@ declare namespace UI {
 	 * a replacement in the presented Inner Core API.
 	 */
     function getContext(): android.app.Activity;
+
+    /**
+     * 
+     * @param value hex-string, rgba array or names of color in a string format.
+     * @param defaultValue returns if result is wrong
+     */
+    function parseColor(value: FontColor, defaultValue: number): number;
 }
 /**
  * Module used to create and manage Updatables. Updatables provide the proper
