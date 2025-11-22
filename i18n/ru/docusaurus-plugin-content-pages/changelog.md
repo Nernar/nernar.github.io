@@ -1,27 +1,92 @@
 # Список изменений
 
-## 2.4.0b122-122o1
+## 3.1.0b126
+
+- Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/namespace/Dimensions#CustomDimension) ([@rislaed](https://vk.com/id268478382))
+- Добавлена поддержка кастомных [звуков блоков](/api/namespace/Block#sound) ([@rislaed](https://vk.com/id268478382))
+- Добавлена поддержка неймспейсов для блоков и предметов и методы для работы с ними ([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382))
+- Поддержка парсинга HTML-цветов в [элементах интерфейса](/api/namespace/UI#FontColor) ([@rislaed](https://vk.com/id268478382))
+- Добавлен метод для получения списка кастумных измерений ([@rislaed](https://vk.com/id268478382))
+
+:::tip Реализована кодогенерация для API
+
+Что позволит заметно повысить производительность и упростить введение новых методов API, включая поддержку модов на Java ([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382)). Старое API будет постепенно переноситься на новое.
+
+- Восстановление работы и перенос на кодогенерацию модуля PathNavigation ([@zheka2304](https://vk.com/id24708057))
+- Перенос модуля [BlockSource](/api/class/BlockSource) на кодогенерацию ([@reider745](https://vk.com/id500917624))
+- Добавлены методы для манипуляций с модулями API: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) ([@rislaed](https://vk.com/id268478382))
+
+:::
+
+- Исправлено событие получения урона ([@zheka2304](https://vk.com/id24708057))
+- Исправлен метод [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) ([@zheka2304](https://vk.com/id24708057))
+- Исправлено использование предметов из модов на некоторые ванильные блоки ([@rislaed](https://vk.com/id268478382))
+- [getTileEntity](/api/namespace/TileEntity#getTileEntity) теперь гарантированно возвращает уже загруженный TileEntity ([@reider745](https://vk.com/id500917624))
+- Исправлено отображение некоторых предметов в контейнерах ([@reider745](https://vk.com/id500917624))
+- Исправлено изменение насыщения игроков ([@reider745](https://vk.com/id500917624))
+- Исправлен дроп изумрудной руды ([@mineexplorer](https://vk.com/id201975250))
+- Исправлены модели адских заборов в интерфейсах ([@mineexplorer](https://vk.com/id201975250))
+- Исправлен кастомный цвет неба, заката и тумана ([@zheka2304](https://vk.com/id24708057))
+- Отключена поддержка Realms ([@rislaed](https://vk.com/id268478382))
+
+## 3.1.0b125 ([@reider745](https://vk.com/id500917624), [@rislaed](https://vk.com/id268478382))
+
+- Исправление сохранений
+- Исправление цвета неба/тумана/воды измерений
+- Исправлен модуль [PathNavigation](/api/namespace/Entity#PathNavigation)
+- В режиме разработчика теперь ошибки компиляции отображаются до входа в игру, а не после полной иницилизации
+- Добавлен метод [Entity.playAnimation](/api/namespace/Entity#playAnimation)
+- Добавлен метод [BlockSource.setRedstoneSignal](/api/class/BlockSource#setRedstoneSignal) - добавляет/устанавливает блоку источник редстоун сигнала и [BlockSource.getRedstoneSignal](/api/class/BlockSource#getRedstoneSignal)
+- Исправление генерации палитры блоков для синхронизации с сервером
+- Добавлен модуль для пользовательских шкал [CustomScale](/api/class/CustomScale)
+- Добавлены методы [Game.addWorldToCache](/api/namespace/Game#addWorldToCache)/[updateWorlds](/api/namespace/Game#updateWorlds)/[getWorldsCount](/api/namespace/Game#getWorldsCount)
+- Добавлен метод [BlockSource.randomTick](/api/class/BlockSource#randomTick)
+- Добавлен метод [NativeTileEntity.tick](/api/interface/NativeTileEntity#tick)
+- Параметры для блока [burnOdds](/api/namespace/Block#burn_odds)/[flameOdds](/api/namespace/Block#flame_odds)
+- Фикс некоторых иконок ванильных блоков в интерфейсе
+
+## 3.0.0b124
+
+### Перенос на Minecraft 1.16.201 ARM64
+
+Эта версия получила поддержку 64 битных архетиктур (arm64-v8a), что также избавило ее от ряда вылетов и повысило общую стабильность. Ожидаются некоторые ошибки, которые будут исправлены с ближайшими обновлениями.
+
+## 2.4.0b123 ([@rislaed](https://vk.com/id268478382))
+
+Скорее всего, это последняя версия для архитектур ARM32 (armeabi-v7a). Все последующие обновления выходят для 64 битных устройств и данные паки будут получать только исправления критических ошибок.
+
+:::note Функции и исправления браузера модов
+
+- Добавлены разделы зависимостей и дополнений на страницах модов, теперь отображаются связанные моды и сборки
+- Улучшено переключение на прокси, при ошибке выводится сообщение с рекомендацией использовать VPN
+- Метка \[Адаптировано\] удалена, неадаптированные моды теперь помечаются как \[Устарело\]
+- Добавлен переключатель для включения/отключения модов (доступен только во вкладке установленных модов)
+- Добавлен раздел со скриншотами для сборок (не отображается, если в сборке только один скриншот), включены зависимости и комментарии
+- Категория популярные заменена на редакцию для перемещения устаревших модов в конец списка
+- Иконки оптимизированы под размеры экранов смартфонов, некоторые заменены на более подходящие
+- Поиск с префиксом icmods: теперь позволяет искать несколько модов одновременно и корректно открывает сборки
+- Убрана кликабельность тега с количеством модов; исправлено ошибочное отображение настроек на страницах списков модов
+
+:::
+
+- Откат изменений обновления [b122o1](#240b122o1) для Inner Core Test
+- Добавлен [EDamageCause](/api/enum/EDamageCause) для определения типов урона мобов, стандартное значение урона для [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) установлено на 4
+- Исправлено отображение переводов для заголовков в конфиге, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) корректно перезаписывает *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) снова работает
+- Исправлена реализация Java-абстрактных классов в JavaScript
+- Добавлены методы для клиентской работы с Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) и [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
+- Добавлена возможность применить события клика и долгого клика на слотах инвентаря, исправлены обновления и изменение размера слотов
+
+## 2.4.0b122o1
 
 - Множественные небольшие улучшения внутренней работы движка
 
-:::note Другие изменения ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
 
 - Добавлены методы [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) для отслеживания загрузки и выгрузки чанков
 - Добавлена возможность получения игровых настроек с помощью [Game.getOption(key)](/api/namespace/Game#getOption), воспользуйтесь [Game.getOptions](/api/namespace/Game#getOptions) для получения списка всех доступных ключей
 - Добавлен каллбек *OptionsChanged*, вызывающийся сразу после завершения изменения игровых опций
 - Реализованы пакеты с двоичными данными, передайте массив с байтами для их отправки
 - Исправлена работа раздатчиков с ведрами жидкостей из модов, а также передача идентификатора игрока в каллбек *CraftRecipePreProvided*
-
-:::
-
-:::note Другие изменения ([@rislaed](https://vk.com/id268478382))
-
-- Добавлен [EDamageCause](/api/enum/EDamageCause) для определения типов урона мобов, стандартное значение урона для [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) установлено на 4
-- Добавлена возможность применить события клика и долгого клика на слотах инвентаря, исправлены обновления и изменение размера слотов
-- Добавлены методы для клиентской работы с Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) и [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
-- Исправлено отображение переводов для заголовков в конфиге, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) корректно перезаписывает *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) снова работает
-
-:::
 
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 

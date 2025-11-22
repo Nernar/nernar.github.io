@@ -1,27 +1,90 @@
 # Changelog
 
-## 2.4.0b122-122o1
+## 3.1.0b126
 
-- Multiple small tweaks to internal engine operation
+- Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/namespace/Dimensions#CustomDimension) ([@rislaed](https://vk.com/id268478382))
+- Added support for custom [block sounds](/api/namespace/Block#sound) ([@rislaed](https://vk.com/id268478382))
+- Added support for blocks and items namespaces and methods for working with them ([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382))
+- Added support for parsing HTML colors in [UI elements](/api/namespace/UI#FontColor) ([@rislaed](https://vk.com/id268478382))
+- Added a method to get the list of custom dimensions ([@rislaed](https://vk.com/id268478382))
 
-:::note Other changes ([@reider745](https://vk.com/id500917624))
+:::tip Implemented API code generation
+
+Which will significantly improve performance and simplify the introduction of new API methods, including support for Java mods([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382)). The legacy API will be gradually migrated to the new system.
+
+- Restored functionality and migrated the PathNavigation module to code generation ([@zheka2304](https://vk.com/id24708057))
+- Migrated the [BlockSource](/api/class/BlockSource) module to code generation ([@reider745](https://vk.com/id500917624))
+- Added methods for API module manipulation: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) ([@rislaed](https://vk.com/id268478382))
+
+:::
+
+- Fixed the entity hurt event ([@zheka2304](https://vk.com/id24708057))
+- Fixed the [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) method ([@zheka2304](https://vk.com/id24708057))
+- Fixed using items from mods on certain vanilla blocks ([@rislaed](https://vk.com/id268478382))
+- [getTileEntity](/api/namespace/TileEntity#getTileEntity) now guaranteed to return an already loaded TileEntity ([@reider745](https://vk.com/id500917624))
+- Fixed the display of certain items in containers ([@reider745](https://vk.com/id500917624))
+- Fixed player saturation changes ([@reider745](https://vk.com/id500917624))
+- Fixed emerald ore drops ([@mineexplorer](https://vk.com/id201975250))
+- Fixed nether fence models in interfaces ([@mineexplorer](https://vk.com/id201975250))
+- Fixed custom sky, sunset, and fog colors ([@zheka2304](https://vk.com/id24708057))
+- Disabled Realms support ([@rislaed](https://vk.com/id268478382))
+
+## 3.1.0b125 ([@reider745](https://vk.com/id500917624), [@rislaed](https://vk.com/id268478382))
+
+- Fixed saves were sometimes broken
+- Fixed custom colors for fog/water/sky
+- Fixed [PathNavigation](/api/namespace/Entity#PathNavigation) module
+- In dev mode compilation errors now are displayed earlier
+- Added [Entity.playAnimation](/api/namespace/Entity#playAnimation) function
+- Added [BlockSource.setRedstoneSignal](/api/class/BlockSource#setRedstoneSignal) and [BlockSource.getRedstoneSignal](/api/class/BlockSource#getRedstoneSignal) methods
+- Fixed block pallete generation for net sync
+- Added [CustomScale](/api/class/CustomScale) module
+- Added functions [Game.addWorldToCache](/api/namespace/Game#addWorldToCache)/[updateWorlds](/api/namespace/Game#updateWorlds)/[getWorldsCount](/api/namespace/Game#getWorldsCount)
+- Added method [BlockSource.randomTick](/api/class/BlockSource#randomTick)
+- Added method [NativeTileEntity.tick](/api/interface/NativeTileEntity#tick)
+- Added new block properties [burnOdds](/api/namespace/Block#burn_odds)/[flameOdds](/api/namespace/Block#flame_odds)
+- Fixed some vanilla block icons in UI
+
+## 3.0.0b124
+
+### Migrating to Minecraft 1.16.201 ARM64
+
+This version received support for 64-bit architectures (arm64-v8a), which also eliminated a number of crashes and increased overall stability. Some bugs are expected to be fixed with upcoming updates.
+
+## 2.4.0b123 ([@rislaed](https://vk.com/id268478382))
+
+Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). All subsequent updates are released for 64-bit devices and this packs will receive only critical bug fixes.
+
+:::note Mod Manager features & fixes
+
+- Added dependencies and add-ons sections for mod pages, displays mods and modpacks
+- Improvements for switching to proxy. On failure display a message, suggesting using VPN
+- \[Adapted\] mod label was removed, now non-adapted mods are displayed as \[Obsolete\]
+- Added a switch to enable/disable mods, appears only in the installed mods tab
+- Added section with screenshots to modpacks (not displayed if modpack has one screenshot), included dependencies and comments
+- Mods popular category has been replaced by default redaction category, this is to move outdated mods to bottom of list
+- Searching with icmods: prefix can search for multiple mods at once and opens modpacks correctly
+
+:::
+
+- Rollback [b122o1](#240b122o1) changes for Inner Core Test
+- Added [EDamageCause](/api/enum/EDamageCause) for determining entity damage type, set [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) default damage to 4
+- Fixed implementing Java abstract classes in JavaScript
+- Added methods for client working with Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) and [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
+- Added feature to apply click and long click events to inventory slots, fixed updates and slot resizing
+- Fixed display of header translations in config, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) correctly overwrites *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) works again
+
+## 2.4.0b122o1
+
+- Minor tweaks & internal refactor
+
+## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
 
 - Added [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
 - Added ability to get game settings via [Game.getOption(key)](/api/namespace/Game#getOption), use [Game.getOptions](/api/namespace/Game#getOptions) to list all available keys
 - Added *OptionsChanged* callback, which is called immediately after completing game options change
 - Implemented binary data packets, pass an bytes array to send them
 - Fixed dispensers functionality with modded liquid buckets and also player identifier transfering to *CraftRecipePreProvided* callback
-
-:::
-
-:::note Other changes ([@rislaed](https://vk.com/id268478382))
-
-- Added [EDamageCause](/api/enum/EDamageCause) for determining entity damage type, set [ToolAPI.registerSword](/api/namespace/ToolAPI#registerSword) default damage to 4
-- Added feature to apply click and long click events to inventory slots, fixed updates and slot resizing
-- Added methods for client working with Updatable: [getAllLocal](/api/namespace/Updatable#getAllLocal) and [getLocalSyncTime](/api/namespace/Updatable#getLocalSyncTime)
-- Fixed display of header translations in config, [ItemContainer.sealSlot](/api/class/ItemContainer#sealSlot) correctly overwrites *getTransferPolicy*, [Entity.health](/api/namespace/Entity#health) works again
-
-:::
 
 ## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
 
