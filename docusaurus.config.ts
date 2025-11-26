@@ -24,6 +24,7 @@ import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
 import type * as Typedoc from './api/docusaurus-plugin';
+import remarkAuthors from './src/plugins/remark-authors.mjs';
 
 import { readdirSync } from 'fs';
 import path from 'path';
@@ -65,9 +66,13 @@ export default {
 					breadcrumbs: false,
 					editLocalizedFiles: true,
 					editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
-					showLastUpdateTime: true
+					showLastUpdateTime: true,
+					remarkPlugins: [remarkAuthors]
 				},
 				blog: false,
+				pages: {
+					remarkPlugins: [remarkAuthors]
+				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css')
 				}
@@ -86,7 +91,8 @@ export default {
 				breadcrumbs: false,
 				editLocalizedFiles: true,
 				editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
-				showLastUpdateTime: true
+				showLastUpdateTime: true,
+				remarkPlugins: [remarkAuthors]
 			} satisfies Docs.Options
 		],
 		[
@@ -101,7 +107,8 @@ export default {
 				editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
 				showLastUpdateTime: true,
 				sidebarCollapsed: true,
-				sidebarCollapsible: true
+				sidebarCollapsible: true,
+				remarkPlugins: [remarkAuthors]
 			} satisfies Docs.Options
 		],
 		[
@@ -150,7 +157,8 @@ export default {
 						// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
 						// TODO: Page groups like in typedoc-github-theme.
 					// ]
-				}
+				},
+				remarkPlugins: [remarkAuthors]
 			} satisfies Typedoc.Options
 		]
 	],

@@ -2,34 +2,34 @@
 
 ## 3.1.0b126
 
-- Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/namespace/Dimensions#CustomDimension) ([@rislaed](https://vk.com/id268478382))
-- Добавлена поддержка кастомных [звуков блоков](/api/namespace/Block#sound) ([@rislaed](https://vk.com/id268478382))
-- Добавлена поддержка неймспейсов для блоков и предметов и методы для работы с ними ([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382))
-- Поддержка парсинга HTML-цветов в [элементах интерфейса](/api/namespace/UI#FontColor) ([@rislaed](https://vk.com/id268478382))
-- Добавлен метод для получения списка кастумных измерений ([@rislaed](https://vk.com/id268478382))
+- Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/namespace/Dimensions#CustomDimension) (@rislaed)
+- Добавлена поддержка кастомных [звуков блоков](/api/namespace/Block#sound) (@rislaed)
+- Добавлена поддержка неймспейсов для блоков и предметов и методы для работы с ними (@zheka2304, @rislaed)
+- Поддержка парсинга HTML-цветов в [элементах интерфейса](/api/namespace/UI#FontColor) (@rislaed)
+- Добавлен метод для получения списка кастумных измерений (@rislaed)
 
 :::tip Реализована кодогенерация для API
 
-Что позволит заметно повысить производительность и упростить введение новых методов API, включая поддержку модов на Java ([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382)). Старое API будет постепенно переноситься на новое.
+Что позволит заметно повысить производительность и упростить введение новых методов API, включая поддержку модов на Java (@zheka2304, @rislaed). Старое API будет постепенно переноситься на новое.
 
-- Восстановление работы и перенос на кодогенерацию модуля PathNavigation ([@zheka2304](https://vk.com/id24708057))
-- Перенос модуля [BlockSource](/api/class/BlockSource) на кодогенерацию ([@reider745](https://vk.com/id500917624))
-- Добавлены методы для манипуляций с модулями API: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) ([@rislaed](https://vk.com/id268478382))
+- Восстановление работы и перенос на кодогенерацию модуля PathNavigation (@zheka2304)
+- Перенос модуля [BlockSource](/api/class/BlockSource) на кодогенерацию (@reider745)
+- Добавлены методы для манипуляций с модулями API: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) (@rislaed)
 
 :::
 
-- Исправлено событие получения урона ([@zheka2304](https://vk.com/id24708057))
-- Исправлен метод [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) ([@zheka2304](https://vk.com/id24708057))
-- Исправлено использование предметов из модов на некоторые ванильные блоки ([@rislaed](https://vk.com/id268478382))
-- [getTileEntity](/api/namespace/TileEntity#getTileEntity) теперь гарантированно возвращает уже загруженный TileEntity ([@reider745](https://vk.com/id500917624))
-- Исправлено отображение некоторых предметов в контейнерах ([@reider745](https://vk.com/id500917624))
-- Исправлено изменение насыщения игроков ([@reider745](https://vk.com/id500917624))
-- Исправлен дроп изумрудной руды ([@mineexplorer](https://vk.com/id201975250))
-- Исправлены модели адских заборов в интерфейсах ([@mineexplorer](https://vk.com/id201975250))
-- Исправлен кастомный цвет неба, заката и тумана ([@zheka2304](https://vk.com/id24708057))
-- Отключена поддержка Realms ([@rislaed](https://vk.com/id268478382))
+- Исправлено событие получения урона (@zheka2304)
+- Исправлен метод [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) (@zheka2304)
+- Исправлено использование предметов из модов на некоторые ванильные блоки (@rislaed)
+- [getTileEntity](/api/namespace/TileEntity#getTileEntity) теперь гарантированно возвращает уже загруженный TileEntity (@reider745)
+- Исправлено отображение некоторых предметов в контейнерах (@reider745)
+- Исправлено изменение насыщения игроков (@reider745)
+- Исправлен дроп изумрудной руды (@mineexplorer)
+- Исправлены модели адских заборов в интерфейсах (@mineexplorer)
+- Исправлен кастомный цвет неба, заката и тумана (@zheka2304)
+- Отключена поддержка Realms (@rislaed)
 
-## 3.1.0b125 ([@reider745](https://vk.com/id500917624), [@rislaed](https://vk.com/id268478382))
+## 3.1.0b125 (@reider745, @rislaed)
 
 - Исправление сохранений
 - Исправление цвета неба/тумана/воды измерений
@@ -51,7 +51,7 @@
 
 Эта версия получила поддержку 64 битных архетиктур (arm64-v8a), что также избавило ее от ряда вылетов и повысило общую стабильность. Ожидаются некоторые ошибки, которые будут исправлены с ближайшими обновлениями.
 
-## 2.4.0b123 ([@rislaed](https://vk.com/id268478382))
+## 2.4.0b123 (@rislaed)
 
 Скорее всего, это последняя версия для архитектур ARM32 (armeabi-v7a). Все последующие обновления выходят для 64 битных устройств и данные паки будут получать только исправления критических ошибок.
 
@@ -80,7 +80,7 @@
 
 - Множественные небольшие улучшения внутренней работы движка
 
-## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122 (@reider745)
 
 - Добавлены методы [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) для отслеживания загрузки и выгрузки чанков
 - Добавлена возможность получения игровых настроек с помощью [Game.getOption(key)](/api/namespace/Game#getOption), воспользуйтесь [Game.getOptions](/api/namespace/Game#getOptions) для получения списка всех доступных ключей
@@ -88,7 +88,7 @@
 - Реализованы пакеты с двоичными данными, передайте массив с байтами для их отправки
 - Исправлена работа раздатчиков с ведрами жидкостей из модов, а также передача идентификатора игрока в каллбек *CraftRecipePreProvided*
 
-## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b120-121 (@reider745)
 
 - Исправления прокси браузера модов
 - Исправления повреждающихся сохранений в некоторых случаях, из-за коллизии
@@ -100,7 +100,7 @@
 - Исправления крашей в мод браузере
 - Исправления некоторых крашей в игре, в частности от всплывающих сообщений на некоторых прошивках
 
-## 2.4.0b118-119 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b118-119 (@reider745)
 
 - Улучшение сетевого протокола
 - Добавлены методы BlockSource для управления погодой
@@ -110,7 +110,7 @@
 
 ## 2.4.0b116-117
 
-Добавлена поддержка серверов с модами на основе [ядра ZoteCore](https://github.com/Reider745/ZoteCoreLoader) от [@reider745](https://vk.com/id500917624), что также включает в себя:
+Добавлена поддержка серверов с модами на основе [ядра ZoteCore](https://github.com/Reider745/ZoteCoreLoader) от @reider745, что также включает в себя:
 
 - Исправления списка серверов (для модпаков список хранится в основной папке модпака)
 - Исправление не статичного uuid игрока (от параметров XUID и ника игрока), исправляет сохранения инвентаря в локальной игре
@@ -118,9 +118,9 @@
 - Добавлена синхронизация id биомов
 - Другие различные исправления для серверов
 
-:::note Другие изменения ([@reider745](https://vk.com/id500917624))
+:::note Другие изменения (@reider745)
 
-- Добавлен прокси в мод браузере, который включается при невозможности подключиться к основной игре ([@spawnrys](https://vk.com/id549824423))
+- Добавлен прокси в мод браузере, который включается при невозможности подключиться к основной игре (@spawnrys)
 - Исправления синхронизации [клиентской части TileEntity](/api/namespace/TileEntity#LocalTileEntityPrototype), добавлены новые методы [onConnectionPlayer](/api/namespace/TileEntity#onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#onDisconnectionPlayer)
 - Теперь в сохранениях вместо ошибки будет передаваться [пустой объект](/api/namespace/Saver#getDefaultSaves)
 - Добавлено условие [ICRender.BlockState(x, y, z, stateId, valueState)](/api/namespace/ICRender#BlockState)
@@ -132,7 +132,7 @@
 
 :::
 
-:::note Другие изменения ([@zheka_smirnov](https://vk.com/id24708057))
+:::note Другие изменения (@zheka2304)
 
 - Исправлены частые краши Inner Core при запуске
 - Обновлен до последней версии Rhino - движок javascript для модов

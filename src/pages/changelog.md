@@ -2,34 +2,34 @@
 
 ## 3.1.0b126
 
-- Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/namespace/Dimensions#CustomDimension) ([@rislaed](https://vk.com/id268478382))
-- Added support for custom [block sounds](/api/namespace/Block#sound) ([@rislaed](https://vk.com/id268478382))
-- Added support for blocks and items namespaces and methods for working with them ([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382))
-- Added support for parsing HTML colors in [UI elements](/api/namespace/UI#FontColor) ([@rislaed](https://vk.com/id268478382))
-- Added a method to get the list of custom dimensions ([@rislaed](https://vk.com/id268478382))
+- Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/namespace/Dimensions#CustomDimension) (@rislaed)
+- Added support for custom [block sounds](/api/namespace/Block#sound) (@rislaed)
+- Added support for blocks and items namespaces and methods for working with them (@zheka2304, @rislaed)
+- Added support for parsing HTML colors in [UI elements](/api/namespace/UI#FontColor) (@rislaed)
+- Added a method to get the list of custom dimensions (@rislaed)
 
 :::tip Implemented API code generation
 
-Which will significantly improve performance and simplify the introduction of new API methods, including support for Java mods([@zheka2304](https://vk.com/id24708057), [@rislaed](https://vk.com/id268478382)). The legacy API will be gradually migrated to the new system.
+Which will significantly improve performance and simplify the introduction of new API methods, including support for Java mods (@zheka2304, @rislaed). The legacy API will be gradually migrated to the new system.
 
-- Restored functionality and migrated the PathNavigation module to code generation ([@zheka2304](https://vk.com/id24708057))
-- Migrated the [BlockSource](/api/class/BlockSource) module to code generation ([@reider745](https://vk.com/id500917624))
-- Added methods for API module manipulation: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) ([@rislaed](https://vk.com/id268478382))
+- Restored functionality and migrated the PathNavigation module to code generation (@zheka2304)
+- Migrated the [BlockSource](/api/class/BlockSource) module to code generation (@reider745)
+- Added methods for API module manipulation: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) (@rislaed)
 
 :::
 
-- Fixed the entity hurt event ([@zheka2304](https://vk.com/id24708057))
-- Fixed the [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) method ([@zheka2304](https://vk.com/id24708057))
-- Fixed using items from mods on certain vanilla blocks ([@rislaed](https://vk.com/id268478382))
-- [getTileEntity](/api/namespace/TileEntity#getTileEntity) now guaranteed to return an already loaded TileEntity ([@reider745](https://vk.com/id500917624))
-- Fixed the display of certain items in containers ([@reider745](https://vk.com/id500917624))
-- Fixed player saturation changes ([@reider745](https://vk.com/id500917624))
-- Fixed emerald ore drops ([@mineexplorer](https://vk.com/id201975250))
-- Fixed nether fence models in interfaces ([@mineexplorer](https://vk.com/id201975250))
-- Fixed custom sky, sunset, and fog colors ([@zheka2304](https://vk.com/id24708057))
-- Disabled Realms support ([@rislaed](https://vk.com/id268478382))
+- Fixed the entity hurt event (@zheka2304)
+- Fixed the [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) method (@zheka2304)
+- Fixed using items from mods on certain vanilla blocks (@rislaed)
+- [getTileEntity](/api/namespace/TileEntity#getTileEntity) now guaranteed to return an already loaded TileEntity (@reider745)
+- Fixed the display of certain items in containers (@reider745)
+- Fixed player saturation changes (@reider745)
+- Fixed emerald ore drops (@mineexplorer)
+- Fixed nether fence models in interfaces (@mineexplorer)
+- Fixed custom sky, sunset, and fog colors (@zheka2304)
+- Disabled Realms support (@rislaed)
 
-## 3.1.0b125 ([@reider745](https://vk.com/id500917624), [@rislaed](https://vk.com/id268478382))
+## 3.1.0b125 (@reider745, @rislaed)
 
 - Fixed saves were sometimes broken
 - Fixed custom colors for fog/water/sky
@@ -51,7 +51,7 @@ Which will significantly improve performance and simplify the introduction of ne
 
 This version received support for 64-bit architectures (arm64-v8a), which also eliminated a number of crashes and increased overall stability. Some bugs are expected to be fixed with upcoming updates.
 
-## 2.4.0b123 ([@rislaed](https://vk.com/id268478382))
+## 2.4.0b123 (@rislaed)
 
 Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). All subsequent updates are released for 64-bit devices and this packs will receive only critical bug fixes.
 
@@ -78,7 +78,7 @@ Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). A
 
 - Minor tweaks & internal refactor
 
-## 2.4.0b122 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b122 (@reider745)
 
 - Added [World.addListenerChunkStateChanged(listener, statesList)](/api/namespace/World#addListenerChunkStateChanged)/[addLocalListenerChunkStateChanged](/api/namespace/World#addLocalListenerChunkStateChanged) methods to track chunks loading and unloading
 - Added ability to get game settings via [Game.getOption(key)](/api/namespace/Game#getOption), use [Game.getOptions](/api/namespace/Game#getOptions) to list all available keys
@@ -86,7 +86,7 @@ Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). A
 - Implemented binary data packets, pass an bytes array to send them
 - Fixed dispensers functionality with modded liquid buckets and also player identifier transfering to *CraftRecipePreProvided* callback
 
-## 2.4.0b120-121 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b120-121 (@reider745)
 
 - Fixed mod browser proxy
 - Fixed broken saves bugs due to collision
@@ -98,7 +98,7 @@ Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). A
 - Mod browser minor crash fixes
 - In-game minor crash fixes
 
-## 2.4.0b118-119 ([@reider745](https://vk.com/id500917624))
+## 2.4.0b118-119 (@reider745)
 
 - Net protocol improvements
 - Added BlockSource methods for weather control
@@ -108,7 +108,7 @@ Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). A
 
 ## 2.4.0b116-117
 
-Added modded server support based on [ZoteCore](https://github.com/Reider745/ZoteCoreLoader) by [@reider745](https://vk.com/id500917624), related changes:
+Added modded server support based on [ZoteCore](https://github.com/Reider745/ZoteCoreLoader) by @reider745, related changes:
 
 - Fixed server list tab, modpacks can now have their own server list
 - Fixed player UUID was not stored, which broke local multiplayer inventory and servers
@@ -116,9 +116,9 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Added sync for biome ids
 - Other server-related fixes
 
-:::note Other changes ([@reider745](https://vk.com/id500917624))
+:::note Other changes (@reider745)
 
-- Added proxy to mod browser, which is used in case main url is not available (by [@spawnrys](https://vk.com/id549824423))
+- Added proxy to mod browser, which is used in case main url is not available (@spawnrys)
 - Fixed [client TileEntity sync](/api/namespace/TileEntity#LocalTileEntityPrototype), added methods [onConnectionPlayer](/api/namespace/TileEntity#onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#onDisconnectionPlayer)
 - In case of saves failture, they will now default to [empty js object](/api/namespace/Saver#getDefaultSaves)
 - Added ICRender condition [ICRender.BlockState(x, y, z, stateId, valueState)](/api/namespace/ICRender#BlockState)
@@ -130,7 +130,7 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 
 :::
 
-:::note Other changes ([@zheka_smirnov](https://vk.com/id24708057))
+:::note Other changes (@zheka2304)
 
 - Fixed frequent crashes when launching Inner Core
 - Updated Rhino to latest version - javascript engine for mods
