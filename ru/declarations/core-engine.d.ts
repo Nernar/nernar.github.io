@@ -919,7 +919,7 @@ declare namespace Block {
 	function registerEntityInsideFunction(id: string | number, func: EntityInsideFunction): boolean;
 
 	interface EntityInsideFunction {
-		(blockCoords: Vector, block: Tile, entity: number): void
+		(blockCoords: Vector, block: BlockState, entity: number): void
 	}
 
 	/**
@@ -941,7 +941,7 @@ declare namespace Block {
 	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
 
 	interface EntityStepOnFunction {
-		(coords: Vector, block: Tile, entity: number): void
+		(coords: Vector, block: BlockState, entity: number): void
 	}
 
 	/**
@@ -970,7 +970,7 @@ declare namespace Block {
 	 * @param region BlockSource object
 	 */
 	interface NeighbourChangeFunction {
-		(coords: Vector, block: Tile, changedCoords: Vector, region: BlockSource): void
+		(coords: Vector, block: BlockState, changedCoords: Vector, region: BlockSource): void
 	}
 
 	/**
@@ -2234,6 +2234,23 @@ declare class BlockSource {
      * @param players 
      */
     playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, players?: number[]): void;
+    /**
+     * Plays sound on defined coords.
+     * @param entity entity uid
+     * @param sound registered sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
+     * @param players 
+     * @since 3.1.1b127 arm64
+     */
+    playSound(x: number, y: number, z: number, sound: string, volume: number, pitch: number, players?: number[]): void;
+    /**
+     * Method to stop sound by name for defined player list.
+     * @param sound registered sound name
+     * @param players 
+     * @since 3.1.1b127 arm64
+     */
+    stopSound(sound: string, players?: number[]): void;
 }
 declare namespace BlockState {
     interface KeyStateScriptable {
@@ -2616,7 +2633,7 @@ declare namespace Callback {
          * @param block block that was touched
          * @param playerUid player entity UID
          */
-        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, playerUid: number): void
+        (coords: ItemUseCoordinates, item: ItemInstance, block: BlockState, playerUid: number): void
     }
 
     function addCallback(name: "ItemUseServer", func: ItemUseFunction, priority?: number): void;
@@ -2744,7 +2761,7 @@ declare namespace Callback {
          * @param block block that is destroyed
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: Tile, playerUid: number): void
+        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
     }
 
     function addCallback(name: "DestroyBlock", func: DestroyBlockFunction, priority?: number): void;
@@ -2761,7 +2778,7 @@ declare namespace Callback {
          * @param block block that is destroyed
          * @param progress current fraction of breaking progress
          */
-        (coords: ItemUseCoordinates, block: Tile, progress: number): void
+        (coords: ItemUseCoordinates, block: BlockState, progress: number): void
     }
 
     function addCallback(name: "DestroyBlockContinue", func: DestroyBlockContinueFunction, priority?: number): void;
@@ -2776,7 +2793,7 @@ declare namespace Callback {
          * @param block block that is placed
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: Tile, playerUid: number): void
+        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
     }
 
     function addCallback(name: "BuildBlock", func: BuildBlockFunction, priority?: number): void;
@@ -2859,7 +2876,7 @@ declare namespace Callback {
          * @param explosionRadius explosion power in case of exploding
          * @param cause cause information, supposed to always be zero
          */
-        (coords: Vector, block: Tile, explosionRadius: number, cause: number, region: BlockSource): void
+        (coords: Vector, block: BlockState, explosionRadius: number, cause: number, region: BlockSource): void
     }
 
     function addCallback(name: "PopBlockResources", func: PopBlockResourcesFunction, priority?: number): void;
@@ -2886,7 +2903,7 @@ declare namespace Callback {
          * @param coords rendering block coordinates
          * @param block block information
          */
-        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: Tile): void
+        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: BlockState): void
     }
 
     function addCallback(name: "CustomBlockTessellation", func: CustomBlockTessellationFunction, priority?: number): void;
@@ -6903,8 +6920,19 @@ declare namespace Game {
 
     /**
      * @returns Current level game mode, one of the {@link EGameMode} values.
+     * @since 3.1.1b127 arm64
      */
     function getGameMode(): number;
+
+    /**
+     * @since 3.1.1b127 arm64
+     */
+    function getPackVersion(): number;
+    
+    /**
+     * @since 3.1.1b127 arm64
+     */
+    function getPackVersionCode(): number;
 
     /**
      * Option types, which can be used to determine option data:
@@ -7792,6 +7820,7 @@ declare namespace IDRegistry {
 }
 /**
  * Module used to define items and their properties.
+ * @since 3.1.1b127 arm64 - added methods from NativeItem
  */
 declare namespace Item {
     /**
@@ -8262,7 +8291,7 @@ declare namespace Item {
 
     /**
      * Class representing item used to set it's properties.
-     @deprecated Use {@link Item} methods instead.
+     * @deprecated Use {@link Item} methods instead.
      */
     interface NativeItem {
         addRepairItem(id: number): void;
@@ -9425,6 +9454,14 @@ declare namespace Logger {
      * @since 2.2.0b77
      */
     function error(tag: string, message: string, error?: java.lang.Throwable): void;
+
+    /**
+     * Methot to get stacktrace like string in format `"at script:line, script:line"`
+     * @param limit default `-1`
+     * @param inlined default `false`
+     * @since 3.1.1b127 arm64
+     */
+    function captureRhinoStackTrace(limit: number, inlined: boolean): string;
 
     /**
      * Logs java Throwable with full stack trace to.
@@ -13279,6 +13316,12 @@ declare namespace Player {
      * @returns Current player's position.
      */
     function getPosition(): Vector;
+
+    /**
+     * Returns data about moving player by look angle. One example: if player go forward - x is + 1, if go back - x is - 1, if staying - x is 0. Working even if player riding on any mob.
+     * @since 3.1.1b127 arm64
+     */
+    function getMoveInputVector(): Vector
 
     /**
      * Sets specified coordinates as player's position.
@@ -19508,6 +19551,7 @@ declare namespace UI {
 
     /**
      * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
+     * @since 3.1.1b127 arm64
      */
     type FontColor = string | [r: number, g: number, b: number, a?: number] | number;
 	
@@ -19675,9 +19719,10 @@ declare namespace UI {
     function getContext(): android.app.Activity;
 
     /**
-     * 
+     * Method to parse color to number
      * @param value hex-string, rgba array or names of color in a string format.
      * @param defaultValue returns if result is wrong
+     * @since 3.1.1b127 arm64
      */
     function parseColor(value: FontColor, defaultValue: number): number;
 }
@@ -19736,26 +19781,117 @@ declare namespace Updatable {
 }
 
 /**
- * Updatable is an object that is notified every tick via it's 
+ * Common interface for all updatables, includes common function
+ * @since 3.1.1b127 arm64
+ */
+interface IUpdatableCommon {
+    update(...args: unknown[]): void;
+}
+
+/**
+ * Updatable is an object that is notified every tick via it's. New type
+ * {@link Updatable.update} method call.
+ * @since 3.1.1b127 arm64
+ */
+interface IUpdatable extends IUpdatableCommon {
+    /**
+     * Called every tick
+     * @param deltaTime delta time as current tick in updatable
+     */
+    update(deltaTime: number): void;
+}
+
+/**
+ * Updatable is an object that is notified every tick via it's. Legacy type
  * {@link Updatable.update} method call.
  */
-interface Updatable extends Scriptable {
-    /**
-     * Called every tick.
-     */
-    update: () => void;
+interface Updatable extends IUpdatableCommon {
     /**
      * Once `true`, the object will be removed from updatables list and will no
      * longer receive update calls.
      */
     remove?: boolean;
+    /**
+     * Called every tick.
+     */
+    update(): void;
 }
 
 /**
  * @deprecated Use {@link Updatable} instead.
  */
 declare const UpdatableAPI: typeof Updatable;
+
 /**
+ * Experimental module for smart work with some updatable behavior.
+ * @since 3.1.1b127 arm64
+ */
+declare namespace UpdatableScheduler {
+    function createNewScope(name: string): UpdatableSchedulerScope;
+    function getMainServerScope(): UpdatableSchedulerScope;
+    function getMainLocalScope(): UpdatableSchedulerScope;
+    function createServer(obj: IUpdatable, func: () => void): UpdatableHandle;
+    function destroyRawHandle(handle: number): boolean;
+    function getByRawHandle(): IUpdatable;
+    function getScopeByRawHandle(): UpdatableSchedulerScope;
+    /**
+     * @param tickAt 
+     * @param tickUntil default `-1`
+     */
+    function setRecurringScheduleByRawHandle(handle: number, tickAt: number, tickUntil: number): void;
+    /**
+     * @param tickAt 
+     * @param tickUntil default `-1`
+     */
+    function scheduleByRawHandle(handle: number, tickAt: number, tickUntil: number): void;
+    function isHandleAlive(handle: number): boolean;
+}
+
+/**
+ * @since 3.1.1b127 arm64
+ */
+declare class UpdatableSchedulerScope {
+    public setCurrentTick(tickNo: number): void;
+    public getCurrentTick(): number;
+    public createRawHandle(object: Scriptable, func: () => void): number;
+    public create(object: Scriptable, func: () => void): UpdatableHandle;
+    public create(object: Scriptable): UpdatableHandle;
+    public clearAll(): void;
+    public executeTickForScope(tickNo: number, timeLimitUs: number): void;
+}
+
+/**
+ * @since 3.1.1b127 arm64
+ */
+declare class UpdatableHandle {
+    public constructor(handle: number);
+    public getHandle(): number;
+    /**
+     * @param handle handle number to replace in current object
+     * @internal
+     */
+    public replaceUpdatableHandle(handle: number): number;
+    public isAlive(): boolean;
+    /**
+     * @param tickIn 
+     * @param tickUntil default `-1`
+     */
+    public schedule(tickIn: number, tickUntil: number): this;
+    /**
+     * @param tickIn 
+     * @param tickUntil default `-1`
+     */
+    public setRecurringSchedule(tickIn: number, tickUntil: number): this;
+    public getObject(): IUpdatable;
+    public getScope(): UpdatableSchedulerScope;
+    public destroy(): boolean;
+}
+
+const a: IUpdatable = {
+    update() {
+        
+    },
+}/**
  * Numeric IDs of vanilla blocks in the inventory.
  */
 declare enum VanillaBlockID {
