@@ -108,7 +108,7 @@ Most likely, this is the latest version for ARM32 architectures (armeabi-v7a). A
 
 ## 2.4.0b116-117
 
-Added modded server support based on [ZoteCore](https://github.com/Reider745/ZoteCoreLoader) by @reider745, related changes:
+Added modded server support based on [ZoteCore](https://github.com/Reider745/ZoteCoreLoader), related changes:
 
 - Fixed server list tab, modpacks can now have their own server list
 - Fixed player UUID was not stored, which broke local multiplayer inventory and servers

@@ -24,7 +24,7 @@ import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
 import type * as Typedoc from './api/docusaurus-plugin';
-import remarkAuthors from './src/plugins/remark-authors.mjs';
+import remarkAuthors from './src/plugins/remark-authors';
 
 import { readdirSync } from 'fs';
 import path from 'path';
@@ -67,11 +67,11 @@ export default {
 					editLocalizedFiles: true,
 					editUrl: 'https://github.com/nernar/nernar.github.io/tree/master/',
 					showLastUpdateTime: true,
-					remarkPlugins: [remarkAuthors]
+					beforeDefaultRemarkPlugins: [remarkAuthors]
 				},
 				blog: false,
 				pages: {
-					remarkPlugins: [remarkAuthors]
+					beforeDefaultRemarkPlugins: [remarkAuthors]
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css')

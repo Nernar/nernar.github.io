@@ -434,3 +434,56 @@ details > div > div > div > :last-child {
   background-color: white;
   opacity: 8%;
 }
+
+/* src/components/GithubAuthors.tsx */
+.github-authors-inline {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: 24px;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+.github-author-avatar {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.github-author-link:not(:first-child) {
+  margin-left: -12px;
+}
+
+.github-authors-inline:hover .github-author-link {
+  margin-left: 0;
+  transform: translateX(0);
+}
+
+.github-authors-inline .github-author-link:hover {
+  transform: scale(1.8) !important;
+  z-index: 10;
+}
+
+.github-authors-inline .github-author-avatar:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.github-authors-inline:hover .github-author-link {
+  transition-delay: 0.1s;
+}
+
+.github-authors-inline .github-author-link {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.github-author-avatar[src=""] {
+  display: none;
+}
+
+.github-author-link:has(.github-author-avatar[src=""]) {
+  display: none;
+}
