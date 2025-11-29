@@ -158,9 +158,3 @@ declare class UpdatableHandle {
     public getScope(): UpdatableSchedulerScope;
     public destroy(): boolean;
 }
-
-const a: IUpdatable = {
-    update() {
-        
-    },
-}
