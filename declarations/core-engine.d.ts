@@ -19885,12 +19885,6 @@ declare class UpdatableHandle {
     public getObject(): IUpdatable;
     public getScope(): UpdatableSchedulerScope;
     public destroy(): boolean;
-}
-
-const a: IUpdatable = {
-    update() {
-        
-    },
 }/**
  * Numeric IDs of vanilla blocks in the inventory.
  */
