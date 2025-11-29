@@ -19830,7 +19830,7 @@ declare namespace UpdatableScheduler {
     function createNewScope(name: string): UpdatableSchedulerScope;
     function getMainServerScope(): UpdatableSchedulerScope;
     function getMainLocalScope(): UpdatableSchedulerScope;
-    function createServer(obj: IUpdatable, func: () => void): UpdatableHandle;
+    function createServer(func: () => void, obj?: Scriptable): UpdatableHandle;
     function destroyRawHandle(handle: number): boolean;
     function getByRawHandle(): IUpdatable;
     function getScopeByRawHandle(): UpdatableSchedulerScope;
@@ -19853,9 +19853,8 @@ declare namespace UpdatableScheduler {
 declare class UpdatableSchedulerScope {
     public setCurrentTick(tickNo: number): void;
     public getCurrentTick(): number;
-    public createRawHandle(object: Scriptable, func: () => void): number;
-    public create(object: Scriptable, func: () => void): UpdatableHandle;
-    public create(object: Scriptable): UpdatableHandle;
+    public createRawHandle(func: () => void, object?: Scriptable): number;
+    public create(func: () => void, object?: Scriptable): UpdatableHandle;
     public clearAll(): void;
     public executeTickForScope(tickNo: number, timeLimitUs: number): void;
 }
