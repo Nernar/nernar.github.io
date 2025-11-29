@@ -180,7 +180,7 @@ declare namespace Callback {
          * @param block block that was touched
          * @param playerUid player entity UID
          */
-        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, playerUid: number): void
+        (coords: ItemUseCoordinates, item: ItemInstance, block: BlockState, playerUid: number): void
     }
 
     function addCallback(name: "ItemUseServer", func: ItemUseFunction, priority?: number): void;
@@ -308,7 +308,7 @@ declare namespace Callback {
          * @param block block that is destroyed
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: Tile, playerUid: number): void
+        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
     }
 
     function addCallback(name: "DestroyBlock", func: DestroyBlockFunction, priority?: number): void;
@@ -325,7 +325,7 @@ declare namespace Callback {
          * @param block block that is destroyed
          * @param progress current fraction of breaking progress
          */
-        (coords: ItemUseCoordinates, block: Tile, progress: number): void
+        (coords: ItemUseCoordinates, block: BlockState, progress: number): void
     }
 
     function addCallback(name: "DestroyBlockContinue", func: DestroyBlockContinueFunction, priority?: number): void;
@@ -340,7 +340,7 @@ declare namespace Callback {
          * @param block block that is placed
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: Tile, playerUid: number): void
+        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
     }
 
     function addCallback(name: "BuildBlock", func: BuildBlockFunction, priority?: number): void;
@@ -423,7 +423,7 @@ declare namespace Callback {
          * @param explosionRadius explosion power in case of exploding
          * @param cause cause information, supposed to always be zero
          */
-        (coords: Vector, block: Tile, explosionRadius: number, cause: number, region: BlockSource): void
+        (coords: Vector, block: BlockState, explosionRadius: number, cause: number, region: BlockSource): void
     }
 
     function addCallback(name: "PopBlockResources", func: PopBlockResourcesFunction, priority?: number): void;
@@ -450,7 +450,7 @@ declare namespace Callback {
          * @param coords rendering block coordinates
          * @param block block information
          */
-        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: Tile): void
+        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: BlockState): void
     }
 
     function addCallback(name: "CustomBlockTessellation", func: CustomBlockTessellationFunction, priority?: number): void;

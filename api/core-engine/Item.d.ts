@@ -1,5 +1,6 @@
 /**
  * Module used to define items and their properties.
+ * @since 3.1.1b127 arm64 - added methods from NativeItem
  */
 declare namespace Item {
     /**
@@ -470,7 +471,7 @@ declare namespace Item {
 
     /**
      * Class representing item used to set it's properties.
-     @deprecated Use {@link Item} methods instead.
+     * @deprecated Use {@link Item} methods instead.
      */
     interface NativeItem {
         addRepairItem(id: number): void;

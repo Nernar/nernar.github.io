@@ -53,22 +53,114 @@ declare namespace Updatable {
 }
 
 /**
- * Updatable is an object that is notified every tick via it's 
+ * Common interface for all updatables, includes common function
+ * @since 3.1.1b127 arm64
+ */
+interface IUpdatableCommon {
+    update(...args: unknown[]): void;
+}
+
+/**
+ * Updatable is an object that is notified every tick via it's. New type
+ * {@link Updatable.update} method call.
+ * @since 3.1.1b127 arm64
+ */
+interface IUpdatable extends IUpdatableCommon {
+    /**
+     * Called every tick
+     * @param deltaTime delta time as current tick in updatable
+     */
+    update(deltaTime: number): void;
+}
+
+/**
+ * Updatable is an object that is notified every tick via it's. Legacy type
  * {@link Updatable.update} method call.
  */
-interface Updatable extends Scriptable {
-    /**
-     * Called every tick.
-     */
-    update: () => void;
+interface Updatable extends IUpdatableCommon {
     /**
      * Once `true`, the object will be removed from updatables list and will no
      * longer receive update calls.
      */
     remove?: boolean;
+    /**
+     * Called every tick.
+     */
+    update(): void;
 }
 
 /**
  * @deprecated Use {@link Updatable} instead.
  */
 declare const UpdatableAPI: typeof Updatable;
+
+/**
+ * Experimental module for smart work with some updatable behavior.
+ * @since 3.1.1b127 arm64
+ */
+declare namespace UpdatableScheduler {
+    function createNewScope(name: string): UpdatableSchedulerScope;
+    function getMainServerScope(): UpdatableSchedulerScope;
+    function getMainLocalScope(): UpdatableSchedulerScope;
+    function createServer(obj: IUpdatable, func: () => void): UpdatableHandle;
+    function destroyRawHandle(handle: number): boolean;
+    function getByRawHandle(): IUpdatable;
+    function getScopeByRawHandle(): UpdatableSchedulerScope;
+    /**
+     * @param tickAt 
+     * @param tickUntil default `-1`
+     */
+    function setRecurringScheduleByRawHandle(handle: number, tickAt: number, tickUntil: number): void;
+    /**
+     * @param tickAt 
+     * @param tickUntil default `-1`
+     */
+    function scheduleByRawHandle(handle: number, tickAt: number, tickUntil: number): void;
+    function isHandleAlive(handle: number): boolean;
+}
+
+/**
+ * @since 3.1.1b127 arm64
+ */
+declare class UpdatableSchedulerScope {
+    public setCurrentTick(tickNo: number): void;
+    public getCurrentTick(): number;
+    public createRawHandle(object: Scriptable, func: () => void): number;
+    public create(object: Scriptable, func: () => void): UpdatableHandle;
+    public create(object: Scriptable): UpdatableHandle;
+    public clearAll(): void;
+    public executeTickForScope(tickNo: number, timeLimitUs: number): void;
+}
+
+/**
+ * @since 3.1.1b127 arm64
+ */
+declare class UpdatableHandle {
+    public constructor(handle: number);
+    public getHandle(): number;
+    /**
+     * @param handle handle number to replace in current object
+     * @internal
+     */
+    public replaceUpdatableHandle(handle: number): number;
+    public isAlive(): boolean;
+    /**
+     * @param tickIn 
+     * @param tickUntil default `-1`
+     */
+    public schedule(tickIn: number, tickUntil: number): this;
+    /**
+     * @param tickIn 
+     * @param tickUntil default `-1`
+     */
+    public setRecurringSchedule(tickIn: number, tickUntil: number): this;
+    public getObject(): IUpdatable;
+    public getScope(): UpdatableSchedulerScope;
+    public destroy(): boolean;
+}
+
+const a: IUpdatable = {
+    update() {
+        
+    },
+}

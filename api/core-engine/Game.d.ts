@@ -78,8 +78,19 @@ declare namespace Game {
 
     /**
      * @returns Current level game mode, one of the {@link EGameMode} values.
+     * @since 3.1.1b127 arm64
      */
     function getGameMode(): number;
+
+    /**
+     * @since 3.1.1b127 arm64
+     */
+    function getPackVersion(): number;
+    
+    /**
+     * @since 3.1.1b127 arm64
+     */
+    function getPackVersionCode(): number;
 
     /**
      * Option types, which can be used to determine option data:

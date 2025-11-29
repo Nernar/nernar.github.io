@@ -196,6 +196,12 @@ declare namespace Player {
     function getPosition(): Vector;
 
     /**
+     * Returns data about moving player by look angle. One example: if player go forward - x is + 1, if go back - x is - 1, if staying - x is 0. Working even if player riding on any mob.
+     * @since 3.1.1b127 arm64
+     */
+    function getMoveInputVector(): Vector
+
+    /**
      * Sets specified coordinates as player's position.
      * @deprecated Client-side only, use {@link Entity.setPosition} instead.
      */

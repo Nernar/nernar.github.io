@@ -473,4 +473,21 @@ declare class BlockSource {
      * @param players 
      */
     playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, players?: number[]): void;
+    /**
+     * Plays sound on defined coords.
+     * @param entity entity uid
+     * @param sound registered sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
+     * @param players 
+     * @since 3.1.1b127 arm64
+     */
+    playSound(x: number, y: number, z: number, sound: string, volume: number, pitch: number, players?: number[]): void;
+    /**
+     * Method to stop sound by name for defined player list.
+     * @param sound registered sound name
+     * @param players 
+     * @since 3.1.1b127 arm64
+     */
+    stopSound(sound: string, players?: number[]): void;
 }

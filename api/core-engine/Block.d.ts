@@ -366,7 +366,7 @@ declare namespace Block {
 	function registerEntityInsideFunction(id: string | number, func: EntityInsideFunction): boolean;
 
 	interface EntityInsideFunction {
-		(blockCoords: Vector, block: Tile, entity: number): void
+		(blockCoords: Vector, block: BlockState, entity: number): void
 	}
 
 	/**
@@ -388,7 +388,7 @@ declare namespace Block {
 	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
 
 	interface EntityStepOnFunction {
-		(coords: Vector, block: Tile, entity: number): void
+		(coords: Vector, block: BlockState, entity: number): void
 	}
 
 	/**
@@ -417,7 +417,7 @@ declare namespace Block {
 	 * @param region BlockSource object
 	 */
 	interface NeighbourChangeFunction {
-		(coords: Vector, block: Tile, changedCoords: Vector, region: BlockSource): void
+		(coords: Vector, block: BlockState, changedCoords: Vector, region: BlockSource): void
 	}
 
 	/**
