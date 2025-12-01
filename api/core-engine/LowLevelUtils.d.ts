@@ -42,7 +42,7 @@ declare namespace LowLevelUtils {
 	/**
 	 * @throws Java {@link java.lang.RuntimeException} with specified message.
 	 */
-	function throwException(message: string): void;
+	function throwException(message: string): never;
 	/**
 	 * Dumps AdaptedScript API hieracly to log with debug priority.
 	 */
