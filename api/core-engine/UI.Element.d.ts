@@ -147,8 +147,7 @@ declare namespace UI {
 		debug(canvas: android.graphics.Canvas, scale: number): void;
 	}
 
-	interface UICustomElement extends UIElement {
-		type: "custom",
+	interface UICustomElementProps extends UIElement {
 		custom?: {
 			onSetup?: (element: ICustomElement) => void,
 			onDraw?: (element: ICustomElement, cvs: android.graphics.Canvas, scale: number) => void,
@@ -159,6 +158,8 @@ declare namespace UI {
 			onContainerInit?: (element: ICustomElement, container: UiAbstractContainer, elementName: string) => void;
 		};
 	}
+
+    type UICustomElement = UICustomElementProps & { type: "custom" };
 
 	interface ICustomElement extends IElement {
 		getScope(): object;
@@ -171,12 +172,13 @@ declare namespace UI {
 		setupInitialBindings(container: UiAbstractContainer, elementName: string): void;
 	}
 
-	interface UIButtonElement extends UIElement {
-		type: "button" | "closeButton" | "close_button",
+	interface UIButtonElementProps extends UIElement {
 		scale?: number,
 		bitmap?: BitmapTypes,
 		bitmap2?: BitmapTypes;
 	}
+
+    type UIButtonElement = UIButtonElementProps & { type: "button" | "closeButton" | "close_button" };
 
 	interface IButtonElement extends IElement {
 		onSetup<T = UIButtonElement>(desc: T): void;
@@ -197,8 +199,7 @@ declare namespace UI {
 		right?: boolean;
 	}
 
-	interface UIFrameElement extends UIElement {
-		type: "frame",
+	interface UIFrameElementProps extends UIElement {
 		bitmap?: BitmapTypes,
 		width?: number,
 		height?: number,
@@ -207,6 +208,8 @@ declare namespace UI {
 		sides?: FrameTextureSides;
 	}
 
+    type UIFrameElement = UIFrameElementProps & { type: "frame" }
+
 	interface IFrameElement extends IElement {
 		onSetup<T = UIFrameElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
@@ -214,13 +217,14 @@ declare namespace UI {
 		onRelease(): void;
 	}
 
-	interface UIImageElement extends UIElement {
-		type: "image",
+	interface UIImageElementProps extends UIElement {
 		width?: number, height?: number,
 		scale?: number,
 		bitmap?: BitmapTypes,
 		overlay?: BitmapTypes;
 	}
+
+    type UIImageElement = UIImageElementProps & { type: "image" }
 
 	interface IImageElement extends IElement {
 		height: number;
@@ -235,8 +239,7 @@ declare namespace UI {
 		onRelease(): void;
 	}
 
-	interface UIScaleElement extends UIElement {
-		type: "scale",
+	interface UIScaleElementProps extends UIElement {
 		scale?: number,
 		direction?: number,
 		invert?: boolean,
@@ -257,6 +260,8 @@ declare namespace UI {
 		value?: number;
 	}
 
+    type UIScaleElement = UIScaleElementProps & { type: "scale" };
+
 	interface IScaleElement extends IElement {
 		/* static */ readonly DIRECTION_DOWN: number;
 		/* static */ readonly DIRECTION_LEFT: number;
@@ -268,8 +273,7 @@ declare namespace UI {
 		onRelease(): void;
 	}
 
-	interface UIScrollElement extends UIElement {
-		type: "scroll",
+	interface UIScrollElementProps extends UIElement {
 		isInt?: boolean,
 		width?: number,
 		length?: number,
@@ -287,6 +291,8 @@ declare namespace UI {
 		onNewValue?: (result: number, container: UiAbstractContainer, element: UIScrollElement) => void;
 	}
 
+    type UIScrollElement = UIScrollElementProps & { type: "scroll" }
+
 	interface IScrollElement extends IElement {
 		onSetup<T = UIScrollElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
@@ -295,8 +301,7 @@ declare namespace UI {
 		onTouchEvent(event: ITouchEvent): void;
 	}
 
-	interface UISlotElement<T = "slot"> extends UIElement {
-		type: T,
+	interface UISlotElementProps extends UIElement {
 		bitmap?: string,
 		/**
 		 * Since 2.4.0b122o1 can be float, before it was rounded up,
@@ -334,6 +339,8 @@ declare namespace UI {
 		isValid?: (id: number, count: number, data: number, container: Container, item: ItemInstance) => boolean;
 	}
 
+    type UISlotElement = UISlotElementProps & { type: "slot" }
+
 	interface ISlotElement extends IElement {
 		background: Texture;
 		curCount: number;
@@ -360,9 +367,11 @@ declare namespace UI {
 		onTouchEvent(event: ITouchEvent): void;
 	}
 
-	interface UIInvSlotElement extends UISlotElement<"invslot" | "invSlot"> {
+	interface UIInvSlotElementProps extends UISlotElementProps {
 		index?: number;
 	}
+
+    type UIInvSlotElement = UIInvSlotElementProps & { type: "invSlot" | "invslot" };
 
 	interface IInvSlotElement extends ISlotElement {
 		onSetup<T = UIInvSlotElement>(desc: T): void;
@@ -371,8 +380,7 @@ declare namespace UI {
 		setupInitialBindings(container: UiAbstractContainer, elementName: string): void;
 	}
 
-	interface UISwitchElement extends UIElement {
-		type: "switch",
+	interface UISwitchElementProps extends UIElement {
 		bindingObject?: any,
 		bindingProperty?: string,
 		configValue?: Config.ConfigValue,
@@ -384,6 +392,8 @@ declare namespace UI {
 		onNewState?: (val: boolean, container: UiAbstractContainer, element: UISwitchElement) => void;
 	}
 
+    type UISwitchElement = UISwitchElementProps & { type: "switch" };
+
 	interface ISwitchElement extends IElement {
 		onSetup<T = UISwitchElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
@@ -392,8 +402,7 @@ declare namespace UI {
 		onRelease(): void;
 	}
 
-	interface UITabElement extends UIElement {
-		type: "tab",
+	interface UITabElementProps extends UIElement {
 		selectedColor?: number,
 		deselectedColor?: number,
 		tabIndex?: number,
@@ -401,14 +410,15 @@ declare namespace UI {
 		isSelected?: boolean;
 	}
 
+    type UITabElement = UITabElementProps & { type: "tab" };
+
 	interface ITabElement extends IFrameElement {
 		onSetup<T = UITabElement>(desc: T): void;
 		onTouchEvent(event: ITouchEvent): void;
 		onReset(): void;
 	}
 
-	interface UITextElement extends UIElement {
-		type: "text",
+	interface UITextElementProps extends UIElement {
 		font?: FontDescription,
 		multiline?: boolean,
 		format?: boolean,
@@ -416,17 +426,20 @@ declare namespace UI {
 		text?: string;
 	}
 
+    type UITextElement = UITextElementProps & { type: "text" };
+
 	interface ITextElement extends IElement {
 		onSetup<T = UITextElement>(desc: T): void;
 		onDraw(canvas: android.graphics.Canvas, scale: number): void;
 		onBindingUpdated<T>(name: string, val: T): void;
 	}
 
-	interface UIFPSTextElement extends Omit<UITextElement, "type"> {
-		type: "fps",
+	interface UIFPSTextElementProps extends UITextElementProps {
 		interpolate?: boolean,
 		period?: number;
 	}
+
+    type UIFPSTextElement = UIFPSTextElementProps & { type: "fps" };
 
 	interface IFPSTextElement extends ITextElement {
 		onSetup<T = UIFPSTextElement>(desc: T): void;
@@ -452,6 +465,7 @@ declare namespace UI {
 		| UIFPSTextElement
 		| UIInvSlotElement
 	);
+    
 	interface ElementSet {
 		[key: string]: Elements;
 	}
