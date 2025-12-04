@@ -1017,7 +1017,7 @@ declare namespace Entity {
      * @param coords2 end search range coordinates
      * @param type entity type ID, `255` by default
      * @param flag white- or blacklist, `true` by default
-     * @since 2.0.4b35
+     * @since 2.0.4b35 (broken in 3.1.0b126, fixed in next version)
      * @remarks
      * Local method, use {@link BlockSource.listEntitiesInAABB} instead.
      */

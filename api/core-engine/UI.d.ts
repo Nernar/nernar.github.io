@@ -177,10 +177,21 @@ declare namespace UI {
     function getContext(): android.app.Activity;
 
     /**
-     * Method to parse color to number
-     * @param value hex-string, rgba array or names of color in a string format.
-     * @param defaultValue returns if result is wrong
+     * Plays client sound designed for interfaces, can be stopped
+	 * as ordinal client sound, will be played even in menu.
+     * @param sound resource pack sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
      * @since 3.1.1b127
      */
-    function parseColor(value: FontColor, defaultValue: number): number;
+    function playSound(sound: string, volume?: number, pitch?: number): void;
+
+    /**
+     * Method to unwrap complex color variants into number.
+     * @param value hex-string, rgba array or names of color in a string format.
+     * @param defaultValue returns if result is wrong, even if it fails,
+	 * transparent (`0`) is returned
+     * @since 3.1.1b127
+     */
+    function parseColor(value: FontColor, defaultValue?: FontColor): number;
 }

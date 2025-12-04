@@ -132,6 +132,9 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+		/**
+         * @since 3.1.1b127
+		 */
         getStyleSafe(): Style;
 		setBlockingBackground(bb: boolean): void;
 		/**

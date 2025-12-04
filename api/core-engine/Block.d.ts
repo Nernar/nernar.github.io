@@ -337,14 +337,16 @@ declare namespace Block {
 	/**
 	 * Function used to determine when block is broken by
 	 * environment (explosions, pistons, etc.).
-	 * @param blockCoords coordinates where the block is destroyed and side from
-	 * where it is destroyed
-	 * @param block information about block that is broken
-	 * @param region BlockSource object
-	 * @param i unknown parameter, supposed to always be zero
 	 */
 	interface PopResourcesFunction {
-		(blockCoords: Vector, block: Tile, region: BlockSource, explosionRadius: number, i: number): void
+		/**
+		 * @param blockCoords coordinates where the block is destroyed and side from
+		 * where it is destroyed
+		 * @param block information about block that is broken (since 3.1.1b127 passes {@link BlockState})
+		 * @param region BlockSource object
+		 * @param i unknown parameter, supposed to always be zero
+		 */
+		(blockCoords: Vector, block: Tile | BlockSource, region: BlockSource, explosionRadius: number, i: number): void
 	}
 
 	/**
@@ -366,7 +368,10 @@ declare namespace Block {
 	function registerEntityInsideFunction(id: string | number, func: EntityInsideFunction): boolean;
 
 	interface EntityInsideFunction {
-		(blockCoords: Vector, block: BlockState, entity: number): void
+		/**
+		 * @param block event block (since 3.1.1b127 passes {@link BlockState})
+		 */
+		(blockCoords: Vector, block: Tile | BlockState, entity: number): void
 	}
 
 	/**
@@ -388,7 +393,10 @@ declare namespace Block {
 	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
 
 	interface EntityStepOnFunction {
-		(coords: Vector, block: BlockState, entity: number): void
+		/**
+		 * @param block event block (since 3.1.1b127 passes {@link BlockState})
+		 */
+		(coords: Vector, block: Tile | BlockState, entity: number): void
 	}
 
 	/**
@@ -411,13 +419,15 @@ declare namespace Block {
 
 	/**
 	 * Function used to check block's neighbours changes.
-	 * @param coords coords vector of the block
-	 * @param block Tile object of the block
-	 * @param changedCoords coords vector of the neighbour block that was changed
-	 * @param region BlockSource object
 	 */
 	interface NeighbourChangeFunction {
-		(coords: Vector, block: BlockState, changedCoords: Vector, region: BlockSource): void
+		/**
+		 * @param coords coords vector of the block
+		 * @param block Tile object of the block (since 3.1.1b127 passes {@link BlockState})
+		 * @param changedCoords coords vector of the neighbour block that was changed
+		 * @param region BlockSource object
+		 */
+		(coords: Vector, block: Tile | BlockState, changedCoords: Vector, region: BlockSource): void
 	}
 
 	/**

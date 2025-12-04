@@ -465,29 +465,37 @@ declare class BlockSource {
 	randomTick(x: number, y: number, z: number): void;
 
     /**
-     * Plays sound to entity by radius 16 blocks from source, if volume bigger than 1.0, radius multiplies on max radius.
+     * Plays sound on defined coordsby radius 16 blocks from source,
+	 * if volume bigger than 1.0, radius multiplies to volume.
      * @param entity entity uid
-     * @param sound registered sound name
+     * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
-     * @param players 
-     */
-    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, players?: number[]): void;
-    /**
-     * Plays sound on defined coords.
-     * @param entity entity uid
-     * @param sound registered sound name
-     * @param volume default `1.0`
-     * @param pitch default `1.0`
-     * @param players 
+     * @param playerUids if not set, players in volume multiplied
+	 * radius will be detected automatically
      * @since 3.1.1b127
      */
-    playSound(x: number, y: number, z: number, sound: string, volume: number, pitch: number, players?: number[]): void;
+    playSound(x: number, y: number, z: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
+
+    /**
+     * Plays sound to entity by radius 16 blocks from source,
+	 * if volume bigger than 1.0, radius multiplies to volume.
+     * @param entity entity uid
+     * @param sound resource pack sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
+     * @param playerUids if not set, players in volume multiplied
+	 * radius will be detected automatically
+     * @since 3.1.1b127
+     */
+    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
+
     /**
      * Method to stop sound by name for defined player list.
-     * @param sound registered sound name
-     * @param players 
+     * @param sound resource pack sound name
+     * @param playerUids if not set, players in volume multiplied
+	 * radius will be detected automatically
      * @since 3.1.1b127
      */
-    stopSound(sound: string, players?: number[]): void;
+    stopSound(sound: string, playerUids?: number[]): void;
 }

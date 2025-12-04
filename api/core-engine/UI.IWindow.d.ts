@@ -64,6 +64,10 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+		/**
+         * @since 3.1.1b127 (availabled for all windows, before it appears
+		 * to be only in {@link TabbedWindow} and {@link StandardWindow})
+		 */
         getStyleSafe(): Style;
         
 		/**
@@ -450,8 +454,11 @@ declare namespace UI {
 		getDoubleProperty(name: string, fallback: number): number;
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
+		/**
+		 * @since 3.1.1b127
+		 */
+        getColorProperty(valueOrProperty: FontColor, defaultValue?: FontColor): number;
 		setProperty(name: string, value: any): void;
-        getColorProperty(valueOrProperty: number | string, defaultValue: number): number
         static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
 	}
 }

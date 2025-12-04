@@ -21,23 +21,33 @@ declare namespace IDRegistry {
     const MAX_ID: number;
 
     /**
-     * Generates a new numeric block ID.
-     * @param name string block ID. Used in {@link Block} module functions and 
-     * in some other block-related functions. Inner Core converts it to 
+     * Generates a new numeric block ID. Used in {@link Block} module functions
+     * and  in some other block-related functions.
+     * @param name string block ID; Inner Core converts it to 
      * block_<name> as minecraft vanilla block ID to avoid string ID clashes
      * @returns Numeric block ID.
      */
     function genBlockID(name: string): number;
 
     /**
-     * Generates a new numeric item ID.
-     * @param name string item ID. Used in {@link Item} module functions and 
-     * in some other item-related functions. Inner Core converts it to 
+     * Generates a new numeric item ID. Used in {@link Item} module functions
+     * and in some other item-related functions.
+     * @param name string item ID; Inner Core converts it to 
      * item_<name> as minecraft vanilla item ID to avoid string ID clashes
      * @returns Numeric item ID.
      */
     function genItemID(name: string): number;
 
+    interface Namespace {
+        [key: string]: number
+    }
+
+    /**
+     * Returns identifier namespace, which consist of both
+     * item and block name IDs to numeric conversion.
+     */
+    function useNamespace(namespace: string): Namespace;
+ 
     /**
      * Gets known modded item or block string ID by it's numeric ID.
      * @param id numeric item or block ID

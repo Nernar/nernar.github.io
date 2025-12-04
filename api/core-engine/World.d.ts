@@ -400,20 +400,27 @@ declare namespace World {
     function canSeeSky(x: number, y: number, z: number): boolean;
 
     /**
-     * Plays standart Minecraft sound on the specified coordinates.
-     * @param name sound name
+     * Plays client sound on the specified coordinates.
+     * @param sound resource pack sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
     function playSound(x: number, y: number, z: number, name: string, volume: number, pitch?: number): void;
 
     /**
-     * Plays standart Minecraft sound from the specified entity.
-     * @param name sound name
+     * Plays client sound from the specified entity.
+     * @param sound resource pack sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
     function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
+
+    /**
+     * Method to stop sound by name.
+     * @param sound resource pack sound name
+     * @since 3.1.1b127
+     */
+    function stopSound(sound: string): void;
 
     /**
      * @returns Loaded world directory full path.

@@ -151,10 +151,6 @@ declare namespace UI {
 		 */
 		setStyle(style: BindingSet): void;
 		getStyle(): Style;
-		/**
-		 * @deprecated Same as {@link getStyle}, meant to override
-		 * fallback default style, but never properly used.
-		 */
 		getStyleSafe(): Style;
 		setCloseOnBackPressed(cobp: boolean): void;
 		onBackPressed(): boolean;

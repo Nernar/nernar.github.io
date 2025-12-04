@@ -1,6 +1,5 @@
 /**
  * Module used to define items and their properties.
- * @since 3.1.1b127 arm64 - added methods from NativeItem
  */
 declare namespace Item {
     /**
@@ -65,6 +64,14 @@ declare namespace Item {
     }
 
     /**
+     * @since 3.1.1b127
+     */
+    function isFood(id: number | string): boolean;
+    /**
+     * @since 3.1.1b127
+     */
+    function getNutrition(id: number | string): number;
+    /**
      * Creates eatable item using specified parameters.
      * @param nameID string ID of the item. You should register it via 
      * {@link IDRegistry.genItemID} call first
@@ -77,8 +84,7 @@ declare namespace Item {
     function createFoodItem(nameID: string, name: string, texture: TextureData, params?: FoodParams): NativeItem;
 
     /**
-     * @deprecated Use {@link Item.createItem} and
-     * {@link Recipes.addFurnaceFuel} instead.
+     * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel} instead.
      * @throws Unsupported usage.
      */
     function createFuelItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): void;
@@ -121,6 +127,22 @@ declare namespace Item {
     }
 
     /**
+     * @since 3.1.1b127
+     */
+    function isArmor(id: number | string): boolean;
+    /**
+     * Natural armor points, that also is displayed above hotbar.
+     * @param id numeric item ID
+     * @returns Natural armor half points.
+     * @since 2.4.0b119
+     */
+    function getArmorValue(id: number | string): number;
+    function setArmorDamageable(id: number | string, damageable: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isArmorDamageable(id: number | string): boolean;
+    /**
      * Creates armor item using specified parameters.
      * @param nameID string ID of the item; you should register it via 
      * {@link IDRegistry.genItemID} call first
@@ -132,6 +154,10 @@ declare namespace Item {
      */
     function createArmorItem(nameID: string, name: string, texture: TextureData, params: ArmorParams): NativeItem;
 
+    /**
+     * @since 3.1.1b127
+     */
+    function isThrowable(id: number | string): boolean;
     /**
      * Creates throwable item using specified parameters.
      * @param nameID string ID of the item; you should register it via 
@@ -151,24 +177,30 @@ declare namespace Item {
     function isNativeItem(id: number): boolean;
 
     /**
-     * @param id numeric item ID
-     * @returns Maximum damage value for the specified item.
+     * @since 3.1.1b127
      */
-    function getMaxDamage(id: number): number;
-
+    function setMaxStack(id: number | string, size: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function setMaxStackSize(id: number | string, size: number): void;
     /**
      * @param id numeric item ID
      * @returns Maximum stack size for the specified item.
      * @deprecated Use same function with data parameter.
      */
     function getMaxStack(id: number): number;
-
     /**
      * @param id numeric item ID
      * @returns Maximum stack size for the specified item.
      * @since 2.2.0b1 pre-alpha
      */
     function getMaxStack(id: number, data: number): number;
+    /**
+     * @returns Maximum stack size for the specified item.
+     * @since 3.1.1b127
+     */
+    function getMaxStackSize(id: number | string, data?: number): number;
 
     /**
      * @param id numeric item ID
@@ -176,7 +208,6 @@ declare namespace Item {
      * @returns Current item name.
      */
     function getName(id: number, data: number): string;
-
     /**
      * @param id numeric item ID
      * @param data item data
@@ -187,12 +218,9 @@ declare namespace Item {
     function getName(id: number, data: number, encode: any): string;
 
     /**
-     * Natural armor points, that also is displayed above hotbar.
-     * @param id numeric item ID
-     * @returns Natural armor half points.
-     * @since 2.4.0b119
+     * @since 3.1.1b127
      */
-    function getArmorValue(id: number): number;
+    function getDynamicIconOverride(id: number, count: number, data: number, extra: ItemExtraData): void;
 
     /**
      * @param id numeric item ID
@@ -200,7 +228,6 @@ declare namespace Item {
      * @since 2.2.1b94 (not worked before)
      */
     function isValid(id: number): boolean;
-
     /**
      * @param id numeric item ID
      * @param data no longer supported, do not use this parameter
@@ -215,15 +242,22 @@ declare namespace Item {
      * @param count amount of the item to be added, generally should be 1
      * @param data item data
      */
-    function addToCreative(id: number | string, count: number, data: number, extra?: ItemExtraData): void;
-
+    function addToCreative(id: number | string, count?: number, data?: number, extra?: ItemExtraData): void;
     /**
      * Creates group of creative items.
      * @param name name of group
      * @param displayedName name of group in game
      * @param ids array of items in group
      */
-    function addCreativeGroup(name: string, displayedName: string, ids: number[]): void
+    function addCreativeGroup(name: string, displayedName: string, ids: number[]): void;
+    /**
+     * Adds or creates a creative group with specified item.
+     * @param name name of group
+     * @param displayedName name of group in game
+     * @param ids array of items in group
+     * @since 3.1.1b127
+     */
+    function addToCreativeGroup(name: string, displayedName: string, id: number | string): void;
 
     /**
      * Applies several properties via one method call.
@@ -239,6 +273,22 @@ declare namespace Item {
      * {@link EItemCategory} values
      */
     function setCategory(id: number | string, category: number): void;
+    /**
+     * Sets item creative category.
+     * @param id string or numeric item ID
+     * @param category item category, should be one of the 
+     * {@link EItemCategory} values
+     * @since 3.1.1b127
+     */
+    function setCreativeCategory(id: number | string, category: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getCategory(id: number | string): EItemCategory;
+    /**
+     * @since 3.1.1b127
+     */
+    function getCreativeCategory(id: number | string): EItemCategory;
 
     /**
      * Specifies how the item can be enchanted.
@@ -249,6 +299,18 @@ declare namespace Item {
      * value is, the better enchants you get with the same level
      */
     function setEnchantType(id: number | string, enchant: number, value: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function setEnchantibility(id: number | string, type: number, value: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getEnchantSlot(id: number | string): number;
+    /**
+     * @since 3.1.1b127
+     */
+    function getEnchantValue(id: number | string): number;
 
     /**
      * Specifies what items can be used to repair this item in the anvil.
@@ -256,6 +318,27 @@ declare namespace Item {
      * @param items array of numeric item IDs to be used as repair items
      */
     function addRepairItemIds(id: number | string, items: number[]): void;
+    /**
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param items array of numeric item IDs to be used as repair items
+     * @since 3.1.1b127
+     */
+    function addRepairItems(id: number | string, items: [number | string][]): void;
+    /**
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param repairId string or numeric repair item ID
+     * @since 3.1.1b127
+     */
+    function addRepairItemId(id: number | string, repairId: number | string): void;
+    /**
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param repairId string or numeric repair item ID
+     * @since 3.1.1b127
+     */
+    function addRepairItem(id: number | string, repairId: number | string): void;
 
     /**
      * Specifies how the player should hold the item.
@@ -264,13 +347,34 @@ declare namespace Item {
      * item
      */
     function setToolRender(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isToolRender(id: number | string): boolean;
+
+    /**
+     * Specifies how the player should hold the item.
+     * @param id string or numeric item ID
+     * @param enabled if true, player holds the item as a tool, not as a simple
+     * item
+     */
+    function setHandEquipped(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isHandEquipped(id: number | string): boolean;
 
     /**
      * Sets item maximum data value.
      * @param id string or numeric item ID
-     * @param maxdamage maximum data value for the item
+     * @param damage maximum data value for the item
      */
-    function setMaxDamage(id: number | string, maxdamage: number): void;
+    function setMaxDamage(id: number | string, damage: number): void;
+    /**
+     * @param id numeric item ID
+     * @returns Maximum damage value for the specified item.
+     */
+    function getMaxDamage(id: number | string): number;
 
     /**
      * Sets item as glint (like enchanted tools or golden apple).
@@ -278,6 +382,10 @@ declare namespace Item {
      * @param enabled if true, the item will be displayed as glint item
      */
     function setGlint(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isGlint(id: number | string, data?: number, extra?: ItemExtraData): void;
 
     /**
      * Allows to click with item on liquid blocks.
@@ -285,13 +393,19 @@ declare namespace Item {
      * @param enabled if true, liquid blocks can be selected on click
      */
     function setLiquidClip(id: number | string, enabled: boolean): void;
-
-    function setArmorDamageable(damageable: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isLiquidClip(id: number | string, data?: number): boolean;
 
     /**
-     * @deprecated No longer supported.
+     * @deprecated No longer supported. Probably?
      */
     function setStackedByData(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isStackedByData(id: number | string): boolean;
 
     /**
      * Allows item to be put in offhand slot.
@@ -299,6 +413,10 @@ declare namespace Item {
      * @since 2.0.4b35
      */
     function setAllowedInOffhand(id: number | string, allowed: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isAllowedInOffhand(id: number | string): boolean;
 
     /**
      * 
@@ -307,6 +425,10 @@ declare namespace Item {
      * @since 2.4.0b119
      */
     function setShouldDespawn(id: number | string, should: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isShouldDespawn(id: number | string): boolean;
 
     /**
      * 
@@ -315,14 +437,19 @@ declare namespace Item {
      * @since 2.4.0b119
      */
     function setFireResistant(id: number | string, resistant: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isFireResistant(id: number | string): boolean;
 
     /**
-     * 
-     * @param id 
-     * @param explodable 
      * @since 2.4.0b119
      */
     function setExplodable(id: number | string, explodable: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isExplodable(id: number | string): boolean;
 
     /**
      * Sets additional properties for the item, uses Minecraft mechanisms to
@@ -339,6 +466,10 @@ declare namespace Item {
      * values
      */
     function setUseAnimation(id: number | string, animType: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getUseAnimation(id: number | string): EItemAnimation;
 
     /**
      * Limits maximum use duration. This is useful to create such items as bows.
@@ -346,34 +477,29 @@ declare namespace Item {
      * @param duration maximum use duration in ticks
      */
     function setMaxUseDuration(id: number | string, duration: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getMaxUseDuration(id: number | string): number;
 
-    function isGlint(id: number | string, data?: number, extra?: ItemExtraData): void;
-    function isFood(id: number | string): void;
-    function isArmor(id: number | string): void;
-    function isThrowable(id: number | string): void;
-    function getNutrition(id: number | string): number;
-    function getArmorValue(id: number | string): number;
-    function isArmorDamageable(id: number | string): boolean;
-    function isRequiresIconOverride(id: number | string): boolean;
-    function isToolRender(id: number | string): boolean;
-    function isHandEquipped(id: number | string): boolean;
-    function getUseAnimation(id: number | string): EItemAnimation;
-    function isStackedByData(id: number | string): boolean;
-    function isAllowedInOffhand(id: number | string): boolean;
-    function isShouldDespawn(id: number | string): boolean;
-    function isFireResistant(id: number | string): boolean;
-    function isExplodable(id: number | string): boolean;
-    function isMirroredSprite(id: number | string): boolean;
-    function getEnchantSlot(id: number | string): number;
-    function getEnchantValue(id: number | string): number;
-    function getCategory(id: number | string): EItemCategory;
-    function getCreativeCategory(id: number | string): EItemCategory;
-    function isLiquidClip(id: number | string): boolean;
-    function setMirroredSprite(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
     function setRequiresIconOverride(id: number | string, enabled: boolean): void;
-    function setEnchantType(id: number | string, type: number, value: number): void;
-    function setEnchantibility(id: number | string, type: number, value: number): void;
-    
+    /**
+     * @since 3.1.1b127
+     */
+    function isRequiresIconOverride(id: number | string): boolean;
+
+    /**
+     * @since 3.1.1b127
+     */
+    function setMirroredSprite(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isMirroredSprite(id: number | string): boolean;
+
     /**
      * Same as {@link Item.registerUseFunction}, but supports numeric IDs only.
      */
@@ -412,7 +538,7 @@ declare namespace Item {
 
     /**
      * Registers function to perform item name overrides.
-     * Since 2.4.0b122-4 arm64 also supports vanilla items and blocks.
+     * Since 2.4.0b122-4 also supports vanilla items and blocks.
      * @param nameID string or numeric ID of the item
      * @param func function that is called to override item name. Should return 
      * string to be used as new item name
@@ -537,7 +663,7 @@ declare namespace Item {
 	/**
 	 * Once upon a time, a new way of registering items, however,
 	 * in current state, either does not work or is undesirable to use.
-     * @deprecated
+     * @deprecated Since 3.1.1b127 warnings user of usage in developer mode.
 	 */
 	interface ItemLegacyPrototype {
         type: "createItem" | "createFoodItem" | "createArmorItem" | "createThrowableItem",

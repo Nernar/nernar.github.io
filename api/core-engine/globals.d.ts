@@ -19,13 +19,13 @@ declare function runCustomSource(name: string, scope?: object): void;
  * Object containing custom block string IDs  as keys and their numeric
  * IDs as values.
  */
-declare const BlockID: { [key: string]: number };
+declare const BlockID: IDRegistry.Namespace;
 
 /**
  * Object containing custom item string IDs as keys and their numeric
  * IDs as values.
  */
-declare const ItemID: { [key: string]: number };
+declare const ItemID: IDRegistry.Namespace;
 
 /**
  * Module containing {@link ItemID} and {@link BlockID} values.
@@ -36,13 +36,13 @@ declare namespace IDData {
 	 * Object containing custom item string IDs as keys and their numeric
 	 * IDs as values.
 	 */
-	const item: { [key: string]: number };
+	const item: IDRegistry.Namespace;
 
 	/**
 	 * Object containing custom block string IDs as keys and their numeric
 	 * IDs as values.
 	 */
-	const block: { [key: string]: number };
+	const block: IDRegistry.Namespace;
 }
 
 /**

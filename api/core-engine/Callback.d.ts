@@ -158,11 +158,11 @@ declare namespace Callback {
          * @param coords set of all coordinate values that can be useful to write
          * custom use logics, relative and vectorized one
          * @param item item that was in the player's hand when it touched the block
-         * @param block block that was touched
+         * @param block block that was touched (since 3.1.1b127 passes {@link BlockState})
          * @param isExternal received from external player on server
          * @param playerUid player entity UID
          */
-        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, playerUid: number): void
+        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile | BlockState, isExternal: boolean, playerUid: number): void
     }
 
     function addCallback(name: "ItemUse", func: LegacyItemUseFunction, priority?: number): void;
@@ -177,10 +177,10 @@ declare namespace Callback {
          * @param coords set of all coordinate values that can be useful to write
          * custom use logics
          * @param item item that was in the player's hand when it touched the block
-         * @param block block that was touched
+         * @param block block that was touched (since 3.1.1b127 passes {@link BlockState})
          * @param playerUid player entity UID
          */
-        (coords: ItemUseCoordinates, item: ItemInstance, block: BlockState, playerUid: number): void
+        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile | BlockState, playerUid: number): void
     }
 
     function addCallback(name: "ItemUseServer", func: ItemUseFunction, priority?: number): void;
@@ -305,10 +305,10 @@ declare namespace Callback {
         /**
          * @param coords coordinates where the block is destroyed and side from
          * where it is destroyed
-         * @param block block that is destroyed
+         * @param block block that is destroyed (since 3.1.1b127 passes {@link BlockState})
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
+        (coords: ItemUseCoordinates, block: Tile | BlockState, playerUid: number): void
     }
 
     function addCallback(name: "DestroyBlock", func: DestroyBlockFunction, priority?: number): void;
@@ -322,10 +322,10 @@ declare namespace Callback {
         /**
          * @param coords coordinates where the block is destroyed and side from
          * where it is destroyed
-         * @param block block that is destroyed
+         * @param block block that is destroyed (since 3.1.1b127 passes {@link BlockState})
          * @param progress current fraction of breaking progress
          */
-        (coords: ItemUseCoordinates, block: BlockState, progress: number): void
+        (coords: ItemUseCoordinates, block: Tile | BlockState, progress: number): void
     }
 
     function addCallback(name: "DestroyBlockContinue", func: DestroyBlockContinueFunction, priority?: number): void;
@@ -337,10 +337,10 @@ declare namespace Callback {
         /**
          * @param coords coordinates where the block is placed and side from
          * where it is placed
-         * @param block block that is placed
+         * @param block block that is placed (since 3.1.1b127 passes {@link BlockState})
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
+        (coords: ItemUseCoordinates, block: Tile | BlockState, playerUid: number): void
     }
 
     function addCallback(name: "BuildBlock", func: BuildBlockFunction, priority?: number): void;
@@ -351,10 +351,10 @@ declare namespace Callback {
     interface BlockChangedFunction {
         /**
          * @param coords coordinates where block change occurred
-         * @param oldBlock the block that is being replaced
-         * @param newBlock replacement block
+         * @param oldBlock the block that is being replaced (since 3.1.1b127 passes {@link BlockState})
+         * @param newBlock replacement block (since 3.1.1b127 passes {@link BlockState})
          */
-        (coords: Vector, oldBlock: Tile, newBlock: Tile, region: BlockSource): void
+        (coords: Vector, oldBlock: Tile | BlockState, newBlock: Tile | BlockState, region: BlockSource): void
     }
 
     function addCallback(name: "BlockChanged", func: BlockChangedFunction, priority?: number): void;
@@ -419,11 +419,11 @@ declare namespace Callback {
     interface PopBlockResourcesFunction {
         /**
          * @param coords coordinates of the block that was broken
-         * @param block information about the block that was broken
+         * @param block information about the block that was broken (since 3.1.1b127 passes {@link BlockState})
          * @param explosionRadius explosion power in case of exploding
          * @param cause cause information, supposed to always be zero
          */
-        (coords: Vector, block: BlockState, explosionRadius: number, cause: number, region: BlockSource): void
+        (coords: Vector, block: Tile | BlockState, explosionRadius: number, cause: number, region: BlockSource): void
     }
 
     function addCallback(name: "PopBlockResources", func: PopBlockResourcesFunction, priority?: number): void;
@@ -448,9 +448,9 @@ declare namespace Callback {
         /**
          * @param renderer object used to manipulate block rendering process
          * @param coords rendering block coordinates
-         * @param block block information
+         * @param block block information (since 3.1.1b127 passes {@link BlockState})
          */
-        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: BlockState): void
+        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: Tile | BlockState): void
     }
 
     function addCallback(name: "CustomBlockTessellation", func: CustomBlockTessellationFunction, priority?: number): void;
