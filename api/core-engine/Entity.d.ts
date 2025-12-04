@@ -192,7 +192,7 @@ declare namespace Entity {
     /**
      * @returns Start and end physical bounds in that entity will take
      * damage when hit and will also push entities on contact.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     function getAABB(entityUid: number): AxisAlignedBoundingBox;
 
@@ -287,12 +287,21 @@ declare namespace Entity {
     function getCustom(entityUid: number): CustomEntity;
 
     /**
-     * @deprecated Use attributes instead.
+     * Represents the age of the entity in ticks; when negative,
+     * the entity is a baby. When 0, the entity becomes an adult.
+     * Also represents alive time, e.g. dropped item and experience
+     * orbs disappears after 6000 ticks.
+     * @since 3.1.1b127 (method existed, but unimplemented before)
      */
     function getAge(entityUid: number): number;
 
     /**
-     * @deprecated Use attributes instead.
+     * Represents the age of the entity in ticks; when negative,
+     * the entity is a baby. When 0, the entity becomes an adult.
+     * Also represents alive time, e.g. dropped item and experience
+     * orbs disappears after 6000 ticks.
+     * @param age in ticks
+     * @since 3.1.1b127 (method existed, but unimplemented before)
      */
     function setAge(entityUid: number, age: number): void;
 
@@ -467,7 +476,7 @@ declare namespace Entity {
     /**
      * @returns Whether a entity is in a sleeping state, sleeping is defined
      * as player or villagers being on a bed, as well as foxes napping.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     function isSleeping(entityUid: number): boolean;
 

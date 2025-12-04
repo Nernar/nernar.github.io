@@ -44,7 +44,7 @@ declare namespace Logger {
      * Methot to get stacktrace like string in format `"at script:line, script:line"`
      * @param limit default `-1`
      * @param inlined default `false`
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function captureRhinoStackTrace(limit: number, inlined: boolean): string;
 

@@ -301,7 +301,7 @@ declare class BlockSource {
 	 * it is registered in {@link Block.SpecialType}, e.g. 5 for liquids and 3 by default
 	 * @returns Is requested material available in that bounds,
 	 * preferably for a quick check of block pile.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
 	 */
 	containsMaterial(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, material: number): boolean;
 
@@ -480,14 +480,14 @@ declare class BlockSource {
      * @param volume default `1.0`
      * @param pitch default `1.0`
      * @param players 
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     playSound(x: number, y: number, z: number, sound: string, volume: number, pitch: number, players?: number[]): void;
     /**
      * Method to stop sound by name for defined player list.
      * @param sound registered sound name
      * @param players 
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     stopSound(sound: string, players?: number[]): void;
 }

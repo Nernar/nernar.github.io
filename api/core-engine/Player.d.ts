@@ -197,7 +197,7 @@ declare namespace Player {
 
     /**
      * Returns data about moving player by look angle. One example: if player go forward - x is + 1, if go back - x is - 1, if staying - x is 0. Working even if player riding on any mob.
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function getMoveInputVector(): Vector
 
@@ -572,15 +572,36 @@ declare namespace Player {
     function getScore(): number;
 
     /**
-     * Sets view zoom, to reset value call {@link Player.resetFov}.
-     * @param fov view zoom, default zoom is about 70
+     * Overrides view zoom, to reset value call {@link Player.resetFov} to
+     * prevent override (you should do it when leaving a world or a little later).
+     * @param fov view zoom, can be any value in range [0, 360),
+     * default zoom is `70`, values smaller means more closer look,
+     * values higher means more further look, when is more than 180
+     * view becomes flipped, which is kinda nice feature
      */
     function setFov(fov: number): void;
 
     /**
-     * Resets view zoom to the default value.
+     * Resets view zoom to the initial value, should always be called
+     * after overriding it.
      */
     function resetFov(): void;
+
+    /**
+     * Overrides view zoom, always call {@link Player.resetViewPerspective} to
+     * prevent override (you should do it when leaving a world or a little later).
+     * @param perspective view perspective, can be first person (`0`),
+     * third person (`1`) or third person front (`2`)
+     * @since 3.1.1b127
+     */
+    function setViewPerspective(perspective: number): void;
+
+    /**
+     * Resets view perspective to the initial value, should always be called
+     * after overriding it.
+     * @since 3.1.1b127
+     */
+    function resetViewPerspective(): void;
 
     /**
      * Sets player's camera to the specified entity.

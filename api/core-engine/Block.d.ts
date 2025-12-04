@@ -203,7 +203,7 @@ declare namespace Block {
 	 * by game itself and manually by developer.
 	 * @param id numeric block ID
 	 * @param state numeric state that will be added for block
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
 	 */
 	function addBlockStateId(id: number, state: EBlockStates | number): void;
 
@@ -217,7 +217,7 @@ declare namespace Block {
 	 * @param id numeric block ID
 	 * @param key named state that will be added for block,
 	 * usually key of {@link EBlockStates}
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
 	 */
 	function addBlockState(id: number, key: string): void;
 
@@ -794,7 +794,7 @@ declare namespace Block {
 		 * you can always add your own using {@link BlockState.registerBlockState}.
 		 * Inexistent states are ignored.
 		 * @default ["color"] // this state always has been here
-		 * @since 2.4.0b122-4 arm64
+		 * @since 2.4.0b122-4
 		 */
 		states?: [EBlockStates | number | string][],
 		/**

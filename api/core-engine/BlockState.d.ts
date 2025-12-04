@@ -58,35 +58,35 @@ declare class BlockState implements Tile {
      *     region.setBlock(coords.x, coords.y, coords.z, block);
      * });
      * ```
-     * @since 2.4.0b122-4 arm64 (until 2.4.0b123-2 arm64 identifiers could be mismatched)
+     * @since 2.4.0b122-4 (until 2.4.0b123-2 identifiers could be mismatched)
      */
     static registerBlockState(key: string, capacity: number): number;
 
     /**
      * @returns Numeric state identifier that can be used for most
      * block operations. Works for both new and vanilla states.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getIdByName(key: string): EBlockStates | number;
 
     /**
      * @returns Named state identifier, stable for saving in tiles and
      * other objects in mods. Works for both new and vanilla states.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getNameById(state: number): string;
 
     /**
      * @returns List of all state keys, including vanilla ones
      * from {@link EBlockStates}. Order is randomized.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getAllStates(): string[];
 
     /**
      * @returns Maximum capacity of state, state takes
      * values from 0 to capacity (exclusive).
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getBlockStateCapacity(state: EBlockStates | number): number;
 

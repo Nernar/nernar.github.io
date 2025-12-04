@@ -231,7 +231,7 @@ declare namespace Dimensions {
          * Determines whether the generator should generate underground
          * and/or underwater caves as part of its result.
          * Wworks only with the "overworld"1" and "flat" base types.
-         * @param caves generate caves (until 2.4.0b123-2 arm64 inverted)
+         * @param caves generate caves (until 2.4.0b123-2 inverted)
          * @param underwaterCaves generate large caves and canyons
 	     * @since 2.3.1b115
          */
