@@ -295,8 +295,8 @@ declare namespace UI {
 		onTouchEvent(event: ITouchEvent): void;
 	}
 
-	interface UISlotElement extends UIElement {
-		type: "slot",
+	interface UISlotElement<T = "slot"> extends UIElement {
+		type: T,
 		bitmap?: string,
 		/**
 		 * Since 2.4.0b122o1 can be float, before it was rounded up,
@@ -360,8 +360,7 @@ declare namespace UI {
 		onTouchEvent(event: ITouchEvent): void;
 	}
 
-	interface UIInvSlotElement extends Omit<UISlotElement, "type"> {
-		type: "invSlot" | "invslot",
+	interface UIInvSlotElement extends UISlotElement<"invslot" | "invSlot"> {
 		index?: number;
 	}
 
