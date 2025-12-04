@@ -756,7 +756,7 @@ declare namespace Block {
 	 * by game itself and manually by developer.
 	 * @param id numeric block ID
 	 * @param state numeric state that will be added for block
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
 	 */
 	function addBlockStateId(id: number, state: EBlockStates | number): void;
 
@@ -770,7 +770,7 @@ declare namespace Block {
 	 * @param id numeric block ID
 	 * @param key named state that will be added for block,
 	 * usually key of {@link EBlockStates}
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
 	 */
 	function addBlockState(id: number, key: string): void;
 
@@ -890,14 +890,16 @@ declare namespace Block {
 	/**
 	 * Function used to determine when block is broken by
 	 * environment (explosions, pistons, etc.).
-	 * @param blockCoords coordinates where the block is destroyed and side from
-	 * where it is destroyed
-	 * @param block information about block that is broken
-	 * @param region BlockSource object
-	 * @param i unknown parameter, supposed to always be zero
 	 */
 	interface PopResourcesFunction {
-		(blockCoords: Vector, block: Tile, region: BlockSource, explosionRadius: number, i: number): void
+		/**
+		 * @param blockCoords coordinates where the block is destroyed and side from
+		 * where it is destroyed
+		 * @param block information about block that is broken (since 3.1.1b127 passes {@link BlockState})
+		 * @param region BlockSource object
+		 * @param i unknown parameter, supposed to always be zero
+		 */
+		(blockCoords: Vector, block: Tile | BlockSource, region: BlockSource, explosionRadius: number, i: number): void
 	}
 
 	/**
@@ -919,7 +921,10 @@ declare namespace Block {
 	function registerEntityInsideFunction(id: string | number, func: EntityInsideFunction): boolean;
 
 	interface EntityInsideFunction {
-		(blockCoords: Vector, block: BlockState, entity: number): void
+		/**
+		 * @param block event block (since 3.1.1b127 passes {@link BlockState})
+		 */
+		(blockCoords: Vector, block: Tile | BlockState, entity: number): void
 	}
 
 	/**
@@ -941,7 +946,10 @@ declare namespace Block {
 	function registerEntityStepOnFunction(id: string | number, func: EntityStepOnFunction): boolean;
 
 	interface EntityStepOnFunction {
-		(coords: Vector, block: BlockState, entity: number): void
+		/**
+		 * @param block event block (since 3.1.1b127 passes {@link BlockState})
+		 */
+		(coords: Vector, block: Tile | BlockState, entity: number): void
 	}
 
 	/**
@@ -964,13 +972,15 @@ declare namespace Block {
 
 	/**
 	 * Function used to check block's neighbours changes.
-	 * @param coords coords vector of the block
-	 * @param block Tile object of the block
-	 * @param changedCoords coords vector of the neighbour block that was changed
-	 * @param region BlockSource object
 	 */
 	interface NeighbourChangeFunction {
-		(coords: Vector, block: BlockState, changedCoords: Vector, region: BlockSource): void
+		/**
+		 * @param coords coords vector of the block
+		 * @param block Tile object of the block (since 3.1.1b127 passes {@link BlockState})
+		 * @param changedCoords coords vector of the neighbour block that was changed
+		 * @param region BlockSource object
+		 */
+		(coords: Vector, block: Tile | BlockState, changedCoords: Vector, region: BlockSource): void
 	}
 
 	/**
@@ -1347,7 +1357,7 @@ declare namespace Block {
 		 * you can always add your own using {@link BlockState.registerBlockState}.
 		 * Inexistent states are ignored.
 		 * @default ["color"] // this state always has been here
-		 * @since 2.4.0b122-4 arm64
+		 * @since 2.4.0b122-4
 		 */
 		states?: [EBlockStates | number | string][],
 		/**
@@ -2062,7 +2072,7 @@ declare class BlockSource {
 	 * it is registered in {@link Block.SpecialType}, e.g. 5 for liquids and 3 by default
 	 * @returns Is requested material available in that bounds,
 	 * preferably for a quick check of block pile.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
 	 */
 	containsMaterial(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number, material: number): boolean;
 
@@ -2226,31 +2236,39 @@ declare class BlockSource {
 	randomTick(x: number, y: number, z: number): void;
 
     /**
-     * Plays sound to entity by radius 16 blocks from source, if volume bigger than 1.0, radius multiplies on max radius.
+     * Plays sound on defined coordsby radius 16 blocks from source,
+	 * if volume bigger than 1.0, radius multiplies to volume.
      * @param entity entity uid
-     * @param sound registered sound name
+     * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
-     * @param players 
+     * @param playerUids if not set, players in volume multiplied
+	 * radius will be detected automatically
+     * @since 3.1.1b127
      */
-    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, players?: number[]): void;
+    playSound(x: number, y: number, z: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
+
     /**
-     * Plays sound on defined coords.
+     * Plays sound to entity by radius 16 blocks from source,
+	 * if volume bigger than 1.0, radius multiplies to volume.
      * @param entity entity uid
-     * @param sound registered sound name
+     * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
-     * @param players 
-     * @since 3.1.1b127 arm64
+     * @param playerUids if not set, players in volume multiplied
+	 * radius will be detected automatically
+     * @since 3.1.1b127
      */
-    playSound(x: number, y: number, z: number, sound: string, volume: number, pitch: number, players?: number[]): void;
+    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
+
     /**
      * Method to stop sound by name for defined player list.
-     * @param sound registered sound name
-     * @param players 
-     * @since 3.1.1b127 arm64
+     * @param sound resource pack sound name
+     * @param playerUids if not set, players in volume multiplied
+	 * radius will be detected automatically
+     * @since 3.1.1b127
      */
-    stopSound(sound: string, players?: number[]): void;
+    stopSound(sound: string, playerUids?: number[]): void;
 }
 declare namespace BlockState {
     interface KeyStateScriptable {
@@ -2312,35 +2330,35 @@ declare class BlockState implements Tile {
      *     region.setBlock(coords.x, coords.y, coords.z, block);
      * });
      * ```
-     * @since 2.4.0b122-4 arm64 (until 2.4.0b123-2 arm64 identifiers could be mismatched)
+     * @since 2.4.0b122-4 (until 2.4.0b123-2 identifiers could be mismatched)
      */
     static registerBlockState(key: string, capacity: number): number;
 
     /**
      * @returns Numeric state identifier that can be used for most
      * block operations. Works for both new and vanilla states.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getIdByName(key: string): EBlockStates | number;
 
     /**
      * @returns Named state identifier, stable for saving in tiles and
      * other objects in mods. Works for both new and vanilla states.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getNameById(state: number): string;
 
     /**
      * @returns List of all state keys, including vanilla ones
      * from {@link EBlockStates}. Order is randomized.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getAllStates(): string[];
 
     /**
      * @returns Maximum capacity of state, state takes
      * values from 0 to capacity (exclusive).
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     static getBlockStateCapacity(state: EBlockStates | number): number;
 
@@ -2611,11 +2629,11 @@ declare namespace Callback {
          * @param coords set of all coordinate values that can be useful to write
          * custom use logics, relative and vectorized one
          * @param item item that was in the player's hand when it touched the block
-         * @param block block that was touched
+         * @param block block that was touched (since 3.1.1b127 passes {@link BlockState})
          * @param isExternal received from external player on server
          * @param playerUid player entity UID
          */
-        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile, isExternal: boolean, playerUid: number): void
+        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile | BlockState, isExternal: boolean, playerUid: number): void
     }
 
     function addCallback(name: "ItemUse", func: LegacyItemUseFunction, priority?: number): void;
@@ -2630,10 +2648,10 @@ declare namespace Callback {
          * @param coords set of all coordinate values that can be useful to write
          * custom use logics
          * @param item item that was in the player's hand when it touched the block
-         * @param block block that was touched
+         * @param block block that was touched (since 3.1.1b127 passes {@link BlockState})
          * @param playerUid player entity UID
          */
-        (coords: ItemUseCoordinates, item: ItemInstance, block: BlockState, playerUid: number): void
+        (coords: ItemUseCoordinates, item: ItemInstance, block: Tile | BlockState, playerUid: number): void
     }
 
     function addCallback(name: "ItemUseServer", func: ItemUseFunction, priority?: number): void;
@@ -2758,10 +2776,10 @@ declare namespace Callback {
         /**
          * @param coords coordinates where the block is destroyed and side from
          * where it is destroyed
-         * @param block block that is destroyed
+         * @param block block that is destroyed (since 3.1.1b127 passes {@link BlockState})
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
+        (coords: ItemUseCoordinates, block: Tile | BlockState, playerUid: number): void
     }
 
     function addCallback(name: "DestroyBlock", func: DestroyBlockFunction, priority?: number): void;
@@ -2775,10 +2793,10 @@ declare namespace Callback {
         /**
          * @param coords coordinates where the block is destroyed and side from
          * where it is destroyed
-         * @param block block that is destroyed
+         * @param block block that is destroyed (since 3.1.1b127 passes {@link BlockState})
          * @param progress current fraction of breaking progress
          */
-        (coords: ItemUseCoordinates, block: BlockState, progress: number): void
+        (coords: ItemUseCoordinates, block: Tile | BlockState, progress: number): void
     }
 
     function addCallback(name: "DestroyBlockContinue", func: DestroyBlockContinueFunction, priority?: number): void;
@@ -2790,10 +2808,10 @@ declare namespace Callback {
         /**
          * @param coords coordinates where the block is placed and side from
          * where it is placed
-         * @param block block that is placed
+         * @param block block that is placed (since 3.1.1b127 passes {@link BlockState})
          * @param playerUid player entity unique numeric ID
          */
-        (coords: ItemUseCoordinates, block: BlockState, playerUid: number): void
+        (coords: ItemUseCoordinates, block: Tile | BlockState, playerUid: number): void
     }
 
     function addCallback(name: "BuildBlock", func: BuildBlockFunction, priority?: number): void;
@@ -2804,10 +2822,10 @@ declare namespace Callback {
     interface BlockChangedFunction {
         /**
          * @param coords coordinates where block change occurred
-         * @param oldBlock the block that is being replaced
-         * @param newBlock replacement block
+         * @param oldBlock the block that is being replaced (since 3.1.1b127 passes {@link BlockState})
+         * @param newBlock replacement block (since 3.1.1b127 passes {@link BlockState})
          */
-        (coords: Vector, oldBlock: Tile, newBlock: Tile, region: BlockSource): void
+        (coords: Vector, oldBlock: Tile | BlockState, newBlock: Tile | BlockState, region: BlockSource): void
     }
 
     function addCallback(name: "BlockChanged", func: BlockChangedFunction, priority?: number): void;
@@ -2872,11 +2890,11 @@ declare namespace Callback {
     interface PopBlockResourcesFunction {
         /**
          * @param coords coordinates of the block that was broken
-         * @param block information about the block that was broken
+         * @param block information about the block that was broken (since 3.1.1b127 passes {@link BlockState})
          * @param explosionRadius explosion power in case of exploding
          * @param cause cause information, supposed to always be zero
          */
-        (coords: Vector, block: BlockState, explosionRadius: number, cause: number, region: BlockSource): void
+        (coords: Vector, block: Tile | BlockState, explosionRadius: number, cause: number, region: BlockSource): void
     }
 
     function addCallback(name: "PopBlockResources", func: PopBlockResourcesFunction, priority?: number): void;
@@ -2901,9 +2919,9 @@ declare namespace Callback {
         /**
          * @param renderer object used to manipulate block rendering process
          * @param coords rendering block coordinates
-         * @param block block information
+         * @param block block information (since 3.1.1b127 passes {@link BlockState})
          */
-        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: BlockState): void
+        (renderer: BlockRenderer.RenderAPI, coords: Vector, block: Tile | BlockState): void
     }
 
     function addCallback(name: "CustomBlockTessellation", func: CustomBlockTessellationFunction, priority?: number): void;
@@ -4450,9 +4468,9 @@ declare namespace Dimensions {
          * Constructs a new dimension with specified name and preferred ID.
          * @param name dimension name, can be used to get dimension via 
          * {@link Dimensions.getDimensionByName} call
-         * @param preferredId preferred dimension ID, can't be smaller than 4. If ID is already occupied
-         * by some another dimension, constructor will look for the next empty
-         * dimension ID and assign it to the current dimension
+         * @param preferredId preferred dimension ID, can't be smaller than 4;
+         * if ID is already occupied by some another dimension, constructor will
+         * look for the next empty dimension ID and assign it to the current dimension
          */
         constructor(name: string, preferredId: number);
 
@@ -4474,7 +4492,7 @@ declare namespace Dimensions {
          * (like in the End or Nether).
          * @param hasSkyLight if true, the sky produces light in the dimension
          * @returns Reference to itself to be used in sequential calls.
-         * @default true
+         * @since 3.1.1b127 (existed but not working until it)
          */
         setHasSkyLight(hasSkyLight: boolean): CustomDimension;
 
@@ -4566,58 +4584,70 @@ declare namespace Dimensions {
         /**
          * Sets, can liquid evaporate or not.
          * @param evaporates if true water will evaporate just like nether
+         * @since 3.1.1b127
          */
         setEvaporatesLiquids(evaporates: boolean): CustomDimension;
 
         /**
          * Sets, has world tick of weather seasons or not. 
          * @param seasons if true weather will work
+         * @since 3.1.1b127
          */
         setWeatherSeasons(seasons: boolean): CustomDimension;
 
         /**
          * Sets behavior with interacting between player and bed like a nether or end.
          * @param explode if true player can't sleep on beds
+         * @since 3.1.1b127
          */
         setBedExplodesOnSleep(explode: boolean): CustomDimension;
 
         /**
          * Sets visualization of sky like overworld.
          * @param enabled 
+         * @since 3.1.1b127
          */
         setSkyAtmosphereEnabled(enabled: boolean): CustomDimension;
 
         /**
          * Sets height of clouds.
          * @param height height by "y" angle 
+         * @since 3.1.1b127
          */
         setCloudHeight(height: number): CustomDimension;
 
         /**
-         * Sets time of day by interval.
-         * @param interval number between 0 and 1
+         * Overrides time of day by interval [0, 1].
+         * @param interval number between 0 and 1,
+         * e.g. 0.25 represents noon, 0.75 midnight
+         * @since 3.1.1b127
          */
         setTimeOfDay(interval: number): CustomDimension;
 
         /**
-         * Sets time of day by amplifier.
+         * Multiplies time for dimension based on world one
+         * (e.g., {@link World.getWorldTime}() * amplifier).
          * @param amplifier any number
+         * @since 3.1.1b127
          */
         setTimeOfDayAmplifier(amplifier: number): CustomDimension;
 
         /**
-         * Resets custom time of day.
+         * Resets custom time of day interval.
+         * @since 3.1.1b127
          */
         resetTimeOfDay(): CustomDimension;
 
         /**
          * Sets star brightness.
          * @param interval number between 0 and 1
+         * @since 3.1.1b127
          */
         setStarBrightness(interval: number): CustomDimension;
 
         /**
          * Resets star brightness.
+         * @since 3.1.1b127
          */
         resetStarBrightness(): CustomDimension;
     }
@@ -4671,7 +4701,7 @@ declare namespace Dimensions {
          * Determines whether the generator should generate underground
          * and/or underwater caves as part of its result.
          * Wworks only with the "overworld"1" and "flat" base types.
-         * @param caves generate caves (until 2.4.0b123-2 arm64 inverted)
+         * @param caves generate caves (until 2.4.0b123-2 inverted)
          * @param underwaterCaves generate large caves and canyons
 	     * @since 2.3.1b115
          */
@@ -5037,7 +5067,7 @@ declare namespace Dimensions {
      * @param dimensionId numeric id of the dimension
      * @param evaporates if true water will evaporate just like nether
      */
-    function setEvaporatesLiquids(dimensionId: number,evaporates: boolean): void;
+    function setEvaporatesLiquids(dimensionId: number, evaporates: boolean): void;
 
     /**
      * Function to set, has world tick of weather seasons or not. 
@@ -5054,8 +5084,21 @@ declare namespace Dimensions {
      */
     function setHasSkyLight(dimensionId: number, hasSkyLight: boolean): void;
 
-    function getMoonPhase(): number;
-    function getMoonBrightness(): number;
+    /**
+     * Returns number between 0 and 7 (inclusive), which represents chance to spawn
+     * slimes, equipped mobs, etc. (see {@link https://minecraft.wiki/w/Moon})
+     * @param dimensionId numeric id of the dimension
+     * @since 3.1.1b127
+     */
+    function getMoonPhase(dimensionId: number): number;
+
+    /**
+     * Returns floating number in range [0, 1], which represents chance to spawn
+     * slimes, equipped mobs, etc. (see {@link https://minecraft.wiki/w/Moon})
+     * @param dimensionId numeric id of the dimension
+     * @since 3.1.1b127
+     */
+    function getMoonBrightness(dimensionId: number): number;
 }
 /**
  * @since 2.3.1b115
@@ -5451,7 +5494,7 @@ declare namespace Entity {
     /**
      * @returns Start and end physical bounds in that entity will take
      * damage when hit and will also push entities on contact.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     function getAABB(entityUid: number): AxisAlignedBoundingBox;
 
@@ -5546,12 +5589,21 @@ declare namespace Entity {
     function getCustom(entityUid: number): CustomEntity;
 
     /**
-     * @deprecated Use attributes instead.
+     * Represents the age of the entity in ticks; when negative,
+     * the entity is a baby. When 0, the entity becomes an adult.
+     * Also represents alive time, e.g. dropped item and experience
+     * orbs disappears after 6000 ticks.
+     * @since 3.1.1b127 (method existed, but unimplemented before)
      */
     function getAge(entityUid: number): number;
 
     /**
-     * @deprecated Use attributes instead.
+     * Represents the age of the entity in ticks; when negative,
+     * the entity is a baby. When 0, the entity becomes an adult.
+     * Also represents alive time, e.g. dropped item and experience
+     * orbs disappears after 6000 ticks.
+     * @param age in ticks
+     * @since 3.1.1b127 (method existed, but unimplemented before)
      */
     function setAge(entityUid: number, age: number): void;
 
@@ -5726,7 +5778,7 @@ declare namespace Entity {
     /**
      * @returns Whether a entity is in a sleeping state, sleeping is defined
      * as player or villagers being on a bed, as well as foxes napping.
-     * @since 2.4.0b122-4 arm64
+     * @since 2.4.0b122-4
      */
     function isSleeping(entityUid: number): boolean;
 
@@ -6267,7 +6319,7 @@ declare namespace Entity {
      * @param coords2 end search range coordinates
      * @param type entity type ID, `255` by default
      * @param flag white- or blacklist, `true` by default
-     * @since 2.0.4b35
+     * @since 2.0.4b35 (broken in 3.1.0b126, fixed in next version)
      * @remarks
      * Local method, use {@link BlockSource.listEntitiesInAABB} instead.
      */
@@ -6920,17 +6972,17 @@ declare namespace Game {
 
     /**
      * @returns Current level game mode, one of the {@link EGameMode} values.
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function getGameMode(): number;
 
     /**
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function getPackVersion(): number;
     
     /**
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function getPackVersionCode(): number;
 
@@ -7739,23 +7791,33 @@ declare namespace IDRegistry {
     const MAX_ID: number;
 
     /**
-     * Generates a new numeric block ID.
-     * @param name string block ID. Used in {@link Block} module functions and 
-     * in some other block-related functions. Inner Core converts it to 
+     * Generates a new numeric block ID. Used in {@link Block} module functions
+     * and  in some other block-related functions.
+     * @param name string block ID; Inner Core converts it to 
      * block_<name> as minecraft vanilla block ID to avoid string ID clashes
      * @returns Numeric block ID.
      */
     function genBlockID(name: string): number;
 
     /**
-     * Generates a new numeric item ID.
-     * @param name string item ID. Used in {@link Item} module functions and 
-     * in some other item-related functions. Inner Core converts it to 
+     * Generates a new numeric item ID. Used in {@link Item} module functions
+     * and in some other item-related functions.
+     * @param name string item ID; Inner Core converts it to 
      * item_<name> as minecraft vanilla item ID to avoid string ID clashes
      * @returns Numeric item ID.
      */
     function genItemID(name: string): number;
 
+    interface Namespace {
+        [key: string]: number
+    }
+
+    /**
+     * Returns identifier namespace, which consist of both
+     * item and block name IDs to numeric conversion.
+     */
+    function useNamespace(namespace: string): Namespace;
+ 
     /**
      * Gets known modded item or block string ID by it's numeric ID.
      * @param id numeric item or block ID
@@ -7820,7 +7882,6 @@ declare namespace IDRegistry {
 }
 /**
  * Module used to define items and their properties.
- * @since 3.1.1b127 arm64 - added methods from NativeItem
  */
 declare namespace Item {
     /**
@@ -7885,6 +7946,14 @@ declare namespace Item {
     }
 
     /**
+     * @since 3.1.1b127
+     */
+    function isFood(id: number | string): boolean;
+    /**
+     * @since 3.1.1b127
+     */
+    function getNutrition(id: number | string): number;
+    /**
      * Creates eatable item using specified parameters.
      * @param nameID string ID of the item. You should register it via 
      * {@link IDRegistry.genItemID} call first
@@ -7897,8 +7966,7 @@ declare namespace Item {
     function createFoodItem(nameID: string, name: string, texture: TextureData, params?: FoodParams): NativeItem;
 
     /**
-     * @deprecated Use {@link Item.createItem} and
-     * {@link Recipes.addFurnaceFuel} instead.
+     * @deprecated Use {@link Item.createItem} and {@link Recipes.addFurnaceFuel} instead.
      * @throws Unsupported usage.
      */
     function createFuelItem(nameID: string, name: string, texture: TextureData, params?: ItemParams): void;
@@ -7941,6 +8009,22 @@ declare namespace Item {
     }
 
     /**
+     * @since 3.1.1b127
+     */
+    function isArmor(id: number | string): boolean;
+    /**
+     * Natural armor points, that also is displayed above hotbar.
+     * @param id numeric item ID
+     * @returns Natural armor half points.
+     * @since 2.4.0b119
+     */
+    function getArmorValue(id: number | string): number;
+    function setArmorDamageable(id: number | string, damageable: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isArmorDamageable(id: number | string): boolean;
+    /**
      * Creates armor item using specified parameters.
      * @param nameID string ID of the item; you should register it via 
      * {@link IDRegistry.genItemID} call first
@@ -7952,6 +8036,10 @@ declare namespace Item {
      */
     function createArmorItem(nameID: string, name: string, texture: TextureData, params: ArmorParams): NativeItem;
 
+    /**
+     * @since 3.1.1b127
+     */
+    function isThrowable(id: number | string): boolean;
     /**
      * Creates throwable item using specified parameters.
      * @param nameID string ID of the item; you should register it via 
@@ -7971,24 +8059,30 @@ declare namespace Item {
     function isNativeItem(id: number): boolean;
 
     /**
-     * @param id numeric item ID
-     * @returns Maximum damage value for the specified item.
+     * @since 3.1.1b127
      */
-    function getMaxDamage(id: number): number;
-
+    function setMaxStack(id: number | string, size: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function setMaxStackSize(id: number | string, size: number): void;
     /**
      * @param id numeric item ID
      * @returns Maximum stack size for the specified item.
      * @deprecated Use same function with data parameter.
      */
     function getMaxStack(id: number): number;
-
     /**
      * @param id numeric item ID
      * @returns Maximum stack size for the specified item.
      * @since 2.2.0b1 pre-alpha
      */
     function getMaxStack(id: number, data: number): number;
+    /**
+     * @returns Maximum stack size for the specified item.
+     * @since 3.1.1b127
+     */
+    function getMaxStackSize(id: number | string, data?: number): number;
 
     /**
      * @param id numeric item ID
@@ -7996,7 +8090,6 @@ declare namespace Item {
      * @returns Current item name.
      */
     function getName(id: number, data: number): string;
-
     /**
      * @param id numeric item ID
      * @param data item data
@@ -8007,12 +8100,9 @@ declare namespace Item {
     function getName(id: number, data: number, encode: any): string;
 
     /**
-     * Natural armor points, that also is displayed above hotbar.
-     * @param id numeric item ID
-     * @returns Natural armor half points.
-     * @since 2.4.0b119
+     * @since 3.1.1b127
      */
-    function getArmorValue(id: number): number;
+    function getDynamicIconOverride(id: number, count: number, data: number, extra: ItemExtraData): void;
 
     /**
      * @param id numeric item ID
@@ -8020,7 +8110,6 @@ declare namespace Item {
      * @since 2.2.1b94 (not worked before)
      */
     function isValid(id: number): boolean;
-
     /**
      * @param id numeric item ID
      * @param data no longer supported, do not use this parameter
@@ -8035,15 +8124,22 @@ declare namespace Item {
      * @param count amount of the item to be added, generally should be 1
      * @param data item data
      */
-    function addToCreative(id: number | string, count: number, data: number, extra?: ItemExtraData): void;
-
+    function addToCreative(id: number | string, count?: number, data?: number, extra?: ItemExtraData): void;
     /**
      * Creates group of creative items.
      * @param name name of group
      * @param displayedName name of group in game
      * @param ids array of items in group
      */
-    function addCreativeGroup(name: string, displayedName: string, ids: number[]): void
+    function addCreativeGroup(name: string, displayedName: string, ids: number[]): void;
+    /**
+     * Adds or creates a creative group with specified item.
+     * @param name name of group
+     * @param displayedName name of group in game
+     * @param ids array of items in group
+     * @since 3.1.1b127
+     */
+    function addToCreativeGroup(name: string, displayedName: string, id: number | string): void;
 
     /**
      * Applies several properties via one method call.
@@ -8059,6 +8155,22 @@ declare namespace Item {
      * {@link EItemCategory} values
      */
     function setCategory(id: number | string, category: number): void;
+    /**
+     * Sets item creative category.
+     * @param id string or numeric item ID
+     * @param category item category, should be one of the 
+     * {@link EItemCategory} values
+     * @since 3.1.1b127
+     */
+    function setCreativeCategory(id: number | string, category: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getCategory(id: number | string): EItemCategory;
+    /**
+     * @since 3.1.1b127
+     */
+    function getCreativeCategory(id: number | string): EItemCategory;
 
     /**
      * Specifies how the item can be enchanted.
@@ -8069,6 +8181,18 @@ declare namespace Item {
      * value is, the better enchants you get with the same level
      */
     function setEnchantType(id: number | string, enchant: number, value: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function setEnchantibility(id: number | string, type: number, value: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getEnchantSlot(id: number | string): number;
+    /**
+     * @since 3.1.1b127
+     */
+    function getEnchantValue(id: number | string): number;
 
     /**
      * Specifies what items can be used to repair this item in the anvil.
@@ -8076,6 +8200,27 @@ declare namespace Item {
      * @param items array of numeric item IDs to be used as repair items
      */
     function addRepairItemIds(id: number | string, items: number[]): void;
+    /**
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param items array of numeric item IDs to be used as repair items
+     * @since 3.1.1b127
+     */
+    function addRepairItems(id: number | string, items: [number | string][]): void;
+    /**
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param repairId string or numeric repair item ID
+     * @since 3.1.1b127
+     */
+    function addRepairItemId(id: number | string, repairId: number | string): void;
+    /**
+     * Specifies what items can be used to repair this item in the anvil.
+     * @param id string or numeric item ID
+     * @param repairId string or numeric repair item ID
+     * @since 3.1.1b127
+     */
+    function addRepairItem(id: number | string, repairId: number | string): void;
 
     /**
      * Specifies how the player should hold the item.
@@ -8084,13 +8229,34 @@ declare namespace Item {
      * item
      */
     function setToolRender(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isToolRender(id: number | string): boolean;
+
+    /**
+     * Specifies how the player should hold the item.
+     * @param id string or numeric item ID
+     * @param enabled if true, player holds the item as a tool, not as a simple
+     * item
+     */
+    function setHandEquipped(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isHandEquipped(id: number | string): boolean;
 
     /**
      * Sets item maximum data value.
      * @param id string or numeric item ID
-     * @param maxdamage maximum data value for the item
+     * @param damage maximum data value for the item
      */
-    function setMaxDamage(id: number | string, maxdamage: number): void;
+    function setMaxDamage(id: number | string, damage: number): void;
+    /**
+     * @param id numeric item ID
+     * @returns Maximum damage value for the specified item.
+     */
+    function getMaxDamage(id: number | string): number;
 
     /**
      * Sets item as glint (like enchanted tools or golden apple).
@@ -8098,6 +8264,10 @@ declare namespace Item {
      * @param enabled if true, the item will be displayed as glint item
      */
     function setGlint(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isGlint(id: number | string, data?: number, extra?: ItemExtraData): void;
 
     /**
      * Allows to click with item on liquid blocks.
@@ -8105,13 +8275,19 @@ declare namespace Item {
      * @param enabled if true, liquid blocks can be selected on click
      */
     function setLiquidClip(id: number | string, enabled: boolean): void;
-
-    function setArmorDamageable(damageable: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isLiquidClip(id: number | string, data?: number): boolean;
 
     /**
-     * @deprecated No longer supported.
+     * @deprecated No longer supported. Probably?
      */
     function setStackedByData(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isStackedByData(id: number | string): boolean;
 
     /**
      * Allows item to be put in offhand slot.
@@ -8119,6 +8295,10 @@ declare namespace Item {
      * @since 2.0.4b35
      */
     function setAllowedInOffhand(id: number | string, allowed: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isAllowedInOffhand(id: number | string): boolean;
 
     /**
      * 
@@ -8127,6 +8307,10 @@ declare namespace Item {
      * @since 2.4.0b119
      */
     function setShouldDespawn(id: number | string, should: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isShouldDespawn(id: number | string): boolean;
 
     /**
      * 
@@ -8135,14 +8319,19 @@ declare namespace Item {
      * @since 2.4.0b119
      */
     function setFireResistant(id: number | string, resistant: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isFireResistant(id: number | string): boolean;
 
     /**
-     * 
-     * @param id 
-     * @param explodable 
      * @since 2.4.0b119
      */
     function setExplodable(id: number | string, explodable: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isExplodable(id: number | string): boolean;
 
     /**
      * Sets additional properties for the item, uses Minecraft mechanisms to
@@ -8159,6 +8348,10 @@ declare namespace Item {
      * values
      */
     function setUseAnimation(id: number | string, animType: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getUseAnimation(id: number | string): EItemAnimation;
 
     /**
      * Limits maximum use duration. This is useful to create such items as bows.
@@ -8166,34 +8359,29 @@ declare namespace Item {
      * @param duration maximum use duration in ticks
      */
     function setMaxUseDuration(id: number | string, duration: number): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function getMaxUseDuration(id: number | string): number;
 
-    function isGlint(id: number | string, data?: number, extra?: ItemExtraData): void;
-    function isFood(id: number | string): void;
-    function isArmor(id: number | string): void;
-    function isThrowable(id: number | string): void;
-    function getNutrition(id: number | string): number;
-    function getArmorValue(id: number | string): number;
-    function isArmorDamageable(id: number | string): boolean;
-    function isRequiresIconOverride(id: number | string): boolean;
-    function isToolRender(id: number | string): boolean;
-    function isHandEquipped(id: number | string): boolean;
-    function getUseAnimation(id: number | string): EItemAnimation;
-    function isStackedByData(id: number | string): boolean;
-    function isAllowedInOffhand(id: number | string): boolean;
-    function isShouldDespawn(id: number | string): boolean;
-    function isFireResistant(id: number | string): boolean;
-    function isExplodable(id: number | string): boolean;
-    function isMirroredSprite(id: number | string): boolean;
-    function getEnchantSlot(id: number | string): number;
-    function getEnchantValue(id: number | string): number;
-    function getCategory(id: number | string): EItemCategory;
-    function getCreativeCategory(id: number | string): EItemCategory;
-    function isLiquidClip(id: number | string): boolean;
-    function setMirroredSprite(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
     function setRequiresIconOverride(id: number | string, enabled: boolean): void;
-    function setEnchantType(id: number | string, type: number, value: number): void;
-    function setEnchantibility(id: number | string, type: number, value: number): void;
-    
+    /**
+     * @since 3.1.1b127
+     */
+    function isRequiresIconOverride(id: number | string): boolean;
+
+    /**
+     * @since 3.1.1b127
+     */
+    function setMirroredSprite(id: number | string, enabled: boolean): void;
+    /**
+     * @since 3.1.1b127
+     */
+    function isMirroredSprite(id: number | string): boolean;
+
     /**
      * Same as {@link Item.registerUseFunction}, but supports numeric IDs only.
      */
@@ -8232,7 +8420,7 @@ declare namespace Item {
 
     /**
      * Registers function to perform item name overrides.
-     * Since 2.4.0b122-4 arm64 also supports vanilla items and blocks.
+     * Since 2.4.0b122-4 also supports vanilla items and blocks.
      * @param nameID string or numeric ID of the item
      * @param func function that is called to override item name. Should return 
      * string to be used as new item name
@@ -8357,7 +8545,7 @@ declare namespace Item {
 	/**
 	 * Once upon a time, a new way of registering items, however,
 	 * in current state, either does not work or is undesirable to use.
-     * @deprecated
+     * @deprecated Since 3.1.1b127 warnings user of usage in developer mode.
 	 */
 	interface ItemLegacyPrototype {
         type: "createItem" | "createFoodItem" | "createArmorItem" | "createThrowableItem",
@@ -9459,7 +9647,7 @@ declare namespace Logger {
      * Methot to get stacktrace like string in format `"at script:line, script:line"`
      * @param limit default `-1`
      * @param inlined default `false`
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function captureRhinoStackTrace(limit: number, inlined: boolean): string;
 
@@ -13319,7 +13507,7 @@ declare namespace Player {
 
     /**
      * Returns data about moving player by look angle. One example: if player go forward - x is + 1, if go back - x is - 1, if staying - x is 0. Working even if player riding on any mob.
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     function getMoveInputVector(): Vector
 
@@ -13694,15 +13882,36 @@ declare namespace Player {
     function getScore(): number;
 
     /**
-     * Sets view zoom, to reset value call {@link Player.resetFov}.
-     * @param fov view zoom, default zoom is about 70
+     * Overrides view zoom, to reset value call {@link Player.resetFov} to
+     * prevent override (you should do it when leaving a world or a little later).
+     * @param fov view zoom, can be any value in range [0, 360),
+     * default zoom is `70`, values smaller means more closer look,
+     * values higher means more further look, when is more than 180
+     * view becomes flipped, which is kinda nice feature
      */
     function setFov(fov: number): void;
 
     /**
-     * Resets view zoom to the default value.
+     * Resets view zoom to the initial value, should always be called
+     * after overriding it.
      */
     function resetFov(): void;
+
+    /**
+     * Overrides view zoom, always call {@link Player.resetViewPerspective} to
+     * prevent override (you should do it when leaving a world or a little later).
+     * @param perspective view perspective, can be first person (`0`),
+     * third person (`1`) or third person front (`2`)
+     * @since 3.1.1b127
+     */
+    function setViewPerspective(perspective: number): void;
+
+    /**
+     * Resets view perspective to the initial value, should always be called
+     * after overriding it.
+     * @since 3.1.1b127
+     */
+    function resetViewPerspective(): void;
 
     /**
      * Sets player's camera to the specified entity.
@@ -18069,6 +18278,10 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+		/**
+         * @since 3.1.1b127 (availabled for all windows, before it appears
+		 * to be only in {@link TabbedWindow} and {@link StandardWindow})
+		 */
         getStyleSafe(): Style;
         
 		/**
@@ -18455,8 +18668,11 @@ declare namespace UI {
 		getDoubleProperty(name: string, fallback: number): number;
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
+		/**
+		 * @since 3.1.1b127
+		 */
+        getColorProperty(valueOrProperty: FontColor, defaultValue?: FontColor): number;
 		setProperty(name: string, value: any): void;
-        getColorProperty(valueOrProperty: number | string, defaultValue: number): number
         static getBitmapByDescription(style: Style, description: string): IBitmapWrap;
 	}
 }
@@ -18818,10 +19034,6 @@ declare namespace UI {
 		 */
 		setStyle(style: BindingSet): void;
 		getStyle(): Style;
-		/**
-		 * @deprecated Same as {@link getStyle}, meant to override
-		 * fallback default style, but never properly used.
-		 */
 		getStyleSafe(): Style;
 		setCloseOnBackPressed(cobp: boolean): void;
 		onBackPressed(): boolean;
@@ -19283,6 +19495,9 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+		/**
+         * @since 3.1.1b127
+		 */
         getStyleSafe(): Style;
 		/**
 		 * Overrides style properties of the current style by the values
@@ -19512,6 +19727,9 @@ declare namespace UI {
 		 * @returns Object containing current style of the window.
 		 */
 		getStyle(): Style;
+		/**
+         * @since 3.1.1b127
+		 */
         getStyleSafe(): Style;
 		setBlockingBackground(bb: boolean): void;
 		/**
@@ -19551,7 +19769,7 @@ declare namespace UI {
 
     /**
      * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
-     * @since 3.1.1b127 arm64
+     * @since 3.1.1b127
      */
     type FontColor = string | [r: number, g: number, b: number, a?: number] | number;
 	
@@ -19719,18 +19937,29 @@ declare namespace UI {
     function getContext(): android.app.Activity;
 
     /**
-     * Method to parse color to number
-     * @param value hex-string, rgba array or names of color in a string format.
-     * @param defaultValue returns if result is wrong
-     * @since 3.1.1b127 arm64
+     * Plays client sound designed for interfaces, can be stopped
+	 * as ordinal client sound, will be played even in menu.
+     * @param sound resource pack sound name
+     * @param volume default `1.0`
+     * @param pitch default `1.0`
+     * @since 3.1.1b127
      */
-    function parseColor(value: FontColor, defaultValue: number): number;
+    function playSound(sound: string, volume?: number, pitch?: number): void;
+
+    /**
+     * Method to unwrap complex color variants into number.
+     * @param value hex-string, rgba array or names of color in a string format.
+     * @param defaultValue returns if result is wrong, even if it fails,
+	 * transparent (`0`) is returned
+     * @since 3.1.1b127
+     */
+    function parseColor(value: FontColor, defaultValue?: FontColor): number;
 }
 /**
- * Module used to create and manage Updatables. Updatables provide the proper
- * way to manage objects that update their state every tick. Updatables may not 
- * be notified every tick, if there are too many, to avoid user interface 
- * freezes.
+ * Legacy module used to create and manage updatables.
+ * Updatables provide the proper way to manage objects that update their
+ * state every tick. Updatables may not  be notified every tick, if there are
+ * too many, to avoid user interface freezes.
  */
 declare namespace Updatable {
     /**
@@ -19781,38 +20010,55 @@ declare namespace Updatable {
 }
 
 /**
- * Common interface for all updatables, includes common function
- * @since 3.1.1b127 arm64
+ * Common interface for all updatables, includes common function.
+ * @since 3.1.1b127
  */
 interface IUpdatableCommon {
     update(...args: unknown[]): void;
 }
 
 /**
- * Updatable is an object that is notified every tick via it's. New type
- * {@link Updatable.update} method call.
- * @since 3.1.1b127 arm64
+ * Updatables provide the proper way to manage objects that update their
+ * state every tick. Updatables may not be notified every tick, if there are
+ * too many, to avoid user interface freezes.
+ * @since 3.1.1b127
  */
 interface IUpdatable extends IUpdatableCommon {
     /**
-     * Called every tick
-     * @param deltaTime delta time as current tick in updatable
+     * Passed only when instance is created with updatable overload.
+     * @since 3.1.1b127
      */
-    update(deltaTime: number): void;
+    _handle?: UpdatableHandle;
+    /**
+     * Called every tick to execute pending updates.
+     * @param deltaTicks delta time from latest schedule call
+     */
+    update(deltaTicks: number): void;
 }
 
 /**
- * Updatable is an object that is notified every tick via it's. Legacy type
- * {@link Updatable.update} method call.
+ * Updatables provide the proper way to manage objects that update their
+ * state every tick. Updatables may not be notified every tick, if there are
+ * too many, to avoid user interface freezes. Legacy variant of {@link IUpdatable}.
  */
 interface Updatable extends IUpdatableCommon {
+    /**
+     * By default, recurring schedule is set to 1 and performs indefinitely.
+     * @since 3.1.1b127
+     */
+    _handle?: UpdatableHandle;
     /**
      * Once `true`, the object will be removed from updatables list and will no
      * longer receive update calls.
      */
     remove?: boolean;
     /**
-     * Called every tick.
+     * Determines can updatable be updated by calling update, useful when
+     * is needed to temporary freeze ticking logic.
+     */
+    noupdate?: boolean;
+    /**
+     * Called every tick to execute pending updates.
      */
     update(): void;
 }
@@ -19823,14 +20069,34 @@ interface Updatable extends IUpdatableCommon {
 declare const UpdatableAPI: typeof Updatable;
 
 /**
- * Experimental module for smart work with some updatable behavior.
- * @since 3.1.1b127 arm64
+ * Experimental module used to create and manage scoped updatables.
+ * Updatables provide the proper way to manage objects that update their
+ * state every tick. Updatables may not  be notified every tick, if there are
+ * too many, to avoid user interface freezes.
+ * @since 3.1.1b127
  */
 declare namespace UpdatableScheduler {
     function createNewScope(name: string): UpdatableSchedulerScope;
     function getMainServerScope(): UpdatableSchedulerScope;
-    function getMainLocalScope(): UpdatableSchedulerScope;
-    function createServer(func: () => void, obj?: Scriptable): UpdatableHandle;
+    function getMainClientScope(): UpdatableSchedulerScope;
+    /**
+     * Creates updatable of given object on server, which will update every tick.
+     */
+    function createOnServer(updatable: IUpdatable): UpdatableHandle;
+    /**
+     * Provides a way to directly create server ticking function without linking to
+     * any object. See {@link Callback} if you want to call method every tick instead.
+     */
+    function createOnServer(func: () => void, thisObj?: Scriptable): UpdatableHandle;
+    /**
+     * Creates updatable of given object on client, which will update every local tick.
+     */
+    function createOnClient(updatable: IUpdatable): UpdatableHandle;
+    /**
+     * Provides a way to directly create server ticking function without linking to
+     * any object. See {@link Callback} if you want to call method every tick instead.
+     */
+    function createOnClient(func: () => void, thisObj?: Scriptable): UpdatableHandle;
     function destroyRawHandle(handle: number): boolean;
     function getByRawHandle(): IUpdatable;
     function getScopeByRawHandle(): UpdatableSchedulerScope;
@@ -19848,43 +20114,70 @@ declare namespace UpdatableScheduler {
 }
 
 /**
- * @since 3.1.1b127 arm64
+ * Allows to create scoped updatables, which should be updated manually by developer,
+ * e.g. when specific conditions met.
+ * @since 3.1.1b127
  */
 declare class UpdatableSchedulerScope {
     public setCurrentTick(tickNo: number): void;
+    /**
+     * Set to `0` when scope is created, increases every tick by `1` with {@link executeTickForScope}.
+     */
     public getCurrentTick(): number;
     public createRawHandle(func: () => void, object?: Scriptable): number;
-    public create(func: () => void, object?: Scriptable): UpdatableHandle;
+    /**
+     * Provides a way to directly create scoped ticking function without linking to
+     * any object, which will update when {@link executeTickForScope} is called by developer (excluding
+     * {@link UpdatableScheduler.getMainServerScope} and {@link UpdatableScheduler.getMainClientScope}
+     * scopes where updates called automatically).
+     */
+    public create(func: () => void, thisObj?: Scriptable): UpdatableHandle;
+    /**
+     * Creates updatable of given object in scope, which will update when
+     * {@link executeTickForScope} is called by developer (excluding
+     * {@link UpdatableScheduler.getMainServerScope} and {@link UpdatableScheduler.getMainClientScope}
+     * scopes where updates called automatically).
+     */
+    public create(updatable: IUpdatable): UpdatableHandle;
     public clearAll(): void;
-    public executeTickForScope(tickNo: number, timeLimitUs: number): void;
+    /**
+     * @param timeLimitUs default `-1`
+     */
+    public executeTickForScope(tickNo: number, timeLimitUs?: number): void;
 }
 
 /**
- * @since 3.1.1b127 arm64
+ * @since 3.1.1b127
  */
 declare class UpdatableHandle {
     public constructor(handle: number);
-    public getHandle(): number;
     /**
-     * @param handle handle number to replace in current object
-     * @internal
+     * Unique updatable handle identifier, cannot be reused between sessions.
      */
-    public replaceUpdatableHandle(handle: number): number;
+    public getHandle(): number;
     public isAlive(): boolean;
     /**
-     * @param tickIn 
-     * @param tickUntil default `-1`
+     * By default, recurring schedule is set to 1 and performs indefinitely.
+     * @param tickIn minimum ticks after which update is executed
+     * @param tickUntil maximum ticks after which update is executed, determined
+     * randomly from minimum to maximum, if not set, always uses minimum, default `-1`
      */
-    public schedule(tickIn: number, tickUntil: number): this;
+    public schedule(tickIn: number, tickUntil?: number): this;
     /**
-     * @param tickIn 
-     * @param tickUntil default `-1`
+     * @param tickIn minimum ticks after which update is executed
+     * @param tickUntil maximum ticks after which update is executed, determined
+     * randomly from minimum to maximum, if not set, always uses minimum, default `-1`
      */
-    public setRecurringSchedule(tickIn: number, tickUntil: number): this;
+    public setRecurringSchedule(tickIn: number, tickUntil?: number): this;
+    /**
+     * Returns object that is being hold by this handle, can be both, script object in
+     * which updatable is located (or `thisObj`) and java interface with single method.
+     */
     public getObject(): IUpdatable;
     public getScope(): UpdatableSchedulerScope;
     public destroy(): boolean;
-}/**
+}
+/**
  * Numeric IDs of vanilla blocks in the inventory.
  */
 declare enum VanillaBlockID {
@@ -21802,20 +22095,27 @@ declare namespace World {
     function canSeeSky(x: number, y: number, z: number): boolean;
 
     /**
-     * Plays standart Minecraft sound on the specified coordinates.
-     * @param name sound name
+     * Plays client sound on the specified coordinates.
+     * @param sound resource pack sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
     function playSound(x: number, y: number, z: number, name: string, volume: number, pitch?: number): void;
 
     /**
-     * Plays standart Minecraft sound from the specified entity.
-     * @param name sound name
+     * Plays client sound from the specified entity.
+     * @param sound resource pack sound name
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
     function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
+
+    /**
+     * Method to stop sound by name.
+     * @param sound resource pack sound name
+     * @since 3.1.1b127
+     */
+    function stopSound(sound: string): void;
 
     /**
      * @returns Loaded world directory full path.
@@ -22733,13 +23033,13 @@ declare function runCustomSource(name: string, scope?: object): void;
  * Object containing custom block string IDs  as keys and their numeric
  * IDs as values.
  */
-declare const BlockID: { [key: string]: number };
+declare const BlockID: IDRegistry.Namespace;
 
 /**
  * Object containing custom item string IDs as keys and their numeric
  * IDs as values.
  */
-declare const ItemID: { [key: string]: number };
+declare const ItemID: IDRegistry.Namespace;
 
 /**
  * Module containing {@link ItemID} and {@link BlockID} values.
@@ -22750,13 +23050,13 @@ declare namespace IDData {
 	 * Object containing custom item string IDs as keys and their numeric
 	 * IDs as values.
 	 */
-	const item: { [key: string]: number };
+	const item: IDRegistry.Namespace;
 
 	/**
 	 * Object containing custom block string IDs as keys and their numeric
 	 * IDs as values.
 	 */
-	const block: { [key: string]: number };
+	const block: IDRegistry.Namespace;
 }
 
 /**
