@@ -1334,7 +1334,7 @@ declare namespace Block {
 		color_source?: ColorSource,
 		/**
 		 * Specifies sounds of the block, one of {@link Block.Sound}.
-		 * @since 2.0.2b25
+		 * @since 2.0.2b25 (from 3.1.0b126 can be custom from resource packs)
 		 */
 		sound?: Sound,
 		/**
@@ -4492,7 +4492,7 @@ declare namespace Dimensions {
          * (like in the End or Nether).
          * @param hasSkyLight if true, the sky produces light in the dimension
          * @returns Reference to itself to be used in sequential calls.
-         * @since 3.1.1b127 (existed but not working until it)
+         * @since 3.1.0b126 (existed but not working until it)
          */
         setHasSkyLight(hasSkyLight: boolean): CustomDimension;
 
@@ -4584,35 +4584,35 @@ declare namespace Dimensions {
         /**
          * Sets, can liquid evaporate or not.
          * @param evaporates if true water will evaporate just like nether
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setEvaporatesLiquids(evaporates: boolean): CustomDimension;
 
         /**
          * Sets, has world tick of weather seasons or not. 
          * @param seasons if true weather will work
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setWeatherSeasons(seasons: boolean): CustomDimension;
 
         /**
          * Sets behavior with interacting between player and bed like a nether or end.
          * @param explode if true player can't sleep on beds
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setBedExplodesOnSleep(explode: boolean): CustomDimension;
 
         /**
          * Sets visualization of sky like overworld.
          * @param enabled 
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setSkyAtmosphereEnabled(enabled: boolean): CustomDimension;
 
         /**
          * Sets height of clouds.
          * @param height height by "y" angle 
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setCloudHeight(height: number): CustomDimension;
 
@@ -4620,7 +4620,7 @@ declare namespace Dimensions {
          * Overrides time of day by interval [0, 1].
          * @param interval number between 0 and 1,
          * e.g. 0.25 represents noon, 0.75 midnight
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setTimeOfDay(interval: number): CustomDimension;
 
@@ -4628,26 +4628,26 @@ declare namespace Dimensions {
          * Multiplies time for dimension based on world one
          * (e.g., {@link World.getWorldTime}() * amplifier).
          * @param amplifier any number
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setTimeOfDayAmplifier(amplifier: number): CustomDimension;
 
         /**
          * Resets custom time of day interval.
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         resetTimeOfDay(): CustomDimension;
 
         /**
          * Sets star brightness.
          * @param interval number between 0 and 1
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         setStarBrightness(interval: number): CustomDimension;
 
         /**
          * Resets star brightness.
-         * @since 3.1.1b127
+         * @since 3.1.0b126
          */
         resetStarBrightness(): CustomDimension;
     }
@@ -5088,7 +5088,7 @@ declare namespace Dimensions {
      * Returns number between 0 and 7 (inclusive), which represents chance to spawn
      * slimes, equipped mobs, etc. (see {@link https://minecraft.wiki/w/Moon})
      * @param dimensionId numeric id of the dimension
-     * @since 3.1.1b127
+     * @since 3.1.0b126
      */
     function getMoonPhase(dimensionId: number): number;
 
@@ -5096,7 +5096,7 @@ declare namespace Dimensions {
      * Returns floating number in range [0, 1], which represents chance to spawn
      * slimes, equipped mobs, etc. (see {@link https://minecraft.wiki/w/Moon})
      * @param dimensionId numeric id of the dimension
-     * @since 3.1.1b127
+     * @since 3.1.0b126
      */
     function getMoonBrightness(dimensionId: number): number;
 }
@@ -6128,7 +6128,7 @@ declare namespace Entity {
      * Object used to build path and move mobs to the required coordinates using
      * specified parameters. All the setters return current {@link Entity.PathNavigation} 
      * instance to be able to produce chained calls.
-     * @since 2.0.3b33
+     * @since 2.0.3b33 (broken in 3.0.0b124, 3.1.0b125)
      */
     interface PathNavigation {
         /**
@@ -6972,7 +6972,6 @@ declare namespace Game {
 
     /**
      * @returns Current level game mode, one of the {@link EGameMode} values.
-     * @since 3.1.1b127
      */
     function getGameMode(): number;
 
@@ -7795,6 +7794,7 @@ declare namespace IDRegistry {
      * and  in some other block-related functions.
      * @param name string block ID; Inner Core converts it to 
      * block_<name> as minecraft vanilla block ID to avoid string ID clashes
+     * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric block ID.
      */
     function genBlockID(name: string): number;
@@ -7804,6 +7804,7 @@ declare namespace IDRegistry {
      * and in some other item-related functions.
      * @param name string item ID; Inner Core converts it to 
      * item_<name> as minecraft vanilla item ID to avoid string ID clashes
+     * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric item ID.
      */
     function genItemID(name: string): number;
@@ -7815,6 +7816,7 @@ declare namespace IDRegistry {
     /**
      * Returns identifier namespace, which consist of both
      * item and block name IDs to numeric conversion.
+     * @since 3.1.0b126
      */
     function useNamespace(namespace: string): Namespace;
  
@@ -18292,7 +18294,7 @@ declare namespace UI {
 		 */
 		getStyle(): Style;
 		/**
-         * @since 3.1.1b127 (availabled for all windows, before it appears
+         * @since 3.1.0b126 (availabled for all windows, before it appears
 		 * to be only in {@link TabbedWindow} and {@link StandardWindow})
 		 */
         getStyleSafe(): Style;
@@ -18682,7 +18684,7 @@ declare namespace UI {
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
 		/**
-		 * @since 3.1.1b127
+		 * @since 3.1.0b126
 		 */
         getColorProperty(valueOrProperty: FontColor, defaultValue?: FontColor): number;
 		setProperty(name: string, value: any): void;
@@ -19509,7 +19511,7 @@ declare namespace UI {
 		 */
 		getStyle(): Style;
 		/**
-         * @since 3.1.1b127
+         * @since 3.1.0b126
 		 */
         getStyleSafe(): Style;
 		/**
@@ -19741,7 +19743,7 @@ declare namespace UI {
 		 */
 		getStyle(): Style;
 		/**
-         * @since 3.1.1b127
+         * @since 3.1.0b126
 		 */
         getStyleSafe(): Style;
 		setBlockingBackground(bb: boolean): void;
@@ -19782,7 +19784,7 @@ declare namespace UI {
 
     /**
      * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
-     * @since 3.1.1b127
+     * @since 3.1.0b126
      */
     type FontColor = string | [r: number, g: number, b: number, a?: number] | number;
 	
@@ -19964,7 +19966,7 @@ declare namespace UI {
      * @param value hex-string, rgba array or names of color in a string format.
      * @param defaultValue returns if result is wrong, even if it fails,
 	 * transparent (`0`) is returned
-     * @since 3.1.1b127
+     * @since 3.1.0b126
      */
     function parseColor(value: FontColor, defaultValue?: FontColor): number;
 }
