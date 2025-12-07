@@ -208,7 +208,7 @@ declare namespace UI {
 		 */
 		getStyle(): Style;
 		/**
-         * @since 3.1.1b127
+         * @since 3.1.0b126
 		 */
         getStyleSafe(): Style;
 		/**

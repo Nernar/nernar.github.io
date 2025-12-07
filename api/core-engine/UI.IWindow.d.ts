@@ -65,7 +65,7 @@ declare namespace UI {
 		 */
 		getStyle(): Style;
 		/**
-         * @since 3.1.1b127 (availabled for all windows, before it appears
+         * @since 3.1.0b126 (availabled for all windows, before it appears
 		 * to be only in {@link TabbedWindow} and {@link StandardWindow})
 		 */
         getStyleSafe(): Style;
@@ -455,7 +455,7 @@ declare namespace UI {
 		getStringProperty(name: string, fallback: string): string;
 		getBooleanProperty(name: string, fallback: boolean): boolean;
 		/**
-		 * @since 3.1.1b127
+		 * @since 3.1.0b126
 		 */
         getColorProperty(valueOrProperty: FontColor, defaultValue?: FontColor): number;
 		setProperty(name: string, value: any): void;

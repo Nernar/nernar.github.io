@@ -25,6 +25,7 @@ declare namespace IDRegistry {
      * and  in some other block-related functions.
      * @param name string block ID; Inner Core converts it to 
      * block_<name> as minecraft vanilla block ID to avoid string ID clashes
+     * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric block ID.
      */
     function genBlockID(name: string): number;
@@ -34,6 +35,7 @@ declare namespace IDRegistry {
      * and in some other item-related functions.
      * @param name string item ID; Inner Core converts it to 
      * item_<name> as minecraft vanilla item ID to avoid string ID clashes
+     * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric item ID.
      */
     function genItemID(name: string): number;
@@ -45,6 +47,7 @@ declare namespace IDRegistry {
     /**
      * Returns identifier namespace, which consist of both
      * item and block name IDs to numeric conversion.
+     * @since 3.1.0b126
      */
     function useNamespace(namespace: string): Namespace;
  

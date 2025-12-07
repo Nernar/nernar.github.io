@@ -78,7 +78,6 @@ declare namespace Game {
 
     /**
      * @returns Current level game mode, one of the {@link EGameMode} values.
-     * @since 3.1.1b127
      */
     function getGameMode(): number;
 

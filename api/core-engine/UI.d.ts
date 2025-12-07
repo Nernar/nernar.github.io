@@ -9,7 +9,7 @@ declare namespace UI {
 
     /**
      * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
-     * @since 3.1.1b127
+     * @since 3.1.0b126
      */
     type FontColor = string | [r: number, g: number, b: number, a?: number] | number;
 	
@@ -191,7 +191,7 @@ declare namespace UI {
      * @param value hex-string, rgba array or names of color in a string format.
      * @param defaultValue returns if result is wrong, even if it fails,
 	 * transparent (`0`) is returned
-     * @since 3.1.1b127
+     * @since 3.1.0b126
      */
     function parseColor(value: FontColor, defaultValue?: FontColor): number;
 }

@@ -826,7 +826,7 @@ declare namespace Entity {
      * Object used to build path and move mobs to the required coordinates using
      * specified parameters. All the setters return current {@link Entity.PathNavigation} 
      * instance to be able to produce chained calls.
-     * @since 2.0.3b33
+     * @since 2.0.3b33 (broken in 3.0.0b124, 3.1.0b125)
      */
     interface PathNavigation {
         /**
