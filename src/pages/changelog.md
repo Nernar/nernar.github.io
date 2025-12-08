@@ -1,5 +1,41 @@
 # Changelog
 
+## 3.1.1b128 (@rislaed)
+
+Hotfix after previous update and a few useful improvements
+
+- Fixed error catching in some compiled libraries, which also fixed stack traces
+- Fixed duplication of TileEntity savers caused by mod errors, which could lead to partial data loss
+- Fixed [TileEntity registration](/api/namespace/TileEntity#registerPrototype) in case of re-registration or with incorrect identifiers
+- Limited number of messages on error screens (excluding loading stage), which also fixed some crashes due to out-of-memory issues
+- Fixed opening of certain pages in mod browser
+
+## 3.1.1b127
+
+- Added [UpdatableScheduler](/api/namespace/UpdatableScheduler) module, adding new capabilities for configuring the tick of updatables and their optimization; old updatables and tile entities also received these capabilities via [_handle](/api/interface/Updatable#_handle) (@zheka2304)
+- Added methods to [BlockSource](/api/class/BlockSource#playSound) (work in multiplayer), [World](/api/namespace/World#playSound), and [UI](/api/namespace/UI#playSound) (work on the client) for playing and stopping sounds (@rislaed)
+- Added methods to Player for getting the player's [input vector](/api/namespace/Player#getMoveInputVector) and [changing perspective](/api/namespace/Player#setViewPerspective) (@rislaed)
+- Implemented [Entity.getAge](/api/namespace/Entity#getAge)/[Entity.setAge](/api/namespace/Entity#setAge) (@rislaed)
+- Added [Game.getPackVersion](/api/namespace/Game#getPackVersion)/[getPackVersionCode](/api/namespace/Game#getPackVersionCode) methods (@rislaed)
+
+- [Item](/api/namespace/Item) module has been rewritten using codegen; new methods added for getting properties and managing items (@rislaed)
+- [ItemExtraData](/api/class/ItemExtraData) and [ItemInstance](/api/interface/ItemInstance) ported to codegen and exposed them to the Java API (@zheka2304)
+- [BlockState](/api/class/BlockState) ported to codegen and exposed to the Java API; callbacks that previously received a block object `{ id, data }` ([Tile](/api/interface/Tile)) now receive BlockState (@zheka2304)
+- All exceptions from Java, including errors from methods in codegen, can now be caught in scripts; improved display of Java stack traces for such errors (@zheka2304)
+- Added [compact stack traces](/api/namespace/Logger#captureRhinoStackTrace) to errors about missing item and recipe identifiers; stack traces are now automatically added when logging errors (@rislaed)
+- New and generated API methods can now automatically convert string parameters to numeric values (@zheka2304)
+
+- Fixed crash when attempting to [create a throwable item](/api/namespace/Item#createThrowableItem) (@rislaed, @zheka2304)
+- Fixed random crashes when attempting to travel between dimensions (@zheka2304)
+- Disabled guaranteed tile entity initialization when obtained via [getTileEntity](/api/namespace/TileEntity#getTileEntity), which was breaking voltage in IC2 (@zheka2304)
+- Fixed a possible error when connecting over the network (@reider745)
+- Event [redstone](/api/interface/TileEntity#redstone) is now deferred until tile entity initialization (@zheka2304)
+- Fixed errors when sending NaN value changes via bindings in containers (@zheka2304)
+- Fixed [Entity.getAllInsideBox](/api/namespace/Entity#getAllInsideBox) method (@zheka2304)
+- Fixed resource pack loading for certain versions when a mod is disabled, and prevented their possible duplication (@rislaed)
+- Fixed the behavior of .redirect in mods; the browser now displays information about it (@rislaed)
+- Fixed content import methods and in-game file loading (@rislaed)
+
 ## 3.1.0b126
 
 - Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/namespace/Dimensions#CustomDimension) (@rislaed)

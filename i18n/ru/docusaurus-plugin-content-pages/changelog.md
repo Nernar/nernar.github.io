@@ -1,5 +1,41 @@
 # Список изменений
 
+## 3.1.1b128 (@rislaed)
+
+Хот-фикс после прошлого обновления и несколько полезных улучшений
+
+- Исправлен отлов ошибок в некоторых скомпилированных библиотеках, что также исправило стактрейсы
+- Исправлено дублирование сейверов TileEntity из-за ошибок модов, что могло приводить к частичной утере данных
+- Исправлена [регистрация TileEntity](/api/namespace/TileEntity#registerPrototype) в случае повторной регистрации, либо с некорректными идентификаторами
+- Ограничено количество сообщений на экранах с ошибками, исключая этап загрузки, что также исправило некоторые вылеты от нехватки памяти
+- Исправлено открытие некоторых страниц в браузере модов
+
+## 3.1.1b127
+
+- Добавлен модуль [UpdatableScheduler](/api/namespace/UpdatableScheduler), добавляющий новые возможности для настройки тика апдейтаблов и их оптимизации, старые апдейтаблы и тайл энтити также получили эти возможности посредством [_handle](/api/interface/Updatable#_handle) (@zheka2304)
+- В [BlockSource](/api/class/BlockSource#playSound) (работают в мультиплеере), [World](/api/namespace/World#playSound) и [UI](/api/namespace/UI#playSound) (работают на клиенте) добавлены методы для проигрывания и остановки звуков (@rislaed)
+- В Player добавлены методы для [получения вектора ввода](/api/namespace/Player#getMoveInputVector) игрока и [смены перспективы](/api/namespace/Player#setViewPerspective) (@rislaed)
+- Реализованы методы [Entity.getAge](/api/namespace/Entity#getAge)/[Entity.setAge](/api/namespace/Entity#setAge) (@rislaed)
+- Добавлены методы [Game.getPackVersion](/api/namespace/Game#getPackVersion)/[getPackVersionCode](/api/namespace/Game#getPackVersionCode) (@rislaed)
+a
+- Модуль [Item](/api/namespace/Item) переписан на кодген, добавлены новые методы для получения свойств и управления предметами (@rislaed)
+- Перенос [ItemExtraData](/api/class/ItemExtraData) и [ItemInstance](/api/interface/ItemInstance) на кодген и вынос их в API для Java (@zheka2304)
+- [BlockState](/api/class/BlockState) перенесен на кодген и вынесен в API для Java, калбеки, получающие раньше объект блока `{ id, data }` ([Tile](/api/interface/Tile)) теперь получают BlockState (@zheka2304)
+- Все эксепшены из Java, включая ошибки из методов в кодгене теперь могут быть пойманы в скриптах, улучшено отображение Java стактрейсов таких ошибок (@zheka2304)
+- Добавлены [компактные стактрейсы](/api/namespace/Logger#captureRhinoStackTrace) в ошибки об отсутствии идентификаторов предметов и рецептов, при логировании ошибок также автоматически добавляются стактрейсы (@rislaed)
+- Новые и сгенерированные методы API теперь могут приводить строковые параметры к числовым значениям (@zheka2304)
+
+- Исправлен краш при попытке [создать кидаемый предмет](/api/namespace/Item#createThrowableItem) (@rislaed, @zheka2304)
+- Исправлены рандомные краши при попытке перехода между измерениями (@zheka2304)
+- Отключена гарантированная инициализация тайл энтити при получении через [getTileEntity](/api/namespace/TileEntity#getTileEntity), которая ломала напряжение в IC2 (@zheka2304)
+- Исправлена возможная ошибка при подключении по сети (@reider745)
+- Событие [redstone](/api/interface/TileEntity#redstone) теперь откладывается до инициализации тайл энтити (@zheka2304)
+- Исправлены ошибки при отправке изменений значений NaN биндингами в контейнерах (@zheka2304)
+- Исправлен метод [Entity.getAllInsideBox](/api/namespace/Entity#getAllInsideBox) (@zheka2304)
+- Исправлена загрузка ресурспаков для определенных версий, если мод выключен и их возможное дублирование (@rislaed)
+- Исправлена работа .redirect в модах, теперь браузер отображает информацию об этом (@rislaed)
+- Исправлены методы импорта контента и загрузка из файлов в игре (@rislaed)
+
 ## 3.1.0b126
 
 - Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/namespace/Dimensions#CustomDimension) (@rislaed)
