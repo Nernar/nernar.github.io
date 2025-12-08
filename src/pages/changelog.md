@@ -4,6 +4,8 @@
 
 Hotfix after previous update and a few useful improvements
 
+### Fixes {#3.1.1b128-fixes}
+
 - Fixed error catching in some compiled libraries, which also fixed stack traces
 - Fixed duplication of TileEntity savers caused by mod errors, which could lead to partial data loss
 - Fixed [TileEntity registration](/api/namespace/TileEntity#registerPrototype) in case of re-registration or with incorrect identifiers
@@ -12,11 +14,15 @@ Hotfix after previous update and a few useful improvements
 
 ## 3.1.1b127
 
+### New Features {#3.1.1b127-new-features}
+
 - Added [UpdatableScheduler](/api/namespace/UpdatableScheduler) module, adding new capabilities for configuring the tick of updatables and their optimization; old updatables and tile entities also received these capabilities via [_handle](/api/interface/Updatable#_handle) (@zheka2304)
 - Added methods to [BlockSource](/api/class/BlockSource#playSound) (work in multiplayer), [World](/api/namespace/World#playSound), and [UI](/api/namespace/UI#playSound) (work on the client) for playing and stopping sounds (@rislaed)
 - Added methods to Player for getting the player's [input vector](/api/namespace/Player#getMoveInputVector) and [changing perspective](/api/namespace/Player#setViewPerspective) (@rislaed)
 - Implemented [Entity.getAge](/api/namespace/Entity#getAge)/[Entity.setAge](/api/namespace/Entity#setAge) (@rislaed)
 - Added [Game.getPackVersion](/api/namespace/Game#getPackVersion)/[getPackVersionCode](/api/namespace/Game#getPackVersionCode) methods (@rislaed)
+
+### API Improvements and Refinements {#3.1.1b127-api-improvements-and-refinements}
 
 - [Item](/api/namespace/Item) module has been rewritten using codegen; new methods added for getting properties and managing items (@rislaed)
 - [ItemExtraData](/api/class/ItemExtraData) and [ItemInstance](/api/interface/ItemInstance) ported to codegen and exposed them to the Java API (@zheka2304)
@@ -24,6 +30,8 @@ Hotfix after previous update and a few useful improvements
 - All exceptions from Java, including errors from methods in codegen, can now be caught in scripts; improved display of Java stack traces for such errors (@zheka2304)
 - Added [compact stack traces](/api/namespace/Logger#captureRhinoStackTrace) to errors about missing item and recipe identifiers; stack traces are now automatically added when logging errors (@rislaed)
 - New and generated API methods can now automatically convert string parameters to numeric values (@zheka2304)
+
+### Fixes {#3.1.1b127-fixes}
 
 - Fixed crash when attempting to [create a throwable item](/api/namespace/Item#createThrowableItem) (@rislaed, @zheka2304)
 - Fixed random crashes when attempting to travel between dimensions (@zheka2304)
@@ -38,21 +46,27 @@ Hotfix after previous update and a few useful improvements
 
 ## 3.1.0b126
 
+### New Features {#3.1.0b126-new-features}
+
 - Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/namespace/Dimensions#CustomDimension) (@rislaed)
 - Added support for custom [block sounds](/api/namespace/Block#sound) (@rislaed)
 - Added support for blocks and items namespaces and methods for working with them (@zheka2304, @rislaed)
 - Added support for parsing HTML colors in [UI elements](/api/namespace/UI#FontColor) (@rislaed)
 - Added a method to get the list of custom dimensions (@rislaed)
 
+### API Improvements and Refinements {#3.1.0b126-api-improvements-and-refinements}
+
 :::tip Implemented API code generation
 
 Which will significantly improve performance and simplify the introduction of new API methods, including support for Java mods (@zheka2304, @rislaed). The legacy API will be gradually migrated to the new system.
+
+:::
 
 - Restored functionality and migrated the PathNavigation module to code generation (@zheka2304)
 - Migrated the [BlockSource](/api/class/BlockSource) module to code generation (@reider745)
 - Added methods for API module manipulation: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) (@rislaed)
 
-:::
+### Fixes {#3.1.0b126-fixes}
 
 - Fixed the entity hurt event (@zheka2304)
 - Fixed the [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) method (@zheka2304)
@@ -67,18 +81,23 @@ Which will significantly improve performance and simplify the introduction of ne
 
 ## 3.1.0b125 (@reider745, @rislaed)
 
-- Fixed saves were sometimes broken
-- Fixed custom colors for fog/water/sky
-- Fixed [PathNavigation](/api/namespace/Entity#PathNavigation) module
-- In dev mode compilation errors now are displayed earlier
+### New Features {#3.1.0b125-new-features}
+
 - Added [Entity.playAnimation](/api/namespace/Entity#playAnimation) function
 - Added [BlockSource.setRedstoneSignal](/api/class/BlockSource#setRedstoneSignal) and [BlockSource.getRedstoneSignal](/api/class/BlockSource#getRedstoneSignal) methods
-- Fixed block pallete generation for net sync
 - Added [CustomScale](/api/class/CustomScale) module
 - Added functions [Game.addWorldToCache](/api/namespace/Game#addWorldToCache)/[updateWorlds](/api/namespace/Game#updateWorlds)/[getWorldsCount](/api/namespace/Game#getWorldsCount)
 - Added method [BlockSource.randomTick](/api/class/BlockSource#randomTick)
 - Added method [NativeTileEntity.tick](/api/interface/NativeTileEntity#tick)
 - Added new block properties [burnOdds](/api/namespace/Block#burn_odds)/[flameOdds](/api/namespace/Block#flame_odds)
+
+### Fixes {#3.1.0b125-fixes}
+
+- Fixed saves were sometimes broken
+- Fixed custom colors for fog/water/sky
+- Fixed [PathNavigation](/api/namespace/Entity#PathNavigation) module
+- In dev mode compilation errors now are displayed earlier
+- Fixed block pallete generation for net sync
 - Fixed some vanilla block icons in UI
 
 ## 3.0.0b124

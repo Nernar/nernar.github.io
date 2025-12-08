@@ -2,7 +2,9 @@
 
 ## 3.1.1b128 (@rislaed)
 
-Хот-фикс после прошлого обновления и несколько полезных улучшений
+Хотфикс прошлого обновления и несколько полезных улучшений
+
+### Исправления {#3.1.1b128-fixes}
 
 - Исправлен отлов ошибок в некоторых скомпилированных библиотеках, что также исправило стактрейсы
 - Исправлено дублирование сейверов TileEntity из-за ошибок модов, что могло приводить к частичной утере данных
@@ -12,18 +14,24 @@
 
 ## 3.1.1b127
 
+### Нововведения {#3.1.1b127-new-features}
+
 - Добавлен модуль [UpdatableScheduler](/api/namespace/UpdatableScheduler), добавляющий новые возможности для настройки тика апдейтаблов и их оптимизации, старые апдейтаблы и тайл энтити также получили эти возможности посредством [_handle](/api/interface/Updatable#_handle) (@zheka2304)
 - В [BlockSource](/api/class/BlockSource#playSound) (работают в мультиплеере), [World](/api/namespace/World#playSound) и [UI](/api/namespace/UI#playSound) (работают на клиенте) добавлены методы для проигрывания и остановки звуков (@rislaed)
 - В Player добавлены методы для [получения вектора ввода](/api/namespace/Player#getMoveInputVector) игрока и [смены перспективы](/api/namespace/Player#setViewPerspective) (@rislaed)
 - Реализованы методы [Entity.getAge](/api/namespace/Entity#getAge)/[Entity.setAge](/api/namespace/Entity#setAge) (@rislaed)
 - Добавлены методы [Game.getPackVersion](/api/namespace/Game#getPackVersion)/[getPackVersionCode](/api/namespace/Game#getPackVersionCode) (@rislaed)
-a
+
+### Улучшения и доработки API {#3.1.1b127-api-improvements-and-refinements}
+
 - Модуль [Item](/api/namespace/Item) переписан на кодген, добавлены новые методы для получения свойств и управления предметами (@rislaed)
 - Перенос [ItemExtraData](/api/class/ItemExtraData) и [ItemInstance](/api/interface/ItemInstance) на кодген и вынос их в API для Java (@zheka2304)
 - [BlockState](/api/class/BlockState) перенесен на кодген и вынесен в API для Java, калбеки, получающие раньше объект блока `{ id, data }` ([Tile](/api/interface/Tile)) теперь получают BlockState (@zheka2304)
 - Все эксепшены из Java, включая ошибки из методов в кодгене теперь могут быть пойманы в скриптах, улучшено отображение Java стактрейсов таких ошибок (@zheka2304)
 - Добавлены [компактные стактрейсы](/api/namespace/Logger#captureRhinoStackTrace) в ошибки об отсутствии идентификаторов предметов и рецептов, при логировании ошибок также автоматически добавляются стактрейсы (@rislaed)
 - Новые и сгенерированные методы API теперь могут приводить строковые параметры к числовым значениям (@zheka2304)
+
+### Исправления {#3.1.1b127-fixes}
 
 - Исправлен краш при попытке [создать кидаемый предмет](/api/namespace/Item#createThrowableItem) (@rislaed, @zheka2304)
 - Исправлены рандомные краши при попытке перехода между измерениями (@zheka2304)
@@ -38,21 +46,27 @@ a
 
 ## 3.1.0b126
 
+### Нововведения {#3.1.0b126-new-features}
+
 - Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/namespace/Dimensions#CustomDimension) (@rislaed)
 - Добавлена поддержка кастомных [звуков блоков](/api/namespace/Block#sound) (@rislaed)
 - Добавлена поддержка неймспейсов для блоков и предметов и методы для работы с ними (@zheka2304, @rislaed)
 - Поддержка парсинга HTML-цветов в [элементах интерфейса](/api/namespace/UI#FontColor) (@rislaed)
 - Добавлен метод для получения списка кастумных измерений (@rislaed)
 
+### Улучшения и доработки API {#3.1.0b126-api-improvements-and-refinements}
+
 :::tip Реализована кодогенерация для API
 
 Что позволит заметно повысить производительность и упростить введение новых методов API, включая поддержку модов на Java (@zheka2304, @rislaed). Старое API будет постепенно переноситься на новое.
+
+:::
 
 - Восстановление работы и перенос на кодогенерацию модуля PathNavigation (@zheka2304)
 - Перенос модуля [BlockSource](/api/class/BlockSource) на кодогенерацию (@reider745)
 - Добавлены методы для манипуляций с модулями API: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) (@rislaed)
 
-:::
+### Исправления {#3.1.0b126-fixes}
 
 - Исправлено событие получения урона (@zheka2304)
 - Исправлен метод [BlockSource.fetchEntitiesOfTypeInAABB](/api/class/BlockSource#fetchEntitiesOfTypeInAABB) (@zheka2304)
@@ -67,17 +81,22 @@ a
 
 ## 3.1.0b125 (@reider745, @rislaed)
 
-- Исправление сохранений
-- Исправление цвета неба/тумана/воды измерений
-- Исправлен модуль [PathNavigation](/api/namespace/Entity#PathNavigation)
-- В режиме разработчика теперь ошибки компиляции отображаются до входа в игру, а не после полной иницилизации
+### Нововведения {#3.1.0b125-new-features}
+
 - Добавлен метод [Entity.playAnimation](/api/namespace/Entity#playAnimation)
-- Добавлен метод [BlockSource.setRedstoneSignal](/api/class/BlockSource#setRedstoneSignal) - добавляет/устанавливает блоку источник редстоун сигнала и [BlockSource.getRedstoneSignal](/api/class/BlockSource#getRedstoneSignal)
-- Исправление генерации палитры блоков для синхронизации с сервером
+- Добавлен метод [BlockSource.setRedstoneSignal](/api/class/BlockSource#setRedstoneSignal), добавляющий/устанавливающий блоку источник редстоун сигнала и [BlockSource.getRedstoneSignal](/api/class/BlockSource#getRedstoneSignal)
 - Добавлен модуль для пользовательских шкал [CustomScale](/api/class/CustomScale)
 - Добавлены методы [Game.addWorldToCache](/api/namespace/Game#addWorldToCache)/[updateWorlds](/api/namespace/Game#updateWorlds)/[getWorldsCount](/api/namespace/Game#getWorldsCount)
 - Добавлен метод [BlockSource.randomTick](/api/class/BlockSource#randomTick)
 - Добавлен метод [NativeTileEntity.tick](/api/interface/NativeTileEntity#tick)
+
+### Исправления {#3.1.0b125-fixes}
+
+- Исправление сохранений
+- Исправление цвета неба/тумана/воды измерений
+- Исправлен модуль [PathNavigation](/api/namespace/Entity#PathNavigation)
+- В режиме разработчика теперь ошибки компиляции отображаются до входа в игру, а не после полной иницилизации
+- Исправление генерации палитры блоков для синхронизации с сервером
 - Параметры для блока [burnOdds](/api/namespace/Block#burn_odds)/[flameOdds](/api/namespace/Block#flame_odds)
 - Фикс некоторых иконок ванильных блоков в интерфейсе
 
