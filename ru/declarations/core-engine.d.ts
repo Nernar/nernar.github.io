@@ -899,7 +899,7 @@ declare namespace Block {
 		 * @param region BlockSource object
 		 * @param i unknown parameter, supposed to always be zero
 		 */
-		(blockCoords: Vector, block: Tile | BlockSource, region: BlockSource, explosionRadius: number, i: number): void
+		(blockCoords: Vector, block: Tile | BlockState, region: BlockSource, explosionRadius: number, i: number): void
 	}
 
 	/**
