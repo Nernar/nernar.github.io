@@ -844,4 +844,4 @@ This update adds alot and might be unstable.
 
 ## 2.0.0 beta
 
-- First version released
+- Migrating to Minecraft 1.11.4 as Horizon pack
