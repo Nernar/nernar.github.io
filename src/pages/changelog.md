@@ -1,3 +1,7 @@
+---
+toc_max_heading_level: 2
+---
+
 # Changelog
 
 ## 3.1.1b128 (@rislaed)
