@@ -114,6 +114,7 @@ export default {
 		[
 			'@nernar/docusaurus-plugin-typedoc',
 			{
+				id: 'api',
 				projectRoot: 'api',
 				packageJsonName: 'typedoc.json',
 				sortPackages: (left, right) =>
@@ -158,7 +159,14 @@ export default {
 						// TODO: Page groups like in typedoc-github-theme.
 					// ]
 				},
-				remarkPlugins: [remarkAuthors]
+				remarkPlugins: [remarkAuthors],
+				includeCurrentVersion: false,
+				lastVersion: 'latest',
+				versions: {
+					latest: {
+						path: ''
+					}
+				}
 			} satisfies Typedoc.Options
 		]
 	],

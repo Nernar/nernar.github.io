@@ -94,6 +94,7 @@ export async function readVersionsMetadata(
 		disableVersioning: options.disableVersioning ?? false,
 		id: options.id ?? 'default',
 		includeCurrentVersion: options.includeCurrentVersion ?? true,
+		path: (options as any).path ?? options.projectRoot ?? 'api',
 	});
 	const versionNames = filterVersions(versionNamesUnfiltered, {
 		...specialOptions,

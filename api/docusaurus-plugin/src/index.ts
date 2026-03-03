@@ -164,17 +164,25 @@ export default function typedocApiPlugin(
 
 					// Load info from `package.json`s
 					packageConfigs.forEach((cfg) => {
-						const { packageJson } = loadPackageJsonAndDocs(
+						const packageData = loadPackageJsonAndDocs(
 							path.join(options.projectRoot, cfg.packagePath),
 							options.packageJsonName,
 							options.readmeName,
 							options.changelogName,
 						);
 
-						// eslint-disable-next-line no-param-reassign
-						cfg.packageName = packageJson.name;
-						// eslint-disable-next-line no-param-reassign
-						cfg.packageVersion = packageJson.version;
+						if (packageData) {
+							// eslint-disable-next-line no-param-reassign
+							cfg.packageName = packageData.packageJson.name;
+							// eslint-disable-next-line no-param-reassign
+							cfg.packageVersion = packageData.packageJson.version;
+						} else {
+							const packageName = cfg.packageSlug ?? path.basename(cfg.packagePath);
+							// eslint-disable-next-line no-param-reassign
+							cfg.packageName = packageName.substring(packageName.lastIndexOf('/') + 1);
+							// eslint-disable-next-line no-param-reassign
+							cfg.packageVersion = 'latest';
+						}
 					});
 
 					await fs.promises.writeFile(

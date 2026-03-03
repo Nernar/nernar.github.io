@@ -438,7 +438,7 @@ export function flattenAndGroupPackages(
 					) ?? {
 						packageJson: {
 							name: mod.name.substring(mod.name.lastIndexOf('/') + 1),
-							version: '1'
+							version: 'latest'
 						},
 						readmePath: '',
 						changelogPath: ''
