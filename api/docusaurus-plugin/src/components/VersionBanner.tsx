@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import { useDocsPreferredVersion, useDocsVersion, useDocVersionSuggestions } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 
-export function VersionBanner(): JSX.Element | null {
+export function VersionBanner(): React.JSX.Element | null {
 	const { banner, docs, pluginId, version } = useDocsVersion();
 	const { latestVersionSuggestion: latestVersion } = useDocVersionSuggestions(pluginId);
 	const { savePreferredVersionName } = useDocsPreferredVersion(pluginId);

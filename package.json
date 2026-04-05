@@ -24,8 +24,8 @@
   "scripts": {
     "start": "docusaurus start --no-open --no-minify",
     "start-ru": "docusaurus start --locale ru --no-open --no-minify",
-    "build-docs": "docusaurus build --no-minify",
-    "build-docs-ci": "node --max-old-space-size=6144 ./node_modules/.bin/docusaurus build --no-minify",
+    "build-docs": "docusaurus build",
+    "build-docs-ci": "node --max-old-space-size=8192 ./node_modules/@docusaurus/core/bin/docusaurus.mjs build",
     "build": "npm run prebuild-plugin && npm run prebuild-declarations && npm run prebuild-api && npm run build-docs",
     "build-ci": "npm run prebuild-plugin && npm run prebuild-declarations && npm run prebuild-api && npm run build-docs-ci",
     "serve": "docusaurus serve --no-open",
@@ -43,24 +43,24 @@
     "deploy-libraries-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\""
   },
   "dependencies": {
-    "@docusaurus/core": "^3.5.2",
-    "@docusaurus/preset-classic": "^3.5.2",
-    "@docusaurus/theme-mermaid": "^3.5.2",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/theme-mermaid": "^3.9.2",
     "clsx": "^2.1.1",
     "docusaurus-plugin-remote-content": "^4.0.0",
     "fflate": "^0.8.2",
     "git-url-parse": "^16.0.0",
     "mermaid": "^11.4.1",
-    "react": "^18.3.1",
+    "react": "^19.2.4",
     "tsx": "^4.19.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.5.2",
-    "@docusaurus/tsconfig": "^3.5.2",
-    "@docusaurus/types": "^3.5.2",
+    "@docusaurus/module-type-aliases": "^3.9.2",
+    "@docusaurus/tsconfig": "^3.9.2",
+    "@docusaurus/types": "^3.9.2",
     "@types/dts-generator": "^2.1.11",
     "@types/git-url-parse": "^9.0.3",
-    "@types/react": "^18.3.12",
+    "@types/react": "^19.2.4",
     "commander": "^12.1.0",
     "dts-generator": "^3.0.0",
     "path": "^0.12.7",
@@ -80,6 +80,6 @@
     ]
   },
   "engines": {
-    "node": ">=16.14"
+    "node": ">=20.0"
   }
 }

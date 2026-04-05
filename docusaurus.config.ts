@@ -30,6 +30,7 @@ import { readdirSync } from 'fs';
 import path from 'path';
 
 const baseUrl = process.env.BASE_URL ?? '/';
+const isCI = process.env.npm_command === 'ci';
 const configUrl = 'https://nernar.github.io';
 
 export default {
@@ -37,12 +38,15 @@ export default {
 	tagline: 'Inner Core, Core Engine and Horizon documentation',
 	url: configUrl,
 	baseUrl,
-	onBrokenLinks: 'warn',
-	onBrokenMarkdownLinks: 'warn',
+	onBrokenLinks: isCI ? 'ignore' : 'warn',
+	onBrokenAnchors: isCI ? 'ignore' : 'warn',
 	favicon: 'favicon/favicon.ico',
 
 	markdown: {
-		mermaid: true
+		mermaid: true,
+		hooks: {
+			onBrokenMarkdownLinks: isCI ? 'ignore' : 'warn'
+		}
 	},
 	themes: ['@docusaurus/theme-mermaid'],
 	staticDirectories: ['static'],
@@ -164,7 +168,7 @@ export default {
 				lastVersion: 'latest',
 				versions: {
 					latest: {
-						path: ''
+						path: '.'
 					}
 				}
 			} satisfies Typedoc.Options

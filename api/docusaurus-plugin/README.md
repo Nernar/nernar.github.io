@@ -1,30 +1,12 @@
 # docusaurus-typedoc-plugin
 
-[![Build Status](https://travis-ci.org/milesj/docusaurus-plugin-typedoc-api.svg?branch=master)](https://travis-ci.org/milesj/docusaurus-plugin-typedoc-api)
-[![npm version](https://badge.fury.io/js/docusaurus-plugin-typedoc-api.svg)](https://www.npmjs.com/package/docusaurus-plugin-typedoc-api)
-[![npm deps](https://david-dm.org/milesj/docusaurus-plugin-typedoc-api.svg?path=packages/plugin)](https://www.npmjs.com/package/docusaurus-plugin-typedoc-api)
-
 A Docusaurus plugin for generating source code `/api/*` routes, powered by
 [TypeDoc](https://typedoc.org/).
 
 The plugin has been designed to document your public API by default (anything exported from a
 package's entry point), so any private, protected, or internal code will not be generated.
 
-## Requirements
-
-- `typescript` >= v4
-- `@docusaurus/core` >= v2.0.0
-- `@docusaurus/preset-classic` >= v2.0.0
-
-## Examples
-
-- [Boost](https://github.com/milesj/boost) - https://boostlib.dev/api
-
 ## Installation
-
-```
-yarn add --dev docusaurus-plugin-typedoc-api
-```
 
 Open your `docusaurus.config.js` and make the following changes:
 
@@ -59,7 +41,7 @@ module.exports = {
   // ...
   plugins: [
     [
-      'docusaurus-plugin-typedoc-api',
+      '@nernar/docusaurus-plugin-typedoc',
       {
         projectRoot: path.join(__dirname, '..'),
         // Monorepo
@@ -295,18 +277,3 @@ export default {
 - The header/footer API links are _not_ version aware, as their values are static.
 - We suggest only versioning major versions, as the size of these JSON files and the webpack build
   will get very large very fast.
-
-## Comparison
-
-There's another plugin called
-[docusaurus-plugin-typedoc](https://github.com/tgreyuk/typedoc-plugin-markdown/tree/master/packages/docusaurus-plugin-typedoc),
-that offers a similar solution. However, there are many differences between that package and this
-one, with the biggest being that theirs generates markdown files and `/docs/api/...` styled routes,
-while ours renders custom React pages with `/api/...` styled routes. Some other differences are:
-
-- An index of all packages.
-- Readme inclusion and rendering.
-- Custom styles, sections, and headings.
-- Multiple function and method signatures.
-- [Versioning](#versioning)!
-- And probably more....

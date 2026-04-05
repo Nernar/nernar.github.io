@@ -104,7 +104,7 @@ export default {
 				'blocks/first-liquid',
 				{
 					type: 'category',
-					label: 'Renders',
+					label: 'Models',
 					link: {
 						type: 'generated-index'
 					},

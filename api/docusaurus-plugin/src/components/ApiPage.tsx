@@ -7,58 +7,81 @@ import DocRoot, { type Props as DocRootProps } from '@theme/DocRoot';
 import type {
 	ApiOptions,
 	PackageReflectionGroup,
-	TSDDeclarationReflection,
-	TSDDeclarationReflectionMap,
-	TSDReflection,
+	TSDDeclarationReflectionMap
 } from '../types';
 import { ApiDataContext } from './ApiDataContext';
 
-function isObject(value: unknown): value is TSDReflection {
-	return typeof value === 'object' && value !== null && !Array.isArray(value);
-}
-
-function deepMapReflections(
-	data: TSDReflection,
-	map: TSDDeclarationReflectionMap,
-	parent?: TSDReflection,
-) {
-	Object.entries(data).forEach(([key, value]) => {
-		if (key === 'id') {
-			const hasType = 'type' in data;
-
-			// Dont overwrite with reference nodes
-			if (!hasType || (hasType && (data as unknown as { type: string }).type !== 'reference')) {
-				map[Number(value)] = data as TSDDeclarationReflection;
-
-				if (parent) {
-					data.parentId = parent.id;
-				}
-			}
-		} else if (Array.isArray(value)) {
-			value.forEach((val) => {
-				if (isObject(val)) {
-					deepMapReflections(val, map, data);
-				}
-			});
-		} else if (isObject(value)) {
-			deepMapReflections(value, map, data);
-		}
-	});
-
-	return map;
-}
-
 function mapPackagesToReflection(packages: PackageReflectionGroup[]): TSDDeclarationReflectionMap {
-	const map: TSDDeclarationReflectionMap = {};
+    const map: TSDDeclarationReflectionMap = {};
+    const visited = new Set<any>();
+    const stack: { current: any; parent?: any; path: string }[] = [];
 
-	packages.forEach((pkg) => {
-		pkg.entryPoints.forEach((entry) => {
-			deepMapReflections(entry.reflection, map);
-		});
-	});
+    for (let i = packages.length - 1; i >= 0; i--) {
+        const entryPoints = packages[i].entryPoints;
+        for (let j = entryPoints.length - 1; j >= 0; j--) {
+            stack.push({ 
+                current: entryPoints[j].reflection, 
+                parent: undefined,
+                path: `packages[${i}].entryPoints[${j}].reflection`
+            });
+        }
+    }
 
-	return map;
+    let iterations = 0;
+
+    while (stack.length > 0) {
+        const { current, parent, path } = stack.pop()!;
+        iterations++;
+
+        if (!current || typeof current !== 'object') {
+            continue;
+        }
+        
+        if (visited.has(current)) {
+            continue;
+        }
+        
+        visited.add(current);
+        let nextParent = parent;
+
+        if ('id' in current && typeof current.id === 'number') {
+            if (current.type !== 'reference') {
+                map[current.id] = current;
+                
+                if (parent && 'id' in parent) {
+                    current.parentId = parent.id;
+                }
+            }
+            nextParent = current;
+        }
+
+        if (Array.isArray(current)) {
+            for (let i = current.length - 1; i >= 0; i--) {
+                stack.push({ 
+                    current: current[i], 
+                    parent: nextParent, 
+                    path: `${path}[${i}]` 
+                });
+            }
+        } else {
+            const keys = Object.keys(current);
+            for (let i = keys.length - 1; i >= 0; i--) {
+                const key = keys[i];
+                stack.push({ 
+                    current: current[key], 
+                    parent: nextParent, 
+                    path: `${path}.${key}` 
+                });
+            }
+        }
+    }
+
+    console.log(`[api] Iterated ${iterations} reflections, mapped ${visited.size} objects`);
+    return map;
 }
+
+let cachedMap: TSDDeclarationReflectionMap | null = null;
+let cachedPackages: PackageReflectionGroup[] | null = null;
 
 export interface ApiPageProps extends DocRootProps {
 	options: ApiOptions;
@@ -67,7 +90,14 @@ export interface ApiPageProps extends DocRootProps {
 
 function ApiPage({ options, packages, ...props }: ApiPageProps) {
 	const value = useMemo(
-		() => ({ options, reflections: mapPackagesToReflection(packages) }),
+		() => {
+			if (cachedMap && cachedPackages === packages) {
+				return { options, reflections: cachedMap };
+			}
+			cachedPackages = packages;
+			cachedMap = mapPackagesToReflection(packages);
+			return { options, reflections: cachedMap };
+		},
 		[options, packages],
 	);
 

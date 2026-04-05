@@ -7,6 +7,10 @@ function replaceWithSrc(url: string): string {
 	return url.replace(/\/(dts|dist|lib|build|es|esm|cjs|mjs)\//, '/src/');
 }
 
+function isExternalSource(fileName: string): boolean {
+	return fileName.includes('node_modules') || fileName.includes('declarations') || fileName.includes('android.d.ts');
+}
+
 export interface SourceLinkProps {
 	sources?: JSONOutput.SourceReference[];
 }
@@ -19,26 +23,31 @@ export function SourceLink({ sources = [] }: SourceLinkProps) {
 		return null;
 	}
 
+	const githubHost = (siteConfig.customFields?.githubHost as string) ?? 'github.com';
+	const githubRepository = `https://${githubHost}/${siteConfig.organizationName}/${siteConfig.projectName}`;
+
 	return (
 		<>
-			{sources.slice(0, 3).map((source) => (
-				<a
-					key={source.fileName}
-					className="tsd-anchor"
-					href={
-						source.url ||
-						`https://${siteConfig.githubHost}${
-							siteConfig.githubPort ? `:${siteConfig.githubPort}` : ''
-						}/${siteConfig.organizationName}/${
-							siteConfig.projectName
-						}/blob/${gitRefName}/${replaceWithSrc(source.fileName)}#L${source.line}`
-					}
-					rel="noreferrer"
-					target="_blank"
-				>
-					<i className="codicon codicon-file-code" />
-				</a>
-			))}
+			{sources.slice(0, 3).map((source) => {
+				if (isExternalSource(source.fileName)) {
+					return null;
+				}
+
+				return (
+					<a
+						key={source.fileName}
+						className="tsd-anchor"
+						href={
+							source.url ||
+							`${githubRepository}/blob/${gitRefName}/${replaceWithSrc(source.fileName)}#L${source.line}`
+						}
+						rel="noreferrer"
+						target="_blank"
+					>
+						<i className="codicon codicon-file-code" />
+					</a>
+				);
+			})}
 		</>
 	);
 }

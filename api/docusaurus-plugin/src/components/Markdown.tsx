@@ -90,7 +90,7 @@ marked.use({
 	],
 });
 
-const TOKEN_TO_TAG: Record<string, keyof JSX.IntrinsicElements> = {
+const TOKEN_TO_TAG: Record<string, keyof React.JSX.IntrinsicElements> = {
 	blockquote: 'blockquote',
 	br: 'br',
 	code: 'pre',

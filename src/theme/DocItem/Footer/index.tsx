@@ -8,7 +8,7 @@ import type { WrapperProps } from '@docusaurus/types';
 
 type Props = WrapperProps<typeof FooterType>;
 
-export default function FooterWrapper(props: Props): JSX.Element {
+export default function FooterWrapper(props: Props): React.JSX.Element {
   const { metadata } = useDoc();
   const file = metadata.editUrl;
   const additionalContributors = metadata.frontMatter.additionalContributors;

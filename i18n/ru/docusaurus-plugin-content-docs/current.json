@@ -47,8 +47,12 @@
     "message": "Мультиплеер",
     "description": "The label for category Multiplayer in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.Models": {
+    "message": "Модели",
+    "description": "The label for category Models in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.Renders": {
-    "message": "Отрисовка",
+    "message": "Рендеры",
     "description": "The label for category Renders in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Dimensions": {

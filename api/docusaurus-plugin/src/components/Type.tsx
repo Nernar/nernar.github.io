@@ -18,10 +18,12 @@ export function extractDeclarationFromType(
 	return (type as unknown as { declaration?: TSDDeclarationReflection })?.declaration;
 }
 
+let unresolvedReferencesSet: Set<string> = new Set();
+
 function extractReferenceTypeLink(
 	type: JSONOutput.ReferenceType,
 	reflections: TSDDeclarationReflectionMap,
-): JSX.Element {
+): React.JSX.Element {
 	const ref = typeof type.target === 'number' ? reflections[type.target] : null;
 	const genericClass = ref?.id && !ref.sources ? ' tsd-signature-type-generic' : '';
 
@@ -37,23 +39,24 @@ function extractReferenceTypeLink(
 		);
 	}
 
-	if (typeof type.target !== 'number' && type.target?.sourceFileName?.includes('android.d.ts')) {
-		const qualifiedName = type.target.qualifiedName?.split('.');
-
-		if (qualifiedName[0] !== 'native') {
-			return (
-				<Link
-					className={`tsd-signature-type${genericClass}`}
-					to={`https://developer.android.com/reference/${qualifiedName.join('/')}`}
-				>
-					{type.name}
-				</Link>
-			);
+	if (typeof type.target !== 'number' && type.target?.sourceFileName) { 
+		let source = type.target.sourceFileName;
+		if (source.includes('android.d.ts')) {
+			const qualifiedName = type.target.qualifiedName?.split('.');
+			if (qualifiedName[0] !== 'native') {
+				return (
+					<Link
+						className={`tsd-signature-type${genericClass}`}
+						to={`https://developer.android.com/reference/${qualifiedName.join('/')}`}
+					>
+						{type.name}
+					</Link>
+				);
+			}
+		} else if (!unresolvedReferencesSet.has(source)) {
+			console.warn(`[api] Unresolved reference source ${source}, please consider include it to your entryPoints!`);
+			unresolvedReferencesSet.add(source);
 		}
-	}
-
-	if (typeof type.target !== 'number' && type.target?.sourceFileName) {
-		console.warn(`Unresolved reference source ${type.target?.sourceFileName}, please consider include it to your entryPoints!`);
 	}
 
 	return (
@@ -61,7 +64,7 @@ function extractReferenceTypeLink(
 	);
 }
 
-function parens(element: JSX.Element, needsParens: boolean): JSX.Element {
+function parens(element: React.JSX.Element, needsParens: boolean): React.JSX.Element {
 	if (!needsParens) {
 		return element;
 	}

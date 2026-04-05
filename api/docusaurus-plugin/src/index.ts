@@ -25,6 +25,9 @@ import type {
 	TSDDeclarationReflection,
 	VersionMetadata,
 } from './types';
+import { FullVersion } from '@docusaurus/plugin-content-docs/lib/types.js';
+import { toGlobalDataVersion } from '@docusaurus/plugin-content-docs/lib/globalData.js';
+import { toFullVersion } from '@docusaurus/plugin-content-docs/lib/versions/version.js';
 
 const DEFAULT_OPTIONS: Required<DocusaurusPluginTypeDocApiOptions> = {
 	banner: '',
@@ -135,7 +138,10 @@ export default function typedocApiPlugin(
 	});
 
 	return {
-		name: '@nernar/docusaurus-plugin-typedoc',
+		// TODO: Since newest versions docs plugin components requires
+		// docs plugin to display version, sidebar, etc.
+		// name: '@nernar/docusaurus-plugin-typedoc',
+		name: 'docusaurus-plugin-content-docs',
 
 		extendCli(cli) {
 			const command = isDefaultPluginId ? 'api:version' : `api:version:${pluginId}`;
@@ -273,6 +279,25 @@ export default function typedocApiPlugin(
 			if (!content) {
 				return;
 			}
+
+			const versions: FullVersion[] = content.loadedVersions.map(loadedVersion => {
+				return toFullVersion({
+					...loadedVersion,
+					sidebars: { api: loadedVersion.sidebars },
+					docs: [
+						// @ts-expect-error
+						{ id: 'index', path: loadedVersion.versionPath, sidebar: 'api' }
+					],
+					drafts: [],
+					categoryGeneratedIndices: []
+				});
+			});
+
+			actions.setGlobalData({
+				path: normalizeUrl([context.baseUrl, options.routeBasePath ?? 'api']),
+				versions: versions.map(toGlobalDataVersion),
+				breadcrumbs: options.breadcrumbs,
+			});
 
 			const docs: PropVersionDocs = {};
 
