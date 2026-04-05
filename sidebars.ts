@@ -163,11 +163,20 @@ export default {
 			},
 			items: [
 				'ui/investigating-contents',
-				'ui/window-types',
 				'ui/drawings',
 				'ui/elements',
-				'ui/extending-components',
-                'ui/animation'
+				'ui/window-types',
+				{
+					type: 'category',
+					label: 'Advanced',
+					link: {
+						type: 'generated-index'
+					},
+					items: [
+						'ui/animating-elements',
+						'ui/extending-components'
+					]
+				}
 			]
 		},
 		{
@@ -183,19 +192,19 @@ export default {
 				'storage/processing-resources'
 			]
 		},
-        {
-            type: 'category',
-            label: 'Multiplayer',
-            link: {
-                type: 'generated-index'
-            },
-            items: [
-                'multiplayer/start',
-                'multiplayer/client-packets',
-                'multiplayer/server-packets',
-                'multiplayer/network-entity-type'
-            ]
-        },
+		{
+			type: 'category',
+			label: 'Multiplayer',
+			link: {
+				type: 'generated-index'
+			},
+			items: [
+				'multiplayer/start',
+				'multiplayer/client-packets',
+				'multiplayer/server-packets',
+				'multiplayer/network-entity-type'
+			]
+		},
 		{
 			type: 'category',
 			label: 'Dimensions',
