@@ -5,22 +5,26 @@ import type { TSDDeclarationReflection } from '../types';
 import { AnchorLink } from './AnchorLink';
 import { Icon } from './Icon';
 import { Name } from './Name';
+import { resolveAnchorLink } from '../utils/links';
 
 export interface IndexChildProps {
 	id: number;
 }
 
 function IndexChild({ id }: IndexChildProps) {
-	const reflection = useRequiredReflection(id);
+    const reflection = useRequiredReflection(id);
 
-	return (
-		<li>
-			<Link className="tsd-kind-icon" to={reflection.permalink ?? `#${reflection.name}`}>
-				<Icon reflection={reflection} />
-				<Name reflection={reflection} colorful={true} />
-			</Link>
-		</li>
-	);
+    return (
+        <li>
+            <Link 
+                className="tsd-kind-icon" 
+                to={reflection.permalink ? resolveAnchorLink(reflection.permalink) : resolveAnchorLink('', reflection.name)}
+            >
+                <Icon reflection={reflection} />
+                <Name reflection={reflection} colorful={true} />
+            </Link>
+        </li>
+    );
 }
 
 export interface IndexProps {
