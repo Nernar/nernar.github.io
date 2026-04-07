@@ -5,7 +5,7 @@ node_modules/
 /build
 /innercore*-docs.pdf
 /static/declarations
-/api_versioned_docs/version-latest
+/api_versioned_docs
 
 # Generated files
 .docusaurus

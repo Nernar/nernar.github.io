@@ -56,6 +56,23 @@ export default {
 	deploymentBranch: 'deploy',
 	trailingSlash: false,
 
+	future: {
+		v4: {
+			useCssCascadeLayers: true,
+			removeLegacyPostBuildHeadAttribute: true
+		},
+		experimental_faster: {
+			lightningCssMinimizer: true,
+			mdxCrossCompilerCache: true,
+			rspackBundler: true,
+			rspackPersistentCache: true,
+			ssgWorkerThreads: true,
+			swcHtmlMinimizer: true,
+			swcJsLoader: true,
+			swcJsMinimizer: true
+		}
+	},
+
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'ru']
@@ -187,9 +204,9 @@ export default {
 		],
 		announcementBar: {
 			content: 'A huge number of articles, APIs and other things were <a target="_blank" rel="noopener noreferrer" href="https://vk.com/wall-148880110_346">irretrievably lost</a>.',
-			backgroundColor: '#cc4444',
+			backgroundColor: '#cc8844',
 			textColor: '#ffffff',
-			isCloseable: false
+			isCloseable: true
 		},
 		colorMode: {
 			respectPrefersColorScheme: true
