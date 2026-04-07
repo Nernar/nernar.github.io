@@ -8,7 +8,7 @@ To understand the block and item models JSON format, here is [this article on of
 
 :::
 
-All the `blockstates/` and `models/` directories must be inside of a KEX resource directory, more detailed about it read in [the previous article](kex-config.md). The names of JSON files in `blockstates/` and `models/item/` directories must be the same as the name IDs of blocks and items you've registered to assign these models to. For example:
+All the `blockstates/` and `models/` directories must be inside of a KEX resource directory, more detailed about it read in [the previous article](kex-config). The names of JSON files in `blockstates/` and `models/item/` directories must be the same as the name IDs of blocks and items you've registered to assign these models to. For example:
 
 ```java
 BlockRegistry.register(new MyBlock("my_block"));

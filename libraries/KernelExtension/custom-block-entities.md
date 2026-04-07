@@ -1,6 +1,6 @@
 # Custom native block entities
 
-Referring to what's said in **_`Defining blocks and items in Java`_** [article](blocks-and-items-in-java.md), if the registration of custom blocks and items is at the first place on the list of important Inner Core features which are unfortunately _JavaScript-only_, the second place on this list is undoubtedly occupied by **the tile entities**.
+Referring to what's said in **_`Defining blocks and items in Java`_** [article](blocks-and-items-in-java), if the registration of custom blocks and items is at the first place on the list of important Inner Core features which are unfortunately _JavaScript-only_, the second place on this list is undoubtedly occupied by **the tile entities**.
 
 The **custom native block entities class system** introduced in KEX `RELEASE 4.0` covers two cons of Inner Core's tile entities at the same time, first being impossibility of working with them in Java, and the second being relatively poor performance because of the 100%-JavaScript implementation.
 

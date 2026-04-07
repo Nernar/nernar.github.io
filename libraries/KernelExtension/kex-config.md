@@ -33,7 +33,7 @@ As of KEX 4.0, `kex-config.json` takes only one parameter `"resources"`, which i
                 ╹— my_item.json
 ```
 
-Currently there are two things you can make a KEX resource directory in your mod for: `lang` files and JSON block and item models. The latter is explained in detail in [this article](json-models.md).
+Currently there are two things you can make a KEX resource directory in your mod for: `lang` files and JSON block and item models. The latter is explained in detail in [this article](json-models).
 
 Talking about `lang`-s, it's just an alternative solution for calling [KEX.I18n.addLangDir](https://dmhyt.github.io/kex-docs/api/modules/KEX.I18n.html#addLangDir) to add your directory containing vanilla localization files. For example, if you create the `kex-config.json` with `"resources"` parameter set to `"kex-res/"`, and create a `"lang/"` folder in `"your_mod_directory/kex-res/"`, you won't need to additionally write this JS/TS code:
 

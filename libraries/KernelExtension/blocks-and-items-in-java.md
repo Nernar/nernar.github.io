@@ -88,7 +88,7 @@ new Block("my_other_block")
             .put("inCreative", true)));
 ```
 
-Without exaggeration, this solution is extremely bulky and not recommended to use. A much more easy, human-readable and lightweight method to set block's define data is shown [here](json-models.md).
+Without exaggeration, this solution is extremely bulky and not recommended to use. A much more easy, human-readable and lightweight method to set block's define data is shown [here](json-models).
 
 ### _**Items**_
 
