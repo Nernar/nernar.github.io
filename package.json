@@ -24,8 +24,8 @@
   "scripts": {
     "start": "docusaurus start --no-open --no-minify",
     "start-ru": "docusaurus start --locale ru --no-open --no-minify",
-    "build-docs": "docusaurus build",
-    "build-docs-ci": "node --max-old-space-size=8192 ./node_modules/@docusaurus/core/bin/docusaurus.mjs build",
+    "build-docs": "docusaurus build  --no-minify",
+    "build-docs-ci": "node --max-old-space-size=8192 ./node_modules/@docusaurus/core/bin/docusaurus.mjs build --no-minify",
     "build": "npm run prebuild-plugin && npm run prebuild-declarations && npm run prebuild-api && npm run build-docs",
     "build-ci": "npm run prebuild-plugin && npm run prebuild-declarations && npm run prebuild-api && npm run build-docs-ci",
     "serve": "docusaurus serve --no-open",

@@ -169,12 +169,13 @@ export default {
 				{
 					type: 'category',
 					label: 'Advanced',
+					key: 'Advanced UI',
 					link: {
 						type: 'generated-index'
 					},
 					items: [
-						'ui/animating-elements',
-						'ui/extending-components'
+						'ui/advanced/animating-elements',
+						'ui/advanced/extending-components'
 					]
 				}
 			]
@@ -188,6 +189,7 @@ export default {
 			items: [
 				'storage/saving-basics',
 				'storage/principles-and-objectives',
+				'storage/containers',
 				'storage/tile-entities',
 				'storage/processing-resources'
 			]

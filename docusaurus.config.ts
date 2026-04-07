@@ -30,7 +30,7 @@ import { readdirSync } from 'fs';
 import path from 'path';
 
 const baseUrl = process.env.BASE_URL ?? '/';
-const isCI = process.env.npm_command === 'ci';
+const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
 const configUrl = 'https://nernar.github.io';
 
 export default {
@@ -136,6 +136,9 @@ export default {
 							slug: path.replace('.d.ts', '')
 						};
 					})
+				],
+				exclude: [
+					'**/declarations/**/*.d.ts'
 				],
 				typedocOptions: {
 					entryPoints: [

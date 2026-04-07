@@ -67,6 +67,10 @@
     "message": "Техническое",
     "description": "The label for category Advanced in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.Advanced UI": {
+    "message": "Продвинутое",
+    "description": "The label for category Advanced UI in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.Publishing": {
     "message": "Публикация",
     "description": "The label for category Publishing in sidebar tutorialSidebar"
