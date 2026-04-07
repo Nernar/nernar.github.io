@@ -14,7 +14,6 @@ import type {
 } from '../types';
 import { migrateToVersion0230 } from './structure/0.23';
 import { getKindSlug, getPackageSlug, joinUrl } from './url';
-import { resolveAnchorLink } from '../utils/links';
 
 function shouldEmit(projectRoot: string, tsconfigPath: string) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -177,43 +176,42 @@ export function loadPackageJsonAndDocs(
 }
 
 export function addMetadataToReflections(
-    project: JSONOutput.DeclarationReflection,
-    packageSlug: string,
-    urlPrefix: string,
+	project: JSONOutput.DeclarationReflection,
+	packageSlug: string,
+	urlPrefix: string,
 ): TSDDeclarationReflection {
-    const permalink = `/${joinUrl(urlPrefix, packageSlug)}`;
+	const permalink = `/${joinUrl(urlPrefix, packageSlug)}`;
 
-    if (project.children) {
-        // eslint-disable-next-line no-param-reassign
-        project.children = project.children.map((child) => {
-            migrateToVersion0230(child);
+	if (project.children) {
+		// eslint-disable-next-line no-param-reassign
+		project.children = project.children.map((child) => {
+			migrateToVersion0230(child);
 
-            const kindSlugPart = getKindSlug(child);
-            const childPermalink = kindSlugPart 
-                ? `${permalink}/${kindSlugPart}/${child.name}` 
-                : resolveAnchorLink(permalink, child.name);
+			const kindSlugPart = getKindSlug(child);
+			const childSlug = kindSlugPart ? `/${kindSlugPart}/${child.name}` : `#${child.name}`;
+			const childPermalink = permalink + childSlug;
 
-            // We need to go another level deeper and only use fragments
-            if (child.kind === ReflectionKind.Namespace && child.children) {
-                // eslint-disable-next-line no-param-reassign
-                child.children = child.children.map((grandChild) => ({
-                    ...grandChild,
-                    permalink: normalizeUrl([resolveAnchorLink(childPermalink, grandChild.name)]),
-                }));
-            }
+			// We need to go another level deeper and only use fragments
+			if (child.kind === ReflectionKind.Namespace && child.children) {
+				// eslint-disable-next-line no-param-reassign
+				child.children = child.children.map((grandChild) => ({
+					...grandChild,
+					permalink: normalizeUrl([`${childPermalink}#${grandChild.name}`]),
+				}));
+			}
 
-            return {
-                ...child,
-                permalink: normalizeUrl([childPermalink]),
-            };
-        });
-    }
+			return {
+				...child,
+				permalink: normalizeUrl([childPermalink]),
+			};
+		});
+	}
 
-    // @ts-expect-error Not sure why this fails
-    return {
-        ...project,
-        permalink: normalizeUrl([permalink]),
-    };
+	// @ts-expect-error Not sure why this fails
+	return {
+		...project,
+		permalink: normalizeUrl([permalink]),
+	};
 }
 
 function mergeReflections(base: TSDDeclarationReflection, next: TSDDeclarationReflection) {

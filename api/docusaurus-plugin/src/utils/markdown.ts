@@ -1,6 +1,5 @@
 import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import type { TSDDeclarationReflectionMap } from '../types';
-import { resolveAnchorLink } from './links';
 
 function splitLinkText(text: string): { caption: string; target: string } {
 	let splitIndex = text.indexOf('|');
@@ -40,20 +39,20 @@ function findReflectionWithMatchingTarget(
 }
 
 function replaceApiLinks(
-    reflections: TSDDeclarationReflectionMap,
+	reflections: TSDDeclarationReflectionMap,
 ): (match: string, tagName: string, content: string) => string {
-    return (match: string, tagName: string, content: string) => {
-        const { caption, target } = splitLinkText(content);
-        const [symbol, member] = target.split('.');
-        const reflection = findReflectionWithMatchingTarget(reflections, symbol, member);
-        const label = tagName === 'linkcode' ? `\`${caption}\`` : caption;
+	return (match: string, tagName: string, content: string) => {
+		const { caption, target } = splitLinkText(content);
+		const [symbol, member] = target.split('.');
+		const reflection = findReflectionWithMatchingTarget(reflections, symbol, member);
+		const label = tagName === 'linkcode' ? `\`${caption}\`` : caption;
 
-        if (!reflection?.permalink) {
-            return label;
-        }
+		if (!reflection?.permalink) {
+			return label;
+		}
 
-        return `[${label}](${resolveAnchorLink(reflection.permalink, member)})`;
-    };
+		return `[${label}](${reflection.permalink}${member ? `#${member}` : ''})`;
+	};
 }
 
 function replaceDocLinks(

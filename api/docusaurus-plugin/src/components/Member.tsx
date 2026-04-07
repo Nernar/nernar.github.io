@@ -18,9 +18,10 @@ import { Name } from './Name';
 
 export interface MemberProps {
 	id: number;
+	parent?: string;
 }
 
-export function Member({ id }: MemberProps) {
+export function Member({ id, parent }: MemberProps) {
 	const reflection = useRequiredReflection(id);
 	const apiOptions = useContext(ApiOptionsContext);
 
@@ -46,10 +47,11 @@ export function Member({ id }: MemberProps) {
 	}
 
 	const reflections = useReflectionMap();
+	const parentAnchor = parent ? parent + '.' + reflection.name : reflection.name;
 	return (
 		<section className="tsd-panel tsd-member">
 			<h3 className="tsd-panel-header">
-				<AnchorLink id={reflection.name} />
+				<AnchorLink parent={parent} id={reflection.name} />
 				<SourceLink sources={reflection.sources} />
 				<Flags flags={reflection.flags} />
 				<Name reflection={reflection} />
@@ -61,7 +63,7 @@ export function Member({ id }: MemberProps) {
 			{reflection.groups?.map((group) => (
 				<Fragment key={group.title}>
 					{group.children?.map((child) =>
-						hasOwnDocument(child, reflections) ? null : <Member key={child} id={child} />,
+						hasOwnDocument(child, reflections) ? null : <Member key={child} parent={parentAnchor} id={child} />,
 					)}
 				</Fragment>
 			))}
