@@ -1,9 +1,0 @@
-/*!
- * buildToken
- * Builds OAuth token prefix (helper function)
- *
- * @name buildToken
- * @function
- * @param {GitUrl} obj The parsed Git url object.
- * @return {String} token prefix
- */

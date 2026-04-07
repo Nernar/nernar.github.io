@@ -23247,6 +23247,88 @@ declare type ArmorType = "helmet" | "chestplate" | "leggings" | "boots";
  * currently there are only default armor models.
  */
 declare type DefaultRenderTemplate = ArmorType;
+
+declare function getClass(property: string): any;
+
+declare abstract class java {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+declare abstract class javax {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+declare abstract class org {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+declare abstract class com {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+declare abstract class edu {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+declare abstract class net {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+declare abstract class android {
+	private constructor();
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+
+declare abstract class Packages {
+	private constructor();
+	static readonly java: typeof java;
+	static readonly javax: typeof javax;
+	static readonly org: typeof org;
+	static readonly com: typeof com;
+	static readonly edu: typeof edu;
+	static readonly net: typeof net;
+	static readonly android: typeof android;
+	/**
+	 * @deprecated Probably is not known package, please
+	 * ensure in availability before publishing.
+	 */
+	static readonly [pkg: string]: any;
+}
+
+declare class JavaImporter {
+	constructor(...packagesOrClasses: any);
+	importClass(clazz: any): void;
+	importPackage(package: any): void;
+	readonly [property: string]: any;
+}
 /**
  * Type used to mark Java bytes.
  */
@@ -23402,435 +23484,3 @@ declare var __packdir__: string;
  * @since 2.2.1b85
  */
 declare var __modpack__: ModPack.ModPackJsAdapter;
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                class NativeRenderer extends java.lang.Object {
-                    static class: java.lang.Class<NativeRenderer>;
-                    static createHumanoidRenderer(d: number): Render.Renderer;
-                    static createItemSpriteRenderer(id: number): Render.Renderer;
-                    static createRendererWithSkin(skin: string, d: number): Render.Renderer;
-                    static getRendererById(id: number): Nullable<Render.Renderer>;
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace recipes {
-                        namespace workbench {
-                            class InventoryPool extends java.lang.Object {
-                                static class: java.lang.Class<InventoryPool>;
-                                constructor(player: number);
-                                addRecipeEntry(entry: Recipes.RecipeEntry): void;
-                                addPoolEntry(entry: InventoryPool.PoolEntry): void;
-                                getPoolEntrySet(entry: Recipes.RecipeEntry): Nullable<InventoryPool.PoolEntrySet>;
-                                getPoolEntries(entry: Recipes.RecipeEntry): Nullable<java.util.ArrayList<InventoryPool.PoolEntry>>;
-                                pullFromInventory(): void;
-                            }
-                            namespace InventoryPool {
-                                interface PoolEntry {
-                                    count: number,
-                                    data: number,
-                                    extra: ItemExtraData,
-                                    id: number,
-                                    slot: number,
-                                    isMatchesWithExtra(other: PoolEntry): boolean;
-                                    isMatches(other: PoolEntry): boolean;
-                                    hasExtra(): boolean;
-                                    getAmountOfItem(amount: number): number;
-                                }
-                                class PoolEntrySet extends java.lang.Object {
-                                    static class: java.lang.Class<PoolEntrySet>;
-                                    constructor();
-                                    constructor(entries: java.util.ArrayList<PoolEntry>);
-                                    isEmpty(): boolean;
-                                    getEntries(): java.util.ArrayList<PoolEntry>;
-                                    getMajorEntrySet(): PoolEntrySet;
-                                    removeMatchingEntries(set: PoolEntrySet): void;
-                                    getFirstEntry(): PoolEntry;
-                                    getTotalCount(): number;
-                                    spreadItems(slots: java.util.ArrayList<UI.AbstractSlot>): void;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        class GuiBlockModel extends java.lang.Object {
-                            static class: java.lang.Class<GuiBlockModel>;
-                            setShadow(shadow: boolean): void;
-                            constructor(resolution: number);
-                            constructor();
-                            addBox(box: GuiBlockModel.Box): void;
-                            /**
-                             * @since 2.2.1b96
-                             */
-                            clear(): void;
-                            constructor(textures: string[], ids: number[], shape: unlimited.BlockShape);
-                            constructor(textures: string[], ids: number[]);
-                            updateShape(shape: unlimited.BlockShape): void;
-                            genTexture(): android.graphics.Bitmap;
-                            addToMesh(mesh: RenderMesh, x: number, y: number, z: number): void;
-                            /**
-                             * @since 2.2.0b75
-                             */
-                            addToRenderModelPart(modelPart: Render.ModelPart, x: number, y: number, z: number): void;
-                            static createModelForBlockVariant(variant: any): GuiBlockModel;
-                        }
-                        namespace GuiBlockModel {
-                            class Box extends java.lang.Object {
-                                static class: java.lang.Class<Box>;
-                                readonly enabledSides: [boolean, boolean, boolean, boolean, boolean, boolean];
-                                textureNames: java.util.ArrayList<android.util.Pair<string, number>>;
-                                readonly x1: number;
-                                readonly x2: number;
-                                readonly y1: number;
-                                readonly y2: number;
-                                readonly z1: number;
-                                readonly z2: number;
-                                setShadow(shadow: boolean): void;
-                                setRenderAllSides(renderAllSides: boolean): void;
-                                constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
-                                getShape(): unlimited.BlockShape;
-                                constructor(shape: unlimited.BlockShape);
-                                constructor();
-                                constructor(name: string, id: number);
-                                constructor(box: Box, shape: unlimited.BlockShape);
-                                addTexturePath(tex: string): void;
-                                addTexture(name: string, id: number): void;
-                                addTexture(name: android.util.Pair<string, number>): void;
-                                genTexture(resolution: number): android.graphics.Bitmap;
-                                public addToMesh(mesh: RenderMesh, x: number, y: number, z: number): void;
-                            }
-                            class Builder extends java.lang.Object {
-                                static class: java.lang.Class<Builder>;
-                                build(resolveCollisionsAndSort: boolean): GuiBlockModel;
-                                add(box: Builder.PrecompiledBox): void;
-                                add(builder: Builder): void;
-                            }
-                            namespace Builder {
-                                class PrecompiledBox extends java.lang.Object {
-                                    static class: java.lang.Class<PrecompiledBox>;
-                                    blockData: number;
-                                    blockId: number;
-                                    readonly enabledSides: [boolean, boolean, boolean, boolean, boolean, boolean];
-                                    textureNames: java.util.ArrayList<android.util.Pair<string, number>>;
-                                    x1: number;
-                                    x2: number;
-                                    y1: number;
-                                    y2: number;
-                                    z1: number;
-                                    z2: number;
-                                    constructor(inherit: PrecompiledBox, x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
-                                    disableSide(side: number): PrecompiledBox;
-                                    addTexture(name: string, id: number): PrecompiledBox;
-                                    setBlock(id: number, data: number): PrecompiledBox;
-                                    inside(b: PrecompiledBox): boolean;
-                                    intersects(b: PrecompiledBox): boolean;
-                                    inFrontOf(b: PrecompiledBox): boolean;
-                                    compile(): Box;
-                                }
-                            }
-                            class VanillaRenderType extends java.lang.Object {
-                                static class: java.lang.Class<VanillaRenderType>;
-                                static getFor(id: number): VanillaRenderType;
-                                buildModelFor(textures: string[], textureIds: number[]): GuiBlockModel;
-                                buildModelFor(textures: java.util.List<android.util.Pair<string, number>>): GuiBlockModel;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        class ItemModelCacheManager extends java.lang.Object {
-                            static class: java.lang.Class<ItemModelCacheManager>;
-                            static getSingleton(): ItemModelCacheManager;
-                            getCacheGroupDirectory(group: string): java.io.File;
-                            getCachePath(group: string, name: string): java.io.File;
-                            getCurrentCacheGroup(): string;
-                            setCurrentCacheGroup(groupName: string, lock: string): void;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        namespace icon {
-                            class ItemIconSource extends java.lang.Object {
-                                static class: java.lang.Class<ItemIconSource>;
-                                static readonly instance: ItemIconSource;
-                                private constructor();
-                                static init(): void;
-                                static isGlintAnimationEnabled(): boolean;
-                                registerIcon(id: number, name: string): void;
-                                registerIcon(id: number, data: number, name: string): void;
-                                registerIcon(id: number, bmp: android.graphics.Bitmap): void;
-                                registerIcon(id: number, data: number, bmp: android.graphics.Bitmap): void;
-                                checkoutIcon(_name: string): Nullable<android.graphics.Bitmap>;
-                                getIconName(id: number, data: number): string;
-                                getIconPath(id: number, data: number): string;
-                                getNullableIcon(id: number, data: number): Nullable<android.graphics.Bitmap>;
-                                getIcon(id: number, data: number, icon: android.graphics.Bitmap, enableCache: boolean): android.graphics.Bitmap;
-                                getScaledIcon(originIcon: android.graphics.Bitmap, id: number, data: number, size: number, glint: number): android.graphics.Bitmap;
-                                static generateAllModItemModels(): void;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        namespace icon {
-                            class ItemModels extends java.lang.Object {
-                                static class: java.lang.Class<ItemModels>;
-                                static readonly ATLAS_NAME = "textures/entity/camera_tripod";
-                                static readonly ATLAS_PATH: string;
-                                static readonly CACHE_DIR: string;
-                                static prepareModelInfo(idKey: string): ItemModels.ModelInfo;
-                                static prepareModelInfo(idKey: string, spritePath: string): ItemModels.ModelInfo;
-                                static prepareModelInfo(idKey: string, model: GuiBlockModel): ItemModels.ModelInfo;
-                                static createAtlasLink(formattedName: string, bmp: android.graphics.Bitmap): number;
-                                static createAtlasLink(path: string): number;
-                                static createAtlas(): void;
-                                static getAtlasUnit(iconName: string): Nullable<ItemModels.AltasUnit>;
-                                static init(): void;
-                                static getAtlasWidth(): number;
-                                static getAtlasHeight(): number;
-                                static getModelInfo(idKey: string): ItemModels.ModelInfo;
-                                static getModelInfo(id: number, data: number): ItemModels.ModelInfo;
-                                static updateBlockShape(id: number, data: number, shape: unlimited.BlockShape): void;
-                                static setCustomUiModel(id: number, data: number, model: GuiBlockModel): void;
-                                static getItemOrBlockModel(id: number, count: number, data: number, scale: number, rX: number, rY: number, rZ: number, randomize: boolean): Render.Renderer;
-                            }
-                            namespace ItemModels {
-                                class ModelInfo extends java.lang.Object {
-                                    static class: java.lang.Class<ModelInfo>;
-                                    private constructor(idKey: string);
-                                    getModel(): GuiBlockModel;
-                                    isSprite(): boolean;
-                                    isCustomized(): boolean;
-                                    getSkinName(): string;
-                                    getCache(): android.graphics.Bitmap;
-                                    writeToCache(bmp: android.graphics.Bitmap): void;
-                                    setShape(shape: unlimited.BlockShape): void;
-                                }
-                                class AltasUnit extends java.lang.Object {
-                                    static class: java.lang.Class<AltasUnit>;
-                                    readonly bitmap: android.graphics.Bitmap;
-                                    readonly pos: number;
-                                    readonly size: number;
-                                    constructor(bmp: android.graphics.Bitmap, pos: number, size: number);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        namespace window {
-                            class UIWindowBackgroundDrawable extends android.graphics.drawable.Drawable implements UI.IBackgroundProvider {
-                                static class: java.lang.Class<UIWindowBackgroundDrawable>;
-                                window: UI.Window;
-                                constructor(win: UI.Window);
-                                setBackgroundColor(color: number): void;
-                                addDrawing(drawing: UI.IDrawing): void;
-                                clearAll(): void;
-                                draw(canvas: NonNullable<android.graphics.Canvas>): void;
-                                prepareCache(): void;
-                                releaseCache(): void;
-                                setAlpha(alpha: number): void;
-                                /**
-                                 * Just for TS not to be angry.
-                                 */
-                                setColorFilter(par1: number, par2: android.graphics.PorterDuff.Mode): void;
-                                setColorFilter(filter: Nullable<android.graphics.ColorFilter>): void;
-                                /**
-                                 * @default -3
-                                 */
-                                getOpacity(): number;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        namespace window {
-                            class UIWindowElementDrawable extends android.graphics.drawable.Drawable implements UI.IElementProvider {
-                                static class: java.lang.Class<UIWindowElementDrawable>;
-                                isDebugEnabled: boolean;
-                                window: UI.Window;
-                                windowElements: java.util.ArrayList<UI.IElement>;
-                                constructor(win: UI.Window);
-                                setBackgroundProvider(provider: UI.IBackgroundProvider): void;
-                                addOrRefreshElement(element: UI.IElement): void;
-                                removeElement(element: UI.IElement): void;
-                                releaseAll(): void;
-                                resetAll(): void;
-                                invalidateAll(): void;
-                                runCachePreparation(): void;
-                                getStyleFor(element: UI.IElement): UI.Style;
-                                setWindowStyle(style: UI.Style): void;
-                                draw(canvas: NonNullable<android.graphics.Canvas>): void;
-                                drawDirty(canvas: android.graphics.Canvas, scale: number): void;
-                                onTouchEvent(event: UI.ITouchEvent): void;
-                                setAlpha(alpha: number): void;
-                                /**
-                                 * Just for TS not to be angry.
-                                 */
-                                setColorFilter(par1: number, par2: android.graphics.PorterDuff.Mode): void;
-                                setColorFilter(filter: Nullable<android.graphics.ColorFilter>): void;
-                                /**
-                                 * @default -3
-                                 */
-                                getOpacity(): number;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        namespace window {
-                            class WindowParent extends java.lang.Object {
-                                static class: java.lang.Class<WindowParent>;
-                                static openWindow(window: UI.Window): void;
-                                static closeWindow(window: UI.Window): void;
-                                static applyWindowInsets(window: UI.Window, insets: android.view.WindowInsets): void;
-                                static releaseWindowLayout(layout: android.view.View): void;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace mod {
-                    namespace ui {
-                        namespace window {
-                            class WindowProvider extends java.lang.Object {
-                                static class: java.lang.Class<WindowProvider>;
-                                static readonly instance: WindowProvider;
-                                static getFrame(): number;
-                                onWindowOpened(window: UI.IWindow): void;
-                                onWindowClosed(window: UI.IWindow): void;
-                                onBackPressed(): boolean;
-                                onActivityStopped(): void;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace api {
-                namespace unlimited {
-                    class BlockShape extends java.lang.Object {
-                        static class: java.lang.Class<BlockShape>;
-                        x1: number;
-                        x2: number;
-                        y1: number;
-                        y2: number;
-                        z1: number;
-                        z2: number;
-                        constructor(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number);
-                        constructor();
-                        set(x1: number, y1: number, z1: number, x2: number, y2: number, z2: number): void;
-                        setToBlock(id: number, data: number): void;
-                    }
-                }
-            }
-        }
-    }
-}
-declare module com {
-    namespace zhekasmirnov {
-        namespace innercore {
-            namespace mod {
-                namespace resource {
-                    class ResourcePackManager extends java.lang.Object {
-                        static class: java.lang.Class<ResourcePackManager>;
-                        static readonly LOGGER_TAG = "INNERCORE-RESOURCES";
-                        static instance: ResourcePackManager;
-                        resourcePackDefinition: string;
-                        resourcePackList: string;
-                        constructor();
-                        static getBlockTextureName(texture: string, meta: number): Nullable<string>;
-                        static getItemTextureName(texture: string, meta: number): Nullable<string>;
-                        static getSourcePath(): string;
-                        static isValidBlockTexture(texture: string, meta: number): boolean;
-                        static isValidItemTexture(texture: string, meta: number): boolean;
-                    }
-                }
-            }
-        }
-    }
-}
