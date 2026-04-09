@@ -6,10 +6,18 @@ export function useReflection<T = TSDDeclarationReflection>(
 	id?: number,
 	required?: boolean,
 ): T | null {
-	const { reflections } = useContext(ApiDataContext);
+	const context = useContext(ApiDataContext);
+	const reflections = context?.reflections;
 
 	// 0 is a valid ID
 	if (id === undefined && !required) {
+		return null;
+	}
+
+	if (!reflections) {
+		if (required) {
+			throw new Error(`ApiDataContext reflections are not loaded yet. Unable to find declaration with ID ${id}`);
+		}
 		return null;
 	}
 
@@ -17,7 +25,11 @@ export function useReflection<T = TSDDeclarationReflection>(
 		return reflections[id] as unknown as T;
 	}
 
-	throw new Error(`Unable to find declaration with ID ${id}`);
+	if (required) {
+		throw new Error(`Unable to find declaration with ID ${id}`);
+	}
+
+	return null;
 }
 
 export function useRequiredReflection<T = TSDDeclarationReflection>(id?: number): T {

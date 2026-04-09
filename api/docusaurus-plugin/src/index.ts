@@ -336,6 +336,25 @@ export default function typedocApiPlugin(
 						} satisfies PropVersionMetadata),
 					);
 
+					// Write the full API tree for each entry point for developers to consume dynamically
+					const apiTreesDir = path.join(context.siteDir, 'static', 'typedoc', version);
+					await fs.promises.mkdir(apiTreesDir, { recursive: true });
+
+					await Promise.all(
+						loadedVersion.packages.map(async (pkg) => {
+							const pkgSlug = pkg.packageName.replace(/[^a-zA-Z0-9-]/g, '-');
+							await Promise.all(
+								pkg.entryPoints.map(async (entry) => {
+									const fileName = `${pkgSlug}.json`;
+									await fs.promises.writeFile(
+										path.join(apiTreesDir, fileName),
+										JSON.stringify(entry.reflection)
+									);
+								})
+							);
+						})
+					);
+
 					const packagesData = await actions.createData(
 						`packages-${version}.json`,
 						JSON.stringify(formatPackagesWithoutHostInfo(loadedVersion.packages)),
@@ -353,55 +372,42 @@ export default function typedocApiPlugin(
 						} satisfies ApiOptions),
 					);
 
-					function createRoute(
-						info: TSDDeclarationReflection,
-						modules?: Record<string, string>,
-					): RouteConfig {
-						return {
-							path: info.permalink,
-							exact: true,
-							component: path.join(__dirname, `./components/ApiItem.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
-							modules,
-							sidebar: 'api',
-							// Map the ID here instead of creating a JSON data file,
-							// otherwise this will create thousands of files!
-							id: info.id,
-						};
-					}
-
 					const routes: RouteConfig[] = [];
+					const packageJsonMap: Record<string, string> = {};
 
 					loadedVersion.packages.forEach((pkg) => {
+						const pkgSlug = pkg.packageName.replace(/[^a-zA-Z0-9-]/g, '-');
+
 						pkg.entryPoints.forEach((entry) => {
-							const children =
-								entry.reflection.children?.filter((child) => !child.permalink?.includes('#')) ?? [];
-
-							// Map a route for every declaration in the package (the exported APIs)
-							const subRoutes = children.map((child) => createRoute(child));
-
-							// Map a top-level package route, otherwise `DocRoot` shows a page not found
-							subRoutes.push(
-								createRoute(
-									entry.reflection,
-									entry.index && readmes && pkg.readmePath ? { readme: pkg.readmePath } : undefined,
-								),
-							);
+							const basePath = entry.reflection.permalink;
+							packageJsonMap[basePath] = normalizeUrl([context.baseUrl, `typedoc/${version}/${pkgSlug}.json`]);
 
 							if (entry.index && changelogs && pkg.changelogPath) {
-								subRoutes.push({
-									path: normalizeUrl([entry.reflection.permalink, 'changelog']),
+								routes.push({
+									path: normalizeUrl([basePath, 'changelog']),
 									exact: true,
 									component: path.join(__dirname, `./components/ApiChangelog.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
 									modules: { changelog: pkg.changelogPath },
 									sidebar: 'api',
 								});
 							}
-
-							routes.push(...subRoutes);
 						});
 					});
 
 					const indexPermalink = normalizeUrl([loadedVersion.versionPath]);
+
+					routes.push({
+						path: indexPermalink,
+						exact: false, // ONE wildcard route for everything
+						component: path.join(__dirname, `./components/ApiApp.${process.env.TYPEDOC_WATCH ? 'tsx' : 'js'}`),
+						modules: {
+							packageMap: await actions.createData(
+								`packageMap-${version}-${context.i18n.currentLocale}.json`,
+								JSON.stringify(packageJsonMap)
+							)
+						},
+						sidebar: 'api'
+					});
 
 					if (loadedVersion.packages.length > 1) {
 						// Only write out the ApiIndex only when we have multiple packages
@@ -418,6 +424,9 @@ export default function typedocApiPlugin(
 							sidebar: 'api',
 						});
 					}
+
+					// Sort routes to ensure longer paths (like exact routes) are matched
+					routes.sort((a, b) => b.path.length - a.path.length);
 
 					// Wrap in the `DocVersionRoot` component:
 					// https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-plugin-content-docs/src/routes.ts#L192

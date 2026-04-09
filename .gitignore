@@ -5,6 +5,7 @@ node_modules/
 /build
 /innercore*-docs.pdf
 /static/declarations
+/static/typedoc
 /api_versioned_docs
 
 # Generated files

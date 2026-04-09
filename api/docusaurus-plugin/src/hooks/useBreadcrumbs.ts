@@ -2,5 +2,6 @@ import { useContext } from 'react';
 import { ApiDataContext } from '../components/ApiDataContext';
 
 export function useBreadcrumbs(): boolean {
-	return useContext(ApiDataContext).options.breadcrumbs;
+	const context = useContext(ApiDataContext);
+	return context?.options?.breadcrumbs ?? true;
 }

@@ -504,5 +504,18 @@ export function flattenAndGroupPackages(
 }
 
 export function formatPackagesWithoutHostInfo(packages: PackageReflectionGroup[]) {
-	return packages.map(({ changelogPath, readmePath, ...pkg }) => pkg);
+	return packages.map(({ changelogPath, readmePath, entryPoints, ...pkg }) => ({
+		...pkg,
+		entryPoints: entryPoints.map((ep) => ({
+			index: ep.index,
+			label: ep.label,
+			urlSlug: ep.urlSlug,
+			reflection: {
+				id: ep.reflection.id,
+				name: ep.reflection.name,
+				permalink: ep.reflection.permalink,
+				kind: ep.reflection.kind,
+			} as unknown as TSDDeclarationReflection
+		}))
+	}));
 }
