@@ -199,15 +199,9 @@ export default {
 		metadata: [
 			{
 				name: 'keywords',
-				content: 'nernar, minecraft, modding tools, dev editor, innercore, horizon, coreengine'
+				content: 'innercore docs, inner core docs, innercore api, inner core api, coreengine api, core engine api, innercore libraries, inner core libraries, bedrock mods, mcpe mods, mcbe mods'
 			}
 		],
-		announcementBar: {
-			content: 'A huge number of articles, APIs and other things were <a target="_blank" rel="noopener noreferrer" href="https://vk.com/wall-148880110_346">irretrievably lost</a>.',
-			backgroundColor: '#cc8844',
-			textColor: '#ffffff',
-			isCloseable: true
-		},
 		colorMode: {
 			respectPrefersColorScheme: true
 		},
@@ -215,7 +209,7 @@ export default {
 			title: 'Inner Core Docs',
 			hideOnScroll: true,
 			logo: {
-				alt: '',
+				alt: 'ICDocs',
 				src: 'copyright/innercore.svg'
 			},
 			items: [
