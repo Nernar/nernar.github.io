@@ -51,7 +51,8 @@ function replaceApiLinks(
 			return label;
 		}
 
-		return `[${label}](${reflection.permalink}${member ? `#${member}` : ''})`;
+		const permalink = `${reflection.permalink}${member ? `#${member}` : ''}`;
+		return `[${label}](${permalink.replace(/(?<=#.*)#/g, '.')})`;
 	};
 }
 

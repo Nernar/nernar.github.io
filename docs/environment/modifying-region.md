@@ -205,7 +205,7 @@ region.getBlock(x, y, z)
 region.getExtraBlock(x, y, z)
 ```
 
-It contains an immutable identifier and a prepared variation, and also provides methods for handling states. I think a good example would be to connect [creating an axe](../items/tools#axe) and using it on wood blocks. How exactly? An axe strips wood, this needs to be implemented:
+It contains an immutable identifier and a prepared variation, and also provides methods for handling states. I think a good example would be to connect [creating an axe](TODO) and using it on wood blocks. How exactly? An axe strips wood, this needs to be implemented:
 
 ```js
 Callback.addCallback("ItemUse", function(coords, item, block, isExternal, playerUid) {

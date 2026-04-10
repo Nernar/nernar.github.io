@@ -66,7 +66,7 @@ Horizon представляет собой универсальную плат�
 
 ### 2.1.0b60
 
-- Добавлен метод [exists()](/api/namespace/Animation#exists) у анимаций
+- Добавлен метод [exists()](/api/namespace/Animation#Base.exists) у анимаций
 - Небольшие исправления
 
 ### 2.1.0b59
@@ -99,7 +99,7 @@ Horizon представляет собой универсальную плат�
 ### 2.1.0b55
 
 - Исправлена совместимость с Recipe Viewer
-- Добавлен параметр спецтипа блока [color_source](/api/namespace/Block#color_source), может быть одним из 4 значений: **"none"**, **"leaves"**, **"grass"**, **"water"**
+- Добавлен параметр спецтипа блока [color_source](/api/namespace/Block#SpecialType.color_source), может быть одним из 4 значений: **"none"**, **"leaves"**, **"grass"**, **"water"**
 - Загрузка моделей предметов ускорена и требует меньше памяти
 - Небольшие улучшения
 
@@ -129,7 +129,7 @@ Horizon представляет собой универсальную плат�
 - Добавлен метод модели предмета [setModelOverrideCallback(function(item) \{ ... })](/api/interface/ItemModel#setModelOverrideCallback), которая устанавливает модели функцию, возвращающую модель предмета для конкретного предмета в мире. Работает как item override function, но для моделей.
 - Добавлен метод [ItemModel.newStandalone()](/api/namespace/ItemModel#newStandalone), создающий пустую модель предмета, которая ни к чему не привязана, данные модели могут быть использованы, как результат функции [setModelOverrideCallback](/api/interface/ItemModel#setModelOverrideCallback)
 - Теперь в функцию определения иконки предмета (item override function) может передаваться extra
-- Исправлен вылет, который мог быть вызван вызовом методом [toScriptable()](/api/namespace/NBT#toScriptable) NBT-тэгов
+- Исправлен вылет, который мог быть вызван вызовом методом [toScriptable()](/api/namespace/NBT#ListTag.toScriptable) NBT-тэгов
 - Для сборки java кода теперь используются другие инструменты (для построения .dex файлов используется d8, а не dx)
 
 ### 2.0.5b44
@@ -141,15 +141,15 @@ Horizon представляет собой универсальную плат�
 - Интерфейс модов теперь поддерживает предметы модов с анимированной иконкой
 - Функция динамичной иконки предметов теперь получает второй булевый параметр [isModUi](/api/namespace/Item#registerIconOverrideFunction), показывающий, в ванильном интерфейсе иконка или нет
 - Добавлен метод [Debug.big](/api/namespace/Debug#big), аналогичен [Debug.m](/api/namespace/Debug#m), однако выводит все в диалог с возможностью копирования текста и форматирует JSON
-- Событие [click](/api/namespace/TileEntity#click) у TileEntity теперь получает еще один аргумент - координаты клика
+- Событие [click](/api/namespace/TileEntity#TileEntityPrototype.click) у TileEntity теперь получает еще один аргумент - координаты клика
 - Исправлен краш, происходивший в некоторых условиях от аддонов
 
 ### 2.0.4b43
 
 - Автоматическое удаление из миров паков ресурсов и поведения, которые были добавлены удаленными модами
 - RenderMesh теперь может принимать не только абсолютный путь к файлу, но также путь в ресурсах мода или имя файла внутри директории *models/* в ресурсах мода
-- Параметры элемента слота [isTransparentBackground](/api/namespace/UI#isTransparentBackground) и его устаревшая версия [needClean](/api/namespace/UI#needClean) теперь оба являются устаревшими, теперь слот по умолчанию поддерживает прозрачный фон
-- Добавлен метод контейнера [setOnOpenListener(function(container, window) \{ ... \})](/api/namespace/UI#setOnOpenListener)
+- Параметры элемента слота [isTransparentBackground](/api/namespace/UI#UISlotElementProps.isTransparentBackground) и его устаревшая версия [needClean](/api/namespace/UI#UISlotElementProps.needClean) теперь оба являются устаревшими, теперь слот по умолчанию поддерживает прозрачный фон
+- Добавлен метод контейнера [setOnOpenListener(function(container, window) \{ ... \})](/api/namespace/UI#Container.setOnOpenListener)
 - Временно убрана сборка для архитектуры x86, которая пока что не была рабочей, это снизит размер пака
 - Исправлена ошибка от двойного вызова [WRAP_JAVA](/api/function/WRAP_JAVA) на один и тот же класс
 
@@ -181,9 +181,9 @@ Horizon представляет собой универсальную плат�
 ### 2.0.4b38
 
 - Добавлен экспериментальный модуль [TagRegistry](/api/namespace/TagRegistry). Документация будет через какое-то время после его отладки.
-- Добавлены параметры частиц [framesX](/api/namespace/Particles#framesX), [framesY](/api/namespace/Particles#framesY) для задания количества кадров по вертикали и горизонтали текстуры/региона текстуры
-- Добавлен параметр частиц [rebuildDelay](/api/namespace/Particles#rebuildDelay), отвечающий за время между обновлением поворота частиц
-- Добавлен параметр частиц [color2](/api/namespace/Particles#color2) и [animators.color](/api/namespace/Particles#animators), отвечающие за анимирование изменяющегося цвета
+- Добавлены параметры частиц [framesX](/api/namespace/Particles#ParticleDescription.framesX), [framesY](/api/namespace/Particles#ParticleDescription.framesY) для задания количества кадров по вертикали и горизонтали текстуры/региона текстуры
+- Добавлен параметр частиц [rebuildDelay](/api/namespace/Particles#ParticleDescription.rebuildDelay), отвечающий за время между обновлением поворота частиц
+- Добавлен параметр частиц [color2](/api/namespace/Particles#ParticleDescription.color2) и [animators.color](/api/namespace/Particles#ParticleDescription.animators), отвечающие за анимирование изменяющегося цвета
 - Исправлен дроп полублоков
 - Исправлены некоторые текстуры в интерфейсе
 
@@ -245,7 +245,7 @@ Horizon представляет собой универсальную плат�
 
 ### 2.0.2b29
 
-- Улучшена система TileEntity: теперь не загруженные или не имеющие тика TileEntity не будут загружать лимит обновлений. Добавлены события [load()](/api/namespace/TileEntity#load), [unload()](/api/namespace/TileEntity#unload) и [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/namespace/TileEntity#onCheckerTick).
+- Улучшена система TileEntity: теперь не загруженные или не имеющие тика TileEntity не будут загружать лимит обновлений. Добавлены события [load()](/api/namespace/TileEntity#TileEntityPrototype.load), [unload()](/api/namespace/TileEntity#TileEntityPrototype.unload) и [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/namespace/TileEntity#TileEntityPrototype.onCheckerTick).
 - Исправлен вылет от моделей мобов
 - Другие мелкие исправления
 
@@ -273,7 +273,7 @@ Horizon представляет собой универсальную плат�
 
 ### 2.0.2b25
 
-- Описанию блока добавлен параметр [sound](/api/namespace/Block#sound), устанавливает один из стандартных типов звуков
+- Описанию блока добавлен параметр [sound](/api/namespace/Block#SpecialType.sound), устанавливает один из стандартных типов звуков
 - Добавлен метод [RenderMesh.setLightPos(x, y, z)](/api/class/RenderMesh#setLightPos) - устанавливает относительную позицию для получения освещения блока
 - Добавлен параметр в метод [RenderMesh.setFoliageTinted(leavesType)](/api/class/RenderMesh#setFoliageTinted)
 - Исправлен метод [ItemModel.occupy()](/api/interface/ItemModel#occupy), который не предотвращал установку модели ICRender предмету при установке ее блоку
@@ -294,14 +294,14 @@ Horizon представляет собой универсальную плат�
 - Кеширование моделей - после первой загрузки модели будут загружаться намного быстрее
 - Модуль [ItemModel](/api/namespace/ItemModel) сильно расширен и позволяет получать доступ ко всему, что зависит от модели предмета
 - Предметам можно ставить дополнительные материалы, которые будут использованы вместо эффекта зачарования
-- Параметр описания блоков [rendertype](/api/namespace/Block#rendertype) теперь работает корректно и влияет на модель в интерфейсе
+- Параметр описания блоков [rendertype](/api/namespace/Block#SpecialType.rendertype) теперь работает корректно и влияет на модель в интерфейсе
 
 #### Другие нововведения
 
-- Добавлено условие [ICRender.RANDOM(value, max\[, seed\])](/api/namespace/ICRender#RANDOM) - условие для добавление случайности, генерирует для позиции случайную величину от 0 до max - 1, и срабатывает, если она равна value. Имеет метод [setAxisEnabled(0-2, включено)](/api/namespace/ICRender#setAxisEnabled), позволяющая игнорировать одну (или несколько) из трех координат.
+- Добавлено условие [ICRender.RANDOM(value, max\[, seed\])](/api/namespace/ICRender#RANDOM) - условие для добавление случайности, генерирует для позиции случайную величину от 0 до max - 1, и срабатывает, если она равна value. Имеет метод [setAxisEnabled(0-2, включено)](/api/namespace/ICRender#RANDOM_CONDITION.setAxisEnabled), позволяющая игнорировать одну (или несколько) из трех координат.
 - Добавлены методы [Block.setupAsRedstoneReceiver(nameID, connectToRedstone)](/api/namespace/Block#setupAsRedstoneReceiver) - делает блок приемником редстоуна, [Block.setupAsRedstoneEmitter(nameID, connectToRedstone)](/api/namespace/Block#setupAsRedstoneEmitter) - делает блок источником редстоуна, [Block.setupAsNonRedstoneTile(nameID)](/api/namespace/Block#setupAsNonRedstoneTile) - убирает всю связь с редстоуном
 - RenderMesh: добавлен метод [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/class/RenderMesh#addMesh), в метод [setColor](/api/class/RenderMesh#setColor) добавлена поддержка прозрачности
-- Описанию типа блока добавлен параметр [mapcolor](/api/namespace/Block#mapcolor), который задает цвет блока на карте (в формате 0xRRGGBB)
+- Описанию типа блока добавлен параметр [mapcolor](/api/namespace/Block#SpecialType.mapcolor), который задает цвет блока на карте (в формате 0xRRGGBB)
 
 ### 2.0.2b22
 
@@ -319,9 +319,9 @@ Horizon представляет собой универсальную плат�
 
 - Добавлена возможность добавления новых материалов и шейдеров (больше информации будет опубликовано в скором времени)
 - Добавлены пользовательские модели предметов в инвентаре и в руке, для доступа к ним используйте [ItemModel.getFor(id, data)](/api/namespace/ItemModel#getFor)
-- Добавлен новый режим анимации - модель с пользовательским материалом, чтобы войти в этот режим используйте [describe(\{ mesh: RenderMesh, skin: "имя текстуры", material: "имя материала" \})](/api/namespace/Animation#describe)
+- Добавлен новый режим анимации - модель с пользовательским материалом, чтобы войти в этот режим используйте [describe(\{ mesh: RenderMesh, skin: "имя текстуры", material: "имя материала" \})](/api/namespace/Animation#Base.describe)
 - Блоки с моделями ICRender автоматически получат модели в инвентаре и в руке
-- Добавлены методы пользовательских изменений: [setFogDistance(close, far)](/api/namespace/Dimensions#setFogDistance), [resetFogDistance()](/api/namespace/Dimensions#resetFogDistance)
+- Добавлены методы пользовательских изменений: [setFogDistance(close, far)](/api/namespace/Dimensions#CustomDimension.setFogDistance), [resetFogDistance()](/api/namespace/Dimensions#CustomDimension.resetFogDistance)
 - Небольшие изменения и исправления
 
 ### 2.0.1b18

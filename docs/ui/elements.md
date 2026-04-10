@@ -26,7 +26,7 @@ stateDiagram-v2
 
 In addition to the standard background layout update, elements detect user touches, process bindings, and are cached for automatic self-updating.
 
-Like other components, elements can be redrawn using the container's [invalidateElements](/api/namespace/UI#invalidateElements) or [invalidateUIElements](/api/namespace/UI#invalidateUIElements) function. This will immediately lead to the recaching of all elements, although usually a standard caching every half a second is quite enough for a stable update.
+Like other components, elements can be redrawn using the container's [invalidateElements](/api/namespace/UI#IWindow.invalidateElements) or [invalidateUIElements](/api/namespace/UI#Container.invalidateUIElements) function. This will immediately lead to the recaching of all elements, although usually a standard caching every half a second is quite enough for a stable update.
 
 Some elements have their own events, they are directly related to user interactions, almost all (with the exception of inventory slots) also process touches, the description objects of which are given in the [corresponding paragraph](#common-properties).
 
@@ -338,7 +338,7 @@ It is enough to use only the identifier and the quantity, the rest of the proper
 }
 ```
 
-A value of 0 will mean a ban on interacting with the item, blocking it, -1 no restriction (default value). How to use containers to change a slot can be found in the [article about containers](../storage/containers#usage), this method is preferable in most cases.
+A value of 0 will mean a ban on interacting with the item, blocking it, -1 no restriction (default value). How to use containers to change a slot can be found in the [article about containers](TODO), this method is preferable in most cases.
 
 Is there a need to determine when an item in a slot has been changed? Use the corresponding event:
 
