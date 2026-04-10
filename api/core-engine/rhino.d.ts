@@ -1,4 +1,3 @@
-
 declare function getClass(property: string): any;
 
 declare abstract class java {

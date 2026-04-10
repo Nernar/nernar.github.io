@@ -155,6 +155,7 @@ export default {
 					})
 				],
 				exclude: [
+					'**/core-engine/rhino.d.ts',
 					'**/declarations/**/*.d.ts'
 				],
 				typedocOptions: {
