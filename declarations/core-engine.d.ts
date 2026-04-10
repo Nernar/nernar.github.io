@@ -23247,7 +23247,6 @@ declare type ArmorType = "helmet" | "chestplate" | "leggings" | "boots";
  * currently there are only default armor models.
  */
 declare type DefaultRenderTemplate = ArmorType;
-
 declare function getClass(property: string): any;
 
 declare abstract class java {
