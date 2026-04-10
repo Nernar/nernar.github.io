@@ -1,10 +1,10 @@
-# Script Building
+# Building Scripts
 
-In addition to the ability to directly specify an executable script, there is often a need to split the source code into files. As soon as the project starts to contain the first classes, utility functions, and other things that should be separated, working in one file becomes simply impossible. This is where build files come to our aid, as well as advanced toolchain settings.
+Besides the ability to directly set an executable script, there is often a need to divide the source code into files. As soon as the project starts to contain the first classes, utility functions, and other things that should be separated, working in a single file becomes simply impossible. This is where build files and advanced toolchain settings come to our aid.
 
-## Compiling Files
+## Compiling files
 
-The `compile` property is used to run files; adding any script to it will lead to its execution. We have already considered the description of its element:
+To run files, the `compile` property is used; adding any script to it will result in its execution. We have already considered the description of its element:
 
 ```json
 {
@@ -13,7 +13,7 @@ The `compile` property is used to run files; adding any script to it will lead t
 }
 ```
 
-If you do not know which `sourceType` to choose, consider [Mod Lifecycle](TODO). As already mentioned, the `compile` property defines scripts that will be compiled and loaded. For example, *build.config* might look like this:
+If you do not know which `sourceType` to choose, consider the [Mod Lifecycle](mod-lifecycle). As already mentioned, the `compile` property specifies the scripts that will be compiled and loaded. For example, *build.config* might look like this:
 
 ```json title="build.config"
 {
@@ -27,13 +27,13 @@ If you do not know which `sourceType` to choose, consider [Mod Lifecycle](TODO).
 }
 ```
 
-Which means that the script will be loaded from the current folder from the file *main.js* and will start after calling `Launch();` from the project launcher. But in this case, the file is not built, but simply loaded from an existing one. And what if we want to assemble several files into one?
+Which means that the script will be loaded from the current folder from the *main.js* file and will run after `Launch();` is called from the project's launcher. But in this case, the file is not built, but simply loaded from an existing one. What if we want to build multiple files into one?
 
-## There Can Be Any Number of Scripts
+## There can be any number of scripts
 
-And to assemble them all, you need to combine the scripts into one. Inner Core or the Toolchain's TypeScript Compiler will do this for you, depending on which platform you are using.
+And to build them all, you need to combine the scripts into one. This will be done for you by Inner Core or the toolchain's Type Script Compiler, depending on which platform you use.
 
-Let's start with defining the `buildDirs` property of your *build.config* for assembly:
+Let's start with the fact that for the build, you need to define the `buildDirs` property of your *build.config*:
 
 ```json title="build.config"
 {
@@ -47,33 +47,33 @@ Let's start with defining the `buildDirs` property of your *build.config* for as
 }
 ```
 
-Now files located in the *dev/* folder will be assembled into the *main.js* file, which we defined earlier. But to determine which scripts will be assembled, in addition to this, we need to define an *.includes* file in the created *dev/* directory.
+Now the files located in the *dev/* folder will be built into the *main.js* file, which we have already defined earlier. But in order to determine the scripts that will be built, we also need to define the *.includes* file in the created *dev/* directory.
 
 ## .includes
 
-The file describes the list of files that will be included in the final script. Let's consider its implementation with an example:
+The file describes the list of files that will be included in the final script. Let's look at its implementation using an example:
 
 ```gitignore title=".includes"
-# comments can describe why a particular file is included
+# comments can describe why a file is included
 header.js
 
 api/tests.js
 api/globals.js
 
-# all files in the folder will be included, in the case of toolchain
-# subfolders are also included additionally
+# all files in the folder will be included, in the case of a toolchain
+# subfolders are also additionally included
 module/.
 
 // comments can also be used in this form
 ```
 
-Empty lines and comments are ignored when building files. In this case, at least three files will be included in the script: *header.js*, as well as *tests.js* and *globals.js* in the *api/* folder. The *module/* folder may not exist at all. Non-existent files are ignored, sending a warning about this to the log.
+Empty lines and comments are ignored during file building. In this case, at least three files will be included in the script: *header.js*, as well as *tests.js* and *globals.js* in the *api/* folder. The *module/* folder may not exist at all. Non-existent files are ignored, sending a warning to the log.
 
-These same rules apply to the toolchain, however comments in it can contain properties for configuring *tsconfig.json*.
+These same rules apply to the toolchain, but comments in it can contain properties for configuring *tsconfig.json*.
 
-### The Power of Toolchain Comments
+### The power of toolchain comments
 
-Build files in the toolchain, in addition to describing the list of files, can contain a description for compiler options, as well as exceptions for files already included in the build:
+Build files in the toolchain, in addition to describing the list of files, can contain descriptions for compiler options, as well as exclusions of files already included in the build:
 
 ```gitignore title=".includes"
 # removeComments
@@ -91,7 +91,7 @@ module/.
 # target: es3
 ```
 
-The *header.js* file and all files from the *module/* folder and subfolders will be included in the build, excluding *module/tests.ts*. Files are included as well as excluded only if they exist. Since the toolchain builds *tsconfig.json*, paths can also contain glob selections for files:
+The build will include the *header.js* file and all files from the *module/* folder and its subfolders, excluding *module/tests.ts*. Files are included and excluded only if they exist. Since the toolchain builds *tsconfig.json*, paths can also contain glob selections for files:
 
 ```gitignore title=".includes"
 module/tile_*.js
@@ -99,15 +99,15 @@ module/tile_*.js
 
 Thus, the files *module/tile_chest.js* and *module/tile_advanced_workbench.js* will be included, but *module/bounce.js* and *module/tile_bedrock.ts* will not be included.
 
-:::info Analysis of compiler option description
+:::info Compiler options description breakdown
 
-Comments will be excluded from the assembled script (and from declarations too), JavaScript will be type-checked just like TypeScript, instead of the latest libraries only ES6 (ES2015) and `Array.include` from ES2016 will be included, and the output script will be presented in ES3 instead of ES5. If you do not need any of these options or any other, just do not use them.
+Comments will be excluded from the built script (and from declarations too), Java Script will be checked for type compliance just like Type Script, instead of the latest libraries, only ES6 (ES2015) and `Array.include` from ES2016 will be included, and the output script will be presented in ES3 instead of ES5. If you do not need any of these options or any other, just do not use them.
 
 :::
 
-## Building with Toolchain
+## Building with a toolchain
 
-Apart from the build file description, the structure above does not apply to the toolchain. The toolchain automatically determines the passed values, defining what needs to be assembled, a file or a folder. In addition, it supports building using TypeScript. To assemble or compile the desired file, use:
+Besides describing the build file, the structure above does not apply to the toolchain. The toolchain automatically determines the passed values, determining what needs to be built, a file or a folder. In addition, it supports building using Type Script. To build or compile the desired file, use:
 
 ```json title="make.json"
 {
@@ -123,4 +123,4 @@ Apart from the build file description, the structure above does not apply to the
 }
 ```
 
-This will do the same as the `compile` and `buildDirs` properties described earlier; but also, files that have the *.ts* extension will be assembled. Study the *make.json* properties for more details.
+This will do the same as the `compile` and `buildDirs` properties described earlier; but also, files with the *.ts* extension will be built. Explore the properties of *make.json* for more details.

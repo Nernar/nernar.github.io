@@ -1,14 +1,14 @@
-# Execution Context
+# Evaluate Context
 
-Defines the space where all your code resides. Variables and constant values, functions, and converted classes are stored here, and future code interactions with the space are performed here.
+Defines the space in which all your code is located. It stores the values of variables and constants, functions and transformed classes, and also performs future code interactions with the space.
 
-Each function and object can create its own, so-called "local" space. It is not available from the outside, but values from it can be obtained through the hierarchy below. I think if most of what is written remains unclear, it is time to fix this problem.
+Each function and object can create its own, so-called, "local" space. It is not accessible from the outside, but values from it can be obtained down the hierarchy. I think if most of what is written remains unclear, it's high time to fix this problem.
 
-## API — Global Context
+## API — global context
 
-If in browsers, and other browser-like engines, the main object is the page whose content we modify, then in the case of Inner Core, we interact directly with the game. And for this we need spaces, methods, and classes, which are in the global context.
+If in browsers, and other browser-like engines, the main object is the page whose content we change, then in the case of Inner Core, we interact directly with the game. And for this we need spaces, methods and classes, which are located in the global context.
 
-Inner Core defines several global contexts, each with its own specific goals. For many years, the main one has been Core Engine, since the entire functionality of the launcher is located around it. This context extends the capabilities of another, Adapted Script. It provides purely native methods provided by the game itself, or auxiliary ones for the operation of Core Engine itself. There are also Preloader, used exclusively by the preloader, and Preferences Window API, which was used for the functioning of the workbench, and once for in-game mod settings. Their use is quite specific, so we will not consider them in detail.
+Inner Core defines several global contexts, each with its own specific purposes. Over the years, Core Engine has remained the main one, since all the launcher functionality is located around it. This context extends the capabilities of another, Adapted Script. It provides purely native methods provided by the game itself, or auxiliary ones for the functioning of Core Engine itself. There are also Preloader, used exclusively by the preloader, and Preferences Window API, which was involved in the functioning of the workbench, and once upon a time the in-game mod settings. Their use is very specific, so we will not consider them in detail.
 
 ```md
 - AdaptedScript
@@ -19,7 +19,7 @@ Inner Core defines several global contexts, each with its own specific goals. Fo
 
 These contexts are used in every script and are described in the `api` properties of your *build.config*.
 
-In the case of Core Engine, it is possible to change the global context, as done, for example, in Ender IO:
+In the case of Core Engine, it is possible to change the global context, as is done, for example, in Ender IO:
 
 ```js title="dev/Base/Items/powder.js"
 // highlight-malformed-start
@@ -36,11 +36,11 @@ Item.createDyeItem("blackDye", "Organic Black Dye", "black");
 Item.createDyeItem("brownDye", "Organic Brown Dye", "brown");
 ```
 
-However, think about the consequences, this will change the context in all mods. That is, the `Item.createDyeItem` method can be called from any mod if Ender IO is installed. But in this case, there is also a danger of replacing existing methods or those added with updates. If you need to export something, consider [ModAPI.registerAPI](TODO), it was created specifically for these purposes.
+However, think about the consequences, this will change the context in all mods. That is, the `Item.createDyeItem` method can be called from any mod if Ender IO is installed. But in this case, there is a danger of replacing existing methods or those added with updates. If you need to export something, consider [ModAPI.registerAPI](/api/namespace/ModAPI#registerAPI), it was created specifically for these purposes.
 
-### Global Values
+### Global values
 
-Each context defines its own namespace, access to which can be used to obtain values or perform actions. However, in addition to values in the context, the engine provides built-in values exclusive to each mod individually. These values are the same regardless of which script this space touches. This includes technical values, mod information, and in-game constants.
+Each context defines its own namespace, accessing which can be used to get values or perform actions. However, besides the values in the context, the engine provides built-in values exclusive to each mod separately. These values are the same regardless of which script this space is accessed from. This includes technical values, mod information and in-game constants.
 
 ```js
 const MINECRAFT_VERSION = getMCPEVersion();
@@ -48,24 +48,24 @@ if (MINECRAFT_VERSION.main == 16) {
     alert("Minecraft " + MINECRAFT_VERSION.str + " is currently relevant!");
     // outputs: Minecraft 1.16.201 is currently relevant!
 } else if (MINECRAFT_VERSION.main == 11) {
-    alert("Legacy version " + MINECRAFT_VERSION.array.join("-") + " is not relevant for " + __name__);
-    // outputs: Legacy version 1-11-4 is not relevant for <mod name>
+    alert("Legacy version " + MINECRAFT_VERSION.array.join("-") + " is outdated for " + __name__);
+    // outputs: Legacy version 1-11-4 is outdated for <mod name>
 }
 ```
 
-The `getMCPEVersion` and `alert` methods here are part of the global API context, while `__name__` is a global value available from any part of the mod. You do not need to think about what properties are available here, they are listed in the API summary and toolchain declarations.
+The methods `getMCPEVersion` and `alert` here are part of the global API context, while `__name__` is a global value accessible from anywhere in the mod. You do not need to think about what properties are available here, they are listed in the [API reference](/api) and toolchain declarations.
 
-## Script Body
+## Script body
 
-The last and most important step in the formation of your space is the code itself. JavaScript uses Rhino 1.7.7 (partially supporting ES6, however, most of the functionality remained in the ES5 implementation) as the main engine that executes all scripts. The language is interpreted, which means it is processed in real time, or with minimal processing before launch. All code is executed sequentially, and by script body we mean all the code that is contained in the files included in the build.
+The final and most important step in forming your space is the code itself. JavaScript uses Rhino 1.7.7 (partially supporting ES6, however, most of the functionality remained in the ES5 implementation) as the main engine, which executes all scripts. The language is interpreted, which means that it is processed in real time, or with minimal processing before running. All code is executed sequentially, and by the script body we mean all the code that is in the files included in the build.
 
-The script is usually executed once, and any spaces it defines (this can be variables or constants, as well as objects or functions) are activated as a result of events. The content, the logic of your mod is defined in the body, other content is integrated, and everything else that the engine is capable of in principle.
+A script is usually executed once, and any spaces it defines (these can be variables or constants, as well as objects or functions) are triggered by events. The body defines new content, the logic of your mod, integrates other content and everything else that the engine is capable of in principle.
 
-## Restartable Contexts
+## Restartable spaces
 
-Considering the life cycle earlier, we superficially introduced __custom__ scripts. Unlike other scripts, this is the only type that can be run any number of times, and in addition, accepts and returns values. Probably, you could have associations with functions if acquaintance with the language once went successfully. But unlike functions, these are still spaces; they work in a new context and store values.
+Looking at the lifecycle earlier, we superficially introduced __custom__ scripts. Unlike other scripts, this is the only type that can be run any number of times, and besides, accepts and returns values. You probably might have had associations with functions if your acquaintance with the language was once successful. But unlike functions, these are still spaces; they work in a new context and store values.
 
-Consider this with an example from Solar Flux Reborn:
+Let's look at this using an example from Solar Flux Reborn:
 
 ```js title="dev/tests.js"
 alert(
@@ -77,7 +77,7 @@ alert(
 );
 ```
 
-Values passed to the space will be overwritten or created if they do not exist yet. Any constants created in the body of restartable scripts must be set only once. Their repeated modification will cause an error, in which case a simple option would be to place them between `try-catch`.
+The values passed to the space will be redefined or created if they are not already there. Any constants created in the body of restartable scripts should be set only once. Changing them again will cause an error, in which case a simple option would be to place them between `try-catch`.
 
 ```js title="custom.js"
 let raining = WEATHER.rain / 10;
@@ -90,13 +90,13 @@ thundering = thundering > 0.75 ? (thundering - 0.75) / 0.25 : 0;
 thundering = Math.sin(thundering * Math.PI / 2);
 thundering = 1 - thundering * (1 - THUNDER_MULTIPLIER);
 
-// Values must still be returned by a function, since
-// the script body is not capable of returning anything
+// Values must still be returned by the function, since
+// the script body is not able to return anything
 (function() {
     return raining * thundering;
 })();
 ```
 
-Depending on weather conditions, the efficiency of solar panels changes, values from the current space are involved. Thus, `runCustomSource("custom.js")` will not change the values and will return the previous result. The context does not change, so the values remain the same.
+Depending on weather conditions, the efficiency of solar panels changes, values from the current space are used. Thus, `runCustomSource("custom.js")` will not change the values and will return the previous result. The context is not changed, so the values remain the same.
 
-Modding tools use this type to execute code during the game. Since their space is easily configured and saved between different executions independently of the rest of the mod context, subdividing the main code here was a good idea. A more concrete way to use these scripts simply does not exist. Suggest your ideas where such functionality could be useful.
+Modding tools use this type to execute code during the game. Since their space is easily configured and saved between different executions independently of the rest of the mod context, subdividing the main code here was a good idea. A more specific way of applying these scripts simply does not exist. Share your ideas where such functionality could be useful.

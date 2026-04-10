@@ -1,26 +1,26 @@
 # In-game Shapes
 
-Apart from standard "full-block" blocks, shapes can be very different. The game provides various variations of base models, such as stairs or slabs. Usually their implementations are used together with standard, full-block blocks. Here are presented most existing shapes, as well as various atlas texture blending types.
+In addition to the standard "full-block" blocks, shapes can be very diverse. The game provides various variations of basic models, such as stairs or slabs. Usually, their implementations are used in conjunction with standard, full-block blocks. Here is presented the majority of existing shapes, as well as various types of atlas texture blending.
 
-## Let's Define the Format
+## Let's define the format
 
-First of all, the block shape can be changed in several ways. These are additional properties by adding an in-game type, any parallelepiped shape (in the form of a box; or a shape), renders using boxes or creating layouts between vertices, as well as native shape change. We will superficially consider everything except the last one.
+First of all, the shape of a block can be changed in several ways. These are additional properties by adding an in-game type, any parallelepiped shape (in the form of a box; or a shape), renders using boxes or creating unwrappings between vertices, as well as native shape changes. We will superficially look at all of them except the last one.
 
 To register a block with such a shape, we will use additional properties:
 
 ```js
 const BLOCK_TYPE_SOME_NAME = Block.createSpecialType({
-    rendertype: 0 // just a whole block, base value
-    // some properties that will be changed: if only an object is
-    // provided in the example, it must be highlighted right here
+    rendertype: 0 // just a solid block, base value
+    // some properties that will be modified: if in the example
+    // only an object is provided, it needs to be extracted exactly here
 });
 ```
 
-And besides this, some shapes will need to have functionality added.
+And besides this, some shapes will need to add functionality.
 
 ### Leaves
 
-Not considering various integrations like Better Foliage, leaves are a full-block block only with changed additional properties. The general definition boils down to just a couple of functions:
+Disregarding various integrations like Better Foliage, leaves are a full-block block only with modified additional properties. The general definition is reduced to just a couple of functions:
 
 ```js
 IDRegistry.genBlockID("oxidized_leaves");
@@ -31,7 +31,7 @@ Block.createBlock("oxidized_leaves", [{
 }], BLOCK_TYPE_LEAVES);
 ```
 
-And of course, before that define `BLOCK_TYPE_LEAVES` by format, and preferably, in a separate place for all blocks:
+And of course, define `BLOCK_TYPE_LEAVES` by format before that, and preferably, in a separate place for all blocks:
 
 ```js title="BLOCK_TYPE_LEAVES"
 {
@@ -59,9 +59,9 @@ Translation.addTranslation("tile.oxidized_leaves.name", {
 
 ### Glass and Panes
 
-To implement glass, it is enough to add transparency to textures and change their light absorption level. In addition to the glass block itself, you probably want to implement panes, separately, or together with this glass.
+To implement glass, it is enough to add transparency to the textures and change their light opacity level. In addition to the glass block itself, you probably want to implement panes, separately, or together with this glass.
 
-Let's define another oxidized block, but now glass and panes from it:
+Let's define another oxidized block, but this time glass and panes from it:
 
 ```js
 IDRegistry.genBlockID("oxidized_glass");
@@ -101,7 +101,7 @@ Additional properties for transparent glass will look very simple:
 }
 ```
 
-And even if the author of this article is against using "toad features", connections between glasses look really good. Try the Connected Texture library for such an implementation:
+And even though the author of this article is against using "toad tricks" (hacks), connections between glass look really good. Try the [Connected Texture library](TODO) for such an implementation:
 
 ```js
 ConnectedTexture.setModelForGlass(BlockID.oxidized_glass, -1, "oxidized_glass");
@@ -124,9 +124,9 @@ Translation.addTranslation("tile.oxidized_glass_pane.name", {
 
 ### Plants
 
-Can be divided into three types: crops, saplings and various types of grass with flowers. The former represent horizontal intersections of several texture layers, while the rest consist of a pair of textures, located obliquely and intersecting in the center. The difference between the last two is the absence of random placement inside the block for the first one.
+Can be divided into three types: crops, saplings, and various types of grass with flowers. The former are horizontal intersections of several texture layers, while the latter consist of a pair of textures, located diagonally and intersecting in the center. The difference between the last two is the absence of random placement within the block for the first.
 
-Let's start by creating a rose-like plant, it is quite simple:
+Let's start by creating a rose-like plant, it's quite simple:
 
 ```js
 IDRegistry.genBlockID("oxidized_rose");
@@ -163,9 +163,9 @@ Callback.addCallback("DestroyBlock", function(coords, block, playerUid) {
 });
 ```
 
-In general, this is quite enough for decorative plants. But when it comes to seeds and other crops, their creation may require a little more time.
+Overall, this is quite enough for decorative plants. But when it comes to seeds and other crops, their creation may take a little more time.
 
-Let's consider creating a simple melon, adding events and functionality:
+Let's look at creating a simple melon patch, adding events and functionality:
 
 ```js
 IDRegistry.genBlockID("oxidized_wheat");
@@ -177,7 +177,7 @@ Block.createBlock("oxidized_wheat", [{
 BlockRenderer.setCustomCollisionShape(BlockID.oxidized_wheat, -1, new ICRender.CollisionShape());
 ```
 
-Do not forget to declare additional properties beforehand, the rules are almost the same as for other plants:
+Don't forget to declare the additional properties first, the rules are almost the same as for other plants:
 
 ```js title="BLOCK_TYPE_CROP"
 {
@@ -190,7 +190,7 @@ Do not forget to declare additional properties beforehand, the rules are almost 
 }
 ```
 
-We do not add wheat to the creative inventory, as usually an item is implemented for placing the block in such a case:
+We don't add wheat to the creative inventory, because usually an item is implemented to place the block for such a case:
 
 ```js
 IDRegistry.genItemID("oxidized_wheat");
@@ -217,9 +217,9 @@ Block.registerDropFunction("oxidized_wheat", function(coords, blockID, blockData
 });
 ```
 
-So, the wheat item will place seeds on the farmland; if updating the neighboring block leads to the absence of farmland under the plant, its destruction event will be triggered; and destruction will drop a random amount of item from 1 to 3. Why does wheat place wheat seeds?.. Probably, oxidized wheat can decompose to seeds. Implement the seed item yourself if you need an in-game form of the plant.
+So, the wheat item will place seeds on farmland; if updating an adjacent block results in the absence of farmland under the plant, an event of its destruction will be called; and breaking will drop a random number of the item from 1 to 3. Why does wheat place wheat seeds?.. Probably, oxidized wheat can decompose to seeds. Implement the seed item yourself if you need an in-game plant shape.
 
-If you need to create a sapling for a tree, use a random tick as for plant growth, and for melon crops; additional properties will look like this:
+If you need to create a sapling for a tree, use random tick for both plant growth and melon crops; additional properties will look like this:
 
 ```js title="BLOCK_TYPE_SAPLING"
 {
@@ -234,7 +234,7 @@ If you need to create a sapling for a tree, use a random tick as for plant growt
 }
 ```
 
-Use the CropLib library to implement plant growth, farmlands and fertilizers.
+Use the [CropLib library](TODO) to implement plant growth, crop beds, and fertilizers.
 
 :::note Time for localization
 
@@ -257,7 +257,7 @@ Translation.addTranslation("tile.oxidized_wheat.name", {
 
 ### Walls and Fences
 
-The most primitive implementation of all shape types; the game automatically creates connections with neighboring blocks, which significantly simplifies the whole process. Only additional properties are needed:
+The most primitive implementation of all types of shapes; the game automatically creates connections with neighboring blocks, which greatly simplifies the whole process. Only additional properties are enough:
 
 ```js
 IDRegistry.genBlockID("oxidized_log_fence");
@@ -273,7 +273,7 @@ Block.createBlock("oxidized_log_wall", [{
 }], BLOCK_TYPE_WOODEN_WALL);
 ```
 
-And do not forget about additional properties for both blocks in the same order:
+And don't forget about the additional properties for both blocks in the same order:
 
 ```js title="BLOCK_TYPE_WOODEN_FENCE"
 {
@@ -293,7 +293,7 @@ And do not forget about additional properties for both blocks in the same order:
 }
 ```
 
-The difference between them is only in wall thickness and connection types. Imagine a cobblestone fence and walls.
+The difference between them is only in wall thickness and connection types. Imagine a fence and walls made of cobblestone.
 
 :::note Time for localization
 
@@ -312,7 +312,7 @@ Translation.addTranslation("tile.oxidized_log_wall.name", {
 
 ### Slabs
 
-A slab is half of the entire block, it can be located both above the block and below it. And even seemingly a whole block of two slabs still remains a slab (double slab); at least according to the game logic. Let's start by creating a block:
+A slab is half of a whole block, it can be located both above the block and below it. And even a seemingly whole block consisting of two slabs is still a slab (a double slab); at least according to the game's logic. Let's start by creating a block:
 
 ```js
 IDRegistry.genBlockID("oxidized_log_slab");
@@ -327,7 +327,7 @@ Block.createBlock("oxidized_log_slab", [{
 }], BLOCK_TYPE_WOODEN_STUFF);
 ```
 
-Usually standard additional properties are quite suitable for slabs, except perhaps we can change the sounds emitted from moving on the block:
+Usually, standard additional properties are quite suitable for slabs, except that we can change the sounds emitted from moving on the block:
 
 ```js title="BLOCK_TYPE_WOODEN_STUFF"
 {
@@ -335,7 +335,7 @@ Usually standard additional properties are quite suitable for slabs, except perh
 }
 ```
 
-Let's apply shapes, every third one leaves standard, the first two for the bottom and top slab respectively:
+Let's apply the shapes, every third leaves the standard one, the first two are for the bottom and top slab respectively:
 
 ```js
 for (let i = 0; i < 3; i++) {
@@ -349,7 +349,7 @@ for (let i = 0; i < 3; i++) {
 
 You can duplicate variations of one block the required number of times, after replacing `for (..; i < 3; ..)` with the new number of variations.
 
-And separate the drop from the resulting block:
+And let's separate the drop from the resulting block:
 
 ```js
 Block.registerDropFunction("oxidized_log_slab", function(coords, blockID, blockData, level) {
@@ -386,9 +386,9 @@ Block.registerPopResourcesFunction("oxidized_log_slab", function(coords, block, 
 });
 ```
 
-Actually, all logic here is quite simple. We only redefine the drop so that the variation for the lower part of the block drops every time, "put" the second part of the block on top, or slightly more cumbersome, from below, if the variation matches, and also replace the result from its explosion with a standard chance.
+Actually, all the logic here is very simple. We just override the drop so that each time a variation exactly for the bottom part of the block is dropped, we "place" the second part of the block on top, or slightly more cumbersomely, from the bottom, if the variation matches, and also with a standard chance we replace the result from detonating it.
 
-Especially to simplify this implementation, there is the Base Blocks library, thanks to which all the code above will be reduced to a couple of functions:
+Especially to simplify this implementation, there is the [Base Blocks library](TODO), thanks to which all the code above will be reduced to a couple of functions:
 
 ```js
 IDRegistry.genBlockID("oxidized_log_slab");
@@ -403,7 +403,7 @@ BaseBlocks.createDoubleSlab("oxidized_log_double_slab", [{
 }], BLOCK_TYPE_OXIDIZED_SLAB, BlockID.oxidized_log_slab);
 ```
 
-Unless, another identifier for the "whole" block is involved here.
+Except that here another identifier is involved for a "solid" block.
 
 :::note Time for localization
 
@@ -418,10 +418,10 @@ Translation.addTranslation("tile.oxidized_log_slab.name", {
 
 ### Stairs
 
-A very complex type, requiring first of all an understanding of what is required for its implementation. Stairs can be rotated in 4 directions, inverted, and also rotated in 4 more directions. A total of 8 sides, each of which must be determined before placing the block. But wait, stairs can also be connected to neighboring blocks. And these are already renders with condition determination, think about whether it is necessary to copy the same thing every time.
+A highly complex type, requiring primarily an understanding of what is needed for its implementation. Stairs can be rotated in 4 directions, placed upside down, and also rotated in another 4 directions. A total of 8 sides, each of which must be determined before placing the block. But wait, stairs can also be connected with neighboring blocks. And these are already renders with condition determination, think whether you need to copy the same thing every time.
 
 <details>
-    <summary>I am sure that I do not want to use libraries.</summary>
+    <summary>I am sure I do not want to use libraries.</summary>
 <div>
 
 ```js title="BlockModeler.js"
@@ -430,11 +430,11 @@ const getRotatedBoxVertexes = function(box, rotation) {
         case 0:
             return box;
         case 1:
-            return [1 - box[3], box[1], 1 - box[5], 1 - box[0], box[4], 1 - box[2]]; // rotation by 180'
+            return [1 - box[3], box[1], 1 - box[5], 1 - box[0], box[4], 1 - box[2]]; // rotate by 180'
         case 2:
-            return [box[2], box[1], 1 - box[3], box[5], box[4], 1 - box[0]]; // rotation by 270'
+            return [box[2], box[1], 1 - box[3], box[5], box[4], 1 - box[0]]; // rotate by 270'
         case 3:
-            return [1 - box[5], box[1], box[0], 1 - box[2], box[4], box[3]]; // rotation by 90'
+            return [1 - box[5], box[1], box[0], 1 - box[2], box[4], box[3]]; // rotate by 90'
     }
 };
 
@@ -577,7 +577,7 @@ Block.registerPlaceFunction(BlockID.oxidized_log_stairs, function(coords, item, 
 </div>
 </details>
 
-A simpler solution would be to use the Block Engine library, it provides prototypes for creating blocks, as well as functions that significantly simplify the entire implementation. In this case, all the code from the spoiler is reduced to just:
+A simpler way out of the situation would be using the [Block Engine library](/api/BlockEngine), it provides prototypes for creating blocks, as well as functions that significantly simplify the entire implementation as a whole. In this case, all the code from the spoiler is reduced to just:
 
 ```js
 BlockRegistry.createStairs("oxidized_log_stairs", [{
@@ -587,7 +587,7 @@ BlockRegistry.createStairs("oxidized_log_stairs", [{
 }]);
 ```
 
-A great option would be to use the in-game type, however it does not provide the ability to create rotations, but just in case, let's leave it here too:
+An excellent option would be to use an in-game type, but it doesn't provide the ability to create rotations, but just in case, we'll leave it here too:
 
 ```js title="BLOCK_TYPE_WOODEN_STAIRS"
 {
@@ -609,18 +609,18 @@ Translation.addTranslation("tile.oxidized_log_stairs.name", {
 
 :::
 
-## Implementation of Custom Shapes
+## Implementing Custom Shapes
 
-No more difficult than creating slabs. As already mentioned, block shapes represent a parallelepiped or a typical box in a 3D world. For this, the function Block.setShape is involved:
+Is no more complex than creating slabs. As already mentioned, block shapes represent a parallelepiped or a typical box in a three-dimensional world. For this, the [Block.setShape](/api/namespace/Block#setShape) function is used:
 
 ```js
-Block.setShape(<numeric identifier>, <x1>, <y1>, <z1>, <x2>, <y2>, <z2>, <variation>);
+Block.setShape(<numeric_identifier>, <x1>, <y1>, <z1>, <x2>, <y2>, <z2>, <variation>);
 ```
 
-In the case of variation, `-1` can be used to set the shape for each of them. For example, the fence shape will look quite simple:
+In the case of variation, `-1` can be used to set the shape to each of them. For example, a fence shape would look quite simple:
 
 ```js
 Block.setShape(BlockID.oxidized_log_fence, 6/16, 0, 6/16, 10/16, 1, 10/16, -1);
 ```
 
-Then, why didn't we use it earlier? Here only the shape is created, it does not know how to create connections by default and remains a simple box. We will examine renders in detail later, but for this article this will be enough.
+Then, why didn't we use it [earlier](#walls-and-fences)? Here only a shape is created, it by default does not know how to create connections and remains a simple box. We will look at renders in detail later, but for this article, this will be enough.

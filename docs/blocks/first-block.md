@@ -1,10 +1,10 @@
 # First Block
 
-The entire world of Minecraft consists of blocks. The player and creatures move on them, mining them allows the player to obtain resources and create new blocks to create other blocks, and some can be opened or interacted with in some way. Let's start by looking at textures, and then create blocks with different variations.
+The whole world of Minecraft consists of blocks. The player and entities move on them, mining them allows the player to extract resources and create new blocks to craft even more blocks, and some can be opened or interacted with in some way. Let's start by looking at textures, and then, we'll create blocks with different variations.
 
-## How Many Sides Does a Cube Have
+## How many sides does a cube have
 
-That's how many textures are rendered in 3D space. Before creating textures or using existing ones, let's look at the block mapping:
+Exactly as many textures as are rendered in three-dimensional space. Before creating textures or using existing ones, let's look at the unwrapping of a block:
 
 <table className="block-uv-table">
     <tr>
@@ -40,7 +40,7 @@ And along with it, the textures, for example, of a crafting table:
 ]
 ```
 
-Meta follows each texture. Each of the 6 sides can use its own texture, but in most cases, one will be enough for us. As an example, all sides of andesite:
+Each texture is followed by a meta. Each of the 6 sides can use its own texture, but in most cases, one will be enough. As an example, all sides of andesite:
 
 ```js
 [
@@ -50,7 +50,7 @@ Meta follows each texture. Each of the 6 sides can use its own texture, but in m
 ]
 ```
 
-However, we do not need to repeat the same texture every time to describe the mapping for each side. The last texture will be duplicated the required number of times, accordingly we can shorten both lists of textures above:
+However, we don't need to repeat the same texture every time to describe the unwrapping for each side. The last texture will be duplicated the required number of times, so we can shorten both texture lists above:
 
 <Tabs>
 <TabItem value="andesite" label="Andesite">
@@ -77,15 +77,15 @@ However, we do not need to repeat the same texture every time to describe the ma
 </TabItem>
 </Tabs>
 
-:::tip Other Implementations
+:::tip Other implementations
 
-If we represent the list of textures in cardinal directions, it is north (back), south (front), west (left) and east (right) respectively. This is how textures on in-game blocks are described.
+If you represent the texture list in cardinal directions, it corresponds to north (back), south (front), west (left), and east (right) respectively. This is how textures on in-game blocks are described.
 
 :::
 
-## Let's Register a Block
+## Let's register a block
 
-And by creating a block, we also create an item associated with it. Accordingly, blocks have many item properties, such as recipes, and some events. The general syntax for creating blocks looks like this:
+And when creating a block, we also create an item associated with it. Accordingly, blocks have many properties of items, such as recipes, and some events. The general syntax for creating blocks looks like this:
 
 ```js
 Block.createBlock("some_identifier", [
@@ -95,7 +95,7 @@ Block.createBlock("some_identifier", [
 });
 ```
 
-Let's immediately reserve an identifier, as we did with the item, and look at the list of properties available to us:
+Let's immediately reserve an identifier, as we [did with the item](../items/first-item#lets-register-an-item), and look at the list of available properties:
 
 ```js
 IDRegistry.genBlockID("oxidized_log");
@@ -110,13 +110,13 @@ Block.createBlock("oxidized_log", [{
 }], "opaque");
 ```
 
-We create a block with the identifier `oxidized_log`, one variation, and standard opaque properties. The variation itself describes all available properties, where specifying `texture` is mandatory, others can be omitted for technical blocks.
+We create a block with the identifier `oxidized_log`, one variation, and standard opaque properties. The variation itself describes all available properties, where only `texture` is required to be specified, the rest can be omitted for technical blocks.
 
 <details>
     <summary>Standards for creating localization</summary>
 <div>
 
-Block translations are produced in the format `tile.<identifier>[.<data>].name`, just like in the case of items. And if we did not consider the state when creating the item, then in the example above it is involved:
+Translations of blocks are made in the format `tile.<identifier>[.<state>].name`, just as in the case of items. And if we didn't consider the state when creating the item, it is involved in the example above:
 
 ```js
 Translation.addTranslation("tile.log.oxidized.name", {
@@ -125,26 +125,26 @@ Translation.addTranslation("tile.log.oxidized.name", {
 });
 ```
 
-Usually the state describes additional properties that are inherent in this category of items or blocks. For example, in the case of logs it is `tile.log.oak.name` and `tile.log.big_oak.name`. There are also more complex options, but for the main part of blocks states will not be required.
+Usually, the state describes additional properties that are inherent to this category of items or blocks. For example, in the case of logs, it's `tile.log.oak.name` and `tile.log.big_oak.name`. There are also more complex options, but for the main part of the blocks, states will not be needed.
 
 </div>
 </details>
 
-Let's add new textures, they must be located in the __terrain-atlas__ resource folder. Just like in the case of the item, we must specify the meta, and the remaining file name without the path will be used as the texture name.
+Let's add new textures, they should be located in the __terrain-atlas__ folder of resources. As in the case of an item, we must specify the meta, and the remaining file name without the path will be used as the texture name.
 
 <div className="resource-atlas-align-box">
 
-!log_oxidized_top_0.png
-!log_oxidized_side_0.png
-!log_oxidized_side_1.png
+![log_oxidized_top_0.png](/images/blocks/log_oxidized_top_0.png)
+![log_oxidized_side_0.png](/images/blocks/log_oxidized_side_0.png)
+![log_oxidized_side_1.png](/images/blocks/log_oxidized_side_1.png)
 
 </div>
 
-For example, *assets/resources/terrain-atlas/log/log_oxidized_top_0.png* can be used only in the variant `["log_oxidized_top", 0]` and no other will work.
+For example, *assets/resources/terrain-atlas/log/log_oxidized_top_0.png* can only be used in the `["log_oxidized_top", 0]` variant and no other will work.
 
-### Using Variations
+### Using variations
 
-Provided primarily to reduce identifier costs. They are not infinite, so if you implement a large number of blocks with similar properties, an excellent option would be to place new blocks in variations of an already created one.
+Provided primarily to reduce the cost of identifiers. They are not infinite, so if you are implementing a large number of blocks with similar properties, an excellent option would be to place new blocks in variations of an already created one.
 
 Let's take the log example as a basis, supplementing it with variations:
 
@@ -189,24 +189,24 @@ import RotatableMinecraftBlock from "@site/src/components/RotatableMinecraftBloc
 <RotatableMinecraftBlock bottomTexture='log_oxidized_side_1' northTexture='log_oxidized_top_0' westTexture='log_oxidized_side_1' />
 ```
 
-Now, in addition to the main, vertical variation of the log, there are also two horizontal ones.
+Now in addition to the main, vertical variation of the log, there are also two horizontal ones.
 
-We will register automatic rotation in the following articles so that logs in the game can be placed sideways.
+We will register automatic rotation in the following articles so that logs in the game can be placed on their side.
 
-### Additional Properties
+### Additional properties
 
-Allow you to set things like transparency, luminance, and other block display parameters in the world. Take only those that you need:
+They allow you to set things like transparency, glow, and other parameters for rendering a block in the world. Take only those that you specifically need:
 
 ```js
 IDRegistry.genBlockID("oxidized_log");
 Block.createBlock("oxidized_log", [ /* ... */ ], {
-    // based on the block with this numeric identifier,
     // some of its properties will be acquired
+    // based on the block with this numeric identifier
     base: 0,
-    // material determines standard breaking time, its sound
+    // the material determines the standard breaking time, its sound
     // and other characteristics of what the block is made of
     material: 3,
-    // block sounds during breaking or walking on it:
+    // block sounds when breaking or walking on it:
     // normal, gravel, wood, grass, metal, stone, cloth,
     // glass, sand, snow, ladder, anvil, slime, silent,
     // itemframe, turtle_egg, bamboo, bamboo_sapling,
@@ -216,48 +216,48 @@ Block.createBlock("oxidized_log", [ /* ... */ ], {
     // blocks work much more stably in large quantities
     solid: false,
     // if true, liquids like water can be poured
-    // directly into the block; otherwise the block cannot be
-    // filled with any liquid
+    // straight into the block; otherwise the block cannot
+    // be filled with any liquid
     can_contain_liquid: false,
-    // block can be placed on top of another block, this
+    // the block can be placed on top of another block, this
     // option allows placing blocks in layers and will be considered
-    // in one of the chapters on creating structures
+    // in one of the structure creation chapters
     can_be_extra_block: false,
-    // back sides of the block will not be rendered, relevant
+    // the back sides of the block will not be rendered, relevant
     // for transparent blocks like leaves
     renderallfaces: false,
     // one of the standard block shapes, by default it is
-    // a full block, and can be, for example, a torch (2)
+    // a full block, but can be, for example, a torch (2)
     rendertype: 0,
-    // block blending mode for rendering in the world
+    // blending mode of the block for rendering in the world
     renderlayer: EBlockRenderLayer.OPAQUE,
-    // emitted light level, value from 0 to 15
+    // level of emitted light, value from 0 to 15
     lightlevel: 0,
-    // light absorption level, where 15 is fully
-    // absorb, usually for opaque blocks;
-    // remaining light from absorption will pass through the block
+    // light opacity level, where 15 is completely
+    // opaque, usually for opaque blocks;
+    // light remaining from opacity will pass through the block
     lightopacity: 0,
-    // color for display on the map; please use
-    // this property for integration with the minimap
+    // color to display on the map; please use
+    // this property for minimap integration
     mapcolor: 0,
     // blast resistance, defined in blocks
     explosionres: 3.0,
-    // friction level when walking on the block, value closer
-    // to 0 makes movement difficult, increase accelerates
+    // friction level when walking on the block, a value closer
+    // to 0 will make movement difficult, an increase will speed it up
     friction: 0.6,
-    // block destruction time in seconds, or -1 if
-    // the block cannot be destroyed like bedrock
+    // block breaking time in seconds, or -1 if
+    // the block cannot be broken like bedrock
     destroytime: 1.0,
-    // block translucency affecting the display
-    // of shadows on the block, 0 means shadows of opaque blocks
+    // translucency of the block, affecting the display of
+    // shadows on the block, 0 means shadows of opaque blocks
     translucency: 1.0,
-    // source for obtaining block color by biome:
+    // source for getting the block color by biome:
     // grass, leaves or water; only for maps
     color_source: "none"
 });
 ```
 
-We will also need to add opaque block properties, which are applied when using `opaque`:
+We will also need to add the properties of an opaque block, which are applied when using `opaque`:
 
 ```js
 IDRegistry.genBlockID("oxidized_log");
@@ -287,14 +287,14 @@ Block.createSpecialType({
 }, "radiactive_log");
 ```
 
-Now you can use them by the key `radiactive_log`:
+Now they can be used by the key `radiactive_log`:
 
 ```js
 IDRegistry.genBlockID("oxidized_log");
 Block.createBlock("oxidized_log", [ /* ... */ ], "radiactive_log");
 ```
 
-Or, additional properties can be registered by a random key, which primarily will be available via some constant:
+Or, additional properties can be registered by a random key, which will primarily be available by some constant:
 
 ```js
 const BLOCK_TYPE_RADIACTIVE_LOG = Block.createSpecialType({
@@ -311,11 +311,11 @@ IDRegistry.genBlockID("oxidized_log");
 Block.createBlock("oxidized_log", [ /* ... */ ], BLOCK_TYPE_RADIACTIVE_LOG);
 ```
 
-Consider SpecialType for full and up-to-date information regarding the availability of certain properties, articles are updated as needed.
+Check out [SpecialType](/api/namespace/Block#SpecialType) for complete and up-to-date information regarding the availability of specific properties, the articles are updated as needed.
 
-## There Are Never Too Many Events
+## There are never too many events
 
-Let's register a couple for example. We can both monitor the state of the block and implement interactions with it. We will use an already familiar and a new event.
+Let's register a couple for an example. We can either monitor the state of the block, or implement interactions with it. We'll use an already familiar and a new event.
 
 <Tabs groupId="scripting-language">
 <TabItem value="js" label="JavaScript">
@@ -348,9 +348,9 @@ Callback.addCallback("ItemUse", (coords, item, block, isExternal, playerUid) => 
 </TabItem>
 </Tabs>
 
-First of all, BlockSource is used to obtain data about the surrounding world and modify it. We will touch upon this class repeatedly. Making sure that we touched exactly the block of new logs, the block source for the player who triggered the event will be obtained; and as an example, the block will be rotated to the next side until it cycles through all variations.
+First of all, [BlockSource](/api/class/BlockSource) is used to get data about the surrounding world and to modify it. We will touch upon this class many times more. Ensuring that we touched exactly the block of new logs, the block source for the player who triggered the event will be obtained; and as an example, the block will be rotated to the next side until it goes through all the variations.
 
-Imagine that you have a need to create something like a lucky block. Let's use the __DestroyBlock__ event to detect block destruction:
+Imagine that you have a need to create something like a lucky block. Let's use the __DestroyBlock__ event to detect the destruction of the block:
 
 <Tabs groupId="scripting-language">
 <TabItem value="js" label="JavaScript">
@@ -378,4 +378,4 @@ Callback.addCallback("DestroyBlock", (coords, block, playerUid) =>
 </TabItem>
 </Tabs>
 
-And to summon the chicken, we also needed to use the block source. These events occur on the server side, not the client side, so its need shouldn't be too difficult to explain.
+And to spawn a chicken, we also needed to use a block source. These events occur on the server side, not the client side, so its need shouldn't be too hard to explain.
