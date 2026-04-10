@@ -80,13 +80,15 @@ export default function ApiItemLayout({
 
 				{renderTocDesktop && (
 					<div className="col col--3">
-						<ApiOptionsLayout className="tsd-api-options" />
-						<TOC
-							className={ThemeClassNames.docs.docTocDesktop}
-							maxHeadingLevel={6}
-							minHeadingLevel={1}
-							toc={toc}
-						/>
+						<div className="tsd-api-toc-container">
+							<ApiOptionsLayout className="tsd-api-options" />
+							<TOC
+								className={ThemeClassNames.docs.docTocDesktop}
+								maxHeadingLevel={6}
+								minHeadingLevel={1}
+								toc={toc}
+							/>
+						</div>
 					</div>
 				)}
 			</div>

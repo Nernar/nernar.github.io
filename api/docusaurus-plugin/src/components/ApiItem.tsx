@@ -13,6 +13,8 @@ import { Reflection } from './Reflection';
 import { TypeParametersGeneric } from './TypeParametersGeneric';
 import { ApiOptionsContext, IApiOptions, shouldHideReflection } from './ApiOptionsContext';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+import { useLocalStorageState } from '../hooks/useLocalStorageState';
 
 function extractTOC(
 	item: TSDDeclarationReflection,
@@ -55,30 +57,9 @@ export interface ApiItemProps extends Pick<DocItemProps, 'route'> {
 }
 
 export default function ApiItem({ readme: Readme, route }: ApiItemProps) {
-	const [hideInherited, setHideInherited] = useState(() => {
-		if (ExecutionEnvironment.canUseDOM) {
-			const hideInherited = localStorage.getItem('api.hide-inherited');
-			return hideInherited !== null ? Boolean(hideInherited) : false;
-		}
-		return false;
-	});
-	useEffect(() => localStorage.setItem('api.hide-inherited', `${hideInherited}`), [hideInherited]);
-	const [hideInternal, setHideInternal] = useState(() => {
-		if (ExecutionEnvironment.canUseDOM) {
-			const hideInternal = localStorage.getItem('api.hide-internal');
-			return hideInternal !== null ? Boolean(hideInternal) : true;
-		}
-		return true;
-	});
-	useEffect(() => localStorage.setItem('api.hide-internal', `${hideInternal}`), [hideInternal]);
-	const [hideDeprecated, setHideDeprecated] = useState(() => {
-		if (ExecutionEnvironment.canUseDOM) {
-			const hideDeprecated = localStorage.getItem('api.hide-deprecated');
-			return hideDeprecated !== null ? Boolean(hideDeprecated) : false;
-		}
-		return false;
-	});
-	useEffect(() => localStorage.setItem('api.hide-deprecated', `${hideDeprecated}`), [hideDeprecated]);
+	const [hideInherited, setHideInherited] = useLocalStorageState('api.hide-inherited', false);
+	const [hideInternal, setHideInternal] = useLocalStorageState('api.hide-internal', true);
+	const [hideDeprecated, setHideDeprecated] = useLocalStorageState('api.hide-deprecated', false);
 
 	const apiOptions = useMemo(() => ({
 		hideInherited, setHideInherited,
