@@ -64,13 +64,6 @@ export default {
                 id: 'Fireflies/readme'
             },
             items: [
-                {
-                    type: 'category',
-                    label: 'Block',
-                    items: [
-                        'Fireflies/blocks/BasicBlock'
-                    ]
-                },
                 'Fireflies/runtime-data',
             ]
         },

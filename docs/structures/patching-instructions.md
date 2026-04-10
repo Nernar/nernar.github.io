@@ -50,6 +50,12 @@ Let's create our own structure, but besides that, many methods need to be extend
 
 ## Markers, pools, and pieces
 
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```
+
 ## In-game structures
 
 ```js

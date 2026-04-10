@@ -50,6 +50,12 @@
 
 ## Маркеры, пулы и кусочки
 
+```mdx-code-block
+import NotImplemented from "@site/src/components/NotImplemented"
+
+<NotImplemented />
+```
+
 ## Внутреигровые структуры
 
 ```js

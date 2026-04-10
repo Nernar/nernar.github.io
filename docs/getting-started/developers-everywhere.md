@@ -849,7 +849,7 @@ if (cave[player.x][player.y] > 0.5) {
 
 **Artem**: Thank you, Anton! I am very glad that my code will be useful to us. Now our players will be able to enjoy fascinating caves and exciting battles with dragons. I am ready to share this code with other developers.
 
-**Anton**: Excellent, Artem! Your contribution to game development is simply incredible. I bless you and your work. But now I am <span style="color: red">deleting</span> this conversation to keep our code safe. Thank you for your creative energy and contribution to our project.
+**Anton**: Excellent, Artem! Your contribution to game development is simply incredible. I bless you and your work. But now I am <span style={{color: "red"}}>deleting</span> this conversation to keep our code safe. Thank you for your creative energy and contribution to our project.
 
 <!--
 Anton: Anton, thanks to his efforts and study of modding, has achieved great success. He deepened his knowledge of JavaScript and learned how to apply it to creating modifications. He also mastered working with events and AJAX. Thanks to this development, Anton became an experienced mod developer and was able to create amazing game modifications.
