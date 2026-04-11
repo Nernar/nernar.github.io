@@ -31,7 +31,7 @@ import path from 'path';
 
 const baseUrl = process.env.BASE_URL ?? '/';
 const isCI = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
-const configUrl = 'https://nernar.github.io';
+const configUrl = 'https://docs.inner-core.org';
 
 export default {
 	title: 'Inner Core Docs',
@@ -193,6 +193,10 @@ export default {
 			{
 				name: 'keywords',
 				content: 'innercore docs, inner core docs, innercore api, inner core api, coreengine api, core engine api, innercore libraries, inner core libraries, bedrock mods, mcpe mods, mcbe mods'
+			},
+			{
+				name: 'algolia-site-verification',
+				content: 'D7445363706388E1'
 			}
 		],
 		colorMode: {
@@ -291,6 +295,17 @@ export default {
 				}
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
+		},
+		algolia: {
+			appId: '4HZJ107KFO',
+			apiKey: 'ac84e3c991e0e10303432c69b5d878b4',
+			indexName: 'docs_api',
+
+			contextualSearch: true,
+			searchPagePath: 'search',
+			insights: true,
+
+			askAi: '48eb65fb-1267-4cac-8f8d-20de77aa09f1'
 		},
 		prism: {
 			theme: prismThemes.vsLight,
