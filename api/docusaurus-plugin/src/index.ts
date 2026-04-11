@@ -138,10 +138,7 @@ export default function typedocApiPlugin(
 	});
 
 	return {
-		// TODO: Since newest versions docs plugin components requires
-		// docs plugin to display version, sidebar, etc.
-		// name: '@nernar/docusaurus-plugin-typedoc',
-		name: 'docusaurus-plugin-content-docs',
+		name: '@nernar/docusaurus-plugin-typedoc',
 
 		extendCli(cli) {
 			const command = isDefaultPluginId ? 'api:version' : `api:version:${pluginId}`;

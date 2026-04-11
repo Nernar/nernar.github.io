@@ -1,16 +1,11 @@
-import { useCallback } from 'react';
 import Link from '@docusaurus/Link';
-import { useDocsPreferredVersion, useDocsVersion, useDocVersionSuggestions } from '@docusaurus/plugin-content-docs/client';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import { ThemeClassNames } from '@docusaurus/theme-common';
+import { useTypedocPreferredVersion } from '../hooks/useTypedocPreferredVersion';
 
 export function VersionBanner(): React.JSX.Element | null {
 	const { banner, docs, pluginId, version } = useDocsVersion();
-	const { latestVersionSuggestion: latestVersion } = useDocVersionSuggestions(pluginId);
-	const { savePreferredVersionName } = useDocsPreferredVersion(pluginId);
-
-	const handleClick = useCallback(() => {
-		savePreferredVersionName(latestVersion.name);
-	}, [latestVersion.name, savePreferredVersionName]);
+	const latestVersion = useTypedocPreferredVersion(pluginId);
 
 	if (!banner || !latestVersion) {
 		return null;
@@ -32,7 +27,7 @@ export function VersionBanner(): React.JSX.Element | null {
 				)}{' '}
 				For the latest API, see version{' '}
 				<b>
-					<Link to={latestVersionInfo.id} onClick={handleClick}>
+					<Link to={latestVersionInfo.id}>
 						{latestVersionInfo.title}
 					</Link>
 				</b>

@@ -135,11 +135,11 @@ export default {
 		[
 			'@nernar/docusaurus-plugin-typedoc',
 			{
-				id: 'api',
 				projectRoot: 'api',
 				packageJsonName: 'typedoc.json',
 				sortPackages: (left, right) =>
 					left.packageName == 'Core Engine' ? -1 : right.packageName == 'Core Engine' ? 1 : 0,
+				remarkPlugins: [remarkAuthors],
 				packages: [
 					{
 						path: 'core-engine',
@@ -183,14 +183,6 @@ export default {
 						// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
 						// TODO: Page groups like in typedoc-github-theme.
 					// ]
-				},
-				remarkPlugins: [remarkAuthors],
-				includeCurrentVersion: false,
-				lastVersion: 'latest',
-				versions: {
-					latest: {
-						path: '.'
-					}
 				}
 			} satisfies Typedoc.Options
 		]

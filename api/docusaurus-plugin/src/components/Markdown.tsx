@@ -3,11 +3,12 @@
 import { Fragment, useState } from 'react';
 import { marked, type Tokens } from 'marked';
 import { markedSmartypants } from 'marked-smartypants';
-import { useDocsData, useDocsVersion } from '@docusaurus/plugin-content-docs/client';
+import { useDocsVersion } from '@docusaurus/plugin-content-docs/client';
 import CodeBlock from '@theme/CodeBlock';
 import MDX from '@theme/MDXComponents';
 import { useReflectionMap } from '../hooks/useReflectionMap';
 import { replaceLinkTokens } from '../utils/markdown';
+import { useTypedocPluginData as useTypedocData } from '../hooks/useTypedocData';
 
 interface Admonition {
 	type: 'admonition';
@@ -254,7 +255,7 @@ export interface MarkdownProps {
 export function Markdown({ content }: MarkdownProps) {
 	const reflections = useReflectionMap();
 	const version = useDocsVersion();
-	const docsData = useDocsData(version.pluginId);
+	const docsData = useTypedocData(version.pluginId);
 	const [ast] = useState<TokensList>(
 		() =>
 			marked.lexer(

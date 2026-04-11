@@ -92,7 +92,7 @@ export async function readVersionsMetadata(
 	const versionNamesUnfiltered = await readVersionNames(context.siteDir, {
 		...specialOptions,
 		disableVersioning: options.disableVersioning ?? false,
-		id: options.id ?? 'default',
+		id: options.id ?? DEFAULT_PLUGIN_ID,
 		includeCurrentVersion: options.includeCurrentVersion ?? true,
 		path: (options as any).path ?? options.projectRoot ?? 'api',
 	});

@@ -7,6 +7,7 @@ import type { Props as DocItemProps } from '@theme/DocItem';
 import Heading from '@theme/Heading';
 import type { ApiOptions, PackageReflectionGroup } from '../types';
 import { removeScopes } from '../utils/links';
+import { useTypedocPreferredVersion } from '../hooks/useTypedocPreferredVersion';
 import { VersionBanner } from './VersionBanner';
 
 export interface ApiIndexProps extends Pick<DocItemProps, 'route'> {
@@ -42,8 +43,8 @@ function addVersionToUrl(
 }
 
 export default function ApiIndex({ options, packages, history }: ApiIndexProps) {
-	const latestVersion = useDocsVersion();
-	const { preferredVersion } = useDocsPreferredVersion(latestVersion.pluginId);
+	const currentVersion = useDocsVersion();
+	const latestVersion = useTypedocPreferredVersion(currentVersion.pluginId);
 
 	useEffect(() => {
 		// Redirect to package when only 1
@@ -51,16 +52,16 @@ export default function ApiIndex({ options, packages, history }: ApiIndexProps) 
 			history.replace(
 				addVersionToUrl(
 					packages[0].entryPoints[0].reflection.permalink,
+					currentVersion,
 					latestVersion,
-					preferredVersion,
 				),
 			);
 
 			// Redirect to preferred version
-		} else if (preferredVersion) {
-			history.replace(addVersionToUrl(history.location.pathname, latestVersion, preferredVersion));
+		} else if (latestVersion) {
+			history.replace(addVersionToUrl(history.location.pathname, currentVersion, latestVersion));
 		}
-	}, [packages, history, latestVersion, preferredVersion]);
+	}, [packages, history, currentVersion, latestVersion]);
 
 	return (
 		<div className="row">
