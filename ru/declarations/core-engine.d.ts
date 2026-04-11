@@ -23247,6 +23247,19 @@ declare type ArmorType = "helmet" | "chestplate" | "leggings" | "boots";
  * currently there are only default armor models.
  */
 declare type DefaultRenderTemplate = ArmorType;
+
+/**
+ * @since 3.1.0b126
+ */
+declare function injectBindingsIntoScope(moduleName: string, obj: object, allowOverrides: boolean): void;
+/**
+ * @since 3.1.0b126
+ */
+declare function injectModuleIntoScope(moduleName: string, obj: object, allowOverrides: boolean): void;
+/**
+ * @since 3.1.0b126
+ */
+declare function injectModulesIntoScope(obj: object, allowOverrides: boolean): void;
 declare function getClass(property: string): any;
 
 declare abstract class java {

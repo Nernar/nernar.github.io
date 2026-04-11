@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([["6565"],{59823(e){e.exports=JSON.parse('{"banner":"","breadcrumbs":true,"gitRefName":"master","minimal":false,"pluginId":"api","scopes":[]}')}}]);
