@@ -41,31 +41,30 @@
     "deploy-libraries-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\""
   },
   "dependencies": {
-    "@docusaurus/core": "^3.9.2",
-    "@docusaurus/faster": "^3.9.2",
-    "@docusaurus/preset-classic": "^3.9.2",
-    "@docusaurus/theme-mermaid": "^3.9.2",
-    "@docusaurus/theme-search-algolia": "^3.9.2",
+    "@docusaurus/core": "^3.10.0",
+    "@docusaurus/faster": "^3.10.0",
+    "@docusaurus/preset-classic": "^3.10.0",
+    "@docusaurus/theme-mermaid": "^3.10.0",
+    "@docusaurus/theme-search-algolia": "^3.10.0",
     "clsx": "^2.1.1",
     "docusaurus-plugin-remote-content": "^4.0.0",
     "fflate": "^0.8.2",
-    "git-url-parse": "^16.0.0",
-    "mermaid": "^11.4.1",
+    "git-url-parse": "^16.1.0",
     "react": "^19.2.4",
-    "tsx": "^4.19.2"
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.9.2",
-    "@docusaurus/tsconfig": "^3.9.2",
-    "@docusaurus/types": "^3.9.2",
+    "@docusaurus/module-type-aliases": "^3.10.0",
+    "@docusaurus/tsconfig": "^3.10.0",
+    "@docusaurus/types": "^3.10.0",
     "@types/dts-generator": "^2.1.11",
     "@types/git-url-parse": "^9.0.3",
-    "@types/react": "^19.2.4",
+    "@types/react": "^19.2.14",
     "commander": "^12.1.0",
     "cross-env": "^10.1.0",
     "dts-generator": "^3.0.0",
     "path": "^0.12.7",
-    "puppeteer": "^23.9.0",
+    "puppeteer": "^23.11.1",
     "puppeteer-autoscroll-down": "^2.0.0"
   },
   "browserslist": {

@@ -61,7 +61,7 @@ export default {
 			useCssCascadeLayers: true,
 			removeLegacyPostBuildHeadAttribute: true
 		},
-		experimental_faster: {
+		faster: {
 			lightningCssMinimizer: true,
 			mdxCrossCompilerCache: true,
 			rspackBundler: true,
@@ -303,9 +303,12 @@ export default {
 
 			contextualSearch: true,
 			searchPagePath: 'search',
-			insights: true,
+			insights: false,
 
-			askAi: '48eb65fb-1267-4cac-8f8d-20de77aa09f1'
+			// TODO: Maybe will work someday, but for now, AI-201.
+			// askAi: {
+				// assistantId: '48eb65fb-1267-4cac-8f8d-20de77aa09f1'
+			// }
 		},
 		prism: {
 			theme: prismThemes.vsLight,
