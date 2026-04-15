@@ -765,7 +765,7 @@ declare namespace Entity {
      * @returns Object used to manipulate entity's attributes.
      * @since 2.0.3b33
      */
-    function getAttribute(entityUid: number, attribute: Attribute | string): AttributeInstance;
+    function getAttribute(entityUid: number, attribute: Attribute | (string & {})): AttributeInstance;
 
     /**
      * Interface used to modify attribute values.

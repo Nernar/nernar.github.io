@@ -324,7 +324,7 @@ declare namespace Item {
      * @param items array of numeric item IDs to be used as repair items
      * @since 3.1.1b127
      */
-    function addRepairItems(id: number | string, items: [number | string][]): void;
+    function addRepairItems(id: number | string, items: (number | string)[]): void;
     /**
      * Specifies what items can be used to repair this item in the anvil.
      * @param id string or numeric item ID

@@ -783,7 +783,7 @@ declare namespace Block {
 		 * Specifies sounds of the block, one of {@link Block.Sound}.
 		 * @since 2.0.2b25 (from 3.1.0b126 can be custom from resource packs)
 		 */
-		sound?: Sound,
+		sound?: Sound | (string & {}),
 		/**
 		 * Whether or not block may filled by water bucket or
 		 * other custom fillable liquids.
@@ -806,7 +806,7 @@ declare namespace Block {
 		 * @default ["color"] // this state always has been here
 		 * @since 2.4.0b122-4
 		 */
-		states?: [EBlockStates | number | string][],
+		states?: (number | string)[],
 		/**
 		 * Alternatively catch on fire chance modifier,
 		 * values between 0 and 100, with a higher number

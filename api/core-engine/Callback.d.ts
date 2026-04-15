@@ -25,9 +25,9 @@ declare namespace Callback {
      */
     function invokeCallback(name: string, o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any): void;
 
-    type InferCallbackFunction<T extends any[]> = T extends [
+    type InferCallbackFunction<T extends unknown[]> = T extends [
         infer A1, infer A2, infer A3, infer A4, infer A5,
-        infer A6, infer A7, infer A8, infer A9, infer A10, ...any[]
+        infer A6, infer A7, infer A8, infer A9, infer A10, ...unknown[]
     ] ? [A1, A2, A3, A4, A5, A6, A7, A8, A9, A10] : T;
 
     /**

@@ -683,7 +683,7 @@ declare namespace NBT {
             /**
              * One of {@link Entity.Attribute} or your custom one.
              */
-            Name: Entity.Attribute | string;
+            Name: Entity.Attribute | (string & {});
         }
 
         interface IBlockEntity extends Scriptable {
