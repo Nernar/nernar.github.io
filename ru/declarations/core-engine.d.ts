@@ -1336,7 +1336,7 @@ declare namespace Block {
 		 * Specifies sounds of the block, one of {@link Block.Sound}.
 		 * @since 2.0.2b25 (from 3.1.0b126 can be custom from resource packs)
 		 */
-		sound?: Sound,
+		sound?: Sound | (string & {}),
 		/**
 		 * Whether or not block may filled by water bucket or
 		 * other custom fillable liquids.
@@ -1359,7 +1359,7 @@ declare namespace Block {
 		 * @default ["color"] // this state always has been here
 		 * @since 2.4.0b122-4
 		 */
-		states?: [EBlockStates | number | string][],
+		states?: (number | string)[],
 		/**
 		 * Alternatively catch on fire chance modifier,
 		 * values between 0 and 100, with a higher number
@@ -2496,9 +2496,9 @@ declare namespace Callback {
      */
     function invokeCallback(name: string, o1?: any, o2?: any, o3?: any, o4?: any, o5?: any, o6?: any, o7?: any, o8?: any, o9?: any, o10?: any): void;
 
-    type InferCallbackFunction<T extends any[]> = T extends [
+    type InferCallbackFunction<T extends unknown[]> = T extends [
         infer A1, infer A2, infer A3, infer A4, infer A5,
-        infer A6, infer A7, infer A8, infer A9, infer A10, ...any[]
+        infer A6, infer A7, infer A8, infer A9, infer A10, ...unknown[]
     ] ? [A1, A2, A3, A4, A5, A6, A7, A8, A9, A10] : T;
 
     /**
@@ -6067,7 +6067,7 @@ declare namespace Entity {
      * @returns Object used to manipulate entity's attributes.
      * @since 2.0.3b33
      */
-    function getAttribute(entityUid: number, attribute: Attribute | string): AttributeInstance;
+    function getAttribute(entityUid: number, attribute: Attribute | (string & {})): AttributeInstance;
 
     /**
      * Interface used to modify attribute values.
@@ -8208,7 +8208,7 @@ declare namespace Item {
      * @param items array of numeric item IDs to be used as repair items
      * @since 3.1.1b127
      */
-    function addRepairItems(id: number | string, items: [number | string][]): void;
+    function addRepairItems(id: number | string, items: (number | string)[]): void;
     /**
      * Specifies what items can be used to repair this item in the anvil.
      * @param id string or numeric item ID
@@ -11101,7 +11101,7 @@ declare namespace NBT {
             /**
              * One of {@link Entity.Attribute} or your custom one.
              */
-            Name: Entity.Attribute | string;
+            Name: Entity.Attribute | (string & {});
         }
 
         interface IBlockEntity extends Scriptable {
