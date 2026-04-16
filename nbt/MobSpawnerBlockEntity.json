@@ -1,0 +1,65 @@
+{
+  "type": "compound",
+  "name": "MobSpawnerBlockEntity",
+  "description": "**MobSpawner** (Spawner) with `ID = 5`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "MobSpawner"
+    },
+    "Delay": {
+      "type": "int",
+      "description": "Ticks before spawning next entity."
+    },
+    "DisplayEntityHeight": {
+      "type": "int",
+      "description": "Placeholder animation in spawner height, constant.",
+      "default": 1.7999999523162842
+    },
+    "DisplayEntityScale": {
+      "type": "int",
+      "description": "Placeholder animation in spawner size relative to block itself."
+    },
+    "DisplayEntityWidth": {
+      "type": "int",
+      "description": "Placeholder animation in spawner width, constant.",
+      "default": 0.6000000238418579
+    },
+    "EntityIdentifier": {
+      "type": "string",
+      "description": "Typed entity identifier, such as `\"minecraft:enderman\"`.",
+      "default": ""
+    },
+    "MaxNearbyEntities": {
+      "type": "int",
+      "description": "Maximum containment mobs in , if here are more\r\nspawner just emitting particles.",
+      "default": 6
+    },
+    "MaxSpawnDelay": {
+      "type": "int",
+      "description": "Maximum time in ticks between mob spawing.",
+      "default": 800
+    },
+    "MinSpawnDelay": {
+      "type": "int",
+      "description": "Minimum time in ticks between mob spawing.",
+      "default": 800
+    },
+    "RequiredPlayerRange": {
+      "type": "int",
+      "description": "Anyone (of players) must be near to spawner, otherwise spawner\r\nhides placeholder animation and stops.",
+      "default": 16
+    },
+    "SpawnCount": {
+      "type": "int",
+      "description": "Maximum spawning limit, not everyone may spawned with each other\r\nwhen place above comes to zero.",
+      "default": 4
+    },
+    "SpawnRange": {
+      "type": "int",
+      "description": "Ranged AABB box where entities became.",
+      "default": 4
+    }
+  },
+  "extends": "IBlockEntity"
+}

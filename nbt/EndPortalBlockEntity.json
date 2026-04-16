@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "EndPortalBlockEntity",
+  "description": "**EndPortal** (End Portal) with `ID = 22`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "EndPortal"
+    }
+  },
+  "extends": "IBlockEntity"
+}

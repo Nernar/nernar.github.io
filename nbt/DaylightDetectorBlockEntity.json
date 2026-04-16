@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "DaylightDetectorBlockEntity",
+  "description": "**DaylightDetector** (Daylight Sensor) with `ID = 10`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "DaylightDetector"
+    }
+  },
+  "extends": "IBlockEntity"
+}

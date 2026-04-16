@@ -1,0 +1,18 @@
+{
+  "type": "compound",
+  "name": "Block",
+  "children": {
+    "name": {
+      "type": "string"
+    },
+    "states": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "BlockState"
+    },
+    "version": {
+      "type": "int",
+      "description": "Database tracking identifier (in 1.16 equals `17825808`)."
+    }
+  }
+}

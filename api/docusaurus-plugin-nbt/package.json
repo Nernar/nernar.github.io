@@ -1,0 +1,56 @@
+{
+	"name": "@nernar/docusaurus-plugin-nbt",
+	"version": "1.0.0",
+	"description": "Docusaurus plugin for displaying NBT schematics.",
+	"keywords": [
+		"docusaurus",
+		"plugin",
+		"nbt"
+	],
+	"author": "Romi",
+	"license": "MIT",
+	"private": true,
+	"files": [
+		"lib/**/*",
+		"src/**/*",
+		"theme/**/*"
+	],
+	"engines": {
+		"node": ">=20.0"
+	},
+	"scripts": {
+		"build": "tsc --build && node tools/copyUntypedFiles.mjs",
+		"watch": "tsc --build --watch"
+	},
+	"peerDependencies": {
+		"@docusaurus/core": "^3.9.2",
+		"react": ">=18.0.0"
+	},
+	"dependencies": {
+		"@docusaurus/types": "^3.10.0",
+		"@docusaurus/utils": "^3.10.0"
+	},
+	"devDependencies": {
+		"@docusaurus/module-type-aliases": "^3.10.0",
+		"@docusaurus/theme-classic": "^3.10.0",
+		"@docusaurus/tsconfig": "^3.10.0",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"typescript": "^5.9.3"
+	},
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
+	"exports": {
+		"./package.json": "./package.json",
+		"./*": {
+			"node": "./lib/*.js",
+			"default": "./lib/*.js"
+		},
+		".": {
+			"node": "./lib/index.js",
+			"default": "./lib/index.js"
+		}
+	}
+}

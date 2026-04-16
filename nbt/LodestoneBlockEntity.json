@@ -1,0 +1,16 @@
+{
+  "type": "compound",
+  "name": "LodestoneBlockEntity",
+  "description": "**Lodestone** with `ID = 44`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Lodestone"
+    },
+    "trackingHandle": {
+      "type": "byte",
+      "description": "Compass points to this lodestone."
+    }
+  },
+  "extends": "IBlockEntity"
+}

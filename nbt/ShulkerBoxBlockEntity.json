@@ -1,0 +1,16 @@
+{
+  "type": "compound",
+  "name": "ShulkerBoxBlockEntity",
+  "description": "**ShulkerBox** (Shulker Box) with `ID = 25`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "ShulkerBox"
+    },
+    "facing": {
+      "type": "int",
+      "description": "One of  enum values."
+    }
+  },
+  "extends": "ILootableBlockEntity"
+}

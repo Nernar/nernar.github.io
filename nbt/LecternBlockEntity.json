@@ -1,0 +1,29 @@
+{
+  "type": "compound",
+  "name": "LecternBlockEntity",
+  "description": "**Lectern** with `ID = 37`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Lectern"
+    },
+    "book": {
+      "type": "compound",
+      "extends": "Item",
+      "description": "Standing book item, tag determines book placement."
+    },
+    "hasBook": {
+      "type": "byte",
+      "description": "If book is placed, observer detects changed block."
+    },
+    "page": {
+      "type": "int",
+      "description": "Index of page opened on lectern, redstone comparator obtains power `page / totalPages * 15`."
+    },
+    "totalPages": {
+      "type": "int",
+      "description": "Total pages counted in ."
+    }
+  },
+  "extends": "IBlockEntity"
+}

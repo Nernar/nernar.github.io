@@ -1,0 +1,38 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "@docusaurus/module-type-aliases",
+      "@docusaurus/theme-classic"
+    ],
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "./lib",
+    "declarationMap": false,
+    "sourceMap": false,
+    "jsx": "react-jsx",
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "importsNotUsedAsValues": "remove",
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/**/*",
+    "theme/**/*",
+    "types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/lib/**/*"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "compound",
+  "name": "BrewingStandBlockEntity",
+  "description": "**BrewingStand** (Brewing Stand) with `ID = 8`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "BrewingStand"
+    },
+    "CookTime": {
+      "type": "int",
+      "description": "Every potion cooks on same time ticks, counter.\r\nWhen next ingredient is done, every potion in slots `1`-`3`\r\nobtains tag `\"wasJustBrewed\" = true`.",
+      "default": 0
+    },
+    "FuelAmount": {
+      "type": "int",
+      "description": "Fuel left of  property, when it comes to zero\r\nnext charge from slot `4` was used.",
+      "default": 0
+    },
+    "FuelTotal": {
+      "type": "int",
+      "description": "When fuel was taken from slot changes to it capacity, now availabled\r\nonly `\"minecraft:blaze_powder\"` (`name` property), which sets fuel to `20`.",
+      "default": 0
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "SmokerBlockEntity",
+  "description": "**Smoker** with `ID = 39`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Smoker"
+    }
+  },
+  "extends": "IFurnaceBlockEntity"
+}

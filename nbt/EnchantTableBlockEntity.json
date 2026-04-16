@@ -1,0 +1,16 @@
+{
+  "type": "compound",
+  "name": "EnchantTableBlockEntity",
+  "description": "**EnchantTable** (Enchanting Table) with `ID = 9`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "EnchantTable"
+    },
+    "rott": {
+      "type": "int",
+      "description": "Rotation angle in radians between `-Math.PI` and `Math.PI`."
+    }
+  },
+  "extends": "IBlockEntity"
+}

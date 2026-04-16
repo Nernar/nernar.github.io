@@ -1,0 +1,19 @@
+{
+  "type": "compound",
+  "name": "BeehiveBlockEntityOccupant",
+  "children": {
+    "ActorIdentifier": {
+      "type": "string",
+      "description": "Typed entity identifier with tags, such as `\"minecraft:bee<>\"`."
+    },
+    "SaveData": {
+      "type": "compound",
+      "extends": "Entity",
+      "description": "Entity NBTs; properties, attributes, definitions, etc."
+    },
+    "TicksLeftToStay": {
+      "type": "int",
+      "description": "Countdown before entity left beehive in ticks."
+    }
+  }
+}

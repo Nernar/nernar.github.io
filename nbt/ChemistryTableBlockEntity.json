@@ -1,0 +1,24 @@
+{
+  "type": "compound",
+  "name": "ChemistryTableBlockEntity",
+  "description": "**ChemistryTable** (Chemistry Equipment) with `ID = 34`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "ChemistryTable"
+    },
+    "itemAux": {
+      "type": "int",
+      "description": "Brewing item data, that will be transpiled into materials, such as `17`, etc."
+    },
+    "itemId": {
+      "type": "int",
+      "description": "Brewing item numeric ID, that will be transpiled into materials, such as `583`, etc."
+    },
+    "itemStack": {
+      "type": "int",
+      "description": "Brewing item count, that will be transpiled into materials, such as `1`, etc."
+    }
+  },
+  "extends": "IBlockEntity"
+}

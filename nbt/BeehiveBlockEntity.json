@@ -1,0 +1,23 @@
+{
+  "type": "compound",
+  "name": "BeehiveBlockEntity",
+  "description": "**Beehive** (Beehive / Bee Nest) with `ID = 43`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Beehive"
+    },
+    "ShouldSpawnBees": {
+      "type": "byte",
+      "description": "Naturally generated beehives summon bees inside, before player encounters them.",
+      "default": false
+    },
+    "Occupants": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "BeehiveBlockEntityOccupant",
+      "description": "Bees. Theoretically, any entity may enter and leave onto beehive."
+    }
+  },
+  "extends": "IBlockEntity"
+}

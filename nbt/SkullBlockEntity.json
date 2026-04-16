@@ -1,0 +1,30 @@
+{
+  "type": "compound",
+  "name": "SkullBlockEntity",
+  "description": "**Skull** (Mob Head) with `ID = 6`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Skull"
+    },
+    "MouthMoving": {
+      "type": "byte",
+      "description": "Whether dragon mouth powered by redstone.",
+      "default": 0
+    },
+    "MouthTickCount": {
+      "type": "int",
+      "description": "Cycling time in ticks, between full-cycled move down and up.",
+      "default": 0
+    },
+    "Rotation": {
+      "type": "int",
+      "description": "Rotation angle in degrees, value between `22.5` and `180` (with in-game step `22.5`)."
+    },
+    "SkullType": {
+      "type": "int",
+      "description": "`0` means skeleton, `1` wither skeleton, `2` zombie, `3` player, `4` creeper and `5` ender dragon."
+    }
+  },
+  "extends": "IBlockEntity"
+}

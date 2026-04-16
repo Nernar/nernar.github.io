@@ -1,0 +1,26 @@
+{
+  "type": "compound",
+  "name": "IFurnaceBlockEntity",
+  "children": {
+    "BurnDuration": {
+      "type": "int",
+      "description": "Currently burning fuel (appears in slot `1`) total time in ticks (e.g. coal burns in `1600` ticks) before burning completed.",
+      "default": 0
+    },
+    "BurnTime": {
+      "type": "int",
+      "description": "Counter to , when them equals furnace unlit.",
+      "default": 0
+    },
+    "CookTime": {
+      "type": "int",
+      "description": "Currently smelting item (appears in slot `0`) progress, result will be presented in slot with index `2`."
+    },
+    "StoredXPInt": {
+      "type": "int",
+      "description": "Accumulated experience, it will be dropped when result taken or furnace digged.",
+      "default": 0
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

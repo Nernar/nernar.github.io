@@ -185,6 +185,13 @@ export default {
 					// ]
 				}
 			} satisfies Typedoc.Options
+		],
+		[
+			'./api/docusaurus-plugin-nbt',
+			{
+				path: 'nbt',
+				routeBasePath: 'nbt'
+			}
 		]
 	],
 
@@ -224,6 +231,11 @@ export default {
 					position: 'left',
 					to: 'libraries',
 					label: 'Libraries'
+				},
+				{
+					position: 'left',
+					to: 'nbt',
+					label: 'NBT'
 				},
 				{
 					position: 'left',

@@ -1,0 +1,17 @@
+{
+  "type": "compound",
+  "name": "BedBlockEntity",
+  "description": "**Bed** with `ID = 27`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Bed"
+    },
+    "color": {
+      "type": "int",
+      "description": "Index of bed color, where `0` is white; block palettes are same.",
+      "default": 0
+    }
+  },
+  "extends": "IBlockEntity"
+}

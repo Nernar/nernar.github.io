@@ -1,0 +1,24 @@
+{
+  "type": "compound",
+  "name": "BellBlockEntity",
+  "description": "**Bell** with `ID = 40`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Bell"
+    },
+    "Direction": {
+      "type": "int",
+      "description": "There is 2 surface (such as `1`), 4 on side and 1 at top (`255`) locations."
+    },
+    "Ringing": {
+      "type": "byte",
+      "description": "Whether sound is playing."
+    },
+    "Ticks": {
+      "type": "int",
+      "description": "Ringing counter, determines animation of bell."
+    }
+  },
+  "extends": "IBlockEntity"
+}

@@ -1,0 +1,15 @@
+{
+  "type": "compound",
+  "name": "ItemWritableBookTagPage",
+  "children": {
+    "photoname": {
+      "type": "string",
+      "description": "Screenshot shotted on server (appears in pause menu), specially based on Education Edition.",
+      "default": ""
+    },
+    "text": {
+      "type": "string",
+      "description": "Text placed on page as-is (with new lines `\\n`)."
+    }
+  }
+}

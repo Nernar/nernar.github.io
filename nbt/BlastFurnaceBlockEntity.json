@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "BlastFurnaceBlockEntity",
+  "description": "**BlastFurnace** (Blast Furnace) with `ID = 38`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "BlastFurnace"
+    }
+  },
+  "extends": "IFurnaceBlockEntity"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "compound",
+  "name": "EntityAttribute",
+  "children": {
+    "Base": {
+      "type": "int"
+    },
+    "Current": {
+      "type": "int"
+    },
+    "DefaultMax": {
+      "type": "int"
+    },
+    "DefaultMin": {
+      "type": "int"
+    },
+    "Max": {
+      "type": "int"
+    },
+    "Min": {
+      "type": "int"
+    },
+    "Name": {
+      "type": "compound",
+      "description": "One of  or your custom one."
+    }
+  }
+}

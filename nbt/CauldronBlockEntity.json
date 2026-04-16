@@ -1,0 +1,25 @@
+{
+  "type": "compound",
+  "name": "CauldronBlockEntity",
+  "description": "**Cauldron** with `ID = 16`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Cauldron"
+    },
+    "PotionId": {
+      "type": "int",
+      "description": "One of  enum values.\r\nBut... Maybe try `<enum value> - 1`?"
+    },
+    "PotionType": {
+      "type": "int",
+      "description": "Level of strength, value between `0` and `255` (more buggy to `32768`).",
+      "default": -1
+    },
+    "CustomColor": {
+      "type": "int",
+      "description": "Packed RGB color, one of my favorites is `-75715`."
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

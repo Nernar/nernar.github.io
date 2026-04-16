@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "BarrelBlockEntity",
+  "description": "**Barrel** with `ID = 42`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Barrel"
+    }
+  },
+  "extends": "ILootableBlockEntity"
+}

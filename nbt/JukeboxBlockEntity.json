@@ -1,0 +1,17 @@
+{
+  "type": "compound",
+  "name": "JukeboxBlockEntity",
+  "description": "**Jukebox** with `ID = 33`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "JukeboxBlock"
+    },
+    "RecordItem": {
+      "type": "compound",
+      "extends": "Item",
+      "description": "Record disc that will be played, what about `\"minecraft:music_disc_strad\"` (`name` property)."
+    }
+  },
+  "extends": "IBlockEntity"
+}

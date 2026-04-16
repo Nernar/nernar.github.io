@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "DispenserBlockEntity",
+  "description": "**Dispenser** with `ID = 13`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Dispenser"
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

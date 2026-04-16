@@ -1,0 +1,37 @@
+{
+  "type": "compound",
+  "name": "MovingBlockEntity",
+  "description": "**MovingBlock** (Moving Block) with `ID = 19`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "MovingBlock"
+    },
+    "movingBlock": {
+      "type": "compound",
+      "extends": "Block",
+      "description": "Block to be rendered as moving, let give a try with a `\"minecraft:cake\"` (`name` property)."
+    },
+    "movingBlockExtra": {
+      "type": "compound",
+      "extends": "Block",
+      "description": "Block to be rendered as moving above , let give a try with a `\"minecraft:flowing_lava\"` (`name` property)."
+    },
+    "pistonPosX": {
+      "type": "int",
+      "description": "If block connected with a sticky piston, it will appears here.",
+      "default": 0
+    },
+    "pistonPosY": {
+      "type": "int",
+      "description": "If block connected with a sticky piston, it will appears here.",
+      "default": 1
+    },
+    "pistonPosZ": {
+      "type": "int",
+      "description": "If block connected with a sticky piston, it will appears here.",
+      "default": 0
+    }
+  },
+  "extends": "IBlockEntity"
+}

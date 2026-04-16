@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "FurnaceBlockEntity",
+  "description": "**Furnace** with `ID = 1`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Furnace"
+    }
+  },
+  "extends": "IFurnaceBlockEntity"
+}

@@ -1,0 +1,22 @@
+{
+  "type": "compound",
+  "name": "BeaconBlockEntity",
+  "description": "**Beacon** with `ID = 21`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Beacon"
+    },
+    "primary": {
+      "type": "int",
+      "description": "`0` means none, `1` speed, `2` haste, `3` resistance, `4` jump boost and `5` strength.",
+      "default": 0
+    },
+    "secondary": {
+      "type": "int",
+      "description": "`0` means none, `1` regeneration and `2` boost  effect.",
+      "default": 0
+    }
+  },
+  "extends": "IBlockEntity"
+}

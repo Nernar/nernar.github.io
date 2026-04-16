@@ -1,0 +1,290 @@
+{
+  "type": "compound",
+  "name": "Entity",
+  "children": {
+    "Age": {
+      "type": "int",
+      "description": "Countdown in ticks before entity become adult."
+    },
+    "Air": {
+      "type": "int",
+      "description": "Countdown in ticks before entity start drowning."
+    },
+    "Armor": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "Item",
+      "description": "Helmet, Chestplate, Leggings, Boots. Accessible by index, not marked with `Slot` property."
+    },
+    "AttackTime": {
+      "type": "int",
+      "description": "Last attack tick, determines time between attacks."
+    },
+    "Attributes": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "EntityAttribute",
+      "description": "Entity attributes, such as `\"minecraft:health\"`, `\"minecraft:follow_range\"`, etc."
+    },
+    "BodyRot": {
+      "type": "int",
+      "description": "Entity body yaw rotation in degrees, with offset of ."
+    },
+    "Chested": {
+      "type": "byte",
+      "description": "Llama or mule equipped chests."
+    },
+    "Color": {
+      "type": "int"
+    },
+    "Color2": {
+      "type": "int"
+    },
+    "Dead": {
+      "type": "byte",
+      "description": "Entity is dead, which is required to visualize animation of dying."
+    },
+    "DeathTime": {
+      "type": "int",
+      "description": "Tick when entity become dead (health <= 0)."
+    },
+    "FallDistance": {
+      "type": "int",
+      "description": "Last synchronized distance between ground and entity."
+    },
+    "Fire": {
+      "type": "int",
+      "description": "Fire ticks before burning stopped, alternative of ."
+    },
+    "HasExecuted": {
+      "type": "byte",
+      "default": false
+    },
+    "HomeDimensionId": {
+      "type": "int"
+    },
+    "HomePos": {
+      "type": "list",
+      "itemType": "int",
+      "default": "[-2147483648, -2147483648, -2147483648] // when not set"
+    },
+    "HurtTime": {
+      "type": "int",
+      "description": "Last hurt tick, determines entity panic/attack state."
+    },
+    "Invulnerable": {
+      "type": "byte",
+      "description": "Immune to in-game damage types, such as NPCs and Agents."
+    },
+    "IsAngry": {
+      "type": "byte",
+      "description": "Normally, entity become angry when attacked."
+    },
+    "IsAutonomous": {
+      "type": "byte",
+      "description": "Entity can move, alternative of ."
+    },
+    "IsBaby": {
+      "type": "byte",
+      "description": "Entity is not adult, so when  reaches `0` it is not baby."
+    },
+    "IsEating": {
+      "type": "byte",
+      "description": "Entity is eating  item, displays particles around."
+    },
+    "IsGliding": {
+      "type": "byte",
+      "description": "Entity is using elytra (to glide)."
+    },
+    "IsGlobal": {
+      "type": "byte"
+    },
+    "IsIllagerCaptain": {
+      "type": "byte",
+      "description": "Patrols of pillagers following their leader."
+    },
+    "IsOrphaned": {
+      "type": "byte"
+    },
+    "IsOutOfControl": {
+      "type": "byte"
+    },
+    "IsPregnant": {
+      "type": "byte",
+      "description": "Entity breeded and prepared to duplicate itself, such as turtles."
+    },
+    "IsRoaring": {
+      "type": "byte"
+    },
+    "IsScared": {
+      "type": "byte",
+      "description": "Entity sees dangerous thing around, such as villagers flee."
+    },
+    "IsStunned": {
+      "type": "byte"
+    },
+    "IsSwimming": {
+      "type": "byte",
+      "description": "Entity is standing on water."
+    },
+    "IsTamed": {
+      "type": "byte",
+      "description": "Entity is tamed, such as cats or dogs."
+    },
+    "IsTrusting": {
+      "type": "byte",
+      "description": "Entity is trusting player (do not panic when it came),\r\nsuch as foxes childs breeded by someone."
+    },
+    "LastDimensionId": {
+      "type": "int",
+      "description": "Dimension from entity transfered when is going to portal,\r\nlast saved state when loaded into dimension."
+    },
+    "LeasherID": {
+      "type": "int",
+      "description": "Leashed with knot entity (normally, player).",
+      "default": -1
+    },
+    "LootDropped": {
+      "type": "byte",
+      "description": "Required on first death tick, drops loot again if set to `false`."
+    },
+    "LoveCause": {
+      "type": "int",
+      "default": "0 // when is not breeded"
+    },
+    "Mainhand": {
+      "type": "compound",
+      "extends": "Item",
+      "description": "Item set by , entities uses it for attack and other AI-related things."
+    },
+    "MarkVariant": {
+      "type": "int"
+    },
+    "Motion": {
+      "type": "list",
+      "itemType": "int",
+      "description": "Velocity of physics in-world, vector of moving target."
+    },
+    "NaturalSpawn": {
+      "type": "byte",
+      "description": "Entity is naturally spawned, not breeded or summoned."
+    },
+    "Offhand": {
+      "type": "compound",
+      "extends": "Item",
+      "description": "Item set by , in common cases entities ignores it, but players or extra-powered items (Totem of Undying fully restores non-player entities health) are useful."
+    },
+    "OnGround": {
+      "type": "byte",
+      "description": "Entity is standing on landing."
+    },
+    "OwnerNew": {
+      "type": "int",
+      "description": "Projectile shooter entity UID.",
+      "default": -1
+    },
+    "Persistent": {
+      "type": "byte",
+      "description": "Entity can not be despawned."
+    },
+    "PortalCooldown": {
+      "type": "int",
+      "description": "Ticks before entity can move through portal again."
+    },
+    "Pos": {
+      "type": "list",
+      "itemType": "int",
+      "description": "XYZ absolute coordinates, alternative of ."
+    },
+    "Rotation": {
+      "type": "list",
+      "itemType": "int",
+      "description": "Yaw (horizontal rotation angle) and pitch (vertical rotation angle) respectively in degrees, alternative of ."
+    },
+    "Saddled": {
+      "type": "byte",
+      "description": "When pig or strider is saddled (excludes horses or not?)."
+    },
+    "Sheared": {
+      "type": "byte",
+      "description": "When sheep or snow golem is sheared."
+    },
+    "ShowBottom": {
+      "type": "byte"
+    },
+    "Sitting": {
+      "type": "byte",
+      "description": "Entity is sitting, such as players or foxes."
+    },
+    "SkinID": {
+      "type": "int"
+    },
+    "Strength": {
+      "type": "int"
+    },
+    "StrengthMax": {
+      "type": "int"
+    },
+    "Surface": {
+      "type": "int"
+    },
+    "Tags": {
+      "type": "list",
+      "itemType": "string"
+    },
+    "TargetID": {
+      "type": "int",
+      "description": "Following, attacking or anything else targeted entity.",
+      "default": -1
+    },
+    "TimeStamp": {
+      "type": "int",
+      "description": "Tick when entity is born, used to  property."
+    },
+    "TradeExperience": {
+      "type": "int"
+    },
+    "TradeTier": {
+      "type": "int"
+    },
+    "UniqueID": {
+      "type": "int",
+      "description": "Entity UID, which is passed to Inner Core callbacks."
+    },
+    "Variant": {
+      "type": "int"
+    },
+    "boundX": {
+      "type": "int"
+    },
+    "boundY": {
+      "type": "int"
+    },
+    "boundZ": {
+      "type": "int"
+    },
+    "canPickupItems": {
+      "type": "byte",
+      "description": "Entity may equip, take or replace containing item from drop."
+    },
+    "definitions": {
+      "type": "list",
+      "itemType": "string",
+      "description": "Set of rules applied (starts with `+`) or excluded (starts with `-`)\r\nfrom entity; it includes properties, tasks, etc."
+    },
+    "hasBoundOrigin": {
+      "type": "byte"
+    },
+    "hasSetCanPickupItems": {
+      "type": "byte"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Typed entity identifier without tags, such as `\"minecraft:cow\"`."
+    },
+    "limitedLife": {
+      "type": "int",
+      "description": "Ticks after  when entity become ."
+    }
+  }
+}

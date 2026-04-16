@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "ItemTag",
+  "children": {
+    "ench": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "ItemTagEnchantment",
+      "description": "List of applied enchantments in index-numeral sorting."
+    }
+  }
+}

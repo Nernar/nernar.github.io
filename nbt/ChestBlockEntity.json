@@ -1,0 +1,22 @@
+{
+  "type": "compound",
+  "name": "ChestBlockEntity",
+  "description": "**Chest** (Chest / Trapped Chest) with `ID = 0`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Chest"
+    },
+    "pairlead": {
+      "type": "byte",
+      "description": "If there's sometime created connection with double-chest."
+    },
+    "pairx": {
+      "type": "int"
+    },
+    "pairz": {
+      "type": "int"
+    }
+  },
+  "extends": "ILootableBlockEntity"
+}

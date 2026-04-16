@@ -1,0 +1,20 @@
+{
+  "type": "compound",
+  "name": "ILootableBlockEntity",
+  "children": {
+    "Findable": {
+      "type": "byte",
+      "description": "Exploration map can be pointed here, tract as treasure.",
+      "default": false
+    },
+    "LootTable": {
+      "type": "string",
+      "description": "Definition to behavior pack path with extension, such as `\"loot_tables/chests/end_city_treasure.json\"`."
+    },
+    "LootTableSeed": {
+      "type": "int",
+      "description": "Randomly generated seed to determine containment."
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

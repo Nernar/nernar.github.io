@@ -1,0 +1,21 @@
+{
+  "type": "compound",
+  "name": "ConduitBlockEntity",
+  "description": "**Conduit** with `ID = 35`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Conduit"
+    },
+    "Active": {
+      "type": "byte",
+      "description": "Whether conduit constructed or not, underwater monument blocks come out to help.",
+      "default": false
+    },
+    "Target": {
+      "type": "int",
+      "description": "Entity UID to protect players in water nearest, attacks monsters when fully constructed."
+    }
+  },
+  "extends": "IBlockEntity"
+}

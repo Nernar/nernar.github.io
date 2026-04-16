@@ -1,0 +1,13 @@
+{
+  "type": "compound",
+  "name": "IContainerBlockEntity",
+  "children": {
+    "Items": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "Item",
+      "description": "Contained slots, which is stored in numeral-index sorting starting with zero."
+    }
+  },
+  "extends": "IBlockEntity"
+}

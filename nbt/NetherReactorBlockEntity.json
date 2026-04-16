@@ -1,0 +1,24 @@
+{
+  "type": "compound",
+  "name": "NetherReactorBlockEntity",
+  "description": "**NetherReactor** (Nether Reactor Core) with `ID = 3`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "NetherReactor"
+    },
+    "HasFinished": {
+      "type": "byte",
+      "default": false
+    },
+    "IsInitialized": {
+      "type": "byte",
+      "default": false
+    },
+    "Progress": {
+      "type": "int",
+      "default": 0
+    }
+  },
+  "extends": "IBlockEntity"
+}

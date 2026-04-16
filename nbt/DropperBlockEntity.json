@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "DropperBlockEntity",
+  "description": "**Dropper** with `ID = 14`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Dropper"
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

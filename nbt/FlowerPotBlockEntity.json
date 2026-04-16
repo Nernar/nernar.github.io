@@ -1,0 +1,17 @@
+{
+  "type": "compound",
+  "name": "FlowerPotBlockEntity",
+  "description": "**FlowerPot** (Flower Pot) with `ID = 7`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "FlowerPot"
+    },
+    "PlantBlock": {
+      "type": "compound",
+      "extends": "Block",
+      "description": "Anything in particular, my cat preferr `\"minecraft:brown_mushroom\"` (`name` property)."
+    }
+  },
+  "extends": "IBlockEntity"
+}

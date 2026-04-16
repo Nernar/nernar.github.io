@@ -1,0 +1,27 @@
+{
+  "type": "compound",
+  "name": "BannerBlockEntity",
+  "description": "**Banner** with `ID = 28`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Banner"
+    },
+    "Base": {
+      "type": "int",
+      "description": "Index of banner color, where `0` is white; block palettes are same.",
+      "default": 0
+    },
+    "Type": {
+      "type": "int",
+      "default": 0
+    },
+    "Patterns": {
+      "type": "list",
+      "itemType": "compound",
+      "itemExtends": "BannerPatternEntry",
+      "description": "Patterns to be applied on  color."
+    }
+  },
+  "extends": "IBlockEntity"
+}

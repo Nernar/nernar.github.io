@@ -1,0 +1,12 @@
+{
+  "type": "compound",
+  "name": "EnderChestBlockEntity",
+  "description": "**EnderChest** (Ender Chest) with `ID = 23`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "EnderChest"
+    }
+  },
+  "extends": "ILootableBlockEntity"
+}

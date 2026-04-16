@@ -11,7 +11,8 @@
     "url": "https://github.com/Nernar/nernar.github.io/issues"
   },
   "workspaces": [
-    "api/docusaurus-plugin/"
+    "api/docusaurus-plugin/",
+    "api/docusaurus-plugin-nbt/"
   ],
   "homepage": "https://t.me/ntInsideChat",
   "license": "GPL-3.0-or-later",
@@ -25,7 +26,7 @@
     "start": "docusaurus start --no-open --no-minify",
     "start-ru": "docusaurus start --locale ru --no-open --no-minify",
     "build-docs": "docusaurus build",
-    "build": "npm run prebuild-plugin && npm run prebuild-declarations && npm run build-docs",
+    "build": "npm run prebuild-plugin && npm run prebuild-nbt-plugin && npm run prebuild-declarations && npm run build-docs",
     "build-ci": "cross-env CI=true DOCUSAURUS_IGNORE_SSG_WARNINGS=true npm run build",
     "serve": "docusaurus serve --no-open",
     "build-serve": "npm run build && npm run serve",
@@ -35,6 +36,7 @@
     "clear": "docusaurus clear",
     "prebuild-declarations": "npx dts-generator --project api/core-engine --out static/declarations/core-engine.d.ts --extern ./android.d.ts --exclude **/declarations/**/*.d.ts",
     "prebuild-plugin": "npm run --prefix api/docusaurus-plugin build",
+    "prebuild-nbt-plugin": "npm run --prefix api/docusaurus-plugin-nbt build",
     "deploy-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/docs/intro --outputPDFFilename=innercore-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
     "deploy-pdf-ru": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/ru/docs/intro --outputPDFFilename=innercore-russian-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",
     "deploy-libraries-pdf": "tsx tools/generate-pdf.ts --initialDocURLs=https://nernar.github.io/libraries/BackpackAPI --outputPDFFilename=innercore-libraries-docs.pdf --excludeSelectors=\".margin-vert--xl a\"",

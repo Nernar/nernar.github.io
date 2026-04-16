@@ -1,0 +1,23 @@
+{
+  "type": "compound",
+  "name": "IBlockEntity",
+  "children": {
+    "id": {
+      "type": "string",
+      "description": "Typed identifier, such as `\"Chest\"`, `\"Beacon\"`, etc."
+    },
+    "isMovable": {
+      "type": "byte",
+      "description": "Block Entity will be saved without instantiating new one when transporting (via pistons, commands, etc.)."
+    },
+    "x": {
+      "type": "int"
+    },
+    "y": {
+      "type": "int"
+    },
+    "z": {
+      "type": "int"
+    }
+  }
+}

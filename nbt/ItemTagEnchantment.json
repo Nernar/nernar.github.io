@@ -1,0 +1,14 @@
+{
+  "type": "compound",
+  "name": "ItemTagEnchantment",
+  "children": {
+    "id": {
+      "type": "int",
+      "description": "One of  enum values."
+    },
+    "lvl": {
+      "type": "int",
+      "description": "Level of strength, value between `0` and `255` (more buggy up to `32768`)."
+    }
+  }
+}

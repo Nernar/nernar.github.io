@@ -1,0 +1,17 @@
+{
+  "type": "compound",
+  "name": "HopperBlockEntity",
+  "description": "**Hopper** with `ID = 2`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Hopper"
+    },
+    "TransferCooldown": {
+      "type": "int",
+      "description": "Ticks counter before transfering to watching side or down if hoppers unlocked.",
+      "default": 0
+    }
+  },
+  "extends": "IContainerBlockEntity"
+}

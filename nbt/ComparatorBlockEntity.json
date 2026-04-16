@@ -1,0 +1,16 @@
+{
+  "type": "compound",
+  "name": "ComparatorBlockEntity",
+  "description": "**Comparator** (Redstone Comparator) with `ID = 12`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Comparator"
+    },
+    "OutputSignal": {
+      "type": "int",
+      "description": "Redstone power, value between `0` and `15`."
+    }
+  },
+  "extends": "IBlockEntity"
+}

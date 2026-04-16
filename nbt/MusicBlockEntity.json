@@ -1,0 +1,16 @@
+{
+  "type": "compound",
+  "name": "MusicBlockEntity",
+  "description": "**Music** (Note Block) with `ID = 11`.",
+  "children": {
+    "id": {
+      "type": "string",
+      "default": "Music"
+    },
+    "note": {
+      "type": "int",
+      "description": "Number between `0` and `24`, which changes note tone."
+    }
+  },
+  "extends": "IBlockEntity"
+}

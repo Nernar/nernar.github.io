@@ -1,0 +1,36 @@
+{
+  "type": "compound",
+  "name": "Item",
+  "children": {
+    "Block": {
+      "type": "compound",
+      "extends": "Block"
+    },
+    "Count": {
+      "type": "int",
+      "description": "Amount of item in slot."
+    },
+    "Damage": {
+      "type": "int",
+      "description": "Dealed damage, when it comes to  item will be broken.",
+      "default": "0 // not damaged at all"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Typed identifier, such as `\"minecraft:stick\"`."
+    },
+    "Slot": {
+      "type": "int",
+      "description": "Indexed slot, required in containers with more than one slots."
+    },
+    "WasPickedUp": {
+      "type": "byte",
+      "description": "Picked up by entity, denies despawn it naturally."
+    },
+    "tag": {
+      "type": "compound",
+      "extends": "T",
+      "description": "Additional data, such as nametags, enchantments, etc."
+    }
+  }
+}
