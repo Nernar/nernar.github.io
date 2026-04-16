@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinnercore_docs=self.webpackChunkinnercore_docs||[]).push([["4923"],{73460(e){e.exports=JSON.parse('{"id":"BlockState","permalink":"/nbt/BlockState","title":"BlockState","data":{"type":"compound","name":"BlockState","children":{}}}')}}]);
