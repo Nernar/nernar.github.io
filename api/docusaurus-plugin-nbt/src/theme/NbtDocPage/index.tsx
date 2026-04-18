@@ -1,7 +1,6 @@
 import React from 'react';
-import { PageMetadata } from '@docusaurus/theme-common';
+import { PageMetadata, useWindowSize } from '@docusaurus/theme-common';
 import Heading from '@theme/Heading';
-import Link from '@docusaurus/Link';
 import NbtSchema from '../NbtSchema';
 import NbtOptionsLayout from '../NbtSchema/NbtOptionsLayout';
 import type { NbtContent } from '../../types';
@@ -13,27 +12,19 @@ export interface NbtDocPageProps {
 }
 
 export default function NbtDocPage({ content, schemaMap }: NbtDocPageProps): React.ReactElement {
-	const { title, data, permalink } = content;
-	const basePath = permalink.substring(0, permalink.lastIndexOf('/'));
+	const { title, data } = content;
+	const windowSize = useWindowSize();
+	const renderDesktop = windowSize === 'desktop' || windowSize === 'ssr';
 
 	return (
 		<>
 			<PageMetadata description={`NBT Schema for ${title}`} title={`${title} | NBT`} />
 
 			<div className="row">
-				<div className="col apiItemCol" style={{ maxWidth: '75%' }}>
+				<div className="col apiItemCol">
 					<div className="apiItemContainer">
-						<nav aria-label="breadcrumbs" className="margin-bottom--md">
-							<ul className="breadcrumbs">
-								<li className="breadcrumbs__item">
-									<Link className="breadcrumbs__link" to={basePath}>NBT Index</Link>
-								</li>
-								<li className="breadcrumbs__item breadcrumbs__item--active">
-									<span className="breadcrumbs__link">{title}</span>
-								</li>
-							</ul>
-						</nav>
-
+						{!renderDesktop && <NbtOptionsLayout />}
+						
 						<article>
 							<div className="markdown">
 								<header>
@@ -46,9 +37,11 @@ export default function NbtDocPage({ content, schemaMap }: NbtDocPageProps): Rea
 					</div>
 				</div>
 
-				<div className="col col--3">
-					<NbtOptionsLayout />
-				</div>
+				{renderDesktop && (
+					<div className="col col--3">
+						<NbtOptionsLayout />
+					</div>
+				)}
 			</div>
 		</>
 	);

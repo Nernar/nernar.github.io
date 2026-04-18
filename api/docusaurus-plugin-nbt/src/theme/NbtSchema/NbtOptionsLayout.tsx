@@ -5,8 +5,8 @@ export default function NbtOptionsLayout() {
 	const { showInherited, setShowInherited } = useNbtOptions();
 
 	return (
-		<div className="nbt-doc-options-container">
-			<label className={`nbt-doc-option-toggle ${showInherited ? 'active' : ''}`}>
+		<div className="nbt-options-container">
+			<label className={`nbt-option-toggle ${showInherited ? 'active' : ''}`}>
 				<input 
 					checked={showInherited} 
 					type="checkbox" 

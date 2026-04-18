@@ -9,19 +9,43 @@
 	line-height: 1.5;
 }
 
-.nbt-doc-node-root {
+.nbt-node-root {
 	position: relative;
 	padding-left: 0 !important;
 }
 
 /* The children container holds the indentation */
-.nbt-doc-children {
-	margin-left: 0.6rem; /* Centers exactly on the 1.2rem toggle button of parent */
+.nbt-children {
+	margin-left: 1.0rem; /* Centers exactly on the 1.2rem toggle button of parent */
 	padding-left: 0;
 }
 
+/* Vertical line extending from parent toggle down through header */
+.nbt-header.nbt-expanded::before {
+	content: "";
+	position: absolute;
+	top: 1rem; /* Start near toggle center */
+	bottom: 0;
+	left: 1.0rem;
+	width: 1px;
+	background-color: var(--nbt-line-color);
+	z-index: 0;
+}
+
+/* Vertical line extending through description to connect to children */
+.nbt-description-container.nbt-expanded::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 1.0rem;
+	width: 1px;
+	background-color: var(--nbt-line-color);
+	z-index: 0;
+}
+
 /* Each child creates its own lines connecting to the parent's axis */
-.nbt-doc-child {
+.nbt-child {
 	position: relative;
 	padding-left: 1.5rem; /* Space for the horizontal line and indentation */
 	display: flex;
@@ -29,7 +53,7 @@
 }
 
 /* Vertical line for children */
-.nbt-doc-child::before {
+.nbt-child::before {
 	content: "";
 	position: absolute;
 	top: -0.4rem; /* Extend up to connect to previous sibling or parent */
@@ -41,13 +65,13 @@
 }
 
 /* Stop the vertical line at the middle of the header for the last child */
-.nbt-doc-child:last-child::before {
+.nbt-child:last-child::before {
 	bottom: auto;
 	height: 1.25rem; /* 0.85rem header center + 0.4rem top offset */
 }
 
 /* Horizontal line for children */
-.nbt-doc-child::after {
+.nbt-child::after {
 	content: "";
 	position: absolute;
 	top: 0.85rem; /* Center of the header */
@@ -58,7 +82,7 @@
 	z-index: 0;
 }
 
-.nbt-doc-header {
+.nbt-header {
 	display: flex;
 	align-items: center;
 	padding: 0.2rem 0.4rem;
@@ -68,27 +92,24 @@
 	z-index: 1; /* Establishes stacking context */
 }
 
-/* 
-	The transparent anchor layer covers the entire header 
-	Clicking anywhere on the header acts as an anchor link to itself
-*/
-.nbt-doc-anchor-layer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1;
-	text-decoration: none !important;
+.nbt-header.nbt-expandable {
+	cursor: pointer;
 }
 
-/* On hover of the header, the anchor layer mimics the hover overlay */
-.nbt-doc-header:hover .nbt-doc-anchor-layer {
+.nbt-header.nbt-expandable:hover {
 	background-color: var(--ifm-hover-overlay);
-	border-radius: 4px;
 }
 
-.nbt-doc-toggle {
+.nbt-name-anchor {
+	color: inherit;
+	text-decoration: none;
+}
+
+.nbt-name-anchor:hover {
+	text-decoration: underline;
+}
+
+.nbt-toggle {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -107,7 +128,7 @@
 	z-index: 2; /* Above anchor layer */
 }
 
-.nbt-doc-toggle-empty {
+.nbt-toggle-empty {
 	display: inline-block;
 	width: 1.2rem;
 	height: 1.2rem;
@@ -116,7 +137,7 @@
 	z-index: 2;
 }
 
-.nbt-doc-icon {
+.nbt-icon {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -131,7 +152,7 @@
 	z-index: 2; /* Above anchor layer */
 }
 
-.nbt-doc-name {
+.nbt-name {
 	font-weight: bold;
 	color: var(--ifm-color-primary);
 	display: flex;
@@ -139,19 +160,19 @@
 	z-index: 2; /* Above anchor layer */
 }
 
-.nbt-doc-separator {
+.nbt-separator {
 	margin: 0 0.4rem;
 	opacity: 0.5;
 	z-index: 2;
 }
 
-.nbt-doc-type {
+.nbt-type {
 	color: var(--ifm-color-info);
 	z-index: 2;
 	position: relative;
 }
 
-.nbt-doc-type-link {
+.nbt-type-link {
 	text-decoration: underline;
 	text-decoration-color: var(--ifm-color-emphasis-400);
 	color: var(--ifm-color-info);
@@ -160,27 +181,27 @@
 	z-index: 3; /* Above anchor layer to be clickable */
 }
 
-.nbt-doc-type-link:hover {
+.nbt-type-link:hover {
 	color: var(--ifm-link-color);
 	text-decoration-color: var(--ifm-link-color);
 }
 
-.nbt-doc-type-unlinked {
+.nbt-type-unlinked {
 	text-decoration: none;
 }
 
-.nbt-doc-default {
+.nbt-default {
 	margin-left: 0.8rem;
 	color: var(--ifm-color-success);
 	z-index: 2;
 }
 
-.nbt-doc-description-container {
+.nbt-description-container {
 	position: relative;
 	padding-bottom: 0.4rem;
 }
 
-.nbt-doc-description {
+.nbt-description {
 	margin-left: 3.6rem; /* Align to the right of toggle and icon */
 	font-size: 0.85rem;
 	opacity: 0.8;
@@ -188,36 +209,30 @@
 	color: var(--ifm-color-emphasis-700);
 }
 
-.nbt-doc-description p {
+.nbt-description p {
 	margin: 0;
 }
 
-.nbt-doc-description p + p {
+.nbt-description p + p {
 	margin-top: 0.5rem;
 }
 
-.nbt-doc-empty-container {
-	position: relative;
-	padding-bottom: 0.4rem;
-}
-
-.nbt-doc-empty {
-	margin-left: 3.6rem;
+.nbt-empty {
+	margin-left: 1.5rem;
 	font-size: 0.85rem;
 	opacity: 0.5;
-	font-style: italic;
 	padding: 0.2rem 0;
 }
 
 /* Beautiful Inherited Badge matching Typedoc exactly */
-.nbt-doc-inherited-badge {
+.nbt-inherited-badge {
 	display: inline-block;
-	padding: 2px 6px;
+	padding: 0px 6px;
 	border-radius: var(--ifm-global-radius);
-	color: var(--ifm-footer-title-color) !important;
-	background-color: var(--ifm-footer-background-color);
+	color: var(--ifm-color-content) !important;
+	background-color: var(--ifm-hover-overlay);
 	font-size: var(--ifm-h6-font-size, 0.75rem);
-	font-weight: normal;
+	font-weight: 500;
 	margin-left: 0.5rem;
 	text-decoration: none !important;
 	transition: color 0.2s;
@@ -226,23 +241,23 @@
 	z-index: 3; /* Above anchor layer */
 }
 
-.nbt-doc-inherited-badge:hover {
-	color: var(--ifm-link-color) !important;
+.nbt-inherited-badge:hover {
+	color: var(--ifm-color-primary) !important;
 }
 
 /* API Index Style Panels */
-.nbt-doc-panel-group {
+.nbt-panel-group {
 	margin-top: 2rem;
 }
 
-.nbt-doc-panel {
+.nbt-panel {
 	border: 1px solid var(--ifm-card-background-color);
 	border-radius: var(--ifm-global-radius);
 	margin-bottom: var(--ifm-spacing-vertical, 1rem);
 	overflow: hidden;
 }
 
-.nbt-doc-panel-header {
+.nbt-panel-header {
 	background-color: var(--ifm-card-background-color);
 	padding: 0.75rem 1rem;
 	margin: 0;
@@ -251,22 +266,22 @@
 	border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
-.nbt-doc-panel-content {
+.nbt-panel-content {
 	margin: 0;
 	padding: 1rem;
 	border-bottom: 1px solid var(--ifm-card-background-color);
 }
 
-html[data-theme='light'] .nbt-doc-panel-header {
+html[data-theme='light'] .nbt-panel-header {
 	background-color: var(--ifm-hover-overlay);
 }
 
-html[data-theme='light'] .nbt-doc-panel,
-html[data-theme='light'] .nbt-doc-panel-content {
+html[data-theme='light'] .nbt-panel,
+html[data-theme='light'] .nbt-panel-content {
 	border-color: var(--ifm-hover-overlay);
 }
 
-.nbt-doc-index-list {
+.nbt-index-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -274,47 +289,42 @@ html[data-theme='light'] .nbt-doc-panel-content {
 	flex-wrap: wrap;
 }
 
-.nbt-doc-index-list li {
+.nbt-index-list li {
 	width: 100%;
 	padding-right: 1rem;
 }
 
 @media screen and (min-width: 576px) {
-	.nbt-doc-index-list li {
+	.nbt-index-list li {
 		width: 50%;
 	}
 }
 
 @media screen and (min-width: 997px) {
-	.nbt-doc-index-list li {
+	.nbt-index-list li {
 		width: 33%;
 	}
 }
 
-.nbt-doc-truncate {
+.nbt-truncate {
 	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.nbt-doc-kind-icon {
-	display: block;
-	padding: 0.4rem 0.6rem;
-	border-radius: var(--ifm-global-radius);
-	color: var(--ifm-color-primary);
+.nbt-kind-icon {
+	color: #c678dd; /* Purple */
 	text-decoration: none;
-	transition: background-color 0.2s;
 	word-break: break-all;
 }
 
-.nbt-doc-kind-icon:hover {
-	background-color: var(--ifm-hover-overlay);
-	text-decoration: none;
+.nbt-kind-icon:hover {
+	text-decoration: underline;
 }
 
 /* Options Layout styles exactly matching API plugin */
-.nbt-doc-options-container {
+.nbt-options-container {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 0.5rem;
@@ -322,15 +332,20 @@ html[data-theme='light'] .nbt-doc-panel-content {
 	border-radius: var(--ifm-global-radius);
 	overflow: hidden;
 	width: 100%;
-	position: sticky;
-	top: calc(var(--ifm-navbar-height) + 1rem);
 }
 
-html[data-theme='light'] .nbt-doc-options-container {
+@media screen and (min-width: 997px) {
+	.nbt-options-container {
+		position: sticky;
+		top: calc(var(--ifm-navbar-height) + 1rem);
+	}
+}
+
+html[data-theme='light'] .nbt-options-container {
 	border-color: var(--ifm-hover-overlay);
 }
 
-.nbt-doc-option-toggle {
+.nbt-option-toggle {
 	cursor: pointer;
 	padding: 0.5rem 0.8rem;
 	font-size: 0.8rem;
@@ -346,21 +361,21 @@ html[data-theme='light'] .nbt-doc-options-container {
 	border-right: 1px solid var(--ifm-hover-overlay);
 }
 
-.nbt-doc-option-toggle:not(.active) {
+.nbt-option-toggle:not(.active) {
 	text-decoration: line-through;
 	opacity: 0.6;
 }
 
-.nbt-doc-option-toggle.active {
+.nbt-option-toggle.active {
 	background-color: var(--ifm-hover-overlay);
 	opacity: 1;
 	font-weight: bold;
 }
 
-.nbt-doc-option-toggle:hover {
+.nbt-option-toggle:hover {
 	color: var(--ifm-color-primary);
 }
 
-.nbt-doc-option-toggle input {
+.nbt-option-toggle input {
 	display: none;
 }

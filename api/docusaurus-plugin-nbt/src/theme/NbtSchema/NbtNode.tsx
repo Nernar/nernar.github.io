@@ -84,7 +84,7 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 
 	const renderIcon = () => (
 		<span 
-			className="nbt-doc-icon" 
+			className="nbt-icon" 
 			style={{ backgroundColor: TYPE_COLORS[node.type] || '#555' }}
 		>
 			{TYPE_ICONS[node.type] || '?'}
@@ -94,77 +94,75 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 	const renderTypeLink = (typeName: string) => {
 		if (schemaMap[typeName]) {
 			return (
-				<Link to={`/nbt/${typeName}`} className="nbt-doc-type-link">
+				<Link to={`/nbt/${typeName}`} className="nbt-type-link">
 					{typeName}
 				</Link>
 			);
 		}
-		return <span className="nbt-doc-type-link nbt-doc-type-unlinked">{typeName}</span>;
+		return <span className="nbt-type-link nbt-type-unlinked">{typeName}</span>;
 	};
 
 	const renderType = () => {
 		if (node.type === 'list') {
 			return (
-				<span className="nbt-doc-type">
+				<span className="nbt-type">
 					list{'<'}{itemExtends ? renderTypeLink(itemExtends) : node.itemType}{'>'}
 				</span>
 			);
 		}
 		if (node.type === 'compound' && extendsType) {
 			return (
-				<span className="nbt-doc-type">
+				<span className="nbt-type">
 					compound{' extends '}{renderTypeLink(extendsType)}
 				</span>
 			);
 		}
-		return <span className="nbt-doc-type">{node.type}</span>;
+		return <span className="nbt-type">{node.type}</span>;
 	};
 
 	return (
-		<div className={isRoot ? "nbt-doc-node-root" : "nbt-doc-child"}>
-			<div className="nbt-doc-header" id={currentPath}>
-				<a href={`#${currentPath}`} className="nbt-doc-anchor-layer" aria-hidden="true" title="Direct link to this element" onClick={handleAnchorClick}></a>
-				
+		<div className={isRoot ? "nbt-node-root" : "nbt-child"}>
+			<div className={`nbt-header ${isExpandable ? 'nbt-expandable' : ''} ${isExpandable && isExpanded ? 'nbt-expanded' : ''}`} id={currentPath} onClick={handleAnchorClick}>
 				{isExpandable ? (
-					<span className="nbt-doc-toggle">{isExpanded ? '−' : '+'}</span>
+					<span className="nbt-toggle">{isExpanded ? '−' : '+'}</span>
 				) : (
-					<span className="nbt-doc-toggle-empty" />
+					<span className="nbt-toggle-empty" />
 				)}
 				
 				{renderIcon()}
 				
-				<span className="nbt-doc-name">
-					{name}
+				<span className="nbt-name">
+					<a href={`#${currentPath}`} className="nbt-name-anchor" onClick={(e) => e.stopPropagation()}>{name}</a>
 				</span>
 				
-				<span className="nbt-doc-separator">:</span>
+				<span className="nbt-separator">:</span>
 				
 				{renderType()}
 
 				{node.inheritedFrom && showInherited && (
-					<Link to={`/nbt/${node.inheritedFrom}`} className="nbt-doc-inherited-badge" title={`Inherited from ${node.inheritedFrom}`}>
+					<Link to={`/nbt/${node.inheritedFrom}`} className="nbt-inherited-badge" title={`Inherited from ${node.inheritedFrom}`}>
 						↑ {node.inheritedFrom}
 					</Link>
 				)}
 
 				{node.default !== undefined && (
-					<span className="nbt-doc-default">
+					<span className="nbt-default">
 						= {JSON.stringify(node.default)}
 					</span>
 				)}
 			</div>
 
 			{node.description && (
-				<div className="nbt-doc-description-container">
+				<div className={`nbt-description-container ${isExpandable ? 'nbt-expandable' : ''} ${isExpandable && isExpanded ? 'nbt-expanded' : ''}`}>
 					 <div 
-						 className="nbt-doc-description markdown" 
+						 className="nbt-description markdown" 
 						 dangerouslySetInnerHTML={{ __html: marked.parse(node.description) as string }} 
 					 />
 				</div>
 			)}
 
 			{isExpanded && isExpandable && (
-				<div className="nbt-doc-children">
+				<div className="nbt-children">
 					{hasChildren ? (
 						Object.entries(resolvedChildren!).map(([childName, childNode], index, array) => (
 							<NbtNodeRenderer 
@@ -177,8 +175,8 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 							/>
 						))
 					) : (
-						 <div className="nbt-doc-empty-container">
-							 <div className="nbt-doc-empty">Empty</div>
+						 <div className="nbt-child">
+							 <div className="nbt-empty">Empty</div>
 						 </div>
 					)}
 				</div>

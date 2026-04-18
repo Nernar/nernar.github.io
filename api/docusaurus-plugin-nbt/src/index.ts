@@ -129,7 +129,7 @@ export default function docusaurusPluginNbt(
 				JSON.stringify({
 					badge: false,
 					banner: 'none',
-					className: 'nbt-docs',
+					className: 'nbt-schema',
 					docs: docsMap,
 					docsSidebars: { nbt: sidebar },
 					isLast: true,
