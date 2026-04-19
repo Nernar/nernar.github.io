@@ -2238,7 +2238,6 @@ declare class BlockSource {
     /**
      * Plays sound on defined coordsby radius 16 blocks from source,
 	 * if volume bigger than 1.0, radius multiplies to volume.
-     * @param entity entity uid
      * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
@@ -2251,7 +2250,6 @@ declare class BlockSource {
     /**
      * Plays sound to entity by radius 16 blocks from source,
 	 * if volume bigger than 1.0, radius multiplies to volume.
-     * @param entity entity uid
      * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
@@ -2259,7 +2257,7 @@ declare class BlockSource {
 	 * radius will be detected automatically
      * @since 3.1.1b127
      */
-    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
+    playSoundAtEntity(entityUid: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
 
     /**
      * Method to stop sound by name for defined player list.
@@ -7793,7 +7791,7 @@ declare namespace IDRegistry {
      * Generates a new numeric block ID. Used in {@link Block} module functions
      * and  in some other block-related functions.
      * @param name string block ID; Inner Core converts it to 
-     * block_<name> as minecraft vanilla block ID to avoid string ID clashes
+     * block_\<name\> as minecraft vanilla block ID to avoid string ID clashes
      * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric block ID.
      */
@@ -7803,7 +7801,7 @@ declare namespace IDRegistry {
      * Generates a new numeric item ID. Used in {@link Item} module functions
      * and in some other item-related functions.
      * @param name string item ID; Inner Core converts it to 
-     * item_<name> as minecraft vanilla item ID to avoid string ID clashes
+     * item_\<name\> as minecraft vanilla item ID to avoid string ID clashes
      * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric item ID.
      */
@@ -8138,7 +8136,7 @@ declare namespace Item {
      * Adds or creates a creative group with specified item.
      * @param name name of group
      * @param displayedName name of group in game
-     * @param ids array of items in group
+     * @param id single numeric or string id in group
      * @since 3.1.1b127
      */
     function addToCreativeGroup(name: string, displayedName: string, id: number | string): void;
@@ -19782,6 +19780,11 @@ declare namespace UI {
 		[key: string]: string
 	};
 
+	/**
+	 * @deprecated Alias of {@link BindingSet}, please use it instead.
+	 */
+	type BindingsSet = BindingSet;
+
     /**
      * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
      * @since 3.1.0b126
@@ -22115,7 +22118,7 @@ declare namespace World {
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
-    function playSound(x: number, y: number, z: number, name: string, volume: number, pitch?: number): void;
+    function playSound(x: number, y: number, z: number, sound: string, volume: number, pitch?: number): void;
 
     /**
      * Plays client sound from the specified entity.
@@ -22123,7 +22126,7 @@ declare namespace World {
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
-    function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
+    function playSoundAtEntity(entityUid: number, sound: string, volume: number, pitch?: number): void;
 
     /**
      * Method to stop sound by name.
