@@ -254,7 +254,7 @@ declare namespace Item {
      * Adds or creates a creative group with specified item.
      * @param name name of group
      * @param displayedName name of group in game
-     * @param ids array of items in group
+     * @param id single numeric or string id in group
      * @since 3.1.1b127
      */
     function addToCreativeGroup(name: string, displayedName: string, id: number | string): void;

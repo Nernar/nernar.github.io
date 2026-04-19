@@ -7,6 +7,11 @@ declare namespace UI {
 		[key: string]: string
 	};
 
+	/**
+	 * @deprecated Alias of {@link BindingSet}, please use it instead.
+	 */
+	type BindingsSet = BindingSet;
+
     /**
      * Hex color like `#ffffff`or color names like a `red`, `pink` and another or `[r, g, b, a?]` array. 
      * @since 3.1.0b126

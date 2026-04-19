@@ -467,7 +467,6 @@ declare class BlockSource {
     /**
      * Plays sound on defined coordsby radius 16 blocks from source,
 	 * if volume bigger than 1.0, radius multiplies to volume.
-     * @param entity entity uid
      * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
@@ -480,7 +479,6 @@ declare class BlockSource {
     /**
      * Plays sound to entity by radius 16 blocks from source,
 	 * if volume bigger than 1.0, radius multiplies to volume.
-     * @param entity entity uid
      * @param sound resource pack sound name
      * @param volume default `1.0`
      * @param pitch default `1.0`
@@ -488,7 +486,7 @@ declare class BlockSource {
 	 * radius will be detected automatically
      * @since 3.1.1b127
      */
-    playSoundAtEntity(entity: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
+    playSoundAtEntity(entityUid: number, sound: string, volume?: number, pitch?: number, playerUids?: number[]): void;
 
     /**
      * Method to stop sound by name for defined player list.

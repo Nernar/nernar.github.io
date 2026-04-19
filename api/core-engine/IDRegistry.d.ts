@@ -24,7 +24,7 @@ declare namespace IDRegistry {
      * Generates a new numeric block ID. Used in {@link Block} module functions
      * and  in some other block-related functions.
      * @param name string block ID; Inner Core converts it to 
-     * block_<name> as minecraft vanilla block ID to avoid string ID clashes
+     * block_\<name\> as minecraft vanilla block ID to avoid string ID clashes
      * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric block ID.
      */
@@ -34,7 +34,7 @@ declare namespace IDRegistry {
      * Generates a new numeric item ID. Used in {@link Item} module functions
      * and in some other item-related functions.
      * @param name string item ID; Inner Core converts it to 
-     * item_<name> as minecraft vanilla item ID to avoid string ID clashes
+     * item_\<name\> as minecraft vanilla item ID to avoid string ID clashes
      * (since 3.1.0b126 support namespaces, should be namespace:snake_case)
      * @returns Numeric item ID.
      */

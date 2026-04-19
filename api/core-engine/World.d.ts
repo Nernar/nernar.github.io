@@ -405,7 +405,7 @@ declare namespace World {
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
-    function playSound(x: number, y: number, z: number, name: string, volume: number, pitch?: number): void;
+    function playSound(x: number, y: number, z: number, sound: string, volume: number, pitch?: number): void;
 
     /**
      * Plays client sound from the specified entity.
@@ -413,7 +413,7 @@ declare namespace World {
      * @param volume sound volume from 0 to 1
      * @param pitch sound pitch, from 0 to 1, 0.5 is default value
      */
-    function playSoundAtEntity(entity: number, name: string, volume: number, pitch?: number): void;
+    function playSoundAtEntity(entityUid: number, sound: string, volume: number, pitch?: number): void;
 
     /**
      * Method to stop sound by name.
