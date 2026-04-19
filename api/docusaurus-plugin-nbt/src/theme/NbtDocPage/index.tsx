@@ -2,9 +2,9 @@ import React from 'react';
 import { PageMetadata, useWindowSize } from '@docusaurus/theme-common';
 import Heading from '@theme/Heading';
 import NbtSchema from '../NbtSchema';
-import NbtOptionsLayout from '../NbtSchema/NbtOptionsLayout';
+import NbtOptionsLayout from '../NbtOptionsLayout';
 import type { NbtContent } from '../../types';
-import type { NbtSchemaMap } from '../NbtSchema/NbtDataContext';
+import type { NbtSchemaMap } from '../../hooks/useNbtData';
 
 export interface NbtDocPageProps {
 	content: NbtContent;

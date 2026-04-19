@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { NbtSchemaDefinition } from './types';
+import type { NbtSchemaDefinition } from '../types';
 
 export type NbtSchemaMap = Record<string, NbtSchemaDefinition>;
 

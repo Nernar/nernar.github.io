@@ -1,25 +1,21 @@
 import React from 'react';
-import type { NbtSchemaDefinition } from './types';
-import { NbtNodeRenderer } from './NbtNode';
-import { NbtDataContext, type NbtSchemaMap } from './NbtDataContext';
-import './styles.css';
+import type { NbtSchemaDefinition } from '../../types';
+import NbtNodeRenderer from '../NbtNode';
+import { NbtDataContext, type NbtSchemaMap } from '../../hooks/useNbtData';
+import '../../styles.css';
 
 export interface NbtSchemaProps {
 	data: NbtSchemaDefinition;
-	title?: string;
+	name?: string;
 	schemaMap?: NbtSchemaMap;
+	collapseRoot?: boolean;
+	useAnchors?: boolean;
 }
 
-export default function NbtSchema({ data, title, schemaMap }: NbtSchemaProps): React.ReactElement {
+export default function NbtSchema({ data, name, schemaMap, collapseRoot = false, useAnchors = false }: NbtSchemaProps): React.ReactElement {
 	const content = (
 		<div className="nbt-tree">
-			{title && (
-				<h3 style={{ marginTop: 0, marginBottom: '1.5rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--ifm-color-emphasis-200)' }}>
-					{title}
-				</h3>
-			)}
-			
-			<NbtNodeRenderer name={data.name || 'Root'} node={data} isRoot={true} />
+			<NbtNodeRenderer name={name || data.name || 'Root'} node={data} isRoot={true} collapseRoot={collapseRoot} useAnchors={useAnchors} />
 		</div>
 	);
 

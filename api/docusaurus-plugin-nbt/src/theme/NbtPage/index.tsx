@@ -1,6 +1,6 @@
 import DocRoot, { type Props as DocRootProps } from '@theme/DocRoot';
-import { NbtDataContext, type NbtSchemaMap } from '../NbtSchema/NbtDataContext';
-import { NbtOptionsProvider } from '../NbtSchema/NbtOptionsContext';
+import { NbtDataContext, type NbtSchemaMap } from '../../hooks/useNbtData';
+import { NbtOptionsProvider } from '../../hooks/useNbtOptions';
 
 export interface NbtPageProps extends DocRootProps {
 	schemaMap: NbtSchemaMap;

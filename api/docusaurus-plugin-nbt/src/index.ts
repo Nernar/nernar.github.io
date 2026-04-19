@@ -2,14 +2,14 @@ import path from 'path';
 import fs from 'fs';
 import type { Plugin, LoadContext } from '@docusaurus/types';
 import { normalizeUrl, docuHash } from '@docusaurus/utils';
-import type { PluginOptions, PluginContent, NbtContent, SidebarItem } from './types';
-import type { NbtSchemaDefinition } from './theme/NbtSchema/types';
+import type { PluginOptions, PluginContent, NbtContent, SidebarItem, NbtSchemaDefinition } from './types';
 
 const DEFAULT_OPTIONS: PluginOptions = {
 	path: 'nbt',
 	routeBasePath: 'nbt',
 	indexComponent: '@theme/NbtIndexPage',
 	docComponent: '@theme/NbtDocPage',
+	schemasComponent: '@theme/NbtSchemasPage',
 };
 
 export default function docusaurusPluginNbt(
@@ -104,6 +104,7 @@ export default function docusaurusPluginNbt(
 
 			const schemaMapPath = await createData('nbt-schemas.json', JSON.stringify(schemaMap));
 			const indexDataPath = await createData('nbt-index.json', JSON.stringify(schemas.map(s => ({ id: s.id, title: s.title, permalink: s.permalink }))));
+			const allSchemasDataPath = await createData('nbt-all-schemas.json', JSON.stringify(schemas));
 
 			setGlobalData({ sidebar });
 
@@ -141,6 +142,18 @@ export default function docusaurusPluginNbt(
 			);
 
 			const routes: any[] = [];
+
+			routes.push({
+				path: normalizeUrl([context.baseUrl, options.routeBasePath, 'schemas']),
+				exact: true,
+				component: options.schemasComponent,
+				modules: {
+					schemas: allSchemasDataPath,
+					schemaMap: schemaMapPath,
+				},
+				sidebar: 'nbt',
+				id: 'schemas',
+			});
 
 			routes.push({
 				path: normalizeUrl([context.baseUrl, options.routeBasePath]),

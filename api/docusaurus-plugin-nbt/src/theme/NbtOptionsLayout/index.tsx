@@ -1,5 +1,6 @@
-import { useNbtOptions } from './NbtOptionsContext';
-import './styles.css';
+import React from 'react';
+import { useNbtOptions } from '../../hooks/useNbtOptions';
+import '../../styles.css';
 
 export default function NbtOptionsLayout() {
 	const { showInherited, setShowInherited } = useNbtOptions();

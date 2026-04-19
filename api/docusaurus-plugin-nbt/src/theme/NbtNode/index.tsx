@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from '@docusaurus/Link';
 import { marked } from 'marked';
-import type { NbtNode, NbtCompoundNode, NbtListNode } from './types';
-import { useNbtData } from './NbtDataContext';
-import { useNbtOptions } from './NbtOptionsContext';
-import './styles.css';
+import type { NbtNode, NbtCompoundNode, NbtListNode } from '../../types';
+import { useNbtData } from '../../hooks/useNbtData';
+import { useNbtOptions } from '../../hooks/useNbtOptions';
+import '../../styles.css';
+import useBrokenLinks from '@docusaurus/useBrokenLinks';
 
 const TYPE_ICONS: Record<string, string> = {
 	end_tag: 'E',
@@ -43,14 +44,43 @@ export interface NbtNodeRendererProps {
 	isLast?: boolean;
 	isRoot?: boolean;
 	pathPrefix?: string;
+	collapseRoot?: boolean;
+	useAnchors?: boolean;
 }
 
-export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot = false, pathPrefix = "" }: NbtNodeRendererProps): React.ReactElement | null {
+export default function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot = false, pathPrefix = "", collapseRoot = false, useAnchors = false }: NbtNodeRendererProps): React.ReactElement | null {
 	const schemaMap = useNbtData();
 	const { showInherited } = useNbtOptions();
-	const [isExpanded, setIsExpanded] = useState(depth < 2);
+	const [isExpanded, setIsExpanded] = useState(collapseRoot ? false : depth < 2);
+	const [isHashTarget, setIsHashTarget] = useState(false);
 
 	const currentPath = pathPrefix ? `${pathPrefix}.${name}` : name;
+	useBrokenLinks().collectAnchor(currentPath);
+
+	useEffect(() => {
+		const checkHash = () => {
+			if (typeof window !== 'undefined' && window.location.hash === `#${currentPath}`) {
+				setIsExpanded(true);
+				setIsHashTarget(true);
+			} else {
+				// Optional: we can reset isHashTarget if another hash is clicked,
+				// but usually we just leave it expanded.
+				setIsHashTarget(false);
+			}
+		};
+
+		// Check on initial load
+		checkHash();
+
+		// Listen for hash changes when navigating via anchor links on the same page
+		if (typeof window !== 'undefined') {
+			window.addEventListener('hashchange', checkHash);
+			return () => {
+				window.removeEventListener('hashchange', checkHash);
+			};
+		}
+		return undefined;
+	}, [currentPath]);
 
 	if (!showInherited && node.inheritedFrom) {
 		return null;
@@ -93,13 +123,14 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 
 	const renderTypeLink = (typeName: string) => {
 		if (schemaMap[typeName]) {
+			const linkTo = useAnchors ? `#${typeName}` : `/nbt/${typeName}`;
 			return (
-				<Link to={`/nbt/${typeName}`} className="nbt-type-link">
+				<Link to={linkTo} className="nbt-type-link" onClick={(e) => e.stopPropagation()}>
 					{typeName}
 				</Link>
 			);
 		}
-		return <span className="nbt-type-link nbt-type-unlinked">{typeName}</span>;
+		return <span className="nbt-type-link nbt-type-unlinked" onClick={(e) => e.stopPropagation()}>{typeName}</span>;
 	};
 
 	const renderType = () => {
@@ -122,7 +153,7 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 
 	return (
 		<div className={isRoot ? "nbt-node-root" : "nbt-child"}>
-			<div className={`nbt-header ${isExpandable ? 'nbt-expandable' : ''} ${isExpandable && isExpanded ? 'nbt-expanded' : ''}`} id={currentPath} onClick={handleAnchorClick}>
+			<div className={`nbt-header ${isExpandable ? 'nbt-expandable' : ''} ${isExpandable && isExpanded ? 'nbt-expanded' : ''}`} id={isRoot && useAnchors ? undefined : currentPath} onClick={handleAnchorClick}>
 				{isExpandable ? (
 					<span className="nbt-toggle">{isExpanded ? '−' : '+'}</span>
 				) : (
@@ -140,7 +171,7 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 				{renderType()}
 
 				{node.inheritedFrom && showInherited && (
-					<Link to={`/nbt/${node.inheritedFrom}`} className="nbt-inherited-badge" title={`Inherited from ${node.inheritedFrom}`}>
+					<Link to={useAnchors ? `#${node.inheritedFrom}` : `/nbt/${node.inheritedFrom}`} className="nbt-inherited-badge" title={`Inherited from ${node.inheritedFrom}`} onClick={(e) => e.stopPropagation()}>
 						↑ {node.inheritedFrom}
 					</Link>
 				)}
@@ -172,6 +203,8 @@ export function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot 
 								depth={depth + 1} 
 								isLast={index === array.length - 1}
 								pathPrefix={currentPath}
+								collapseRoot={isHashTarget ? false : collapseRoot}
+								useAnchors={useAnchors}
 							/>
 						))
 					) : (
