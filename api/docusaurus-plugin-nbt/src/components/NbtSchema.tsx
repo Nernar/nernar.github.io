@@ -1,8 +1,8 @@
 import React from 'react';
-import type { NbtSchemaDefinition } from '../../types';
-import NbtNodeRenderer from '../NbtNode';
-import { NbtDataContext, type NbtSchemaMap } from '../../hooks/useNbtData';
-import '../../styles.css';
+import type { NbtSchemaDefinition } from '../types';
+import NbtNodeRenderer from './NbtNode';
+import { NbtDataContext, type NbtSchemaMap } from '../hooks/useNbtData';
+import './styles.css';
 
 export interface NbtSchemaProps {
 	data: NbtSchemaDefinition;

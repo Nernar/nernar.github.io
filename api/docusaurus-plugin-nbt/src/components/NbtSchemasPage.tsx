@@ -1,12 +1,11 @@
 import React from 'react';
-import Link from '@docusaurus/Link';
 import { PageMetadata, useWindowSize } from '@docusaurus/theme-common';
 import Heading from '@theme/Heading';
-import NbtSchema from '../NbtSchema';
-import NbtOptionsLayout from '../NbtOptionsLayout';
-import NbtIndexPanel from '../NbtIndexPanel';
-import type { NbtContent } from '../../types';
-import type { NbtSchemaMap } from '../../hooks/useNbtData';
+import NbtSchema from './NbtSchema';
+import NbtOptionsLayout from './NbtOptionsLayout';
+import NbtIndexPanel from './NbtIndexPanel';
+import type { NbtContent } from '../types';
+import type { NbtSchemaMap } from '../hooks/useNbtData';
 
 export interface NbtSchemasPageProps {
 	schemas: NbtContent[];

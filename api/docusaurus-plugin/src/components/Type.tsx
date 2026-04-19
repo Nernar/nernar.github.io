@@ -53,8 +53,8 @@ function extractReferenceTypeLink(
 					</Link>
 				);
 			}
-		} else if (!unresolvedReferencesSet.has(source)) {
-			console.warn(`[api] Unresolved reference source ${source}, please consider include it to your entryPoints!`);
+		} else if (!source.includes('node_modules/') && !unresolvedReferencesSet.has(source)) {
+			console.warn(`[api] Unresolved reference source ${source} -> ${type.name}, please consider include it to your entryPoints!`);
 			unresolvedReferencesSet.add(source);
 		}
 	}

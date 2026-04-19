@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from '@docusaurus/Link';
 import { marked } from 'marked';
-import type { NbtNode, NbtCompoundNode, NbtListNode } from '../../types';
-import { useNbtData } from '../../hooks/useNbtData';
-import { useNbtOptions } from '../../hooks/useNbtOptions';
-import '../../styles.css';
+import type { NbtNode, NbtCompoundNode, NbtListNode } from '../types';
+import { useNbtData } from '../hooks/useNbtData';
+import { useNbtOptions } from '../hooks/useNbtOptions';
+import './styles.css';
 import useBrokenLinks from '@docusaurus/useBrokenLinks';
 
 const TYPE_ICONS: Record<string, string> = {
@@ -48,7 +48,7 @@ export interface NbtNodeRendererProps {
 	useAnchors?: boolean;
 }
 
-export default function NbtNodeRenderer({ name, node, depth = 0, isLast = false, isRoot = false, pathPrefix = "", collapseRoot = false, useAnchors = false }: NbtNodeRendererProps): React.ReactElement | null {
+export default function NbtNodeRenderer({ name, node, depth = 0, isRoot = false, pathPrefix = "", collapseRoot = false, useAnchors = false }: NbtNodeRendererProps): React.ReactElement | null {
 	const schemaMap = useNbtData();
 	const { showInherited } = useNbtOptions();
 	const [isExpanded, setIsExpanded] = useState(collapseRoot ? false : depth < 2);
@@ -106,7 +106,7 @@ export default function NbtNodeRenderer({ name, node, depth = 0, isLast = false,
 	const isExpandable = node.type === 'compound' || (node.type === 'list' && (!!resolvedChildren || !!itemExtends));
 	const hasChildren = resolvedChildren && Object.keys(resolvedChildren).length > 0;
 
-	const handleAnchorClick = (e: React.MouseEvent) => {
+	const handleAnchorClick = () => {
 		if (isExpandable) {
 			setIsExpanded(!isExpanded);
 		}

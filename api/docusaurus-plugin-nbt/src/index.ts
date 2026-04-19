@@ -24,12 +24,12 @@ export default function docusaurusPluginNbt(
 		name: 'docusaurus-plugin-nbt',
 
 		getThemePath() {
-			return path.resolve(__dirname, './theme');
+			return path.resolve(__dirname, './components');
 		},
 
 		getPathsToWatch() {
 			return [
-				path.resolve(__dirname, './theme/**/*.{js,jsx,ts,tsx}'),
+				path.resolve(__dirname, './components/**/*.{js,jsx,ts,tsx}'),
 				`${contentPath}/**/*.json`
 			];
 		},
@@ -151,7 +151,6 @@ export default function docusaurusPluginNbt(
 					schemas: allSchemasDataPath,
 					schemaMap: schemaMapPath,
 				},
-				sidebar: 'nbt',
 				id: 'schemas',
 			});
 
@@ -194,7 +193,7 @@ export default function docusaurusPluginNbt(
 							{
 								path: normalizeUrl([context.baseUrl, options.routeBasePath]),
 								exact: false,
-								component: path.resolve(__dirname, './theme/NbtPage/index.js'),
+								component: path.resolve(__dirname, './components/NbtPage'),
 								routes,
 								modules: {
 									schemaMap: schemaMapPath,

@@ -2,7 +2,7 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
-import NbtIndexPanel from '../NbtIndexPanel';
+import NbtIndexPanel from './NbtIndexPanel';
 
 export interface NbtIndexItem {
 	id: string;
