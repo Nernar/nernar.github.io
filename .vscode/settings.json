@@ -8,7 +8,6 @@
 	"search.exclude": {
 		"**/node_modules": true,
 		"**/package-lock.json": true,
-		"**/.wireit": true,
 		"**/build": true
 	},
 	"[markdown]": {

@@ -5,12 +5,8 @@
 		"lib": ["ES2015"]
 	},
 	"files": [
-		"../declarations/android.d.ts"
-	],
-	"references": [
-		{
-			"path": "../core-engine"
-		}
+		"../declarations/android.d.ts",
+		"../declarations/core-engine.d.ts"
 	],
 	"include": [
 		"**/*.d.ts"

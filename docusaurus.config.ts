@@ -158,6 +158,7 @@ export default {
 					'**/core-engine/rhino.d.ts',
 					'**/declarations/**/*.d.ts'
 				],
+				breadcrumbs: false, // TODO: Actually fix them for nested sidebar trees...
 				typedocOptions: {
 					entryPoints: [
 						'core-engine/**/*.d.ts',
