@@ -685,4 +685,4 @@ Callback.addCallback("EntityInteract", function(entityUid, playerUid, coords) {
 });
 ```
 
-So what is this named binary tag? Data serialized by the world and the game as a whole. We won't consider them separately here, for this there is an article [Named Binary Tags](../advanced/named-binary-tag). Still didn't find what you were looking for? Pick up the needed properties using [NBT.Templates.Entity](/api/namespace/NBT#Templates.Entity).
+So what is this named binary tag? Data serialized by the world and the game as a whole. We won't consider them separately here, for this there is an article [Named Binary Tags](../advanced/named-binary-tag). Still didn't find what you were looking for? Pick up the needed properties using [NBT Entity Schema](/nbt/Entity).

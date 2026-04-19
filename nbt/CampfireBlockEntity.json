@@ -19,30 +19,33 @@
     },
     "ItemTime2": {
       "type": "int",
-      "description": "{@inheritDoc NBT.Templates.CampfireBlockEntity.ItemTime1}"
+      "description": "Ticks counter of smelting item.",
+      "default": 0
     },
     "Item2": {
       "type": "compound",
       "extends": "Item",
-      "description": "{@inheritDoc NBT.Templates.CampfireBlockEntity.Item1}"
+      "description": "Item that will be smelted on campfire."
     },
     "ItemTime3": {
       "type": "int",
-      "description": "{@inheritDoc NBT.Templates.CampfireBlockEntity.ItemTime1}"
+      "description": "Ticks counter of smelting item.",
+      "default": 0
     },
     "Item3": {
       "type": "compound",
       "extends": "Item",
-      "description": "{@inheritDoc NBT.Templates.CampfireBlockEntity.Item1}"
+      "description": "Item that will be smelted on campfire."
     },
     "ItemTime4": {
       "type": "int",
-      "description": "{@inheritDoc NBT.Templates.CampfireBlockEntity.ItemTime1}"
+      "description": "Ticks counter of smelting item.",
+      "default": 0
     },
     "Item4": {
       "type": "compound",
       "extends": "Item",
-      "description": "{@inheritDoc NBT.Templates.CampfireBlockEntity.Item1}"
+      "description": "Item that will be smelted on campfire."
     }
   },
   "extends": "IBlockEntity"
