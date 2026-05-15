@@ -7811,6 +7811,10 @@ declare namespace IDRegistry {
         [key: string]: number
     }
 
+    interface ItemNamespace extends Namespace { }
+    
+    interface BlockNamespace extends Namespace { }
+
     /**
      * Returns identifier namespace, which consist of both
      * item and block name IDs to numeric conversion.
@@ -21808,16 +21812,16 @@ declare function __debug_typecheck__(obj: any): string;
 declare function runCustomSource(name: string, scope?: object): void;
 
 /**
- * Object containing custom block string IDs  as keys and their numeric
+ * Object containing custom block string IDs as keys and their numeric
  * IDs as values.
  */
-declare const BlockID: IDRegistry.Namespace;
+declare const BlockID: IDRegistry.BlockNamespace;
 
 /**
  * Object containing custom item string IDs as keys and their numeric
  * IDs as values.
  */
-declare const ItemID: IDRegistry.Namespace;
+declare const ItemID: IDRegistry.ItemNamespace;
 
 /**
  * Module containing {@link ItemID} and {@link BlockID} values.
@@ -21828,13 +21832,13 @@ declare namespace IDData {
 	 * Object containing custom item string IDs as keys and their numeric
 	 * IDs as values.
 	 */
-	const item: IDRegistry.Namespace;
+	const item: IDRegistry.ItemNamespace;
 
 	/**
 	 * Object containing custom block string IDs as keys and their numeric
 	 * IDs as values.
 	 */
-	const block: IDRegistry.Namespace;
+	const block: IDRegistry.BlockNamespace;
 }
 
 /**
