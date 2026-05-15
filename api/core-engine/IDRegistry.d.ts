@@ -44,6 +44,10 @@ declare namespace IDRegistry {
         [key: string]: number
     }
 
+    interface ItemNamespace extends Namespace { }
+    
+    interface BlockNamespace extends Namespace { }
+
     /**
      * Returns identifier namespace, which consist of both
      * item and block name IDs to numeric conversion.
