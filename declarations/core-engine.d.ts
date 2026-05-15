@@ -15250,7 +15250,7 @@ declare namespace TileEntity {
 		/**
          * Called on server side and returns UI name to open on click.
          */
-        getScreenName?: (player: number, coords: Vector) => Nullable<string>;
+        getScreenName?: (player: number, coords: Callback.ItemUseCoordinates) => Nullable<string>;
 
         /**
          * Called on client side, returns the window to open.
