@@ -118,6 +118,10 @@
 .DocSearch-Screen-Icon svg {
   stroke: var(--docsearch-highlight-color) !important;
 }
+a[aria-label="Powered by Algolia"] svg path,
+a[aria-label="Powered by Algolia"] svg rect {
+  fill: var(--docsearch-highlight-color) !important;
+}
 
 /* Simplifications to keep interface clean */
 .navbar__toggle {
