@@ -110,6 +110,12 @@
   --docsearch-search-button-text-color: var(--docsearch-text-color);
 }
 
+/* Search by recoloring */
+.DocSearch-Logo svg path,
+.DocSearch-Logo svg rect {
+  fill: var(--docsearch-highlight-color) !important;
+}
+
 /* Simplifications to keep interface clean */
 .navbar__toggle {
   margin-right: 1rem;

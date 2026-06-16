@@ -102,6 +102,7 @@ export default {
 	],
 
 	plugins: [
+		'@docsearch/docusaurus-adapter',
 		[
 			'@docusaurus/plugin-content-docs',
 			{
@@ -309,19 +310,17 @@ export default {
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} Nernar. Built with \u2764 and Docusaurus.`
 		},
-		algolia: {
+		docsearch: {
 			appId: '4HZJ107KFO',
 			apiKey: 'ac84e3c991e0e10303432c69b5d878b4',
 			indexName: 'docs_api',
-
 			contextualSearch: true,
-			searchPagePath: 'search',
 			insights: false,
 
-			// TODO: Maybe will work someday, but for now, AI-201.
-			// askAi: {
-				// assistantId: '48eb65fb-1267-4cac-8f8d-20de77aa09f1'
-			// }
+			askAi: {
+				assistantId: '48eb65fb-1267-4cac-8f8d-20de77aa09f1', 
+				agentStudio: true
+			}
 		},
 		prism: {
 			theme: prismThemes.vsLight,
