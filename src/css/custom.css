@@ -110,10 +110,13 @@
   --docsearch-search-button-text-color: var(--docsearch-text-color);
 }
 
-/* Search by recoloring */
+/* Search by/no results icon recoloring */
 .DocSearch-Logo svg path,
 .DocSearch-Logo svg rect {
   fill: var(--docsearch-highlight-color) !important;
+}
+.DocSearch-Screen-Icon svg {
+  stroke: var(--docsearch-highlight-color) !important;
 }
 
 /* Simplifications to keep interface clean */
