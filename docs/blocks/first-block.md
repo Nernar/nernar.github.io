@@ -311,7 +311,7 @@ IDRegistry.genBlockID("oxidized_log");
 Block.createBlock("oxidized_log", [ /* ... */ ], BLOCK_TYPE_RADIACTIVE_LOG);
 ```
 
-Check out [SpecialType](/api/namespace/Block#SpecialType) for complete and up-to-date information regarding the availability of specific properties, the articles are updated as needed.
+Check out [SpecialType](/api/interface/Block.SpecialType) for complete and up-to-date information regarding the availability of specific properties, the articles are updated as needed.
 
 ## There are never too many events
 

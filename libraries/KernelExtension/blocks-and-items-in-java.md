@@ -59,7 +59,7 @@ public class TestKEXDependentMod {
 
 ### _**Blocks**_
 
-The `Block` class has `addVariation(variationJson)` method to set texture, displayed name and visibility of a single block variation (one block can have up to 16 variations), and `setDefineData(variationsJsonArr)` to set the whole description array for all of the block's variations. The variation JSON object must have the same format as the [BlockVariation](/api/namespace/Block#BlockVariation) interface used in Inner Core's JS method [Block.createBlock](/api/namespace/Block#createBlock).
+The `Block` class has `addVariation(variationJson)` method to set texture, displayed name and visibility of a single block variation (one block can have up to 16 variations), and `setDefineData(variationsJsonArr)` to set the whole description array for all of the block's variations. The variation JSON object must have the same format as the [BlockVariation](/api/interface/Block.BlockVariation) interface used in Inner Core's JS method [Block.createBlock](/api/namespace/Block#createBlock).
 
 ```java
 new Block("my_block")

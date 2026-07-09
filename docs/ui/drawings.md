@@ -16,7 +16,7 @@ stateDiagram-v2
     end note
 ```
 
-The entire cycle comes down to updating (redrawing the component, the first drawing also calls it) if such was requested. For this, the [invalidateDrawing](/api/namespace/UI#IWindow.invalidateDrawing) function of the window or [invalidateUIDrawing](/api/namespace/UI#Container.invalidateUIDrawing) of the container is used.
+The entire cycle comes down to updating (redrawing the component, the first drawing also calls it) if such was requested. For this, the [invalidateDrawing](/api/interface/UI.IWindow#invalidateDrawing) function of the window or [invalidateUIDrawing](/api/class/UI.Container#invalidateUIDrawing) of the container is used.
 
 The background layout has no events, even extendable components can only be drawn. That's why they are static components, so as not to interact with anything.
 

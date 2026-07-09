@@ -52,8 +52,8 @@ Hotfix after previous update and a few useful improvements
 
 ### New Features {#3.1.0b126-new-features}
 
-- Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/namespace/Dimensions#CustomDimension) (@rislaed)
-- Added support for custom [block sounds](/api/namespace/Block#SpecialType.sound) (@rislaed)
+- Added methods for manipulating weather, atmosphere, and other [dimension properties](/api/class/Dimensions.CustomDimension) (@rislaed)
+- Added support for custom [block sounds](/api/interface/Block.SpecialType#sound) (@rislaed)
 - Added support for blocks and items namespaces and methods for working with them (@zheka2304, @rislaed)
 - Added support for parsing HTML colors in [UI elements](/api/namespace/UI#FontColor) (@rislaed)
 - Added a method to get the list of custom dimensions (@rislaed)
@@ -68,7 +68,7 @@ Which will significantly improve performance and simplify the introduction of ne
 
 - Restored functionality and migrated the PathNavigation module to code generation (@zheka2304)
 - Migrated the [BlockSource](/api/class/BlockSource) module to code generation (@reider745)
-- Added methods for API module manipulation: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) (@rislaed)
+- Added methods for API module manipulation: [injectBindingsIntoScope](/api#injectBindingsIntoScope), [injectModule(s)IntoScope](/api#injectModuleIntoScope) (@rislaed)
 
 ### Fixes {#3.1.0b126-fixes}
 
@@ -93,13 +93,13 @@ Which will significantly improve performance and simplify the introduction of ne
 - Added functions [Game.addWorldToCache](/api/namespace/Game#addWorldToCache)/[updateWorlds](/api/namespace/Game#updateWorlds)/[getWorldsCount](/api/namespace/Game#getWorldsCount)
 - Added method [BlockSource.randomTick](/api/class/BlockSource#randomTick)
 - Added method [NativeTileEntity.tick](/api/interface/NativeTileEntity#tick)
-- Added new block properties [burnOdds](/api/namespace/Block#SpecialType.burn_odds)/[flameOdds](/api/namespace/Block#SpecialType.flame_odds)
+- Added new block properties [burnOdds](/api/interface/Block.SpecialType#burn_odds)/[flameOdds](/api/interface/Block.SpecialType#flame_odds)
 
 ### Fixes {#3.1.0b125-fixes}
 
 - Fixed saves were sometimes broken
 - Fixed custom colors for fog/water/sky
-- Fixed [PathNavigation](/api/namespace/Entity#PathNavigation) module
+- Fixed [PathNavigation](/api/interface/Entity.PathNavigation) module
 - In dev mode compilation errors now are displayed earlier
 - Fixed block pallete generation for net sync
 - Fixed some vanilla block icons in UI
@@ -178,12 +178,12 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 :::note Other changes (@reider745)
 
 - Added proxy to mod browser, which is used in case main url is not available (@spawnrys)
-- Fixed [client TileEntity sync](/api/namespace/TileEntity#LocalTileEntityPrototype), added methods [onConnectionPlayer](/api/namespace/TileEntity#TileEntityPrototype.onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#TileEntityPrototype.onDisconnectionPlayer)
-- In case of saves failture, they will now default to [empty js object](/api/namespace/Saver#IScopeSaver.getDefaultSaves)
+- Fixed [client TileEntity sync](/api/interface/TileEntity.LocalTileEntityPrototype), added methods [onConnectionPlayer](/api/interface/TileEntity.TileEntityPrototype#onConnectionPlayer)/[onDisconnectionPlayer](/api/interface/TileEntity.TileEntityPrototype#onDisconnectionPlayer)
+- In case of saves failture, they will now default to [empty js object](/api/interface/Saver.IScopeSaver#getDefaultSaves)
 - Added ICRender condition [ICRender.BlockState(x, y, z, stateId, valueState)](/api/namespace/ICRender#BlockState)
 - Fixed UI on devices with notch (Added switch to config)
 - Optimized static item models (Added to config)
-- Fixed [loadCustom](/api/namespace/Animation#Base.loadCustom) in remote sessions
+- Fixed [loadCustom](/api/class/Animation.Base#loadCustom) in remote sessions
 - Fixed [Entity.getMobile](/api/namespace/Entity#getMobile)
 - Fixed [World.getWorldTime](/api/namespace/World#getWorldTime) on client
 
@@ -197,7 +197,7 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Added [Player.localPlayerTurn(x, y)](/api/namespace/Player#localPlayerTurn)
 - Added PlayerActor methods [canFly](/api/class/PlayerActor#canFly)/[setCanFly](/api/class/PlayerActor#setCanFly), [setPlayerBoolean](/api/class/PlayerActor#setPlayerBooleanAbility)/[FloatAbility](/api/class/PlayerActor#setPlayerFloatAbility), [getPlayerBoolean](/api/class/PlayerActor#getPlayerBooleanAbility)/[FloatAbility](/api/class/PlayerActor#getPlayerFloatAbility)
 - Fixed [World](/api/namespace/World) module was not working in remote sessions
-- Added support for custom [empty buckets](/api/namespace/Block#LiquidDescriptor.bucket), when registering custom liquids
+- Added support for custom [empty buckets](/api/interface/Block.LiquidDescriptor#bucket), when registering custom liquids
 - Fixed crash in [block step on event](/api/namespace/Block#registerEntityStepOnFunction)
 - Fixed [Dimensions.transfer](/api/namespace/Dimensions#transfer) when transfering into the same dimension
 - Minor fixes to custom dimension generator
@@ -212,12 +212,12 @@ Added modded server support based on [ZoteCore](https://github.com/Reider745/Zot
 - Mod loading priority support
 - Preview built-in [ECS](/api/namespace/ECS)
 - Added [ItemModel.setSpriteHandRender](/api/interface/ItemModel#setSpriteHandRender) method
-- Added CustomDimensionGenerator method [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/namespace/Dimensions#CustomGenerator.setGenerateCaves), fixed underwater caves generated by default
+- Added CustomDimensionGenerator method [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/class/Dimensions.CustomGenerator#setGenerateCaves), fixed underwater caves generated by default
 - Added BlockSource method [listEntitiesOfTypeInAABB(x1, y1, z1, x2, y2, z2, stringType)](/api/class/BlockSource#listEntitiesOfTypeInAABB), fixed [listEntitiesInAABB](/api/class/BlockSource#listEntitiesInAABB) for exact type
 - Added [Player.getLocal()](/api/namespace/Player#getLocal) and [Player.getServer()](/api/namespace/Player#getServer) methods
 - Added [UI.getMinecraftUiScale()](/api/namespace/UI#getMinecraftUiScale) and [UI.getRelMinecraftUiScale()](/api/namespace/UI#getRelMinecraftUiScale) methods
 - Fixed enchant custom callbacks crash
-- Fixed [knockback resistance](/api/namespace/Item#ArmorParams.knockbackResist) for custom armor
+- Fixed [knockback resistance](/api/interface/Item.ArmorParams#knockbackResist) for custom armor
 - Fixes for mod installation
 
 ## 2.2.1b114
@@ -259,8 +259,8 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 ## 2.2.1b103
 
-- When creating liquids you can now automatically create buckets with full functionality [(see docs)](/api/namespace/Block#LiquidDescriptor.bucket)
-- Added [isRenewable](/api/namespace/Block#LiquidDescriptor.isRenewable) parameter for custom liquids
+- When creating liquids you can now automatically create buckets with full functionality [(see docs)](/api/interface/Block.LiquidDescriptor#bucket)
+- Added [isRenewable](/api/interface/Block.LiquidDescriptor#isRenewable) parameter for custom liquids
 - Fixed bucket interaction with custom liquids
 
 ## 2.2.1b102
@@ -306,17 +306,17 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 
 - Added methods [Recipes.getAllWorkbenchRecipes()](/api/namespace/Recipes#getAllWorkbenchRecipes) and [Recipes.getAllFurnaceRecipes()](/api/namespace/Recipes#getAllFurnaceRecipes)
 - Added method [BlockSource.getBiomeDownfallAt(x, y, z)](/api/class/BlockSource#getBiomeDownfallAt)
-- Added slot element properties: [iconScale](/api/namespace/UI#UISlotElementProps.iconScale) and [disablePixelPerfect](/api/namespace/UI#UISlotElementProps.disablePixelPerfect)
-- Added methods for UI.Window: [updateScrollDimensions()](/api/namespace/UI#Window.updateScrollDimensions) and [updateWindowPositionAndSize()](/api/namespace/UI#Window.updateWindowPositionAndSize)
-- Added new text alignment type: 3 - [ALIGN_CENTER_HORIZONTAL](/api/namespace/UI#Font.ALIGN_CENTER_HORIZONTAL)
-- Added functon [runOnClientThread(function)](/api/function/runOnClientThread), works as [runOnMainThread](/api/function/runOnMainThread), but for client ticking thread
+- Added slot element properties: [iconScale](/api/interface/UI.UISlotElementProps#iconScale) and [disablePixelPerfect](/api/interface/UI.UISlotElementProps#disablePixelPerfect)
+- Added methods for UI.Window: [updateScrollDimensions()](/api/class/UI.Window#updateScrollDimensions) and [updateWindowPositionAndSize()](/api/class/UI.Window#updateWindowPositionAndSize)
+- Added new text alignment type: 3 - [ALIGN_CENTER_HORIZONTAL](/api/class/UI.Font#ALIGN_CENTER_HORIZONTAL)
+- Added functon [runOnClientThread(function)](/api#runOnClientThread), works as [runOnMainThread](/api#runOnMainThread), but for client ticking thread
 - Fixed some item IDs compatibility and related recipes - nether start, melon, records, horse armor, fireball, fireworks
 - Fixed chestplate model for modded armor
 
 ## 2.2.1b95
 
 - Added BlockSource methods [setExtraBlock(x, y, z, BlockState/\[id, data\])](/api/class/BlockSource#setExtraBlock) and [getExtraBlock(x, y, z) -> BlockState](/api/class/BlockSource#getExtraBlock) to access and modify extra blocks, such as liquids in other blocks
-- Added block description parameters [can_contain_liquid](/api/namespace/Block#SpecialType.can_contain_liquid) and [can_be_extra_block](/api/namespace/Block#SpecialType.can_be_extra_block)
+- Added block description parameters [can_contain_liquid](/api/interface/Block.SpecialType#can_contain_liquid) and [can_be_extra_block](/api/interface/Block.SpecialType#can_be_extra_block)
 - Added methods [Block.canContainLiquid(id)](/api/namespace/Block#canContainLiquid) and [Block.canBeExtraBlock(id)](/api/namespace/Block#canBeExtraBlock)
 - Fixed settings changes were not applied on first launch after change
 - Fixed crashes in mod config
@@ -406,7 +406,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 ## 2.2.0b82
 
 - Added ItemContainer methods [setSlotSavingEnabled(name, enabled)](/api/class/ItemContainer#setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/class/ItemContainer#setGlobalSlotSavingEnabled), they are used to control, which slots are saved
-- Added parameter to [destroy](/api/namespace/TileEntity#TileEntityPrototype.destroy) method of tile entity, that indicates, if it was destroyed in *DestroyBlock* callback
+- Added parameter to [destroy](/api/interface/TileEntity.TileEntityPrototype#destroy) method of tile entity, that indicates, if it was destroyed in *DestroyBlock* callback
 - Optimized inventory editing methods for player
 - Fixed editing player abilities, including flying
 - Fixed server open listener in [ItemContainer](/api/class/ItemContainer) was called before open packet is sent
@@ -436,7 +436,7 @@ For users, who have [Kernel Extension](https://icmods.mineprogramming.org/mod?id
 - Fixed loading mods with resource packs
 - Fixed saves errors
 - Fixed loading mods on some devices
-- Added parameter "category" in [Item.createItem](/api/namespace/Item#ItemParams.category)
+- Added parameter "category" in [Item.createItem](/api/interface/Item.ItemParams#category)
 
 ## 2.2.0b75
 

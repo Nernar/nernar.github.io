@@ -1,6 +1,6 @@
 # Block Models
 
-If we try to describe the purpose of [ICRender](/api/namespace/ICRender) in two words, it turns out that block shapes or models perfectly fit it. This technology will allow you to link newly created models to a specific block, place the desired model at coordinates, dynamically update renders, physical and visual shapes of blocks, and perhaps even replace models of regular items altogether. Let's start by reviewing [BlockRenderer](/api/namespace/BlockRenderer#Model) models and end with a few shapes for a variety of purposes.
+If we try to describe the purpose of [ICRender](/api/namespace/ICRender) in two words, it turns out that block shapes or models perfectly fit it. This technology will allow you to link newly created models to a specific block, place the desired model at coordinates, dynamically update renders, physical and visual shapes of blocks, and perhaps even replace models of regular items altogether. Let's start by reviewing [BlockRenderer](/api/class/BlockRenderer.Model) models and end with a few shapes for a variety of purposes.
 
 :::note How simple shapes differ from models
 

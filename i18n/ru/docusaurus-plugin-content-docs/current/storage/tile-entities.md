@@ -34,7 +34,7 @@ import NotImplemented from "@site/src/components/NotImplemented"
 
 ### Привязка интерфейсов
 
-По умолчанию, любой тайл вызывает интерфейс, если его имя было возвращено функцией [getScreenName](/api/namespace/TileEntity#TileEntityPrototype.getScreenName) и он есть у клиента в методе [getScreenByName](/api/namespace/TileEntity#TileEntityPrototype.getScreenByName) прототипа.
+По умолчанию, любой тайл вызывает интерфейс, если его имя было возвращено функцией [getScreenName](/api/interface/TileEntity.TileEntityPrototype#getScreenName) и он есть у клиента в методе [getScreenByName](/api/interface/TileEntity.TileEntityPrototype#getScreenByName) прототипа.
 
 ```mdx-code-block
 <NotImplemented />

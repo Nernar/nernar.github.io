@@ -66,7 +66,7 @@ You can connect to your friends from Xbox account with same mods as yours (with 
 
 ## 2.1.0b60
 
-- Added method [exists()](/api/namespace/Animation#Base.exists) to animations
+- Added method [exists()](/api/class/Animation.Base#exists) to animations
 - Minor fixes
 
 ## 2.1.0b59
@@ -99,7 +99,7 @@ You can connect to your friends from Xbox account with same mods as yours (with 
 ## 2.1.0b55
 
 - Fixed compatibility with Recipe Viewer
-- Added block special type parameter [color_source](/api/namespace/Block#SpecialType.color_source), can be one of **"none"**, **"leaves"**, **"grass"**, **"water"**
+- Added block special type parameter [color_source](/api/interface/Block.SpecialType#color_source), can be one of **"none"**, **"leaves"**, **"grass"**, **"water"**
 - Sped up loading of item models and made it less RAM consuming
 - Minor improvements
 
@@ -129,7 +129,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Added item model method [setModelOverrideCallback(function(item) \{ ... \})](/api/interface/ItemModel#setModelOverrideCallback), acts like itemOverrideFunctions, but returns ItemModel instance, instead of icon
 - Added method [ItemModel.newStandalone()](/api/namespace/ItemModel#newStandalone), creates empty ItemModel instance, not linked to any item, this models should be used in [setModelOverrideCallback](/api/interface/ItemModel#setModelOverrideCallback)
 - Item override function now receives extra data
-- Fixed crash, caused by calling [toScriptable()](/api/namespace/NBT#ListTag.toScriptable) method of NBT tags
+- Fixed crash, caused by calling [toScriptable()](/api/class/NBT.ListTag#toScriptable) method of NBT tags
 - D8 dexer, instead of old DX is now used to build dex files from java
 
 ## 2.0.5b44
@@ -141,17 +141,17 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Mod UI now supports modded animated item icons
 - Icon override functions now receives second parameter - [isModUi](/api/namespace/Item#registerIconOverrideFunction)
 - Added function [Debug.big](/api/namespace/Debug#big), acts like [Debug.m](/api/namespace/Debug#m), but outputs dialog with selectable text and pretty JSON
-- TileEntity function [click](/api/namespace/TileEntity#TileEntityPrototype.click) now receives additional parameter - click coords
+- TileEntity function [click](/api/interface/TileEntity.TileEntityPrototype#click) now receives additional parameter - click coords
 - Fixed rare addon-related crash
 
 ## 2.0.4b43
 
 - Automatically deleting resource and behavior packs from uninstalled mods upon world load
 - RenderMesh now can receive not only absolute file path, but also resource path and name of file in *models/* dir in resources.
-- Deprecated slot element parameters [isTransparentBackground](/api/namespace/UI#UISlotElementProps.isTransparentBackground) and [needClean](/api/namespace/UI#UISlotElementProps.needClean), now slot supports transparent background by default
-- Added container method [setOnOpenListener(function(container, window) \{ ... \})](/api/namespace/UI#Container.setOnOpenListener)
+- Deprecated slot element parameters [isTransparentBackground](/api/interface/UI.UISlotElementProps#isTransparentBackground) and [needClean](/api/interface/UI.UISlotElementProps#needClean), now slot supports transparent background by default
+- Added container method [setOnOpenListener(function(container, window) \{ ... \})](/api/class/UI.Container#setOnOpenListener)
 - Removed shared objects, built for x86 ABI to reduce overall weight
-- Fixed error, that occurred after second [WRAP_JAVA](/api/function/WRAP_JAVA) call on same class
+- Fixed error, that occurred after second [WRAP_JAVA](/api#WRAP_JAVA) call on same class
 
 ## 2.0.4b42
 
@@ -168,7 +168,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 ## 2.0.4b40
 
 - Optimized mod UI, making it a bit faster and consume less RAM
-- Added new mode for standard window, making all contents appear in separate window instead of background one. To use it in a new mode, use [UI.StandardWindow](/api/namespace/UI#StandardWindow) instead of misspelled [UI.StandartWindow](/api/namespace/UI#StandartWindow)
+- Added new mode for standard window, making all contents appear in separate window instead of background one. To use it in a new mode, use [UI.StandardWindow](/api/class/UI.StandardWindow) instead of misspelled [UI.StandartWindow](/api/class/UI.StandartWindow)
 - Resource and behavior packs are now injected inside each world upon enter
 - Animations (static models) are now cleaned up on dimension change
 - Animations are now garbage collected after they are destroyed in world
@@ -181,9 +181,9 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 ## 2.0.4b38
 
 - Added [TagRegistry](/api/namespace/TagRegistry) module. Docs will be available after some tests and maybe rework.
-- Added particle type properties [framesX](/api/namespace/Particles#ParticleDescription.framesX) and [framesY](/api/namespace/Particles#ParticleDescription.framesY), which define frame grid size
-- Added particle type property [rebuildDelay](/api/namespace/Particles#ParticleDescription.rebuildDelay), which defines time in ticks between particle mesh updates
-- Added particle type properties [color2](/api/namespace/Particles#ParticleDescription.color2) and [animators.color](/api/namespace/Particles#ParticleDescription.animators), which allow animation of particle color
+- Added particle type properties [framesX](/api/interface/Particles.ParticleDescription#framesX) and [framesY](/api/interface/Particles.ParticleDescription#framesY), which define frame grid size
+- Added particle type property [rebuildDelay](/api/interface/Particles.ParticleDescription#rebuildDelay), which defines time in ticks between particle mesh updates
+- Added particle type properties [color2](/api/interface/Particles.ParticleDescription#color2) and [animators.color](/api/interface/Particles.ParticleDescription#animators), which allow animation of particle color
 - Fixed slabs drop
 - Fixed some textures in UI
 
@@ -245,7 +245,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.2b29
 
-- Better TileEntity system: now unloaded tile entities, or ones without tick function will not be counted, when checking updatable limit. Added TileEntity functions [load()](/api/namespace/TileEntity#TileEntityPrototype.load), [unload()](/api/namespace/TileEntity#TileEntityPrototype.unload) and [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/namespace/TileEntity#TileEntityPrototype.onCheckerTick).
+- Better TileEntity system: now unloaded tile entities, or ones without tick function will not be counted, when checking updatable limit. Added TileEntity functions [load()](/api/interface/TileEntity.TileEntityPrototype#load), [unload()](/api/interface/TileEntity.TileEntityPrototype#unload) and [onCheckerTick(isInitialized, isLoaded, wasLoaded)](/api/interface/TileEntity.TileEntityPrototype#onCheckerTick).
 - Fixed crash with mob custom models
 - Other minor fixes
 
@@ -273,7 +273,7 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 
 ## 2.0.2b25
 
-- Added block description property - [sound](/api/namespace/Block#SpecialType.sound), sets one of standard block sound types
+- Added block description property - [sound](/api/interface/Block.SpecialType#sound), sets one of standard block sound types
 - Added RenderMesh method [setLightPos(x, y, z)](/api/class/RenderMesh#setLightPos) - set relative position for block lighting
 - Added RenderMesh method parameter [setFoliageTinted(leavesType)](/api/class/RenderMesh#setFoliageTinted)
 - Fixed [ItemModel.occupy()](/api/interface/ItemModel#occupy) method not preventing setting ICRender models
@@ -294,14 +294,14 @@ Alot of new API modules, callbacks and functions were introduced in this update,
 - Item model caching will make their generation much faster after first launch
 - [ItemModel](/api/namespace/ItemModel) API module is massively improved and allows access to all model-related stuff
 - Additional materials can be passed to handle glint on item models
-- Block [rendertype](/api/namespace/Block#SpecialType.rendertype) parameter is fixed and will affect block item model
+- Block [rendertype](/api/interface/Block.SpecialType#rendertype) parameter is fixed and will affect block item model
 
 ### Other improvements
 
-- Added condition [ICRender.RANDOM(value, max\[, seed\])](/api/namespace/ICRender#RANDOM) - for given block position generates random number from 0 to max - 1, and returns, if it is equal to value. Has method [setAxisEnabled(0-2, enabled)](/api/namespace/ICRender#RANDOM_CONDITION.setAxisEnabled) to ignore some axises.
+- Added condition [ICRender.RANDOM(value, max\[, seed\])](/api/namespace/ICRender#RANDOM) - for given block position generates random number from 0 to max - 1, and returns, if it is equal to value. Has method [setAxisEnabled(0-2, enabled)](/api/class/ICRender.RANDOM_CONDITION#setAxisEnabled) to ignore some axises.
 - Added functions [Block.setupAsRedstoneReceiver(nameID, connectToRedstone)](/api/namespace/Block#setupAsRedstoneReceiver), [Block.setupAsRedstoneEmitter(nameID, connectToRedstone)](/api/namespace/Block#setupAsRedstoneEmitter), [Block.setupAsNonRedstoneTile(nameID)](/api/namespace/Block#setupAsNonRedstoneTile)
 - RenderMesh: added method [addMesh(mesh\[, x, y, z\[, scaleX, scaleY, scaleZ\]\])](/api/class/RenderMesh#addMesh), alpha value now can be passed to [setColor](/api/class/RenderMesh#setColor)
-- Added block description property - [mapcolor](/api/namespace/Block#SpecialType.mapcolor), sets 0xRRGGBB map color to block
+- Added block description property - [mapcolor](/api/interface/Block.SpecialType#mapcolor), sets 0xRRGGBB map color to block
 
 ## 2.0.2b22
 
@@ -319,9 +319,9 @@ This update adds alot and might be unstable.
 
 - Added ability to create custom materials and shaders (more info will be provided soon)
 - Added UI and in-hand item models, to access use [ItemModel.getFor(id, data)](/api/namespace/ItemModel#getFor)
-- Added new animation mode - direct mesh render with material, to enter this mode call method [describe(\{ mesh: RenderMesh, skin: "texture name", material: "material name" \})](/api/namespace/Animation#Base.describe)
+- Added new animation mode - direct mesh render with material, to enter this mode call method [describe(\{ mesh: RenderMesh, skin: "texture name", material: "material name" \})](/api/class/Animation.Base#describe)
 - Blocks with ICRender will automatically gain inventory models
-- Added custom dimension methods: [setFogDistance(close, far)](/api/namespace/Dimensions#CustomDimension.setFogDistance), [resetFogDistance()](/api/namespace/Dimensions#CustomDimension.resetFogDistance)
+- Added custom dimension methods: [setFogDistance(close, far)](/api/class/Dimensions.CustomDimension#setFogDistance), [resetFogDistance()](/api/class/Dimensions.CustomDimension#resetFogDistance)
 - Other minor fixes
 
 ## 2.0.1b18

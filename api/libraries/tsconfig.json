@@ -5,11 +5,16 @@
 		"lib": ["ES2015"]
 	},
 	"files": [
-		"../declarations/android.d.ts",
-		"../declarations/core-engine.d.ts"
+		"../declarations/android.d.ts"
+	],
+	"references": [
+		{
+			"path": "../core-engine"
+		}
 	],
 	"include": [
-		"**/*.d.ts"
+		"**/*.d.ts",
+		"../core-engine/**/*.d.ts"
 	],
 	"exclude": [
 		"dom",

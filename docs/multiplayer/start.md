@@ -61,7 +61,7 @@ Packets that the server receives are called [server](server-packets). It is very
 Let's look at good and bad examples of multiplayer implementation:
 
 1. Bad examples
-   1. A tile entity spawns particles not inside [client.onTick](/api/namespace/TileEntity#LocalTileEntityPrototype), but sends a packet to the client with the start of particles.
+   1. A tile entity spawns particles not inside [client.onTick](/api/interface/TileEntity.LocalTileEntityPrototype), but sends a packet to the client with the start of particles.
    2. One packet is used for many actions, for example, for loading, destroying, changing position and texture for [Animation](/api/namespace/Animation).
    3. Instead of creating a packet for launching a particle shape ([by the way, we looked at them here](../environment/particles)), the same packet is sent to spawn one particle many times to draw the same shape.
 2. Good examples

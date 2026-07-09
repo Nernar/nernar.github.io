@@ -26,7 +26,7 @@ stateDiagram-v2
 
 In addition to the standard background layout update, elements detect user touches, process bindings, and are cached for automatic self-updating.
 
-Like other components, elements can be redrawn using the container's [invalidateElements](/api/namespace/UI#IWindow.invalidateElements) or [invalidateUIElements](/api/namespace/UI#Container.invalidateUIElements) function. This will immediately lead to the recaching of all elements, although usually a standard caching every half a second is quite enough for a stable update.
+Like other components, elements can be redrawn using the container's [invalidateElements](/api/interface/UI.IWindow#invalidateElements) or [invalidateUIElements](/api/class/UI.Container#invalidateUIElements) function. This will immediately lead to the recaching of all elements, although usually a standard caching every half a second is quite enough for a stable update.
 
 Some elements have their own events, they are directly related to user interactions, almost all (with the exception of inventory slots) also process touches, the description objects of which are given in the [corresponding paragraph](#common-properties).
 
@@ -133,7 +133,7 @@ But to more finely tune interaction with a component, you can process events you
 }
 ```
 
-Consider [ITouchEvent](/api/namespace/UI#ITouchEvent) for details on available properties and methods of the `event` parameter.
+Consider [ITouchEvent](/api/interface/UI.ITouchEvent) for details on available properties and methods of the `event` parameter.
 
 ### Images
 

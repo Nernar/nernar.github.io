@@ -52,8 +52,8 @@ toc_max_heading_level: 2
 
 ### Нововведения {#3.1.0b126-new-features}
 
-- Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/namespace/Dimensions#CustomDimension) (@rislaed)
-- Добавлена поддержка кастомных [звуков блоков](/api/namespace/Block#SpecialType.sound) (@rislaed)
+- Добавлены методы для манипуляции погодой, атмосферой и другими [свойствами измерений](/api/class/Dimensions.CustomDimension) (@rislaed)
+- Добавлена поддержка кастомных [звуков блоков](/api/interface/Block.SpecialType#sound) (@rislaed)
 - Добавлена поддержка неймспейсов для блоков и предметов и методы для работы с ними (@zheka2304, @rislaed)
 - Поддержка парсинга HTML-цветов в [элементах интерфейса](/api/namespace/UI#FontColor) (@rislaed)
 - Добавлен метод для получения списка кастумных измерений (@rislaed)
@@ -68,7 +68,7 @@ toc_max_heading_level: 2
 
 - Восстановление работы и перенос на кодогенерацию модуля PathNavigation (@zheka2304)
 - Перенос модуля [BlockSource](/api/class/BlockSource) на кодогенерацию (@reider745)
-- Добавлены методы для манипуляций с модулями API: [injectBindingsIntoScope](/api/function/injectBindingsIntoScope), [injectModule(s)IntoScope](/api/function/injectModuleIntoScope) (@rislaed)
+- Добавлены методы для манипуляций с модулями API: [injectBindingsIntoScope](/api#injectBindingsIntoScope), [injectModule(s)IntoScope](/api#injectModuleIntoScope) (@rislaed)
 
 ### Исправления {#3.1.0b126-fixes}
 
@@ -98,10 +98,10 @@ toc_max_heading_level: 2
 
 - Исправление сохранений
 - Исправление цвета неба/тумана/воды измерений
-- Исправлен модуль [PathNavigation](/api/namespace/Entity#PathNavigation)
+- Исправлен модуль [PathNavigation](/api/interface/Entity.PathNavigation)
 - В режиме разработчика теперь ошибки компиляции отображаются до входа в игру, а не после полной иницилизации
 - Исправление генерации палитры блоков для синхронизации с сервером
-- Параметры для блока [burnOdds](/api/namespace/Block#SpecialType.burn_odds)/[flameOdds](/api/namespace/Block#SpecialType.flame_odds)
+- Параметры для блока [burnOdds](/api/interface/Block.SpecialType#burn_odds)/[flameOdds](/api/interface/Block.SpecialType#flame_odds)
 - Фикс некоторых иконок ванильных блоков в интерфейсе
 
 ## 3.0.0b124
@@ -180,12 +180,12 @@ toc_max_heading_level: 2
 :::note Другие изменения (@reider745)
 
 - Добавлен прокси в мод браузере, который включается при невозможности подключиться к основной игре (@spawnrys)
-- Исправления синхронизации [клиентской части TileEntity](/api/namespace/TileEntity#LocalTileEntityPrototype), добавлены новые методы [onConnectionPlayer](/api/namespace/TileEntity#TileEntityPrototype.onConnectionPlayer)/[onDisconnectionPlayer](/api/namespace/TileEntity#TileEntityPrototype.onDisconnectionPlayer)
-- Теперь в сохранениях вместо ошибки будет передаваться [пустой объект](/api/namespace/Saver#IScopeSaver.getDefaultSaves)
+- Исправления синхронизации [клиентской части TileEntity](/api/interface/TileEntity.LocalTileEntityPrototype), добавлены новые методы [onConnectionPlayer](/api/interface/TileEntity.TileEntityPrototype#onConnectionPlayer)/[onDisconnectionPlayer](/api/interface/TileEntity.TileEntityPrototype#onDisconnectionPlayer)
+- Теперь в сохранениях вместо ошибки будет передаваться [пустой объект](/api/interface/Saver.IScopeSaver#getDefaultSaves)
 - Добавлено условие [ICRender.BlockState(x, y, z, stateId, valueState)](/api/namespace/ICRender#BlockState)
 - Исправлена работа интерфейсов с челкой (добавлен переключатель в настройки)
 - Оптимизация генерации моделей предметов (добавлены настройки)
-- Исправлен [loadCustom](/api/namespace/Animation#Base.loadCustom) у статических моделей на подключенных клиентах
+- Исправлен [loadCustom](/api/class/Animation.Base#loadCustom) у статических моделей на подключенных клиентах
 - Исправлен [Entity.getMobile](/api/namespace/Entity#getMobile)
 - [World.getWorldTime](/api/namespace/World#getWorldTime) может возвращать время на клиенте
 
@@ -199,7 +199,7 @@ toc_max_heading_level: 2
 - Добавлен метод [Player.localPlayerTurn(x, y)](/api/namespace/Player#localPlayerTurn)
 - В PlayerActor добавлены методы [canFly](/api/class/PlayerActor#canFly)/[setCanFly](/api/class/PlayerActor#setCanFly), [setPlayerBoolean](/api/class/PlayerActor#setPlayerBooleanAbility)/[FloatAbility](/api/class/PlayerActor#setPlayerFloatAbility), [getPlayerBoolean](/api/class/PlayerActor#getPlayerBooleanAbility)/[FloatAbility](/api/class/PlayerActor#getPlayerFloatAbility)
 - Исправлено то что модуль [World](/api/namespace/World) не работал при подключении в мультиплеере
-- Добавлена поддержка [пустых ведер](/api/namespace/Block#LiquidDescriptor.bucket) для жидкостей
+- Добавлена поддержка [пустых ведер](/api/interface/Block.LiquidDescriptor#bucket) для жидкостей
 - Исправлен сломанный [эвент наступания на блок](/api/namespace/Block#registerEntityStepOnFunction)
 - Исправлено перемещение игрока с помощью [Dimensions.transfer](/api/namespace/Dimensions#transfer) в тоже измерение где он находится
 - Небольшие исправления генератора кастомных измерений
@@ -214,12 +214,12 @@ toc_max_heading_level: 2
 - Поддержка приоритета загрузки модов
 - Добавлена экспериментальная встроенная [ECS](/api/namespace/ECS)
 - Добавлен метод [ItemModel.setSpriteHandRender](/api/interface/ItemModel#setSpriteHandRender)
-- Добавлен метод [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/namespace/Dimensions#CustomGenerator.setGenerateCaves), исправлена генерация подземных водоемов по умолчанию
+- Добавлен метод [CustomDimensionGenerator.setGenerateCaves(generate[, generateUnderwater])](/api/class/Dimensions.CustomGenerator#setGenerateCaves), исправлена генерация подземных водоемов по умолчанию
 - В BlockSource добавлен метод [listEntitiesOfTypeInAABB(x1, y1, z1, x2, y2, z2, stringType)](/api/class/BlockSource#listEntitiesOfTypeInAABB), исправлен [listEntitiesInAABB](/api/class/BlockSource#listEntitiesInAABB) с теми же аргументами
 - Добавлены методы [Player.getLocal()](/api/namespace/Player#getLocal) и [Player.getServer()](/api/namespace/Player#getServer)
 - Добавлены методы [UI.getMinecraftUiScale()](/api/namespace/UI#getMinecraftUiScale) и [UI.getRelMinecraftUiScale()](/api/namespace/UI#getRelMinecraftUiScale)
 - Исправлен краш кастомных энчантов
-- Исправлена установка [сопротивления отбрасыванию броне](/api/namespace/Item#ArmorParams.knockbackResist)
+- Исправлена установка [сопротивления отбрасыванию броне](/api/interface/Item.ArmorParams#knockbackResist)
 - Исправления процесса установки модов
 
 ## 2.2.1b114
@@ -261,8 +261,8 @@ toc_max_heading_level: 2
 
 ## 2.2.1b103
 
-- При создании жидкости теперь можно автоматически создать ведро с полным функционалом [(см. документацию)](/api/namespace/Block#LiquidDescriptor.bucket)
-- Добавлен параметр [isRenewable](/api/namespace/Block#LiquidDescriptor.isRenewable) для жидкостей, отвечающий за то, является ли она возобновляемой
+- При создании жидкости теперь можно автоматически создать ведро с полным функционалом [(см. документацию)](/api/interface/Block.LiquidDescriptor#bucket)
+- Добавлен параметр [isRenewable](/api/interface/Block.LiquidDescriptor#isRenewable) для жидкостей, отвечающий за то, является ли она возобновляемой
 - Исправлено взаимодействие ведер с жидкостями из модов
 
 ## 2.2.1b102
@@ -308,17 +308,17 @@ toc_max_heading_level: 2
 
 - Добавлены методы [Recipes.getAllWorkbenchRecipes()](/api/namespace/Recipes#getAllWorkbenchRecipes) и [Recipes.getAllFurnaceRecipes()](/api/namespace/Recipes#getAllFurnaceRecipes)
 - Добавлен метод [BlockSource.getBiomeDownfallAt(x, y, z)](/api/class/BlockSource#getBiomeDownfallAt)
-- Добавлены настройки элемента слота: [iconScale](/api/namespace/UI#UISlotElementProps.iconScale) и [disablePixelPerfect](/api/namespace/UI#UISlotElementProps.disablePixelPerfect)
-- Добавлены методы UI.Window: [updateScrollDimensions()](/api/namespace/UI#Window.updateScrollDimensions) и [updateWindowPositionAndSize()](/api/namespace/UI#Window.updateWindowPositionAndSize)
-- Добавлен новый тип расположения текста: 3 - [ALIGN_CENTER_HORIZONTAL](/api/namespace/UI#Font.ALIGN_CENTER_HORIZONTAL)
-- Добавлен метод [runOnClientThread(function)](/api/function/runOnClientThread), аналог [runOnMainThread](/api/function/runOnMainThread), но для клиентского потока
+- Добавлены настройки элемента слота: [iconScale](/api/interface/UI.UISlotElementProps#iconScale) и [disablePixelPerfect](/api/interface/UI.UISlotElementProps#disablePixelPerfect)
+- Добавлены методы UI.Window: [updateScrollDimensions()](/api/class/UI.Window#updateScrollDimensions) и [updateWindowPositionAndSize()](/api/class/UI.Window#updateWindowPositionAndSize)
+- Добавлен новый тип расположения текста: 3 - [ALIGN_CENTER_HORIZONTAL](/api/class/UI.Font#ALIGN_CENTER_HORIZONTAL)
+- Добавлен метод [runOnClientThread(function)](/api#runOnClientThread), аналог [runOnMainThread](/api#runOnMainThread), но для клиентского потока
 - Исправления числовых идентификаторов предметов и связанных рецептов - звезда ада, арбуз, пластинки, лошадиная броня, огненный шар, фейерверки
 - Исправлена модель нагрудника для брони из модов
 
 ## 2.2.1b95
 
 - Добавлены методы BlockSource [setExtraBlock(x, y, z, BlockState/\[id, data\])](/api/class/BlockSource#setExtraBlock) и [getExtraBlock(x, y, z) -> BlockState](/api/class/BlockSource#getExtraBlock) для доступа и установки дополнительных блоков, таких как вода внутри других блоков
-- Добавлены параметры описания блоков [can_contain_liquid](/api/namespace/Block#SpecialType.can_contain_liquid) и [can_be_extra_block](/api/namespace/Block#SpecialType.can_be_extra_block)
+- Добавлены параметры описания блоков [can_contain_liquid](/api/interface/Block.SpecialType#can_contain_liquid) и [can_be_extra_block](/api/interface/Block.SpecialType#can_be_extra_block)
 - Добавлены методы [Block.canContainLiquid(id)](/api/namespace/Block#canContainLiquid) and [Block.canBeExtraBlock(id)](/api/namespace/Block#canBeExtraBlock)
 - Исправлена ошибка, из-за которой изменения настроек не применялись в первый запуск после изменений
 - Исправлены вылеты в конфигурации модов
@@ -407,7 +407,7 @@ toc_max_heading_level: 2
 ## 2.2.0b82
 
 - Добавлены методы контейнера [setSlotSavingEnabled(name, enabled)](/api/class/ItemContainer#setSlotSavingEnabled), [setGlobalSlotSavingEnabled(enabled)](/api/class/ItemContainer#setGlobalSlotSavingEnabled), которые контролируют то, какие слоты сохраняются
-- Добавлен параметр методу [destroy](/api/namespace/TileEntity#TileEntityPrototype.destroy) в TileEntity, отвечающий за то, было ли уничтожение вызвано событием *DestroyBlock*
+- Добавлен параметр методу [destroy](/api/interface/TileEntity.TileEntityPrototype#destroy) в TileEntity, отвечающий за то, было ли уничтожение вызвано событием *DestroyBlock*
 - Оптимизированы методы редактирования инвентаря игрока
 - Исправлена установка способностей игрока, включая полет
 - Исправлен серверный каллбек открытия [ItemContainer](/api/class/ItemContainer), который происходил до отправки пакета открытия
@@ -437,7 +437,7 @@ toc_max_heading_level: 2
 - Исправлена загрузка модов с ресурспаками
 - Исправлены ошибки, вызываемые сохранением
 - Исправлена загрузка модов на некоторых устройствах
-- Добавлен параметр "category" при [Item.createItem](/api/namespace/Item#ItemParams.category)
+- Добавлен параметр "category" при [Item.createItem](/api/interface/Item.ItemParams#category)
 
 ## 2.2.0b75
 

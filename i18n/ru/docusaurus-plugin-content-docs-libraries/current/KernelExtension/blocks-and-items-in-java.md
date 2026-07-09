@@ -59,7 +59,7 @@ public class TestKEXDependentMod {
 
 ### _**Блоки**_
 
-У класса `Block` есть метод `addVariation(variationJson)` для установки текстуры, отображаемого имени и видимости единственной вариации блока (один блок может иметь до 16 вариаций), и `setDefineData(variationsJsonArr)` для установки всего массива описания всех вариаций блока. JSON-объект вариации должен иметь такой же формат, как интерфейс [BlockVariation](/api/namespace/Block#BlockVariation), используемый в JS-методе Inner Core [Block.createBlock](/api/namespace/Block#createBlock).
+У класса `Block` есть метод `addVariation(variationJson)` для установки текстуры, отображаемого имени и видимости единственной вариации блока (один блок может иметь до 16 вариаций), и `setDefineData(variationsJsonArr)` для установки всего массива описания всех вариаций блока. JSON-объект вариации должен иметь такой же формат, как интерфейс [BlockVariation](/api/interface/Block.BlockVariation), используемый в JS-методе Inner Core [Block.createBlock](/api/namespace/Block#createBlock).
 
 ```java
 new Block("my_block")

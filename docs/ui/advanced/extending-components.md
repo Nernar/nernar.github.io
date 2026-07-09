@@ -204,7 +204,7 @@ If you figure it out, the whole code boils down to drawing three primitive shape
 
 :::note What an element is capable of
 
-Element components have many properties, such as an attached window, a container, bindings, and several more useful methods. Consider the [UIElement prototype](/api/namespace/UI#IElement) for details.
+Element components have many properties, such as an attached window, a container, bindings, and several more useful methods. Consider the [UIElement prototype](/api/interface/UI.IElement) for details.
 
 :::
 
