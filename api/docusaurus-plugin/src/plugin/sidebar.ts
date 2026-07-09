@@ -1,4 +1,4 @@
-import { JSONOutput } from 'typedoc';
+import { JSONOutput, ReflectionKind } from 'typedoc';
 import { normalizeUrl } from '@docusaurus/utils';
 import type {
 	DocusaurusPluginTypeDocApiOptions,
@@ -51,6 +51,28 @@ export function groupSidebarItems(
 
 				if (nextId) {
 					child.nextId = nextId;
+				}
+
+				if (child.kind === ReflectionKind.Namespace && child.children && child.children.length > 0) {
+					let nestedItems: SidebarItem[] = [];
+					if (child.groups) {
+						nestedItems = groupSidebarItems(createReflectionMap(child.children as unknown as TSDDeclarationReflection[]), child.groups);
+					} else {
+						nestedItems = child.children.map(grandChild => ({
+							href: grandChild.permalink,
+							label: grandChild.name,
+							type: 'link',
+						}));
+					}
+
+					return {
+						collapsed: true,
+						collapsible: true,
+						href: child.permalink,
+						label: child.name,
+						items: nestedItems,
+						type: 'category',
+					};
 				}
 
 				return {

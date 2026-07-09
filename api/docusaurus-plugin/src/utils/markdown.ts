@@ -26,16 +26,64 @@ function splitLinkText(text: string): { caption: string; target: string } {
 
 function findReflectionWithMatchingTarget(
 	reflections: TSDDeclarationReflectionMap,
-	symbol: string,
-	member?: string,
+	parts: string[],
 ) {
-	return Object.values(reflections).find((ref) => {
-		if (ref.name !== symbol) {
-			return false;
+	const candidates = Object.values(reflections).filter((ref) => ref.name === parts[0]);
+
+	if (candidates.length === 0) {
+		return { reflection: undefined, hash: undefined };
+	}
+
+	let bestMatch = { reflection: candidates[0], matchedParts: 1, validReflectionParts: 1 };
+
+	for (const candidate of candidates) {
+		let currentReflection = candidate;
+		let validReflection = candidate;
+		let matchedParts = 1;
+		let validReflectionParts = 1;
+
+		for (let i = 1; i < parts.length; i++) {
+			const part = parts[i];
+			const children = currentReflection.children as unknown as import('../types').TSDDeclarationReflection[];
+			if (!children) break;
+
+			let foundChild = false;
+			for (const child of children) {
+				if (child.name === part) {
+					const mapRef = reflections[child.id];
+					const actualChild = mapRef || child;
+					
+					currentReflection = actualChild;
+					matchedParts++;
+					foundChild = true;
+					
+					if (actualChild.permalink) {
+						validReflection = actualChild;
+						validReflectionParts = matchedParts;
+					}
+					break;
+				}
+			}
+			if (!foundChild) break;
 		}
 
-		return member ? ref.children?.some((child) => child.name === member) : true;
-	});
+		if (matchedParts > bestMatch.matchedParts) {
+			bestMatch = { reflection: validReflection, matchedParts, validReflectionParts };
+		}
+		
+		if (matchedParts === parts.length) {
+			break;
+		}
+	}
+
+	let finalReflection = bestMatch.reflection;
+	// The hash should be everything after the last valid reflection we found
+	let hashParts = parts.slice(bestMatch.validReflectionParts);
+	
+	return {
+		reflection: finalReflection,
+		hash: hashParts.length > 0 ? hashParts.join('.') : undefined,
+	};
 }
 
 function replaceApiLinks(
@@ -43,15 +91,22 @@ function replaceApiLinks(
 ): (match: string, tagName: string, content: string) => string {
 	return (match: string, tagName: string, content: string) => {
 		const { caption, target } = splitLinkText(content);
-		const [symbol, member] = target.split('.');
-		const reflection = findReflectionWithMatchingTarget(reflections, symbol, member);
+		const parts = target.split('.');
+		const { reflection, hash } = findReflectionWithMatchingTarget(reflections, parts);
 		const label = tagName === 'linkcode' ? `\`${caption}\`` : caption;
 
 		if (!reflection?.permalink) {
 			return label;
 		}
 
-		const permalink = `${reflection.permalink}${member ? `#${member}` : ''}`;
+		let permalink = reflection.permalink;
+		if (hash) {
+			if (permalink.includes('#')) {
+				permalink = `${permalink}.${hash}`;
+			} else {
+				permalink = `${permalink}#${hash}`;
+			}
+		}
 		return `[${label}](${permalink.replace(/(?<=#.*)#/g, '.')})`;
 	};
 }

@@ -191,13 +191,19 @@ export function addMetadataToReflections(
 			const childSlug = kindSlugPart ? `/${kindSlugPart}/${child.name}` : `#${child.name}`;
 			const childPermalink = permalink + childSlug;
 
-			// We need to go another level deeper and only use fragments
+			// We need to go another level deeper and generate proper pages instead of fragments
 			if (child.kind === ReflectionKind.Namespace && child.children) {
 				// eslint-disable-next-line no-param-reassign
-				child.children = child.children.map((grandChild) => ({
-					...grandChild,
-					permalink: normalizeUrl([`${childPermalink}#${grandChild.name}`]),
-				}));
+				child.children = child.children.map((grandChild) => {
+					const gcKindSlugPart = getKindSlug(grandChild);
+					const gcSlug = gcKindSlugPart ? `/${gcKindSlugPart}/${child.name}.${grandChild.name}` : `#${child.name}.${grandChild.name}`;
+					return {
+						...grandChild,
+						// Used in ApiItem.tsx to display full name on the page heading
+						pageHeading: gcKindSlugPart ? `${child.name}.${grandChild.name}` : undefined,
+						permalink: normalizeUrl([gcKindSlugPart ? `${permalink}${gcSlug}` : `${childPermalink}#${grandChild.name}`]),
+					};
+				});
 			}
 
 			return {

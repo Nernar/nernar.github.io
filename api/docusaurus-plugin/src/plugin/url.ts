@@ -14,8 +14,6 @@ export function getKindSlug(decl: JSONOutput.DeclarationReflection): string {
 			return 'namespace';
 		case ReflectionKind.Enum:
 			return 'enum';
-		case ReflectionKind.Function:
-			return 'function';
 		case ReflectionKind.Class:
 			return 'class';
 		case ReflectionKind.Interface:

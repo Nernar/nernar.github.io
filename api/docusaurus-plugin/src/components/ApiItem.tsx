@@ -102,13 +102,13 @@ export default function ApiItem({ readme: Readme, route }: ApiItemProps) {
 						<span className="tsd-header-flags">
 							<Flags flags={item.flags} />
 						</span>
-						{escapeMdx(item.name)} <TypeParametersGeneric params={item.typeParameters} />
+						{escapeMdx((item as any).pageHeading ?? item.name)} <TypeParametersGeneric params={item.typeParameters} />
 					</>
 				}
 				pageMetadata={
 					<PageMetadata
 						description={item.comment?.summary ? displayPartsToMarkdown(item.comment.summary) : ''}
-						title={`${item.name} | API`}
+						title={`${(item as any).pageHeading ?? item.name} | API`}
 					/>
 				}
 				pagingMetadata={pagingMetadata}

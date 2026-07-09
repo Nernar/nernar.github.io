@@ -1,8 +1,10 @@
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import Link from '@docusaurus/Link';
 import { useRequiredReflection } from '../hooks/useReflection';
+import { useReflectionMap } from '../hooks/useReflectionMap';
 import type { TSDDeclarationReflection } from '../types';
 import { AnchorLink } from './AnchorLink';
+import { ApiOptionsContext, shouldHideReflection } from './ApiOptionsContext';
 import { Icon } from './Icon';
 import { Name } from './Name';
 
@@ -28,76 +30,111 @@ export interface IndexProps {
 }
 
 export function Index({ reflection }: IndexProps) {
+	const apiOptions = useContext(ApiOptionsContext);
+	const reflections = useReflectionMap();
+
+	const getVisibleChildren = (children?: number[]) => {
+		if (!children) return [];
+		return children.filter(id => {
+			const childRef = reflections[id];
+			return childRef && !shouldHideReflection(childRef, apiOptions);
+		});
+	};
+
 	if (reflection.categories && reflection.categories.length > 0) {
-		return (
-			<section className="tsd-panel-group tsd-index-group">
-				<h2>
-					Index <AnchorLink id="Index" />
-				</h2>
+		const visibleCategories = reflection.categories.map(category => ({
+			...category,
+			visibleChildren: getVisibleChildren(category.children),
+		})).filter(category => category.visibleChildren.length > 0);
 
-				<section className="tsd-panel tsd-index-panel">
-					<div className="tsd-index-content">
-						{reflection.categories.map((category) => (
-							<section key={category.title} className="tsd-index-section">
-								<h3 className="tsd-panel-header">
-									{category.title === '__CATEGORY__' ? 'Other' : category.title}
-								</h3>
+		if (visibleCategories.length > 0) {
+			return (
+				<section className="tsd-panel-group tsd-index-group">
+					<h2>
+						Index <AnchorLink id="Index" />
+					</h2>
 
-								<div className="tsd-panel-content">
-									<ul className="tsd-index-list">
-										{category.children?.map((child) => <IndexChild key={child} id={child} />)}
-									</ul>
-								</div>
-							</section>
-						))}
-					</div>
+					<section className="tsd-panel tsd-index-panel">
+						<div className="tsd-index-content">
+							{visibleCategories.map((category) => (
+								<section key={category.title} className="tsd-index-section">
+									<h3 className="tsd-panel-header">
+										{category.title === '__CATEGORY__' ? 'Other' : category.title}
+									</h3>
+
+									<div className="tsd-panel-content">
+										<ul className="tsd-index-list">
+											{category.visibleChildren.map((child) => <IndexChild key={child} id={child} />)}
+										</ul>
+									</div>
+								</section>
+							))}
+						</div>
+					</section>
 				</section>
-			</section>
-		);
+			);
+		}
 	}
 
 	if (reflection.groups && reflection.groups.length > 0) {
-		return (
-			<section className="tsd-panel-group tsd-index-group">
-				<h2>
-					Index <AnchorLink id="Index" />
-				</h2>
+		const visibleGroups = reflection.groups.map(group => {
+			const visibleCategories = group.categories?.map(category => ({
+				...category,
+				visibleChildren: getVisibleChildren(category.children),
+			})).filter(category => category.visibleChildren.length > 0) || [];
 
-				<section className="tsd-panel tsd-index-panel">
-					<div className="tsd-index-content">
-						{reflection.groups.map((group) => (
-							<section key={group.title} className="tsd-index-section">
-								{group.categories && group.categories.length > 0 ? (
-									group.categories.map((category) => (
-										<Fragment key={category.title}>
-											<h3 className="tsd-panel-header">
-												{category.title === '__CATEGORY__' ? group.title : category.title}
-											</h3>
+			const visibleChildren = getVisibleChildren(group.children);
+
+			return {
+				...group,
+				visibleCategories,
+				visibleChildren,
+			};
+		}).filter(group => group.visibleCategories.length > 0 || group.visibleChildren.length > 0);
+
+		if (visibleGroups.length > 0) {
+			return (
+				<section className="tsd-panel-group tsd-index-group">
+					<h2>
+						Index <AnchorLink id="Index" />
+					</h2>
+
+					<section className="tsd-panel tsd-index-panel">
+						<div className="tsd-index-content">
+							{visibleGroups.map((group) => (
+								<section key={group.title} className="tsd-index-section">
+									{group.visibleCategories && group.visibleCategories.length > 0 ? (
+										group.visibleCategories.map((category) => (
+											<Fragment key={category.title}>
+												<h3 className="tsd-panel-header">
+													{category.title === '__CATEGORY__' ? group.title : category.title}
+												</h3>
+
+												<div className="tsd-panel-content">
+													<ul className="tsd-index-list">
+														{category.visibleChildren.map((child) => <IndexChild key={child} id={child} />)}
+													</ul>
+												</div>
+											</Fragment>
+										))
+									) : (
+										<>
+											<h3 className="tsd-panel-header">{group.title}</h3>
 
 											<div className="tsd-panel-content">
 												<ul className="tsd-index-list">
-													{category.children?.map((child) => <IndexChild key={child} id={child} />)}
+													{group.visibleChildren.map((child) => <IndexChild key={child} id={child} />)}
 												</ul>
 											</div>
-										</Fragment>
-									))
-								) : (
-									<>
-										<h3 className="tsd-panel-header">{group.title}</h3>
-
-										<div className="tsd-panel-content">
-											<ul className="tsd-index-list">
-												{group.children?.map((child) => <IndexChild key={child} id={child} />)}
-											</ul>
-										</div>
-									</>
-								)}
-							</section>
-						))}
-					</div>
+										</>
+									)}
+								</section>
+							))}
+						</div>
+					</section>
 				</section>
-			</section>
-		);
+			);
+		}
 	}
 
 	return null;

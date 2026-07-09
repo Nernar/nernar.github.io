@@ -370,11 +370,21 @@ export default function typedocApiPlugin(
 
 					loadedVersion.packages.forEach((pkg) => {
 						pkg.entryPoints.forEach((entry) => {
-							const children =
-								entry.reflection.children?.filter((child) => !child.permalink?.includes('#')) ?? [];
+							const allDeclarations: TSDDeclarationReflection[] = [];
+							function extractDeclarations(node: TSDDeclarationReflection) {
+								if (node.children) {
+									node.children.forEach(child => {
+										if (child.permalink && !child.permalink.includes('#')) {
+											allDeclarations.push(child);
+										}
+										extractDeclarations(child);
+									});
+								}
+							}
+							extractDeclarations(entry.reflection);
 
 							// Map a route for every declaration in the package (the exported APIs)
-							const subRoutes = children.map((child) => createRoute(child));
+							const subRoutes = allDeclarations.map((child) => createRoute(child));
 
 							// Map a top-level package route, otherwise `DocRoot` shows a page not found
 							subRoutes.push(
