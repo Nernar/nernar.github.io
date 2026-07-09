@@ -123,6 +123,30 @@ a[aria-label="Powered by Algolia"] svg rect {
   fill: var(--docsearch-highlight-color) !important;
 }
 
+/* Hide powered by from AI since we are actually already advertised Algolia in search and enpowers AI by ourselves */
+.DocSearch-Sidepanel-Footer {
+  display: none !important;
+}
+
+/* Anchor and style navigation button correctly */
+.DocSearch-SidepanelButton {
+  background-color: var(--ifm-card-background-color) !important;
+  padding: 0.2rem !important;
+}
+
+.theme-back-to-top-button {
+  background-color: var(--ifm-card-background-color) !important;
+  bottom: 5rem !important;
+  right: 1.15rem !important;
+}
+
+@media (min-width: 769px) {
+  .theme-back-to-top-button {
+    bottom: 5.5rem !important;
+    right: 1.15rem !important;
+  }
+}
+
 /* Simplifications to keep interface clean */
 .navbar__toggle {
   margin-right: 1rem;

@@ -1,20 +1,20 @@
 /*
 
-    Inner Core Docs: Inner Core, Core Engine and Horizon documentation
-    Copyright (C) 2022  Nernar (https://github.com/nernar)
+	Inner Core Docs: Inner Core, Core Engine and Horizon documentation
+	Copyright (C) 2022  Nernar (https://github.com/nernar)
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 	Maintained and distributed by MaXFeeD (maxfeed.nernar@outlook.com)
 
@@ -23,6 +23,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type * as Docs from '@docusaurus/plugin-content-docs';
+import type * as Docsearch from '@docsearch/docusaurus-adapter';
 import type * as Typedoc from './api/docusaurus-plugin';
 import remarkAuthors from './src/plugins/remark-authors';
 
@@ -180,10 +181,10 @@ export default {
 						'@deprecated': true
 					}
 					// plugin: [
-						// 'typedoc-plugin-merge-modules'
-						// TODO: Settings like in @mxssfd/typedoc-theme.
-						// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
-						// TODO: Page groups like in typedoc-github-theme.
+					// 'typedoc-plugin-merge-modules'
+					// TODO: Settings like in @mxssfd/typedoc-theme.
+					// TODO: Internals like in @gobstones/typedoc-theme-gobstones.
+					// TODO: Page groups like in typedoc-github-theme.
 					// ]
 				}
 			} satisfies Typedoc.Options
@@ -313,15 +314,22 @@ export default {
 		docsearch: {
 			appId: '4HZJ107KFO',
 			apiKey: 'ac84e3c991e0e10303432c69b5d878b4',
-			indexName: 'docs_api',
+			indexName: 'indices-should-be-supported',
+			// @ts-expect-error VOLATILE TO DOCUSAURUS VERSION!
+			indices: ['docs', 'api', 'libraries', 'api-libraries', 'extras'],
 			contextualSearch: true,
 			insights: false,
 
 			askAi: {
-				assistantId: '48eb65fb-1267-4cac-8f8d-20de77aa09f1', 
-				agentStudio: true
+				assistantId: '48eb65fb-1267-4cac-8f8d-20de77aa09f1',
+				agentStudio: true,
+				sidePanel: {
+					variant: 'floating',
+					side: 'right',
+					suggestedQuestions: true
+				}
 			}
-		},
+		} satisfies Docsearch.UserDocSearchConfig,
 		prism: {
 			theme: prismThemes.vsLight,
 			darkTheme: prismThemes.vsDark,
