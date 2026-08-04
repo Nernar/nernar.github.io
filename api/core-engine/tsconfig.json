@@ -1,7 +1,6 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
-		"target": "ES5",
 		"lib": ["ES2015"],
 		"composite": true
 	},
